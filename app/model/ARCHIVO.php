@@ -1,6 +1,6 @@
 <?php
 INCLUDE ("DOCS_SOLICITADOS_CURSO.php");
-include_once "I_ARCHIVO.php";
+include_once "./interface/I_ARCHIVO.php";
 class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 {
     private $id_archivo;

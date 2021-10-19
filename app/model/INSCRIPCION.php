@@ -1,5 +1,5 @@
 <?php
-include_once "I_INSCRIPCION.php";
+include_once "./interface/I_INSCRIPCION.php";
 include_once "CONEXION_M.php";
 class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
 {

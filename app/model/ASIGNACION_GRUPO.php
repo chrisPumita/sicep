@@ -1,6 +1,6 @@
 <?php
 include_once "CONEXION_M.php";
-include_once "I_ASIG_GRUPO.php";
+include_once "./interface/I_ASIG_GRUPO.php";
 
 class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 {

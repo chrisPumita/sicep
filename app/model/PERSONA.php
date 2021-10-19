@@ -1,6 +1,6 @@
 <?php
 include_once "CONEXION_M.php";
-include_once "I_PERSONA.php";
+include_once "./interface/I_PERSONA.php";
 
 class PERSONA extends CONEXION_M implements I_PERSONA
 {

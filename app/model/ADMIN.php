@@ -1,6 +1,6 @@
 <?php
     include("PROFESOR.php");
-    include "I_admin.php";
+    include "./interface/I_admin.php";
 
 class ADMIN extends PROFESOR implements I_admin
 {

@@ -2,7 +2,7 @@
 
 include_once "DOCS_SOLICITADOS_CURSO.php";
 include_once "TEMAS.php";
-include_once "I_CURSO.php";
+include_once "./interface/I_CURSO.php";
 class CURSO extends CONEXION_M implements I_CURSO
 {
     private $id_curso;

@@ -1,6 +1,6 @@
 <?php
 include "CONEXION_M.php";
-include_once "I_HORARIO_CLASE_V.php";
+include_once "./interface/I_HORARIO_CLASE_V.php";
 
 class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
 {

@@ -1,6 +1,6 @@
 <?php
 include ("CONEXION_M.php");
-include_once "I_DOCUMENTOS.php";
+include_once "./interface/I_DOCUMENTOS.php";
 
 class DOCUMENTO extends CONEXION_M implements I_DOCUMENTOS
 {

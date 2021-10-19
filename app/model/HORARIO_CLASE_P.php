@@ -1,6 +1,6 @@
 <?php
 include ("AULAS.php");
-include_once ("I_HORARIO_CLASE_P.php");
+include_once ("./interface/I_HORARIO_CLASE_P.php");
 
 class HORARIO_CLASE_P extends AULAS implements I_HORARIO_CLASE_P
 {

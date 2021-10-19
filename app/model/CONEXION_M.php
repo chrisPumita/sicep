@@ -1,6 +1,6 @@
 <?php
 
-require_once "../config/SERVER.php";
+require_once "../../config/SERVER.php";
 class CONEXION_M
 {
     private $host = SERVER;

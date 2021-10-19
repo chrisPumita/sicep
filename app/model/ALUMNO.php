@@ -1,7 +1,7 @@
 <?php
 
 include_once "PERSONA.php";
-include_once "I_ALUMNO.php";
+include_once "./interface/I_ALUMNO.php";
 class ALUMNO extends  PERSONA implements I_ALUMNO
 {
     private $id_alumno;
