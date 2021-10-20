@@ -2,7 +2,7 @@
 
 //incluimos el modelo para que lo uise el controlador
 ////va a ser requerido una unica vez
-require_once "../model/vistasModelo.php";
+require_once "./model/vistasModelo.php";
 
 class vistasControlador extends vistaModelo
 {
