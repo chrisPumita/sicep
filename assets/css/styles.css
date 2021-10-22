@@ -1,0 +1,27 @@
+:root{
+    --primary: #196398;
+    --second: #CDAC12;
+    --ligth : #ffffff;
+    --grey: #efefef;
+    --alert:  indianred;
+    --gray: #616A6B;
+}
+
+/*@over botstrap styles*/
+.bg-primary{background-color: var(--primary) !important;}
+.bg-light{background-color: var(--ligth) !important;}
+.bg-mix{background: linear-gradient(180deg,var(--ligth)50%,var(--grey));}
+.bg-grey{background-color: var(--grey) !important;}
+.my-5 { margin-top: 0rem!important;}
+.spinner-grow { width: 1rem; height: 1rem;}
+.label_mje{color: var(--alert);}
+.text-primary{    color: var(--primary) !important;}
+.text-secondary{    color: var(--second) !important;}
+
+.text-light {    color: var(--ligth) !important;}
+
+.btn-primary{    background-color: var(--primary) !important;}
+
+.btn-primary:hover{    background-color: var(--second) !important;}
+
+.btn-gray{ background-color: var(--gray) !important;}
