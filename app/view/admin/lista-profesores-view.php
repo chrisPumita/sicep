@@ -87,7 +87,6 @@
                                 <th>TELEFONO</th>
                                 <th>EMAIL</th>
                                 <th>REGISTRO</th>
-                                <th>ESTATUS</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
@@ -95,18 +94,19 @@
                             <tr id_profesor="10">
                                 <th scope="row">1</th>
                                 <td>45615656156</td>
-                                <td>Busmante Perez Abril  </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar avatar-md">
+                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4" alt="" srcset="">
+                                            <span class="avatar-status bg-danger"></span>
+                                        </div>
+                                        <p class="mb-0">Christian Pioquinto Hernández</p>
+                                    </div>
+                                </td>
                                 <td>Administracion</td>
                                 <td>16515615615</td>
                                 <td>abril@gmail.com</td>
                                 <td>2021-06-04 07:32:17</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="" data-toggle="tooltip" data-placement="left" title="Cuenta Inactiva">
-                                            <img src="../assets/images/prof_inactivo.png" class="rounded float-left" alt="..." width="60"></a>
-                                        <div class="blob red"></div>
-                                    </div>
-                                </td>
                                 <td>
                                     <a href="./detalles-profesor" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
                                     <a href="#" class="btn btn-outline-primary"><i class="far fa-share-square"></i> Asignar</a>
