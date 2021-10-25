@@ -35,7 +35,7 @@
                                     perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
                                     necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <a href="./lista-cursos">
                                         <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
                                             Ver cursos</button>

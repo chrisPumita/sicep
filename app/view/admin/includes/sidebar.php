@@ -24,7 +24,7 @@
                 <li class="sidebar-item  has-sub">
                     <a href="" class='sidebar-link'>
                         <i class="fas fa-graduation-cap"></i>
-                        <span>Cursos</span>
+                        <span>Cursos  <span class="badge bg-primary">6</span></span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
@@ -42,15 +42,30 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
+                            <a href="#"  data-bs-toggle="modal" data-bs-target="#selectCourse">Abrir Grupo</a>
+                        </li>
+                        <li class="submenu-item ">
                             <a href="./lista-grupos">Ver actuales</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Actas</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Ver Historial</a>
+                            <a href="./historial-grupos">Ver Historial</a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-item ">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>Solicitudes  <span class="badge bg-danger">4</span></span>
+                    </a>
+                </li>
+                <li class="sidebar-item ">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Documentos  <span class="badge bg-danger">150</span></span>
+                    </a>
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -86,7 +101,7 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-user-graduate"></i>
-                        <span>Alumnos</span>
+                        <span>Alumnos  <span class="badge bg-primary">4</span></span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">

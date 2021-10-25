@@ -40,7 +40,7 @@
                                     otros profesores. Puede administrarlos seleccionandolos de la tabla a continuacion,
                                     tambien puede crear un nuevo curso para que posteriormente pueda ser asignado a un profesor.
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <a href="./nuevo-curso" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
                                         <i class="fas fa-plus"></i> Agregar
                                     </a>

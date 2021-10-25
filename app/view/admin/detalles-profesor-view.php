@@ -42,7 +42,7 @@
                                     INACTRIVAS no dan acceso al sistema. Si este profesor perdio su contraseña, puede recuperarla
                                     desde el la opción Recuperar.
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <button class="btn btn-success w-100 mr-3 mt-3 mb-3">
                                         <i class="fas fa-check-circle"></i> ACTIVAR</button>
                                 </div>

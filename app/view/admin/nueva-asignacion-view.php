@@ -40,7 +40,7 @@
                                     perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
                                     necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
                                         <i class="fas fa-plus"></i> Agregar</button>
                                 </div>
@@ -220,27 +220,6 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Inicio:</label>
-                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Fin:</label>
-                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Inicio:</label>
-                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Fin:</label>
-                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
                                     </div>
                                 </div>
                             </div>

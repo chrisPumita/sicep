@@ -1,4 +1,4 @@
-<?php $titulo = "Plantilla" ?>
+<?php $titulo = "Historial de Grupos Creados" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Titulo de la pagina</h3>
+                        <h3>Historial de Grupos</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -57,6 +57,52 @@
                         Grupos Actuales
                     </div>
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
+                                perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
+                                necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                            </div>
+                            <div class="col-sm-2 align-items-center">
+                                <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                    <i class="fas fa-plus"></i> Agregar</button>
+                            </div>
+                        </div>
+                        <div class="dataTable-top">
+                            <div class="form-group">
+                                <label for="listaProfesores">Filtrar por </label>
+                                <select id="listaProfesores" class="dataTable-selector form-select">
+                                    <option value="5">Todos los Profesores</option>
+                                    <option value="10">Profesor Name 1</option>
+                                    <option value="10">Profesor Name 2</option>
+                                    <option value="10">Profesor Name 3</option>
+                                    <option value="10">Profesor Name 3</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Filtrar por</label>
+                                <select class="dataTable-selector form-select">
+                                    <option value="5">Nombre A-Z</option>
+                                    <option value="10">Nombre Z-A</option>
+                                    <option value="15">Primera-Ultima Generacion</option>
+                                    <option value="20">Ultima-Primera generacion</option>
+                                    <option value="25">Tipo</option>
+                                    <option value="25">Tipo</option>
+                                </select>
+                            </div>
+                            <div class="dataTable-search">
+                                <label>Filtrar por</label>
+                                <select class="dataTable-selector form-select">
+                                    <option value="5">Nombre A-Z</option>
+                                    <option value="10">Nombre Z-A</option>
+                                    <option value="15">Primera-Ultima Generacion</option>
+                                    <option value="20">Ultima-Primera generacion</option>
+                                    <option value="25">Tipo</option>
+                                    <option value="25">Tipo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
                         <table class="table table-hover table-striped" id="tbl1">
                             <thead>
                             <tr>

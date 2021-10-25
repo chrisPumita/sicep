@@ -4,7 +4,106 @@
 
 <head>
     <?php include "includes/head.php"?>
-    <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .card .banner {
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 11rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .card h2.name {
+            text-align: center;
+            padding: 0 2rem 0.5rem;
+            margin: 0;
+            color: black;
+        }
+        .card .title {
+            color: #232323;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 0 2rem 1.2rem;
+        }
+        .card .actions {
+            padding: 0 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            order: 99;
+        }
+        .card .actions .follow-info {
+            padding: 0 0 1rem;
+            display: flex;
+        }
+        .card .actions .follow-info h2 {
+            text-align: center;
+            width: 50%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .card .actions .follow-info h2 a {
+            text-decoration: none;
+            padding: 0.8rem;
+            flex-direction: column;
+            border-radius: 0.8rem;
+            transition: background-color 100ms ease-in-out;
+        }
+        .card .actions .follow-info h2 a span {
+            color: #1c9eff;
+            font-weight: bold;
+            transform-origin: bottom;
+            transition: color 100ms ease-in-out;
+        }
+        .card .actions .follow-info h2 a small {
+            color: #afafaf;
+            font-size: 0.85rem;
+            font-weight: normal;
+        }
+        .card .actions .follow-info h2 a:hover {
+            background-color: #f2f2f2;
+        }
+        .card .actions .follow-info h2 a:hover span {
+            color: #007ad6;
+        }
+        .card .actions .follow-btn button {
+            color: inherit;
+            font: inherit;
+            font-weight: bold;
+            background-color: #242424;
+            width: 100%;
+            border: none;
+            padding: 1rem;
+            outline: none;
+            box-sizing: border-box;
+            border-radius: 1.5rem/50%;
+            transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        .card .actions .follow-btn button:hover {
+            background-color: #000000;
+            transform: scale(1.1);
+        }
+        .card .actions .follow-btn button:active {
+            background-color: #242424;
+            transform: scale(1);
+        }
+        .card .desc {
+            text-align: center;
+            padding: 0 2rem 2.5rem;
+            order: 100;
+            color: black;
+            font-size: 15px;
+        }
+        .hidden {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,89 +135,415 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Aqui puede encontrar todos los cursos que han sido registrado en el sistema por
-                                    otros profesores. Puede administrarlos seleccionandolos de la tabla a continuacion,
-                                    tambien puede crear un nuevo curso para que posteriormente pueda ser asignado a un profesor.
+                                    Estos son los grupos abiertos actualmente, si desea ver grupos anteriores, porfavor de clic
+                                    al boton de "Ver Histórico". Si desea ver mas informacion del grupo abierto, asi como descargar
+                                    la lista de alumnos, de clic en "Mas Detalles".
                                 </div>
-                                <div class="col-sm-2">
-                                    <a href="./lista-cursos class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                                        <i class="fas fa-plus"></i> Ver Cursos
-                                    </a>
+                                <div class="col-sm-2 align-items-center">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-history"></i> Ver Histórico</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <section class="section">
-                <div class="card">
-                    <div class="card-header">
-                        Cursos Actuales
+            <section class="row">
+                <div class="container-fluid">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filtrar Grupos
+                        </button>
+                        <div class="dropdown-menu" style="margin: 0px;">
+                            <a class="dropdown-item" href="#">En Curso</a>
+                            <a class="dropdown-item" href="#">Disponibles</a>
+                            <a class="dropdown-item" href="#">Ver todos</a>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>GRUPO</th>
-                                <th>CURSO</th>
-                                <th>PROFESOR</th>
-                                <th>CUPO</th>
-                                <th>FECHAS</th>
-                                <th>TIPO</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-grupos">
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Aspel NOI Basico I <span class="badge bg-warning">Por Revisar</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>
-                                        <ol>
-                                            <ul>INSCRIPCIONES: del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                            <ul>INICIO:  del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                            <ul>CALIFICACIONES: del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                        </ol>
-                                    </td>
-                                    <td>En linea y Precencial</td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Aspel NOI Basico I <span class="badge bg-warning">Por Revisar</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>
-                                        <ol>
-                                            <ul>INSCRIPCIONES: del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                            <ul>INICIO:  del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                            <ul>CALIFICACIONES: del 23 de enero de 2022 al 14 julio de 2022</ul>
-                                        </ol>
-                                    </td>
-                                    <td>En linea y Precencial</td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </div>
+                <div class="container py-2">
+                    <div class="row">
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                       <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                            <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Grupo Actual 1-->
+                        <div class="col-sm-4 col-md-4 py-3">
+                            <div class="card bg-light">
+                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
+                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                                </div>
+                                <span class="badge bg-info ">14 Lugares Disponibles</span>
+                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
+                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
+                                <div class="title">
+                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
+                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
+                                    </button></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>GRUPO:</strong> 1501
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>TIPO:</strong> SEMINARIO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>MODALIDAD:</strong> MIXTO
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong> Cupo: </strong><span> 30 Lugares</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
+                                    </li>
+                                </ul>
+                                <div class="actions">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                        <i class="fas fa-plus"></i> Mas detalles...</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
@@ -131,14 +556,6 @@
 
 <script src="../assets/js/main.js"></script>
 
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 
 </html>

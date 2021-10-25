@@ -40,7 +40,7 @@
                                     puede crear cuentas de profesores y/o autorizar las cuentas generadas a partir del formulario.
                                     Revise la información y asegurese de verificar bien los datos de las solicitudes.
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
                                         <i class="fas fa-plus"></i> Agregar</button>
                                 </div>

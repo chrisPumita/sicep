@@ -163,7 +163,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="./cursos">Cursos</a></li>
+                                <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Proponer Curso</li>
                             </ol>
                         </nav>
@@ -180,7 +180,7 @@
                                     requerimentos que se piden para los cursos, tenga en cuenta que podra realizar cambios
                                     mientras el curso no haya sido aprobado. Puede revisar sus cursos creados en la seccion Personal>Mis Cursos
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 align-items-center">
                                     <a href="#">
                                         <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
                                             <i class="fas fa-coffee"></i> Mis cursos</button>
@@ -356,20 +356,20 @@
                                                                             <div class="pl-lg-4">
                                                                                 <div class="row">
                                                                                     <div class="col-lg-12">
-                                                                                        <ul class="list-group text-lg-start">
-                                                                                            <li class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="Comprobante">
-                                                                                                <label for="Comprobante">Comprobante de pago</label>
-                                                                                            </li>
-                                                                                            <li class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="credencial">
-                                                                                                <label for="credencial">Credencial Estudiante</label>
-                                                                                            </li>
-                                                                                            <li class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="list">
-                                                                                                <label for="list">Tira de materias</label>
-                                                                                            </li>
-                                                                                        </ul>
+                                                                                        <div class="list-group text-lg-start">
+                                                                                            <label class="list-group-item">
+                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
+                                                                                                Comprobante de pago
+                                                                                            </label>
+                                                                                            <label class="list-group-item">
+                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
+                                                                                                Credencial Estudiante
+                                                                                            </label>
+                                                                                            <label class="list-group-item">
+                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
+                                                                                                Tira de materias
+                                                                                            </label>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
