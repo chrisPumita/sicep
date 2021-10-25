@@ -41,7 +41,8 @@
                 <div class="text-center mt-5 text-lg fs-4">
                     <hr>
                     <p class="text-gray-600">
-                        ¿No tienes una cuenta? <a href="./register.php" >Regístrate</a>
+                        ¿No tienes una cuenta? <a href="./register.php" data-bs-toggle="modal"
+                                                  data-bs-target="#inlineForm">Regístrate</a>
                     </p>
                     <p><a  href="./forgot-password.php">Olvidé mi contraseña</a> .</p>
                 </div>
@@ -55,6 +56,8 @@
     </div>
 
 </div>
-</body>
+<?php include "./modals/modal-add-alumno.php" ?>
 
+</body>
+<?php include "./includes/js.php" ?>
 </html>

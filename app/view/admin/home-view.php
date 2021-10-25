@@ -1,413 +1,62 @@
+<?php $titulo = "Inicio" ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
-
-    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/app.css">
-    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
+    <?php include "includes/head.php"?>
+    <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
 </head>
 
 <body>
 <div id="app">
-    <div id="sidebar" class="active">
-        <div class="sidebar-wrapper active">
-            <div class="sidebar-header">
-                <div class="d-flex justify-content-between">
-                    <div class="logo">
-                        <a href="index.html"><img src="../assets/images/logo/logo.png" alt="Logo" srcset=""></a>
-                    </div>
-                    <div class="toggler">
-                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="sidebar-menu">
-                <ul class="menu">
-                    <li class="sidebar-title">Menu</li>
-
-                    <li class="sidebar-item active ">
-                        <a href="index.html" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>Components</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="component-alert.html">Alert</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-badge.html">Badge</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-breadcrumb.html">Breadcrumb</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-button.html">Button</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-card.html">Card</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-carousel.html">Carousel</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-dropdown.html">Dropdown</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-list-group.html">List Group</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-modal.html">Modal</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-navs.html">Navs</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-pagination.html">Pagination</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-progress.html">Progress</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-spinner.html">Spinner</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="component-tooltip.html">Tooltip</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-collection-fill"></i>
-                            <span>Extra Components</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="extra-component-avatar.html">Avatar</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="extra-component-sweetalert.html">Sweet Alert</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="extra-component-toastify.html">Toastify</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="extra-component-rating.html">Rating</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="extra-component-divider.html">Divider</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-grid-1x2-fill"></i>
-                            <span>Layouts</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="layout-default.html">Default Layout</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="layout-vertical-1-column.html">1 Column</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="layout-vertical-navbar.html">Vertical Navbar</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="layout-rtl.html">RTL Layout</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="layout-horizontal.html">Horizontal Menu</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-title">Forms &amp; Tables</li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
-                            <span>Form Elements</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="form-element-input.html">Input</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-element-input-group.html">Input Group</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-element-select.html">Select</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-element-radio.html">Radio</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-element-checkbox.html">Checkbox</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-element-textarea.html">Textarea</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="form-layout.html" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Form Layout</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-pen-fill"></i>
-                            <span>Form Editor</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="form-editor-quill.html">Quill</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-editor-ckeditor.html">CKEditor</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-editor-summernote.html">Summernote</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="form-editor-tinymce.html">TinyMCE</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="table.html" class='sidebar-link'>
-                            <i class="bi bi-grid-1x2-fill"></i>
-                            <span>Table</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="table-datatable.html" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                            <span>Datatable</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-title">Extra UI</li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-pentagon-fill"></i>
-                            <span>Widgets</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="ui-widgets-chatbox.html">Chatbox</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-widgets-pricing.html">Pricing</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-widgets-todolist.html">To-do List</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-egg-fill"></i>
-                            <span>Icons</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="ui-icons-bootstrap-icons.html">Bootstrap Icons </a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-icons-fontawesome.html">Fontawesome</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-icons-dripicons.html">Dripicons</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-bar-chart-fill"></i>
-                            <span>Charts</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="ui-chart-chartjs.html">ChartJS</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-chart-apexcharts.html">Apexcharts</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="ui-file-uploader.html" class='sidebar-link'>
-                            <i class="bi bi-cloud-arrow-up-fill"></i>
-                            <span>File Uploader</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-map-fill"></i>
-                            <span>Maps</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="ui-map-google-map.html">Google Map</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="ui-map-jsvectormap.html">JS Vector Map</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-title">Pages</li>
-
-                    <li class="sidebar-item  ">
-                        <a href="application-email.html" class='sidebar-link'>
-                            <i class="bi bi-envelope-fill"></i>
-                            <span>Email Application</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="application-chat.html" class='sidebar-link'>
-                            <i class="bi bi-chat-dots-fill"></i>
-                            <span>Chat Application</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="application-gallery.html" class='sidebar-link'>
-                            <i class="bi bi-image-fill"></i>
-                            <span>Photo Gallery</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="application-checkout.html" class='sidebar-link'>
-                            <i class="bi bi-basket-fill"></i>
-                            <span>Checkout Page</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-badge-fill"></i>
-                            <span>Authentication</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="auth-login.html">Login</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="auth-register.html">Register</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="auth-forgot-password.html">Forgot Password</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-x-octagon-fill"></i>
-                            <span>Errors</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="error-403.html">403</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="error-404.html">404</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="error-500.html">500</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-title">Raise Support</li>
-
-                    <li class="sidebar-item  ">
-                        <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
-                            <i class="bi bi-life-preserver"></i>
-                            <span>Documentation</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
-                            <i class="bi bi-puzzle"></i>
-                            <span>Contribute</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item  ">
-                        <a href="https://github.com/zuramai/mazer#donate" class='sidebar-link'>
-                            <i class="bi bi-cash"></i>
-                            <span>Donate</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-            <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-        </div>
-    </div>
+    <?php include "includes/sidebar.php"?>
     <div id="main">
         <header class="mb-3">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
             </a>
         </header>
-
-        <div class="page-heading">
-            <h3>Profile Statistics</h3>
-        </div>
         <div class="page-content">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Bienvenido a SICEP</h3>
+                        <p class="text-subtitle text-muted">Aqui podra ver los cursos disponibles</p>
+                    </div>
+                </div>
+            </div>
+            <section class="row">
+                <div class="col-lg-12 col-lg-9">
+                    <div class="callout callout-second">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
+                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
+                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="./lista-cursos">
+                                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                                            Ver cursos</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="row">
                 <div class="col-12 col-lg-9">
                     <div class="row">
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
-                                <div class="card-body px-3 py-4-5">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/grado4.svg);">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon purple">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Profile Views</h6>
-                                            <h6 class="font-extrabold mb-0">112.000</h6>
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">CURSOS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">16</h3>
+                                            <h6 class="font-semibold text-success">Cursos activos</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -415,16 +64,12 @@
                         </div>
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
-                                <div class="card-body px-3 py-4-5">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/comunidad4.svg);">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon blue">
-                                                <i class="iconly-boldProfile"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Followers</h6>
-                                            <h6 class="font-extrabold mb-0">183.000</h6>
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">ALUMNOS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">183,000</h3>
+                                            <h6 class="font-semibold text-success">Registrados</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -432,16 +77,12 @@
                         </div>
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
-                                <div class="card-body px-3 py-4-5">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/inscripciones4.svg);">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon green">
-                                                <i class="iconly-boldAdd-User"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Following</h6>
-                                            <h6 class="font-extrabold mb-0">80.000</h6>
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">SOLCITUDES</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
+                                            <h6 class="font-semibold text-warning">de Inscripción por revisar</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -449,16 +90,12 @@
                         </div>
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
-                                <div class="card-body px-3 py-4-5">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/constancia4.svg);">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon red">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Saved Post</h6>
-                                            <h6 class="font-extrabold mb-0">112</h6>
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">CONSTANCIAS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
+                                            <h6 class="font-semibold text-warning">Por acreditar</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -469,124 +106,10 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Profile Visit</h4>
+                                    <h4>Registros de alumnos</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="chart-profile-visit"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-xl-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Profile Visit</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="d-flex align-items-center">
-                                                <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                                     style="width:10px">
-                                                    <use
-                                                        xlink:href="../assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                </svg>
-                                                <h5 class="mb-0 ms-3">Europe</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <h5 class="mb-0">862</h5>
-                                        </div>
-                                        <div class="col-12">
-                                            <div id="chart-europe"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="d-flex align-items-center">
-                                                <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                     style="width:10px">
-                                                    <use
-                                                        xlink:href="../assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                </svg>
-                                                <h5 class="mb-0 ms-3">America</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <h5 class="mb-0">375</h5>
-                                        </div>
-                                        <div class="col-12">
-                                            <div id="chart-america"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="d-flex align-items-center">
-                                                <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                                     style="width:10px">
-                                                    <use
-                                                        xlink:href="../assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                </svg>
-                                                <h5 class="mb-0 ms-3">Indonesia</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <h5 class="mb-0">1025</h5>
-                                        </div>
-                                        <div class="col-12">
-                                            <div id="chart-indonesia"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-xl-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Latest Comments</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-lg">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Comment</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="../assets/images/faces/5.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Congratulations on your graduation!</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="../assets/images/faces/2.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Wow amazing design! Can you make another
-                                                        tutorial for
-                                                        this design?</p>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -597,56 +120,18 @@
                         <div class="card-body py-4 px-5">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-xl">
-                                    <img src="../assets/images/faces/1.jpg" alt="Face 1">
+                                    <img src="../assets/images/start-sesion.png" alt="Face 1">
                                 </div>
                                 <div class="ms-3 name">
-                                    <h5 class="font-bold">John Duck</h5>
-                                    <h6 class="text-muted mb-0">@johnducky</h6>
+                                    <h5 class="font-bold">Christian Pioquinto</h5>
+                                    <h6 class="text-muted mb-0">@Christian</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4>Recent Messages</h4>
-                        </div>
-                        <div class="card-content pb-4">
-                            <div class="recent-message d-flex px-4 py-3">
-                                <div class="avatar avatar-lg">
-                                    <img src="../assets/images/faces/4.jpg">
-                                </div>
-                                <div class="name ms-4">
-                                    <h5 class="mb-1">Hank Schrader</h5>
-                                    <h6 class="text-muted mb-0">@johnducky</h6>
-                                </div>
-                            </div>
-                            <div class="recent-message d-flex px-4 py-3">
-                                <div class="avatar avatar-lg">
-                                    <img src="../assets/images/faces/5.jpg">
-                                </div>
-                                <div class="name ms-4">
-                                    <h5 class="mb-1">Dean Winchester</h5>
-                                    <h6 class="text-muted mb-0">@imdean</h6>
-                                </div>
-                            </div>
-                            <div class="recent-message d-flex px-4 py-3">
-                                <div class="avatar avatar-lg">
-                                    <img src="../assets/images/faces/1.jpg">
-                                </div>
-                                <div class="name ms-4">
-                                    <h5 class="mb-1">John Dodol</h5>
-                                    <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                </div>
-                            </div>
-                            <div class="px-4">
-                                <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                    Conversation</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Visitors Profile</h4>
+                            <h4>Visita a la página</h4>
                         </div>
                         <div class="card-body">
                             <div id="chart-visitors-profile"></div>
@@ -654,18 +139,280 @@
                     </div>
                 </div>
             </section>
-        </div>
 
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-start">
-                    <p>2021 &copy; Mazer</p>
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        Grupos Actuales
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped" id="tbl1">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>GRUPO</th>
+                                <th>CURSO</th>
+                                <th>PROFESOR</th>
+                                <th>CUPO</th>
+                                <th>INICIO</th>
+                                <th>TIPO</th>
+                                <th>ESTATUS</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-grupos">
+                            <tr id_grupo="3">
+                                <th scope="row">1</th>
+                                <td>1001</td>
+                                <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
+                                <td>Christian Garduño Pioquinto</td>
+                                <td>15</td>
+                                <td>2021-06-30 00:00:00</td>
+                                <td>En linea y Precencial</td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                                    </div>
+                                </td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                                    </div>
+                                </td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="float-end">
-                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                            href="http://ahmadsaugi.com">A. Saugi</a></p>
+
+            </section>
+
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        Documentación Pendiente
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped" id="tbl2">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Inscripcion</th>
+                                <th>Documento</th>
+                                <th>Alumno</th>
+                                <th>Curso</th>
+                                <th>Grupo</th>
+                                <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-grupos">
+                            <tr id_doc="1">
+                                <th scope="row">1</th>
+                                <td>123456789</td>
+                                <td>Credencial <span class="badge bg-warning">Por revisar</span></td>
+                                <td>Cesar Haziel Pineda Pacheco</td>
+                                <td>Computo I</td>
+                                <td>666</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
+                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Ver Inscripción</a>
+                                </td>
+                            </tr>
+                            <tr id_doc="1">
+                                <th scope="row">1</th>
+                                <td>123456789</td>
+                                <td>Credencial <span class="badge bg-warning">Por revisar</span></td>
+                                <td>Cesar Haziel Pineda Pacheco</td>
+                                <td>Computo I</td>
+                                <td>666</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
+                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Ver Inscripción</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+
+            </section>
+            <section class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">Profesores</h5>
+                                    <p class="card-text text-muted">En este apartado se pueden realizar distintas acciones de gestion para las cuentas de profesores.</p>
+                                    <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
+                                        <button type="button" class="btn btn-primary btn-sm">Crear cuenta</button>
+                                    </a>
+                                    <a href="./lista-profesores">
+                                        <button type="button" class="btn btn-primary btn-sm">Gestión de cuentas</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">Cuentas Administrativas</h5>
+                                    <p class="card-text text-muted">Crear nueva cuenta administrativa para entrar al sistema de Administración.</p>
+                                    <a href="./lista-cuentas">
+                                        <button type="button" class="btn btn-primary btn-sm">Ir</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">Servicio Social</h5>
+                                    <p class="card-text text-muted">Cree o gestiones cuentas de alumno de servicio social.</p>
+                                    <button type="button" class="btn btn-primary btn-sm">Crear cuenta</button>
+                                    <a href="#" data-toggle="modal" data-target="#listaServicio">
+                                        <button type="button" class="btn btn-primary btn-sm">Ver Alumnos</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">Alumnos</h5>
+                                    <p class="card-text text-muted">Buscar alumno para ver su situacion actual dentro del sistema de inscripción de cursos. Ingresar numero de cuenta registrado por el alumno.</p>
+                                    <form class="form-inline position-relative my-2 d-flex">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar alumno" aria-label="Search">
+                                        <button class="btn btn-search position-relative posicion-btn" type="submit"><img src="../assets/images/icons/buscar1.svg" width="24px"></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-7">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Cursos Recientes</h4>
+                                    <p>Estos sonnlos los ultimos cursos aprobados</p>
+                                </div>
+                                <div class="card-body">
+                                    <div id="carouselExampleFade" class="carousel slide carousel-fade"
+                                         data-bs-ride="carouselfade">
+                                        <ol class="carousel-indicators">
+                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
+                                                class="active"></li>
+                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="1"></li>
+                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="../assets/images/samples/1.png" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>First slide label</h5>
+                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="../assets/images/samples/2.png" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Second slide label</h5>
+                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="../assets/images/samples/3.png" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Third slide label</h5>
+                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleFade" role="button"
+                                           data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleFade" role="button"
+                                           data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Pagos Recientes</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <p>
+                                            Ultimos pagos registrados en el sistema
+                                        </p>
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
+                                                    <small>$30,000</small>
+                                                </div>
+                                                <small>2021-06-15 08:20:21</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
+                                                    <small>$30,000</small>
+                                                </div>
+                                                <small>2021-06-15 08:20:21</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
+                                                    <small>$30,000</small>
+                                                </div>
+                                                <small>2021-06-15 08:20:21</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="text-center text-white ">
+            <?php include "modals/generalModals.php"?>
+            <?php include "includes/footer.php" ?>
         </footer>
     </div>
 </div>
@@ -676,6 +423,16 @@
 <script src="../assets/js/pages/dashboard.js"></script>
 
 <script src="../assets/js/main.js"></script>
+
+<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#tbl1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+
+    let table2 = document.querySelector('#tbl2');
+    let dataTable2 = new simpleDatatables.DataTable(table2);
+</script>
 </body>
 
 </html>

@@ -7,3 +7,6 @@
 <link rel="stylesheet" href="assets/css/app.css">
 <link rel="stylesheet" href="assets/css/pages/auth.css">
 <link rel="stylesheet" href="assets/css/styles.css">
+
+<link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
