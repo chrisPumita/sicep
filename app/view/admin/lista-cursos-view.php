@@ -84,7 +84,7 @@
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
+                                    <a href="./nueva-asignacion" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-history"></i></a>
                                 </td>
                             </tr>
@@ -102,7 +102,7 @@
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
+                                    <a href="./nueva-asignacion" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-history"></i></a>
                                 </td>
                             </tr>

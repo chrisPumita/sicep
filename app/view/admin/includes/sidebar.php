@@ -42,13 +42,10 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Nuevo Grupos</a>
+                            <a href="./lista-grupos">Ver actuales</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-badge.html">Actas</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-badge.html">Ver actuales</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-badge.html">Ver Historial</a>
@@ -140,13 +137,13 @@
 
                 <li class="sidebar-title">Cuenta</li>
                 <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
+                    <a href="./perfil" class='sidebar-link'>
                         <i class="fas fa-user-circle"></i>
                         <span>Mi Perfil</span>
                     </a>
                 </li>
                 <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="./" class='sidebar-link'>
                         <span><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</span>
                     </a>
                 </li>

@@ -301,3 +301,25 @@ obliga {
 }
 
 /* end pulse efect*/
+
+.img {
+    padding: 3em;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: .7;
+    background: #000000;
+    z-index: -1;
+}
