@@ -156,7 +156,6 @@
                                 <th>CUPO</th>
                                 <th>INICIO</th>
                                 <th>TIPO</th>
-                                <th>ESTATUS</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
@@ -169,11 +168,6 @@
                                 <td>15</td>
                                 <td>2021-06-30 00:00:00</td>
                                 <td>En linea y Precencial</td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                    </div>
-                                </td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
@@ -189,11 +183,6 @@
                                 <td>30</td>
                                 <td>2021-07-26 00:00:00</td>
                                 <td>Presencial</td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                    </div>
-                                </td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
@@ -201,6 +190,172 @@
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
                                 </td>
                             </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+                            <tr id_grupo="5">
+                                <th scope="row">2</th>
+                                <td>1601</td>
+                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
+                                <td>Christian Hdz Pioquinto</td>
+                                <td>30</td>
+                                <td>2021-07-26 00:00:00</td>
+                                <td>Presencial</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                </td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -239,7 +394,7 @@
                                     <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
                                     <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
                                     <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Ver Inscripción</a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Documentación Completa</a>
                                 </td>
                             </tr>
                             <tr id_doc="1">
@@ -254,7 +409,7 @@
                                     <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
                                     <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
                                     <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Ver Inscripción</a>
+                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Documentación Completa</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -416,15 +571,18 @@
         </footer>
     </div>
 </div>
-<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<?php include "includes/js.php"?>
 
 <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
 <script src="../assets/js/pages/dashboard.js"></script>
 
-<script src="../assets/js/main.js"></script>
 
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
+<!-- INCLUDE SERIVES AJAX
+
+<script src="./service/lista-alumnos.js"></script>
+
+-- INCLUDE SERIVES AJAX -->
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#tbl1');

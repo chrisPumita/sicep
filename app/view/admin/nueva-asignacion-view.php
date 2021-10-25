@@ -159,6 +159,24 @@
                                 <div class="row">
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <label class="label" for="campo">Fecha límite de inscripciones:</label>
+                                        </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
+                                            <div class="row">
+                                                <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <label class="label" for="campo">Inicio de Clases:</label>
+                                        </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
+                                            <div class="row">
+                                                <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
                                             <label class="label" for="campo">Inscripciones</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
@@ -202,22 +220,6 @@
                                                         <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="campo">Fecha límite de inscripciones:</label>
-                                        </div>
-                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
-                                            <div class="row">
-                                                <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                <strong>Revise bien los campos</strong> Una vez registrado.
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                         </div>
                                     </div>
@@ -345,10 +347,7 @@
         </footer>
     </div>
 </div>
-<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="../assets/js/main.js"></script>
+<?php include "includes/js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>

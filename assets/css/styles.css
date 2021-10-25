@@ -6,9 +6,7 @@
     --alert:  indianred;
     --gray: #616A6B;
 }
-
 /*@over botstrap styles*/
-
 
 .bg-primary{background-color: var(--primary) !important;}
 .bg-light{background-color: var(--ligth) !important;}
@@ -27,10 +25,7 @@
 .btn-gray{ background-color: var(--gray) !important;}
 .bg_second { background-color: var(--second)!important;}
 
-
-
 .my-5 { margin-top: 0rem!important;}
-
 
 body {
     font-weight: 200;
@@ -89,7 +84,7 @@ bd-callout+.bd-callout {
     border-color: var(--primary) ;
 }
 
-obliga {
+.obliga {
     color: red !important;
 }
 

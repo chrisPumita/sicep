@@ -125,11 +125,10 @@
         </footer>
     </div>
 </div>
-<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="../assets/js/main.js"></script>
-
+<?php include "includes/js.php"?>
+<!-- INCLUDE SERIVES AJAX
+    <script src="./service/lista-alumnos.js"></script>
+-- INCLUDE SERIVES AJAX -->
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script>
