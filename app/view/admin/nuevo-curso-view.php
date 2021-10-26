@@ -319,7 +319,7 @@
                                                                                                 <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
                                                                                                 <div class="form-group">
                                                                                                     <label for="formImg" class="form-label">Seleccione una imagen</label>
-                                                                                                    <input class="form-control" type="file" id="preview" accept="image/*">
+                                                                                                    <input class="form-control custom-file-input" type="file" id="preview" accept="image/*">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
