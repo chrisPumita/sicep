@@ -320,3 +320,31 @@ bd-callout+.bd-callout {
     background: #000000;
     z-index: -1;
 }
+
+/*--------------  SECCIONES DE PAGINAS -----------------*/
+
+/*+++++++++++++ INICIO SICEP ++++++++++++++++++++*/
+.bg-gradient-primary {
+    background-color: #4e73df;
+    background-image: linear-gradient(
+            180deg , #ffffff 10%, #000000 100%);
+    background-size: cover;
+}
+
+.bg-gradient-dark {
+    background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+}
+.ftco-about .img-2 {
+    -webkit-box-shadow: 0px 2px 25px -13px rgb(0 0 0 / 26%);
+    -moz-box-shadow: 0px 2px 25px -13px rgba(0, 0, 0, 0.26);
+    box-shadow: 0px 2px 25px -13px rgb(0 0 0 / 26%);
+    border: 15px solid #fff;
+    width: 60%;
+    height: 65%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
