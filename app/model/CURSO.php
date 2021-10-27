@@ -2,7 +2,7 @@
 
 include_once "DOCS_SOLICITADOS_CURSO.php";
 include_once "TEMAS.php";
-include_once "./interface/I_CURSO.php";
+include_once "interface/I_CURSO.php";
 class CURSO extends CONEXION_M implements I_CURSO
 {
     private $id_curso;
@@ -414,8 +414,8 @@ class CURSO extends CONEXION_M implements I_CURSO
      * Inician Funciones de Interfaz
      *******************************************************************************/
 
-
-    public function consultaCursos($estado_filtro, $id_curso)
+//Funcion que trae todos los cursos, aprobados, por aprobar.
+    public function queryconsultaCursos($estado_filtro, $id_curso)
     {
         $filtro = $estado_filtro>=0 ? " AND c.aprobado = ".$estado_filtro: "";
         $filtroidCurso = $id_curso > 0 ? " AND c.id_curso = ".$id_curso : "";

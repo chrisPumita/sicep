@@ -69,43 +69,8 @@
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_curso="3">
-                                <th scope="row">1</th>
-                                <td>003</td>
-                                <td>Aspel NOI Basico I <span class="badge bg-warning">Por Revisar</span></td>
-                                <td>Paola Cortes Ponciano</td>
-                                <td>Curso</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalPDF">
-                                        <i class="fas fa-file-pdf"></i> Ver</a>
-                                </td>
-
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
-                                    <a href="./nueva-asignacion" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-history"></i></a>
-                                </td>
-                            </tr>
-                            <tr id_curso="3">
-                                <th scope="row">1</th>
-                                <td>003</td>
-                                <td>Aspel NOI Basico I <span class="badge bg-warning">Por Revisar</span></td>
-                                <td>Paola Cortes Ponciano</td>
-                                <td>Curso</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalPDF">
-                                        <i class="fas fa-file-pdf"></i> Ver</a>
-                                </td>
-
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
-                                    <a href="./nueva-asignacion" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Grupo</a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-history"></i></a>
-                                </td>
-                            </tr>
+                            <tbody id="tbl-cursos">
+                            <!-- AJAX RESPONSE CURSOS LFHL-->
                             </tbody>
                         </table>
                     </div>
@@ -130,5 +95,5 @@
 </script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
-
+<script src="./service/lista-cursos.js"></script>
 </html>
