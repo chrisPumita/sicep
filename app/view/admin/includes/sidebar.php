@@ -56,13 +56,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="./solicitudes-inscripcion" class='sidebar-link'>
                         <i class="fas fa-clipboard-check"></i>
                         <span>Solicitudes  <span class="badge bg-danger">4</span></span>
                     </a>
                 </li>
                 <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="./documentos" class='sidebar-link'>
                         <i class="fas fa-file-pdf"></i>
                         <span>Documentos  <span class="badge bg-danger">150</span></span>
                     </a>
@@ -105,10 +105,10 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="layout-default.html">Revisar cuentas</a>
+                            <a href="#">Revisar cuentas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="layout-vertical-1-column.html">Ver todos</a>
+                            <a href="./lista-alumnos">Ver todos</a>
                         </li>
                     </ul>
                 </li>

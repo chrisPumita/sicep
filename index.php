@@ -74,7 +74,7 @@
 
 <body class="about-us bg-gray-200">
   <!-- Navbar Transparent -->
-  <nav class="navbar  sticky-top navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
+  <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
         <a class="navbar-brand" href="#"  href="./" title="SICEP-FES Cuautitlán" data-placement="bottom" >
             <img src="./assets/images/logo/logo.png" alt="" height="45">

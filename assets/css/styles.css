@@ -320,6 +320,9 @@ bd-callout+.bd-callout {
     background: #000000;
     z-index: -1;
 }
+.table-avatar{
+    width: 15px!important;
+}
 
 /*--------------  SECCIONES DE PAGINAS -----------------*/
 

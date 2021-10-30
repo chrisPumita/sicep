@@ -12,7 +12,8 @@ class vistaModelo
             "lista-profesores", "lista-alumnos", "lista-servicio-social",
         "detalles-profesor","nueva-asignacion","detalles-asignacion", "lista-asignaciones",
             "ficha-insc", "lista-cuentas","nuevo-curso", "probar-modal", "detalles-alumno",
-            "perfil", "detalles-admin","general","ficha-inscripcion","lista-grupos","historial-grupos","plantilla"];
+            "perfil", "detalles-admin","general","ficha-inscripcion","lista-grupos",
+            "historial-grupos","solicitudes-inscripcion","documentos","plantilla"];
         #Verificamos si la vista que esta entrando esta en la lista blanca para poder moestrarla
         if (in_array($vistas,$listaBlanca))
         {
