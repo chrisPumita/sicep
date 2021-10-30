@@ -88,13 +88,13 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Dar de Alta</a>
+                            <a href="#">Dar de Alta</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Ver todas</a>
+                            <a href="./lista-cuentas">Ver todas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="layout-default.html">Servicio Social</a>
+                            <a href="#">Servicio Social</a>
                         </li>
                     </ul>
                 </li>
@@ -105,7 +105,7 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="#">Revisar cuentas</a>
+                            <a href="./cuentas-alumnos">Revisar cuentas</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="./lista-alumnos">Ver todos</a>
@@ -122,13 +122,13 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="form-element-input.html">Mis Cursos</a>
+                            <a href="#">Mis Cursos</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-element-input-group.html">Proponer Nuevo</a>
+                            <a href="#">Proponer Nuevo</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-element-select.html">Ver todos</a>
+                            <a href="#">Ver todos</a>
                         </li>
                     </ul>
                 </li>

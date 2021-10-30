@@ -1,4 +1,4 @@
-<?php $titulo = "Lista de Alumnos Registrados" ?>
+<?php $titulo = "Cuentas Administrativas" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,11 +20,12 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Lista de Alumnos Registrados</h3>
+                        <h3>Cuentas de Administrador</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Alumnos</li>
+                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="./lista-profesores">Profesores</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Cuentas Administrativas</li>
                             </ol>
                         </nav>
                     </div>
@@ -36,15 +37,14 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Aqui se muestran solo las cuentas verificadas y activadas. Por lo que si el
-                                    alumno no aparece, significa que no ha confirmado el correo. Puede confirmalo de forma manual.
-                                    Una vez el alumno este verificado via correo electronico, puede activar procedencia
-                                    con algun comprobante oficial.
+                                    Las cuentas adminstrativas le permiten llevar el control de la plataforma. Cada acceso es
+                                    independiente y personal. Si desea asignar una cuenta nueva a un profesor. Porfavor seleccionelo
+                                    y el siguiente paso es asignar el nivel.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <a href="./cuentas-alumnos">
+                                    <a href="./lista-alumnos">
                                         <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                                            <i class="fas fa-user-check"></i> Revisar Cuentas
+                                            <i class="fas fa-check-circle"></i> Nuevo
                                         </button>
                                     </a>
                                 </div>
@@ -57,25 +57,25 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-user-check"></i> Alumnos Verificados
+                        <i class="fas fa-user-check"></i> Alumnos Por Verificar
                     </div>
                     <div class="card-body">
                         <table class="table table-hover table-striped" id="tbl1">
                             <thead>
                             <tr>
-                                <th>MATRICULA</th>
+                                <th>NO TRABAJADOR</th>
                                 <th>NOMBRE</th>
-                                <th>PROCEDENCIA</th>
+                                <th>NIVEL</th>
+                                <th>DEPARTAMENTO</th>
+                                <th>CARGO</th>
                                 <th>CONTACTO</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
                             <tbody id="tbl-grupos">
+
                             <tr id_grupo="3">
-                                <td>314265985
-                                    <span class="badge bg-light-info">
-                                        <i class="fas fa-check-circle"></i>
-                                    </span></td>
+                                <td>123156</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="avatar avatar-md">
@@ -83,17 +83,24 @@
                                             <span class="avatar-status bg-danger"></span>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Christian René Pioquinto Hernández</p>
+                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>
                                             <p class="text-xs text-primary mb-0">HOMBRE</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">Comunidad FESC</p>
-                                        <p class="text-xs text-primary mb-0">UNAM</p>
-                                        <p class="text-xs text-primary mb-0">Informática</p>
-                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> BAJO </span>
+                                            <span class="badge bg-warning badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    Informática
+                                </td>
+                                <td>
+                                    Jefe de Departamento
                                 </td>
                                 <td>
                                     <div class="d-flex flex-column justify-content-center">
@@ -103,37 +110,39 @@
                                 </td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
-                                    <a href="#" class="btn btn-primary"><i class="far fa-id-card"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
+                                    <a href="#" class="btn btn-primary"><i class="fas fa-id-card-alt"></i></a>
+                                    <a href="#" class="btn btn-success"><i class="fas fa-check-circle"></i></a>
+
                                 </td>
                             </tr>
 
                             <tr id_grupo="3">
-                                <td>
-                                    314265985
-                                    <span class="badge bg-light-info">
-                                        <i class="fas fa-check-circle"></i>
-                                    </span>
-                                </td>
+                                <td>123156</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="avatar avatar-md">
                                             <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-danger"></span>
-
+                                            <span class="avatar-status bg-success"></span>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Christian René Pioquinto Hernández</p>
+                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>
                                             <p class="text-xs text-primary mb-0">HOMBRE</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">Comunidad FESC</p>
-                                        <p class="text-xs text-primary mb-0">UNAM</p>
-                                        <p class="text-xs text-primary mb-0">Informática</p>
-                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Alto </span>
+                                            <span class="badge bg-success badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    Informática
+                                </td>
+                                <td>
+                                    Jefe de Departamento
                                 </td>
                                 <td>
                                     <div class="d-flex flex-column justify-content-center">
@@ -143,10 +152,11 @@
                                 </td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
-                                    <a href="#" class="btn btn-primary"><i class="far fa-id-card"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
+                                    <a href="#" class="btn btn-primary"><i class="fas fa-id-card-alt"></i></a>
+                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-times-circle"></i></a>
                                 </td>
                             </tr>
+
                             </tbody>
                         </table>
                     </div>
