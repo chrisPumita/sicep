@@ -73,7 +73,15 @@
                             </tr>
                             </thead>
                             <tbody id="tbl-grupos">
-
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             <tr id_grupo="3">
                                 <td>123156</td>
                                 <td>

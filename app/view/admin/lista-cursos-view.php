@@ -5,6 +5,8 @@
 <head>
     <?php include "includes/head.php"?>
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
+
+
 </head>
 
 <body>
@@ -57,10 +59,9 @@
                         Cursos Actuales
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
+                        <table class="table table-hover table-striped" id="tblCursos" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>CLAVE</th>
                                 <th>NOMBRE</th>
                                 <th>AUTOR</th>
@@ -69,14 +70,10 @@
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-cursos">
-                            <!-- AJAX RESPONSE CURSOS LFHL-->
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
@@ -86,14 +83,13 @@
 </div>
 <?php include "includes/js.php"?>
 
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+
+<script src="./service/lista-cursos.js"></script>
+
+
+
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
-<script src="./service/lista-cursos.js"></script>
+
 </html>
