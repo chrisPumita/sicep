@@ -19,7 +19,7 @@ function cargaDatosTabla(filtro) {
             $(row).attr('id', data.id_curso);
         },
         "columns": [
-            { data: 'id_curso'},
+            { data: 'codigo'},
             { data: "nombre_curso" },
             { data: null,
                 render: function ( data, type, row ) {
@@ -46,8 +46,14 @@ function cargaDatosTabla(filtro) {
             "infoEmpty": "No records available",
             "infoFiltered": "(Se filtro de _MAX_ cursos en total)",
             "decimal": ".",
-            "thousands": ","
-        }
+            "thousands": ",",
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
     } );
 }
 
