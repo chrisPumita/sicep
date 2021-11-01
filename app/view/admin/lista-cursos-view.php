@@ -4,9 +4,8 @@
 
 <head>
     <?php include "includes/head.php"?>
+    <!--Only datatable use-->
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
-
-
 </head>
 
 <body>
@@ -59,16 +58,17 @@
                         Cursos Actuales
                     </div>
                     <div class="card-body">
+                        <!--Table prototype to use | tablas con  paginador-->
                         <table class="table table-hover table-striped" id="tblCursos" class="display" style="width:100%">
                             <thead>
-                            <tr>
-                                <th>CLAVE</th>
-                                <th>NOMBRE</th>
-                                <th>AUTOR</th>
-                                <th>TIPO</th>
-                                <th>TEMARIO</th>
-                                <th>ACCIONES</th>
-                            </tr>
+                                <tr>
+                                    <th>CLAVE</th>
+                                    <th>NOMBRE</th>
+                                    <th>AUTOR</th>
+                                    <th>TIPO</th>
+                                    <th>TEMARIO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -83,13 +83,19 @@
 </div>
 <?php include "includes/js.php"?>
 
+<!--Only datatable use library -->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
-
+<script src="./service/general/tipos.js"></script>
 <script src="./service/lista-cursos.js"></script>
-
-
-
+<script src="./service/old-table.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
+<script>
+    /*SE CREA O SE MANDA A LLAMAR EL ARCHIVO LFHL*/
+    $(document).ready(function() {
+        //llamando a la funcion de listacursos js
+        cargaDataTableCursos(-1); //todos los cursos sin excepcion
+    } );
+</script>
 </body>
 
 </html>

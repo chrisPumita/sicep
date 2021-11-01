@@ -427,7 +427,8 @@ class CURSO extends CONEXION_M implements I_CURSO
                    c.link_temario_pdf, c.fecha_creacion, 
                    c.fecha_acreditacion, c.banner_img, 
                    c.tipo_curso, c.aprobado,c.banner_img,
-                   pr.nombre , pr.app , pr.apm,c.aprobado
+                    concat(pr.nombre, ' ', pr.app,' ', pr.apm) AS nombre_completo,
+                   pr.nombre , pr.app , pr.apm,c.aprobado, prof.prefijo
                         FROM curso c, profesor prof, persona pr
                             WHERE c.id_profesor_autor = prof.id_profesor 
                             and prof.id_persona_fk = pr.id_persona ".$filtroidCurso." ".$filtro."
