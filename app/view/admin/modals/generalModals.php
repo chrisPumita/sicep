@@ -118,10 +118,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="prefijo" name="prefijo">
-                                <option>Iniciacion al computo I</option>
-                                <option>Iniciciacion al Computo II</option>
-                                <option>Seminario de Base de Datos</option>
+                            <select class="form-control" id="modal-lista-cursos" name="prefijo">
+                                <!--AJAX RESULT-->
                             </select>
                         </div>
                     </div>

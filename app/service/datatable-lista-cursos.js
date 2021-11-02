@@ -1,12 +1,19 @@
-function cargaDataTableCursos(filtro) {
+/****************************************************/
+//Antigua funcion de Ajax para refcuperar datos JSON
+ //JSON Global de cursos
+window.onload = function(){
+    //caragabndo la info de la bd
+}
+
+$(document).ready(function() {
+
     $('#tblCursos').DataTable( {
         "scrollX": true,
-        //mandar por post a php con parametro post
         "ajax":
             {
-                "url":"./webhook/lista-cursos.php",
+                "url":"./webhook/lista-cursos-datatable.php",
                 "data": {
-                    "filtro": filtro
+                    "filtro": -1
                 },
                 "type": "POST"
             },
@@ -19,12 +26,12 @@ function cargaDataTableCursos(filtro) {
                 { data: 'codigo'},
                 { data: 'aprobado',
                     render: function ( data, type, row ){
-                    //funcion de tipos.js
+                        //funcion de tipos.js
                         value = estadoCursoApoved(row.aprobado);
                         return row.nombre_curso + ' ' + value;
                     }
                 },
-               /* { data: "nombre_completo"},*/
+                /* { data: "nombre_completo"},*/
 
                 { data: null,
                     render: function ( data, type, row ){
@@ -40,6 +47,13 @@ function cargaDataTableCursos(filtro) {
                         return '<a href="' + row.link_temario_pdf + ' " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i></a>';
                     }
                 },
+                { data: 'aprobado',
+                    render: function ( data, type, row ){
+                        //funcion de tipos.js
+                        value = estadoCursoApoved(row.aprobado);
+                        return row.aprobado ==='1'? 'APROBADO':"PENDIENTE";
+                    }
+                },
                 { defaultContent:
                         '<a href="#" class="btn btn-outline-primary viewCourse"><i class="fas fa-clock"></i></a>\n' +
                         '<a href="#" class="btn btn-outline-primary editCourse"><i class="fas fa-edit"></i></a>\n' +
@@ -47,6 +61,7 @@ function cargaDataTableCursos(filtro) {
                 }
             ],
         "language": {
+            "search": "Buscar",
             "lengthMenu": "Mostrar _MENU_ cursos por página",
             "zeroRecords": "No hay cursos registrados",
             "info": "Mostrando página _PAGE_ de _PAGES_",
@@ -62,7 +77,37 @@ function cargaDataTableCursos(filtro) {
             }
         },
     } );
-}
+
+    //Evita el alert del warning
+    $.fn.dataTable.ext.errMode = 'none';
+
+    dataTable = $("#tblCursos").DataTable({
+        "columnDefs": [
+            {
+                "targets": [7],
+                "visible": false
+            }
+        ]
+    });
+
+    $('.status-dropdown').on('change', function(e){
+        var status = $(this).val();
+        $('.status-dropdown').val(status);
+        console.log(status);
+        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+        dataTable.column(5).search(status).draw();
+    });
+
+    $('.profesor-dropdown').on('change', function(e){
+        var status = $(this).val();
+        $('.profesor-dropdown').val(status);
+        console.log(status);
+        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+        dataTable.column(2).search(status).draw();
+    });
+
+});
+
 
 //LISTENER PARA ACCION DEL BOTON
 $(document).on("click", ".viewCourse", function ()
@@ -79,5 +124,3 @@ $(document).on("click", ".editCourse", function ()
     let id = $(elementClienteSelect).attr("id_curso");
     alert("VIEW CURSO "+id);
 });
-
-
