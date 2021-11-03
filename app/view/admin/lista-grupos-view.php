@@ -552,6 +552,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 
 </body>
 

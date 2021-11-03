@@ -495,6 +495,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
 -- INCLUDE SERIVES AJAX -->

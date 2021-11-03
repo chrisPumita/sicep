@@ -26,6 +26,6 @@ function getTipoCurso(estado){
 function estadoCursoApoved(aprobado) {
     let n = parseInt(aprobado)
     let color = n == 1 ? `success` : `warning`;
-    let texto = n == 1 ? `Aprobado` : `Por revisar`;
+    let texto = n == 1 ? `<i class="fas fa-check-circle"></i>` : `<i class="fas fa-hourglass-half"></i>`;
     return `<span class="badge bg-${color}">${texto}</span>`;
 }

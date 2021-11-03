@@ -58,9 +58,11 @@
                         Cursos Actuales
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-1">Filtrar:</div>
-                            <div class="col-3">
+                        <div class="row py-3">
+                            <div class="col-12 col-lg-3 col-md-12 ">
+                                <div class="col"><h4><i class="fas fa-filter"></i> Filtrar:</h4></div>
+                            </div>
+                            <div class="col-12 col-lg-4 col-md-6">
                                 <div class="btn-group submitter-group float-right">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">AUTOR: </div>
@@ -72,17 +74,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="btn-group submitter-group float-right">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">Estado: </div>
+                            <div class="col-12 col-lg-4 col-md-6">
+                                    <div class="btn-group submitter-group float-right">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">ESTATUS: </div>
+                                        </div>
+                                        <select class="form-control status-dropdown">
+                                            <option value="">TODOS</option>
+                                            <option value="APROBADO">APROBADOS</option>
+                                            <option value="PENDIENTE">PENDIENTE</option>
+                                        </select>
                                     </div>
-                                    <select class="form-control status-dropdown">
-                                        <option value="">TODOS</option>
-                                        <option value="APROBADO">APROBADOS</option>
-                                        <option value="PENDIENTE">PENDIENTE</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         <!--Table prototype to use | tablas con  paginador-->
@@ -110,16 +112,15 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
-
+<?php include "includes/services-js.php"?>
 <!--Only datatable use library -->
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 <script src="./service/general/tipos.js"></script>
 <script src="./service/datatable-lista-cursos.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
-<script>
+<!--CARGAR SERVICIOS GENERALES-->
 
-</script>
 </body>
 
 </html>

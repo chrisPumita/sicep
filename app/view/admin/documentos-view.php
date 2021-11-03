@@ -109,7 +109,7 @@
                                                 <p class=" mb-0"> Por Revisar</p>
                                             </td>
                                             <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
                                                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
                                                 <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
@@ -135,7 +135,7 @@
                                                 <p class=" mb-0"> Por Revisar</p>
                                             </td>
                                             <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
                                                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
                                                 <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
@@ -161,7 +161,7 @@
                                                 <p class=" mb-0"> Por Revisar</p>
                                             </td>
                                             <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
                                                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
                                                 <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
@@ -345,12 +345,15 @@
 
         </div>
         <footer class="text-center text-white ">
+
+            <?php include "modals/modal-pdf-temario.php"?>
             <?php include "modals/generalModals.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
 -- INCLUDE SERIVES AJAX -->

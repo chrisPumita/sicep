@@ -31,6 +31,7 @@
                     </div>
                 </div>
             </div>
+
             <section class="row">
                 <div class="col-lg-12 col-lg-9">
                     <div class="callout callout-second">
@@ -50,7 +51,79 @@
                     </div>
                 </div>
             </section>
-
+            <section class="row">
+                <div class="col-12 col-lg-9">
+                    <div class="row">
+                        <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/grado4.svg);">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">CURSOS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">16</h3>
+                                            <h6 class="font-semibold text-success">Cursos activos</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/comunidad4.svg);">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">ALUMNOS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">183,000</h3>
+                                            <h6 class="font-semibold text-success">Registrados</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/inscripciones4.svg);">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">SOLCITUDES</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
+                                            <h6 class="font-semibold text-warning">de Inscripción por revisar</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/constancia4.svg);">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-muted font-semibold">CONSTANCIAS</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
+                                            <h6 class="font-semibold text-warning">Por acreditar</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="card">
+                        <div class="card-body py-4 px-5">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl">
+                                    <img src="../assets/images/start-sesion.png" alt="Face 1">
+                                </div>
+                                <div class="ms-3 name">
+                                    <h5 class="font-bold">Christian Pioquinto</h5>
+                                    <h6 class="text-muted mb-0">@Christian</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="section">
                 <div class="card">
                     <div class="card-header">
@@ -126,6 +199,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
 -- INCLUDE SERIVES AJAX -->
