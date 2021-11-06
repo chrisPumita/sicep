@@ -29,3 +29,14 @@ function estadoCursoApoved(aprobado) {
     let texto = n == 1 ? `<i class="fas fa-check-circle"></i>` : `<i class="fas fa-hourglass-half"></i>`;
     return `<span class="badge bg-${color}">${texto}</span>`;
 }
+
+
+function estadoProfesorAdmin(admin_value) {
+    let n = parseInt(admin_value)
+    if(n==1){      
+        let color = `info`;
+        let texto = `ADMIN`;
+        return `<span class="badge bg-${color}">${texto}</span>`;
+    } else return '';
+    
+}

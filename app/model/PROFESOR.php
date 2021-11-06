@@ -240,21 +240,22 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         prof.`email`, prof.`key_hash`, prof.`fecha_registro`, 
         prof.`firma_digital`, prof.`firma_digital_img`, 
         prof.`estatus` AS estatus_profesor, 
+        concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
         depto.`id_depto`, depto.`nombre` AS depto_name,
         prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
         prof.`email`, prof.`key_hash`, prof.`fecha_registro`, 
         prof.`firma_digital`, prof.`firma_digital_img`, 
         prof.`estatus` AS estatus_profesor,
-        CASE WHEN admin.id_profesor_admin_fk IS NULL THEN 0
-    	ELSE admin.id_profesor_admin_fk
-        END AS admin
-        FROM  `persona` per,`departamentos` depto,`profesor` prof 
-        LEFT JOIN administrador admin ON  prof.id_profesor =admin.`id_profesor_admin_fk`
-        WHERE prof.`id_persona_fk`=per.`id_persona` 
-        AND per.`estatus` = 1
+        admin.id_profesor_admin_fk, 
+        (case when admin.id_profesor_admin_fk is null then 0 else 1 end) as flagAdmin 
+        FROM `persona` per,`departamentos` depto,`profesor` prof 
+        left join administrador admin on admin.id_profesor_admin_fk = prof.id_profesor 
+        WHERE 
+		prof.`id_persona_fk`=per.`id_persona`
         AND prof.`id_depto_fk`= depto.`id_depto`
+        AND per.`estatus` = 1
         ".$condicion."
-        ORDER BY `per`.`app`,`per`.`apm`,`per`.`nombre` ASC";
+        ORDER BY `nombre_completo` ASC";
        $this->connect();
        $datos = $this-> getData($query);
        $this->close();
