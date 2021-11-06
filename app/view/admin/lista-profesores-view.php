@@ -107,6 +107,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>

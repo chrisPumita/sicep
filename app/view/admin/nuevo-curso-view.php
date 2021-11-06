@@ -439,6 +439,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 
 <!-- scripts opcionales -->
 <script src="../assets/js/pages/curso-step.js"></script>

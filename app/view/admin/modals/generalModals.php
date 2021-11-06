@@ -11,7 +11,7 @@
                 </h5>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
+                    <i class="fas fa-times text-light"></i>
                 </button>
             </div>
             <form action="#">
@@ -97,11 +97,11 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">
-                    Seleccione un curso para abrir un Curso
+                    Seleccione un curso para abrir un Grupo
                 </h5>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
+                    <i class="fas fa-times text-light"></i>
                 </button>
             </div>
             <form action="#" id="SelectCurso">
@@ -118,10 +118,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="prefijo" name="prefijo">
-                                <option>Iniciacion al computo I</option>
-                                <option>Iniciciacion al Computo II</option>
-                                <option>Seminario de Base de Datos</option>
+                            <select class="form-control" id="modal-lista-cursos" name="prefijo">
+                                <!--AJAX RESULT-->
                             </select>
                         </div>
                     </div>
@@ -130,7 +128,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <a href="./nueva-asignacion">
-                                <input type="submit" id="btnEnviar" name="btnEnviar" value="Continuar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                                <input type="button" id="btnEnviar" name="btnEnviar" value="Continuar" class="btn btn-primary btn-user btn-block">
                             </a>
                         </div>
                     </div>
@@ -151,7 +149,7 @@
                 <span class="modal-title" id="myModalLabel150">Disculpe las molestias</span>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x" class="text-light"></i>
+                    <i class="fas fa-times text-light"></i>
                 </button>
             </div>
             <div class="modal-body">

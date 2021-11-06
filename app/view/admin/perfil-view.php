@@ -197,6 +197,7 @@
     </div>
 </div>
 <?php include "includes/js.php"?>
+<?php include "includes/services-js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>

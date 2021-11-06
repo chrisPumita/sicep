@@ -351,3 +351,30 @@ bd-callout+.bd-callout {
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+/*  DATATABLE */
+
+.dataTables_length label{
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dataTables_length label select{
+    width: auto !important;
+}
+
+.dataTables_filter label input{
+    width: auto !important;
+}
+
+.dataTables_filter label{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
