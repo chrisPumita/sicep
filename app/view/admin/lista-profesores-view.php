@@ -77,7 +77,7 @@
                         Lista de Profesores
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
+                        <table class="table table-hover table-striped" id="tblProfesores">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -90,28 +90,9 @@
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_profesor="10">
-                                <th scope="row">1</th>
-                                <td>45615656156</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-md">
-                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-danger"></span>
-                                        </div>
-                                        <p class="mb-0">Christian Pioquinto Hernández</p>
-                                    </div>
-                                </td>
-                                <td>Administracion</td>
-                                <td>16515615615</td>
-                                <td>abril@gmail.com</td>
-                                <td>2021-06-04 07:32:17</td>
-                                <td>
-                                    <a href="./detalles-profesor" class="btn btn-outline-primary"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="far fa-share-square"></i> Asignar</a>
-                                </td>
-                            </tr>
+                            <tbody id="tblProfesores">
+                            
+                            <!-- AJAX RESPONSE LP-->
                             </tbody>
                         </table>
                     </div>
@@ -128,12 +109,8 @@
 <?php include "includes/js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+<script src="./service/lista-profesores.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 

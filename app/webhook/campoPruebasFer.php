@@ -1,2 +1,2 @@
 <?php
-include_once "lista-cursos.php";
+include_once "lista-profesores.php";
