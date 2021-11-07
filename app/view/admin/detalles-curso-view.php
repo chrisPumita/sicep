@@ -53,6 +53,30 @@
                 </div>
             </section>
 
+            <!-- seccion callout aprobacion curso -->
+            <section class="row">
+                <div class="col-lg-12">
+                    <div class="callout callout-second">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-1 align-items-center">
+                                    <i class="fas fa-exclamation 7x"></i>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h5>Sin acreditar</h5>
+                                    Este curso aun no se ha acreditado. Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos.
+                                </div>
+                                <div class="col-sm-2 align-items-center">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                                        <i class="fas fa-check"></i> Acreditar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- fin seccion callout aprobacion curso -->
+
             <!-- seccion cards estadiscticas -->
             <section class="row">
                 <div class="col-12 col-lg-9">
@@ -128,7 +152,7 @@
                 </div>
             </section>
 
-            <!-- seccion detalles -->
+            <!-- seccion detalles y banner img -->
             <section class="section">
                 <div class="row gutters-sm">
                     <!-- detalles del curso-->
@@ -224,7 +248,7 @@
                                         <div class="d-flex w-100 justify-content-between">
                                             <div class="d-flex px-2 py-1 mb-0">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">PDF del Temario</h6>
+                                                    <h6 class="mb-0 text-xs">PDF del historico de cursos</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,7 +270,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- banner -->
+                    <!-- banner imagen -->
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
@@ -255,66 +279,15 @@
                                     <div class="mt-3">
                                         <p class="text-secondary mb-1"><strong>Imagen del banner</strong></p>
                                         <p class="text-muted font-size-sm">Debe tener una resolución de 600px por 300px</p>
-                                        <button class="btn btn-success"><i class="fab fa-whatsapp"></i></button>
-                                        <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i></button>
+                                        <button class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
+                                        <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- fin banner imagen -->
                 </div>
-
-                <!-- ADMIN ACCOUNT ENABLE
-                <div class="section">
-                    <div class="card">
-                        <div class="card-header img_bg_cards" style="background-image: url(../assets/images/icons/group3.svg);">
-                            <div class="col-12" >
-                                <h4 class="card-title "><b>CUENTA DE ADMINISTRADOR</b></h4>
-                            </div>
-                            <div class="col" >
-                                <h6 class="card-subtitle mb-2 text-muted">
-                                    <p class="card-text text-muted small ">
-                                    <div class="spinner-grow bg-success" role="status" style="width: 1rem; height: 1rem"></div>
-                                    Este profesor tiene cuenta de adminsitrador <span class="vl ml-1 mr-2 "></span>
-                                    desde el <span class="font-weight-bold"> 15 Octubre de 2021</span></p>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="card-body" >
-                            <div class="row">
-                                <div class="col">
-                                    <div class="list-group">
-                                        <button type="button" class="list-group-item list-group-item-action">Cargo: Coordinador</button>
-                                        <button type="button" class="list-group-item list-group-item-action">Nivel de permiso: Bajos</button>
-                                        <button type="button" class="list-group-item list-group-item-action">Clave:
-                                            4a7d1ed414474e4033ac29ccb8653d9b</button>
-                                        <button type="button" class="list-group-item list-group-item-action">Porta
-                                            ac
-                                            consectetur
-                                            ac</button>
-                                        <button type="button" class="list-group-item list-group-item-action">Vestibulum at
-                                            eros</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class=" col-md-auto ">
-                                    <a href="#" class="btn btn-primary btn-black">
-                                        <i class="fas fa-edit"></i>
-                                        <small>EDITAR</small></a>
-                                </div>
-                                <div class=" col-md-auto ">
-                                    <a href="#" class="btn btn-danger btn-black">
-                                        <i class="fas fa-ban"></i>
-                                        <small>Deshabilitar</small></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                ADMIN ACCOUNT ENABLE-->
             </section>
             <!-- fin de seccion de detalles -->
 
@@ -349,27 +322,7 @@
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                    </div>
-                                </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-minus-circle"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -377,6 +330,77 @@
                     </div>
                 </div>
             </section>
+            <!-- fin seccion de temario -->
+
+            <!-- creacion de asignacion de profesor -->
+            <section class="section">
+                <div class="card">
+                    <div class="row p-3">
+                        <div class="col-lg-1 align-items-center">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="col-lg-9">
+                            <h3>Creacion de asignacion de Grupo</h3>
+                            <div class="form-group">
+                                <label for="sel1">Crear y Asignar un grupo de este curso, seleccione el profesor asignado:</label>
+                                <select class="form-control" id="sel1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 align-items-center">
+                            <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
+                            Crear</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- fin creacion de asignacion de profesor -->
+
+            <!-- seccion de historico de cursos -->
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        Historico de Grupos Derivados de este Curso
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped" id="tblHistCursos">
+                            <thead>
+                            <tr>
+                                <th>GRUPO</th>
+                                <th>CURSO</th>
+                                <th>PROFESOR</th>
+                                <th>OCUPACIÓN</th>
+                                <th>FECHA INICIO</th>
+                                <th>TIPO</th>
+                                <th>ESTADO</th>
+                                <th> </th>
+                            </tr>
+                            </thead>
+                            <tbody id="HistoricoCursos">
+                            <tr id_curso ="1">
+                                <th scope="row">2456</th>
+                                <td>Aspel NOI para principiantes</td>
+                                <td>Romulo Albertiño Suarez</td>
+                                <td>28/30</td>
+                                <td>5/11/2021</td>
+                                <td>Presencial</td>
+                                <td>Finalizado</td>
+                                <!-- BOTON ACCIONES -->
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i></a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!-- fin seccion de historico de cursos -->
 
         </div>
         <footer class="text-center text-white ">
