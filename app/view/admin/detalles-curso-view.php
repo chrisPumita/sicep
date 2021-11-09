@@ -53,30 +53,6 @@
                 </div>
             </section>
 
-            <!-- seccion callout aprobacion curso -->
-            <section class="row">
-                <div class="col-lg-12">
-                    <div class="callout callout-second">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-1 align-items-center">
-                                    <i class="fas fa-exclamation 7x"></i>
-                                </div>
-                                <div class="col-sm-9">
-                                    <h5>Sin acreditar</h5>
-                                    Este curso aun no se ha acreditado. Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos.
-                                </div>
-                                <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                                        <i class="fas fa-check"></i> Acreditar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- fin seccion callout aprobacion curso -->
-
             <!-- seccion cards estadiscticas -->
             <section class="row">
                 <div class="col-12 col-lg-9">
@@ -159,113 +135,104 @@
                     <div class="col-md-8">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <div class="row m-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Objetivo</h6>
+                                <div class="row py-1 m-2">
+                                    <h5 class="text-secondary">General:</h5>
+                                    <div class="list-group m-2">
+                                        <!-- PARTE ACORDEON 1 -->
+                                        <div class="list-group-item list-group-item-action" id="heading1" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse1" aria-expanded="false"
+                                        aria-controls="collapseOne" role="button">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <div class="d-flex px-2 py-1 mb-0">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-xs">Objetivo</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse1" class="collapse pt-1" aria-labelledby="heading1"
+                                            data-parent="#cardAccordion">
+                                            <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi nulla, odit,      
+                                            labore atque nostrum magnam nisi neque rem beatae quibusdam necessitatibus magni 
+                                            culpa, molestiae est nihil reiciendis eos deserunt suscipit?</p>
+                                        </div>
+
+                                        <!-- PARTE ACORDEON 2 -->
+                                        <div class="list-group-item list-group-item-action" id="heading2" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse2" aria-expanded="false"
+                                            aria-controls="collapseOne" role="button">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <div class="d-flex px-2 py-1 mb-0">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-xs">Antecedentes</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse2" class="collapse pt-1" aria-labelledby="heading2"
+                                            data-parent="#cardAccordion">
+                                            <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae accusamus et nostrum ut. Perferendis, quo veniam! Omnis numquam possimus nesciunt, nulla veniam praesentium explicabo, pariatur quaerat odit, recusandae obcaecati? Illum.</p>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, doloribus. Magnam ipsam corrupti, animi expedita consequuntur laborum?
+                                </div>
+                                <div class="row py-1 m-2">
+                                    <h5 class="text-secondary">Detalles:</h5>
+                                    <div class="row py-2">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Dirigido a</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            Alumnos y público en general
+                                        </div>
                                     </div>
                                     <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Tipo</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            Diplomado con opcion para titulación
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Código</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            003
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Sesiones</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            23
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Registrado desde</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            19 - 05 - 2021
+                                        </div>
+                                    </div>                                          
                                 </div>
-                                
-                                <div class="row m-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Antecedentes</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        Conocimientos avanzados de excel, programacion lineal y aspectos contables básicos.
-                                    </div>
-                                </div>
 
-                                <div class="list-group">
-                                    <!-- PARTE ACORDEON 1 -->
-                                    <div class="list-group-item list-group-item-action" id="heading1" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse1" aria-expanded="false"
-                                    aria-controls="collapseOne" role="button">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <div class="d-flex px-2 py-1 mb-0">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">Detalles</h6>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="row py-1 m-2">
+                                    <h5 class="text-secondary">Temario PDF:</h5>
+                                    <div class="col-md-4" id="filePDF"><a href="www.link.com" download="" target="_blank" class="btn btn-primary btn-block"> Descargar</a></div>
+                                    <div class="col-md-4">
+                                        <a href="#" class="btn btn-primary btn-block"><i class="icon ion-md-cloud"></i> Subir</a>
                                     </div>
-                                    <div id="collapse1" class="collapse pt-1" aria-labelledby="heading1"
-                                        data-parent="#cardAccordion">
-                                        <div class="row py-1 m-2">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Dirigido a</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    Alumnos y público en general
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Tipo</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    Diplomado con opcion para titulación
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Código</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    003
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Sesiones</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    23
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Registrado desde</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    19 - 05 - 2021
-                                                </div>
-                                            </div>                                          
-                                        </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary  btn-block" data-bs-toggle="modal" data-bs-target="#modalPdftemario">
+                                        Ver</button>
                                     </div>
-
-                                    <!-- PARTE ACORDEON 2 -->
-                                    <div class="list-group-item list-group-item-action" id="heading2" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse2" aria-expanded="false"
-                                        aria-controls="collapseOne" role="button">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <div class="d-flex px-2 py-1 mb-0">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">PDF del historico de cursos</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="collapse2" class="collapse pt-1" aria-labelledby="heading2"
-                                        data-parent="#cardAccordion">
-                                        <div class="row">
-                                            <div class="col-md-4" id="filePDF"><a href="www.link.com" download="" target="_blank" class="btn btn-primary btn-block"> Descargar</a></div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="btn btn-primary btn-block"><i class="icon ion-md-cloud"></i> Subir</a>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalPDF"><i class="icon ion-md-eye"></i> Ver</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -273,14 +240,35 @@
                     <!-- banner imagen -->
                     <div class="col-md-4 mb-3">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4" alt="Admin" width="200">
-                                    <div class="mt-3">
-                                        <p class="text-secondary mb-1"><strong>Imagen del banner</strong></p>
-                                        <p class="text-muted font-size-sm">Debe tener una resolución de 600px por 300px</p>
-                                        <button class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
-                                        <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+                            <div class="card-content">
+                                <img class="card-img-top img-fluid" src="https://capacitate365.com/wp-content/uploads/2020/10/Curso-excel-completo.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Imagen del banner</h4>
+                                    <p class="card-text">
+                                    Debe tener una resolución de 600px por 300px
+                                    </p>
+                                    <button class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
+                                    <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="callout callout-primary">
+                                    <div id="detallesAprobacionCurso">
+                                        <div class="d-flex">
+                                            <div class="m-auto">
+                                                <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
+                                            </div>
+                                            <div class="m-auto">
+                                                <h5>Sin acreditar</h5>
+                                                <h6><strong>Este curso aun no se ha acreditado.</strong></h6>
+                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex text-align-right">
+                                            <a href="#" class="btn btn-success btn-block ">Acreditar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -295,9 +283,21 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Temario general del curso
+                        <div class="row">
+                            <!-- boton que da problemas en responsive -->
+                            <div class="col-sm-12 col-md-6">
+                                Temario general del curso
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <span class="position-absolute  mx-3 end-0">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="addNewTema">
+                                    <i class="fas fa-plus"></i> Agregar</button>
+                                </span>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-hover table-striped" id="tblTemario">
                             <thead>
                             <tr>
@@ -322,7 +322,7 @@
                                 <!-- BOTON ACCIONES -->
                                 <td>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-minus-circle"></i></a>
+                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -336,8 +336,8 @@
             <section class="section">
                 <div class="card">
                     <div class="row p-3">
-                        <div class="col-lg-1 align-items-center">
-                            <i class="fas fa-layer-group"></i>
+                        <div class="col-lg-1 align-items-center m-auto text-center">
+                            <h2><i class="fas fa-layer-group text-grey"></i></h2>
                         </div>
                         <div class="col-lg-9">
                             <h3>Creacion de asignacion de Grupo</h3>
@@ -366,7 +366,7 @@
                     <div class="card-header">
                         Historico de Grupos Derivados de este Curso
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-hover table-striped" id="tblHistCursos">
                             <thead>
                             <tr>
@@ -391,7 +391,7 @@
                                 <td>Finalizado</td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i></a>
+                                    <a href="./detalles-asignacion" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i></a>
                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
