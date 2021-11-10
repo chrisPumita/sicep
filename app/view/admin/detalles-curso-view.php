@@ -134,7 +134,7 @@
                     <!-- detalles del curso-->
                     <div class="col-md-8">
                         <div class="card mb-3">
-                            <div class="card-body">
+                            <div class="card-body py-2">
                                 <div class="row py-1 m-2">
                                     <h5 class="text-secondary">General:</h5>
                                     <div class="list-group m-2">
@@ -242,7 +242,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <img class="card-img-top img-fluid" src="https://capacitate365.com/wp-content/uploads/2020/10/Curso-excel-completo.png" alt="Card image cap">
-                                <div class="card-body">
+                                <div class="card-body pt-3">
                                     <h4 class="card-title">Imagen del banner</h4>
                                     <p class="card-text">
                                     Debe tener una resolución de 600px por 300px
@@ -254,7 +254,7 @@
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <div class="callout callout-primary">
+                                <div class="callout callout-primary p-0">
                                     <div id="detallesAprobacionCurso">
                                         <div class="d-flex">
                                             <div class="m-auto">
@@ -262,11 +262,10 @@
                                             </div>
                                             <div class="m-auto">
                                                 <h5>Sin acreditar</h5>
-                                                <h6><strong>Este curso aun no se ha acreditado.</strong></h6>
                                                 Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
                                             </div>
                                         </div>
-                                        <div class="card-body d-flex text-align-right">
+                                        <div class="card-body d-flex text-align-right pb-0">
                                             <a href="#" class="btn btn-success btn-block ">Acreditar</a>
                                         </div>
                                     </div>
@@ -290,7 +289,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="addNewTema">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewTema">
                                     <i class="fas fa-plus"></i> Agregar</button>
                                 </span>
 
@@ -373,8 +372,8 @@
                                 <th>GRUPO</th>
                                 <th>CURSO</th>
                                 <th>PROFESOR</th>
-                                <th>OCUPACIÓN</th>
-                                <th>FECHA INICIO</th>
+                                <th>INSCRITOS</th>
+                                <th>PERIODO</th>
                                 <th>TIPO</th>
                                 <th>ESTADO</th>
                                 <th> </th>
@@ -405,6 +404,7 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-nuevo-tema.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
