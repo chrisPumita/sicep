@@ -44,6 +44,12 @@ body {
     border-left-color: #d9534f;
 }
 
+.text-izq {
+    text-align: left !important;
+}
+
+
+
 .bd-callout {
     padding: 1.25rem;
     margin-top: 1.25rem;
@@ -377,4 +383,9 @@ bd-callout+.bd-callout {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
+}
+
+.list-group > .active {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }

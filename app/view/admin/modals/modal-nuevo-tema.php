@@ -27,52 +27,29 @@
                             </div>
                         </div>
                     </div>
+                    <!-- INICIAN COMPONENTES DE FORMULARIO -->
                     <div class="form-group row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <select class="form-control" id="prefijo" name="prefijo">
-                                <option>Lic.</option>
-                                <option>Mto.</option>
-                                <option>Dr.</option>
-                            </select>
+                        <label for="padre" class="form-label ">Índice:</label>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <input type="number" id="padre" name="padre" class="form-control" min="1" value="1">
                         </div>
-                        <div class="col-sm-9 mb-3 mb-sm-0">
-                            <input type="text" id="nombre_profesor" name="nombre_profesor" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <input type="number" id="hijo" name="hijo" class="form-control" min="0" value="0">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" id="app" name="app" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" id="apm" name="apm" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <input type="number" id="nieto" name="nieto" class="form-control" min="0" value="0">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="sexo" name="sexo">
-                                <option value="0">Hombre</option>
-                                <option value="1">Mujer</option>
-                            </select>
+                            <label for="tema" class="form-label">Tema:</label>
+                            <input type="text" id="tema" name="tema" class="form-control" placeholder="Nombre del tema">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Telefono">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" id="notrabajador" name="notrabajador" class="form-control" placeholder="Número de Trabajador" aria-label="No. Trabajador">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="depto" name="depto"><option value="5">Administracion</option><option value="6">Agricola</option><option value="2">Contabilidad</option><option value="3">IME</option><option value="1">Informatica</option><option value="7">ITSE</option><option value="4">Veterinaria</option></select>
+                            <label for="descripcion-tema" class="form-label">Descripción:</label>
+                            <textarea class="form-control" id="descripcion-tema" rows="3" placeholder="Describa el tema"></textarea>
                         </div>
                     </div>
                 </div>
