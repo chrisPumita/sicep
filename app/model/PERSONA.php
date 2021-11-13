@@ -143,7 +143,7 @@ class PERSONA extends CONEXION_M implements I_PERSONA
 
     }
 
-    function registraPersona()
+    function queryInsertPersona()
     {
         $query ="INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `telefono`, `sexo`, `estatus`) 
                 VALUES ('".$this->getIdPersona()."', '".$this->getNombre()."', '".$this->getApp()."',
@@ -156,7 +156,7 @@ class PERSONA extends CONEXION_M implements I_PERSONA
         return $result;
     }
 
-    function actualizaPersona()
+    function queryUpdatePersona()
     {
         $query ="UPDATE `persona` SET `nombre`='".$this->getNombre()."',`app`='".$this->getApp()."',
         `apm`='".$this->getApm()."',`telefono`='".$this->getTelefono()."',`sexo`='".$this->getSexo()."' 
@@ -167,7 +167,7 @@ class PERSONA extends CONEXION_M implements I_PERSONA
         return $result;
     }
 
-    function eliminarPersona()
+    function queryEliminarPersona()
     {
         // TODO: Implement eliminarPersona() method.
     }
