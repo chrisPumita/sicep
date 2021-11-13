@@ -124,12 +124,13 @@
                     </div>
                 </div>
             </section>
+
             <section class="section">
                 <div class="card">
                     <div class="card-header">
                         Grupos Actuales
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-hover table-striped" id="tbl1">
                             <thead>
                             <tr>
