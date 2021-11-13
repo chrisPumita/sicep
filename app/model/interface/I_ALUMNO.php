@@ -2,16 +2,19 @@
 
 interface I_ALUMNO
 {
-    public function consultarListaAlumnos($edoFiltro,$idAlumno);
-    function consultaAlumno($id_alumno);
-    public function filtrarListaAlumnos($tipo_filtro, $valor);
-    function agregaAlumno();
-    function modificaAlumno();
-    function modifcaPw($id_alumn,$pwd);
-    function eliminaAlumno($id_alumno);
-    function updateEstatusAlumno($id_alumno,$estatus);
-    function consultaCuentaServSoc($id_alumn);
-    function crearCuentaServSoc();
+    public function queryConsultaListaAlumnos($edoFiltro,$idAlumno);
+    function queryInsertAlumno();
+    function queryConsultaAlumno($id_alumno);
+    public function queryFiltrarListaAlumnos($tipo_filtro, $valor);
+    function queryUpdateEstatusAlumno($id_alumno,$estatus);
+    function queryUpdateAlumno();
+    function queryUpdatePw($id_alumn,$pwd);
+    function queryDeleteAlumno($id_alumno);
+    function queryConsultaCuentaServSoc($id_alumn);
+    function queryCreateCuentaServSoc();
+    
+    
+    
     function modificarCuentaServSoc();
     function terminarServSoc();
     function cambiarClaveServSoc();

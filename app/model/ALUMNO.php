@@ -254,7 +254,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
      * Inician Funciones de Interfaz
      *******************************************************************************/
 
-    public function consultarListaAlumnos($edoFiltro,$idAlumno)
+    public function queryConsultaListaAlumnos($edoFiltro,$idAlumno)
     {
         $filtro = $edoFiltro > 0 ? " AND per.`estatus` = ".$edoFiltro : "";
         $filtroIdAlumno = $idAlumno >= 0 ? " AND al.`id_alumno` = ".$idAlumno : "";
@@ -278,7 +278,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
 
 
 
-    function agregaAlumno()
+    function queryInsertAlumno()
     {
         $query ="INSERT INTO `alumno` (
             `id_alumno`, `id_municipio`, 
@@ -304,7 +304,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $result;
     }
 
-    function consultaAlumno($id_alumno)
+    function queryConsultaAlumno($id_alumno)
     {
         $query = "SELECT per.`id_persona`, per.`nombre` AS nombre_alumno, 
         per.`app`, per.`apm`, alu.`email`, per.`telefono`, est.`estado`, 
@@ -330,7 +330,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
     }
 
 
-    public function filtrarListaAlumnos($tipo_filtro, $valor)
+    public function queryFiltrarListaAlumnos($tipo_filtro, $valor)
     {
         //Defiunir Control de filtro
         //`al`.`carrera_especialidad`
@@ -382,7 +382,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $result;
     }
 
-    function updateEstatusAlumno($id_alumno, $estatus)
+    function queryUpdateEstatusAlumno($id_alumno, $estatus)
     {
         $filtro = $id_alumno > 0 ? " WHERE `alumno`.`id_alumno`=" . $id_alumno : "";
         $query = "UPDATE `alumno` SET `alumno`.`estatus` = '$estatus' ".$filtro;
@@ -392,7 +392,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $response;
     }
 
-    function modificaAlumno()
+    function queryUpdateAlumno()
     {
         $query = "";
         $this->connect();
@@ -401,7 +401,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $datos;
     }
 
-    function modifcaPw($id_alumn,$pwd)
+    function queryUpdatePw($id_alumn,$pwd)
     {
         $query =    "UPDATE `alumno` 
                     SET `pw` = '".$pwd."' 
@@ -413,7 +413,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
 
     }
 
-    function eliminaAlumno($id_alumno)
+    function queryDeleteAlumno($id_alumno)
     {
         $query = "DELETE FROM `alumno` WHERE `alumno`.`id_alumno` =".$id_alumno;
         $this->connect();
@@ -422,7 +422,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $datos;
     }
 
-    function consultaCuentaServSoc($id_alumn)
+    function queryConsultaCuentaServSoc($id_alumn)
     {
         include_once "SERVICIO_SOCIAL.php";
         $obj_serv = new SERVICIO_SOCIAL();
@@ -436,7 +436,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
      *  CREAR CUENTA SERVICIO SOCIAL
      *
      * **************************************************/
-    function crearCuentaServSoc()
+    function queryCreateCuentaServSoc()
     {
         include_once "../model/SERVICIO_SOCIAL.php";
         $objServSoc = new SERVICIO_SOCIAL();
