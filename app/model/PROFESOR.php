@@ -262,6 +262,18 @@ class PROFESOR extends PERSONA implements I_PROFESOR
        return $datos;
    }
 
+   public function queryListaAutoresCurso(){
+       $query = "SELECT DISTINCTROW per.nombre, per.app, per.apm, p.prefijo
+                FROM profesor p, curso c, persona per
+                WHERE p.id_profesor IN (SELECT curso.id_profesor_autor FROM curso)
+                AND per.id_persona = p.id_persona_fk
+                AND c.id_profesor_autor = p.id_profesor
+                ORDER BY per.nombre, per.app, per.apm";
+       $this->connect();
+       $datos = $this-> getData($query);
+       $this->close();
+       return $datos;
+   }
 
     public function queryListProfesoresNoAdmin()
     {

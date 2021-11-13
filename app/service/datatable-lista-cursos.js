@@ -6,7 +6,28 @@ window.onload = function(){
 }
 
 $(document).ready(function() {
+    cargaListaProfesoresAutores();
+    cargaCursosDataTable();
+});
 
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".viewCourse", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_curso");
+    alert("VIEW CURSO "+id);
+});
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".editCourse", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_curso");
+    alert("VIEW CURSO "+id);
+});
+
+function cargaCursosDataTable() {
     $('#tblCursos').DataTable( {
         "scrollX": true,
         "ajax":
@@ -105,22 +126,25 @@ $(document).ready(function() {
         //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
         dataTable.column(2).search(status).draw();
     });
+}
 
-});
-
-
-//LISTENER PARA ACCION DEL BOTON
-$(document).on("click", ".viewCourse", function ()
-{
-    let elementClienteSelect = $(this)[0].parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_curso");
-    alert("VIEW CURSO "+id);
-});
-
-//LISTENER PARA ACCION DEL BOTON
-$(document).on("click", ".editCourse", function ()
-{
-    let elementClienteSelect = $(this)[0].parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_curso");
-    alert("VIEW CURSO "+id);
-});
+function cargaListaProfesoresAutores(){
+    $.ajax({
+        url: "./webhook/lista-autores-cursos.php",
+        type: 'POST',
+        success: function(response){
+            let PROFESORES = JSON.parse(response);
+            console.log(PROFESORES);
+            let template=`<option value="">TODOS</option>`;
+            PROFESORES.forEach(profesor => {
+                template+=`<option value="${profesor.prefijo} ${profesor.nombre} ${profesor.app} ${profesor.apm}">
+                                ${profesor.prefijo} ${profesor.nombre} ${profesor.app} ${profesor.apm}
+                           </option> `;
+            });
+            $("#listaAutores").html(template);
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}

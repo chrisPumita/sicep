@@ -7,7 +7,7 @@ $params = [
     "telefono" => $_POST['telefono'],
     "sexo" => $_POST['sexo'],    
     //Datos Profesor
-    "no_trabajador" => $_POST['no_trabajador'],
+    "no_trabajador" => $_POST['notrabajador'],
     "idDepto" => $_POST['depto'],
     "Prefijo" => $_POST['prefijo'],
     "correo" => $_POST['correo'],
@@ -18,4 +18,6 @@ $params = [
 include_once "../control/controlProfesor.php";
 echo addprofesor($params);
 */
+var_dump($params);
+//Regressar un array type mensaje
 echo "Datos recibidos";

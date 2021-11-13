@@ -6,7 +6,10 @@
 }
 
 $(document).ready(function() {
+    cargaDatosProfesoresDataTable();
+});
 
+function cargaDatosProfesoresDataTable() {
     $('#tblProfesores').DataTable( {
         "scrollX": true,
         "ajax":
@@ -17,7 +20,7 @@ $(document).ready(function() {
                 },
                 "type": "POST"
             },
-             "order": [[ 1, 'asc' ]],
+        "order": [[ 1, 'asc' ]],
         //agregando attributo al fila
         'createdRow': function( row, data, dataIndex ) {
             $(row).attr('id_persona', data.id_persona);
@@ -37,21 +40,37 @@ $(document).ready(function() {
                 { defau */
                 { data: null,
                     render: function ( data, type, row ){
-                        let nombre = row.prefijo + '. ' + row.nombre_completo;
+                        let nombre = '<div class="d-flex align-items-center">\n' +
+                            '           <div class="avatar avatar-md">\n' +
+                            '                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">\n' +
+                            '                                            <span class="avatar-status bg-danger"></span>\n' +
+                            '                                        </div>\n' +
+                            '                                        <div class="d-flex flex-column justify-content-center px-3">\n' +
+                            '                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>\n' +
+                            '                                            <p class="text-xs text-primary mb-0">HOMBRE</p>\n' +
+                            '                                        </div>\n' +
+                            '                                    </div>';
                         value = estadoProfesorAdmin(row.flagAdmin);
                         return nombre + ' ' + value;
                     }
                 },
                 /* { data: "nombre_completo"},*/
                 { data: 'depto_name'},
-                { data: "telefono",},
-                { data: 'email'},
+                { data: null,
+                    render: function ( data, type, row ){
+                        let template = '<div class="d-flex flex-column justify-content-center">\n' +
+                            '              <p class="mb-0 text-xs"><a href="mailto:'+row.email+'">'+row.email+'</a></p>\n' +
+                            '              <p class="text-xs text-primary mb-0">'+row.telefono+'</p>\n' +
+                            '           </div>';
+                        return template;
+                    }
+                },
                 { data: 'fecha_registro'},
 
                 { defaultContent:
-                        '<a href="#" class="btn btn-outline-primary viewCourse"><i class="fas fa-clock"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary editCourse"><i class="fas fa-edit"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary viewSolicitudes"><i class="fas fa-tasks"></i> Solicitudes</a>'
+                        '<a href="#" class="btn btn-outline-primary viewProfesor"><i class="fas fa-clock"></i></a>\n' +
+                        '<a href="#" class="btn btn-outline-primary editProfesor"><i class="fas fa-edit"></i></a>\n' +
+                        '<a href="#" class="btn btn-outline-primary viewGrupos"><i class="fas fa-tasks"></i></a>'
                 }
             ],
         "language": {
@@ -83,4 +102,4 @@ $(document).ready(function() {
             }
         ]
     });
-});
+}

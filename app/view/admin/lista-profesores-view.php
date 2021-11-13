@@ -77,15 +77,14 @@
                         Lista de Profesores
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped" id="tblProfesores">
+                        <table class="table table-hover table-striped" id="tblProfesores" class="display" style="width:100%">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>NO</th>
                                 <th>NOMBRE</th>
                                 <th>DEPARTAMENTO</th>
-                                <th>TELEFONO</th>
-                                <th>EMAIL</th>
+                                <th>CONTACTO</th>
                                 <th>REGISTRO</th>
                                 <th>ACCIONES</th>
                             </tr>
@@ -109,7 +108,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 <script src="./service/general/tipos.js"></script>
 <script src="./service/datatable-lista-profesores.js"></script>
-
+<script src="./service/data-profesores-ajax.js"></script>
+<script>
+    consultaProfesores(0);
+</script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 

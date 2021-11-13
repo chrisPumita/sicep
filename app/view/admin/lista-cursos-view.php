@@ -67,10 +67,9 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">AUTOR: </div>
                                     </div>
-                                    <select class="form-control profesor-dropdown">
+                                    <select class="form-control profesor-dropdown" id="listaAutores">
                                         <option value="">TODOS</option>
-                                        <option value="Dra. Paola Cortes Ponciano">Dra. Paola Cortes Ponciano</option>
-                                        <option value="Lic. Cesar Haziel Pineda Pacheco">Lic. Cesar Haziel Pineda Pacheco</option>
+
                                     </select>
                                 </div>
                             </div>
