@@ -176,7 +176,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         $this->estado_revision = $estado_revision;
     }
 
-    function crearArchivo()
+    function queryInsertArchivo()
     {
         $query="INSERT INTO `archivo`(`id_archivo`, `id_doc_sol_fk`, `id_inscripcion_fk`, `codigo_doc`, `name_archivo`, `name_file_md5`, `path`, `fecha_creacion`, `notas`, `estado_revision`, `estado`) 
                                       VALUES (NULL,'".$this->getIdDocSol()."','".$this->getIdInscripcionFk()."','".$this->getCodigoDoc()."','".$this->getNameArchivo()."','".$this->getNameFileMd5().
@@ -187,7 +187,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $result;
     }
 
-    function consultaArchivos($id_inscripcion)
+    function queryConsultaArchivos($id_inscripcion)
     {
         $query="SELECT 
                     archivo.id_inscripcion_fk,
@@ -212,7 +212,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     }
 
 
-    function modificaArchivo()
+    function queryUpdateArchivo()
     {
         $query="UPDATE `archivo` SET `id_doc_sol_fk`='".$this->getIdDocSol()."',`id_inscripcion_fk`='".$this->getIdInscripcionFk()."',`codigo_doc`='".$this->getCodigoDoc()."'
                 ,`name_archivo`='".$this->getNameArchivo()."',`name_file_md5`='".$this->getNameFileMd5()."',`path`='".$this->getPath()."',`fecha_creacion`='".$this->getFechaCreacion()."'
@@ -225,7 +225,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     }
  
 
-    function eliminarArchivo($id_archivo)
+    function queryDeleteArchivo($id_archivo)
     {
         $this->connect();
         $datos = $this-> executeInstruction("DELETE FROM `archivo` WHERE `id_archivo`=".$id_archivo);
@@ -233,13 +233,13 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
-    function eliminaArchivoPath($path)
+    function queryDeleteArchivoPath($path)
     {
        $result= unlink($path);
        return $result;
     }
 
-    function listaArchivos(){
+    function queryListaArchivos(){
         $query=" SELECT per.nombre,per.app,per.apm,insc.id_inscripcion,gpo.grupo,ar.estado_revision,docs.nombre_doc,ar.id_archivo
                     FROM persona per,inscripcion insc,alumno al, grupo gpo,asignacion_grupo ag,archivo ar,docs_solicitados_curso docsol,documento docs
                         WHERE per.id_persona=al.id_persona
@@ -255,7 +255,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
 
     }
-    function modificaEstadoArchivo($id,$estatus){
+    function queryUpdateEstadoArchivo($id,$estatus){
         $query="UPDATE `archivo` SET `estado_revision`='$estatus' WHERE `id_archivo`='$id'";
         $this->connect();
         $datos = $this-> executeInstruction($query);
@@ -263,7 +263,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
-    function crearArchivoPath($nombreArchivo,$Archivo)
+    function queryCreateArchivoPath($nombreArchivo,$Archivo)
     {
 
         $inscripcion = $this->getIdInscripcionFk();

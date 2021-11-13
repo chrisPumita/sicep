@@ -4,18 +4,18 @@
 interface I_ARCHIVO
 {
     // Regresar una lista de documentos propios de una inscripcion
-    function consultaArchivos($id_incripcion);
+    function queryConsultaArchivos($id_incripcion);
 
-    function modificaArchivo();
+    function queryUpdateArchivo();
 
     //elimina a nivel DB
-    function eliminarArchivo($id_archivo);
+    function queryDeleteArchivo($id_archivo);
 
     //fun esps, elimina a nivel lo host
-    function eliminaArchivoPath($path);
+    function queryDeleteArchivoPath($path);
 
-    function crearArchivo();
+    function queryInsertArchivo();
 
-    function crearArchivoPath($nombreArchivo,$Archivo);
+    function queryCreateArchivoPath($nombreArchivo,$Archivo);
 
 }
