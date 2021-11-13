@@ -6,4 +6,13 @@ function consultaCursos($estado_filtro, $id_curso){
     $result = $CURSO->queryconsultaCursos($estado_filtro, $id_curso);
     return $result;
 }
+function addCurso($params){
+    include_once "../model/CURSO.php";
+    $CURSO= new CURSO();
+    $CURSO->setIdCurso();
+    $CURSO->setIdProfesorAdminAcredita();
+    $CURSO->setIdProfesorAutor();
+    $CURSO->setCodigo();
+    
+}
 //LFHL

@@ -14,7 +14,7 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form action="#">
+            <form id="frm-add-profesor">
                 <div class="modal-body">
                     <div class="callout callout-second bg-grey">
                         <div class="container-fluid">
@@ -29,9 +29,9 @@
                     <div class="form-group row">
                         <div class="col-sm-3 mb-3 mb-sm-0">
                             <select class="form-control" id="prefijo" name="prefijo">
-                                <option>Lic.</option>
-                                <option>Mto.</option>
-                                <option>Dr.</option>
+                                <option value="Lic.">Lic.</option>
+                                <option value="Mto.">Mto.</option>
+                                <option value="Dr.">Dr.</option>
                             </select>
                         </div>
                         <div class="col-sm-9 mb-3 mb-sm-0">
@@ -78,7 +78,7 @@
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Crear Cuenta" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                             <button type="submit" class="btn btn-primary">Crear Cuenta</button>
                         </div>
                     </div>
                 </div>

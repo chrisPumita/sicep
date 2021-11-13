@@ -8,6 +8,7 @@ async function consultaProfesores(filtro){
         },
         success: function (response) {
             //COnvertimos el string a JSON
+            console.log(response);
             let PROFESORES = JSON.parse(response);
             console.log(PROFESORES);
         },
