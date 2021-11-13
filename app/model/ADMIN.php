@@ -76,7 +76,7 @@ class ADMIN extends PROFESOR implements I_admin
 
 
 ///+++++++++++++ FUNCIONES PROPIAS DE LA CLASE ADMINISTRADOR ++++++++++++++++++///
-    public function getListaAdministradores($estatus_admin)
+    public function queryListaAdministradores($estatus_admin)
     {
         //CASE TODO
         $filtro = $estatus_admin > 0 ? " AND admin
@@ -102,7 +102,7 @@ class ADMIN extends PROFESOR implements I_admin
         return $datos;
     }
 
-    public function updateStatusAdmin($admin,$estatus)
+    public function queryUpdateStatusAdmin($admin,$estatus)
     {
         $filtro = $admin > 0 ? " WHERE `administrador`.`id_profesor_admin_fk`=" . $admin : "";
         $this->connect();
@@ -112,7 +112,7 @@ class ADMIN extends PROFESOR implements I_admin
         return $response;
     }
 
-    public function deleteAdmin($admin)
+    public function queryDeleteAdmin($admin)
     {
         $filtro = $admin > 0 ? " WHERE `administrador`.`id_profesor_admin_fk`=" . $admin : "";
         $this->connect();
@@ -121,7 +121,7 @@ class ADMIN extends PROFESOR implements I_admin
         return $datos;
     }
 //Busca una cuenta de un profesor que sea administrador
-    public function buscaCuentaAdmin($id_profesor_admin)
+    public function queryBuscaCuentaAdmin($id_profesor_admin)
     {
         $sql = "SELECT `id_profesor_admin_fk`, `cargo`, `permisos`, 
         `clave_confirmacion`, `estatus` 
@@ -132,7 +132,7 @@ class ADMIN extends PROFESOR implements I_admin
         $this->close();
         return $datos;
     }
-    function  actualiza_cuenta($idAdmin,$cargo,$permisosA){
+    function  queryUpdateAccount($idAdmin,$cargo,$permisosA){
         $sql = "UPDATE `administrador` SET `cargo`='".$cargo."' , `permisos`='".$permisosA."' WHERE `id_profesor_admin_fk`=".$idAdmin;
         $this->connect();
         $datos = $this->executeInstruction($sql);
