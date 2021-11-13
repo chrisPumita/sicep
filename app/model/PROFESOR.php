@@ -221,7 +221,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     /*******************************************************************************
      * Inician Funciones de Interfaz
      *******************************************************************************/
-   function ListaProfesoresA($filtro){
+   function queryListaProfesoresAll($filtro){
        switch ($filtro){
            case "1":
                $condicion=" AND prof.`estatus`=1 ";
@@ -263,7 +263,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
    }
 
 
-    public function getListaProfesoresNoAdmin()
+    public function queryListProfesoresNoAdmin()
     {
         $query = "SELECT DISTINCT per.`id_persona`, per.`nombre`, 
         per.`app`, per.`apm`, per.`telefono`, 
@@ -285,7 +285,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function updateEstatusProf($id_profesor, $estatus)
+    function queryUpdateEstatusProf($id_profesor, $estatus)
     {
         $filtro = $id_profesor > 0 ? " WHERE `profesor`.`id_profesor`=" . $id_profesor : "";
         $this->connect();
@@ -295,7 +295,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function consultaProfesor($id_profesor)
+    function queryConsultaProfesor($id_profesor)
     {
         $query="SELECT per.`id_persona`, 
         per.`nombre`, per.`app`, per.`apm`, 
@@ -319,9 +319,8 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function agregaProfesor()
+    function queryInsertProfesor()
     {
-        date_default_timezone_set("America/Mexico_City");
         $query = "INSERT INTO `profesor`
         (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_trabajador`, 
         `prefijo`, `email`, `pw`, `key_hash`, `fecha_registro`, 
@@ -329,15 +328,14 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         VALUES (NULL,'".$this->getIdPersona()."','".$this->getIdDeptoFk()."',
         '".$this->getNoTrabajador()."','".$this->getPrefijo()."',
         '".$this->getEmail()."','".$this->getPw()."','".$this->getKeyHash()."',
-        '".date('Y-m-d H:i:s')."','".$this->getFirmaDigital()."',
-        '".$this->getFirmaDigitalImg()."','1')";
+        '".$this->getFechaRegistro()."','NULL','NULL','1')";
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
         return $datos;
     }
 
-    function modificaProfesor()
+    function queryUpdateProfesor()
     {
         $query="UPDATE `profesor` 
         SET 
@@ -352,7 +350,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function modifcaPw($id_profesor,$pw)
+    function queryUpdatePw($id_profesor,$pw)
     {
         $query="UPDATE `profesor` 
         SET `pw`='".$pw."' 
@@ -363,7 +361,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function eliminaProfesor($id_profesor)
+    function queryDeleteProfesor($id_profesor)
     {
         $query="UPDATE profesor 
         SET profesor.estatus=0 

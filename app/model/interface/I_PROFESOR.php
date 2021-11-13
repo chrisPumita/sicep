@@ -3,21 +3,21 @@
 
 interface I_PROFESOR
 {
-    public function ListaProfesoresA($filtro);
+    public function queryListaProfesoresAll($filtro);
 
-    public function getListaProfesoresNoAdmin();
+    public function queryListProfesoresNoAdmin();
 
-    function updateEstatusProf($id_profesor, $estatus);
+    function queryUpdateEstatusProf($id_profesor, $estatus);
 
-    function consultaProfesor($id_profesor);
+    function  queryConsultaProfesor($id_profesor);
 
-    function agregaProfesor();
+    function queryInsertProfesor();
 
-    function modificaProfesor();
+    function queryUpdateProfesor();
 
-    function modifcaPw($id_profesor,$pw);
+    function queryUpdatePw($id_profesor,$pw);
 
-    function eliminaProfesor($id_profesor);
+    function queryDeleteProfesor($id_profesor);
 
     function creaFirmaDigital();
 
