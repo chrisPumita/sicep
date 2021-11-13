@@ -422,7 +422,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     /*---------Metodos implementados de la interface----------*/
 
 
-    function consultaHorarioVirtual($id_asig)
+    function queryConsultaHorarioVirtual($id_asig)
     {
         $query = "SELECT * FROM `horario_clase_virtual` WHERE `id_asignacion_fk`=" . $id_asig;
         $this->connect();
@@ -431,7 +431,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $datos;
     }
 
-    function consultaHorarioPresencial($id_asig)
+    function queryConsultaHorarioPresencial($id_asig)
     {
         $query = "SELECT * FROM `horario_clase_presencial` WHERE `id_asignacion_fk`=" . $id_asig;
         $this->connect();
@@ -440,7 +440,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $datos;
     }
 
-    function consultaCostosDetalles($id_asignacion){
+    function queryConsultaCostosDetalles($id_asignacion){
         //MPDIFICAR CONSULTA
         $sql = "SELECT costo_real,descuento,nivel_aplicacion_desc FROM asignacion_grupo 
             WHERE id_asignacion = ".$id_asignacion;
@@ -450,7 +450,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $datos;
     }
 
-    function consultaAsignacion($id_grupo){
+    function queryConsultaAsignacionGrupo($id_grupo){
         $query="SELECT asig.id_asignacion,
                            gp.grupo, 
                            p.nombre,
@@ -482,7 +482,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $this->close();
         return $datos;
     }
-    public function consultaAsignaciones($id)
+    public function queryConsultaAsignacionProfesor($id)
     {
         $filtro=$id>0? "AND pf.id_profesor = ".$id :"";
         $query = "SELECT asig.id_asignacion,
@@ -521,7 +521,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     }
 
 
-    function crearasignacion()
+    function queryInsertAsignacion()
     {
         $query = "INSERT INTO `asignacion_grupo`(
                                `id_asignacion`, 
@@ -555,7 +555,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $result;
     }
 
-    function modificarasignacion()
+    function queryUpdateAsignacion()
     {
         $query = "UPDATE `asignacion_grupo` SET `id_grupo_fk`='".$this->getIdGrupoFk()                                                      ."',`id_profesor_fk`='".$this->getIdProfesorFk()."',`generacion`='".$this->getGeneracion()."',`semestre`='".$this->getSemestre()."',`campus_cede`='".$this->getCampusCede()."',
                             `fecha_inicio`='".$this->getFechaInicio()."',`fecha_fin`='".$this->getFechaFin()."',`fecha_lim_inscripcion`='".$this->getFechaLimInscripcion()."',`fecha_inicio_actas`='".$this->getFechaInicioActas()."',
@@ -567,7 +567,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $result;
     }
 
-    function cambia_estatus($id_asignacion,$estatus)
+    function queryUpdateEstatus($id_asignacion,$estatus)
     {
         $query="UPDATE `grupo` SET `estatus`='".$estatus."' WHERE `id_grupo`=".$id_asignacion;
         $this->connect();
@@ -576,13 +576,13 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $result;
     }
 
-    function consultaProcedencias(){
+    function queryConsultaProcedencias(){
         include_once "TIPO_PROCEDENCIA.php";
         $obj_tipo = new TIPO_PROCEDENCIA();
         return $obj_tipo->consultaProcedenciasAsig($this->getIdAsignacion());
     }
 
-    function listaprocedencias(){
+    function queryListaProcedencias(){
         include_once "TIPO_PROCEDENCIA.php";
         $obj_tipo = new TIPO_PROCEDENCIA();
         return $obj_tipo->consultaProcedencias();

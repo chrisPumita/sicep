@@ -4,11 +4,11 @@
 interface I_ASIG_GRUPO
 {
     /*Para consultar los horarios*/
-    function consultaHorarioVirtual($id_asig);
-    function consultaHorarioPresencial($id_asig);
-    public function consultaAsignaciones($id);
-    function crearasignacion();
-    function cambia_estatus($id_asignacion,$estatus);
-    function modificarasignacion();
+    function queryConsultaHorarioVirtual($id_asig);
+    function queryConsultaHorarioPresencial($id_asig);
+    public function queryConsultaAsignacionProfesor($id);
+    function queryInsertAsignacion();
+    function queryUpdateEstatus($id_asignacion,$estatus);
+    function queryUpdateAsignacion();
 
 }
