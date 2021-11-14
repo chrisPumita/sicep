@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <style>
         <style type="text/css">
-                              .background {
-                                  position: absolute;
-                                  display: block;
-                                  top: 0;
-                                  left: 0;
-                                  z-index: 0;
-                              }
+          .background {
+              position: absolute;
+              display: block;
+              top: 0;
+              left: 0;
+              z-index: 0;
+          }
         .nav-link img {
             border-radius: 50%;
             width: 36px;
@@ -74,7 +74,7 @@
 
 <body class="about-us bg-gray-200">
   <!-- Navbar Transparent -->
-  <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
+  <nav class="navbar navbar-expand-lg top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
         <a class="navbar-brand" href="#"  href="./" title="SICEP-FES Cuautitlán" data-placement="bottom" >
             <img src="./assets/images/logo/logo.png" alt="" height="45">

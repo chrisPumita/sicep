@@ -1,6 +1,6 @@
 // lo que sejecuta primero
 $(document).ready(function () {
-    alert("FUNCIONES DE LOGIN");
+    console.log("ajax start");
 });
 
 /*SUBMINT de Inicio de sesion*/

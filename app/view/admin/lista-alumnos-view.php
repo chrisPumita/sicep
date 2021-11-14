@@ -152,7 +152,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>

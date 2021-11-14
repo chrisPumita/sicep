@@ -1,4 +1,13 @@
-<?php $titulo = "Detalles del curso" ?>
+<?php
+if (!isset($_POST['id'])){
+    echo "<script>location.href ='javascript:history.back()';</script>";
+}
+else{
+    $id = $_POST['id'];
+}
+$titulo = "Detalles del curso"
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +20,7 @@
 <div id="app">
     <?php include "includes/sidebar.php"?>
     <div id="main">
+        <input type="hidden" value="<?php echo $id?>" id="idCurso">
         <header class="mb-3">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
@@ -25,7 +35,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Aspel NOI</li>
+                                <li class="breadcrumb-item active" aria-current="page"><span id="nombreCursoTitulo"></span></li>
                             </ol>
                         </nav>
                     </div>
@@ -119,7 +129,7 @@
                                     <img src="../assets/images/start-sesion.png" alt="Face 1">
                                 </div>
                                 <div class="ms-3 name">
-                                    <h5 class="font-bold">Christian Pioquinto</h5>
+                                    <h5 class="font-bold" id="nombreAutor"></h5>
                                     <h6 class="text-muted mb-0">AUTOR</h6>
                                 </div>
                             </div>
@@ -145,16 +155,14 @@
                                             <div class="d-flex w-100 justify-content-between">
                                                 <div class="d-flex px-2 py-1 mb-0">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-xs">Objetivo</h6>
+                                                        <h6 class="mb-0 text-xs">Descripción</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="collapse1" class="collapse pt-1" aria-labelledby="heading1"
                                             data-parent="#cardAccordion">
-                                            <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi nulla, odit,      
-                                            labore atque nostrum magnam nisi neque rem beatae quibusdam necessitatibus magni 
-                                            culpa, molestiae est nihil reiciendis eos deserunt suscipit?</p>
+                                            <p class="p-3" id="detallesCurso"></p>
                                         </div>
 
                                         <!-- PARTE ACORDEON 2 -->
@@ -164,15 +172,33 @@
                                             <div class="d-flex w-100 justify-content-between">
                                                 <div class="d-flex px-2 py-1 mb-0">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-xs">Antecedentes</h6>
+                                                        <h6 class="mb-0 text-xs">Objetivo</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="collapse2" class="collapse pt-1" aria-labelledby="heading2"
                                             data-parent="#cardAccordion">
-                                            <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae accusamus et nostrum ut. Perferendis, quo veniam! Omnis numquam possimus nesciunt, nulla veniam praesentium explicabo, pariatur quaerat odit, recusandae obcaecati? Illum.</p>
+                                            <p class="p-3" id="objetivo"></p>
                                         </div>
+
+                                        <!-- PARTE ACORDEON 3 -->
+                                        <div class="list-group-item list-group-item-action" id="heading3" data-bs-toggle="collapse"
+                                             data-bs-target="#collapse3" aria-expanded="false"
+                                             aria-controls="collapseOne" role="button">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <div class="d-flex px-3 py-1 mb-0">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-xs">Antecedentes</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse3" class="collapse pt-1" aria-labelledby="heading3"
+                                             data-parent="#cardAccordion">
+                                            <p class="p-3" id="antecedentes"></p>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row py-1 m-2">
@@ -181,55 +207,51 @@
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Dirigido a</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            Alumnos y público en general
-                                        </div>
+                                        <div class="col-sm-9 text-secondary" id="dirigido_a">   </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Tipo</h6>
+                                            <h6 class="mb-0">Modalidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            Diplomado con opcion para titulación
-                                        </div>
+                                        <div class="col-sm-9 text-secondary" id="modalidad"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Código</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            003
-                                        </div>
+                                        <div class="col-sm-9 text-secondary" id="codigoInfo"> </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Sesiones</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            23
-                                        </div>
+                                        <div class="col-sm-9 text-secondary" id="sesionesInfo"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Registrado desde</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            19 - 05 - 2021
+                                        <div class="col-sm-9 text-secondary" id="fechaCreacion"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos">Editar</button>
                                         </div>
-                                    </div>                                          
+                                    </div>
                                 </div>
 
                                 <div class="row py-1 m-2">
+
                                     <h5 class="text-secondary">Temario PDF:</h5>
-                                    <div class="col-md-4" id="filePDF"><a href="www.link.com" download="" target="_blank" class="btn btn-primary btn-block"> Descargar</a></div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4" id="filePDF"></div>
+                                    <div class="col-sm-4">
                                         <a href="#" class="btn btn-primary btn-block"><i class="icon ion-md-cloud"></i> Subir</a>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <button class="btn btn-primary  btn-block" data-bs-toggle="modal" data-bs-target="#modalPdftemario">
                                         Ver</button>
                                     </div>
@@ -241,7 +263,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="https://capacitate365.com/wp-content/uploads/2020/10/Curso-excel-completo.png" alt="Card image cap">
+                                <span id="imgContainer"></span>
                                 <div class="card-body pt-3">
                                     <h4 class="card-title">Imagen del banner</h4>
                                     <p class="card-text">
@@ -405,6 +427,8 @@
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
             <?php include "modals/modal-nuevo-tema.php"?>
+            <?php include "modals/modal-pdf-temario.php"?>
+            <?php include "modals/modal-edita-curso.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
@@ -416,6 +440,12 @@
 -- INCLUDE SERIVES AJAX -->
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
+
+<!--CARGAR SERVICIOS AJAX-->
+<script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
+<script src="./service/curso-details.js"></script>
+
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#tbl1');

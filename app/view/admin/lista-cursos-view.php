@@ -115,11 +115,11 @@
 <!--Only datatable use library -->
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
-<script src="./service/general/tipos.js"></script>
-<script src="./service/datatable-lista-cursos.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <!--CARGAR SERVICIOS GENERALES-->
-
+<script src="./service/general/tipos.js"></script>
+<script src="./service/datatable-lista-cursos.js"></script>
+<script src="./service/general/tools.js"></script>
 </body>
 
 </html>

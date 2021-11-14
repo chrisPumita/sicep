@@ -16,7 +16,10 @@ $(document).on("click", ".viewCourse", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement;
     let id = $(elementClienteSelect).attr("id_curso");
-    alert("VIEW CURSO "+id);
+    var url = './detalles-curso';
+    redirect_by_post(url, {
+        id: id
+    }, false);
 });
 
 //LISTENER PARA ACCION DEL BOTON
@@ -115,7 +118,6 @@ function cargaCursosDataTable() {
         var status = $(this).val();
         $('.status-dropdown').val(status);
         console.log(status);
-        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
         dataTable.column(5).search(status).draw();
     });
 
@@ -123,7 +125,6 @@ function cargaCursosDataTable() {
         var status = $(this).val();
         $('.profesor-dropdown').val(status);
         console.log(status);
-        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
         dataTable.column(2).search(status).draw();
     });
 }
@@ -134,7 +135,6 @@ function cargaListaProfesoresAutores(){
         type: 'POST',
         success: function(response){
             let PROFESORES = JSON.parse(response);
-            console.log(PROFESORES);
             let template=`<option value="">TODOS</option>`;
             PROFESORES.forEach(profesor => {
                 template+=`<option value="${profesor.prefijo} ${profesor.nombre} ${profesor.app} ${profesor.apm}">

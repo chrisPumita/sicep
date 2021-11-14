@@ -5,3 +5,4 @@ function buildListaDesplCursos(jsonData) {
     });
     return template;
 }
+

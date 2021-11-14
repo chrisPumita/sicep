@@ -1,0 +1,1 @@
+<h1>View Profesor dashboard</h1>

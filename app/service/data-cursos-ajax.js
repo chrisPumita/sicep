@@ -1,6 +1,4 @@
 /****************************************************/
-//Antigua funcion de Ajax para refcuperar datos JSON
-// lo que sejecuta primero
 
 async function consultaCursosAjax(filtro, idCursoEspc) {
     return $.ajax({
@@ -12,7 +10,7 @@ async function consultaCursosAjax(filtro, idCursoEspc) {
             id_curso_filtro : idCursoEspc
         },
         success: function(data){
-            console.log(data);
+           // console.log(data);
         },
         error: function() {
             alert("Error occured")
