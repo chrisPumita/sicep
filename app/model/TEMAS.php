@@ -94,7 +94,7 @@ private $resumen;
     {
         $query = "SELECT * FROM `temas` 
                     WHERE `id_curso_fk` = ".$id_curso_fk." 
-                    ORDER BY `temas`.`id_tema` ASC";
+                    ORDER BY `temas`.`indice`  ASC";
         $this->connect();
         $temas = $this-> getData($query);
         $this->close();

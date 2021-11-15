@@ -16,3 +16,17 @@ function addCurso($params){
     
 }
 //LFHL
+function consultaAcredita($idCurso){
+    include_once "../model/CURSO.php";
+    //return json_encode(CURSO::consultaAcredita($idCurso));
+    $obj_curso= new CURSO();
+    return $obj_curso->consultaAcreditacion($idCurso);
+}
+
+//COnsulta de temario de curso especifico
+function consultaTemas($id_curso_fk)
+{
+    include_once "../model/CURSO.php";
+    $temas = new TEMAS();
+    return  $temas->consultaTemas($id_curso_fk);
+}

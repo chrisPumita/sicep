@@ -47,6 +47,6 @@
     </div>
     <div class="float-end">
         <p>Creado con <i class="fas fa-heart"></i> por <a
-                href="http://recreastudios.com"> ReCkrea-Studios</a></p>
+                href="https://reckreastudios.com/" target="_blank"> ReCkrea-Studios</a></p>
     </div>
 </div>

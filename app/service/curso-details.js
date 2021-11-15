@@ -14,7 +14,6 @@ async function cargaCursoDetails(filtro, idUnique) {
 }
 
 function buildHTMLValues(curso){
-    console.log(curso);
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);
     $("#detallesCurso").html(`${curso.descripcion}`);
     $("#nombreAutor").html(`${curso.nombre} ${curso.app} ${curso.apm}`);
@@ -35,8 +34,7 @@ function buildHTMLValues(curso){
     $("#filePdfView").html(tmpPdf);
     //consulto los detalles de la acredsitacion del curso
     acreditado = curso.id_profesor_admin_acredita != null ? true:false;
-    detallesAcreditacion(id_curso,acreditado);
-
+    detallesAcreditacion(curso.id_curso,acreditado);
     // cargar los datos al form
     $("#editarNombreCurso").val(curso.nombre_curso);
     $("#editarDescripcion").val(curso.descripcion);
@@ -47,68 +45,7 @@ function buildHTMLValues(curso){
     $("#editarCosto").val(curso.costo_sugerido);
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
-}
-
-
-//fuincion que me carga los datos del curso
-function cargaDetallesCurso(id_curso) {
-    $.ajax(
-        {
-            url:"./control/list_cursos.php",
-            data: {
-                estado_filtro: -1,
-                idCurso : id_curso
-            },
-            type: "POST",
-            success: function (response)
-            {
-                let obj_result = JSON.parse(response);
-                console.log(obj_result);
-                obj_result.forEach(
-                    (obj_result)=>
-                    {
-
-                    }
-                );
-
-            }
-        }
-    );
-}
-
-
-function cargaTemario(idCurso) {
-    $.ajax(
-        {
-            url:"./control/list_cursos.php",
-            data: {
-                estado_filtro: -1,
-                idCurso : id_curso
-            },
-            type: "POST",
-            success: function (response)
-            {
-                let obj_result = JSON.parse(response);
-                console.log(obj_result);
-                obj_result.forEach(
-                    (obj_result)=>
-                    {
-                        $("#nombreCursoTitulo").html(`<h2 class="font-weight-bold mb-0">${obj_result.codigo} - ${obj_result.nombre_curso}</h2>`);
-                        $("#detallesCurso").html(`${obj_result.descripcion}`);
-                        $("#nombreAutor").html(`${obj_result.nombre} ${obj_result.app} ${obj_result.apm}`);
-                        $("#fechaCreacion").html(`${obj_result.fecha_creacion}`);
-                        $("#dirigido_a").html(`${obj_result.dirigido_a}`);
-                        $("#codigoInfo").html(`${obj_result.codigo}`);
-                        $("#sesionesInfo").html(`${obj_result.no_sesiones}`);
-                        $("#modalidad").html(getTipoCurso(obj_result.tipo_curso));
-                        $("#objetivo").html(obj_result.objetivo);
-                        $("#antecedentes").html(obj_result.antecedentes);
-                    }
-                );
-
-            }
-        }
-    );
+    cargaTemario(curso.id_curso);
 }
 
 function detallesAcreditacion(id_Curso,acreditado) {
@@ -116,7 +53,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
     if(acreditado){
         $.ajax(
             {
-                url:"./control/acreditacion_curso.php",
+                url:"./webhook/acreditacion-curso.php",
                 data: {
                     idCurso : id_Curso
                 },
@@ -128,7 +65,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                         tmplate =`
                             <div class="d-flex">
                                 <div class="m-auto">
-                                    <img src="./assets/img/icons/ok.svg" width="80" alt="svg ok">
+                                    <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
                                 </div>
                                 <div class="m-auto">
                                     <h5>Aprobado por:</h5>
@@ -150,7 +87,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
         tmplate =`
             <div class="d-flex">
                 <div class="m-auto">
-                    <img src="./assets/img/icons/cancel.svg" width="80" alt="svg ok">
+                    <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
                 </div>
                 <div class="m-auto">
                     <h5>Sin acreditar</h5>
@@ -163,5 +100,61 @@ function detallesAcreditacion(id_Curso,acreditado) {
             </div>`;
         $("#detallesAprobacionCurso").html(tmplate);
     }
+}
 
+function cargaTemario(idCurso) {
+    $.ajax(
+        {
+            url:"./webhook/temario-curso.php",
+            data: {
+                idCurso : idCurso
+            },
+            type: "POST",
+            success: function (response)
+            {
+                let TEMAS = JSON.parse(response);
+                let template;
+                if (TEMAS.length > 0) {
+                    template+= `
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>INDICE</th>
+                                    <th>TEMA</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                                </thead>
+                            <tbody>`;
+                    TEMAS.forEach(
+                        (tema)=>
+                        {
+                            template+= `
+                            <tr id_tema="${tema.id_tema}">
+                                <td>${tema.indice}</td>
+                                <td>${tema.nombre}</td>
+                                <td>${tema.resumen}</td>
+                                <td>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>`;
+                        }
+                    );
+                    template+= `
+                            </tbody>
+                          </table>`;
+                }
+                else{
+                    template= `
+                                <div class="alert alert-light alert-dismissible show fade">
+                                   No tenemos temas registrados. Agregue un tema.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`;
+                }
+
+                $("#tblTemario").html(template);
+            }
+        }
+    );
 }

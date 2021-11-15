@@ -2,7 +2,7 @@
 <!--AGREGA PROFESOR INVITACION CUENTA -->
 <div class="modal fade text-left" id="addNewTema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
-    <div class="modal-lg  modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    <div class=" modal-dialog modal-dialog-centered modal-dialog-scrollable"
          role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -20,36 +20,34 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis cum minus odio sapiente, maxime ut 
-                                    pariatur accusantium, assumenda dicta vero voluptatem nam laboriosam, sit quibusdam reiciendis 
-                                    tempore non accusamus molestias?
+                                    Los temas seran visibles al público.
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- INICIAN COMPONENTES DE FORMULARIO -->
                     <div class="form-group row">
-                        <label for="padre" class="form-label ">Índice:</label>
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <input type="number" id="padre" name="padre" class="form-control" min="1" value="1">
+                        <div class="col-md-4">
+                            <label for="indice" class="text-primary">Inice:</label>
                         </div>
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <input type="number" id="hijo" name="hijo" class="form-control" min="0" value="0">
-                        </div>
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <input type="number" id="nieto" name="nieto" class="form-control" min="0" value="0">
+                        <div class="col-md-8 form-group">
+                            <input type="text" class="form-control" name="indice" id="indice" placeholder="Ejemplo 1.2.3">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <label for="tema" class="form-label">Tema:</label>
-                            <input type="text" id="tema" name="tema" class="form-control" placeholder="Nombre del tema">
+                        <div class="col-md-4">
+                            <label for="nombre_tema" class="text-primary">Tema:</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input type="text" class="form-control" name="nombre_tema" id="noimbre_tema" placeholder="Escriba el nombre del tema">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <label for="descripcion-tema" class="form-label">Descripción:</label>
-                            <textarea class="form-control" id="descripcion-tema" rows="3" placeholder="Describa el tema"></textarea>
+                        <div class="col-md-4">
+                            <label for="descripcion-tema" class="text-primary">Descripción:</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <textarea class="form-control" id="descripcion-tema" name="descripcion-tema" rows="3" placeholder="Describa el tema"></textarea>
                         </div>
                     </div>
                 </div>

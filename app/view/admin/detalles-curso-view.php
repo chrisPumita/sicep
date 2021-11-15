@@ -318,37 +318,7 @@ $titulo = "Detalles del curso"
                             </div>
                         </div>
                     </div>
-                    <div class="card-body table-responsive">
-                        <table class="table table-hover table-striped" id="tblTemario">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>INDICE</th>
-                                <th>TEMA</th>
-                                <th>DESCRIPCIÓN</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                            </thead>
-                            <tbody id="temas">
-                            <tr id_grupo="3">
-                                <th scope="row">1</th>
-                                <td>1.0</td>
-                                <td>Induccion al computo</td>
-                                <td>---------------------------------</td>
-                                <!-- <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                    </div>
-                                </td> -->
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="card-body table-responsive" id="tblTemario"></div>
                 </div>
             </section>
             <!-- fin seccion de temario -->
