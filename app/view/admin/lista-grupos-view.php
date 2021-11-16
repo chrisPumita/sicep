@@ -140,8 +140,10 @@
                                     la lista de alumnos, de clic en "Mas Detalles".
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                    <a href="./historial-grupos">
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
                                         <i class="fas fa-history"></i> Ver Histórico</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

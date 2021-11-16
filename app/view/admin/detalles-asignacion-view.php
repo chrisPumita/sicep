@@ -240,9 +240,9 @@
                                     <hr>                                    
                                 </div>
                                 <div class="row py-1 m-2">
-                                    <div class="col-md-4" id="filePDF">
-                                        <a href="www.link.com" download="" target="_blank" class="btn btn-primary btn-block">Editar</a>
-                                    </div>                                    
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#editar-detalles-curso">
+                                        <i class="fas fa-edit"></i> Editar detalles
+                                    </button>                                   
                                 </div>
                             </div>
                         </div>
@@ -254,65 +254,81 @@
                             <div class="card-body py-2">
                                 <div class="row py-1 m-2">
                                     <h5 class="text-secondary">Descuentos:</h5>
-                                    <div class="row py-2">
-                                        <div class="col-sm-8">
+                                    <div class="row py-2 align-items-center">
+                                        <div class="col-sm-6">
                                             <h6 class="mb-0">Comunidad FESC</h6>
                                         </div>
-                                        <div class="col-sm-4 text-secondary">
+                                        <div class="col-sm-2 text-secondary">
                                             70%
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h6 class="mb-0">Comunidad UNAM</h6>
-                                        </div>
-                                        <div class="col-sm-4 text-secondary">
-                                            50%
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h6 class="mb-0">Ex-Alumno FESC</h6>
-                                        </div>
-                                        <div class="col-sm-4 text-secondary">
-                                            40%
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h6 class="mb-0">Ex-Alumno UNAM</h6>
+                                    <div class="row py-2 align-items-center">
+                                        <div class="col-sm-6">
+                                            <h6 class="mb-0">Comunidad FESC</h6>
                                         </div>
-                                        <div class="col-sm-4 text-secondary">
-                                            40%
+                                        <div class="col-sm-2 text-secondary">
+                                            70%
+                                        </div>
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h6 class="mb-0">Personal UNAM</h6>
+                                    <div class="row py-2 align-items-center">
+                                        <div class="col-sm-6">
+                                            <h6 class="mb-0">Comunidad FESC</h6>
                                         </div>
-                                        <div class="col-sm-4 text-secondary">
-                                            0%
+                                        <div class="col-sm-2 text-secondary">
+                                            70%
+                                        </div>
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h6 class="mb-0">Comunidad externa</h6>
+                                    <div class="row py-2 align-items-center">
+                                        <div class="col-sm-6">
+                                            <h6 class="mb-0">Comunidad FESC</h6>
                                         </div>
-                                        <div class="col-sm-4 text-secondary">
-                                            0%
+                                        <div class="col-sm-2 text-secondary">
+                                            70%
                                         </div>
-                                    </div>                                                                              
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr>                            
                                 </div>
-
-                                <div class="row py-1 m-2">
-                                    <div class="col-md-4" id="filePDF">
-                                        <a href="www.link.com" download="" target="_blank" class="btn btn-primary btn-block">Editar</a>
-                                    </div>                                    
+                                <div class="row">
+                                <div class="col-sm-12 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
+                                            <i class="fas fa-plus"></i> Agregar
+                                            </button>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -388,7 +404,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar-horario">
                                                             <i class="fas fa-plus"></i>Agregar
                                                         </button>   
                                                     </div>
@@ -439,7 +455,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar-horario">
                                                             <i class="fas fa-plus"></i>Agregar
                                                         </button>
                                                     </div>
@@ -567,6 +583,9 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-editar-detalles-asignacion.php"?>
+            <?php include "modals/modal-editar-descuentos.php"?>
+            <?php include "modals/modal-agregar-horario.php"?>            
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
