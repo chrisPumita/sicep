@@ -207,35 +207,35 @@ $titulo = "Detalles del curso"
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Dirigido a</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary" id="dirigido_a">   </div>
+                                        <div class="col-sm-9 text-primary text-bold" id="dirigido_a">   </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Modalidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary" id="modalidad"></div>
+                                        <div class="col-sm-9 text-primary text-bold" id="modalidad"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Código</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary" id="codigoInfo"> </div>
+                                        <div class="col-sm-9 text-primary text-bold" id="codigoInfo"> </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Sesiones</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary" id="sesionesInfo"></div>
+                                        <div class="col-sm-9 text-primary text-bold" id="sesionesInfo"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Registrado desde</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary" id="fechaCreacion"></div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fechaCreacion"></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 d-flex justify-content-end">
@@ -243,17 +243,24 @@ $titulo = "Detalles del curso"
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row py-1 m-2">
-
                                     <h5 class="text-secondary">Temario PDF:</h5>
-                                    <div class="col-sm-4" id="filePDF"></div>
+                                    <div class="row">
+                                        <div class="col-sm-12 d-flex justify-content-end">
+                                            <span id="filePDF" class="me-1 mb-1"></span>
+                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
+                                            <span  class=" me-1 mb-1"><input class="form-control" type="file" id="formFile"></span>
+                                            <a href="#" class="btn btn-primary me-1 mb-1"><i class="fas fa-cloud-upload-alt"></i></a>
+                                            <a href="#" class="btn btn-danger me-1 mb-1"><i class="far fa-trash-alt"></i></a>
+
+                                          </div>
+                                    </div>
+
                                     <div class="col-sm-4">
-                                        <a href="#" class="btn btn-primary btn-block"><i class="icon ion-md-cloud"></i> Subir</a>
+
                                     </div>
                                     <div class="col-sm-4">
-                                        <button class="btn btn-primary  btn-block" data-bs-toggle="modal" data-bs-target="#modalPdftemario">
-                                        Ver</button>
+
                                     </div>
                                 </div>
                             </div>

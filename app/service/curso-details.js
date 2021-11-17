@@ -28,7 +28,7 @@ function buildHTMLValues(curso){
     $("#antecedentes").html(curso.antecedentes);
     let img = `<div class="img d-block w-100" style="background-image: url(${curso.banner_img}); height: 300px; "></div>`;
     $("#imgContainer").html(img);
-    let pdfFile = `<a href="${curso.link_temario_pdf}" download target="_blank"  class="btn btn-primary btn-block"> Descargar</a>`;
+    let pdfFile = `<a href="${curso.link_temario_pdf}" download="" target="_blank"  class="btn btn-primary"><i class="fas fa-download"></i></a>`;
     $("#filePDF").html(pdfFile);
     let tmpPdf = `<embed src="${curso.link_temario_pdf}" type="application/pdf" width="100%" height="600px" />`;
     $("#filePdfView").html(tmpPdf);

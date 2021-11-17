@@ -88,9 +88,6 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="#">Dar de Alta</a>
-                        </li>
-                        <li class="submenu-item ">
                             <a href="./lista-cuentas">Ver todas</a>
                         </li>
                         <li class="submenu-item ">

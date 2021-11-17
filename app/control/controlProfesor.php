@@ -44,3 +44,11 @@ function addProfesor($params){
     return false;
 }
 //LFHL
+
+
+//RCSG
+function consultaListaNoAdmin(){
+    include_once "../model/PROFESOR.php";
+    $obj_prof = new PROFESOR();
+    return $obj_prof -> queryListProfesoresNoAdmin();
+}

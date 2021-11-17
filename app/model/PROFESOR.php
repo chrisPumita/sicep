@@ -285,7 +285,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         depto.`id_depto`, depto.`nombre` AS depto_name 
         FROM `profesor` prof, `persona` per,`departamentos` depto 
         WHERE per.`id_persona` = prof.`id_persona_fk` 
-        AND prof.`estatus` = 1 AND per.`estatus`=1 
+        AND prof.`estatus` = 1 AND per.`estatus`= 1 
         AND depto.`id_depto`= prof.`id_depto_fk` 
         AND prof.`id_profesor` NOT IN 
             (SELECT admin.`id_profesor_admin_fk` 

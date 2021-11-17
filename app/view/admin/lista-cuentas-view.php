@@ -42,11 +42,11 @@
                                     y el siguiente paso es asignar el nivel.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <a href="./lista-alumnos">
-                                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                                            <i class="fas fa-check-circle"></i> Nuevo
+                                        <!-- Button trigger for primary themes modal -->
+                                        <button type="button" class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#primary">
+                                            Nueva Cuenta
                                         </button>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -174,6 +174,7 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-nuevo-admin.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
@@ -190,6 +191,8 @@
     let table1 = document.querySelector('#tbl1');
     let dataTable = new simpleDatatables.DataTable(table1);
 </script>
+
+<script src="./service/datatable-lista-admins.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 
