@@ -14,79 +14,85 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
+            <hr>
             <div class="modal-body">
-                <div class="callout callout-second bg-grey">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                                Asigner una cuenta de administrador a un profesor, esta cuenta va a tener la oportunidad
-                                de hacer los cambios segun su nivel de acceso. Para conocer que acciones puede hacer cada
-                                nivel de acceso, porfavor lea el cuadro resposabilidad de usuarios. <br>
-                                Al asignar a un nuevo administrador, le llegará una notificación por correo electrónico
-                                con su clave de confirmación.
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <label class="col-form-label text-primary">Seleccione a un profesor: </label>
+                    </div>
+                    <div class="col-sm-8 mb-3 mb-sm-0">
+                        <select class="form-control" name="listaDesProfesores" id="listaDesProfesores"></select>
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div class="card mb-3">
-                        <div class="card-body align-content-end">
-                            <div class="form-group row">
-                                <div class="col-sm-4 mb-3 mb-sm-0">
-                                    <label class="col-form-label font-weight-bold">Seleccione a un profesor: </label>
-                                </div>
-                                <div class="col-sm-8 mb-3 mb-sm-0">
-                                    <select class="form-control" name="listaDesProfesores" id="listaDesProfesores"></select>
-                                </div>
-                            </div>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alertMje">
+                        <strong>¡ATENCIÓN!</strong>
+                            Al asignar una cuenta de administrador a un profesor, esta cuenta va a tener la oportunidad
+                            de hacer los cambios según su nivel de acceso. Al asignar a un nuevo administrador,
+                        le llegará una notificación por correo electrónico
+                            con su clave de confirmación.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="mb-3" id="dataProf">
+                        <div class="">
                             <hr>
                             <div class="row border-bottom">
                                 <div class="col-sm-3">
+                                    <input type="hidden" class="form-control" name="idProfesor" id="idProfesor">
                                     <h6 class="mb-0">No. Trabajador:</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    561561651
-                                </div>
+                                <div class="col-sm-9 text-gray-600 text-bold" id="noTRabajador"></div>
                             </div>
                             <div class="row border-bottom">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Nombre:</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    561561651
-                                </div>
+                                <div class="col-sm-9 text-gray-600 text-bold" id="nombreProfesor"></div>
                             </div>
                             <div class="row border-bottom">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Correo Electrónico:</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    561561651
-                                </div>
+                                <div class="col-sm-9 text-gray-600 text-bold" id="correoProfesor"></div>
                             </div>
                             <div class="row border-bottom">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Departamento:</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    561561651
-                                </div>
+                                <div class="col-sm-9 text-gray-600 text-bold" id="deptoProfesor"></div>
                             </div>
                             <div class="row border-bottom">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Fecha de Registro:</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    561561651
+                                <div class="col-sm-9 text-gray-600 text-bold" id="fechaRegistroProfesor"></div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-2 mb-sm-0">
+                                    <label class="col-form-label">Cargo:</label>
+                                </div>
+                                <div class="col-sm-4 mb-sm-0">
+                                    <input type="input" class="form-control" placeholder="Eje. Coordinador de Laboratorios" id="txtcargo" aria-label="Cargo">
+                                </div>
+                                <div class="col-sm-3 mb-sm-0">
+                                    <label class="col-form-label">Nivel de Permisos:</label>
+                                </div>
+                                <div class="col-sm-3 mb-sm-0">
+                                    <select class="form-control" name="permisos" id="permisos">
+                                        <option value="1">Bajo</option>
+                                        <option value="2">Medio</option>
+                                        <option value="3">Alto</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer d-none" id="containerSend">
                     <div class="form-group row">
                         <div class="col-12">
-                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                            <input type="button" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalConfirmaPw">
                         </div>
                     </div>
                 </div>

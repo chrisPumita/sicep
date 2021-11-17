@@ -174,6 +174,7 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-confirma-admin.php"?>
             <?php include "modals/modal-nuevo-admin.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
