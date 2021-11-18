@@ -1,6 +1,6 @@
 <?php
     include("PROFESOR.php");
-    include "./interface/I_admin.php";
+    include "interface/I_admin.php";
 
 class ADMIN extends PROFESOR implements I_admin
 {
@@ -76,18 +76,15 @@ class ADMIN extends PROFESOR implements I_admin
 
 
 ///+++++++++++++ FUNCIONES PROPIAS DE LA CLASE ADMINISTRADOR ++++++++++++++++++///
-    public function queryListaAdministradores($estatus_admin)
+    public function queryListaAdministradores()
     {
-        //CASE TODO
-        $filtro = $estatus_admin > 0 ? " AND admin
-        .`estatus`=" . $estatus_admin : "";
         $this->connect();
-        $datos = $this-> getData("SELECT 
+        $query = "SELECT 
         per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, 
-        per.`telefono`, per.`sexo`, per.`estatus` AS estatus_persona, 
+       concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
+        per.`telefono`, per.`sexo`, prof.img_perfil,
         prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
-        prof.`email`, prof.`key_hash`, prof.`fecha_registro`, 
-        prof.`firma_digital`, prof.`firma_digital_img`, 
+        prof.`email`, prof.`fecha_registro`,
         prof.`estatus` AS estatus_profesor, admin.`cargo`, 
         admin.`permisos`, admin.`estatus` AS estatus_admin, 
         depto.`id_depto`, depto.`nombre` AS depto_name 
@@ -96,10 +93,12 @@ class ADMIN extends PROFESOR implements I_admin
         WHERE admin.`id_profesor_admin_fk`=prof.`id_profesor` 
         AND prof.`id_persona_fk`=per.`id_persona` 
         AND per.`estatus` = 1 
-        AND prof.`id_depto_fk`= depto.`id_depto`".$filtro." 
-        ORDER BY `per`.`app`,`per`.`apm`,`per`.`nombre` ASC");
-        $this->close();
-        return $datos;
+        AND prof.`id_depto_fk`= depto.`id_depto`
+        ORDER BY `per`.`nombre`,`per`.`app`,`per`.`apm` ASC";
+       $this->connect();
+       $datos = $this-> getData($query);
+       $this->close();
+       return $datos;
     }
 
     public function queryUpdateStatusAdmin($admin,$estatus)

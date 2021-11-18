@@ -80,10 +80,9 @@
                         <table class="table table-hover table-striped" id="tblProfesores" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>NO</th>
                                 <th>NOMBRE</th>
-                                <th>DEPARTAMENTO</th>
+                                <th>NO CTA</th>
+                                <th>DEPTO</th>
                                 <th>CONTACTO</th>
                                 <th>REGISTRO</th>
                                 <th>ACCIONES</th>

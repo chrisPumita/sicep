@@ -4,6 +4,7 @@
 
 <head>
     <?php include "includes/head.php"?>
+    <!--Only datatable use-->
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
 </head>
 
@@ -57,115 +58,21 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-user-check"></i> Alumnos Por Verificar
+                        <i class="fas fa-user-check"></i> Administradores del sistema
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
+                        <table class="table table-hover table-striped" id="tblProfesores" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>NO TRABAJADOR</th>
                                 <th>NOMBRE</th>
+                                <th>NO CTA</th>
                                 <th>NIVEL</th>
-                                <th>DEPARTAMENTO</th>
-                                <th>CARGO</th>
+                                <th>DEPTO</th>
                                 <th>CONTACTO</th>
+                                <th>REGISTRO</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr id_grupo="3">
-                                <td>123156</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-md">
-                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-danger"></span>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>
-                                            <p class="text-xs text-primary mb-0">HOMBRE</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span> BAJO </span>
-                                            <span class="badge bg-warning badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    Informática
-                                </td>
-                                <td>
-                                    Jefe de Departamento
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">christian.fploppy@gmail.com</p>
-                                        <p class="text-xs text-primary mb-0">1666054512</p>
-                                    </div>
-                                </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-primary"><i class="fas fa-id-card-alt"></i></a>
-                                    <a href="#" class="btn btn-success"><i class="fas fa-check-circle"></i></a>
-
-                                </td>
-                            </tr>
-
-                            <tr id_grupo="3">
-                                <td>123156</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-md">
-                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-success"></span>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>
-                                            <p class="text-xs text-primary mb-0">HOMBRE</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <span> Alto </span>
-                                            <span class="badge bg-success badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    Informática
-                                </td>
-                                <td>
-                                    Jefe de Departamento
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">christian.fploppy@gmail.com</p>
-                                        <p class="text-xs text-primary mb-0">1666054512</p>
-                                    </div>
-                                </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-primary"><i class="fas fa-id-card-alt"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-times-circle"></i></a>
-                                </td>
-                            </tr>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -182,17 +89,11 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-<!-- INCLUDE SERIVES AJAX
-    <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
 
+<!-- Agregar solo cuando exista una tabla para mostrar-->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+<script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
 <script src="./service/datatable-lista-admins.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>

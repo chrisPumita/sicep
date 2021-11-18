@@ -32,11 +32,36 @@ function estadoCursoApoved(aprobado) {
 
 
 function estadoProfesorAdmin(admin_value) {
-    let n = parseInt(admin_value)
-    if(n==1){      
-        let color = `info`;
-        let texto = `ADMIN`;
-        return `<span class="badge bg-${color}">${texto}</span>`;
-    } else return '';
-    
+    return parseInt(admin_value)==1?`<a href="./lista-cuentas"><span class="badge bg-light-success">ADMIN</span></a>`:"";
+}
+
+//regresa un tag de tiempo de nivel de banderas
+function getNivelHTML(nivel) {
+    let text, bg;
+    let permisos = parseInt(nivel);
+    switch (permisos) {
+        case 0:
+            text = "BAJO";
+            bg="danger";
+            break;
+        case 1:
+            text = "BAJO";
+            bg="warning";
+            break;
+        case 2:
+            text = "MEDIO";
+            bg="primary";
+            break;
+        case 3:
+            text = "ALTO";
+            bg="success";
+            break;
+    }
+    let template = `<ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span> ${text}</span>
+                            <span class="badge bg-${bg} badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
+                        </li>
+                    </ul>`;
+    return template;
 }

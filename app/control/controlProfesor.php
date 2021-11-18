@@ -4,8 +4,7 @@
 function consultaProfesores($filtro){
     include_once "../model/PROFESOR.php";
     $PROFESORES = new PROFESOR();
-    $result = $PROFESORES->queryListaProfesoresAll($filtro);
-    return $result;
+    return $PROFESORES->queryListaProfesoresAll($filtro);
 }
 
 function consultaListaAutoresCurso(){

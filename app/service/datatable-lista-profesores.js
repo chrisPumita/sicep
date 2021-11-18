@@ -1,10 +1,3 @@
-/****************************************************/
-//Antigua funcion de Ajax para refcuperar datos JSON
- //JSON Global de cursos
- window.onload = function(){
-    //caragabndo la info de la bd
-}
-
 $(document).ready(function() {
     cargaDatosProfesoresDataTable();
 });
@@ -27,41 +20,31 @@ function cargaDatosProfesoresDataTable() {
         },
         "columns":
             [
-                { data: 'order'},
-                {data: 'no_trabajador'},
-                /*
-                { data: 'aprobado',
-                    render: function ( data, type, row ){
-                        //funcion de tipos.js
-                        value = estadoCursoApoved(row.aprobado);
-                        return row.aprobado ==='1'? 'APROBADO':"PENDIENTE";
-                    }
-                },
-                { defau */
                 { data: null,
                     render: function ( data, type, row ){
-                        let nombre = '<div class="d-flex align-items-center">\n' +
-                            '           <div class="avatar avatar-md">\n' +
-                            '                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">\n' +
-                            '                                            <span class="avatar-status bg-danger"></span>\n' +
-                            '                                        </div>\n' +
-                            '                                        <div class="d-flex flex-column justify-content-center px-3">\n' +
-                            '                                            <p class="mb-0 text-xs">Lic. Juan Perez Sanchez</p>\n' +
-                            '                                            <p class="text-xs text-primary mb-0">HOMBRE</p>\n' +
-                            '                                        </div>\n' +
-                            '                                    </div>';
-                        value = estadoProfesorAdmin(row.flagAdmin);
-                        return nombre + ' ' + value;
+                    let flagAdmin = estadoProfesorAdmin(row.flagAdmin);
+                        let status = row.estatus_profesor == 1 ? 'success':'danger';
+                        let template = `<div class="d-flex align-items-center">
+                                        <div class="avatar avatar-md">
+                                            <img src="${row.img_perfil}" alt="" srcset="">
+                                            <span class="avatar-status bg-${status}"></span>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center px-3">
+                                            <p class="mb-0 text-xs">${row.prefijo} ${row.nombre_completo} </p>
+                                            <p>${flagAdmin}</p>
+                                        </div>
+                                    </div>`;
+                        return template;
                     }
                 },
-                /* { data: "nombre_completo"},*/
+                { data: 'no_trabajador'},
                 { data: 'depto_name'},
                 { data: null,
                     render: function ( data, type, row ){
-                        let template = '<div class="d-flex flex-column justify-content-center">\n' +
-                            '              <p class="mb-0 text-xs"><a href="mailto:'+row.email+'">'+row.email+'</a></p>\n' +
-                            '              <p class="text-xs text-primary mb-0">'+row.telefono+'</p>\n' +
-                            '           </div>';
+                        let template = `<div class="d-flex flex-column justify-content-center">
+                                            <p class="mb-0 text-xs"><a href="mailto:'+row.email+'">${row.email}</a></p>
+                                            <p class="text-xs text-primary mb-0">${row.telefono}</p>
+                                        </div>`;
                         return template;
                     }
                 },
