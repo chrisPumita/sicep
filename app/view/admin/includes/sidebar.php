@@ -109,6 +109,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item ">
+                    <a href="./preferencias" class='sidebar-link'>
+                    <i class="fas fa-tasks"></i>
+                        <span>Preferencias</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-title">Profesor</li>
 
