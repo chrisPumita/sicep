@@ -1,3 +1,3 @@
 <?php
-include_once "../control/controlDependencias.php";
-return json_encode(getListaDepartamentos());
+    include_once "../control/controlGeneral.php";
+    echo json_encode(getListaDepartamentos());

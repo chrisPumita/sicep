@@ -5,75 +5,8 @@
 <head>
     <?php include "includes/head.php"?>
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
-    <style>
-        /*  bhoechie tab */
-        div.bhoechie-tab-container {
-        z-index: 10;
-        background-color: #ffffff;
-        padding: 0 !important;
-        border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-        -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        background-clip: padding-box;
-        opacity: 0.97;
-        filter: alpha(opacity=97);
-        }
-        div.bhoechie-tab-menu {
-        padding-right: 0;
-        padding-left: 0;
-        padding-bottom: 0;
-        }
-        div.bhoechie-tab-menu div.list-group {
-        margin-bottom: 0;
-        }
-        div.bhoechie-tab-menu div.list-group>a {
-        margin-bottom: 0;
-        }
-        div.bhoechie-tab-menu div.list-group>a .glyphicon,
-        div.bhoechie-tab-menu div.list-group>a .fa {
-        color: #5A55A3;
-        }
-        div.bhoechie-tab-menu div.list-group>a:first-child {
-        border-top-right-radius: 0;
-        -moz-border-top-right-radius: 0;
-        }
-        div.bhoechie-tab-menu div.list-group>a:last-child {
-        border-bottom-right-radius: 0;
-        -moz-border-bottom-right-radius: 0;
-        }
-        div.bhoechie-tab-menu div.list-group>a.active,
-        div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
-        div.bhoechie-tab-menu div.list-group>a.active .fa {
-        background-color: var(--primary);
-        background-image: var(--primary);
-        color: #ffffff;
-        }
-        div.bhoechie-tab-menu div.list-group>a.active:after {
-        content: '';
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        margin-top: -13px;
-        border-left: 0;
-        border-bottom: 13px solid transparent;
-        border-top: 13px solid transparent;
-        border-left: 10px solid #5A55A3;
-        }
-        div.bhoechie-tab-content {
-        background-color: #ffffff;
-        /* border: 1px solid #eeeeee; */
-        padding-left: 20px;
-        padding-top: 10px;
-        }
-        div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
-        display: none;
-        }
-        .img-config {
-        width: 3em;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/preferences.css">
+
 </head>
 
 <body>
@@ -177,7 +110,6 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbl-cursos">
-
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
@@ -211,7 +143,6 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbl-universidades">
-
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
@@ -239,48 +170,11 @@
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">#</th>
-                                                                <th scope="col">ID</th>
                                                                 <th scope="col">Nombre</th>
                                                                 <th scope="col">Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbl-procedencias">
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>001</td>
-                                                                <td>Comunidad FESC</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>002</td>
-                                                                <td>Ex-Alumno</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>003</td>
-                                                                <td>Externo</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
@@ -308,7 +202,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">#</th>
-                                                                <th scope="col">ID</th>
                                                                 <th scope="col">Edificio</th>
                                                                 <th scope="col">Aula</th>
                                                                 <th scope="col">Campo</th>
@@ -317,51 +210,6 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbl-aulas">
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>001</td>
-                                                                <td>A1</td>
-                                                                <td>101</td>
-                                                                <td>4</td>
-                                                                <td>30</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>002</td>
-                                                                <td>A2</td>
-                                                                <td>212</td>
-                                                                <td>4</td>
-                                                                <td>35</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>003</td>
-                                                                <td>E1</td>
-                                                                <td>301</td>
-                                                                <td>1</td>
-                                                                <td>20</td>
-                                                                <!-- BOTON ACCIONES -->
-                                                                <td>
-                                                                    <div class="btn-group" role="group" aria-label="acciones">
-                                                                        <button type="button" class="btn btn-primary">Editar</button>
-                                                                        <button type="button" class="btn btn-danger">Quitar</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
@@ -396,7 +244,6 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbl-docs">
-
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->

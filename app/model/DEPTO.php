@@ -61,7 +61,7 @@ class DEPTO extends CONEXION_M
         $this->close();
         return $result;
     }
-    function listaDepartamentos(){
+    function queryListaDepartamentos(){
         $query="SELECT * FROM `departamentos` WHERE id_depto >0 ORDER BY `departamentos`.`nombre` ASC";
         $this->connect();
         $result = $this-> getData($query);

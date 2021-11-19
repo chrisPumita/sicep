@@ -110,7 +110,9 @@ class DOCUMENTO extends CONEXION_M implements I_DOCUMENTOS
     function consultaDocumentos()
     {
         $this->connect();
-        $datos = $this-> getData("SELECT * FROM `documento` WHERE  `documento`.`estatus` >0 ");
+        $query = "SELECT `id_documento`, `nombre_doc`, `formato_admitido`, `tipo`, `peso_max_mb`, `estatus` 
+                    FROM `documento` WHERE  `documento`.`estatus` > 0 ";
+        $datos = $this-> getData($query);
         $this->close();
         return $datos;
     }

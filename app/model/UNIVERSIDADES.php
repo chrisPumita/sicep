@@ -1,7 +1,8 @@
 <?php
 
+include_once "../model/CONEXION_M.php";
 
-class UNIVERSIDADES
+class UNIVERSIDADES extends CONEXION_M
 {
 	private $id_universidad;
 	private $nombre;
@@ -55,4 +56,13 @@ class UNIVERSIDADES
         $this->siglas = $siglas;
     }
 
+    function queryListaUniversidades(){
+        $query="SELECT * FROM universidades 
+                where id_universidad <> 0 
+                ORDER BY nombre ASC";
+        $this->connect();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
+    }
 }

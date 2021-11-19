@@ -133,6 +133,32 @@ class AULAS extends CONEXION_M
         return $result;
     }
 
+    function listaAulas($filtro, $tipo){
+        switch ($tipo) {
+            case 0:
+                $filtro = "";
+                break;
+            case 1:
+                //Filtrar por 1: EDIFICIO
+                $filtro = " WHERE edificio LIKE '". $filtro."'";
+                break;
+            case 2:
+                //Filtrar por 1: Campus (1 0 4)
+                $filtro = " WHERE campus LIKE '". $filtro."'";
+                break;
+            default:
+                $filtro = "";
+                break;
+        }
+
+        $query="SELECT `id_aula`, `edificio`, `aula`, `campus`, `cupo`, `estado` 
+                FROM `aulas` ".$filtro." ORDER BY `aulas`.`edificio`, `aulas`.`aula` ASC";
+        $this->connect();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
+    }
+
 
 
 

@@ -1,3 +1,3 @@
 <?php
 include_once "../control/controlDependencias.php";
-echo consultaProcedencias();
+echo json_encode(consultaProcedencias());
