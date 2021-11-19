@@ -404,10 +404,10 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar-horario">
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
                                                             <i class="fas fa-plus"></i>Agregar
-                                                        </button>   
-                                                    </div>
+                                                        </button>                                                          
+                                                    </div>                                                    
                                                     <div class="tab-pane table-responsive" id="horario-virtual" role="tabpanel" aria-labelledby="tabla-virtual">
                                                     <h4>Horario Virtual</h4>
                                                         <table class="table table-hover table-striped" id="tblVirtual">
@@ -455,7 +455,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar-horario">
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
                                                             <i class="fas fa-plus"></i>Agregar
                                                         </button>
                                                     </div>
@@ -566,8 +566,11 @@
                                                 <!-- BOTON ACCIONES -->
                                                 <td>
                                                     <a href="#" class="btn btn-outline-primary"><i class="fas fa-folder"></i></a>
-                                                    <a href="#" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
-                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-times-circle"></i></a>
+                                                    <a href="#" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>                                                   
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion">
+                                                        <a class="btn btn-outline-primary"><i class="fas fa-times-circle"></i></a>
+                                                    </button>
+                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -582,10 +585,13 @@
 
         </div>
         <footer class="text-center text-white ">
+        <?php include "modals/modal-horario-presencial.php"?> 
+        <?php include "modals/modal-horario-virtual.php"?> 
+        <?php include "modals/modal-cancelar-insc.php"?> 
             <?php include "modals/generalModals.php"?>
             <?php include "modals/modal-editar-detalles-asignacion.php"?>
             <?php include "modals/modal-editar-descuentos.php"?>
-            <?php include "modals/modal-agregar-horario.php"?>            
+            <?php include "modals/modal-horario-presencial.php"?>            
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
