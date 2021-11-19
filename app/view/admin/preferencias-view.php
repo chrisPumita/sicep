@@ -92,7 +92,7 @@
                                     <div class="bhoechie-tab-content active">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/depto1.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Departamentos</h2>
+                                            <h2>Departamentos</h2>
                                             <p>
                                                 Departamentos disponibles del sistema
                                             </p>
@@ -113,9 +113,11 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#departamentos">
-                                                    Agregar Nuevo
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" >Nuevo</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +126,7 @@
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/uni1.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Universidades</h2>
+                                            <h2>Universidades</h2>
                                             <p>
                                                 Agregue o edite las Universidades
                                             </p>
@@ -146,9 +148,11 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#universidades">
-                                                    Agregar Nueva
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" >Nuevo</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,10 +161,11 @@
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/comunidad1.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Procedencias de la comunidad</h2>
+                                            <h2>Procedencias de la comunidad</h2>
                                             <p>
                                                 Agregue o edite las procedencias principales del sistema
                                             </p>
+
                                         </div>
                                         <div class="container">
                                             <h3>Procedencias almacenadas</h3>
@@ -178,9 +183,11 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#procedencias">
-                                                    Agregar Nueva
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +196,7 @@
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/home1.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Aulas de la Facultad</h2>
+                                            <h2>Aulas de la Facultad</h2>
                                             <p>
                                                 Agregue o edite las aulas disponibles para impartir cursos de forma presencial
                                             </p>
@@ -213,9 +220,11 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aulas">
-                                                    Agregar Nuevo
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +233,7 @@
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/doc3.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Tipo de Documentos</h2>
+                                            <h2>Tipo de Documentos</h2>
                                             <p>
                                                 Agregue o edite las documentos que podra solicitar al momento de abrir un grupo
                                             </p>
@@ -247,9 +256,11 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#documentos">
-                                                    Agregar Nuevo
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -258,51 +269,53 @@
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/constancia2.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Constancias de los Profesores</h2>
+                                            <h2>Constancias de los Profesores</h2>
                                             <p>
                                                 Modifique el estilo de la constancia que se le entregará al profesor.
                                             </p>
                                         </div>
                                         <img src="../assets/images/deposit-img/curso-excel.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso" id="preview">
-                                        <div class="card-body">
-                                            <h6 class="card-title"><strong>Plantilla de la Constancia</strong></h6>
-                                            <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="file" class="custom-file-input" id="preview" accept="image/*">
-                                                    <label class="custom-file-label" for="preview" data-browse="Elegir">Seleccione una imagen</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a href="#"><button type="button" class="btn btn-warning btn-sec btn-block">Quitar</button></a>
+                                        <h6 class="card-title"><strong>Plantilla de la Constancia</strong></h6>
+                                        <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                <button type="button" class="btn btn-primary me-1 mb-1">Actualizar</button>
+                                        </div>
+                                        </div>
                                     </div>
                                     <!-- Constancias alumno section -->
                                     <div class="bhoechie-tab-content">
                                         <div class="text-center">
                                             <img src="../assets/images/icons/constancia2.svg" class="card-img-top img-config" alt="">
-                                            <h2 style="margin-top: 0;color:#55518a">Constancias de los Alumnos</h2>
+                                            <h2>Constancias de los Alumnos</h2>
                                             <p>
                                                 Modifique el estilo de la constancia que se le entregará al alumno.
                                             </p>
                                         </div>
                                         <img src="../assets/images/deposit-img/curso-excel.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso" id="preview">
-                                        <div class="card-body">
-                                            <h6 class="card-title"><strong>Plantilla de la Constancia</strong></h6>
-                                            <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="file" class="custom-file-input" id="preview" accept="image/*">
-                                                    <label class="custom-file-label" for="preview" data-browse="Elegir">Seleccione una imagen</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a href="#"><button type="button" class="btn btn-warning btn-sec btn-block">Quitar</button></a>
+                                        <h6 class="card-title"><strong>Plantilla de la Constancia</strong></h6>
+                                        <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                <button type="button" class="btn btn-primary me-1 mb-1" >Actualizar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,26 @@
     --gray: #616A6B;
 }
 /*@over botstrap styles*/
+#main {
+    padding: 0!important;
+}
+
+.page-content{
+    padding: 2rem!important;
+}
+
+header{
+    display:none !important;
+}
+
+@media screen and (max-width: 1199px){
+    header{
+        margin-top: 2rem!important;
+        margin-left: 2rem!important;
+        display:block !important;
+    }
+}
+
 
 .bg-primary{background-color: var(--primary) !important;}
 .bg-light{background-color: var(--ligth) !important;}
