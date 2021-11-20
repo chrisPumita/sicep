@@ -115,7 +115,8 @@
                                                     <!-- Button trigger modal -->
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" >Nuevo</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal_depto">Nuevo</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,7 +151,8 @@
                                                     <!-- Button trigger modal -->
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" >Nuevo</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal_uni">Nuevo</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,7 +187,9 @@
                                                     <!-- Button trigger modal -->
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal_procedencia">
+                                                                Nuevo</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -222,7 +226,8 @@
                                                     <!-- Button trigger modal -->
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal_aulas">Nuevo</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,6 +254,7 @@
                                                                 <th scope="col">Nombre</th>
                                                                 <th scope="col">Formato</th>
                                                                 <th scope="col">Peso máximo</th>
+                                                                <th scope="col">Acredita</th>
                                                                 <th scope="col">Acciones</th>
                                                             </tr>
                                                         </thead>
@@ -258,7 +264,8 @@
                                                     <!-- Button trigger modal -->
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1">Nuevo</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal_documentos">Nuevo</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -320,9 +327,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <h1>Tabla de preferencias</h1>
                     </div>
                 </div>
             </section>

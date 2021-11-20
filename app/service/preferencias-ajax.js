@@ -22,15 +22,15 @@ function consultaDeptos() {
                     (obj_result)=>
                     {
                         cont ++;
-                        template += `<tr>
+                        template += `<tr id="${obj_result.id_depto}">
                                     <th scope="row">${cont}</th>
                                     <td>${obj_result.nombre}</td>
                                     <!-- BOTON ACCIONES -->
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="acciones">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#departamentos">Editar</button>
-                                            <button type="button" class="btn btn-danger">Quitar</button>
-                                        </div>
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#departamentos"
+                                        data-bs-toggle="modal" data-bs-target="#modal_depto">
+                                        <i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger deleteDepto"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>`;
                     }
@@ -56,16 +56,16 @@ function consultaUnis() {
                     (obj_result)=>
                     {
                         cont ++;
-                        template += `<tr>
+                        template += `<tr id="${obj_result.id_universidad}">
                                         <th scope="row">${cont}</th>
                                         <td>${obj_result.nombre}</td>
                                         <td>${obj_result.siglas}</td>
                                         <!-- BOTON ACCIONES -->
                                         <td>
-                                            <div class="btn-group" role="group" aria-label="acciones">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#universidades">Editar</button>
-                                                <button type="button" class="btn btn-danger">Quitar</button>
-                                            </div>
+                                            <button type="button" class="btn btn-outline-primary" 
+                                            data-bs-toggle="modal" data-bs-target="#modal_uni">
+                                            <i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger deleteUni"><i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>`;
                     }
@@ -90,15 +90,15 @@ function consultaProcedencias() {
                     (obj)=>
                     {
                         cont ++;
-                        template += `<tr>
+                        template += `<tr id="${obj.id_tipo_procedencia}">
                             <th scope="row">${cont}</th>
                             <td>${obj.tipo_procedencia}</td>
                             <!-- BOTON ACCIONES -->
                             <td>
-                                <div class="btn-group" role="group" aria-label="acciones">
-                                    <button type="button" class="btn btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-danger">Quitar</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary" 
+                                data-bs-toggle="modal" data-bs-target="#modal_procedencia">
+                                <i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger deteleProcedencia"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
                     }
@@ -136,10 +136,10 @@ function consultaAulas(filtro,tipo) {
                             <td>${obj.cupo}</td>
                             <!-- BOTON ACCIONES -->
                             <td>
-                                <div class="btn-group" role="group" aria-label="acciones">
-                                    <button type="button" class="btn btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-danger">Quitar</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary" 
+                                data-bs-toggle="modal" data-bs-target="#modal_aulas">
+                                <i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger deleteAula"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
                     }
@@ -163,19 +163,20 @@ function consultaDocs() {
                 obj_result.forEach(
                     (obj)=>
                     {
+                        let acre = obj.tipo == "1" ?` <i class="fas fa-user-shield"></i> ADMIN`:`CUALQUIERA`;
                         cont ++;
-                        template += `
-                        <tr>
+                        template += `<tr id="${obj.id_documento}">
                             <th scope="row">${cont}</th>
                             <td>${obj.nombre_doc}</td>
                             <td>${obj.formato_admitido}</td>
                             <td>${obj.peso_max_mb}MB</td>
+                            <td>${acre}</td>
                             <!-- BOTON ACCIONES -->
                             <td>
-                                <div class="btn-group" role="group" aria-label="acciones">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#documentos">Editar</button>
-                                    <button type="button" class="btn btn-danger">Quitar</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary"
+                                data-bs-toggle="modal" data-bs-target="#modal_documentos">
+                                <i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger deleteDocumento"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                         `;
@@ -186,3 +187,44 @@ function consultaDocs() {
         }
     );
 }
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".deleteDocumento", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+  //  var url = './detalles-profesor';
+  //  redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".deleteAula", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    //  var url = './detalles-profesor';
+    //  redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".deteleProcedencia", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    //  var url = './detalles-profesor';
+    //  redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".deleteUni", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    //  var url = './detalles-profesor';
+    //  redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".deleteDepto", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    //  var url = './detalles-profesor';
+    //  redirect_by_post(url, {  id: id }, false);
+});

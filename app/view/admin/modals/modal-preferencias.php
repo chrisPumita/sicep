@@ -1,151 +1,214 @@
-<!--start modal zone-->
-        <!-- Inicia Modal Departamentos-->
-        <div class="modal fade" id="departamentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Departamentos</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+<!-- Inicia Modal Departamentos-->
+<!-- Button trigger for deparmanto themes modal -->
+<div class="modal fade text-left" id="modal_depto" tabindex="-1" role="dialog" aria-labelledby="modal_depto"
+     aria-hidden="true">
+    <div class="modal-sm modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="modal_depto">
+                    Departamento
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="hidden" class="form-control" id="id_depto">
+                        <input type="text" class="form-control" id="nombre" aria-describedby="deptoHelp" placeholder="Nombre del Departamento">
+                        <small id="deptoHelp" class="form-text text-muted">Escriba el nombre del departamento</small>
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="hidden" class="form-control" id="id_depto" aria-describedby="deptoHelp">
-                                <input type="text" class="form-control" id="nombre" aria-describedby="deptoHelp">
-                                <small id="deptoHelp" class="form-text text-muted">Escriba el nombre del departamento</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
         <!-- Fin Modal Departamentos -->
         <!-- Inicia Modal Universidades-->
-        <div class="modal fade" id="universidades" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Universidades</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+<div class="modal fade text-left" id="modal_uni" tabindex="-1" role="dialog" aria-labelledby="modal_depto"
+     aria-hidden="true">
+    <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="modal_depto">
+                    Universidades
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label for="nombreUni" class="text-primary">Nombre</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <input type="text" class="form-control" name="nombreUni" id="nombreUni" placeholder="Universidad Nacional Autónoma de Mexico">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="nombreUni" class="text-primary">Siglas:</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <input type="text" class="form-control" name="nombreUni" id="nombreUni" placeholder="Nombre del curso" placeholder="UNAM">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="hidden" class="form-control" id="id_uni" aria-describedby="uniHelp">
-                                <input type="text" class="form-control" id="nombre-uni" aria-describedby="uniHelp">
-                                <small id="uniHelp" class="form-text text-muted">Escriba el nombre de la institución</small>
-                                <label class="mt-3" for="siglas">Siglas:</label>
-                                <input type="hidden" class="form-control" id="id_siglas" aria-describedby="siglasHelp">
-                                <input type="text" class="form-control" id="siglas-uni" aria-describedby="siglasHelp">
-                                <small id="siglasHelp" class="form-text text-muted">Escriba las siglas de la institución</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
         <!-- Fin Modal Universidades -->
         <!-- Inicia Modal Procedencias-->
-        <div class="modal fade" id="procedencias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Procedencias</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+<div class="modal fade text-left" id="modal_procedencia" tabindex="-1" role="dialog" aria-labelledby="modal_procedencia"
+     aria-hidden="true">
+    <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="modal_procedencia">
+                    Procedencias
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre_procedencia">Procedencia:</label>
+                        <input type="hidden" class="form-control" id="id_procedencia" value="0">
+                        <input type="text" class="form-control" id="nombre_procedencia" aria-describedby="deptoHelp" placeholder="Defina una procedencia">
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="hidden" class="form-control" id="id_proce" aria-describedby="proceHelp">
-                                <input type="text" class="form-control" id="nombre" aria-describedby="proceHelp">
-                                <small id="proceHelp" class="form-text text-muted">Escriba el nombre la procedencia</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
         <!-- Finaliza Modal Procedencias -->
         <!-- Inicia Modal Aulas-->
-        <div class="modal fade" id="aulas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Aulas</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+<div class="modal fade text-left" id="modal_aulas" tabindex="-1" role="dialog" aria-labelledby="modal_aulas"
+     aria-hidden="true">
+    <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="modal_aulas">
+                    Aulas
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label for="edificio" class="text-primary">Edificio</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <input type="hidden" class="form-control" id="id_edificio" aria-describedby="edificioHelp">
+                            <input type="text" class="form-control" id="edificio" aria-describedby="edificioHelp" placeholder="Eje. A1, H, A2..">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="aula" class="text-primary">Aula:</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <input type="text" class="form-control" id="aula" aria-describedby="aulaHelp" placeholder="101,201...">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="edificio">Edificio:</label>
-                                <input type="hidden" class="form-control" id="id_edificio" aria-describedby="edificioHelp">
-                                <input type="text" class="form-control" id="edificio" aria-describedby="edificioHelp">
-                                <small id="edificioHelp" class="form-text text-muted">Escriba el edificio</small>
-                                <label class="mt-3" for="aula">Aula:</label>
-                                <input type="hidden" class="form-control" id="id_aula" aria-describedby="aulaHelp">
-                                <input type="text" class="form-control" id="aula" aria-describedby="aulaHelp">
-                                <small id="aulaHelp" class="form-text text-muted">Escriba el aula</small>
-                                <label class="mt-3" for="campo">Campo:</label>
-                                <input type="hidden" class="form-control" id="id_campo" aria-describedby="campoHelp">
-                                <input type="text" class="form-control" id="campo" aria-describedby="campoHelp">
-                                <small id="campoHelp" class="form-text text-muted">Escriba el campo</small>
-                                <label class="mt-3" for="cupo">Cupo:</label>
-                                <input type="hidden" class="form-control" id="id_cupo" aria-describedby="cupoHelp">
-                                <input type="text" class="form-control" id="cupo" aria-describedby="cupoHelp">
-                                <small id="cupoHelp" class="form-text text-muted">Escriba el cupo</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label for="edificio" class="text-primary">Campo</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <select class="form-control" id="abreviatura" name="abreviatura">
+                                <option value="Campor 1">Campo 1.</option>
+                                <option value="Campo 4" selected>Campo 4</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="Cupo" class="text-primary">Cupo:</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <input type="number" min="1" class="form-control" id="Cupo" aria-describedby="aulaHelp" placeholder="0">
+                        </div>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
         <!-- Finaliza Modal Aulas -->
         <!-- Inicia Modal Documentos-->
-        <div class="modal fade" id="documentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Documentos</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+<div class="modal fade text-left" id="modal_documentos" tabindex="-1" role="dialog" aria-labelledby="modal_documentos"
+     aria-hidden="true">
+    <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="modal_documentos">
+                    Documentos de entrega
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="nombre_doc" class="text-primary">Documento:</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            <input type="hidden" class="form-control" id="id_doc" aria-describedby="docHelp">
+                            <input type="text" class="form-control" id="nombre_doc" aria-describedby="docHelp">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="edificio" class="text-primary">Formato</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            <select class="form-control" id="abreviatura" name="abreviatura">
+                                <option value="PDF">PDF</option>
+                                <option value="IMG" selected>Imagen</option>
+                                <option value="DOC" selected>Documento de Word</option>
+                                <option value="%" selected>Cualquiera</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="hidden" class="form-control" id="id_doc" aria-describedby="docHelp">
-                                <input type="text" class="form-control" id="nombre-doc" aria-describedby="docHelp">
-                                <small id="docHelp" class="form-text text-muted">Escriba el nombre del documento</small>
-                                <label class="mt-3" for="formato">Formato:</label>
-                                <input type="hidden" class="form-control" id="id_formato" aria-describedby="formatoHelp">
-                                <input type="text" class="form-control" id="formato-doc" aria-describedby="formatoHelp">
-                                <small id="formatoHelp" class="form-text text-muted">Escriba el formato del documento</small>
-                                <label class="mt-3" for="peso">Peso Máximo:</label>
-                                <input type="hidden" class="form-control" id="id_peso" aria-describedby="pesoHelp">
-                                <input type="text" class="form-control" id="peso-doc" aria-describedby="pesoHelp">
-                                <small id="pesoHelp" class="form-text text-muted">Escriba el tamaño del documento</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="peso_max" class="text-primary">Peso Máximo:</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            <input type="number" min="1" class="form-control" id="peso_max" aria-describedby="aulaHelp" placeholder="0">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="Cupo" class="text-primary">Revision:</label>
+                        </div>
+                        <div class="col-md-9 form-group align-left">
+                                <input type="checkbox" class="form-check-input form-check-danger form-check-glow" name="customCheck" id="customColorCheck6">
+                                <label class="form-check-label  align-left" for="customColorCheck6">Permitir solo a Admin</label>
+                        </div>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
         <!-- Finaliza Modal Documentos -->
         <!-- end modal zone-->
