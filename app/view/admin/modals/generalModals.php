@@ -2,8 +2,7 @@
 <!--AGREGA PROFESOR INVITACION CUENTA -->
 <div class="modal fade text-left" id="addNewProfesor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
-    <div class="modal-lg  modal-dialog modal-dialog-centered modal-dialog-scrollable"
-         role="document">
+     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">

@@ -30,82 +30,7 @@
                         <div class="col-sm-12 mb-3 mb-sm-0">
                             <h3 class="text-secondary mb-4">Descuentos personalizados</h3>
                             <div class="mt-1 mb-1 overflow-auto">
-                                <table class="table table-hover text-left">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Dirigido a:</th>
-                                        <th scope="col">Aplicar % Descuento</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="procedencias">
-                                    <tr id_procedencia="1">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="1">
-                                            </div>
-                                        </td>
-                                        <td>Comunidad FESC</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num1">
-                                        </td>
-                                    </tr>
-                                    <tr id_procedencia="2">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="2">
-                                            </div>
-                                        </td>
-                                        <td>Comunidad UNAM</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num2">
-                                        </td>
-                                    </tr>
-                                    <tr id_procedencia="3">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="3">
-                                            </div>
-                                        </td>
-                                        <td>Ex-Alumno FESC</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num3">
-                                        </td>
-                                    </tr>
-                                    <tr id_procedencia="4">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="4">
-                                            </div>
-                                        </td>
-                                        <td>Ex-Alumno UNAM</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num4">
-                                        </td>
-                                    </tr>
-                                    <tr id_procedencia="5">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="5">
-                                            </div>
-                                        </td>
-                                        <td>Externos de fuera</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num5">
-                                        </td>
-                                    </tr>
-                                    <tr id_procedencia="6">
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="6">
-                                            </div>
-                                        </td>
-                                        <td>Personal UNAM</td>
-                                        <td>
-                                            <input class="form-control" type="number" disabled="" value="0" id="num6">
-                                        </td>
-                                    </tr></tbody>
-                                </table>
+
                             </div>
                         </div>
                     </div>
@@ -121,3 +46,4 @@
         </div>
     </div>
 </div>
+
