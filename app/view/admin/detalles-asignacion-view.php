@@ -501,8 +501,8 @@
                                                     <td></td>
                                                     <!-- BOTON ACCIONES -->
                                                     <td>
-                                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-folder"></i></a>
-                                                        <a href="#" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
+                                                        <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
                                                         <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
                                                     </td>
                                                 </tr>
@@ -516,8 +516,8 @@
                                                     <td></td>
                                                     <!-- BOTON ACCIONES -->
                                                     <td>
-                                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-folder"></i></a>
-                                                        <a href="#" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
+                                                        <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
                                                         <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
                                                     </td>
                                                 </tr>
