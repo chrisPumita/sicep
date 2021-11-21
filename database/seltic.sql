@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2021 a las 03:12:36
+-- Tiempo de generación: 21-11-2021 a las 21:58:09
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -87,13 +87,13 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona`, `matricula`, `nombre_uni`, `id_tipo_procedencia_fk`, `carrera_especialidad`, `email`, `pw`, `fecha_registro`, `perfil_image`, `estatus`) VALUES
-(1, 15, 2, 20210517145526, '312260633', '', 1, 'Informatica', 'cesar.hpp96@hotmail.com', 'fd412178b6640dcca278604231bdf31b', '2021-05-17 14:55:26', '', 0),
-(2, 15, 2, 20210517185211, '12364HMCN', '', 2, 'Derecho', 'lucia@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-17 18:52:11', '', 1),
-(3, 15, 2, 20210528160010, '548754215487', '', 1, 'Informatica', 'chris@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-28 16:00:10', '', 1),
-(4, 15, 3, 4, '8462215', '', 2, 'Economia', 'juan@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-01 18:49:53', '', 0),
-(5, 15, 2, 2, '9874631', '', 4, 'Matematicas aplicadas a la computacion', 'paola@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-02 18:49:53', '', 1),
-(6, 283, 2, 20210609044700, '2521515', '', 1, 'Informatica', 'juan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-06-09 04:47:00', '', 1),
-(7, 721, 2, 20210706223646, '3125252525', '', 1, 'Informatica', 'fernando@gmail.com', '6ebe76c9fb411be97b3b0d48b791a7c9', '2021-07-06 22:36:46', '', 1);
+(-3, 15, 3, 20210528160010, '548754215487', 'IPN', 1, 'Informatica', 'chris@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-28 16:00:10', './resource/default-avatar.jpg', 1),
+(1, 15, 2, 20210517145526, '312260633', 'UNAM', 1, 'Informatica', 'cesar.hpp96@hotmail.com', 'fd412178b6640dcca278604231bdf31b', '2021-05-17 14:55:26', './resource/default-avatar.jpg', 0),
+(2, 15, 2, 20210517185211, '12364HMCN', 'UNAM', 2, 'Derecho', 'lucia@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-17 18:52:11', './resource/default-avatar.jpg', 1),
+(4, 15, 3, 4, '8462215', 'UVM', 2, 'Economia', 'juan@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-01 18:49:53', './resource/default-avatar.jpg', 0),
+(5, 15, 2, 2, '9874631', 'UNAM', 4, 'Matematicas aplicadas a la computacion', 'paola@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-02 18:49:53', './resource/default-avatar.jpg', 1),
+(6, 283, 2, 20210609044700, '2521515', 'TEC', 1, 'Informatica', 'juan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-06-09 04:47:00', './resource/default-avatar.jpg', 1),
+(7, 721, 3, 20210706223646, '3125252525', 'IPN', 1, 'Informatica', 'fernando@gmail.com', '6ebe76c9fb411be97b3b0d48b791a7c9', '2021-07-06 22:36:46', './resource/default-avatar.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -192,10 +192,19 @@ CREATE TABLE `aulas` (
   `id_aula` int(5) NOT NULL,
   `edificio` varchar(10) NOT NULL,
   `aula` varchar(10) NOT NULL,
-  `campus` tinyint(2) NOT NULL,
+  `campus` varchar(30) NOT NULL,
   `cupo` int(5) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `aulas`
+--
+
+INSERT INTO `aulas` (`id_aula`, `edificio`, `aula`, `campus`, `cupo`, `estado`) VALUES
+(1, 'H', '101', 'Campo 4', 50, 1),
+(2, 'H', '102', 'Campo 4', 50, 1),
+(3, 'A1', '101', 'Campo 4', 50, 1);
 
 -- --------------------------------------------------------
 
@@ -358,8 +367,8 @@ CREATE TABLE `documento` (
 
 INSERT INTO `documento` (`id_documento`, `nombre_doc`, `formato_admitido`, `tipo`, `peso_max_mb`, `estatus`) VALUES
 (1, 'CURP', 'pdf', 2, 2, 1),
-(2, 'Credencial', 'pdf', 1, 3, 1),
-(3, 'Ficha de Pago', 'pdf', 1, 3, 1),
+(2, 'CREDENCIAL', 'pdf', 1, 3, 1),
+(3, 'FICHA DE PAGO', 'pdf', 1, 3, 1),
 (4, 'ACTA', 'pdf', 2, 5, 1);
 
 -- --------------------------------------------------------
@@ -448,7 +457,7 @@ INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) VALUES
 
 CREATE TABLE `horario_clase_presencial` (
   `id_horario_pres` bigint(20) NOT NULL,
-  `id_asignacion_fk` int(10) NOT NULL,
+  `id_grupo_fk` int(5) NOT NULL,
   `id_aula_fk` int(5) NOT NULL,
   `dia_semana` tinyint(2) NOT NULL,
   `hora_inicio` time NOT NULL,
@@ -463,7 +472,7 @@ CREATE TABLE `horario_clase_presencial` (
 
 CREATE TABLE `horario_clase_virtual` (
   `id_horario_virtual` int(10) NOT NULL,
-  `id_asignacion_fk` int(10) NOT NULL,
+  `id_grupo_fk` int(5) NOT NULL,
   `dia_semana` tinyint(2) NOT NULL,
   `hora_inicio` time NOT NULL,
   `duracion` time NOT NULL,
@@ -3318,7 +3327,7 @@ ALTER TABLE `grupo`
 --
 ALTER TABLE `horario_clase_presencial`
   ADD PRIMARY KEY (`id_horario_pres`),
-  ADD KEY `id_asignacion_fk` (`id_asignacion_fk`),
+  ADD KEY `id_asignacion_fk` (`id_grupo_fk`),
   ADD KEY `id_aula_fk` (`id_aula_fk`);
 
 --
@@ -3326,7 +3335,7 @@ ALTER TABLE `horario_clase_presencial`
 --
 ALTER TABLE `horario_clase_virtual`
   ADD PRIMARY KEY (`id_horario_virtual`),
-  ADD KEY `id_asignacion_fk` (`id_asignacion_fk`);
+  ADD KEY `id_asignacion_fk` (`id_grupo_fk`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -3438,7 +3447,7 @@ ALTER TABLE `asignacion_grupo`
 -- AUTO_INCREMENT de la tabla `aulas`
 --
 ALTER TABLE `aulas`
-  MODIFY `id_aula` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_aula` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `constancia_alumno`
@@ -3615,13 +3624,13 @@ ALTER TABLE `grupo`
 --
 ALTER TABLE `horario_clase_presencial`
   ADD CONSTRAINT `horario_clase_presencial_ibfk_1` FOREIGN KEY (`id_aula_fk`) REFERENCES `aulas` (`id_aula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `horario_clase_presencial_ibfk_2` FOREIGN KEY (`id_asignacion_fk`) REFERENCES `asignacion_grupo` (`id_asignacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `horario_clase_presencial_ibfk_2` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id_grupo`);
 
 --
 -- Filtros para la tabla `horario_clase_virtual`
 --
 ALTER TABLE `horario_clase_virtual`
-  ADD CONSTRAINT `horario_clase_virtual_ibfk_1` FOREIGN KEY (`id_asignacion_fk`) REFERENCES `asignacion_grupo` (`id_asignacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `horario_clase_virtual_ibfk_1` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id_grupo`);
 
 --
 -- Filtros para la tabla `inscripcion`

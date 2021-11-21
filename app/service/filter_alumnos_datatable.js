@@ -5,13 +5,11 @@ $(document).ready(function () {
 
 async function consultaProcedencias() {
     const JSONData = await consultaProcedenciasAjax();
-    console.log(JSONData);
     buildHTMLProcedencias(JSONData);
 }
 
 async function consultaUnis() {
     const JSONData = await consultaUnisAjax();
-    console.log(JSONData);
    buildHTMLTblUnis(JSONData);
 }
 

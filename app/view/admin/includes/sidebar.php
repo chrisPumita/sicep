@@ -102,10 +102,10 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="./cuentas-alumnos">Revisar cuentas</a>
+                            <a href="./lista-alumnos">Ver todos</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="./lista-alumnos">Ver todos</a>
+                            <a href="./cuentas-alumnos">Revisar cuentas <span class="badge bg-primary">4</span></a>
                         </li>
                     </ul>
                 </li>
