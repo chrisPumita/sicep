@@ -44,7 +44,6 @@ class TIPO_PROCEDENCIA extends CONEXION_M
      * ******************************************************************************/
     function consultaTiposProcedencia()
     {
-        include_once "CONEXION_M.php";
         $query = "SELECT * FROM tipo_procedencia ORDER BY tipo_procedencia ASC";
         $this->connect();
         $result = $this->getData($query);
@@ -53,7 +52,6 @@ class TIPO_PROCEDENCIA extends CONEXION_M
     }
 
     function editarTipoProcedencia(){
-        include_once "CONEXION_M.php";
         $sql = "UPDATE tipo_procedencia SET tipo_procedencia = ". $this->getTipoProcedencia()." 
         WHERE id_tipo_procede =". $this->getIdTipoProcede();
         $this->connect();
@@ -64,7 +62,6 @@ class TIPO_PROCEDENCIA extends CONEXION_M
 
 
     function crearTipoProcedencia(){
-        include_once "CONEXION_M.php";
         $query="INSERT INTO tipo_procedencia (
                 id_procedencia,
                 tipo_procedencia) VALUE(NULL,'".$this->getTipoProcedencia()."')";
@@ -74,9 +71,7 @@ class TIPO_PROCEDENCIA extends CONEXION_M
         return $result;
     }
 
-    function eliminarTipoProcedencia()
-    {
-        include_once "CONEXION_M.php";
+    function eliminarTipoProcedencia(){
         $sql = "DELETE FROM `tipo_procedencia` WHERE `id_tipo_procedencia`=".$this->getIdTipoProcede();
 
         $this->connect();

@@ -275,7 +275,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 d-flex justify-content-end">
-                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modal_documents">
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
                                                 <i class="fas fa-plus"></i> Agregar
                                             </button>
                                         </div>
@@ -558,6 +558,7 @@
             let dataTable = new simpleDatatables.DataTable(table1);
         </script>
         <!-- Agregar solo cuando exista una tabla para mostrar-->
+        <script src="./service/asignacion-detalles.js"></script>
 </body>
 
 </html>
