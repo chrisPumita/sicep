@@ -60,13 +60,52 @@
                         <i class="fas fa-user-check"></i> Alumnos Verificados
                     </div>
                     <div class="card-body">
+                        <div class="row py-3">
+                            <div class="col-12 col-lg-2 col-md-12 ">
+                                <div class="col"><h4><i class="fas fa-filter"></i> Filtrar:</h4></div>
+                            </div>
+                            <div class="col-12 col-lg-3 col-md-4">
+                                <div class="btn-group submitter-group float-right">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">PROCEDENCIA: </div>
+                                    </div>
+                                    <select class="form-control procedencia-dropdown" id="list-procedencias">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 col-md-4">
+                                <div class="btn-group submitter-group float-right">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">UNIVERSIDAD: </div>
+                                    </div>
+                                    <select class="form-control universidad-dropdown" id="list-universidad">
+                                        <option value="">TODOS</option>
+                                        <option value="APROBADO">APROBADOS</option>
+                                        <option value="PENDIENTE">PENDIENTE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 col-md-4">
+                                <div class="btn-group submitter-group float-right">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">ESTATUS: </div>
+                                    </div>
+                                    <select class="form-control status-dropdown">
+                                        <option value="">TODOS</option>
+                                        <option value="ACTIVA">ACTIVAS</option>
+                                        <option value="SUSPENDIDA">SUSPENDIDAS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-hover table-striped" id="tblAlumnos" class="display" style="width:100%">
                             <thead>
                             <tr>
                                 <th>NOMBRE</th>
                                 <th>MATRICULA</th>
-                                <th>PROCEDENCIA</th>
+                                <th>UNIVERSIDAD</th>
                                 <th>CONTACTO</th>
+                                <th>CUENTA</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
@@ -88,6 +127,7 @@
 <script src="./service/general/tipos.js"></script>
 <script src="./service/general/tools.js"></script>
 <script src="./service/datatable-lista-alumnos.js"></script>
+<script src="./service/filter_alumnos_datatable.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 

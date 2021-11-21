@@ -1,3 +1,5 @@
+/* ++++++++++++C O N S T R U C T R O R E S
+                O B J E T O S    H T M L +++++++++*/
 function buildListaDesplCursos(jsonData) {
     let template="";
     jsonData.forEach(curso => {
@@ -5,4 +7,5 @@ function buildListaDesplCursos(jsonData) {
     });
     return template;
 }
+
 

@@ -1,22 +1,6 @@
 $(document).ready(function() {
-    consultaData();
     cargaDatosAlumnosDataTable();
 });
-function consultaData(){
-    $.ajax({
-        "url":"./webhook/lista-alumnos-datatable.php",
-        "data": {
-            "filtro": 1
-        },
-        type: 'POST',
-        success: function (response) {
-            console.log(response);
-        },
-        error: function() {
-            alert("Error occured")
-        }
-    });
-}
 
 function cargaDatosAlumnosDataTable() {
     $('#tblAlumnos').DataTable( {
@@ -70,10 +54,16 @@ function cargaDatosAlumnosDataTable() {
                     }
                 },
                 { data: null,
+                    render: function ( data, type, row ){
+                        let status = row.id_alumno > 0 ? "ACTIVA":"SUSPENDIDA";
+                        return status;
+                    }
+                },
+                { data: null,
                     render: function ( data, type, row ) {
                         let btnAcction = row.id_alumno >= 0 ?
                             `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Suspender Cuenta">
-                                <a href="#" class="btn btn-outline-warning btnChangeStatus"><i class="fas fa-user-clock"></i></a>`:
+                                <a href="#" class="btn btn-outline-warning btnViewPerfile"><i class="fas fa-user-clock"></i></a>`:
                             `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Habilitar Cuenta">
                                 <a href="#" class="btn btn-success btnChangeStatus"><i class="fas fa-user-check"></i></a></span>`;
                         let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfil"><i class="fas fa-id-card-alt"></i></a></span>
@@ -99,10 +89,8 @@ function cargaDatosAlumnosDataTable() {
             }
         },
     } );
-
     //Evita el alert del warning
     $.fn.dataTable.ext.errMode = 'none';
-
     dataTable = $("#tblAlumnos").DataTable({
         "columnDefs": [
             {
@@ -112,53 +100,25 @@ function cargaDatosAlumnosDataTable() {
         ]
     });
 
-    $('.status-dropdown').on('change', function(e){
-        var status = $(this).val();
-        $('.status-dropdown').val(status);
-        console.log(status);
-        dataTable.column(5).search(status).draw();
-    });
-
-    $('.profesor-dropdown').on('change', function(e){
-        var status = $(this).val();
-        $('.profesor-dropdown').val(status);
-        console.log(status);
-        dataTable.column(2).search(status).draw();
-    });
 }
 
+$('.procedencia-dropdown').on('change', function(e){
+    var status = $(this).val();
+    $('.procedencia-dropdown').val(status);
+    console.log(status);
+    dataTable.column(0).search(status).draw();
+});
 
-/*
-<tr id_grupo="3">
-    <td>314265985
-        <span class="badge bg-light-info">
-            <i class="fas fa-check-circle"></i>
-        </span></td><td>
-        <div class="d-flex align-items-center">
-            <div class="avatar avatar-md">
-                <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                <span class="avatar-status bg-danger"></span>
-            </div>
-            <div class="d-flex flex-column justify-content-center px-3">
-                <p class="mb-0 text-xs">Christian René Pioquinto Hernández</p>
-                <p class="text-xs text-primary mb-0">HOMBRE</p>
-            </div>
-        </div>
-    </td>
-    <td>
-        <div class="d-flex flex-column justify-content-center">
-            <p class="mb-0 text-xs">Comunidad FESC</p>
-            <p class="text-xs text-primary mb-0">UNAM</p>
-            <p class="text-xs text-primary mb-0">Informática</p>
-        </div>
-    </td><td>
-        <div class="d-flex flex-column justify-content-center">
-            <p class="mb-0 text-xs">christian.fploppy@gmail.com</p>
-            <p class="text-xs text-primary mb-0">1666054512</p>
-        </div>
-    </td><td>
-        <a href="#" class="btn btn-primary"><i class="far fa-id-card"></i></a>
-        <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
-    </td>
-</tr>
-* */
+$('.universidad-dropdown').on('change', function(e){
+    var status = $(this).val();
+    $('.universidad-dropdown').val(status);
+    console.log(status);
+    dataTable.column(2).search(status).draw();
+});
+
+$('.status-dropdown').on('change', function(e){
+    var status = $(this).val();
+    $('.status-dropdown').val(status);
+    console.log(status);
+    dataTable.column(4).search(status).draw();
+});
