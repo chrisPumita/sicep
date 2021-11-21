@@ -60,94 +60,16 @@
                         <i class="fas fa-user-check"></i> Alumnos Verificados
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
+                        <table class="table table-hover table-striped" id="tblAlumnos" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>MATRICULA</th>
                                 <th>NOMBRE</th>
+                                <th>MATRICULA</th>
                                 <th>PROCEDENCIA</th>
                                 <th>CONTACTO</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_grupo="3">
-                                <td>314265985
-                                    <span class="badge bg-light-info">
-                                        <i class="fas fa-check-circle"></i>
-                                    </span></td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-md">
-                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-danger"></span>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Christian René Pioquinto Hernández</p>
-                                            <p class="text-xs text-primary mb-0">HOMBRE</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">Comunidad FESC</p>
-                                        <p class="text-xs text-primary mb-0">UNAM</p>
-                                        <p class="text-xs text-primary mb-0">Informática</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">christian.fploppy@gmail.com</p>
-                                        <p class="text-xs text-primary mb-0">1666054512</p>
-                                    </div>
-                                </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-primary"><i class="far fa-id-card"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr id_grupo="3">
-                                <td>
-                                    314265985
-                                    <span class="badge bg-light-info">
-                                        <i class="fas fa-check-circle"></i>
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-md">
-                                            <img src="https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4" alt="" srcset="">
-                                            <span class="avatar-status bg-danger"></span>
-
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">Christian René Pioquinto Hernández</p>
-                                            <p class="text-xs text-primary mb-0">HOMBRE</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">Comunidad FESC</p>
-                                        <p class="text-xs text-primary mb-0">UNAM</p>
-                                        <p class="text-xs text-primary mb-0">Informática</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="mb-0 text-xs">christian.fploppy@gmail.com</p>
-                                        <p class="text-xs text-primary mb-0">1666054512</p>
-                                    </div>
-                                </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-primary"><i class="far fa-id-card"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -161,16 +83,11 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-<!-- INCLUDE SERIVES AJAX
-    <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
 <!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+<script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
+<script src="./service/datatable-lista-alumnos.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 

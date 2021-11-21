@@ -2,7 +2,7 @@
     --primary: #196398;
     --second: #CDAC12;
     --ligth : #ffffff;
-    --grey: #efefef;
+    --grey: #dedede;
     --alert:  indianred;
     --gray: #616A6B;
 }
@@ -33,6 +33,7 @@ header{
 .bg-mix{background: linear-gradient(180deg,var(--ligth)50%,var(--grey));}
 .bg-grey{background-color: var(--grey) !important;}
 /*@over botstrap styles TEXT*/
+.text-light-grey{color: var(--grey) !important;}
 .text-primary{    color: var(--primary) !important;}
 .text-secondary{    color: var(--second) !important;}
 .text-grey {    color: var(--gray) !important;}

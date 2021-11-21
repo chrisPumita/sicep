@@ -23,7 +23,7 @@ function cargaDatosProfesoresDataTable() {
                 { data: null,
                     render: function ( data, type, row ){
                     let flagAdmin = estadoProfesorAdmin(row.flagAdmin);
-                        let status = row.estatus_profesor == 1 ? 'success':'danger';
+                        let status = row.estatus_profesor == 1 ? 'success':'warning';
                         let template = `<div class="d-flex align-items-center">
                                         <div class="avatar avatar-md">
                                             <img src="${row.img_perfil}" alt="" srcset="">
@@ -50,10 +50,17 @@ function cargaDatosProfesoresDataTable() {
                 },
                 { data: 'fecha_registro'},
 
-                { defaultContent:
-                        '<a href="#" class="btn btn-outline-primary viewProfesor"><i class="fas fa-clock"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary editProfesor"><i class="fas fa-edit"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary viewGrupos"><i class="fas fa-tasks"></i></a>'
+                { data: null,
+                    render: function ( data, type, row ) {
+                        let btnAcction = row.estatus_profesor != 1 ?
+                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Habilitar Cuenta">
+                                <a href="#" class="btn btn-success btnChangeStatus"><i class="fas fa-user-check"></i></a></span>` :
+                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Inhabilitar Cuenta">
+                                <a href="#" class="btn btn-outline-warning btnChangeStatus"><i class="fas fa-user-clock"></i></a>`;
+                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfil"><i class="fas fa-id-card-alt"></i></a></span>
+                                        ${btnAcction}</div>`;
+                        return template;
+                    }
                 }
             ],
         "language": {
@@ -86,3 +93,12 @@ function cargaDatosProfesoresDataTable() {
         ]
     });
 }
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".btnViewPerfil", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_persona");
+    var url = './detalles-profesor';
+    redirect_by_post(url, {  id: id }, false);
+});

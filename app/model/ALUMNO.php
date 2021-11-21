@@ -1,7 +1,7 @@
 <?php
 
 include_once "PERSONA.php";
-include_once "./interface/I_ALUMNO.php";
+include_once "interface/I_ALUMNO.php";
 class ALUMNO extends  PERSONA implements I_ALUMNO
 {
     private $id_alumno;
@@ -256,16 +256,19 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
 
     public function queryConsultaListaAlumnos($edoFiltro,$idAlumno)
     {
-        $filtro = $edoFiltro > 0 ? " AND per.`estatus` = ".$edoFiltro : "";
-        $filtroIdAlumno = $idAlumno >= 0 ? " AND al.`id_alumno` = ".$idAlumno : "";
+        $filtro = $edoFiltro >= 0 ? " AND  al.`estatus` = ".$edoFiltro : "";
+        $filtroIdAlumno = $idAlumno > 0 ? " AND al.`id_alumno` = ".$idAlumno : "";
         $query = "SELECT al.`id_alumno`, al.`id_municipio`, mun.`id_estado_fk`, mun.`municipio`,
-        al.`matricula`, al.`id_persona`, al.`carrera_especialidad`, 
+        al.`matricula`, al.`id_persona`, al.`carrera_especialidad`, al.perfil_image, al.nombre_uni,
         al.`email`, al.`estatus` AS estatus_alumno, per.`id_persona`, 
         per.`nombre`, per.`app`, per.`apm`, per.`telefono`, 
+       concat(per.`app`,' ', per.`apm`,' ', per.`nombre`) AS nombre_completo,
         per.`estatus` AS estatus_persona, per.`sexo`,tipproc.`id_tipo_procedencia`, 
-        tipproc.`tipo_procedencia` AS nameproc FROM `alumno` al, 
+        tipproc.`tipo_procedencia` AS nameproc, uni.nombre AS uni_name, uni.siglas
+        FROM `alumno` al, universidades uni,
        `persona` per , `tipo_procedencia` tipproc , `municipios` mun
         WHERE al.`id_persona` = per.`id_persona` 
+        AND uni.id_universidad = al.id_universidad
         AND al.`id_municipio` = mun.`id_municipio`
         AND al.`id_tipo_procedencia_fk`= tipproc.`id_tipo_procedencia` 
         ".$filtro." ".$filtroIdAlumno."
