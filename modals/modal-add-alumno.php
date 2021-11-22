@@ -1,8 +1,7 @@
 <!--login form Modal -->
-<div class="modal fade text-left" id="inlineForm" tabindex="-1"
+<div class="modal fade text-left" id="inlineForm"
      role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-    <div class="modal-xl modal-dialog modal-dialog-centered modal-dialog-scrollable"
-         role="document">
+    <div class="modal-xl modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel33">Regístrate</h4>
@@ -11,7 +10,7 @@
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <form action="#">
+            <form id="frm-add-alumno">
                 <div class="modal-body">
                     <div class="form-group row">
                         <div class="col-sm-4 mb-3 mb-sm-0">

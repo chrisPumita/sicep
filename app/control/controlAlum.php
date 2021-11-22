@@ -1,37 +1,35 @@
 <?php
 
-function crearCuentaAlumno($id_municipio, $id_universidad,$matricula,
-                           $nombre_uni,$idProcedencia, $carrera_especialidad,
-                           $email,$pw,$nombre,$app,$apm,$telefono,$sexo){
+function crearCuentaAlumno($params){
     include_once "../model/CLAVES.php";
     //verificar si existe una cuenta
     include_once "../model/ALUMNO.php";
     $al = new ALUMNO();
     $clave = date("YmdHis");
     $al->setIdPersona($clave);
-    $al->setNombre($nombre);
-    $al->setApp($app);
-    $al->setApm($apm);
-    $al->setTelefono($telefono);
-    $al->setSexo($sexo);
+    $al->setNombre($params['nombre']);
+    $al->setApp($params['app']);
+    $al->setApm($params['apm']);
+    $al->setTelefono($params['telefono']);
+    $al->setSexo($params['sexo']);
     //default el estado es 1
     $al->setEstatus("1");
     ///Crear alumno
-    $al->setIdMunicipio($id_municipio);
-    $al->setIdUniversidad($id_universidad);
-    $al->setMatricula($matricula);
+    $al->setIdMunicipio($params['id_municipio']);
+    $al->setIdUniversidad($params['id_universidad']);
+    $al->setMatricula($params['matricula']);
     $al->setNombreUni($nombre_uni);
-    $al->setIdProcedencia($idProcedencia);
-    $al->setCarreraEspecialidad($carrera_especialidad);
-    $al->setEmail($email);
-    $al->setPw(md5($pw));
+    $al->setIdProcedencia($params['idProcedencia']);
+    $al->setCarreraEspecialidad($params['carrera_especialidad']);
+    $al->setEmail($params['email']);
+    $al->setPw(md5($params['pw']));
     // valor por default de la cuenta de alumno = 0
     // porque no se ha validado cuenta de alumno
     $al->setEstatusAlumno("0");
 
-    $result = $al->registraPersona();
+    $result = $al->queryInsertPersona();
     if ($result){
-        $res= $al->agregaAlumno();
+        $res= $al->queryInsertAlumno();
         return $res;
     }
     else{

@@ -12,12 +12,8 @@ $params = [
     "Prefijo" => $_POST['prefijo'],
     "correo" => $_POST['correo'],
     "pwd" => "0000",
-    "keyHash" => "1111",    
+    "keyHash" => "1111"   
 ];
-/*
+
 include_once "../control/controlProfesor.php";
 echo addprofesor($params);
-*/
-var_dump($params);
-//Regressar un array type mensaje
-echo "Datos recibidos";

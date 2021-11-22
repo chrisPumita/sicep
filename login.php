@@ -57,7 +57,7 @@
 
 </div>
 <?php include "./modals/modal-add-alumno.php" ?>
-
+<script src="./app/service/login.js"></script>
 </body>
 <?php include "./includes/js.php" ?>
 
