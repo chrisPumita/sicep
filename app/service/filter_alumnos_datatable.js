@@ -4,14 +4,12 @@ $(document).ready(function () {
 });
 
 async function consultaProcedencias() {
-    const JSONData = await consultaProcedenciasAjax();
-    console.log(JSONData);
+    const JSONData = await consultaProcedenciasAjax("./");
     buildHTMLProcedencias(JSONData);
 }
 
 async function consultaUnis() {
-    const JSONData = await consultaUnisAjax();
-    console.log(JSONData);
+    const JSONData = await consultaUnisAjax("./");
    buildHTMLTblUnis(JSONData);
 }
 

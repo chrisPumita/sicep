@@ -321,7 +321,6 @@ $titulo = "Detalles del curso"
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewTema">
                                     <i class="fas fa-plus"></i> Agregar</button>
                                 </span>
-
                             </div>
                         </div>
                     </div>
@@ -333,31 +332,142 @@ $titulo = "Detalles del curso"
             <!-- creacion de asignacion de profesor -->
             <section class="section">
                 <div class="card">
-                    <div class="row p-3">
-                        <div class="col-lg-1 align-items-center m-auto text-center">
-                            <h2><i class="fas fa-layer-group text-grey"></i></h2>
-                        </div>
-                        <div class="col-lg-9">
-                            <h3>Creacion de asignacion de Grupo</h3>
-                            <div class="form-group">
-                                <label for="sel1">Crear y Asignar un grupo de este curso, seleccione el profesor asignado:</label>
-                                <select class="form-control" id="sel1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3 p-3">
+                                    <div class="col-lg-1 align-items-center m-auto text-center">
+                                        <h2><i class="fas fa-layer-group text-grey"></i></h2>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <h5 class="text-center">Grupos de este Curso</h5>
+                                        <div class="form-group py-3">
+                                            <label for="sel1">Ver horario del grupo:</label>
+                                            <select class="form-control" id="sel1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 align-items-center">
+                                        <button class="btn btn-primary mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
+                                            <i class="fas fa-plus"></i> Grupo</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h4>Horario:</h4>
+                                    <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="lista-alumnos-tabla" data-bs-toggle="list" href="#lista-alumnos" role="tab" aria-selected="true">Precencial</a>
+                                        <a class="list-group-item list-group-item-action" id="lista-solicitudes-tabla" data-bs-toggle="list" href="#lista-solicitudes" role="tab" aria-selected="false">Virtual</a>
+                                    </div>
+                                    <div class="tab-content text-justify">
+                                        <div class="tab-pane fade active show table-responsive" id="lista-alumnos" role="tabpanel" aria-labelledby="lista-alumnos-tabla">
+                                            <h5>Horario presencial:</h5>
+                                            <table class="table table-hover table-striped" id="tblPresencial">
+                                                <thead>
+                                                <tr>
+                                                    <th>HORA</th>
+                                                    <th>LUNES</th>
+                                                    <th>MARTES</th>
+                                                    <th>MIERCOLES</th>
+                                                    <th>JUEVES</th>
+                                                    <th>VIERNES</th>
+                                                    <th>SÁBADO</th>
+                                                    <th>DOMINGO</th>
+                                                    <th> </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbl-HroPresencial">
+                                                <tr id_grupo="1">
+                                                    <td>9:00</td>
+                                                    <td>A21</td>
+                                                    <td></td>
+                                                    <td>A21</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <!-- BOTON ACCIONES -->
+                                                    <td>
+
+                                                    </td>
+                                                </tr>
+                                                <tr id_grupo="2">
+                                                    <td>10:30</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>B23</td>
+                                                    <td></td>
+                                                    <!-- BOTON ACCIONES -->
+                                                    <td>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                <i class="fas fa-plus"></i>Agregar
+                                            </button>
+                                            <button class="btn btn-primary me-1 mb-1"><i class="fas fa-plus"></i>Editar</button>
+                                        </div>
+                                        <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
+                                            <h5>Horario virtual:</h5>
+                                            <table class="table table-hover table-striped" id="tblVirtual">
+                                                <thead>
+                                                <tr>
+                                                    <th>HORA</th>
+                                                    <th>LUNES</th>
+                                                    <th>MARTES</th>
+                                                    <th>MIERCOLES</th>
+                                                    <th>JUEVES</th>
+                                                    <th>VIERNES</th>
+                                                    <th>SÁBADO</th>
+                                                    <th>DOMINGO</th>
+                                                    <th> </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbl-HroVirtual">
+                                                <tr id_grupo="1">
+                                                    <td>9:00</td>
+                                                    <td>ZOOM</td>
+                                                    <td></td>
+                                                    <td>ZOOM</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <!-- BOTON ACCIONES -->
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr id_grupo="2">
+                                                    <td>10:30</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>ZOOM</td>
+                                                    <td></td>
+                                                    <!-- BOTON ACCIONES -->
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus"></i>Agregar</button>
+                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-2 align-items-center">
-                            <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
-                            Crear</button>
+
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- fin creacion de asignacion de profesor -->
-
+                <!-- FIN SECCION SOLICITUDES Y LISTA -->
             <!-- seccion de historico de cursos -->
             <section class="section">
                 <div class="card">
@@ -402,6 +512,8 @@ $titulo = "Detalles del curso"
 
         </div>
         <footer class="text-center text-white ">
+            <?php include "modals/modal-horario-presencial.php" ?>
+            <?php include "modals/modal-horario-virtual.php" ?>
             <?php include "modals/generalModals.php"?>
             <?php include "modals/modal-nuevo-tema.php"?>
             <?php include "modals/modal-pdf-temario.php"?>
@@ -410,6 +522,7 @@ $titulo = "Detalles del curso"
         </footer>
     </div>
 </div>
+
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX

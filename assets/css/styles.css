@@ -25,6 +25,9 @@ header{
         margin-left: 2rem!important;
         display:block !important;
     }
+    .page-content {
+        padding: 1rem!important;
+    }
 }
 
 

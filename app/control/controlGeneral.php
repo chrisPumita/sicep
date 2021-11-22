@@ -22,3 +22,15 @@ function getListaDocumentos(){
     $DOC = new DOCUMENTO();
     return $DOC->consultaDocumentos();
 }
+
+function getListaEstados(){
+    include_once "../model/ESTADO_REP.php";
+    $EDO= new ESTADO_REP();
+    return $EDO->consultaEstados();
+}
+
+function getListaMunicipios($idEstado){
+    include_once "../model/ESTADO_REP.php";
+    $EDO= new ESTADO_REP();
+    return $EDO->consultaMunicipios($idEstado);
+}

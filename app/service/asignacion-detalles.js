@@ -3,7 +3,7 @@ consultaProcedencia();
 });
 
 async function consultaProcedencia() {
-    const jsonData = await consultaProcedenciasAjax();
+    const jsonData = await consultaProcedenciasAjax("./");
     buildHTMLProcedencias(jsonData);
 }
 

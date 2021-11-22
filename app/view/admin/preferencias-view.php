@@ -51,7 +51,7 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row my-4 p-4 bg-white">
+                        <div class="row my-4 bg-white">
                             <div class="col-sm-2 bhoechie-tab-container">
                                 <div class="bhoechie-tab-menu">
                                     <div class="list-group">
@@ -97,27 +97,25 @@
                                                 Departamentos disponibles del sistema
                                             </p>
                                         </div>
-                                        <div class="container">
+                                        <div class="row">
                                             <h3>Departamentos almacenados</h3>
-                                            <div class="row">
-                                                <div id="tbl-containerCursos" class="col-lg-12 overflow-auto table-responsive">
-                                                    <table class="table table-hover table-striped table-sm bg-light">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Nombre</th>
-                                                                <th scope="col">Acciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbl-cursos">
-                                                        </tbody>
-                                                    </table>
-                                                    <!-- Button trigger modal -->
-                                                    <div class="row">
-                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1"
-                                                                    data-bs-toggle="modal" data-bs-target="#modal_depto">Nuevo</button>
-                                                        </div>
+                                            <div id="tbl-containerCursos" class="col-lg-12 overflow-auto table-responsive">
+                                                <table class="table table-hover table-striped table-sm bg-light">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Nombre</th>
+                                                            <th scope="col">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbl-cursos">
+                                                    </tbody>
+                                                </table>
+                                                <!-- Button trigger modal -->
+                                                <div class="row">
+                                                    <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                        <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                data-bs-toggle="modal" data-bs-target="#modal_depto">Nuevo</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,9 +130,8 @@
                                                 Agregue o edite las Universidades
                                             </p>
                                         </div>
-                                        <div class="container">
+                                        <div class="row">
                                             <h3>Universidades almacenadas</h3>
-                                            <div class="row">
                                                 <div id="tbl-containerUniversidades" class="col-lg-12 overflow-auto table-responsive">
                                                     <table class="table table-hover table-striped table-sm bg-light">
                                                         <thead>
@@ -156,7 +153,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- Procedencias section -->
@@ -205,30 +201,28 @@
                                                 Agregue o edite las aulas disponibles para impartir cursos de forma presencial
                                             </p>
                                         </div>
-                                        <div class="container">
+                                        <div class="row">
                                             <h3>Aulas almacenadas</h3>
-                                            <div class="row">
-                                                <div id="tbl-containerAulas" class="col-lg-12 overflow-auto table-responsive">
-                                                    <table class="table table-hover table-striped table-sm bg-light">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Edificio</th>
-                                                                <th scope="col">Aula</th>
-                                                                <th scope="col">Campo</th>
-                                                                <th scope="col">Cupo</th>
-                                                                <th scope="col">Acciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbl-aulas">
-                                                        </tbody>
-                                                    </table>
-                                                    <!-- Button trigger modal -->
-                                                    <div class="row">
-                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1"
-                                                                    data-bs-toggle="modal" data-bs-target="#modal_aulas">Nuevo</button>
-                                                        </div>
+                                            <div id="tbl-containerAulas" class="col-lg-12 overflow-auto table-responsive">
+                                                <table class="table table-hover table-striped table-sm bg-light">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Edificio</th>
+                                                            <th scope="col">Aula</th>
+                                                            <th scope="col">Campo</th>
+                                                            <th scope="col">Cupo</th>
+                                                            <th scope="col">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbl-aulas">
+                                                    </tbody>
+                                                </table>
+                                                <!-- Button trigger modal -->
+                                                <div class="row">
+                                                    <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                        <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                data-bs-toggle="modal" data-bs-target="#modal_aulas">Nuevo</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,30 +237,28 @@
                                                 Agregue o edite las documentos que podra solicitar al momento de abrir un grupo
                                             </p>
                                         </div>
-                                        <div class="container">
+                                        <div class="row">
                                             <h3>Documentos almacenados</h3>
-                                            <div class="row">
-                                                <div id="tbl-containerDocumentos" class="col-lg-12 overflow-auto table-responsive">
-                                                    <table class="table table-hover table-striped table-sm bg-light">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Nombre</th>
-                                                                <th scope="col">Formato</th>
-                                                                <th scope="col">Peso máximo</th>
-                                                                <th scope="col">Acredita</th>
-                                                                <th scope="col">Acciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbl-docs">
-                                                        </tbody>
-                                                    </table>
-                                                    <!-- Button trigger modal -->
-                                                    <div class="row">
-                                                        <div class="col-sm-12 d-flex justify-content-end py-3">
-                                                            <button type="button" class="btn btn-primary me-1 mb-1"
-                                                                    data-bs-toggle="modal" data-bs-target="#modal_documentos">Nuevo</button>
-                                                        </div>
+                                            <div id="tbl-containerDocumentos" class="col-lg-12 overflow-auto table-responsive">
+                                                <table class="table table-hover table-striped table-sm bg-light">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Nombre</th>
+                                                            <th scope="col">Formato</th>
+                                                            <th scope="col">Peso máximo</th>
+                                                            <th scope="col">Acredita</th>
+                                                            <th scope="col">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbl-docs">
+                                                    </tbody>
+                                                </table>
+                                                <!-- Button trigger modal -->
+                                                <div class="row">
+                                                    <div class="col-sm-12 d-flex justify-content-end py-3">
+                                                        <button type="button" class="btn btn-primary me-1 mb-1"
+                                                                data-bs-toggle="modal" data-bs-target="#modal_documentos">Nuevo</button>
                                                     </div>
                                                 </div>
                                             </div>
