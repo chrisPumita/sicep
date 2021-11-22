@@ -36,7 +36,7 @@ function buildHTMLTableDepto(obj_result) {
 }
 
 async function consultaProcedencias() {
-    const JSONData = await consultaProcedenciasAjax();
+    const JSONData = await consultaProcedenciasAjax("./");
     buildHTMLProcedencias(JSONData);
 }
 
@@ -64,7 +64,7 @@ function buildHTMLProcedencias(obj_result) {
 }
 
 async function consultaUnis() {
-    const JSONData = await consultaUnisAjax();
+    const JSONData = await consultaUnisAjax("./");
     buildHTMLTblUnis(JSONData);
 }
 

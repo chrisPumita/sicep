@@ -36,10 +36,10 @@ async function consultaDeptosAjax() {
 }
 
 ///COnsulta de procedencias
-async function consultaProcedenciasAjax() {
+async function consultaProcedenciasAjax(route) {
     return $.ajax(
         {
-            url:"./webhook/lista-dependencias.php",
+            url:route+"webhook/lista-dependencias.php",
             dataType: "json",
             success: function(data){
                 // console.log(data);
@@ -52,10 +52,10 @@ async function consultaProcedenciasAjax() {
 }
 
 //COnsulta de Universidades registradas
-async function consultaUnisAjax() {
+async function consultaUnisAjax(route) {
     return $.ajax(
         {
-            url:"./webhook/lista-universidades.php",
+            url:route+"webhook/lista-universidades.php",
             dataType: "json",
             success: function(data){
                 // console.log(data);
@@ -104,68 +104,38 @@ async function consultaDocsAjax() {
 }
 
 //Consulta documentos disponibles
-async function consultaEdosRepAjax() {
+async function consultaEdosRepAjax(route) {
     return $.ajax(
         {
-            url:"./webhook/lista-estados-rep.php",
+            url:route+"webhook/lista-estados-rep.php",
             dataType: "json",
             success: function(data){
-                console.log(data);
+              //  console.log(data);
             },
             error: function() {
-                alert("Error occured")
+                alert("Error al traer estados")
             }
         }
     );
 }
 
 //Consulta documentos disponibles
-async function consultaMunicipioAjax(idEdo) {
+async function consultaMunicipioAjax(route,idEdo) {
     return $.ajax(
         {
-            url:"./webhook/lista-municipios.php",
+            url: route+"webhook/lista-municipios.php",
+            type: 'POST',
             dataType: "json",
             data: {
                 filtro : idEdo
             },
             success: function(data){
-                console.log(data);
+              //  console.log(data);
             },
             error: function() {
-                alert("Error occured")
+                alert("Error al consultar municipios")
             }
         }
     );
 }
 
-async function consultaEstadosRep() {
-    const jsonData = await consultaEdosRepAjax();
-    buildHTMLEstados(jsonData);
-}
-
-function buildHTMLEstados(lsEdos) {
-    let template = "";
-    lsEdos.forEach(
-        (obj)=>
-        {
-            template += `<option value="${obj.id_estado}">${obj.estado} (${obj.abrev})</option>`;
-        }
-    );
-    $("#list-edos").html(template);
-}
-
-async function consultaMunicipioAjax() {
-    const jsonData = await consultaEdosRepAjax();
-    buildHTMLMunicipios(jsonData);
-}
-
-function buildHTMLMunicipios(muns) {
-    let template = "";
-    muns.forEach(
-        (obj)=>
-        {
-            template += `<option value="${obj.id_municipio}">${obj.municipio}</option>`;
-        }
-    );
-    $("#list-municipios").html(template);
-}

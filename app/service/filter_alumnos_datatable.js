@@ -4,12 +4,12 @@ $(document).ready(function () {
 });
 
 async function consultaProcedencias() {
-    const JSONData = await consultaProcedenciasAjax();
+    const JSONData = await consultaProcedenciasAjax("./");
     buildHTMLProcedencias(JSONData);
 }
 
 async function consultaUnis() {
-    const JSONData = await consultaUnisAjax();
+    const JSONData = await consultaUnisAjax("./");
    buildHTMLTblUnis(JSONData);
 }
 

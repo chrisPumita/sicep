@@ -5,3 +5,4 @@
 
 <!-- SERVICE JS AJAX CONECT-->
 <script src="./app/service/login.js"></script>
+<script src="./app/service/asyn_rest.js"></script>
