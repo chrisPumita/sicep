@@ -103,7 +103,7 @@
   </nav>
   <!-- End Navbar -->
   <!-- -------- START HEADER 7 w/ text and video ------- -->
-  <header class="bg-gradient-dark bg-gradient-primary">
+  <div class="bg-gradient-dark bg-gradient-primary">
       <div class="page-header min-vh-100" style="background-image: url(./assets/images/fesc-bg.jpg") loading="lazy">
           <span class="mask bg-gradient-primary opacity-5"></span>
           <canvas class="background position-absolute"></canvas>
@@ -126,7 +126,7 @@
               </div>
           </div>
       </div>
-  </header>
+  </div>
   <!-- -------- END HEADER 7 w/ text and video ------- -->
   <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
     <!-- Section with four info areas left & one card right with image and waves -->
