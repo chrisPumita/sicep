@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    
     });
 
 //Escucha
@@ -19,10 +18,14 @@ $("#frm-add-profesor").on("submit", function(e){
     })
         .done(function(res){
         $("#frm-add-profesor").trigger('reset');
-        $("#addNewProfesor").modal('hide');
         cargaDatosProfesoresDataTable();
         console.log(res);
+        var table = $('#tblProfesores').DataTable( {
+            ajax: "data.json"
+            } );
+            table.ajax.reload( null, false );
         });
+        $("#addNewProfesor").modal('hide');
         e.preventDefault();
 });
 /*
