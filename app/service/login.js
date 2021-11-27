@@ -17,7 +17,7 @@ $("#frm-add-alumno").on("submit", function(e){
     formData.append("dato", "valor");
     //formData.append(f.attr("name"), $(this)[0].files[0]);
     $.ajax({
-        url: "../webhook/add-modelo.php",
+        url: "./app/webhook/add-alumno.php",
         type: "post",
         dataType: "html",
         data: formData,
@@ -26,9 +26,9 @@ $("#frm-add-alumno").on("submit", function(e){
         processData: false
     })
         .done(function(res){
+            console.log(res);
         $("#frm-add-alumno").trigger('reset');
         $("#inlineForm").modal('hide');
-        getMarcas();
         });
     e.preventDefault();
 });
