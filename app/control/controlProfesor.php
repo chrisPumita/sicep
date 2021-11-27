@@ -17,14 +17,15 @@ function consultaListaAutoresCurso(){
 function addProfesor($params){
     include_once "../model/PROFESOR.php";
     $PROFESORES = new PROFESOR();
+    $clave = date("YmdHis");
     //Creacion de la persona
+    $PROFESORES->setIdPersona($clave);
     $PROFESORES->setNombre($params['nombre_profesor']);
     $PROFESORES->setApp($params['app']);
     $PROFESORES->setApm($params['apm']);
     $PROFESORES->setTelefono($params['telefono']);
     $PROFESORES->setSexo($params['sexo']);
     $PROFESORES->setEstatus(1);
-    $PROFESORES->setIdPersona($params['idPersona']);
     $PROFESORES->setIdDeptoFk($params['idDepto']);
     $PROFESORES->setNoTrabajador($params['no_trabajador']);
     $PROFESORES->setPrefijo($params['Prefijo']);

@@ -19,6 +19,8 @@ $("#frm-add-profesor").on("submit", function(e){
     })
         .done(function(res){
         $("#frm-add-profesor").trigger('reset');
+        $("#addNewProfesor").modal('hide');
+        cargaDatosProfesoresDataTable();
         console.log(res);
         });
         e.preventDefault();
