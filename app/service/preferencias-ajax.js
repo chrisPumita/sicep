@@ -47,16 +47,19 @@ function nuevoDepto(){
     $("#nombre_depto").val("");
 }
 
+//Enviar valores de las cajas por parametro AJAX en la ruta especioficada del Webhook
+//******* C R U  D    D E P A R T A M E N T O V.2.1 Chris RCSG **********************
 $("#frm-depto").on("submit", function(e){
-    var f = $(this);
-    var formData = new FormData(document.getElementById("frm-depto"));
-    //formData.append(f.attr("name"), $(this)[0].files[0]);
-    var params= {
-        idDepto: $("#id_depto").val(),
-        nombreDepto: $("#nombre_depto").val()
-    };
+    //Ruta del Webbhook
     let ruta = "./webhook/crud-depto.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        id_depto : $("#id_depto").val(),
+        nombre_depto :$("#nombre_depto").val()
+    };
+    //Llamado de la funcion Async
     enviaForm(params,ruta);
+    $("#modal_depto").modal('hide');
     e.preventDefault();
 });
 
