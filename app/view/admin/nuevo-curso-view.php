@@ -237,53 +237,47 @@
                                                                                             <div class="col-md-12">
                                                                                                 <div class="form-group">
                                                                                                     <label class="form-control-label" for="color"><span class="obliga">*</span>Nombre del curso</label>
-                                                                                                    <input type="text" id="Curso" class="form-control" required="" placeholder="Nombre del curso">
+                                                                                                    <input type="text" id="nombre_curso" name="nombre_curso" class="form-control" required="" placeholder="Nombre del curso">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <label class="form-control-label" for="transmision"><span class="obliga">*</span>Descripción del curso</label>
-                                                                                                <textarea class="form-control" rows="3" name="objetivo" id="objetivo" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
+                                                                                                <textarea class="form-control" rows="3" name="descripcion_curso" id="descripcion_curso" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <label class="form-control-label" for="transmision"><span class="obliga">*</span>Objetivo del curso</label>
-                                                                                                <textarea class="form-control" rows="3" name="objetivo" id="objetivo" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
+                                                                                                <textarea class="form-control" rows="3" name="objetivo_curso" id="objetivo_curso" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <label class="form-control-label" for="transmision"><span class="obliga">*</span>Dirigido a</label>
-                                                                                                <textarea class="form-control" rows="3" name="objetivo" id="objetivo" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
+                                                                                                <textarea class="form-control" rows="3" name="dirigido_A" id="dirigido_A" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <label class="form-control-label" for="transmision"><span class="obliga">*</span>Antecendentes</label>
-                                                                                                <textarea class="form-control" rows="3" name="objetivo" id="objetivo" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
+                                                                                                <textarea class="form-control" rows="3" name="antecedentes" id="antecedentes" required="" placeholder="Escriba una breve descripcion del curso"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label for="editarModalidad">Modalidad</label>
-                                                                                                    <select class="form-control valid" id="editarModalidad" name="editarModalidad">
-                                                                                                        <option value="0">Curso</option>
-                                                                                                        <option value="1">Diplomado</option>
-                                                                                                        <option value="2">Seminario</option>
-                                                                                                        <option value="3">Taller</option>
-                                                                                                        <option value="4">Otro</option>
-                                                                                                    </select>
+                                                                                                    <label for="editarModalidad">Codigo</label>
+                                                                                                    <input class="form-control valid" type="text" id="codigo" name="codigo" required="">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-3">
                                                                                                 <div class="form-group">
                                                                                                     <label for="editarSesiones">Numero de Sesiones</label>
-                                                                                                    <input class="form-control valid" type="number" value="1" id="editarSesiones" name="editarSesiones" required="">
+                                                                                                    <input class="form-control valid" type="number" value="1" id="noSesiones" name="noSesiones" required="">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-3">
                                                                                                 <div class="form-group">
                                                                                                     <label for="editarCosto">Costo sugerido</label>
-                                                                                                    <input type="number" class="form-control valid" id="editarCosto" min="0" name="editarCosto" requere="" value="0" >
+                                                                                                    <input type="number" class="form-control valid" id="costo" min="0" name="costo" requere="" value="0" >
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -319,7 +313,7 @@
                                                                                                 <p class="card-text py-1">Debe tener una resolución de 600px por 300px</p>
                                                                                                 <div class="form-group">
                                                                                                     <label for="formImg" class="form-label">Seleccione una imagen</label>
-                                                                                                    <input class="form-control custom-file-input" type="file" id="preview" accept="image/*">
+                                                                                                    <input class="form-control custom-file-input" type="file" id="banner" name="banner" accept="image/*">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -328,7 +322,7 @@
                                                                                             <div class="col-lg-12">
                                                                                                 <div class="form-group">
                                                                                                     <label for="formFilePDF" class="form-label">Temario PDF</label>
-                                                                                                    <input class="form-control" type="file" id="formFilePDF" accept=".pdf">
+                                                                                                    <input class="form-control" type="file" id="temarioPDF" name="temarioPDF" accept=".pdf">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -356,19 +350,8 @@
                                                                             <div class="pl-lg-4">
                                                                                 <div class="row">
                                                                                     <div class="col-lg-12">
-                                                                                        <div class="list-group text-lg-start">
-                                                                                            <label class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
-                                                                                                Comprobante de pago
-                                                                                            </label>
-                                                                                            <label class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
-                                                                                                Credencial Estudiante
-                                                                                            </label>
-                                                                                            <label class="list-group-item">
-                                                                                                <input class="form-check-input me-1" type="checkbox" value="">
-                                                                                                Tira de materias
-                                                                                            </label>
+                                                                                        <div class="list-group text-lg-start" id="lg-documentos">
+                                                                                            <!-- ajax response -->
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -430,7 +413,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
@@ -443,6 +425,7 @@
 
 <!-- scripts opcionales -->
 <script src="../assets/js/pages/curso-step.js"></script>
+<script src="./service/curso-add.js"></script>
 
 <script>
     // Disable form submissions if there are invalid fields

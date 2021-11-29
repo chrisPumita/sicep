@@ -24,8 +24,7 @@ function buildHTMLTableDepto(obj_result) {
                                     <td>${obj_result.nombre}</td>
                                     <!-- BOTON ACCIONES -->
                                     <td>
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#departamentos"
-                                        data-bs-toggle="modal" data-bs-target="#modal_depto">
+                                        <button type="button" class="btn btn-outline-primary" onclick="editaDepartamento('${obj_result.id_depto}', '${obj_result.nombre}');">
                                         <i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger deleteDepto"><i class="fas fa-trash-alt"></i></button>
                                     </td>
@@ -35,12 +34,39 @@ function buildHTMLTableDepto(obj_result) {
     $("#tbl-cursos").html(template);
 }
 
-async function consultaProcedencias() {
-    const JSONData = await consultaProcedenciasAjax("./");
-    buildHTMLProcedencias(JSONData);
+//Funciones de departamento
+function editaDepartamento(id_depto,nombre){
+    $("#modal_depto").modal('show');
+    $("#id_depto").val(id_depto);
+    $("#nombre_depto").val(nombre);
 }
 
-function buildHTMLProcedencias(obj_result) {
+function nuevoDepto(){
+    $("#modal_depto").modal('show');
+    $("#id_depto").val(0);
+    $("#nombre_depto").val("");
+}
+
+$("#frm-depto").on("submit", function(e){
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-depto"));
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    var params= {
+        idDepto: $("#id_depto").val(),
+        nombreDepto: $("#nombre_depto").val()
+    };
+    let ruta = "./webhook/crud-depto.php";
+    enviaForm(params,ruta);
+    e.preventDefault();
+});
+
+//Funciones Procedencias
+async function consultaProcedencias() {
+    const JSONData = await consultaProcedenciasAjax("./");
+    buildTableHTMLProcedencias(JSONData);
+}
+
+function buildTableHTMLProcedencias(obj_result) {
     let template = "";
     let cont = 0;
     obj_result.forEach(

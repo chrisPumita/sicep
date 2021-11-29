@@ -1,4 +1,7 @@
-
+$(document).ready(function () {
+    cargaListDocs();
+    alert("Funciona");
+});
 //Funcion tipo SUBMIT para envio de datos y peticiones a servidor LFHL
 $("#frm-add-modelo").on("submit", function(e){
     var f = $(this);
@@ -21,3 +24,26 @@ $("#frm-add-modelo").on("submit", function(e){
         });
     e.preventDefault();
 });
+
+async function cargaListDocs() {
+    const JSONData = await consultaDocsAjax();
+    //buildTableHTMLProcedencias(JSONData);
+    console.log(JSONData);
+}
+//lg-documentos
+
+function buildListGHTMLDocs(obj_result) {
+    let template = "";
+    obj_result.forEach(
+        (obj_result)=>
+        {
+            template += `
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                Comprobante de pago
+            </label>
+            `;
+        }
+    );
+    $("#lg-documentos").html(template);
+}

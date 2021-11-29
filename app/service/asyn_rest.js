@@ -139,3 +139,30 @@ async function consultaMunicipioAjax(route,idEdo) {
     );
 }
 
+///////////////////// PREFERENCIAS ////////////////
+async function enviaForm(params,route){
+    const mensaje= await sendBackEndPreferencias(params, route);
+    //console.log(mensaje);
+}
+
+async function sendBackEndPreferencias(params,route){
+    return $.ajax(
+        {
+            //url: "../webhook/crud-depto.php",
+            url: route,
+            type: "POST",
+            data: params,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "html",
+            success: function(res){
+                console.log(res);
+            },
+            error: function() {
+                alert("Error occured")
+            }
+        }
+        
+    );
+}

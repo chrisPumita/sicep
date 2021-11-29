@@ -15,11 +15,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-depto">
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input type="hidden" class="form-control" id="id_depto">
-                        <input type="text" class="form-control" id="nombre" aria-describedby="deptoHelp" placeholder="Nombre del Departamento">
+                        <input type="hidden" class="form-control" id="id_depto" name="id_depto">
+                        <input type="text" class="form-control" id="nombre_depto" name="nombre_depto" aria-describedby="deptoHelp" placeholder="Nombre del Departamento">
                         <small id="deptoHelp" class="form-text text-muted">Escriba el nombre del departamento</small>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
