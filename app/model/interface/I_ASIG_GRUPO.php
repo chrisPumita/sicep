@@ -10,5 +10,6 @@ interface I_ASIG_GRUPO
     function queryInsertAsignacion();
     function queryUpdateEstatus($id_asignacion,$estatus);
     function queryUpdateAsignacion();
+    function queryConsultaAsignacionGrupos($valorFiltro);
 
 }

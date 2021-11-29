@@ -1,6 +1,6 @@
 <?php
 include_once "CONEXION_M.php";
-include_once "./interface/I_ASIG_GRUPO.php";
+include_once "interface/I_ASIG_GRUPO.php";
 
 class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 {
@@ -482,6 +482,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $this->close();
         return $datos;
     }
+
     public function queryConsultaAsignacionProfesor($id)
     {
         $filtro=$id>0? "AND pf.id_profesor = ".$id :"";
@@ -589,5 +590,54 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     }
 
+    function queryConsultaAsignacionGrupos($valor_filtro)
+    {
+        /*  filtro = 1, trae solo a las asignaciones en curso
+            filtro = 0, trae todas las asignaciones
+        */
+        $filtro = $valor_filtro >0 ? " and ag.estatus = ".$valor_filtro: "";
+        $query ="select ag.id_asignacion , c.id_curso , c.nombre_curso , 
+        concat(\"Prof. \",per.app,\" \",per.apm,\" \",per.nombre) as profesor,
+        g.grupo ,ag.modalidad , ag.cupo , 
+        concat(date_format(ag.fecha_creacion, \"%d %M %Y\"),\" al \", date_format(ag.fecha_lim_inscripcion,\"%d %M %Y\")) as inscripcion,
+        concat(date_format(ag.fecha_inicio,\"%d %M %Y\") ,\" al \", date_format(ag.fecha_fin,\"%d %M %Y\")) as inicio,
+        concat(date_format(ag.fecha_inicio_actas,\"%d %M %Y\") ,\" al \", date_format(ag.fecha_fin_actas,\"%d %M %Y\")) as calificaciones, 
+        ag.estatus as estatus_asignacion_grupo
+        from curso c , grupo g , asignacion_grupo ag , profesor prof , persona per
+        where c.id_curso = g.id_curso_fk and ag.id_grupo_fk = g.id_grupo and prof.id_persona_fk = per.id_persona
+        and ag.id_profesor_fk = prof.id_profesor".$filtro;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
+    function queryconsultaNumSolicitudesInscripcion($id_asignacion)
+    {
+        $query = "select count(a.id_alumno) as num_solicitudes
+                from asignacion_grupo ag,  inscripcion i ,alumno a , grupo g 
+                where ag.estatus =1 and ag.id_grupo_fk = g.id_grupo and g.estatus = 1
+                and i.id_asignacion_fk = ag.id_asignacion and i.id_alumno_fk = a.id_alumno 
+                and (i.estatus = 0 or i.pago_confirmado =0 or i.autorizacion_inscripcion =0 or i.estatus =0)
+                and ag.id_asignacion = ".$id_asignacion;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryConsultaNumLugaresDisponibles($id_asignacion)
+    {
+        $query = "select ag.cupo - count(a.id_alumno)  
+            from alumno a , persona p , inscripcion i , asignacion_grupo ag , grupo g 
+            where a.id_persona = p.id_persona and a.id_alumno > 0 
+            and a.estatus = 1 and p.estatus = 1 and i.id_alumno_fk = a.id_alumno 
+            and i.pago_confirmado = 1 and i.autorizacion_inscripcion = 1 
+            and i.estatus = 1 and ag.id_asignacion = i.id_asignacion_fk and ag.estatus = 1
+            and ag.id_grupo_fk = g.id_grupo and g.estatus = 1 and ag.id_asignacion = ".$id_asignacion;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }
