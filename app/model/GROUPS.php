@@ -1,9 +1,8 @@
 <?php
 
-include_once "./interface/I_GRUPO.php";
-include_once "CONEXION_M.php";
-
-class GRUPO extends CONEXION_M implements I_GRUPO
+include_once "interface/I_GRUPO.php";
+include_once "../model/CONEXION_M.php";
+class GROUPS extends CONEXION_M implements I_GRUPO
 {
 private $id_grupo;
 private $id_curso_fk;
@@ -93,10 +92,12 @@ private $estatus;
         // TODO: Implement eliminaGrupo() method.
     }
 
-    public  function consultaGrupos($id_curso)
+    public  function consultaListaGrupos($id_curso)
     {
-        $query = "SELECT `id_curso`, `id_profesor_admin_acredita`, `id_profesor_autor`, `codigo`, `nombre_curso`, 
-       `dirigido_a`, `objetivo`, `descripcion`, `no_sesiones`, `antecedentes`, `aprobado`, `costo_sugerido`, 
-       `link_temario_pdf`, `fecha_creacion`, `fecha_acreditacion`, `banner_img`, `tipo_curso` FROM `curso` WHERE 1";
+        $query = "select g.id_grupo , g.grupo, g.estatus from grupo g where g.id_curso_fk = ".$id_curso;
+        $this->connect();
+        $datos = $this->getData($query);
+        $this->close();
+        return $datos;
     }
 }

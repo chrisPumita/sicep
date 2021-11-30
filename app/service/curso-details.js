@@ -6,12 +6,34 @@ window.onload = function(){
     let id = $("#idCurso").val();
     if(!cargaCursoDetails(-1,id))
         alert('NO DATA');
+    consultaGrupos(id);
+}
+
+async function consultaGrupos(idCurso,route){
+    let ruta = "./webhook/lista-grupos-curso.php";
+    const datos = await listaGposCursoAjax(idCurso, ruta);
+    //Mensaje en JS para usar con SwatAlert
+    //console.log(datos);
+    buildHtmlSelectGrupos(datos);
+}
+
+function buildHtmlSelectGrupos(GRUPOS) {
+    let template = "";
+    GRUPOS.forEach(
+        (obj)=>
+        {
+            template += `<option value="${obj.id_grupo}">${obj.grupo}</option>`;
+        }
+    );
+    $("#list-grupos").html(template);
 }
 
 async function cargaCursoDetails(filtro, idUnique) {
     const JSONData = await consultaCursosAjax(filtro,idUnique);
     buildHTMLValues(JSONData[0]);
 }
+
+
 
 function buildHTMLValues(curso){
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);

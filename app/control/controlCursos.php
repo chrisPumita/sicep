@@ -44,3 +44,10 @@ function consultaTemas($id_curso_fk)
     $temas = new TEMAS();
     return  $temas->consultaTemas($id_curso_fk);
 }
+
+function consultaListaGrupos($idCurso){
+    include_once "../model/CURSO.php";
+    $curso = new CURSO();
+    $curso->setIdCurso($idCurso);
+    return  $curso->queryConsultaListaGrupos();
+}
