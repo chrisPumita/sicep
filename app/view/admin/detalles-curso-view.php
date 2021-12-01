@@ -422,7 +422,7 @@ $titulo = "Detalles del curso"
                                             <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
                                                 <i class="fas fa-plus"></i>Agregar
                                             </button>
-                                            <button class="btn btn-primary me-1 mb-1"><i class="fas fa-plus"></i>Editar</button>
+                                            <button class="btn btn-primary me-1 mb-1"><i></i>Editar</button>
                                         </div>
                                         <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
                                             <h5>Horario virtual:</h5>
@@ -467,7 +467,7 @@ $titulo = "Detalles del curso"
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus"></i>Agregar</button>
+                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#horarioVirtual"></i>Agregar</button>
                                             <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos">Editar</button>
                                         </div>
                                     </div>

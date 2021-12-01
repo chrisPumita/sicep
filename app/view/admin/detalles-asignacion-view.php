@@ -347,7 +347,7 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                    <button class="btn btn-primary">
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#horarioVirtual">
                                                         <i class="fas fa-download"></i>Descargar
                                                     </button>
                                                 </div>
@@ -410,6 +410,7 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/modal-cancelar-insc.php" ?>
+            <?php include "modals/modal-horario-virtual.php"?>
             <?php include "modals/modal-documentos-alumno.php" ?>
             <?php include "modals/modal-editar-detalles-asignacion.php" ?>
             <?php include "modals/modal-editar-descuentos.php" ?>
