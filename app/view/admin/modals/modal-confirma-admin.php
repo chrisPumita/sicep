@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
          role="document">
         <div class="modal-content">
-            <div class="modal-header bg-dark white">
+            <div class="modal-header bg-primary white">
                     <span class="modal-title" id="modalConfirmaPw">CONFIRMAR</span>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">

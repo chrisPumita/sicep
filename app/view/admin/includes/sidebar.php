@@ -91,7 +91,7 @@
                             <a href="./lista-cuentas">Ver todas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Servicio Social</a>
+                            <a href="./lista-servicio-social">Servicio Social</a>
                         </li>
                     </ul>
                 </li>
