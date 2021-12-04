@@ -2,7 +2,7 @@
 <!--AGREGA PROFESOR INVITACION CUENTA -->
 <div class="modal fade text-left" id="horarioVirtual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
-    <div class="modal-lg  modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    <div class="modal-sm  modal-dialog modal-dialog-centered modal-dialog-scrollable"
          role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -14,8 +14,8 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="callout callout-second bg-grey">
+            <div class="modal-body py-1">
+                <div class="callout callout-second bg-grey p-2">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 text-lg-start text-primary bg-gray">
@@ -25,10 +25,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-6">
-                    <h5 class="text-start">Día de clase:</h5>
-                    </div>
-                    <div class="col-md-6">                            
+                    <div class="col-sm-12">
+                        <h6 class="text-start">Día de clase:</h6>
                         <select class="form-control" id="diaClase">
                             <option value="1">Lunes</option>
                             <option value="2">Martes</option>
@@ -42,84 +40,51 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <label class="label" for="diaClase">Hora de Inicio:</label>
-                    </div>
-                    <div class="col-sm-4 mb-3 mb-sm-0 ">
-                        <div class="row">
-                            <input class="form-control" type="number" value="1" id="hora">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-1 mb-3 mb-sm-0">
-                        <label>hrs.</label>
-                    </div>
-
-                    <div class="col-sm-4 mb-3 mb-sm-0 ">
-                        <div class="row">
-                            <input class="form-control" type="number" value="0" id="minutos">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-1 mb-3 mb-sm-0">
-                        <label>min.</label>
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                        <h6 class="text-start">Hora de Inicio:</h6>
+                        <input class="form-control" type="time" value="0" id="hrsInicio">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <label class="label text-start" for="diaClase">Duración:</label>
-                    </div>
-                    <div class="col-sm-4 mb-3 mb-sm-0 ">
-                        <div class="row">
-                            <input class="form-control" type="number" value="0" id="minDuracion">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-1 mb-3 mb-sm-0">
-                        <label>minutos</label>
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                        <h6 class="text-start">Duración (minutos):</h6>
+                        <input class="form-control" type="number" value="30" id="minDuracion">
                     </div>
                 </div>
                 
                 <div class="row">
-                <p class="fst-italic text-primary">Si no escribe el link de plataforma o de la reunión, se entederá que no existe o los enlaces son dinámicos.</p>
+                <p class="fst-italic text-primary">Si no escribe el link de plataforma o de la reunión, se entederá que no existe o son enlaces dinámicos.</p>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <label>Plataforma virtual:</label>
+                    <div class="col-sm-12">
+                        <h6 class="text-start">Plataforma virtual:</h6>
                         <select class="form-control" id="plataforma">
                             <option value="">Aulas virtuales/Moddle</option>
                             <option value="">Classroom</option>
                             <option value="">Microsoft Teams</option>
                             <option value="">Edmodo</option>
                         </select>
-                    </div>
-                    <div class="col-sm-8 mb-3 mb-sm-0">
-                        <label>Link:</label>
-                        <input type="text" class="form-control" placeholder="" aria-label="linkVideo">
+                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                        
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <label>Videoconferencias:</label>
+                    <div class="col-sm-12">
+                        <h6 class="text-start">Videoconferencias:</h6>
                         <select class="form-control" id="generacion">
                             <option value="">Zoom</option>
                             <option value="">Meet</option>
                             <option value="">Webex</option>
                             <option value="">Microsoft Teams</option>
                         </select>
+                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                         
                     </div>
-                    <div class="col-sm-8 mb-3 mb-sm-0">
-                        <label>Link:</label>
-                        <input type="text" class="form-control" placeholder="" aria-label="linkVideo">
-                    </div>
-                </div>
-                
+                </div>              
             </div>
             
-            <div class="modal-footer">
+            <div class="modal-footer p-0">
                 <div class="form-group row">
                     <div class="col-12">
                         <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">

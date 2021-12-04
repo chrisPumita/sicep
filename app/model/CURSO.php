@@ -308,104 +308,7 @@ class CURSO extends CONEXION_M implements I_CURSO
         $this->tipo_curso = $tipo_curso;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getListaTemas()
-    {
-        return $this->consultaTemasCurso();
-    }
 
-    /**
-     * @param mixed $lista_temas
-     */
-    public function setListaTemas($lista_temas): void
-    {
-        $this->lista_temas = $lista_temas;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getListaGrupos()
-    {
-        return $this->consultaGrupo($this->getIdCurso());
-        //return $this->lista_grupos;
-    }
-
-    /**
-     * @param mixed $lista_grupos
-     */
-    public function setListaGrupos($lista_grupos): void
-    {
-        $this->lista_grupos = $lista_grupos;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getListaDocsSolicitados()
-    {
-        return $this->consultaDocsSolicitados($this->getIdCurso());
-        //return $this->lista_docs_solicitados;
-    }
-
-    /**
-     * @param mixed $lista_docs_solicitados
-     */
-    public function setListaDocsSolicitados($lista_docs_solicitados): void
-    {
-        $this->lista_docs_solicitados = $lista_docs_solicitados;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getListaGroupKeys()
-    {
-        return $this->consultaGroupKeys($this->getIdCurso());
-        //return $this->lista_group_keys;
-    }
-
-    /**
-     * @param mixed $lista_group_keys
-     */
-    public function setListaGroupKeys($lista_group_keys): void
-    {
-        $this->lista_group_keys = $lista_group_keys;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObjProfesorAutor()
-    {
-        return $this->obj_profesor_autor;
-    }
-
-    /**
-     * @param mixed $obj_profesor_autor
-     */
-    public function setObjProfesorAutor($obj_profesor_autor): void
-    {
-        $this->obj_profesor_autor = $obj_profesor_autor;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObjProfesorAdminAcredita()
-    {
-        return $this->obj_profesor_admin_acredita;
-    }
-
-    /**
-     * @param mixed $obj_profesor_admin_acredita
-     */
-    public function setObjProfesorAdminAcredita($obj_profesor_admin_acredita): void
-    {
-        $this->obj_profesor_admin_acredita = $obj_profesor_admin_acredita;
-    }
     /*******************************************************************************
      * Terminan Getters and Setters
      *******************************************************************************/
@@ -469,11 +372,6 @@ class CURSO extends CONEXION_M implements I_CURSO
     {
         include "../model/DOCS_SOLICITADOS_CURSO.php";
         return DOCS_SOLICITADOS_CURSO::class(consultarListaDocumentosSol($this->getIdCurso()));
-    }
-
-    public function consultaGrupos($id_curso)
-    {
-
     }
 
     function registraCurso()
@@ -578,10 +476,13 @@ class CURSO extends CONEXION_M implements I_CURSO
     protected function consultaTemasCurso(){
         include_once "./TEMAS.php";
         $tema = new TEMAS();
-        $restult = $tema->consultaTemas($this->getIdCurso());
-        return $restult;
+        return $tema->consultaTemas($this->getIdCurso());
     }
 
-
+    function queryConsultaListaGrupos(){
+        include_once "GROUPS.php";
+        $ls_grupos = new GROUPS();
+        return $ls_grupos->consultaListaGrupos($this->getIdCurso());
+    }
 
 }

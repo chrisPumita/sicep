@@ -5,7 +5,7 @@ interface I_CURSO
 {
     public function queryconsultaCursos($estado_filtro,$id_curso);
     //regresa una lista de grupos del curso
-    public function consultaGrupos($id_curso);
+    public function queryConsultaListaGrupos();
 
     public function consultaGroupKeys($id_curso);
 

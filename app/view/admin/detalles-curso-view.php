@@ -332,32 +332,43 @@ $titulo = "Detalles del curso"
             <!-- creacion de asignacion de profesor -->
             <section class="section">
                 <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <!-- boton que da problemas en responsive -->
+                            <div class="col-sm-12 col-md-6">
+                                Detalles de Grupos
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <span class="position-absolute  mx-3 end-0">
+                                <button class="btn btn-primary mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
+                                            <i class="fas fa-plus"></i> Grupo</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-content">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-3 p-3">
-                                    <div class="col-lg-1 align-items-center m-auto text-center">
-                                        <h2><i class="fas fa-layer-group text-grey"></i></h2>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <h5 class="text-center">Grupos de este Curso</h5>
-                                        <div class="form-group py-3">
-                                            <label for="sel1">Ver horario del grupo:</label>
-                                            <select class="form-control" id="sel1">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
+                                <div class="col-sm-12 align-items-center m-auto text-center">
+                                    <h2><i class="fas fa-layer-group text-grey"></i></h2>
+                                    <h5 class="text-center">Grupos de este Curso</h5>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group row p-3">
+                                        <div class="col-md-4 text-end">
+                                            <label for="indice" class="text-primary">Seleccione un Grupo:</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <select class="form-control" id="list-grupos"> </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 align-items-center">
-                                        <button class="btn btn-primary mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
-                                            <i class="fas fa-plus"></i> Grupo</button>
-                                    </div>
                                 </div>
-                                <div class="col-sm-9">
-                                    <h4>Horario:</h4>
+                                <div class="col-sm-6 align-items-center">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 p-3">
+                                    <h5 class="text-secondary">Horario establecido:</h5>
                                     <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
                                         <a class="list-group-item list-group-item-action active" id="lista-alumnos-tabla" data-bs-toggle="list" href="#lista-alumnos" role="tab" aria-selected="true">Precencial</a>
                                         <a class="list-group-item list-group-item-action" id="lista-solicitudes-tabla" data-bs-toggle="list" href="#lista-solicitudes" role="tab" aria-selected="false">Virtual</a>
@@ -411,7 +422,7 @@ $titulo = "Detalles del curso"
                                             <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
                                                 <i class="fas fa-plus"></i>Agregar
                                             </button>
-                                            <button class="btn btn-primary me-1 mb-1"><i class="fas fa-plus"></i>Editar</button>
+                                            <button class="btn btn-primary me-1 mb-1"><i></i>Editar</button>
                                         </div>
                                         <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
                                             <h5>Horario virtual:</h5>
@@ -456,11 +467,97 @@ $titulo = "Detalles del curso"
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus"></i>Agregar</button>
+                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#horarioVirtual"></i>Agregar</button>
                                             <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos">Editar</button>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 p-3">
+                                    <div class="row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <h5 class="text-secondary">Descuentos Aplicados:</h5>
+                                            <div class="mt-1 mb-1 overflow-auto">
+                                                <table class="table table-hover text-left">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col"></th>
+                                                        <th scope="col">Dirigido a:</th>
+                                                        <th scope="col">Aplicar % Descuento</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="procedencias">
+                                                    <tr id_procedencia="1">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="1">
+                                                            </div>
+                                                        </td>
+                                                        <td>Comunidad FESC</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num1">
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_procedencia="2">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="2">
+                                                            </div>
+                                                        </td>
+                                                        <td>Comunidad UNAM</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_procedencia="3">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="3">
+                                                            </div>
+                                                        </td>
+                                                        <td>Ex-Alumno FESC</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num3">
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_procedencia="4">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="4">
+                                                            </div>
+                                                        </td>
+                                                        <td>Ex-Alumno UNAM</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num4">
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_procedencia="5">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="5">
+                                                            </div>
+                                                        </td>
+                                                        <td>Externos de fuera</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num5">
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_procedencia="6">
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="6">
+                                                            </div>
+                                                        </td>
+                                                        <td>Personal UNAM</td>
+                                                        <td>
+                                                            <input class="form-control" type="number" disabled="" value="0" id="num6">
+                                                        </td>
+                                                    </tr></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
