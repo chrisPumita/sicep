@@ -155,7 +155,7 @@ async function sendBackEndPreferencias(params,route){
             dataType: "json",
             cache: false,
             success: function(res){
-             //  console.log(res);
+                console.log(res);
             },
             error: function() {
                 alert("Error 500 interno de Servidor");

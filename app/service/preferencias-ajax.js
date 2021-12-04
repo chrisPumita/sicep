@@ -60,8 +60,21 @@ $("#frm-depto").on("submit", function(e){
     //Llamado de la funcion Async
     enviaForm(params,ruta);
     $("#modal_depto").modal('hide');
+    consultaDeptos();
     e.preventDefault();
 });
+
+//Elimar depto
+//Cuando no es un formulario, se envia directamente a sendBack
+$(document).on("click", ".deleteDepto", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    var route= "./webhook/delete-depto.php";
+    eliminaPreferencias(id,route);
+    consultaDeptos();
+});
+
 
 //Funciones Procedencias
 async function consultaProcedencias() {
@@ -211,16 +224,28 @@ $(document).on("click", ".deteleProcedencia", function ()
 
 $(document).on("click", ".deleteUni", function ()
 {
+    
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
     //  var url = './detalles-profesor';
     //  redirect_by_post(url, {  id: id }, false);
 });
 
-$(document).on("click", ".deleteDepto", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id");
-    //  var url = './detalles-profesor';
-    //  redirect_by_post(url, {  id: id }, false);
-});
+//Funcion generica de elimar preferencias
+function eliminaPreferencias(id,route){
+    $.ajax(
+        {
+            url: route,
+            type: "POST",
+            data: {id : id},
+            dataType: "html",
+            success: function(res){
+                console.log(res);
+            },
+            error: function() {
+                alert("Error 500 interno de Servidor");
+            }
+        }
+        
+    );
+}

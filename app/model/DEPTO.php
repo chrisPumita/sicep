@@ -39,7 +39,7 @@ class DEPTO extends CONEXION_M
     }
 
 
-    function CrearDepartamento(){
+    function queryInsertDepto(){
         $query="INSERT INTO `departamentos`(`id_depto`, `nombre`) VALUES (NULL,'".$this->getNombreDepto()."')";
         $this->connect();
         $result = $this-> executeInstruction($query);
@@ -47,8 +47,8 @@ class DEPTO extends CONEXION_M
         return $result;
 
     }
-    function EliminarDepartamento($id_depto){
-        $query="DELETE FROM `departamentos` WHERE `id_depto`=".$id_depto;
+    function queryDeleteDepartamento($id_depto){
+        $query="UPDATE departamentos SET id_depto= id_depto*-1 WHERE id_depto= ".$id_depto;
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -65,6 +65,14 @@ class DEPTO extends CONEXION_M
         $query="SELECT * FROM `departamentos` WHERE id_depto >0 ORDER BY `departamentos`.`nombre` ASC";
         $this->connect();
         $result = $this-> getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryUpdateDepto(){
+        $query="UPDATE `departamentos` SET `nombre` = '".$this->getNombreDepto()."' WHERE `departamentos`.`id_depto` = ".$this->getIdDepto();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
