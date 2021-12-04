@@ -143,7 +143,7 @@ async function consultaMunicipioAjax(route,idEdo) {
 async function enviaForm(params,route){
     const mensaje = await sendBackEndPreferencias(params, route);
     //Mensaje en JS para usar con SwatAlert
-    console.log(mensaje);
+    alertaEmergente(mensaje.Mensaje);
 }
 
 async function sendBackEndPreferencias(params,route){
@@ -155,33 +155,12 @@ async function sendBackEndPreferencias(params,route){
             dataType: "json",
             cache: false,
             success: function(res){
-                console.log(res);
+                //console.log(res);
             },
             error: function() {
                 alert("Error 500 interno de Servidor");
             }
         }
         
-    );
-}
-
-///////////////////// VER GRUPOS DE UN CURSO ////////////////
-
-async function listaGposCursoAjax(idCurso,route){
-    return $.ajax(
-        {
-            url: route,
-            type: "POST",
-            data: {id_curso:idCurso},
-            dataType: "json",
-            cache: false,
-            success: function(res){
-                 // console.log(res);
-            },
-            error: function() {
-                alert("Error 500 interno de Servidor");
-            }
-        }
-
     );
 }

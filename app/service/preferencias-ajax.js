@@ -71,8 +71,16 @@ $(document).on("click", ".deleteDepto", function ()
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
     var route= "./webhook/delete-depto.php";
-    eliminaPreferencias(id,route);
-    consultaDeptos();
+    sweetConfirm('Eliminar Departamento', '¿Estas seguro de que deseas eliminar este departamento?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencias(id,route);
+            consultaDeptos();
+        }
+    });
+    
+    //    eliminaPreferencias(id,route);
+        //consultaDeptos();
+    
 });
 
 
@@ -240,10 +248,12 @@ function eliminaPreferencias(id,route){
             data: {id : id},
             dataType: "html",
             success: function(res){
-                console.log(res);
+                let mje= JSON.parse(res);
+                console.log(mje);
+                alertaEmergente(mje.Mensaje)
             },
             error: function() {
-                alert("Error 500 interno de Servidor");
+                internalErrorAlert("Error 500 interno de Servidor");
             }
         }
         

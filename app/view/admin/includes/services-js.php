@@ -2,6 +2,7 @@
 <script src="./service/data-cursos-ajax.js"></script>
 <script src="./service/html-builds.js"></script>
 <script src="./service/profesor-add.js"></script>
+<script src="./service/general/swal-alerts.js"></script>
 
 <script>
     $(document).ready(function () {

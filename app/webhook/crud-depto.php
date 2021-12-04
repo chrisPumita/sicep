@@ -7,9 +7,9 @@ if (!isset($POST['id_depto']) && !isset($POST['nombre_depto']))
     $result= insertUpdateDepartamento($idDepto,$nombreDepto);
     if($result){
         if($idDepto>0)
-            $mjeText ="Se va a Actualizar a " . $nombreDepto;
+            $mjeText ="Se ha actualizado a: " . $nombreDepto;
         else{
-            $mjeText = "Registro ingresado";
+            $mjeText = "Se ha registrado: ".$nombreDepto;
         }
         $mje = array(
             "mjeType" => "1",

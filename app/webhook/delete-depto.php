@@ -7,8 +7,9 @@ if(isset($_POST['id'])){
         $mjeText="Se ha eliminado con exito";
     }
     else {
-        $mjeType="-1";
-        $mjeText="Error interno";
+        /*$mjeType="-1";
+        $mjeText="Error interno";*/
+        die;
     }
     
 }
