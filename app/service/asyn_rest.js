@@ -164,3 +164,29 @@ async function sendBackEndPreferencias(params,route){
         
     );
 }
+
+//Funcion generica de elimar preferencias
+
+async function eliminaPreferencia(id,route){
+    const mensaje = await eliminaPreferenciasAjax(id, route);
+    //Mensaje en JS para usar con SwatAlert
+    alertaEmergente(mensaje.Mensaje);
+}
+
+async function eliminaPreferenciasAjax(id,route){
+    return $.ajax(
+        {
+            url: route,
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+                console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}

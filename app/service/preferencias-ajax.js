@@ -51,17 +51,18 @@ function nuevoDepto(){
 //******* C R U  D    D E P A R T A M E N T O V.2.1 Chris RCSG **********************
 $("#frm-depto").on("submit", function(e){
     //Ruta del Webbhook
+    e.preventDefault();
     let ruta = "./webhook/crud-depto.php";
     //Parametros que se van a enviar encapsulados
     var params = {
         id_depto : $("#id_depto").val(),
         nombre_depto :$("#nombre_depto").val()
     };
-    //Llamado de la funcion Async
-    enviaForm(params,ruta);
-    $("#modal_depto").modal('hide');
-    consultaDeptos();
-    e.preventDefault();
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#modal_depto").modal('hide');
+        consultaDeptos();
+    });
 });
 
 //Elimar depto
@@ -70,16 +71,15 @@ $(document).on("click", ".deleteDepto", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
+    console.log(id);
     var route= "./webhook/delete-depto.php";
     sweetConfirm('Eliminar Departamento', '¿Estas seguro de que deseas eliminar este departamento?', function (confirmed) {
         if (confirmed) {
-            eliminaPreferencias(id,route);
-            consultaDeptos();
+            eliminaPreferencia(id,route).then(function () {
+                consultaDeptos();
+            });
         }
     });
-    
-    //    eliminaPreferencias(id,route);
-        //consultaDeptos();
     
 });
 
@@ -239,23 +239,4 @@ $(document).on("click", ".deleteUni", function ()
     //  redirect_by_post(url, {  id: id }, false);
 });
 
-//Funcion generica de elimar preferencias
-function eliminaPreferencias(id,route){
-    $.ajax(
-        {
-            url: route,
-            type: "POST",
-            data: {id : id},
-            dataType: "html",
-            success: function(res){
-                let mje= JSON.parse(res);
-                console.log(mje);
-                alertaEmergente(mje.Mensaje)
-            },
-            error: function() {
-                internalErrorAlert("Error 500 interno de Servidor");
-            }
-        }
-        
-    );
-}
+
