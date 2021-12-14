@@ -1,16 +1,21 @@
 $(document).ready(function() {
+
+});
+
+window.onload = function() {
     loadGeneraciones();
     loadSemestre();
     consultaGrupos($("#idCurso").val());
     consultaListaProfesores();
     cargaCursoDetailsBasic("-1",$("#idCurso").val());
-});
+};
 
 async function cargaCursoDetailsBasic(filtro, idUnique) {
     const JSONData = await consultaCursosAjax(filtro,idUnique);
     let curso = JSONData[0];
     //buildHTMLValues(JSONData[0]);
     $("#nombreCurso").html(curso.nombre_curso);
+    $("#idCursoGrupo").val(curso.id_curso);
     $("#costo").val(curso.costo_sugerido);
     $("#nameCursoTittle").html(curso.nombre_curso);
     $("#costoCursoPred").html("$"+curso.costo_sugerido);
@@ -44,11 +49,17 @@ async function consultaGrupos(idCurso){
 function buildHtmlSelectGrupos(datos) {
     let template = "";
     let gruposVal = $("#grupos");
+    let nuevoGpo =0;
+    let cont = 0;
     if (datos.length > 0) {
         datos.forEach(
             (dato)=>
             {
-                template += `<option value="${dato.id_grupo}">${dato.grupo}</option>`;
+                cont++;
+                let sel = cont===datos.length ? "selected": "";
+                template += `<option ${sel} value="${dato.id_grupo}">${dato.grupo}</option>`;
+                try{ nuevoGpo = parseInt(dato.grupo)+1; }
+                catch (e) {nuevoGpo="1000";}
             }
         );
         gruposVal.removeAttr("disabled");
@@ -56,8 +67,10 @@ function buildHtmlSelectGrupos(datos) {
     else{
         template += `<option value="0">Agregue un grupo...</option>`;
         gruposVal.attr("disabled", "");
+        nuevoGpo="1000";
     }
     gruposVal.html(template);
+    $("#nombreGrupoNuevo").val(nuevoGpo);
 }
 
 
@@ -93,19 +106,40 @@ $("#frm-add-asignacion").on("submit", function(e){
                 contentType: false,
                 processData: false
             })
-                .done(function(res){
-                    alertaEmergente(res);
-                    console.log(res);
-                    sweetCustomDesicion('Se ha abierto un nuevo grupo', '¿Qué más desea hacer ahora?','<i class="fas fa-undo-alt"></i> Registrar otro grupo','<i class="far fa-eye"></i> Ver el registrado','success', function (confirmed){
-                        if (confirmed) {
-                            $("#frm-add-asignacion").trigger('reset');
-                            window.scrollTo(0, 0);
-                        }
-                        else{
-                            alert("selecciono Ver");
-                        }
-                    });
+            .done(function(res){
+                sweetCustomDesicion('Se ha creado un nuevo grupo', '¿Qué más desea hacer ahora?','<i class="far fa-eye"></i> Ver el registrado','<i class="fas fa-undo-alt"></i> Registrar otro grupo','success', function (confirmed){
+                    if (confirmed) {
+                        alert("selecciono Ver");
+                    }
+                    else{
+                        $("#frm-add-asignacion").trigger('reset');
+                        window.scrollTo(0, 0);
+                    }
                 });
+            });
         }
     });
+});
+
+$("#frm-add-grupo-curso").on("submit", function(e){
+    e.preventDefault();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-add-grupo-curso"));
+    formData.append("dato", "valor");
+    $.ajax({
+        url: "./webhook/add-grupo-curso.php",
+        type: "post",
+        dataType: "json",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(res){
+            alertaEmergente(res.Mensaje);
+        }
+    }).done(function(response){
+            $("#frm-add-grupo-curso").trigger('reset');
+            consultaGrupos($("#idCurso").val());
+        });
+    $("#modalCreaGrupoCurso").modal('hide');
 });

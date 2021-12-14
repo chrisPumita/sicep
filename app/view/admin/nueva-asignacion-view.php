@@ -107,7 +107,7 @@ $id= $_POST['id'];
                                         <label class="form-control-label" for="transmision"><span class="obliga">*</span>Grupo:</label>
                                         <div class="d-flex">
                                             <select class="form-control" id="grupos" name="grupos" disabled> </select>
-                                            <button class="btn btn-primary mx-3">
+                                            <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalCreaGrupoCurso">
                                                 <i class="fas fa-plus-square"></i>
                                             </button>
                                         </div>
@@ -245,6 +245,7 @@ $id= $_POST['id'];
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-add-grupo-curso.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>

@@ -51,3 +51,12 @@ function consultaListaGrupos($idCurso){
     $curso->setIdCurso($idCurso);
     return  $curso->queryConsultaListaGrupos();
 }
+
+function agregaGrupoCurso($idCurso,$nombreGruppo,$estatusGrupo){
+    include_once "../model/GROUPS.php";
+    $grupo = new GROUPS();
+    $grupo->setIdCursoFk($idCurso);
+    $grupo->setGrupo($nombreGruppo);
+    $grupo->setEstatus($estatusGrupo);
+    return $grupo->crearGrupo();
+}

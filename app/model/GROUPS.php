@@ -79,7 +79,10 @@ private $estatus;
     {
         $query = "INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) 
                     VALUES (NULL, '".$this->getIdCursoFk()."', '".$this->getGrupo()."', '".$this->getEstatus()."')";
-
+        $this->connect();
+        $datos = $this->executeInstruction($query);
+        $this->close();
+        return $datos;
     }
 
     public  function modificaGrupo()

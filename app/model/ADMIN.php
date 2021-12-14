@@ -78,7 +78,6 @@ class ADMIN extends PROFESOR implements I_admin
 ///+++++++++++++ FUNCIONES PROPIAS DE LA CLASE ADMINISTRADOR ++++++++++++++++++///
     public function queryListaAdministradores()
     {
-        $this->connect();
         $query = "SELECT 
         per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, 
        concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
