@@ -16,6 +16,24 @@ async function consultaCursosAjax(filtro, idCursoEspc) {
         }
     });
 }
+
+async function listaGposCursoAjax(idCurso,route){
+    return $.ajax(
+        {
+            url: route,
+            type: "POST",
+            data: {id_curso:idCurso},
+            dataType: "json",
+            cache: false,
+            success: function(res){
+                // console.log(res);
+            },
+            error: function() {
+                alert("Error 500 interno de Servidor");
+            }
+        }
+    );
+}
 /****************************************************/
 
 ///Consulta de departamentos registrados

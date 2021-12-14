@@ -9,7 +9,7 @@ window.onload = function(){
     consultaGrupos(id);
 }
 
-async function consultaGrupos(idCurso,route){
+async function consultaGrupos(idCurso){
     let ruta = "./webhook/lista-grupos-curso.php";
     const datos = await listaGposCursoAjax(idCurso, ruta);
     //Mensaje en JS para usar con SwatAlert
@@ -19,21 +19,41 @@ async function consultaGrupos(idCurso,route){
 
 function buildHtmlSelectGrupos(GRUPOS) {
     let template = "";
-    GRUPOS.forEach(
-        (obj)=>
-        {
-            template += `<option value="${obj.id_grupo}">${obj.grupo}</option>`;
-        }
-    );
-    $("#list-grupos").html(template);
+    if (GRUPOS.length > 0) {
+        template += `<div class="col-md-4 text-end">
+                        <label for="indice" class="text-primary">Seleccione un Grupo:</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <select class="form-control" id="list-grupos">`;
+        GRUPOS.forEach(
+            (obj)=>
+            {
+                template += `<option value="${obj.id_grupo}">${obj.grupo}</option>`;
+            }
+        );
+        template += `</select></div>`;
+    }
+    else{
+        template = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>Agrege un grupo</strong> No hay grupos registrados, agregue uno para configurar los hosrarios.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+
+    }
+    $("#selectCurso").html(template);
 }
 
+/*DETALLES DE LOS HORARIOS EN FUNCION DEL GRUPO SELECCIONADO*/
+
+function buildTblGrupos() {
+
+}
+
+//* DETALLES GENERALES DEL CURSO*/
 async function cargaCursoDetails(filtro, idUnique) {
     const JSONData = await consultaCursosAjax(filtro,idUnique);
     buildHTMLValues(JSONData[0]);
 }
-
-
 
 function buildHTMLValues(curso){
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);

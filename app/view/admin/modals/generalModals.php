@@ -126,9 +126,7 @@
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <a href="./nueva-asignacion">
-                                <input type="button" id="btnEnviar" name="btnEnviar" value="Continuar" class="btn btn-primary btn-user btn-block">
-                            </a>
+                                <input type="button" id="btnEnviar" name="btnEnviar" value="Continuar" class="btn btn-primary btn-user btn-block" onclick="loadAsignacion()">
                         </div>
                     </div>
                 </div>
@@ -136,7 +134,6 @@
         </div>
     </div>
 </div>
-
 <!--En Construccion theme Modal -->
 <div class="modal fade text-left" id="onConstruction" tabindex="-1"
      role="dialog" aria-labelledby="PaginaEnConstrucction"

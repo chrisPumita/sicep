@@ -48,3 +48,18 @@ function sweetConfirm(title, message, callback) {
         callback(confirmed && confirmed.value == true);
     });
 }
+
+function sweetCustomDesicion(title,message,yes,no,type,callback) {
+    Swal.fire({
+        title: title,
+        text: message,
+        icon: type,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#112c71',
+        confirmButtonText: yes,
+        cancelButtonText: no
+    }).then((confirmed) => {
+        callback(confirmed && confirmed.value == true);
+    });
+}

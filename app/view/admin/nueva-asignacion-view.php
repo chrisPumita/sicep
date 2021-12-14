@@ -1,4 +1,6 @@
-<?php $titulo = "Nueva Asignacion de Grupo" ?>
+<?php $titulo = "Nueva Asignacion de Grupo";
+$id= $_POST['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,13 +38,17 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                    Para abrir nuevo grupo de <span id="nombreCurso" class="badge bg-primary text-wrap"></span>,
+                                    seleccione el profesor que impartirá la clase,
+                                    así como la modalidad y el grupo al que se le asignará. Seleccione la generación
+                                    y el semestre en que se impartirá el curso. Indique si se presentara en Campo 1
+                                    o campo 4, o elija Otro por si no es ninguna de estas. Coloque el cupo
+                                    que debe tener, si es que va a cambiar al igual que el costo predefinido de
+                                    <span id="costoCursoPred" class="badge bg-primary text-wrap"></span>.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                        <i class="fas fa-plus"></i> Agregar</button>
+                                    <a href="./lista-cursos"><button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                                            <i class="fas fa-plus"></i> Ver todos</button></a>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +58,11 @@
             <section class="section">
                 <div class="card">
                     <div class="col-md-12 text-center">
-                        <div class="img" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                        <div class="img" id="fondoImg">
                             <div class="overlay"></div>
                             <div class="mx-auto">
                                 <h4 class="text-light text-left">
-                                    <strong>Aspel NOI Basico I </strong>
+                                    <strong><span  id="nameCursoTittle"></span></strong>
                                 </h4>
                             </div>
                         </div>
@@ -79,24 +85,16 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="color"><span class="obliga">*</span>Profesor asignado:</label>
-                                            <select class="form-control" id="profesorAsig">
-                                                <option value="5">Calderon Hinojosa Felipe</option>
-                                                <option value="2">Cortes Ponciano Paola</option>
-                                                <option value="8">Echeverria Calderon Luisa</option>
-                                                <option value="4">Garduño Pioquinto Christian</option>
-                                                <option value="6">Gonzalez Perez Carmen</option>
-                                                <option value="9">Hernandez Romero Maria</option>
-                                                <option value="7">Mendoza Perez Alvaro</option>
-                                                <option value="1">Pineda Pacheco Cesar Haziel</option>
-                                                <option value="11">ROmo Segundo FRancisco</option>
+                                            <input type="hidden" id="idCurso" value="<?php echo $id ?>">
+                                            <label class="form-control-label" for="profesorAsig"><span class="obliga">*</span>Profesor asignado:</label>
+                                            <select class="form-control" id="profesorAsig" name="profesorAsig">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="color"><span class="obliga">*</span>Modalidad:</label>
-                                            <select class="form-control" id="modalidad">
+                                            <label class="form-control-label" for="modalidad"><span class="obliga">*</span>Modalidad:</label>
+                                            <select class="form-control" id="modalidad" name="modalidad">
                                                 <option value="0">Presencial</option>
                                                 <option value="1">En Línea</option>
                                                 <option value="2">Mixto</option>
@@ -108,12 +106,7 @@
                                     <div class="col-lg-3">
                                         <label class="form-control-label" for="transmision"><span class="obliga">*</span>Grupo:</label>
                                         <div class="d-flex">
-                                            <select class="form-control" id="generacion">
-                                                <option value="2021">1101</option>
-                                                <option value="2022">1102</option>
-                                                <option value="2023">1103</option>
-                                                <option value="2024">1104</option>
-                                            </select>
+                                            <select class="form-control" id="grupos" name="grupos" disabled> </select>
                                             <button class="btn btn-primary mx-3">
                                                 <i class="fas fa-plus-square"></i>
                                             </button>
@@ -121,37 +114,29 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label class="form-control-label" for="transmision"><span class="obliga">*</span>Generación:</label>
-                                        <select class="form-control" id="semestre">
-                                            <option value="2021-2">2020</option>
-                                            <option value="2022-1">2021</option>
-                                            <option value="2022-2">2022</option>
-                                        </select>
+                                        <select class="form-control" id="generacion" name="generacion"></select>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Semestre:</label>
-                                        <select class="form-control" id="semestre">
-                                            <option value="2021-2">2021-2</option>
-                                            <option value="2022-1">2022-1</option>
-                                            <option value="2022-2">2022-2</option>
-                                        </select>
+                                        <label class="form-control-label" for="semestre"><span class="obliga">*</span>Semestre:</label>
+                                        <select class="form-control" id="semestre" name="semestre"> </select>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Sede:</label>
-                                        <select class="form-control" id="campus">
+                                        <label class="form-control-label" for="campus"><span class="obliga">*</span>Sede:</label>
+                                        <select class="form-control" id="campus" name="campus">
                                             <option value="0">Campo 1</option>
-                                            <option value="1">Campo 4</option>
+                                            <option value="1" selected>Campo 4</option>
                                             <option value="2">Otro</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Cupo:</label>
-                                        <input class="form-control" type="number" value="150" id="numCupo">
+                                        <label class="form-control-label" for="numCupo"><span class="obliga">*</span>Cupo:</label>
+                                        <input class="form-control" type="number" value="30" id="numCupo" name="numCupo">
                                     </div>
                                     <div class="col-lg-6">
-                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Costo:</label>
-                                        <input class="form-control" type="number" min="0" max="99999"name="costo" id="costo" value="0">
+                                        <label class="form-control-label" for="costo"><span class="obliga">*</span>Costo:</label>
+                                        <input class="form-control" type="number" min="0" max="99999" name="costo" id="costo" value="0">
                                     </div>
                                 </div>
                                 <hr>
@@ -159,19 +144,19 @@
                                 <div class="row">
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="campo">Fecha límite de inscripciones:</label>
+                                            <label class="label" for="inicioInc">Fecha límite de inscripciones:</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                <input type="date" id="inicioInc" name="inicioInc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="campo">Inicio de Clases:</label>
+                                            <label class="label" for="inicioClases">Inicio de Clases:</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                <input type="date" id="inicioClases" name="inicioClases" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -183,18 +168,18 @@
                                             <div class="row">
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="">del </label>
+                                                        <label for="inscDel">del </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                        <input type="date" idCurso="inscDel" name="inscDel" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="">al </label>
+                                                        <label for="inscAl">al </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                        <input type="date" id="inscAl" name="inscAl" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,18 +191,18 @@
                                             <div class="row">
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="">del </label>
+                                                        <label for="calDel">del </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                        <input type="date" idCurso="calDel" name="calDel" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="">al </label>
+                                                        <label for="calAl">al </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                                        <input type="date" id="calAl" name="calAl" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -227,119 +212,36 @@
                             </div>
                             <hr>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <h6 class="heading-small text-muted mb-4">Configurar Descuentos personalizados</h6>
-                                    <div class="mt-1 mb-1 overflow-auto">
-                                        <table class="table table-hover text-left">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col">Dirigido a:</th>
-                                                <th scope="col">Aplicar % Descuento</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="procedencias">
-                                            <tr id_procedencia="1">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="1">
-                                                    </div>
-                                                </td>
-                                                <td>Comunidad FESC</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num1">
-                                                </td>
-                                            </tr>
-                                            <tr id_procedencia="2">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="2">
-                                                    </div>
-                                                </td>
-                                                <td>Comunidad UNAM</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num2">
-                                                </td>
-                                            </tr>
-                                            <tr id_procedencia="3">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="3">
-                                                    </div>
-                                                </td>
-                                                <td>Ex-Alumno FESC</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num3">
-                                                </td>
-                                            </tr>
-                                            <tr id_procedencia="4">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="4">
-                                                    </div>
-                                                </td>
-                                                <td>Ex-Alumno UNAM</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num4">
-                                                </td>
-                                            </tr>
-                                            <tr id_procedencia="5">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="5">
-                                                    </div>
-                                                </td>
-                                                <td>Externos de fuera</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num5">
-                                                </td>
-                                            </tr>
-                                            <tr id_procedencia="6">
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input habilitar_procedencia" id="6">
-                                                    </div>
-                                                </td>
-                                                <td>Personal UNAM</td>
-                                                <td>
-                                                    <input class="form-control" type="number" disabled="" value="0" id="num6">
-                                                </td>
-                                            </tr></tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="col-sm-6 mb-3 mb-sm-3">
                                     <div class="row">
                                         <h6 class="heading-small text-muted mb-4">Notas Adicionales</h6>
-                                        <label class="form-control-label" for="transmision">Notas:</label>
-                                        <textarea class="form-control" id="txtnotas" rows="5"></textarea>
+                                        <label class="form-control-label" for="notas">Notas:</label>
+                                        <textarea class="form-control" id="notas" name="notas" rows="5" placeholder="Escriba alguna nota importante aqui, este campo puede quedar vacio"></textarea>
                                     </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                            <strong><i class="fas fa-eye"></i> Publicar Ahora:</strong> Si decide publicar el grupo ahora, este aparecerá en
-                                            la pagina principal y quedará disponible para que los alumnos se inscriban.
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-3">
+                                    <h6 class="heading-small text-muted mb-4">Crear y publicar</h6>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong><i class="fas fa-eye"></i> Publicar Ahora:</strong> Si decide publicar el grupo ahora, este aparecerá en
+                                        la pagina principal y quedará disponible para que los alumnos se inscriban.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="chkPublica" name="chkPublica" class="form-check-input">
+                                            <label for="chkPublica"><i class="fas fa-eye-slash"></i> Publicar ahora</label>
                                         </div>
-                                        <div class="form-check">
-                                            <div class="checkbox">
-                                                <input type="checkbox" id="checkbox3" class="form-check-input">
-                                                <label for="checkbox3"><i class="fas fa-eye-slash"></i> Publicar ahora</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group text-end">
-                                            <button class="btn btn-primary w-50 mr-3 mt-3 mb-3" type="submit">
-                                                <i class="fas fa-check-circle"></i> Crear</button>
-                                        </div>
+                                    </div>
+                                    <div class="form-group text-end">
+                                        <button class="btn btn-primary mr-3 mt-3 mb-3" type="submit">
+                                            <i class="fas fa-check-circle"></i> Guardar</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
@@ -349,8 +251,8 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-
 <!-- Agregar solo cuando exista una tabla para mostrar-->
+<script src="./service/asignacion-new.js"></script>
+<script src="./service/data-profesores-ajax.js"></script>
 </body>
-
 </html>

@@ -354,13 +354,8 @@ $titulo = "Detalles del curso"
                                     <h5 class="text-center">Grupos de este Curso</h5>
                                 </div>
                                 <div class="col-sm-12">
-                                    <div class="form-group row p-3">
-                                        <div class="col-md-4 text-end">
-                                            <label for="indice" class="text-primary">Seleccione un Grupo:</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <select class="form-control" id="list-grupos"> </select>
-                                        </div>
+                                    <div class="form-group row p-3" id="selectCurso">
+
                                     </div>
                                 </div>
                                 <div class="col-sm-6 align-items-center">

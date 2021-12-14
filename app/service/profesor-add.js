@@ -3,7 +3,6 @@ $(document).ready(function() {
 
 //Escucha
 $("#frm-add-profesor").on("submit", function(e){
-    alert("Ok");
     var f = $(this);
     var formData = new FormData(document.getElementById("frm-add-profesor"));
     formData.append("dato", "valor");

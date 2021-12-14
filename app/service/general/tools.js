@@ -19,3 +19,9 @@ function redirect_by_post(purl, pparameters, in_new_tab) {
     document.body.removeChild(form);
     return false;
 }
+
+//regresa el año actual
+function yearToday() {
+    var today = new Date();
+    return today.getFullYear();
+}
