@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 21:58:09
+-- Tiempo de generación: 15-12-2021 a las 03:35:15
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -167,7 +167,7 @@ INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`
 
 CREATE TABLE `asignacion_procedencia` (
   `id_tipo_procedencia_fk` int(10) NOT NULL,
-  `id_asignacion_fk` int(10) NOT NULL,
+  `id_grupo_fk` int(5) NOT NULL,
   `porcentaje_desc` decimal(10,2) NOT NULL,
   `costo_final` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -176,11 +176,13 @@ CREATE TABLE `asignacion_procedencia` (
 -- Volcado de datos para la tabla `asignacion_procedencia`
 --
 
-INSERT INTO `asignacion_procedencia` (`id_tipo_procedencia_fk`, `id_asignacion_fk`, `porcentaje_desc`, `costo_final`) VALUES
+INSERT INTO `asignacion_procedencia` (`id_tipo_procedencia_fk`, `id_grupo_fk`, `porcentaje_desc`, `costo_final`) VALUES
 (1, 1, '50.00', '500.00'),
 (1, 2, '50.00', '500.00'),
+(1, 9, '50.00', '1000.00'),
 (2, 1, '0.00', '1000.00'),
-(2, 2, '0.00', '1000.00');
+(2, 2, '0.00', '1000.00'),
+(2, 9, '50.00', '1000.00');
 
 -- --------------------------------------------------------
 
@@ -263,6 +265,7 @@ CREATE TABLE `curso` (
   `id_profesor_admin_acredita` int(10) DEFAULT NULL,
   `id_profesor_autor` int(10) NOT NULL,
   `codigo` varchar(10) NOT NULL,
+  `route` text NOT NULL,
   `nombre_curso` varchar(50) NOT NULL,
   `dirigido_a` text NOT NULL,
   `objetivo` text NOT NULL,
@@ -282,23 +285,23 @@ CREATE TABLE `curso` (
 -- Volcado de datos para la tabla `curso`
 --
 
-INSERT INTO `curso` (`id_curso`, `id_profesor_admin_acredita`, `id_profesor_autor`, `codigo`, `nombre_curso`, `dirigido_a`, `objetivo`, `descripcion`, `no_sesiones`, `antecedentes`, `aprobado`, `costo_sugerido`, `link_temario_pdf`, `fecha_creacion`, `fecha_acreditacion`, `banner_img`, `tipo_curso`) VALUES
-(1, 1, 2, '001', 'Induccion al computo II', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
-(2, NULL, 5, '002', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
-(3, NULL, 2, '003', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
-(4, 3, 1, '004', 'Diccionarios de datos', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 1),
-(10, NULL, 7, '002', 'Macros en Excel Avanzados', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
-(11, 1, 10, '001', 'Reparacion de Computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
-(12, NULL, 1, '003', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
-(15, 3, 8, '004', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 0),
-(19, 1, 7, '001', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
-(20, 1, 11, '001', 'Word', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
-(21, NULL, 1, '002', 'Excel Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
-(22, 1, 8, '001', 'Power Pint', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
-(23, NULL, 3, '003', 'C++ Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
-(99, NULL, 9, '002', 'Java Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
-(100, 3, 4, '004', 'Diseño Web', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 0),
-(101, NULL, 9, '003', 'Phyton Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0);
+INSERT INTO `curso` (`id_curso`, `id_profesor_admin_acredita`, `id_profesor_autor`, `codigo`, `route`, `nombre_curso`, `dirigido_a`, `objetivo`, `descripcion`, `no_sesiones`, `antecedentes`, `aprobado`, `costo_sugerido`, `link_temario_pdf`, `fecha_creacion`, `fecha_acreditacion`, `banner_img`, `tipo_curso`) VALUES
+(1, 1, 2, '001', '', 'Induccion al computo II', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
+(2, NULL, 5, '002', '', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
+(3, NULL, 2, '003', '', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
+(4, 3, 1, '004', '', 'Diccionarios de datos', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 1),
+(10, NULL, 7, '002', '', 'Macros en Excel Avanzados', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
+(11, 1, 10, '001', '', 'Reparacion de Computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
+(12, NULL, 1, '003', '', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
+(15, 3, 8, '004', '', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 0),
+(19, 1, 7, '001', '', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
+(20, 1, 11, '001', '', 'Word', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
+(21, NULL, 1, '002', '', 'Excel Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
+(22, 1, 8, '001', '', 'Power Pint', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '550.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', 'https://udg.mx/sites/default/files/img_noticias/210612_computo_suv.jpg', 2),
+(23, NULL, 3, '003', '', 'C++ Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0),
+(99, NULL, 9, '002', '', 'Java Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '1300.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 0),
+(100, 3, 4, '004', '', 'Diseño Web', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1150.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, 'https://1.bp.blogspot.com/-d50QNSXXAeM/WocqvXq4ySI/AAAAAAAAAz0/xe24x5pkCBIU_rQRrOkIru0ONXy3LMIsQCLcBGAs/s1600/banner-mysql.jpg', 0),
+(101, NULL, 9, '003', '', 'Phyton Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '1500.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 0);
 
 -- --------------------------------------------------------
 
@@ -316,14 +319,17 @@ CREATE TABLE `departamentos` (
 --
 
 INSERT INTO `departamentos` (`id_depto`, `nombre`) VALUES
-(-8, 'Mate'),
+(-11, 'OTRO'),
+(-10, 'Ingenieria'),
+(-9, 'Info'),
+(-8, 'INFORMATICASSSS'),
+(-7, 'ITSE'),
 (1, 'Informatica'),
 (2, 'Contabilidad'),
 (3, 'IME'),
 (4, 'Veterinaria'),
 (5, 'Administracion'),
-(6, 'Agricola'),
-(7, 'ITSE');
+(6, 'Agricola');
 
 -- --------------------------------------------------------
 
@@ -447,7 +453,31 @@ INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) VALUES
 (5, 2, '1601', 0),
 (6, 2, '1602', 1),
 (7, 3, '1851', 1),
-(8, 3, '1852', 1);
+(8, 3, '1852', 1),
+(9, 19, '1500', 1),
+(10, 19, '1501', 1),
+(11, 15, '1000', 1),
+(12, 15, '1000', 1),
+(13, 15, '1000', 1),
+(14, 15, '1001', 1),
+(15, 15, '1003', 1),
+(16, 15, '1004', 1),
+(17, 15, '1005', 1),
+(18, 15, '1006', 1),
+(19, 15, '1007', 1),
+(20, 15, '1008', 1),
+(21, 15, '1009', 1),
+(22, 15, '1010', 1),
+(23, 15, '1011', 1),
+(24, 15, '1012', 1),
+(25, 15, '1013', 1),
+(26, 15, '1014', 1),
+(27, 15, '1015', 1),
+(28, 4, '668', 1),
+(29, 4, '669', 1),
+(30, 4, '670', 1),
+(31, 19, '1502', 1),
+(32, 4, '671', 1);
 
 -- --------------------------------------------------------
 
@@ -3056,7 +3086,8 @@ INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `telefono`, `sexo`,
 (20210604143217, 'Abril', 'Busmante', 'Perez', '16515615615', 0, 1),
 (20210609044700, 'Juan', 'Perez', 'Sanchez', '56156156', 0, 1),
 (20210706223646, 'Fernando', 'Ledezma', 'Ramos', '55626262626', 0, 1),
-(20210710050742, 'FRancisco', 'ROmo', 'Segundo', '5565241529', 0, 1);
+(20210710050742, 'FRancisco', 'ROmo', 'Segundo', '5565241529', 0, 1),
+(20211215032318, 'Agapito', 'Mendoza', 'Herrera', '5623568956', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -3095,7 +3126,8 @@ INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_traba
 (8, 20210604142033, 2, '1651561', 'Lic.', 'luis@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 14:20:33', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/43283439?v=4', 1),
 (9, 20210604142356, 3, '561561651', 'Lic.', 'maria@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:23:58', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/19921111?s=400&amp;u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&amp;v=4', 1),
 (10, 20210604143217, 5, '45615656156', 'Lic.', 'abril@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:32:17', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/688191?v=4', 0),
-(11, 20210710050742, 2, '1561561', 'Lic.', 'cdso@gailc.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-07-09 22:07:42', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/688191?v=4', 1);
+(11, 20210710050742, 2, '1561561', 'Lic.', 'cdso@gailc.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-07-09 22:07:42', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/688191?v=4', 1),
+(12, 20211215032318, 4, '15615615', 'Lic.', 'algo@gmailcom', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-15 03:23:18', 'NULL', 'NULL', './resource/default-avatar.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -3159,7 +3191,9 @@ INSERT INTO `tipo_procedencia` (`id_tipo_procedencia`, `tipo_procedencia`) VALUE
 (3, 'Ex-Alumno FESC'),
 (4, 'Ex-Alumno UNAM'),
 (5, 'Externos de fuera'),
-(6, 'Personal UNAM');
+(6, 'Personal UNAM'),
+(7, 'Comunidad Nueva'),
+(8, 'COMUNIDAD EXTRAÑA');
 
 -- --------------------------------------------------------
 
@@ -3255,9 +3289,9 @@ ALTER TABLE `asignacion_grupo`
 -- Indices de la tabla `asignacion_procedencia`
 --
 ALTER TABLE `asignacion_procedencia`
-  ADD PRIMARY KEY (`id_tipo_procedencia_fk`,`id_asignacion_fk`),
-  ADD KEY `id_tipo_procedencia_fk` (`id_tipo_procedencia_fk`,`id_asignacion_fk`),
-  ADD KEY `id_asignacion_fk` (`id_asignacion_fk`);
+  ADD PRIMARY KEY (`id_tipo_procedencia_fk`,`id_grupo_fk`),
+  ADD KEY `id_tipo_procedencia_fk` (`id_tipo_procedencia_fk`,`id_grupo_fk`),
+  ADD KEY `id_asignacion_fk` (`id_grupo_fk`);
 
 --
 -- Indices de la tabla `aulas`
@@ -3327,15 +3361,15 @@ ALTER TABLE `grupo`
 --
 ALTER TABLE `horario_clase_presencial`
   ADD PRIMARY KEY (`id_horario_pres`),
-  ADD KEY `id_asignacion_fk` (`id_grupo_fk`),
-  ADD KEY `id_aula_fk` (`id_aula_fk`);
+  ADD KEY `id_aula_fk` (`id_aula_fk`),
+  ADD KEY `id_grupo_fk` (`id_grupo_fk`);
 
 --
 -- Indices de la tabla `horario_clase_virtual`
 --
 ALTER TABLE `horario_clase_virtual`
   ADD PRIMARY KEY (`id_horario_virtual`),
-  ADD KEY `id_asignacion_fk` (`id_grupo_fk`);
+  ADD KEY `id_grupo_fk` (`id_grupo_fk`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -3465,7 +3499,7 @@ ALTER TABLE `constancia_profesor`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id_depto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_depto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `docs_solicitados_curso`
@@ -3489,7 +3523,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `horario_clase_presencial`
@@ -3513,7 +3547,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_social`
@@ -3531,7 +3565,7 @@ ALTER TABLE `temas`
 -- AUTO_INCREMENT de la tabla `tipo_procedencia`
 --
 ALTER TABLE `tipo_procedencia`
-  MODIFY `id_tipo_procedencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tipo_procedencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `universidades`
@@ -3583,7 +3617,7 @@ ALTER TABLE `asignacion_grupo`
 --
 ALTER TABLE `asignacion_procedencia`
   ADD CONSTRAINT `asignacion_procedencia_ibfk_1` FOREIGN KEY (`id_tipo_procedencia_fk`) REFERENCES `tipo_procedencia` (`id_tipo_procedencia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `asignacion_procedencia_ibfk_2` FOREIGN KEY (`id_asignacion_fk`) REFERENCES `asignacion_grupo` (`id_asignacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `asignacion_procedencia_ibfk_2` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id_grupo`);
 
 --
 -- Filtros para la tabla `constancia_alumno`
