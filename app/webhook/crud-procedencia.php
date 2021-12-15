@@ -6,27 +6,26 @@ if (!isset($POST['id_procedencia']) && !isset($POST['nombre_procedencia']))
     include_once "../control/controlGeneral.php";
     $result= insertUpdateProcedencia($idProcedencia,$nombreProcedencia);
     if($result){
+        $mjeTipe = 1;
         if($idProcedencia>0)
             $mjeText ="Se ha actualizado a: " . $nombreProcedencia;
         else{
             $mjeText = "Se ha registrado: ".$nombreProcedencia;
         }
-        $mje = array(
-            "mjeType" => "1",
-            "Mensaje" => $mjeText
-        );
-        echo json_encode($mje);    
     }
     else {
-        die;
+        $mjeTipe = -1;
+        $mjeText="Error interno";
     }
 }
 else{
+    $mjeTipe = 0;
     $mjeText="Faltan datos";
-    $mje = array(
-            "mjeType" => "-1",
-            "Mensaje" => $mjeText
-        );
-        echo json_encode($mje);    
 }
 
+
+$mje = array(
+    "mjeType" => $mjeTipe,
+    "Mensaje" => $mjeText
+);
+echo json_encode($mje);

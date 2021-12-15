@@ -52,8 +52,8 @@ class TIPO_PROCEDENCIA extends CONEXION_M
     }
 
     function editarTipoProcedencia(){
-        $sql = "UPDATE tipo_procedencia SET tipo_procedencia = ". $this->getTipoProcedencia()." 
-        WHERE id_tipo_procede =". $this->getIdTipoProcede();
+        $sql = "UPDATE tipo_procedencia SET tipo_procedencia = '". $this->getTipoProcedencia()."'
+        WHERE id_tipo_procedencia =". $this->getIdTipoProcede();
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();
@@ -63,7 +63,7 @@ class TIPO_PROCEDENCIA extends CONEXION_M
 
     function crearTipoProcedencia(){
         $query="INSERT INTO tipo_procedencia (
-                id_procedencia,
+                id_tipo_procedencia,
                 tipo_procedencia) VALUE(NULL,'".$this->getTipoProcedencia()."')";
         $this->connect();
         $result = $this->executeInstruction($query);

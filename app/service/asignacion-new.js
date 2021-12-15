@@ -100,16 +100,16 @@ $("#frm-add-asignacion").on("submit", function(e){
             $.ajax({
                 url: "./webhook/add-asignacion.php",
                 type: "post",
-                dataType: "html",
+                dataType: "json",
                 data: formData,
                 cache: false,
                 contentType: false,
                 processData: false
             })
             .done(function(res){
-                sweetCustomDesicion('Se ha creado un nuevo grupo', '¿Qué más desea hacer ahora?','<i class="far fa-eye"></i> Ver el registrado','<i class="fas fa-undo-alt"></i> Registrar otro grupo','success', function (confirmed){
+                sweetCustomDesicion(res.Mensaje, '¿Qué más desea hacer ahora?','<i class="far fa-eye"></i> Ver los registros','<i class="fas fa-undo-alt"></i> Registrar otro grupo','success', function (confirmed){
                     if (confirmed) {
-                        alert("selecciono Ver");
+                        window.location.href = "./lista-grupos";
                     }
                     else{
                         $("#frm-add-asignacion").trigger('reset');

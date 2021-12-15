@@ -22,6 +22,7 @@ class CURSO extends CONEXION_M implements I_CURSO
     private $fecha_acreditacion;
     private $banner_img;
     private $tipo_curso;
+    private $route;
     /*Composiciones*/
     private $lista_temas;
     private $lista_grupos;
@@ -35,7 +36,21 @@ class CURSO extends CONEXION_M implements I_CURSO
     /*******************************************************************************
      * Inician Getters and Setters
      *******************************************************************************/
+    /**
+     * @return mixed
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
 
+    /**
+     * @param mixed $route
+     */
+    public function setRoute($route): void
+    {
+        $this->route = $route;
+    }
     /**
      * @return mixed
      */
@@ -324,7 +339,7 @@ class CURSO extends CONEXION_M implements I_CURSO
         $filtroidCurso = $id_curso > 0 ? " AND c.id_curso = ".$id_curso : "";
 
         $query="SELECT c.id_profesor_admin_acredita, c.id_curso, c.codigo, c.nombre_curso, 
-                   c.dirigido_a, c.objetivo, 
+                   c.dirigido_a, c.objetivo, c.`route`,
                    c.descripcion, c.no_sesiones, 
                    c.antecedentes, c.costo_sugerido, 
                    c.link_temario_pdf, c.fecha_creacion, 
@@ -376,11 +391,14 @@ class CURSO extends CONEXION_M implements I_CURSO
 
     function registraCurso()
     {
+        //la ruta del route debe quedar asi:
+        // resources/banner/E931C40F8171665B3852329702A01562/4561516.jpg
         $query = "INSERT INTO `curso` (
                     `id_curso`, 
                     `id_profesor_admin_acredita`,
                     `id_profesor_autor`,
                     `codigo`, 
+                     `route`,
                     `nombre_curso`, 
                     `dirigido_a`, 
                     `objetivo`, 
@@ -395,7 +413,7 @@ class CURSO extends CONEXION_M implements I_CURSO
                     `banner_img`, 
                     `tipo_curso`) VALUES 
                     ('".$this->getIdCurso()."', NULL, '"
-                    .$this->getIdProfesorAutor()."', '".$this->getCodigo()."', 
+                    .$this->getIdProfesorAutor()."', '".$this->getCodigo()."', '".$this->getRoute()."', 
                     '".$this->getNombreCurso()."', '".$this->getDirigidoA()."', '"
                     .$this->getObjetivo()."', '".$this->getDescripcion()."', '"
                     .$this->getNoSesiones()."', '".$this->getAntecedentes()."', 

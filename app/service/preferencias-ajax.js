@@ -7,6 +7,10 @@ $(document).ready(function () {
     consultaDocs();
 });
 
+//#####################################################################
+//####################### D E P T O S ###############################
+//######################################################################
+
 async function consultaDeptos() {
     const JSONData = await consultaDeptosAjax();
     buildHTMLTableDepto(JSONData);
@@ -71,7 +75,6 @@ $(document).on("click", ".deleteDepto", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
-    console.log(id);
     var route= "./webhook/delete-depto.php";
     sweetConfirm('Eliminar Departamento', '¿Estas seguro de que deseas eliminar este departamento?', function (confirmed) {
         if (confirmed) {
@@ -80,9 +83,11 @@ $(document).on("click", ".deleteDepto", function ()
             });
         }
     });
-    
 });
 
+//#####################################################################
+//################# P R O C E D E N C I A S ###########################
+//######################################################################
 
 //Funciones Procedencias
 async function consultaProcedencias() {
@@ -115,13 +120,13 @@ function buildTableHTMLProcedencias(obj_result) {
 //Agrega o actualiza una Procedencia 
 function editaProcedencia(idProce,nombreProce){
     $("#modal_procedencia").modal('show');
-    $("#idProcedencia").val(idProce);
-    $("#nombreProcedencia").val(nombreProce);
+    $("#id_procedencia").val(idProce);
+    $("#nombre_procedencia").val(nombreProce);
 }
 function nuevaProcedencia(){
     $("#modal_procedencia").modal('show');
-    $("#idProcedencia").val(0);
-    $("#nombreProcedencia").val("");
+    $("#id_procedencia").val(0);
+    $("#nombre_procedencia").val("");
 }
 
 $("#frm-procedencia").on("submit", function(e){

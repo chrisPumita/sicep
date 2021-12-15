@@ -22,12 +22,11 @@ function deleteDepartamento($id){
 
 /****Funciones Procedencia****/
 function insertUpdateProcedencia($idProcedencia,$nombreProcedencia){
-    include_once "../model/TIPO_PROCEDENCIA";
+    include_once "../model/TIPO_PROCEDENCIA.php";
     $TIPO= new TIPO_PROCEDENCIA();
     $TIPO->setIdTipoProcede($idProcedencia);
     $TIPO->setTipoProcedencia($nombreProcedencia);
-    $result= $idProcedencia>0 ? $TIPO->editarTipoProcedencia() : $TIPO->crearTipoProcedencia();
-    return $result;
+    return $idProcedencia>0 ? $TIPO->editarTipoProcedencia() : $TIPO->crearTipoProcedencia();
 }
 //Funciones universidades
 function getListaUniversidades(){

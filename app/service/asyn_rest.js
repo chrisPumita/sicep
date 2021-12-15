@@ -165,8 +165,6 @@ async function enviaForm(params,route){
 }
 
 async function sendBackEndPreferencias(params,route){
-    console.log(params);
-    console.log(route);
     return $.ajax(
         {
             url: route,
@@ -175,13 +173,12 @@ async function sendBackEndPreferencias(params,route){
             dataType: "json",
             cache: false,
             success: function(res){
-                console.log(res);
+               // console.log(res);
             },
             error: function() {
                 alert("Error 500 interno Ajax");
             }
         }
-        
     );
 }
 
