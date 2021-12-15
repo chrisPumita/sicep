@@ -19,6 +19,16 @@ function deleteDepartamento($id){
     $DEPTO = new DEPTO();
     return $DEPTO->queryDeleteDepartamento($id);
 }
+
+/****Funciones Procedencia****/
+function insertUpdateProcedencia($idProcedencia,$nombreProcedencia){
+    include_once "../model/TIPO_PROCEDENCIA";
+    $TIPO= new TIPO_PROCEDENCIA();
+    $TIPO->setIdTipoProcede($idProcedencia);
+    $TIPO->setTipoProcedencia($nombreProcedencia);
+    $result= $idProcedencia>0 ? $TIPO->editarTipoProcedencia() : $TIPO->crearTipoProcedencia();
+    return $result;
+}
 //Funciones universidades
 function getListaUniversidades(){
     include_once "../model/UNIVERSIDADES.php";
@@ -49,3 +59,4 @@ function getListaMunicipios($idEstado){
     $EDO= new ESTADO_REP();
     return $EDO->consultaMunicipios($idEstado);
 }
+

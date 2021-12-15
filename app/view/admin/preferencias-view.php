@@ -183,7 +183,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-12 d-flex justify-content-end py-3">
                                                             <button type="button" class="btn btn-primary me-1 mb-1"
-                                                                    data-bs-toggle="modal" data-bs-target="#modal_procedencia">
+                                                                    onclick="nuevaProcedencia();">
                                                                 Nuevo</button>
                                                         </div>
                                                     </div>

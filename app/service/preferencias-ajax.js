@@ -100,10 +100,9 @@ function buildTableHTMLProcedencias(obj_result) {
             template += `<tr id="${obj.id_tipo_procedencia}">
                             <th scope="row">${cont}</th>
                             <td>${obj.tipo_procedencia}</td>
-                            <!-- BOTON ACCIONES -->
+                            <!-- BOTON ACCIONES -->  
                             <td>
-                                <button type="button" class="btn btn-outline-primary" 
-                                data-bs-toggle="modal" data-bs-target="#modal_procedencia">
+                                <button type="button" class="btn btn-outline-primary" onclick="editaProcedencia('${obj.id_tipo_procedencia}', '${obj.tipo_procedencia}');">
                                 <i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger deteleProcedencia"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -113,6 +112,38 @@ function buildTableHTMLProcedencias(obj_result) {
     $("#tbl-procedencias").html(template);
 }
 
+//Agrega o actualiza una Procedencia 
+function editaProcedencia(idProce,nombreProce){
+    $("#modal_procedencia").modal('show');
+    $("#idProcedencia").val(idProce);
+    $("#nombreProcedencia").val(nombreProce);
+}
+function nuevaProcedencia(){
+    $("#modal_procedencia").modal('show');
+    $("#idProcedencia").val(0);
+    $("#nombreProcedencia").val("");
+}
+
+$("#frm-procedencia").on("submit", function(e){
+    //Ruta del Webbhook
+    e.preventDefault();
+    let ruta = "./webhook/crud-procedencia.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        id_procedencia : $("#id_procedencia").val(),
+        nombre_procedencia :$("#nombre_procedencia").val()
+    };
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#modal_procedencia").modal('hide');
+        consultaProcedencias();
+    });
+});
+
+
+
+
+//Funciones Universidades
 async function consultaUnis() {
     const JSONData = await consultaUnisAjax("./");
     buildHTMLTblUnis(JSONData);
@@ -142,6 +173,7 @@ function buildHTMLTblUnis(obj_result) {
     $("#tbl-universidades").html(template);
 }
 
+//Funciones  Aulas
 async function consultaAulas(filtro,tipo) {
     const JSONData = await consultaAulasAjax(filtro,tipo);
     buildHTMLTblAulas(JSONData);
@@ -173,6 +205,8 @@ function buildHTMLTblAulas(obj_result) {
     $("#tbl-aulas").html(template);
 }
 
+
+//Funciones Documentos
 async function consultaDocs() {
     const JSONData = await consultaDocsAjax();
     buildHTMLTblDocuments(JSONData);

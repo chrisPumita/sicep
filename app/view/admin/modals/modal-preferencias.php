@@ -83,11 +83,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-procedencia">
                     <div class="form-group">
                         <label for="nombre_procedencia">Procedencia:</label>
-                        <input type="hidden" class="form-control" id="id_procedencia" value="0">
-                        <input type="text" class="form-control" id="nombre_procedencia" aria-describedby="deptoHelp" placeholder="Defina una procedencia">
+                        <input type="text" class="form-control" id="id_procedencia"  name="id_procedencia"value="0">
+                        <input type="text" class="form-control" id="nombre_procedencia" name="nombre_procedencia" aria-describedby="deptoHelp" placeholder="Defina una procedencia">
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
