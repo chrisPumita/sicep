@@ -339,14 +339,13 @@ class CURSO extends CONEXION_M implements I_CURSO
         $filtroidCurso = $id_curso > 0 ? " AND c.id_curso = ".$id_curso : "";
 
         $query="SELECT c.id_profesor_admin_acredita, c.id_curso, c.codigo, c.nombre_curso, 
-                   c.dirigido_a, c.objetivo, c.`route`,
-                   c.descripcion, c.no_sesiones, 
-                   c.antecedentes, c.costo_sugerido, 
-                   c.link_temario_pdf, c.fecha_creacion, 
-                   c.fecha_acreditacion, c.banner_img, 
-                   c.tipo_curso, c.aprobado,c.banner_img,
+                   c.dirigido_a, c.objetivo, c.`route`,c.descripcion, c.no_sesiones, 
+                   c.antecedentes, c.costo_sugerido, c.link_temario_pdf, c.fecha_creacion, 
+                   c.fecha_acreditacion, c.banner_img, c.tipo_curso, c.aprobado,c.banner_img,
                     concat(pr.nombre, ' ', pr.app,' ', pr.apm) AS nombre_completo,
-                   pr.nombre , pr.app , pr.apm,c.aprobado, prof.prefijo
+                   pr.nombre , pr.app , pr.apm,c.aprobado, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
+                    (SELECT COUNT(*) FROM asignacion_grupo ag, grupo gpo
+                    WHERE   ag.id_grupo_fk = gpo.id_grupo and gpo.id_curso_fk = c.id_curso) AS grupos_abiertos
                         FROM curso c, profesor prof, persona pr
                             WHERE c.id_profesor_autor = prof.id_profesor 
                             and prof.id_persona_fk = pr.id_persona ".$filtroidCurso." ".$filtro."

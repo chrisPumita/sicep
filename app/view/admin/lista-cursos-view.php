@@ -93,6 +93,7 @@
                                     <th>CLAVE</th>
                                     <th>NOMBRE</th>
                                     <th>AUTOR</th>
+                                    <th>GRUPOS CREADOS</th>
                                     <th>TIPO</th>
                                     <th>TEMARIO</th>
                                     <th>ESTATUS</th>

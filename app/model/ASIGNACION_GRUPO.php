@@ -643,21 +643,26 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     //Function historial de asignaciones de un curso especifico
     // CHRIS RCGS 15/12/2021
-    function queryHistorialAsignacionesCurso($idCurso)
+    function queryHistorialAsignacionesCurso($idCurso,$filtro)
     {
-        $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo,prof.img_perfil,
-       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.estatus AS estatus_profesor,
-        gpo.grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, ag.generacion,
+        //se buscan el historial de in ID especifico
+        $idBusqueda = $idCurso > 0 ? " AND c.id_curso = ".$idCurso : "";
+
+        $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
+       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo,
+       gpo.grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso,
+       ag.id_asignacion, ag.generacion,
        ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,
-       ag.estatus AS statusAsignacion, ag.id_asignacion,
-       (select COUNT(*) from acta where id_asignacion_fk = ag.id_asignacion) AS inscritos
+       ag.estatus AS statusAsignacion,
+       (select COUNT(*) from acta where id_asignacion_fk = ag.id_asignacion) AS inscritos,
+       (SELECT COUNT(*) FROM inscripcion insc WHERE insc.autorizacion_inscripcion = 0 AND
+       insc.pago_confirmado = 0 AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
         from persona per, profesor prof, asignacion_grupo ag, grupo gpo, curso c
         where per.id_persona = prof.id_persona_fk
-        AND ag.id_profesor_fk = prof.id_profesor
-        AND ag.id_grupo_fk = gpo.id_grupo
-        AND c.id_curso = gpo.id_curso_fk
-        AND c.id_curso = ".$idCurso;
+          AND ag.id_profesor_fk = prof.id_profesor
+          AND ag.id_grupo_fk = gpo.id_grupo
+          AND c.id_curso = gpo.id_curso_fk".$idBusqueda." ORDER BY ag.fecha_inicio ASC";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

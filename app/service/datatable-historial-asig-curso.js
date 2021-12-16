@@ -1,6 +1,3 @@
-$(document).ready(function() {
-
-});
 
 window.onload = function(){
     cargaDataTableAsignaciones($("#idCurso").val());
@@ -43,7 +40,13 @@ function cargaDataTableAsignaciones(idCurso) {
                 },
                 { data: null,
                     render: function ( data, type, row ){
-                        return row.inscritos + '/' + row.cupo;
+                    //determinamos %
+                        let porc = (row.inscritos * 100)/row.cupo;
+                        let spanStyle;
+                        if (porc<= 60) spanStyle = "success";
+                        else if (porc >60 && porc <=80) spanStyle = "warning";
+                        else spanStyle = "danger";
+                        return '<span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span>'
                     }
                 },
                 { data: null,
@@ -64,7 +67,7 @@ function cargaDataTableAsignaciones(idCurso) {
                 },
                 { data: null,
                     render: function ( data, type, row ){
-                        return 'Grupo: '+ row.grupo+'<br> Gen: '+row.generacion+'<br> Semestre: '+row.semestre;
+                        return 'Grupo: '+ row.grupo+'<br> Generación: '+row.generacion+'<br> Semestre: '+row.semestre;
                     }
                 },
                 {

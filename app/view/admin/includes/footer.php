@@ -1,4 +1,3 @@
-
 <!-- Copyright -->
 <div class="footer clearfix mb-0 text-muted">
     <div class=" py-1 bg_second">

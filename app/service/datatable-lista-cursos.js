@@ -48,18 +48,29 @@ function cargaCursosDataTable() {
         "columns":
             [
                 { data: 'codigo'},
-                { data: 'aprobado',
-                    render: function ( data, type, row ){
-                        //funcion de tipos.js
-                        value = estadoCursoApoved(row.aprobado);
-                        return row.nombre_curso + ' ' + value;
-                    }
+                { data: 'nombre_curso'
                 },
-                /* { data: "nombre_completo"},*/
-
                 { data: null,
                     render: function ( data, type, row ){
-                        return row.prefijo + '. ' + row.nombre_completo;
+                        let flagAdmin = estadoProfesorAdmin(row.flagAdmin);
+                        let status = row.estatus_profesor == 1 ? 'success':'warning';
+                        let template = `<div class="d-flex align-items-center">
+                                        <div class="avatar avatar-md">
+                                            <img src="${row.img_perfil}" alt="" srcset="">
+                                            <span class="avatar-status bg-${status}"></span>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center px-3">
+                                            <p class="mb-0 text-xs">${row.prefijo}. ${row.nombre_completo} </p>
+                                            <p>${flagAdmin}</p>
+                                        </div>
+                                    </div>`;
+                        return template;
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                    let grupos = row.grupos_abiertos >0 ? '<span class="badge bg-info">'+row.grupos_abiertos+' grupo(s)</span>' : "Ninguno";
+                        return grupos;
                     }
                 },
                 { data: "tipo_curso",
@@ -75,14 +86,14 @@ function cargaCursosDataTable() {
                     render: function ( data, type, row ){
                         //funcion de tipos.js
                         value = estadoCursoApoved(row.aprobado);
-                        return row.aprobado ==='1'? 'APROBADO':"PENDIENTE";
+                        return (row.aprobado ==='1'? 'APROBADO ':"PENDIENTE ")+value;
                     }
                 },
                 {
                     data: 'ACTIONS',
                     render: function ( data, type, row ){
-                        let template = '<a href="#" class="btn btn-primary viewCourse"><i class="far fa-eye"></i>&nbsp; Detalles</a>';
-                        template+= row.aprobado ==='1'? '<a href="#" class="btn btn-secondary" onClick="openGroup('+row.id_curso+');"><i class="fas fa-users"></i>&nbsp; Abrir Grupo</a>':"";
+                        let template = '<a href="#" class="btn btn-primary viewCourse me-1 mb-1"><i class="far fa-eye"></i></a>';
+                        template+= row.aprobado ==='1'? '<a href="#" class="btn btn-secondary me-1 mb-1" onClick="openGroup('+row.id_curso+');"><i class="fas fa-users"></i>&nbsp; Abrir Grupo</a>':"";
                         return template;
                     }
                 }
