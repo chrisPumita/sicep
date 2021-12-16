@@ -13,6 +13,7 @@ $titulo = "Detalles del curso"
 
 <head>
     <?php include "includes/head.php"?>
+    <!--Only datatable use-->
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
 </head>
 
@@ -20,7 +21,6 @@ $titulo = "Detalles del curso"
 <div id="app">
     <?php include "includes/sidebar.php"?>
     <div id="main">
-        <input type="hidden" value="<?php echo $id?>" id="idCurso">
         <header class="mb-3">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
@@ -29,13 +29,13 @@ $titulo = "Detalles del curso"
         <div class="page-content">
             <div class="page-title">
                 <div class="row">
-                    <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Detalles del curso</h3>
+                    <div class="col-12 col-md-12 order-md-1 order-last">
+                        <h3>Detalles <span id="nombreCursoTitulo"></span></h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><span id="nombreCursoTitulo"></span></li>
+                                <li class="breadcrumb-item active" aria-current="page">Detalles</li>
                             </ol>
                         </nav>
                     </div>
@@ -54,8 +54,8 @@ $titulo = "Detalles del curso"
                                     necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                        <i class="fas fa-plus"></i> Crear grupo</button>
+                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(<?php echo $id ?>)">
+                                        <i class="fas fa-layer-group text-grey"></i> Abrir grupo</button>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +314,7 @@ $titulo = "Detalles del curso"
                         <div class="row">
                             <!-- boton que da problemas en responsive -->
                             <div class="col-sm-12 col-md-6">
-                                Temario general del curso
+                                <h5 class="text-secondary"><i class="fas fa-bookmark"></i> Temario General</h5>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
@@ -325,6 +325,59 @@ $titulo = "Detalles del curso"
                         </div>
                     </div>
                     <div class="card-body table-responsive" id="tblTemario"></div>
+                </div>
+            </section>
+            <!-- fin seccion de temario -->
+            <!-- seccion de temario -->
+            <section class="section" id="sectionDescuentos">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <!-- boton que da problemas en responsive -->
+                            <div class="col-sm-12 col-md-6">
+                                <h5 class="text-secondary"><i class="fas fa-tags"></i> Descuentos Aplicados:</h5>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <span class="position-absolute  mx-3 end-0">
+                                <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#horarioVirtual"></i>Agregar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover table-striped" id="tblDescuentos">
+                            <thead>
+                            <tr>
+                                <th>DIRIGIDO A</th>
+                                <th>DESCUENTO</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-HroVirtual">
+                            <tr id_grupo="1">
+                                <td>Comunidad FESC</td>
+                                <td><i class="fas fa-tag text-success"></i> 50% OFF</td>
+                                <td>$350</td>
+                                <td>
+                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                        <i class="fas fa-tag"></i> Editar</button>
+                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
+                                </td>
+                            </tr>
+                            <tr id_grupo="2">
+                                <td>Comunidad UNAM</td>
+                                <td><i class="fas fa-tag text-light-grey"></i> NA</td>
+                                <td>$1200</td>
+                                <td>
+                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                        <i class="fas fa-tag"></i> Editar</button>
+                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
             <!-- fin seccion de temario -->
@@ -340,8 +393,9 @@ $titulo = "Detalles del curso"
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
-                                <button class="btn btn-primary mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#">
-                                            <i class="fas fa-plus"></i> Grupo</button>
+                                <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalCreaGrupoCurso">
+                                                <i class="fas fa-plus-square"></i> Grupo
+                                 </button>
                                 </span>
                             </div>
                         </div>
@@ -362,8 +416,8 @@ $titulo = "Detalles del curso"
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12 p-3">
-                                    <h5 class="text-secondary">Horario establecido:</h5>
+                                <div class="col-12 col-sm-12 p-3">
+                                    <h5 class="text-secondary"> <i class="fas fa-clock"></i> Horario establecido:</h5>
                                     <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
                                         <a class="list-group-item list-group-item-action active" id="lista-alumnos-tabla" data-bs-toggle="list" href="#lista-alumnos" role="tab" aria-selected="true">Precencial</a>
                                         <a class="list-group-item list-group-item-action" id="lista-solicitudes-tabla" data-bs-toggle="list" href="#lista-solicitudes" role="tab" aria-selected="false">Virtual</a>
@@ -374,42 +428,31 @@ $titulo = "Detalles del curso"
                                             <table class="table table-hover table-striped" id="tblPresencial">
                                                 <thead>
                                                 <tr>
+                                                    <th>SALON</th>
+                                                    <th>DIA</th>
                                                     <th>HORA</th>
-                                                    <th>LUNES</th>
-                                                    <th>MARTES</th>
-                                                    <th>MIERCOLES</th>
-                                                    <th>JUEVES</th>
-                                                    <th>VIERNES</th>
-                                                    <th>SÁBADO</th>
-                                                    <th>DOMINGO</th>
-                                                    <th> </th>
+                                                    <th>ACCIONES</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbl-HroPresencial">
                                                 <tr id_grupo="1">
-                                                    <td>9:00</td>
+                                                    <td>A101</td>
+                                                    <td>JUEVES</td>
                                                     <td>A21</td>
-                                                    <td></td>
-                                                    <td>A21</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <!-- BOTON ACCIONES -->
                                                     <td>
-
+                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                            <i class="fas fa-clock"></i> Editar</button>
+                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
                                                     </td>
                                                 </tr>
                                                 <tr id_grupo="2">
-                                                    <td>10:30</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>B23</td>
-                                                    <td></td>
-                                                    <!-- BOTON ACCIONES -->
+                                                    <td>A101</td>
+                                                    <td>JUEVES</td>
+                                                    <td>A21</td>
                                                     <td>
-
+                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                            <i class="fas fa-clock"></i> Editar</button>
+                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -417,144 +460,48 @@ $titulo = "Detalles del curso"
                                             <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
                                                 <i class="fas fa-plus"></i>Agregar
                                             </button>
-                                            <button class="btn btn-primary me-1 mb-1"><i></i>Editar</button>
                                         </div>
                                         <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
                                             <h5>Horario virtual:</h5>
                                             <table class="table table-hover table-striped" id="tblVirtual">
                                                 <thead>
                                                 <tr>
+                                                    <th>PLATAFORMA</th>
+                                                    <th>DIA</th>
                                                     <th>HORA</th>
-                                                    <th>LUNES</th>
-                                                    <th>MARTES</th>
-                                                    <th>MIERCOLES</th>
-                                                    <th>JUEVES</th>
-                                                    <th>VIERNES</th>
-                                                    <th>SÁBADO</th>
-                                                    <th>DOMINGO</th>
-                                                    <th> </th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbl-HroVirtual">
                                                 <tr id_grupo="1">
+                                                    <td>GOOGLE MEET</td>
+                                                    <td>JUEVES</td>
                                                     <td>9:00</td>
-                                                    <td>ZOOM</td>
-                                                    <td></td>
-                                                    <td>ZOOM</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <!-- BOTON ACCIONES -->
                                                     <td>
+                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                            <i class="fas fa-clock"></i> Editar</button>
+                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
                                                     </td>
                                                 </tr>
                                                 <tr id_grupo="2">
-                                                    <td>10:30</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>ZOOM</td>
-                                                    <td></td>
-                                                    <!-- BOTON ACCIONES -->
+                                                    <td>GOOGLE MEET</td>
+                                                    <td>JUEVES</td>
+                                                    <td>9:00</td>
                                                     <td>
+                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                            <i class="fas fa-clock"></i> Editar</button>
+                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#horarioVirtual"></i>Agregar</button>
-                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos">Editar</button>
+                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                                                <i class="fas fa-plus"></i>Agregar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 p-3">
-                                    <div class="row">
-                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <h5 class="text-secondary">Descuentos Aplicados:</h5>
-                                            <div class="mt-1 mb-1 overflow-auto">
-                                                <table class="table table-hover text-left">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col"></th>
-                                                        <th scope="col">Dirigido a:</th>
-                                                        <th scope="col">Aplicar % Descuento</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="procedencias">
-                                                    <tr id_procedencia="1">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="1">
-                                                            </div>
-                                                        </td>
-                                                        <td>Comunidad FESC</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num1">
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_procedencia="2">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="2">
-                                                            </div>
-                                                        </td>
-                                                        <td>Comunidad UNAM</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_procedencia="3">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="3">
-                                                            </div>
-                                                        </td>
-                                                        <td>Ex-Alumno FESC</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_procedencia="4">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="4">
-                                                            </div>
-                                                        </td>
-                                                        <td>Ex-Alumno UNAM</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num4">
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_procedencia="5">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="5">
-                                                            </div>
-                                                        </td>
-                                                        <td>Externos de fuera</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num5">
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_procedencia="6">
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input habilitar_procedencia" id="6">
-                                                            </div>
-                                                        </td>
-                                                        <td>Personal UNAM</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" disabled="" value="0" id="num6">
-                                                        </td>
-                                                    </tr></tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -564,38 +511,22 @@ $titulo = "Detalles del curso"
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Historico de Grupos Derivados de este Curso
+                        Historico de Grupos creados de <span id="nombreCursoHistorial"></span>
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover table-striped" id="tblHistCursos">
+                        <!--Table prototype to use | tablas con  paginador-->
+                        <table class="table table-hover table-striped" id="tblHistAsigCurso" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>GRUPO</th>
-                                <th>CURSO</th>
                                 <th>PROFESOR</th>
-                                <th>INSCRITOS</th>
+                                <th>CUPO</th>
                                 <th>PERIODO</th>
                                 <th>TIPO</th>
                                 <th>ESTADO</th>
-                                <th> </th>
+                                <th>DETALLES</th>
+                                <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="HistoricoCursos">
-                            <tr id_curso ="1">
-                                <th scope="row">2456</th>
-                                <td>Aspel NOI para principiantes</td>
-                                <td>Romulo Albertiño Suarez</td>
-                                <td>28/30</td>
-                                <td>5/11/2021</td>
-                                <td>Presencial</td>
-                                <td>Finalizado</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="./detalles-asignacion" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -610,6 +541,7 @@ $titulo = "Detalles del curso"
             <?php include "modals/modal-nuevo-tema.php"?>
             <?php include "modals/modal-pdf-temario.php"?>
             <?php include "modals/modal-edita-curso.php"?>
+            <?php include "modals/modal-add-grupo-curso.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
@@ -619,21 +551,15 @@ $titulo = "Detalles del curso"
 <?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
+-- INCLUDE DATATABLE -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 
 <!--CARGAR SERVICIOS AJAX-->
 <script src="./service/general/tipos.js"></script>
 <script src="./service/general/tools.js"></script>
+<script src="./service/asignacion-gral.js"></script>
 <script src="./service/curso-details.js"></script>
-
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<!-- Agregar solo cuando exista una tabla para mostrar-->
+<script src="./service/datatable-historial-asig-curso.js"></script>
 </body>
 
 </html>

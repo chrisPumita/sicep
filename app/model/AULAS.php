@@ -158,9 +158,4 @@ class AULAS extends CONEXION_M
         $this->close();
         return $result;
     }
-
-
-
-
-
 }

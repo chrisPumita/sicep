@@ -68,7 +68,7 @@ function cargaCursosDataTable() {
                 { data: null,
                     render: function ( data, type, row )
                     {
-                        return '<a href="' + row.link_temario_pdf + ' " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i></a>';
+                        return '<a href="' + row.link_temario_pdf + ' " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Descargar</a>';
                     }
                 },
                 { data: 'aprobado',
@@ -78,10 +78,13 @@ function cargaCursosDataTable() {
                         return row.aprobado ==='1'? 'APROBADO':"PENDIENTE";
                     }
                 },
-                { defaultContent:
-                        '<a href="#" class="btn btn-outline-primary viewCourse"><i class="fas fa-clock"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary editCourse"><i class="fas fa-edit"></i></a>\n' +
-                        '<a href="#" class="btn btn-outline-primary viewSolicitudes"><i class="fas fa-tasks"></i> Solicitudes</a>'
+                {
+                    data: 'ACTIONS',
+                    render: function ( data, type, row ){
+                        let template = '<a href="#" class="btn btn-primary viewCourse"><i class="far fa-eye"></i>&nbsp; Detalles</a>';
+                        template+= row.aprobado ==='1'? '<a href="#" class="btn btn-secondary" onClick="openGroup('+row.id_curso+');"><i class="fas fa-users"></i>&nbsp; Abrir Grupo</a>':"";
+                        return template;
+                    }
                 }
             ],
         "language": {
@@ -147,4 +150,10 @@ function cargaListaProfesoresAutores(){
             alert("Error occured")
         }
     });
+}
+
+function openGroup(id) {
+    let url = "./nueva-asignacion";
+    let data = {  id:id };
+    redirect_by_post(url, data, false);
 }

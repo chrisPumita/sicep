@@ -1,46 +1,45 @@
 $(document).ready(function() {
-
-});
-
-window.onload = function(){
     let id = $("#idCurso").val();
     if(!cargaCursoDetails(-1,id))
         alert('NO DATA');
     consultaGrupos(id);
-}
+    cargaAulasListDespl();
+});
 
-async function consultaGrupos(idCurso){
-    let ruta = "./webhook/lista-grupos-curso.php";
-    const datos = await listaGposCursoAjax(idCurso, ruta);
-    //Mensaje en JS para usar con SwatAlert
-    //console.log(datos);
-    buildHtmlSelectGrupos(datos);
-}
-
-function buildHtmlSelectGrupos(GRUPOS) {
+function buildHtmlSelectGrupos(datos) {
     let template = "";
-    if (GRUPOS.length > 0) {
+    let gruposVal = $("#grupos");
+    let cont = 0;
+    if (datos.length > 0) {
         template += `<div class="col-md-4 text-end">
                         <label for="indice" class="text-primary">Seleccione un Grupo:</label>
                     </div>
-                    <div class="col-md-8 form-group">
+                    <div class="col-md-4 form-group">
                         <select class="form-control" id="list-grupos">`;
-        GRUPOS.forEach(
-            (obj)=>
+        datos.forEach(
+            (dato)=>
             {
-                template += `<option value="${obj.id_grupo}">${obj.grupo}</option>`;
+                cont++;
+                let sel = cont===datos.length ? "selected": "";
+                template += `<option ${sel} value="${dato.id_grupo}">${dato.grupo}</option>`;
+                try{ nuevoGpo = parseInt(dato.grupo)+1; }
+                catch (e) {nuevoGpo="1000";}
             }
         );
-        template += `</select></div>`;
+        gruposVal.removeAttr("disabled");
+        template += `</select></div>
+                        <div class="col-4"> <button class="btn btn-danger me-1 mb-1"><i class="fas fa-trash-alt"></i> Grupo</button></div>`;
     }
     else{
         template = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                      <strong>Agrege un grupo</strong> No hay grupos registrados, agregue uno para configurar los hosrarios.
+                      <strong>Agrege un grupo</strong> No hay grupos registrados, agregue uno para configurar los horarios.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
-
+        gruposVal.attr("disabled", "");
+        nuevoGpo="1000";
     }
     $("#selectCurso").html(template);
+    $("#nombreGrupoNuevo").val(nuevoGpo);
 }
 
 /*DETALLES DE LOS HORARIOS EN FUNCION DEL GRUPO SELECCIONADO*/
@@ -56,6 +55,7 @@ async function cargaCursoDetails(filtro, idUnique) {
 }
 
 function buildHTMLValues(curso){
+    $("#idCursoGrupo").val(curso.id_curso);
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);
     $("#detallesCurso").html(`${curso.descripcion}`);
     $("#nombreAutor").html(`${curso.nombre} ${curso.app} ${curso.apm}`);
@@ -64,6 +64,7 @@ function buildHTMLValues(curso){
     $("#dirigido_a").html(`${curso.dirigido_a}`);
     $("#codigoInfo").html(`${curso.codigo}`);
     $("#sesionesInfo").html(`${curso.no_sesiones}`);
+    $("#nombreCursoHistorial").html(`${curso.nombre_curso}`);
 
     $("#modalidad").html(getTipoCurso(curso.tipo_curso));
     $("#objetivo").html(curso.objetivo);
@@ -141,6 +142,8 @@ function detallesAcreditacion(id_Curso,acreditado) {
                 <a href="#" class="btn btn-success btn-block ">Acreditar</a>
             </div>`;
         $("#detallesAprobacionCurso").html(tmplate);
+        $("#sectionDescuentos").html("");
+
     }
 }
 
@@ -199,4 +202,26 @@ function cargaTemario(idCurso) {
             }
         }
     );
+}
+function openGroup(id) {
+    let url = "./nueva-asignacion";
+    let data = {  id:id };
+    redirect_by_post(url, data, false);
+}
+
+
+function buildHTMLDespEdificios(AULAS) {
+    let template = "";
+    let cupo = 0;
+    let cont =0;
+    AULAS.forEach(
+        (AULA)=>{
+            cont ++;
+            if (cont===1) cupo = AULA.cupo;
+            template += `<option value="${AULA.id_aula}"> ${AULA.edificio} - ${AULA.aula}</option>`;
+        }
+    );
+    $("#aulas").html(template);
+    $("#cupoAula").html(cupo);
+
 }

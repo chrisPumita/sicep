@@ -23,6 +23,7 @@
                                         <label for="editarNombreCurso" class="text-primary">Nombre del curso</label>
                                     </div>
                                     <div class="col-md-10 form-group">
+                                        <input type="hidden" value="<?php echo $id?>" id="idCurso">
                                         <input type="text" class="form-control" name="editarNombreCurso" id="editarNombreCurso" placeholder="Nombre del curso">
                                     </div>
 

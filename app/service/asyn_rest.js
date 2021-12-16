@@ -207,3 +207,9 @@ async function eliminaPreferenciasAjax(id,route){
 
     );
 }
+
+/////EDIFICIOS DE LA FACULTAD
+async function cargaAulasListDespl() {
+    const JSONData = await consultaAulasAjax(1,0);
+    buildHTMLDespEdificios(JSONData);
+}

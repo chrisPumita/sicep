@@ -223,7 +223,8 @@ $id= $_POST['id'];
                                     <h6 class="heading-small text-muted mb-4">Crear y publicar</h6>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <strong><i class="fas fa-eye"></i> Publicar Ahora:</strong> Si decide publicar el grupo ahora, este aparecerá en
-                                        la pagina principal y quedará disponible para que los alumnos se inscriban.
+                                        la pagina principal y quedará disponible para que los alumnos se inscriban. Sicreo nuevo grupo, los descuentos no estan habilitados y
+                                        queda predeeterminado todo el público. <a href="./help"><i class="fas fa-question-circle"></i></a>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     <div class="form-check">
@@ -254,6 +255,7 @@ $id= $_POST['id'];
 <?php include "includes/services-js.php"?>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="./service/asignacion-new.js"></script>
+<script src="./service/asignacion-gral.js"></script>
 <script src="./service/data-profesores-ajax.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // Esta funcion redirecciona por post la pagina que se mande llamar
 $(document).ready(function() {
-    console.log("----- TOOOLS SERVICE ON----")
+    console.log("----- REDIRECCIONAMIENTO ON----")
 });
 function redirect_by_post(purl, pparameters, in_new_tab) {
     pparameters = (typeof pparameters == 'undefined') ? {} : pparameters;
