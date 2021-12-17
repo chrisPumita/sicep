@@ -60,3 +60,11 @@ function agregaGrupoCurso($idCurso,$nombreGruppo,$estatusGrupo){
     $grupo->setEstatus($estatusGrupo);
     return $grupo->crearGrupo();
 }
+
+function updateBanner($idCurso, $path){
+    include_once "../model/CURSO.php";
+    $obj_curso= new CURSO();
+    $obj_curso->setIdCurso($idCurso);
+    $obj_curso->setBannerImg($path);
+    return $obj_curso->queryUpdateBanner();
+}

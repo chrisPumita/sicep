@@ -502,4 +502,14 @@ class CURSO extends CONEXION_M implements I_CURSO
         return $ls_grupos->consultaListaGrupos($this->getIdCurso());
     }
 
+    function queryUpdateBanner(){
+        $query = "UPDATE seltic.curso t
+                    SET t.banner_img = '".$this->getBannerImg()."'
+                    WHERE t.id_curso = ".$this->getIdCurso();
+        $this->connect();
+        $datos = $this->executeInstruction($query);
+        $this->close();
+        return $datos;
+    }
+
 }

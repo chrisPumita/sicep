@@ -276,8 +276,11 @@ $titulo = "Detalles del curso"
                                     <p class="card-text">
                                     Debe tener una resolución de 600px por 300px
                                     </p>
-                                    <button class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
+                                    <button class="btn btn-primary" onClick="changeIMG()"><i class="fas fa-sync-alt"></i></button>
                                     <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateBannerCurso">
+                                        <i class="fas fa-upload text-white"></i> Agregar Foto
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -536,6 +539,7 @@ $titulo = "Detalles del curso"
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/modal-horario-presencial.php" ?>
+            <?php include "modals/modal-update-banner-curso.php" ?>
             <?php include "modals/modal-horario-virtual.php" ?>
             <?php include "modals/generalModals.php"?>
             <?php include "modals/modal-nuevo-tema.php"?>
@@ -552,6 +556,7 @@ $titulo = "Detalles del curso"
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
 -- INCLUDE DATATABLE -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 
 <!--CARGAR SERVICIOS AJAX-->
@@ -559,7 +564,34 @@ $titulo = "Detalles del curso"
 <script src="./service/general/tools.js"></script>
 <script src="./service/asignacion-gral.js"></script>
 <script src="./service/curso-details.js"></script>
+<script src="./service/files-ajax.js"></script>
 <script src="./service/datatable-historial-asig-curso.js"></script>
+
+
+<script>
+    $(document).on("click", ".custom-file-input", function() {
+        var file = $(this).parents().find(".file");
+        file.trigger("click");
+    });
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#preview").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+</script>
+
 </body>
 
 </html>

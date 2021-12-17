@@ -225,3 +225,24 @@ function buildHTMLDespEdificios(AULAS) {
     $("#cupoAula").html(cupo);
 
 }
+
+//Update FROM details curso
+
+
+//Update PDF Curso
+
+//Update Remove PDF curso
+
+//update BANNER IMG
+
+//Update remove PDF image
+
+//Update Acreditar/ Remover Acreditacion Curso
+
+//CRUD TEMARIO
+
+//CRUD DESCUENTOS
+
+//CRUD HORARIO VIRTUAL / PRESENCIAL
+
+
