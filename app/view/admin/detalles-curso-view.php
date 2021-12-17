@@ -276,11 +276,10 @@ $titulo = "Detalles del curso"
                                     <p class="card-text">
                                     Debe tener una resolución de 600px por 300px
                                     </p>
-                                    <button class="btn btn-primary" onClick="changeIMG()"><i class="fas fa-sync-alt"></i></button>
-                                    <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateBannerCurso">
-                                        <i class="fas fa-upload text-white"></i> Agregar Foto
+                                        <i class="fas fa-sync-alt"></i> Cambiar
                                     </button>
+                                    <button class="btn btn-outline-danger" onclick="removeBanner()"><i class="fas fa-times"></i></button>
                                 </div>
                             </div>
                         </div>

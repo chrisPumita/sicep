@@ -15,11 +15,11 @@
             </div>
             <form id="frm-banner-curso">
                 <div class="modal-body">
-                    <img src="https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
+                    <img src="../resources/banners/default.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
                     <div class="card-body">
                         <h4 class="card-title">Imagen del banner</h4>
                         <p class="card-text text-primary">
-                            Debe tener una resolución de 600px por 300px
+                            Recomendamos una resolución de 600px por 300px
                         </p>
                         <div class="row">
                             <div class="col-md-12">

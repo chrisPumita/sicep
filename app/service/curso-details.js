@@ -232,8 +232,18 @@ function buildHTMLDespEdificios(AULAS) {
 //Update PDF Curso
 
 //Update Remove PDF curso
+function removeBanner() {
+    let id = $("#idCurso").val();
+    var route= "./webhook/remove-banner-curso.php";
+    sweetConfirm('Remover Banner', '¿Estas seguro de que deseas eliminar el Banner de este Curso?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                cargaCursoDetails(-1,id);
+            });
+        }
+    });
+}
 
-//update BANNER IMG
 
 //Update remove PDF image
 

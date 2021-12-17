@@ -23,3 +23,4 @@ $("#frm-banner-curso").on("submit", function(e){
             cargaCursoDetails(-1,id);
         });
 });
+
