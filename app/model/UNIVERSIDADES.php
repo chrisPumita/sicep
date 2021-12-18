@@ -65,4 +65,18 @@ class UNIVERSIDADES extends CONEXION_M
         $this->close();
         return $result;
     }
+    function queryInsertUniversidad(){
+        $query="INSERT INTO `universidades` (`id_universidad`, `nombre`, `siglas`) VALUES ('".$this->getIdUniversidad()."', '".$this->getNombre()."', '".$this->getSiglas()."')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function queryUpdateUniversidad(){
+        $query="UPDATE `universidades` SET `nombre` = '".$this->getNombre()."', `siglas` = '".$this->getSiglas()."' WHERE `universidades`.`id_universidad` = ".$this->getIdUniversidad();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

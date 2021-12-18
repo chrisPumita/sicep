@@ -45,19 +45,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-universidades">
                     <div class="row">
                         <div class="col-md-2 form-group">
+                            <input type="text" id="id_universidad" name="id_universidad">
                             <label for="nombreUni" class="text-primary">Nombre</label>
                         </div>
                         <div class="col-md-10 form-group">
                             <input type="text" class="form-control" name="nombreUni" id="nombreUni" placeholder="Universidad Nacional Autónoma de Mexico">
                         </div>
                         <div class="col-md-2 form-group">
-                            <label for="nombreUni" class="text-primary">Siglas:</label>
+                            <label for="siglasUni" class="text-primary">Siglas:</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="text" class="form-control" name="nombreUni" id="nombreUni" placeholder="Nombre del curso" placeholder="UNAM">
+                            <input type="text" class="form-control" name="siglasUni" id="siglasUni" placeholder="UNAM">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -86,7 +87,7 @@
                 <form id="frm-procedencia">
                     <div class="form-group">
                         <label for="nombre_procedencia">Procedencia:</label>
-                        <input type="text" class="form-control" id="id_procedencia"  name="id_procedencia"value="0">
+                        <input type="hidden" class="form-control" id="id_procedencia"  name="id_procedencia"value="0">
                         <input type="text" class="form-control" id="nombre_procedencia" name="nombre_procedencia" aria-describedby="deptoHelp" placeholder="Defina una procedencia">
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>

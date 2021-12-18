@@ -145,7 +145,19 @@ $("#frm-procedencia").on("submit", function(e){
     });
 });
 
-
+$(document).on("click", ".deteleProcedencia", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    var route= "./webhook/delete-procedencia.php";
+    sweetConfirm('Eliminar Procedencia', '¿Estas seguro de que deseas eliminar este procedencia?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                consultaProcedencias();
+            });
+        }
+    });
+});
 
 
 //Funciones Universidades
@@ -167,8 +179,7 @@ function buildHTMLTblUnis(obj_result) {
                                 <td>${obj_result.siglas}</td>
                                 <!-- BOTON ACCIONES -->
                                 <td>
-                                    <button type="button" class="btn btn-outline-primary" 
-                                    data-bs-toggle="modal" data-bs-target="#modal_uni">
+                                    <button type="button" class="btn btn-outline-primary" onclick="editaUniversidad(${obj_result.id_universidad}, '${obj_result.nombre}', '${obj_result.siglas}');">
                                     <i class="fas fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger deleteUni"><i class="fas fa-trash-alt"></i></button>
                                 </td>
@@ -177,6 +188,39 @@ function buildHTMLTblUnis(obj_result) {
     );
     $("#tbl-universidades").html(template);
 }
+
+function editaUniversidad(idUni,nombreUni,siglasUni){
+    $("#modal_uni").modal('show');
+    $("#id_universidad").val(idUni);
+    $("#nombreUni").val(nombreUni);
+    $("#siglasUni").val(siglasUni);
+}
+
+function nuevaUniversidad(){
+    $("#modal_uni").modal('show');
+    $("#id_universidad").val(0);
+    $("#nombreUni").val("");
+    $("#siglasUni").val("");
+}
+
+$("#frm-universidades").on("submit", function(e){
+    //Ruta del Webbhook
+    e.preventDefault();
+    let ruta = "./webhook/crud-procedencia.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        id_universidad : $("#id_universidad").val(),
+        nombre_universidad :$("#nombreUni").val(),
+        siglas_universidad : $("#siglasUni")
+    };
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#modal_uni").modal('hide');
+        consultaUnis();
+    });
+});
+
+
 
 //Funciones  Aulas
 async function consultaAulas(filtro,tipo) {
@@ -261,13 +305,7 @@ $(document).on("click", ".deleteAula", function ()
     //  redirect_by_post(url, {  id: id }, false);
 });
 
-$(document).on("click", ".deteleProcedencia", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id");
-    //  var url = './detalles-profesor';
-    //  redirect_by_post(url, {  id: id }, false);
-});
+
 
 $(document).on("click", ".deleteUni", function ()
 {

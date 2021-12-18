@@ -72,8 +72,7 @@ class TIPO_PROCEDENCIA extends CONEXION_M
     }
 
     function eliminarTipoProcedencia(){
-        $sql = "DELETE FROM `tipo_procedencia` WHERE `id_tipo_procedencia`=".$this->getIdTipoProcede();
-
+        $sql = "UPDATE `tipo_procedencia` SET id_tipo_procedencia=id_tipo_procedencia*-1 WHERE id_tipo_procedencia=".$this->getIdTipoProcede();
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();
@@ -96,7 +95,7 @@ class TIPO_PROCEDENCIA extends CONEXION_M
     }
     function consultaProcedencias(){
         $sql = "SELECT TP.id_tipo_procedencia, TP.tipo_procedencia 
-                FROM tipo_procedencia TP
+                FROM tipo_procedencia TP WHERE id_tipo_procedencia>0
                 ORDER BY TP.tipo_procedencia ASC";
         $this->connect();
         $result = $this->getData($sql);

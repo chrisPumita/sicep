@@ -28,11 +28,29 @@ function insertUpdateProcedencia($idProcedencia,$nombreProcedencia){
     $TIPO->setTipoProcedencia($nombreProcedencia);
     return $idProcedencia>0 ? $TIPO->editarTipoProcedencia() : $TIPO->crearTipoProcedencia();
 }
+
+function deleteProcedencia($id){
+    include_once "../model/TIPO_PROCEDENCIA.php";
+    $TIPO= new TIPO_PROCEDENCIA();
+    $TIPO->setIdTipoProcede($id);
+    return $TIPO->eliminarTipoProcedencia();
+}
+
+
 //Funciones universidades
 function getListaUniversidades(){
     include_once "../model/UNIVERSIDADES.php";
     $UNI = new UNIVERSIDADES();
     return $UNI->queryListaUniversidades();
+}
+
+function insertUpdateUniversidad($idUniversidad,$nombreUniversidad,$siglasUniversidad){
+    include_once "../model/UNIVERSIDADES.php";
+    $UNI = new UNIVERSIDADES();
+    $UNI->setIdUniversidad($idUniversidad);
+    $UNI->setNombre($nombreUniversidad);
+    $UNI->setSiglas($siglasUniversidad);
+    return $idUniversidad>0 ? $UNI->queryUpdateUniversidad() : $UNI->queryInsertUniversidad();
 }
 //Funciones Aulas
 function getListaAulas($filtro, $tipo){
