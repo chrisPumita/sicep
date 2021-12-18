@@ -107,3 +107,33 @@ function getNivelHTML(nivel) {
                     </ul>`;
     return template;
 }
+
+function diaSemana(dia) {
+    switch (dia) {
+        case "0":
+            return "LUNES";
+            break;
+        case "1":
+            return "MARTES";
+            break;
+        case "2":
+            return "MIERCOLES";
+            break;
+        case "3":
+            return "JUEVES";
+            break;
+        case "4":
+            return "VIERNES";
+            break;
+        case "5":
+            return "SABADO";
+            break;
+        case "6":
+            return "MIERCOLES";
+            break;
+
+        default:
+            return "DOMINGO";
+            break;
+    }
+}

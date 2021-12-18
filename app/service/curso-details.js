@@ -4,43 +4,8 @@ $(document).ready(function() {
         alert('NO DATA');
     consultaGrupos(id);
     cargaAulasListDespl();
+    cargaTemario(id);
 });
-
-function buildHtmlSelectGrupos(datos) {
-    let template = "";
-    let gruposVal = $("#grupos");
-    let cont = 0;
-    if (datos.length > 0) {
-        template += `<div class="col-md-4 text-end">
-                        <label for="indice" class="text-primary">Seleccione un Grupo:</label>
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <select class="form-control" id="list-grupos">`;
-        datos.forEach(
-            (dato)=>
-            {
-                cont++;
-                let sel = cont===datos.length ? "selected": "";
-                template += `<option ${sel} value="${dato.id_grupo}">${dato.grupo}</option>`;
-                try{ nuevoGpo = parseInt(dato.grupo)+1; }
-                catch (e) {nuevoGpo="1000";}
-            }
-        );
-        gruposVal.removeAttr("disabled");
-        template += `</select></div>
-                        <div class="col-4"> <button class="btn btn-danger me-1 mb-1"><i class="fas fa-trash-alt"></i> Grupo</button></div>`;
-    }
-    else{
-        template = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                      <strong>Agrege un grupo</strong> No hay grupos registrados, agregue uno para configurar los horarios.
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>`;
-        gruposVal.attr("disabled", "");
-        nuevoGpo="1000";
-    }
-    $("#selectCurso").html(template);
-    $("#nombreGrupoNuevo").val(nuevoGpo);
-}
 
 /*DETALLES DE LOS HORARIOS EN FUNCION DEL GRUPO SELECCIONADO*/
 
@@ -56,6 +21,7 @@ async function cargaCursoDetails(filtro, idUnique) {
 
 function buildHTMLValues(curso){
     $("#idCursoGrupo").val(curso.id_curso);
+    $("#idCursoPDF").val(curso.id_curso);
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);
     $("#detallesCurso").html(`${curso.descripcion}`);
     $("#nombreAutor").html(`${curso.nombre} ${curso.app} ${curso.apm}`);
@@ -88,7 +54,6 @@ function buildHTMLValues(curso){
     $("#editarCosto").val(curso.costo_sugerido);
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
-    cargaTemario(curso.id_curso);
 }
 
 function detallesAcreditacion(id_Curso,acreditado) {
@@ -110,7 +75,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 <div class="m-auto">
                                     <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
                                 </div>
-                                <div class="m-auto">
+                                <div class="col-8 m-auto">
                                     <h5>Aprobado por:</h5>
                                     <h5><strong>${obj_result[0].prefijo} ${obj_result[0].nombre} ${obj_result[0].app} ${obj_result[0].apm}</strong></h5>
                                     <h6>No Trabajador: ${obj_result[0].no_trabajador}</h6>
@@ -118,8 +83,9 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 </div>
                             </div>
                             <div class="card-body d-flex text-align-right">
-                                    <a href="#" class="btn btn-danger btn-block ">Inhabilitar</a>
-                            </div>`;
+                                <a href="#" class="btn btn-danger btn-block "><i class="fas fa-power-off"></i> Inhabilitar</a>
+                            </div>
+`;
                         $("#detallesAprobacionCurso").html(tmplate);
                     }
                 }
@@ -244,8 +210,7 @@ function removeBanner() {
     });
 }
 
-
-//Update remove PDF image
+//Update remove PDF
 
 //Update Acreditar/ Remover Acreditacion Curso
 
@@ -254,5 +219,136 @@ function removeBanner() {
 //CRUD DESCUENTOS
 
 //CRUD HORARIO VIRTUAL / PRESENCIAL
+function consultaHorarioGpoList(idGpo) {
+    consultaHorario(idGpo).then(function (e) {
+        buildHTMLHorarioContainers(e)
+    });
 
+}
 
+$('#grupos').on('change', function (){
+    let idGpo = $("#grupos").val();
+    consultaHorario(idGpo).then(function (e) {
+        buildHTMLHorarioContainers(e)
+    });
+});
+
+function buildHTMLHorarioContainers(HORARIOS) {
+    //Separando los tipo de horario
+    buildHtmlHPContainer(HORARIOS.HP);
+    buildHtmlHVContainer(HORARIOS.HV);
+}
+
+function buildHtmlHVContainer(HVirtual) {
+    //TRabajando con virtuales
+    let template = "";
+    if (HVirtual.length>0){
+        template =`<table class="table table-hover table-striped" id="tblPresencial">
+                        <thead>
+                        <tr>
+                            <th>DIA</th>
+                            <th>INICIO</th>
+                            <th>TERMINO</th>
+                            <th>DURACION</th>
+                            <th>PLATAFORMA</th>
+                            <th>SALA</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+        HVirtual.forEach(
+            (h)=>
+            {
+                template += `
+                        <tr id_horario="${h.id_horario_virtual}">
+                            <td>${diaSemana(h.dia_semana)}</td>
+                            <td>${h.hora_inicio}</td>
+                            <td>${h.hora_term}</td>
+                            <td>${h.duracion} min.</td>
+                            <td><a href="${h.url_plataforma}" TARGET="_blank">${h.plataforma}</a></td>
+                            <td><a href="${h.url_reunion}" TARGET="_blank">${h.reunion}</a></td>
+                            <td>
+                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="##horarioVirtual">
+                                    <i class="fas fa-clock"></i> Editar</button>
+                                <button class="btn btn-danger me-1 mb-1 removeHV"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+            }
+        );
+        template += ` </tbody>
+                    </table>
+                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                        <i class="fas fa-plus"></i>Agregar
+                    </button>`;
+    }
+    else{
+        template = ` <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                        <h4 class="alert-heading">Sin horario VIRTUAL</h4>
+                        <p>No encontramos horarios registrados. Si este curso es solo PRESENCIAL omita este mensaje. Agregue el 
+                    horario si es la primera vez que condigura este curso</p><hr>
+                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                            <i class="fas fa-plus"></i>Agregar
+                         </button>
+                          </div>
+                        </div>`;
+    }
+    $("#containerTblVirtual").html(template);
+}
+
+function buildHtmlHPContainer(HPresencial) {
+    //TRabajando con presenciales
+    let template = "";
+    if (HPresencial.length>0){
+        template =`<table class="table table-hover table-striped" id="tblPresencial">
+                        <thead>
+                        <tr>
+                            <th>SALON</th>
+                            <th>DIA</th>
+                            <th>INICIO</th>
+                            <th>TERMINO</th>
+                            <th>DURACION</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+        HPresencial.forEach(
+            (h)=>
+            {
+                template += `
+                        <tr id_horario="${h.id_horario_pres}">
+                            <td>${h.edificio}-${h.grupo} (${h.campus})</td>
+                            <td>${diaSemana(h.dia_semana)}</td>
+                            <td>${h.hora_inicio}</td>
+                            <td>${h.hora_term}</td>
+                            <td>${h.duracion} min.</td>
+                            <td>
+                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                    <i class="fas fa-clock"></i> Editar</button>
+                                <button class="btn btn-danger me-1 mb-1 removeHP"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+            }
+        );
+        template += ` </tbody>
+                    </table>
+                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                        <i class="fas fa-plus"></i>Agregar
+                    </button>`;
+    }
+    else{
+        template = ` <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                        <h4 class="alert-heading">Sin horario PRESENCIAL</h4>
+                        <p>No encontramos horarios registrados. Si este curso es solo virtual omita este mensaje. Agregue el 
+                    horario si es la primera vez que condigura este curso</p><hr>
+                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                            <i class="fas fa-plus"></i>Agregar
+                         </button>
+                          </div>
+                        </div>`;
+    }
+    $("#containerTblPresencial").html(template);
+}

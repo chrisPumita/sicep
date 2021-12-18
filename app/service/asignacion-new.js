@@ -40,33 +40,7 @@ function loadSemestre() {
     $("#semestre").html(template);
 }
 
-//Fucnion especial para constructor de grupos list
-function buildHtmlSelectGrupos(datos) {
-    let template = "";
-    let gruposVal = $("#grupos");
-    let nuevoGpo =0;
-    let cont = 0;
-    if (datos.length > 0) {
-        datos.forEach(
-            (dato)=>
-            {
-                cont++;
-                let sel = cont===datos.length ? "selected": "";
-                template += `<option ${sel} value="${dato.id_grupo}">${dato.grupo}</option>`;
-                try{ nuevoGpo = parseInt(dato.grupo)+1; }
-                catch (e) {nuevoGpo="1000";}
-            }
-        );
-        gruposVal.removeAttr("disabled");
-    }
-    else{
-        template += `<option value="0">Agregue un grupo...</option>`;
-        gruposVal.attr("disabled", "");
-        nuevoGpo="1000";
-    }
-    gruposVal.html(template);
-    $("#nombreGrupoNuevo").val(nuevoGpo);
-}
+
 
 async function consultaListaProfesores() {
         let profesores = await consultaProfesoresAJAX();

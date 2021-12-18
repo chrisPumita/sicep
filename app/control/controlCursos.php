@@ -68,3 +68,26 @@ function updateBanner($idCurso, $path){
     $obj_curso->setBannerImg($path);
     return $obj_curso->queryUpdateBanner();
 }
+
+//Funcion que regresa el horario precencial y virtuaul de un grupo en especifico
+function getHorariosGrupo($idGrupo){
+    $HORARIO = array(
+        "HP" =>  getHorarioPresencial($idGrupo),
+        "HV" => getHorarioVirtual($idGrupo)
+    );
+    return $HORARIO;
+}
+
+function getHorarioPresencial($idGrupo){
+    include_once "../model/HORARIO_CLASE_P.php";
+    $HP = new HORARIO_CLASE_P();
+    $HP->setIdGrupo($idGrupo);
+    return $HP->queryConsultaHorario();
+}
+
+function getHorarioVirtual($idGrupo){
+    include_once "../model/HORARIO_CLASE_V.php";
+    $HV = new HORARIO_CLASE_V();
+    $HV->setIdGrupo($idGrupo);
+    return $HV->queryConsultaHorario();
+}

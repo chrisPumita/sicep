@@ -128,6 +128,7 @@ $id= $_POST['id'];
                                             <option value="2">Otro</option>
                                         </select>
                                     </div>
+                                    <span class="py-2" id="alertGpos"></span>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">

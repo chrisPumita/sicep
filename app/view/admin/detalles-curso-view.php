@@ -18,6 +18,17 @@ $titulo = "Detalles del curso"
 </head>
 
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+</svg>
 <div id="app">
     <?php include "includes/sidebar.php"?>
     <div id="main">
@@ -55,7 +66,7 @@ $titulo = "Detalles del curso"
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(<?php echo $id ?>)">
-                                        <i class="fas fa-layer-group text-grey"></i> Abrir grupo</button>
+                                        <i class="fas fa-users"></i> Abrir grupo</button>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +76,7 @@ $titulo = "Detalles del curso"
 
             <!-- seccion cards estadiscticas -->
             <section class="row">
-                <div class="col-12 col-lg-9">
+                <div class="col-12 col-lg-12">
                     <div class="row">
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
@@ -121,28 +132,33 @@ $titulo = "Detalles del curso"
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-3">
-                    <div class="card">
-                        <div class="card-body py-4 px-5">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-xl">
-                                    <img src="../assets/images/start-sesion.png" alt="Face 1">
-                                </div>
-                                <div class="ms-3 name">
-                                    <h5 class="font-bold" id="nombreAutor"></h5>
-                                    <h6 class="text-muted mb-0">AUTOR</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- seccion detalles y banner img -->
             <section class="section">
                 <div class="row gutters-sm">
                     <!-- detalles del curso-->
-                    <div class="col-md-8">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="callout callout-primary p-0">
+                                    <div id="detallesAprobacionCurso">
+                                        <div class="d-flex">
+                                            <div class="m-auto">
+                                                <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
+                                            </div>
+                                            <div class="m-auto">
+                                                <h5>Sin acreditar</h5>
+                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
+                                            </div>
+                                            <div class="card-body d-flex text-align-right pb-0">
+                                                <a href="#" class="btn btn-success btn-block ">Acreditar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-3">
                             <div class="card-body py-2">
                                 <div class="row py-1 m-2">
@@ -243,31 +259,26 @@ $titulo = "Detalles del curso"
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row py-1 m-2">
-                                    <h5 class="text-secondary">Temario PDF:</h5>
-                                    <div class="row">
-                                        <div class="col-sm-12 d-flex justify-content-end">
-                                            <span id="filePDF" class="me-1 mb-1"></span>
-                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                                            <span  class=" me-1 mb-1"><input class="form-control" type="file" id="formFile"></span>
-                                            <a href="#" class="btn btn-primary me-1 mb-1"><i class="fas fa-cloud-upload-alt"></i></a>
-                                            <a href="#" class="btn btn-danger me-1 mb-1"><i class="far fa-trash-alt"></i></a>
-
-                                          </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-
-                                    </div>
-                                    <div class="col-sm-4">
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- banner imagen -->
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-5 mb-3">
+                        <div class="col-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-body py-4 px-5">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar avatar-xl">
+                                            <img src="../assets/images/start-sesion.png" alt="Face 1">
+                                        </div>
+                                        <div class="ms-3 name">
+                                            <h5 class="font-bold" id="nombreAutor"></h5>
+                                            <h6 class="text-muted mb-0">AUTOR</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-content">
                                 <span id="imgContainer"></span>
@@ -285,21 +296,25 @@ $titulo = "Detalles del curso"
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <div class="callout callout-primary p-0">
-                                    <div id="detallesAprobacionCurso">
-                                        <div class="d-flex">
-                                            <div class="m-auto">
-                                                <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
+                                <div class="card-body pt-3">
+                                    <h4 class="card-title">Temario PDF</h4>
+                                    <div class="col">
+                                        <form id="inputPDF">
+                                            <div class="mb-3">
+                                                <label for="pdfFile" class="form-label">Seleccionar nuevo PDF</label>
+                                                <input type="hidden" id="idCursoPDF" name="idCursoPDF">
+                                                <div class="input-group mb-3">
+                                                    <input type="file" class="form-control" id="pdfFile" name="pdfFile">
+                                                    <button class="btn btn-secondary" type="submit" id="btnSubir">Subir</button>
+                                                </div>
                                             </div>
-                                            <div class="m-auto">
-                                                <h5>Sin acreditar</h5>
-                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
-                                            </div>
-                                        </div>
-                                        <div class="card-body d-flex text-align-right pb-0">
-                                            <a href="#" class="btn btn-success btn-block ">Acreditar</a>
-                                        </div>
+                                        </form>
                                     </div>
+                                    <hr>
+                                    <div class="col-sm-12 d-flex justify-content-end">
+                                        <span id="filePDF" class="me-1 mb-1"></span>
+                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
+                                        <a href="#" class="btn btn-outline-danger me-1 mb-1"><i class="fas fa-times"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -410,8 +425,17 @@ $titulo = "Detalles del curso"
                                     <h5 class="text-center">Grupos de este Curso</h5>
                                 </div>
                                 <div class="col-sm-12">
-                                    <div class="form-group row p-3" id="selectCurso">
-
+                                    <div class="form-group row p-3" id="containerLisGpos"><div class="col-md-4 text-end">
+                                            <label for="indice" class="text-primary">Seleccione un Grupo:</label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <select class="form-control" id="grupos">
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <button id="btnDeleteGrupo" class="btn btn-danger me-1 mb-1"><i class="fas fa-trash-alt"></i> Grupo</button>
+                                        </div>
+                                        <span id="alertGpos"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 align-items-center">
@@ -427,79 +451,58 @@ $titulo = "Detalles del curso"
                                     <div class="tab-content text-justify">
                                         <div class="tab-pane fade active show table-responsive" id="lista-alumnos" role="tabpanel" aria-labelledby="lista-alumnos-tabla">
                                             <h5>Horario presencial:</h5>
-                                            <table class="table table-hover table-striped" id="tblPresencial">
-                                                <thead>
-                                                <tr>
-                                                    <th>SALON</th>
-                                                    <th>DIA</th>
-                                                    <th>HORA</th>
-                                                    <th>ACCIONES</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="tbl-HroPresencial">
-                                                <tr id_grupo="1">
-                                                    <td>A101</td>
-                                                    <td>JUEVES</td>
-                                                    <td>A21</td>
-                                                    <td>
-                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                            <i class="fas fa-clock"></i> Editar</button>
-                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id_grupo="2">
-                                                    <td>A101</td>
-                                                    <td>JUEVES</td>
-                                                    <td>A21</td>
-                                                    <td>
-                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                            <i class="fas fa-clock"></i> Editar</button>
-                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                <i class="fas fa-plus"></i>Agregar
-                                            </button>
+                                            <div id="containerTblPresencial">
+                                                <div class="alert alert-warning alert-dismissible fade show alert-danger d-flex align-items-center" role="alert">
+                                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                                                    <div>
+                                                        Genere un grupo para poder agregar <strong>HORARIOS</strong>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
                                             <h5>Horario virtual:</h5>
-                                            <table class="table table-hover table-striped" id="tblVirtual">
-                                                <thead>
-                                                <tr>
-                                                    <th>PLATAFORMA</th>
-                                                    <th>DIA</th>
-                                                    <th>HORA</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="tbl-HroVirtual">
-                                                <tr id_grupo="1">
-                                                    <td>GOOGLE MEET</td>
-                                                    <td>JUEVES</td>
-                                                    <td>9:00</td>
-                                                    <td>
-                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                            <i class="fas fa-clock"></i> Editar</button>
-                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id_grupo="2">
-                                                    <td>GOOGLE MEET</td>
-                                                    <td>JUEVES</td>
-                                                    <td>9:00</td>
-                                                    <td>
-                                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                            <i class="fas fa-clock"></i> Editar</button>
-                                                        <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
-                                                <i class="fas fa-plus"></i>Agregar
-                                            </button>
+                                            <div id="containerTblVirtual">
+                                                <table class="table table-hover table-striped" id="tblVirtual">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>DIA</th>
+                                                        <th>INICIO</th>
+                                                        <th>TERMINO</th>
+                                                        <th>DURACION</th>
+                                                        <th>PLATAFORMA</th>
+                                                        <th>SALA</th>
+                                                        <th>ACCIONES</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="tbl-HroVirtual">
+                                                    <tr id_grupo="1">
+                                                        <td>GOOGLE MEET</td>
+                                                        <td>JUEVES</td>
+                                                        <td>9:00</td>
+                                                        <td>
+                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                                <i class="fas fa-clock"></i> Editar</button>
+                                                            <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id_grupo="2">
+                                                        <td>GOOGLE MEET</td>
+                                                        <td>JUEVES</td>
+                                                        <td>9:00</td>
+                                                        <td>
+                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                                <i class="fas fa-clock"></i> Editar</button>
+                                                            <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                                                    <i class="fas fa-plus"></i>Agregar
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
