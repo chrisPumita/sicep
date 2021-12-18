@@ -23,6 +23,48 @@ function getTipoCurso(estado){
     }
 }
 
+function getModalidadCurso(tipo){
+    //Funcionalidades del tipo_curso
+    switch(tipo){
+        case "0":
+            return "Otro";
+            break;
+        case "1":
+            return "Prescencial";
+            break;
+        case "2":
+            return "Virtual"
+            break;
+        case "3":
+            return "Mixto";
+            break;
+        default:
+            return "Error";
+            break;
+    }
+}
+
+function getEstatusAsignacion(tipo){
+    //Funcionalidades del tipo_curso
+    switch(tipo){
+        case "0":
+            return '<i class="fas fa-clipboard-check text-light-grey "></i> Concluido';
+            break;
+        case "1":
+            return '<i class="fas fa-user-clock text-success"></i> Inscripciones';
+            break;
+        case "2":
+            return '<i class="fas fa-spinner text-info"></i> En Curso';
+            break;
+        case "3":
+            return '<i class="fas fa-clipboard-check text-success"></i> Inscripciones';
+            break;
+        default:
+            return '<i class="fas fa-exclamation-triangle text-warning"></i> No definido';
+            break;
+    }
+}
+
 function estadoCursoApoved(aprobado) {
     let n = parseInt(aprobado)
     let color = n == 1 ? `success` : `warning`;
@@ -64,4 +106,34 @@ function getNivelHTML(nivel) {
                         </li>
                     </ul>`;
     return template;
+}
+
+function diaSemana(dia) {
+    switch (dia) {
+        case "0":
+            return "LUNES";
+            break;
+        case "1":
+            return "MARTES";
+            break;
+        case "2":
+            return "MIERCOLES";
+            break;
+        case "3":
+            return "JUEVES";
+            break;
+        case "4":
+            return "VIERNES";
+            break;
+        case "5":
+            return "SABADO";
+            break;
+        case "6":
+            return "MIERCOLES";
+            break;
+
+        default:
+            return "DOMINGO";
+            break;
+    }
 }

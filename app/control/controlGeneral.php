@@ -76,4 +76,3 @@ function getListaMunicipios($idEstado){
     $EDO= new ESTADO_REP();
     return $EDO->consultaMunicipios($idEstado);
 }
-

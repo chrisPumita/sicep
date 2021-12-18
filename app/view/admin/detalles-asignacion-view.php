@@ -1,4 +1,6 @@
-<?php $titulo = "Detalles de la Asignación" ?>
+<?php
+$id = $_POST['id'];
+$titulo = "Detalles de la Asignación" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +22,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>2853 - ASPEL NOI Basico</h3>
+                        <h3><?php echo $id ?> - ASPEL NOI Basico</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home">Inicio</a></li>

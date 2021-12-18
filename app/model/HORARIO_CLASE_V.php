@@ -1,18 +1,17 @@
 <?php
-include "CONEXION_M.php";
-include_once "./interface/I_HORARIO_CLASE_V.php";
-
-class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
+include_once "CONEXION_M.php";
+include_once "interface/I_HORARIO_GPO.php";
+class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_GPO
 {
 	private $id_horario_virtual;
-	private $id_asignacion_fk;
-	private $dia_semana;
-	private $hora_inicio;
-	private $duracion;
-	private $reunion;
-	private $plataforma;
-	private $url_reunion;
-	private $url_plataforma;
+	private $id_grupo;
+    private $dia_semana;
+    private $hora_inicio;
+    private $duracion;
+    private $reunion;
+    private $plataforma;
+    private $url_reunion;
+    private $url_plataforma;
 
     /**
      * @return mixed
@@ -33,17 +32,17 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
     /**
      * @return mixed
      */
-    public function getIdAsignacionFk()
+    public function getIdGrupo()
     {
-        return $this->id_asignacion_fk;
+        return $this->id_grupo;
     }
 
     /**
-     * @param mixed $id_asignacion_fk
+     * @param mixed $id_grupo
      */
-    public function setIdAsignacionFk($id_asignacion_fk): void
+    public function setIdGrupo($id_grupo): void
     {
-        $this->id_asignacion_fk = $id_asignacion_fk;
+        $this->id_grupo = $id_grupo;
     }
 
     /**
@@ -158,7 +157,7 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
         $this->url_plataforma = $url_plataforma;
     }
 
-    function crearHorarioV()
+    function CrearHorario()
     {
         $query = "INSERT INTO `horario_clase_virtual`(`id_horario_virtual`, `id_asignacion_fk`, `dia_semana`, `hora_inicio`, `duracion`, `reunion`, `plataforma`, `url_reunion`, `url_plataforma`) 
                     VALUES (NULL,'".$this->getIdAsignacionFk()."','".$this->getDiaSemana()."','".$this->getHoraInicio()."','".$this->getDuracion()."','".$this->getReunion()."','".$this->getPlataforma()."','".$this->getUrlReunion()."','".$this->getUrlPlataforma()."')";
@@ -168,7 +167,7 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
         return $datos;
     }
 
-    function eliminarHorarioV($id_horario_v)
+    function eliminarhorario()
     {
         $query = "DELETE FROM `horario_clase_virtual` WHERE `id_horario_virtual`=" . $id_horario_v;
         $this->connect();
@@ -177,7 +176,7 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
         return $datos;
     }
 
-    function updateHorarioV()
+    function updateHorario()
     {
         $query = "UPDATE `horario_clase_virtual` SET `id_asignacion_fk`='".$this->getIdAsignacionFk()."',`dia_semana`='".$this->getDiaSemana()."',`hora_inicio`='".$this->getHoraInicio()."',`duracion`='".$this->getDuracion()."',`reunion`='".$this->getReunion()."',`plataforma`='".$this->getPlataforma()."',`url_reunion`='".$this->getUrlReunion()."',`url_plataforma`='".$this->getUrlPlataforma()."' WHERE `id_horario_virtual`=".$this->getIdHorarioVirtual();
         $this->connect();
@@ -185,4 +184,19 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_CLASE_V
         $this->close();
         return $datos;
     }
+
+    function queryConsultaHorario(){
+        $query = "SELECT hv.id_horario_virtual, hv.dia_semana,  time_format(hv.hora_inicio,'%H:%i') AS hora_inicio , 
+       hv.duracion, time_format((addTime(sec_to_time(hv.duracion*60),hv.hora_inicio)),'%H:%i') AS hora_term, hv.reunion,
+                   hv.plataforma, hv.url_reunion, hv.url_plataforma,
+                   gpo.id_grupo, gpo.grupo
+            from horario_clase_virtual hv, grupo gpo
+            WHERE gpo.id_grupo = hv.id_grupo_fk
+              AND gpo.id_grupo = ".$this->getIdGrupo()." ORDER BY hv.dia_semana";
+        $this->connect();
+        $horario=$this->getData($query);
+        $this->close();
+        return $horario;
+    }
+
 }

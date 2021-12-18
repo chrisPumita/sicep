@@ -1,53 +1,12 @@
 $(document).ready(function() {
-
-});
-
-window.onload = function(){
     let id = $("#idCurso").val();
     if(!cargaCursoDetails(-1,id))
         alert('NO DATA');
     consultaGrupos(id);
-}
-
-async function consultaGrupos(idCurso){
-    let ruta = "./webhook/lista-grupos-curso.php";
-    const datos = await listaGposCursoAjax(idCurso, ruta);
-    //Mensaje en JS para usar con SwatAlert
-    //console.log(datos);
-    buildHtmlSelectGrupos(datos);
-}
-
-function buildHtmlSelectGrupos(GRUPOS) {
-    let template = "";
-    if (GRUPOS.length > 0) {
-        template += `<div class="col-md-4 text-end">
-                        <label for="indice" class="text-primary">Seleccione un Grupo:</label>
-                    </div>
-                    <div class="col-md-8 form-group">
-                        <select class="form-control" id="list-grupos">`;
-        GRUPOS.forEach(
-            (obj)=>
-            {
-                template += `<option value="${obj.id_grupo}">${obj.grupo}</option>`;
-            }
-        );
-        template += `</select></div>`;
-    }
-    else{
-        template = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                      <strong>Agrege un grupo</strong> No hay grupos registrados, agregue uno para configurar los hosrarios.
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>`;
-
-    }
-    $("#selectCurso").html(template);
-}
-
-/*DETALLES DE LOS HORARIOS EN FUNCION DEL GRUPO SELECCIONADO*/
-
-function buildTblGrupos() {
-
-}
+    consultaTblDescuentos(id);
+    cargaAulasListDespl();
+    cargaTemario(id);
+});
 
 //* DETALLES GENERALES DEL CURSO*/
 async function cargaCursoDetails(filtro, idUnique) {
@@ -56,6 +15,8 @@ async function cargaCursoDetails(filtro, idUnique) {
 }
 
 function buildHTMLValues(curso){
+    $("#idCursoGrupo").val(curso.id_curso);
+    $("#idCursoPDF").val(curso.id_curso);
     $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);
     $("#detallesCurso").html(`${curso.descripcion}`);
     $("#nombreAutor").html(`${curso.nombre} ${curso.app} ${curso.apm}`);
@@ -64,6 +25,7 @@ function buildHTMLValues(curso){
     $("#dirigido_a").html(`${curso.dirigido_a}`);
     $("#codigoInfo").html(`${curso.codigo}`);
     $("#sesionesInfo").html(`${curso.no_sesiones}`);
+    $("#nombreCursoHistorial").html(`${curso.nombre_curso}`);
 
     $("#modalidad").html(getTipoCurso(curso.tipo_curso));
     $("#objetivo").html(curso.objetivo);
@@ -87,7 +49,6 @@ function buildHTMLValues(curso){
     $("#editarCosto").val(curso.costo_sugerido);
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
-    cargaTemario(curso.id_curso);
 }
 
 function detallesAcreditacion(id_Curso,acreditado) {
@@ -109,7 +70,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 <div class="m-auto">
                                     <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
                                 </div>
-                                <div class="m-auto">
+                                <div class="col-8 m-auto">
                                     <h5>Aprobado por:</h5>
                                     <h5><strong>${obj_result[0].prefijo} ${obj_result[0].nombre} ${obj_result[0].app} ${obj_result[0].apm}</strong></h5>
                                     <h6>No Trabajador: ${obj_result[0].no_trabajador}</h6>
@@ -117,8 +78,9 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 </div>
                             </div>
                             <div class="card-body d-flex text-align-right">
-                                    <a href="#" class="btn btn-danger btn-block ">Inhabilitar</a>
-                            </div>`;
+                                <a href="#" class="btn btn-danger btn-block "><i class="fas fa-power-off"></i> Inhabilitar</a>
+                            </div>
+`;
                         $("#detallesAprobacionCurso").html(tmplate);
                     }
                 }
@@ -141,6 +103,8 @@ function detallesAcreditacion(id_Curso,acreditado) {
                 <a href="#" class="btn btn-success btn-block ">Acreditar</a>
             </div>`;
         $("#detallesAprobacionCurso").html(tmplate);
+        $("#sectionDescuentos").html("");
+
     }
 }
 
@@ -199,4 +163,244 @@ function cargaTemario(idCurso) {
             }
         }
     );
+}
+function openGroup(id) {
+    let url = "./nueva-asignacion";
+    let data = {  id:id };
+    redirect_by_post(url, data, false);
+}
+
+
+function buildHTMLDespEdificios(AULAS) {
+    let template = "";
+    let cupo = 0;
+    let cont =0;
+    AULAS.forEach(
+        (AULA)=>{
+            cont ++;
+            if (cont===1) cupo = AULA.cupo;
+            template += `<option value="${AULA.id_aula}"> ${AULA.edificio} - ${AULA.aula}</option>`;
+        }
+    );
+    $("#aulas").html(template);
+    $("#cupoAula").html(cupo);
+
+}
+
+//Update FROM details curso
+
+
+//Update PDF Curso
+
+//Update Remove PDF curso
+function removeBanner() {
+    let id = $("#idCurso").val();
+    var route= "./webhook/remove-banner-curso.php";
+    sweetConfirm('Remover Banner', '¿Estas seguro de que deseas eliminar el Banner de este Curso?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                cargaCursoDetails(-1,id);
+            });
+        }
+    });
+}
+
+//Update remove PDF
+
+//Update Acreditar/ Remover Acreditacion Curso
+
+//CRUD TEMARIO
+
+//CRUD DESCUENTOS
+function consultaTblDescuentos(idGpo) {
+    consultaDescuentos(idGpo).then(function (e) {
+        buildTBLHtmlDescuentos(e);
+    });
+}
+
+function buildTBLHtmlDescuentos(DESCUENTOS) {
+    let template ="";
+    if (DESCUENTOS.length > 0) {
+        template += `<table class="table table-hover table-striped" >
+                            <thead>
+                            <tr>
+                                <th>DIRIGIDO A</th>
+                                <th>SUGERIDO</th>
+                                <th>DESCUENTO</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-Desc">`;
+        DESCUENTOS.forEach(
+            (des)=>
+            {
+                let descApli = parseInt(des.porcentaje_desc)!=0 ? `<span class="badge bg-info"><i class="fas fa-tag"></i> ${des.porcentaje_desc}% OFF<br>-$ ${des.desTotal}</span>`: 'N/A';
+                let totalDesc = parseFloat(des.desTotal);
+                let totalPagoSugerido = parseFloat(des.costo_sugerido);
+                let total = totalPagoSugerido-totalDesc;
+
+                template += `<tr id_procedencia="${des.id_tipo_procedencia_fk}">
+                                <td>${des.tipo_procedencia}</td>
+                                <td>$ ${des.costo_sugerido}</td>
+                                <td>${descApli}</td>
+                                <td>$ ${total}</td>
+                                <td>
+                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                        <i class="fas fa-tag"></i> Editar</button>
+                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
+                                </td>
+                            </tr>`;
+            }
+        );
+
+        template += `      </tbody>
+                        </table>`;
+    }
+    else{
+        template = `<div class="alert alert-danger d-flex align-items-center" role="alert">
+                      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                      <div>
+                      <strong> ATENCION: </strong>
+                       Nadie podra inscribirse a este curso, agregue al menos un grupos de alumnos de los que se pueden inscribir,
+                       al mismo tiempo puede agregarles el descuento que desee. Este se aplicara de forma automatica al momento de
+                       abrir grupos para nuevas generaciones.
+                      </div>
+                    </div>`;
+    }
+    $("#containerDescuentos").html(template);
+}
+
+//CRUD HORARIO VIRTUAL / PRESENCIAL
+function consultaHorarioGpoList(idGpo) {
+    consultaHorario(idGpo).then(function (e) {
+        buildHTMLHorarioContainers(e)
+    });
+}
+
+$('#grupos').on('change', function (){
+    let idGpo = $("#grupos").val();
+    consultaHorario(idGpo).then(function (e) {
+        buildHTMLHorarioContainers(e)
+    });
+});
+
+function buildHTMLHorarioContainers(HORARIOS) {
+    //Separando los tipo de horario
+    buildHtmlHPContainer(HORARIOS.HP);
+    buildHtmlHVContainer(HORARIOS.HV);
+}
+
+function buildHtmlHVContainer(HVirtual) {
+    //TRabajando con virtuales
+    let template = "";
+    if (HVirtual.length>0){
+        template =`<table class="table table-hover table-striped" id="tblPresencial">
+                        <thead>
+                        <tr>
+                            <th>DIA</th>
+                            <th>INICIO</th>
+                            <th>TERMINO</th>
+                            <th>DURACION</th>
+                            <th>PLATAFORMA</th>
+                            <th>SALA</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+        HVirtual.forEach(
+            (h)=>
+            {
+                template += `
+                        <tr id_horario="${h.id_horario_virtual}">
+                            <td>${diaSemana(h.dia_semana)}</td>
+                            <td>${h.hora_inicio}</td>
+                            <td>${h.hora_term}</td>
+                            <td>${h.duracion} min.</td>
+                            <td><a href="${h.url_plataforma}" TARGET="_blank">${h.plataforma}</a></td>
+                            <td><a href="${h.url_reunion}" TARGET="_blank">${h.reunion}</a></td>
+                            <td>
+                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="##horarioVirtual">
+                                    <i class="fas fa-clock"></i> Editar</button>
+                                <button class="btn btn-danger me-1 mb-1 removeHV"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+            }
+        );
+        template += ` </tbody>
+                    </table>
+                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                        <i class="fas fa-plus"></i>Agregar
+                    </button>`;
+    }
+    else{
+        template = ` <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                        <h4 class="alert-heading">Sin horario VIRTUAL</h4>
+                        <p>No encontramos horarios registrados. Si este curso es solo PRESENCIAL omita este mensaje. Agregue el 
+                    horario si es la primera vez que condigura este curso</p><hr>
+                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                            <i class="fas fa-plus"></i>Agregar
+                         </button>
+                          </div>
+                        </div>`;
+    }
+    $("#containerTblVirtual").html(template);
+}
+
+function buildHtmlHPContainer(HPresencial) {
+    //TRabajando con presenciales
+    let template = "";
+    if (HPresencial.length>0){
+        template =`<table class="table table-hover table-striped" id="tblPresencial">
+                        <thead>
+                        <tr>
+                            <th>DIA</th>
+                            <th>SALON</th>
+                            <th>INICIO</th>
+                            <th>TERMINO</th>
+                            <th>DURACION</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+        HPresencial.forEach(
+            (h)=>
+            {
+                template += `
+                        <tr id_horario="${h.id_horario_pres}">
+                            <td>${diaSemana(h.dia_semana)}</td>
+                            <td>${h.edificio}-${h.grupo} (${h.campus})</td>
+                            <td>${h.hora_inicio}</td>
+                            <td>${h.hora_term}</td>
+                            <td>${h.duracion} min.</td>
+                            <td>
+                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                    <i class="fas fa-clock"></i> Editar</button>
+                                <button class="btn btn-danger me-1 mb-1 removeHP"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+            }
+        );
+        template += ` </tbody>
+                    </table>
+                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                        <i class="fas fa-plus"></i>Agregar
+                    </button>`;
+    }
+    else{
+        template = ` <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                        <h4 class="alert-heading">Sin horario PRESENCIAL</h4>
+                        <p>No encontramos horarios registrados. Si este curso es solo virtual omita este mensaje. Agregue el 
+                    horario si es la primera vez que condigura este curso</p><hr>
+                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                            <i class="fas fa-plus"></i>Agregar
+                         </button>
+                          </div>
+                        </div>`;
+    }
+    $("#containerTblPresencial").html(template);
 }

@@ -207,3 +207,57 @@ async function eliminaPreferenciasAjax(id,route){
 
     );
 }
+
+/////EDIFICIOS DE LA FACULTAD
+async function cargaAulasListDespl() {
+    const JSONData = await consultaAulasAjax(1,0);
+    buildHTMLDespEdificios(JSONData);
+}
+
+/// HORARIOS DE LOS CURSOS
+async function consultaHorariosAjax(id){
+    return $.ajax(
+        {
+            url: "./webhook/horarios-grupo.php",
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+             //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL Consulta de Horarios
+async function consultaHorario(idGrupo) {
+    return await consultaHorariosAjax(idGrupo);
+}
+
+/// DESCUENTOS DE LOS CURSOS
+async function consultaDescuentosAjax(id){
+    return $.ajax(
+        {
+            url: "./webhook/descuentos-curso.php",
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL CONSULTA DESCUENTOS
+async function consultaDescuentos(idGrupo) {
+    return await consultaDescuentosAjax(idGrupo);
+}

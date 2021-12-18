@@ -7,20 +7,21 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">
-                    Agregar un nuevo tema
+                    Configurar Tema
                 </h5>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form action="#">
+            <form action="frm-temario">
                 <div class="modal-body">
                     <div class="callout callout-second bg-grey">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                                    Los temas seran visibles al público.
+                                    Los temas seran visibles al público. Escriba un temario general y de facil lectura. Si
+                                    desea usar subtemas, coloque 1.1, 1.2... para que el sistema los acomode forma ordenada.
                                 </div>
                             </div>
                         </div>
@@ -31,7 +32,8 @@
                             <label for="indice" class="text-primary">Inice:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="text" class="form-control" name="indice" id="indice" placeholder="Ejemplo 1.2.3">
+                            <input type="hidden" id="id_tema" name="id_tema" value="0">
+                            <input type="text" class="form-control" name="indice" id="indice" placeholder="Ejemplo 1.2.1">
                         </div>
                     </div>
                     <div class="form-group row">

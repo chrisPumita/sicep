@@ -60,3 +60,41 @@ function agregaGrupoCurso($idCurso,$nombreGruppo,$estatusGrupo){
     $grupo->setEstatus($estatusGrupo);
     return $grupo->crearGrupo();
 }
+
+function updateBanner($idCurso, $path){
+    include_once "../model/CURSO.php";
+    $obj_curso= new CURSO();
+    $obj_curso->setIdCurso($idCurso);
+    $obj_curso->setBannerImg($path);
+    return $obj_curso->queryUpdateBanner();
+}
+
+//Funcion que regresa el horario precencial y virtuaul de un grupo en especifico
+function getHorariosGrupo($idGrupo){
+    $HORARIO = array(
+        "HP" =>  getHorarioPresencial($idGrupo),
+        "HV" => getHorarioVirtual($idGrupo)
+    );
+    return $HORARIO;
+}
+
+function getHorarioPresencial($idGrupo){
+    include_once "../model/HORARIO_CLASE_P.php";
+    $HP = new HORARIO_CLASE_P();
+    $HP->setIdGrupo($idGrupo);
+    return $HP->queryConsultaHorario();
+}
+
+function getHorarioVirtual($idGrupo){
+    include_once "../model/HORARIO_CLASE_V.php";
+    $HV = new HORARIO_CLASE_V();
+    $HV->setIdGrupo($idGrupo);
+    return $HV->queryConsultaHorario();
+}
+
+function getDescuentos($idCurso){
+    include_once "../model/DESCUENTOS.php";
+    $DESC = new DESCUENTOS();
+    $DESC->setIdCursoFk($idCurso);
+    return $DESC->queryConsultaDesceuntosCurso();
+}

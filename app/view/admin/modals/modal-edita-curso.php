@@ -23,6 +23,7 @@
                                         <label for="editarNombreCurso" class="text-primary">Nombre del curso</label>
                                     </div>
                                     <div class="col-md-10 form-group">
+                                        <input type="hidden" value="<?php echo $id?>" id="idCurso">
                                         <input type="text" class="form-control" name="editarNombreCurso" id="editarNombreCurso" placeholder="Nombre del curso">
                                     </div>
 
@@ -55,7 +56,7 @@
                                     </div>
 
                                     <div class="col-md-2">
-                                        <label class="text-primary" for="editarModalidad">Modalidad</label>
+                                        <label class="text-primary" for="editarModalidad">Tipo</label>
                                     </div>
                                     <div class="col-md-10 form-group">
                                         <select class="form-control" id="editarModalidad" name="editarModalidad">
@@ -66,7 +67,6 @@
                                             <option value="4">Otro</option>
                                         </select>
                                     </div>
-
                                     <div class="col-md-2">
                                         <label class="text-primary" for="editarSesiones">Numero de Sesiones</label>
                                     </div>
@@ -81,8 +81,7 @@
                                     </div>
 
                                     <div class="col-sm-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1"><i class="fas fa-sync-alt"></i> Actualizar </button>
                                     </div>
                                 </div>
                             </div>

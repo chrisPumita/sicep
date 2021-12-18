@@ -2,8 +2,7 @@
 <!--AGREGA PROFESOR INVITACION CUENTA -->
 <div class="modal fade text-left" id="horarioVirtual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
-    <div class="modal-sm  modal-dialog modal-dialog-centered modal-dialog-scrollable"
-         role="document">
+    <div class="modal-md  modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">
@@ -19,7 +18,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                            Agregue el horario a la clase que se realizará de forma virtual/a distancia.
+                                <i class="fas fa-laptop-house"></i> Agregue el horario a la clase que se realizará de forma virtual o a distancia.
                             </div>
                         </div>
                     </div>
@@ -42,10 +41,15 @@
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <h6 class="text-start">Hora de Inicio:</h6>
-                        <input class="form-control" type="time" value="0" id="hrsInicio">
+                        <input class="form-control" type="time" value="07:00:00" id="hrsInicio">
                     </div>
                 </div>
-
+                <div class="form-group row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                        <h6 class="text-start">Hora de Termino:</h6>
+                        <input class="form-control" disabled type="time" value="07:30" id="hrsInicio">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <h6 class="text-start">Duración (minutos):</h6>
@@ -54,7 +58,8 @@
                 </div>
                 
                 <div class="row">
-                <p class="fst-italic text-primary">Si no escribe el link de plataforma o de la reunión, se entederá que no existe o son enlaces dinámicos.</p>
+                <p class="fst-italic text-primary">Si no escribe el link de plataforma o de la reunión, se entederá que no existe o son enlaces dinámicos. Este enlace puede ser configurado por el
+                profesor asignado al grupo actual.</p>
                 </div>
 
                 <div class="form-group row">
@@ -65,6 +70,9 @@
                             <option value="">Classroom</option>
                             <option value="">Microsoft Teams</option>
                             <option value="">Edmodo</option>
+                            <option value="">Grupo de Facebook</option>
+                            <option value="">Grupo de WhatsApp</option>
+                            <option value="">Otro</option>
                         </select>
                         <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                        
                     </div>
@@ -78,6 +86,8 @@
                             <option value="">Meet</option>
                             <option value="">Webex</option>
                             <option value="">Microsoft Teams</option>
+                            <option value="">Facebook Messenger</option>
+                            <option value="">Otro</option>
                         </select>
                         <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                         
                     </div>
