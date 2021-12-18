@@ -25,7 +25,13 @@ function buildHtmlSelectGrupos(datos) {
         );
         gruposVal.removeAttr("disabled");
         htmlGposOptions(true);
-        consultaHorarioGpoList(idLastGpo)
+        try {
+            consultaHorarioGpoList(idLastGpo);
+        }
+        catch (e) {
+            console.log("ok");
+        }
+
     }
     else{
         template += `<option value="0">Agregue un grupo...</option>`;

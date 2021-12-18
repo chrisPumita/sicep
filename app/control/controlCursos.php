@@ -91,3 +91,10 @@ function getHorarioVirtual($idGrupo){
     $HV->setIdGrupo($idGrupo);
     return $HV->queryConsultaHorario();
 }
+
+function getDescuentos($idCurso){
+    include_once "../model/DESCUENTOS.php";
+    $DESC = new DESCUENTOS();
+    $DESC->setIdCursoFk($idCurso);
+    return $DESC->queryConsultaDesceuntosCurso();
+}

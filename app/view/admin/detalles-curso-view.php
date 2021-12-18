@@ -352,7 +352,7 @@ $titulo = "Detalles del curso"
                         <div class="row">
                             <!-- boton que da problemas en responsive -->
                             <div class="col-sm-12 col-md-6">
-                                <h5 class="text-secondary"><i class="fas fa-tags"></i> Descuentos Aplicados:</h5>
+                                <h5 class="text-secondary"><i class="fas fa-tags"></i> Publico y Descuentos Aplicados:</h5>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
@@ -361,39 +361,7 @@ $titulo = "Detalles del curso"
                             </div>
                         </div>
                     </div>
-                    <div class="card-body table-responsive">
-                        <table class="table table-hover table-striped" id="tblDescuentos">
-                            <thead>
-                            <tr>
-                                <th>DIRIGIDO A</th>
-                                <th>DESCUENTO</th>
-                                <th>TOTAL</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-HroVirtual">
-                            <tr id_grupo="1">
-                                <td>Comunidad FESC</td>
-                                <td><i class="fas fa-tag text-success"></i> 50% OFF</td>
-                                <td>$350</td>
-                                <td>
-                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                        <i class="fas fa-tag"></i> Editar</button>
-                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
-                                </td>
-                            </tr>
-                            <tr id_grupo="2">
-                                <td>Comunidad UNAM</td>
-                                <td><i class="fas fa-tag text-light-grey"></i> NA</td>
-                                <td>$1200</td>
-                                <td>
-                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                        <i class="fas fa-tag"></i> Editar</button>
-                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body table-responsive" id="containerDescuentos">
                     </div>
                 </div>
             </section>
@@ -411,7 +379,7 @@ $titulo = "Detalles del curso"
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
                                 <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalCreaGrupoCurso">
-                                                <i class="fas fa-plus-square"></i> Grupo
+                                    <i class="fas fa-plus-square"></i> Grupo
                                  </button>
                                 </span>
                             </div>
@@ -455,7 +423,7 @@ $titulo = "Detalles del curso"
                                                 <div class="alert alert-warning alert-dismissible fade show alert-danger d-flex align-items-center" role="alert">
                                                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                                                     <div>
-                                                        Genere un grupo para poder agregar <strong>HORARIOS</strong>
+                                                        Genere un grupo para poder agregar <strong>HORARIO</strong>
                                                     </div>
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>
@@ -464,44 +432,13 @@ $titulo = "Detalles del curso"
                                         <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
                                             <h5>Horario virtual:</h5>
                                             <div id="containerTblVirtual">
-                                                <table class="table table-hover table-striped" id="tblVirtual">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>DIA</th>
-                                                        <th>INICIO</th>
-                                                        <th>TERMINO</th>
-                                                        <th>DURACION</th>
-                                                        <th>PLATAFORMA</th>
-                                                        <th>SALA</th>
-                                                        <th>ACCIONES</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="tbl-HroVirtual">
-                                                    <tr id_grupo="1">
-                                                        <td>GOOGLE MEET</td>
-                                                        <td>JUEVES</td>
-                                                        <td>9:00</td>
-                                                        <td>
-                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                                <i class="fas fa-clock"></i> Editar</button>
-                                                            <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr id_grupo="2">
-                                                        <td>GOOGLE MEET</td>
-                                                        <td>JUEVES</td>
-                                                        <td>9:00</td>
-                                                        <td>
-                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
-                                                                <i class="fas fa-clock"></i> Editar</button>
-                                                            <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
-                                                    <i class="fas fa-plus"></i>Agregar
-                                                </button>
+                                                <div class="alert alert-warning alert-dismissible fade show alert-danger d-flex align-items-center" role="alert">
+                                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                                                    <div>
+                                                        Genere un grupo para poder agregar <strong>HORARIO VIRTUAL</strong>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

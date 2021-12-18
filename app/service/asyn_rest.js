@@ -237,3 +237,27 @@ async function consultaHorariosAjax(id){
 async function consultaHorario(idGrupo) {
     return await consultaHorariosAjax(idGrupo);
 }
+
+/// DESCUENTOS DE LOS CURSOS
+async function consultaDescuentosAjax(id){
+    return $.ajax(
+        {
+            url: "./webhook/descuentos-curso.php",
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL CONSULTA DESCUENTOS
+async function consultaDescuentos(idGrupo) {
+    return await consultaDescuentosAjax(idGrupo);
+}

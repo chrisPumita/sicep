@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="col-md-2">
-                                        <label class="text-primary" for="editarModalidad">Modalidad</label>
+                                        <label class="text-primary" for="editarModalidad">Tipo</label>
                                     </div>
                                     <div class="col-md-10 form-group">
                                         <select class="form-control" id="editarModalidad" name="editarModalidad">
@@ -67,7 +67,6 @@
                                             <option value="4">Otro</option>
                                         </select>
                                     </div>
-
                                     <div class="col-md-2">
                                         <label class="text-primary" for="editarSesiones">Numero de Sesiones</label>
                                     </div>

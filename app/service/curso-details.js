@@ -3,15 +3,10 @@ $(document).ready(function() {
     if(!cargaCursoDetails(-1,id))
         alert('NO DATA');
     consultaGrupos(id);
+    consultaTblDescuentos(id);
     cargaAulasListDespl();
     cargaTemario(id);
 });
-
-/*DETALLES DE LOS HORARIOS EN FUNCION DEL GRUPO SELECCIONADO*/
-
-function buildTblGrupos() {
-
-}
 
 //* DETALLES GENERALES DEL CURSO*/
 async function cargaCursoDetails(filtro, idUnique) {
@@ -217,13 +212,70 @@ function removeBanner() {
 //CRUD TEMARIO
 
 //CRUD DESCUENTOS
+function consultaTblDescuentos(idGpo) {
+    consultaDescuentos(idGpo).then(function (e) {
+        buildTBLHtmlDescuentos(e);
+    });
+}
+
+function buildTBLHtmlDescuentos(DESCUENTOS) {
+    let template ="";
+    if (DESCUENTOS.length > 0) {
+        template += `<table class="table table-hover table-striped" >
+                            <thead>
+                            <tr>
+                                <th>DIRIGIDO A</th>
+                                <th>SUGERIDO</th>
+                                <th>DESCUENTO</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-Desc">`;
+        DESCUENTOS.forEach(
+            (des)=>
+            {
+                let descApli = parseInt(des.porcentaje_desc)!=0 ? `<span class="badge bg-info"><i class="fas fa-tag"></i> ${des.porcentaje_desc}% OFF<br>-$ ${des.desTotal}</span>`: 'N/A';
+                let totalDesc = parseFloat(des.desTotal);
+                let totalPagoSugerido = parseFloat(des.costo_sugerido);
+                let total = totalPagoSugerido-totalDesc;
+
+                template += `<tr id_procedencia="${des.id_tipo_procedencia_fk}">
+                                <td>${des.tipo_procedencia}</td>
+                                <td>$ ${des.costo_sugerido}</td>
+                                <td>${descApli}</td>
+                                <td>$ ${total}</td>
+                                <td>
+                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                        <i class="fas fa-tag"></i> Editar</button>
+                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
+                                </td>
+                            </tr>`;
+            }
+        );
+
+        template += `      </tbody>
+                        </table>`;
+    }
+    else{
+        template = `<div class="alert alert-danger d-flex align-items-center" role="alert">
+                      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                      <div>
+                      <strong> ATENCION: </strong>
+                       Nadie podra inscribirse a este curso, agregue al menos un grupos de alumnos de los que se pueden inscribir,
+                       al mismo tiempo puede agregarles el descuento que desee. Este se aplicara de forma automatica al momento de
+                       abrir grupos para nuevas generaciones.
+                      </div>
+                    </div>`;
+    }
+    $("#containerDescuentos").html(template);
+}
 
 //CRUD HORARIO VIRTUAL / PRESENCIAL
 function consultaHorarioGpoList(idGpo) {
     consultaHorario(idGpo).then(function (e) {
         buildHTMLHorarioContainers(e)
     });
-
 }
 
 $('#grupos').on('change', function (){
@@ -304,8 +356,8 @@ function buildHtmlHPContainer(HPresencial) {
         template =`<table class="table table-hover table-striped" id="tblPresencial">
                         <thead>
                         <tr>
-                            <th>SALON</th>
                             <th>DIA</th>
+                            <th>SALON</th>
                             <th>INICIO</th>
                             <th>TERMINO</th>
                             <th>DURACION</th>
@@ -318,8 +370,8 @@ function buildHtmlHPContainer(HPresencial) {
             {
                 template += `
                         <tr id_horario="${h.id_horario_pres}">
-                            <td>${h.edificio}-${h.grupo} (${h.campus})</td>
                             <td>${diaSemana(h.dia_semana)}</td>
+                            <td>${h.edificio}-${h.grupo} (${h.campus})</td>
                             <td>${h.hora_inicio}</td>
                             <td>${h.hora_term}</td>
                             <td>${h.duracion} min.</td>
