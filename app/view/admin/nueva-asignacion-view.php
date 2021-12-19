@@ -257,6 +257,5 @@ $id= $_POST['id'];
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="./service/asignacion-new.js"></script>
 <script src="./service/asignacion-gral.js"></script>
-<script src="./service/data-profesores-ajax.js"></script>
 </body>
 </html>

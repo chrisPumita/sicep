@@ -22,13 +22,13 @@ $titulo = "Detalles de la Asignación" ?>
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3><?php echo $id ?> - ASPEL NOI Basico</h3>
+                        <h3 id="nameCursoTittle">ASPEL NOI Basico</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
-                                <li class="breadcrumb-item"><a href="./detalles-curso">ASPEL NOI Basico</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Grupo 2853</li>
+                                <li class="breadcrumb-item"><a href="./detalles-curso" id="nameBreadCurso">ASPEL NOI Basico</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" id="grupoBread">Grupo 2853</li>
                             </ol>
                         </nav>
                     </div>
@@ -123,7 +123,7 @@ $titulo = "Detalles de la Asignación" ?>
                             <div class="overlay"></div>
                             <div class="mx-auto">
                                 <h4 class="text-light text-left ">
-                                    <strong>Grupo 2210 Aspel NOI Basico I 2021-1</strong>
+                                    <strong id="nameAsignacion">Grupo 2210 Aspel NOI Basico I 2021-1</strong>
                                     <h5 class="text-secondary">Profesora Martha Areyano Felix</h5>
                                     <span class="badge bg-success">
                                             <div class="blob green ">
@@ -417,15 +417,16 @@ $titulo = "Detalles de la Asignación" ?>
             <?php include "modals/modal-editar-detalles-asignacion.php" ?>
             <?php include "modals/modal-editar-descuentos.php" ?>
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-add-grupo-curso.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-<!-- INCLUDE SERIVES AJAX
-    <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
+<!-- INCLUDE SERIVES AJAX-->
+    <script src="./service/asignacion-gral.js"></script>
+    <script src="./service/asignacion-detalles.js"></script>
 
 </body>
 

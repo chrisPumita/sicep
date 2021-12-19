@@ -27,12 +27,13 @@
                     <h6 class="heading-small text-secondary mb-4">Detalles generales</h6>
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <h5 class="text-start">Profesor asignado:</h5>
-                            <select class="form-control" id="profesorAsig">
-                                <option value="5">Calderon Hinojosa Felipe</option>
-                                <option value="2">Cortes Ponciano Paola</option>
-                                <option value="8">Echeverria Calderon Luisa</option>
-                            </select>
+                            <input type="hidden" id="idAsignacion" name="idAsignacion" value="<?php echo $id?>">
+                            <h5 class="text-start">Profesor actual:</h5>
+                            <input type="text" class="form-control" id="profesorAsigActual" name="profesorAsigActual" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-start">Cambiar por:</h5>
+                            <select class="form-control" id="profesorAsig" name="profesorAsig"></select>
                         </div>
                         
                         <div class="col-md-3">
@@ -44,7 +45,7 @@
                                     <option value="2023">1103</option>
                                     <option value="2024">1104</option>
                                 </select>
-                                <button class="btn btn-primary mx-3">
+                                <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalCreaGrupoCurso">
                                     <i class="fas fa-plus-square"></i>
                                 </button>
                             </div>

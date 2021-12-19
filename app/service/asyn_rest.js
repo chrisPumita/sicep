@@ -261,3 +261,72 @@ async function consultaDescuentosAjax(id){
 async function consultaDescuentos(idGrupo) {
     return await consultaDescuentosAjax(idGrupo);
 }
+
+/// TEMAS DEL CURSO
+
+/// DESCUENTOS DE LOS CURSOS
+async function consultaTemarioAjax(idCurso){
+    return $.ajax(
+        {
+            url:"./webhook/temario-curso.php",
+            type: "POST",
+            data: {idCurso : idCurso},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL CONSULTA DESCUENTOS
+async function consultaTemario(idGrupo) {
+    return await consultaTemarioAjax(idGrupo);
+}
+
+/// DESCUENTOS DE LOS CURSOS
+async function consultaInfoAsignacionAjax(idAsignacion,filtro){
+    return $.ajax(
+        {
+            url:"./webhook/lista-asignaciones-details.php",
+            type: "POST",
+            data: {idAsignacion : idAsignacion, filtro:filtro},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL CONSULTA DESCUENTOS
+//Especificar Id-> Para uno en especifico, cuando 0, especificar el tipo de filtro
+async function consultaDetallesAsignaciones(idAsignacion, filtro) {
+    return await consultaInfoAsignacionAjax(idAsignacion, filtro);
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function consultaProfesoresAJAX(filtro){
+    return $.ajax({
+        url: "./webhook/lista-profesores.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            filtro : filtro
+        },
+        success: function (response) {
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+
+}

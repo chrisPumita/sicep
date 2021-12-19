@@ -23,8 +23,8 @@ function ConsultaNumLugaresDisponibles($id_asignacion)
     return $result;
 }
 
-function consultaAsignacionesHistoricasCurso($idCurso,$filtro){
+function consultaAsignacionesHistoricasCurso($idCurso,$filtro,$idFiltro){
     include_once "../model/ASIGNACION_GRUPO.php";
     $ASIGNACION_GRUPO = new ASIGNACION_GRUPO();
-    return $ASIGNACION_GRUPO->queryHistorialAsignacionesCurso($idCurso,$filtro);
+    return $ASIGNACION_GRUPO->queryHistorialAsignacionesCurso($idCurso,$filtro,$idFiltro);
 }

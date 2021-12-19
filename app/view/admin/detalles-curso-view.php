@@ -74,7 +74,7 @@ $titulo = "Detalles del curso"
                 </div>
             </section>
 
-            <!-- seccion cards estadiscticas -->
+            <!-- seccion cards estadiscticas --
             <section class="row">
                 <div class="col-12 col-lg-12">
                     <div class="row">
@@ -133,7 +133,7 @@ $titulo = "Detalles del curso"
                     </div>
                 </div>
             </section>
-
+            -- END SECCION ESTADITICA-->
             <!-- seccion detalles y banner img -->
             <section class="section">
                 <div class="row gutters-sm">

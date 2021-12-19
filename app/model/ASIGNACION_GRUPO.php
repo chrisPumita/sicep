@@ -643,30 +643,57 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     //Function historial de asignaciones de un curso especifico
     // CHRIS RCGS 15/12/2021
-    function queryHistorialAsignacionesCurso($idCurso,$filtro)
+    function queryHistorialAsignacionesCurso($idCurso,$filtro, $idFiltro)
     {
         //se buscan el historial de in ID especifico
         $idBusqueda = $idCurso > 0 ? " AND c.id_curso = ".$idCurso : "";
-
+        if ($filtro!=0){
+            //El filtro refiere a una asignacion o asignaciones
+            //revisar tipo de filtro
+            switch ($filtro){
+                case "1":
+                    //Buscar una asignacion en concreto
+                    $filtro = " AND ag.id_asignacion = ".$idFiltro;
+                    break;
+                case "2":
+                    //Buscar una todas las asignacion
+                    $filtro = "";
+                    break;
+            }
+        }
+        else{
+            $filtro = "";
+        }
         $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
-       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo,
-       gpo.grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso,
-       ag.id_asignacion, ag.generacion,
-       ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_lim_inscripcion,
+       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor,
+       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso,
+       ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
+       ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,
        ag.estatus AS statusAsignacion,
        (select COUNT(*) from acta where id_asignacion_fk = ag.id_asignacion) AS inscritos,
        (SELECT COUNT(*) FROM inscripcion insc WHERE insc.autorizacion_inscripcion = 0 AND
-       insc.pago_confirmado = 0 AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
+               insc.pago_confirmado = 0 AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
         from persona per, profesor prof, asignacion_grupo ag, grupo gpo, curso c
         where per.id_persona = prof.id_persona_fk
           AND ag.id_profesor_fk = prof.id_profesor
           AND ag.id_grupo_fk = gpo.id_grupo
-          AND c.id_curso = gpo.id_curso_fk".$idBusqueda." ORDER BY ag.fecha_inicio ASC";
+          AND c.id_curso = gpo.id_curso_fk ".$idBusqueda." ".$filtro." ORDER BY ag.fecha_inicio ASC";
+
         $this->connect();
         $result = $this->getData($query);
         $this->close();
         return $result;
+    }
+
+    function queryCreaAsignacion(){
+        $query = "INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, `semestre`, 
+                                `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, 
+                                `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, 
+                                `costo_real`, `notas`, `modalidad`, `visible_publico`, `estatus`) 
+                                VALUES (NULL, '40', '4', '2021', '2021-2', '4', CURRENT_TIMESTAMP, '2021-07-21 00:00:00', 
+                                        '2021-07-28', '2021-12-12', '2021-12-18', '2022-02-21', '2021-12-30', '30', '1500', 
+                                        'NOtas', '0', '1', '1');";
     }
 }
 

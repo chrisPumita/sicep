@@ -59,6 +59,21 @@ function htmlGposOptions(val) {
     $("#alertGpos").html(template);
 }
 
+async function consultaListaProfesores() {
+    let profesores = await consultaProfesoresAJAX();
+    buildHTMLSelect(profesores);
+}
+
+function buildHTMLSelect(PROFESORES) {
+    let template = "";
+    PROFESORES.forEach(
+        (PROF)=>{
+            template += `<option value="${PROF.id_profesor}">${PROF.prefijo} ${PROF.nombre_completo}</option>`;
+        }
+    );
+    $("#profesorAsig").html(template);
+}
+
 $("#frm-add-grupo-curso").on("submit", function(e){
     e.preventDefault();
     var f = $(this);
@@ -81,3 +96,5 @@ $("#frm-add-grupo-curso").on("submit", function(e){
     });
     $("#modalCreaGrupoCurso").modal('hide');
 });
+
+

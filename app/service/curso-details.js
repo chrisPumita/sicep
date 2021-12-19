@@ -109,19 +109,15 @@ function detallesAcreditacion(id_Curso,acreditado) {
 }
 
 function cargaTemario(idCurso) {
-    $.ajax(
-        {
-            url:"./webhook/temario-curso.php",
-            data: {
-                idCurso : idCurso
-            },
-            type: "POST",
-            success: function (response)
-            {
-                let TEMAS = JSON.parse(response);
-                let template;
-                if (TEMAS.length > 0) {
-                    template+= `
+    consultaTemario(idCurso).then(function (e) {
+        buildTBLHtmlTemario(e);
+    });
+}
+
+function buildTBLHtmlTemario(TEMAS) {
+    let template;
+    if (TEMAS.length > 0) {
+        template+= `
                             <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
@@ -132,38 +128,35 @@ function cargaTemario(idCurso) {
                                 </tr>
                                 </thead>
                             <tbody>`;
-                    TEMAS.forEach(
-                        (tema)=>
-                        {
-                            template+= `
+        TEMAS.forEach(
+            (tema)=>
+            {
+                template+= `
                             <tr id_tema="${tema.id_tema}">
                                 <td>${tema.indice}</td>
                                 <td>${tema.nombre}</td>
                                 <td>${tema.resumen}</td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>`;
-                        }
-                    );
-                    template+= `
+            }
+        );
+        template+= `
                             </tbody>
                           </table>`;
-                }
-                else{
-                    template= `
+    }
+    else{
+        template= `
                                 <div class="alert alert-light alert-dismissible show fade">
                                    No tenemos temas registrados. Agregue un tema.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>`;
-                }
-
-                $("#tblTemario").html(template);
-            }
-        }
-    );
+    }
+    $("#tblTemario").html(template);
 }
+
 function openGroup(id) {
     let url = "./nueva-asignacion";
     let data = {  id:id };

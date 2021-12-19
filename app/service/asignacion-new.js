@@ -40,23 +40,6 @@ function loadSemestre() {
     $("#semestre").html(template);
 }
 
-
-
-async function consultaListaProfesores() {
-        let profesores = await consultaProfesoresAJAX();
-        buildHTMLSelect(profesores);
-}
-
-function buildHTMLSelect(PROFESORES) {
-    let template = "";
-    PROFESORES.forEach(
-        (PROF)=>{
-            template += `<option value="${PROF.id_profesor}">${PROF.prefijo} ${PROF.nombre_completo}</option>`;
-        }
-    );
-    $("#profesorAsig").html(template);
-}
-
 //******* INSERT ASIGNACION V.1.0 Chris RCSG **********************
 $("#frm-add-asignacion").on("submit", function(e){
     //Ruta del Webbhook
