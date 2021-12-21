@@ -205,18 +205,36 @@ function nuevaUniversidad(){
 
 $("#frm-universidades").on("submit", function(e){
     //Ruta del Webbhook
-    e.preventDefault();
-    let ruta = "./webhook/crud-procedencia.php";
+    let ruta = "./webhook/crud-universidad.php";
     //Parametros que se van a enviar encapsulados
     var params = {
         id_universidad : $("#id_universidad").val(),
         nombre_universidad :$("#nombreUni").val(),
-        siglas_universidad : $("#siglasUni")
+        siglas_universidad : $("#siglasUni").val()
     };
+    
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
         $("#modal_uni").modal('hide');
         consultaUnis();
+    });
+    e.preventDefault();
+});
+
+//Elimina universidad
+
+
+$(document).on("click", ".deleteUni", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    var route= "./webhook/delete-universidad.php";
+    sweetConfirm('Eliminar Universidad', '¿Estas seguro de que deseas eliminar este universidad?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                consultaProcedencias();
+            });
+        }
     });
 });
 
@@ -243,8 +261,7 @@ function buildHTMLTblAulas(obj_result) {
                             <td>${obj.cupo}</td>
                             <!-- BOTON ACCIONES -->
                             <td>
-                                <button type="button" class="btn btn-outline-primary" 
-                                data-bs-toggle="modal" data-bs-target="#modal_aulas">
+                                <button type="button" class="btn btn-outline-primary"onclick="editaAula(${obj.id_aula},'${obj.edificio}',${obj.aula},'${obj.campus}',${obj.cupo});" >
                                 <i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger deleteAula"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -253,7 +270,15 @@ function buildHTMLTblAulas(obj_result) {
     );
     $("#tbl-aulas").html(template);
 }
-
+//   ,aula,campus,cupo
+function editaAula(idAula,edificio,aula,campus,cupo){
+    $("#modal_aulas").modal('show');
+    $("#id_aula").val(idAula);
+    $("#edificio").val(edificio);
+    $("#aula").val(aula);
+    $("#abreviatura").val(campus);
+    $("#cupo").val(cupo);
+}
 
 //Funciones Documentos
 async function consultaDocs() {
@@ -307,13 +332,5 @@ $(document).on("click", ".deleteAula", function ()
 
 
 
-$(document).on("click", ".deleteUni", function ()
-{
-    
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id");
-    //  var url = './detalles-profesor';
-    //  redirect_by_post(url, {  id: id }, false);
-});
 
 

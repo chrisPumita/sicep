@@ -119,14 +119,14 @@
                             <label for="edificio" class="text-primary">Edificio</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="hidden" class="form-control" id="id_edificio" aria-describedby="edificioHelp">
-                            <input type="text" class="form-control" id="edificio" aria-describedby="edificioHelp" placeholder="Eje. A1, H, A2..">
+                            <input type="text" class="form-control" id="id_aula" name="id_aula"aria-describedby="edificioHelp">
+                            <input type="text" class="form-control" id="edificio" name="edificio" aria-describedby="edificioHelp" placeholder="Eje. A1, H, A2..">
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="aula" class="text-primary">Aula:</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="text" class="form-control" id="aula" aria-describedby="aulaHelp" placeholder="101,201...">
+                            <input type="text" class="form-control" id="aula" name="aula"aria-describedby="aulaHelp" placeholder="101,201...">
                         </div>
                     </div>
                     <div class="row">
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-10 form-group">
                             <select class="form-control" id="abreviatura" name="abreviatura">
-                                <option value="Campor 1">Campo 1.</option>
+                                <option value="Campo 1">Campo 1.</option>
                                 <option value="Campo 4" selected>Campo 4</option>
                             </select>
                         </div>
@@ -143,7 +143,7 @@
                             <label for="Cupo" class="text-primary">Cupo:</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="number" min="1" class="form-control" id="Cupo" aria-describedby="aulaHelp" placeholder="0">
+                            <input type="number" min="1" class="form-control" id="cupo" name="cupo" aria-describedby="aulaHelp" placeholder="0">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>

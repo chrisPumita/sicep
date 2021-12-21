@@ -1,14 +1,14 @@
 <?php
-if (!isset($POST['id_universidad']) && !isset($POST['nombre_universidad'])&& !isset($_POST['siglas_universidad']))
+if (isset($_POST['id_universidad']) && isset($_POST['nombre_universidad']) && isset($_POST['siglas_universidad']))
 {
     $idUniversidad= $_POST["id_universidad"];
     $nombreUniversidad = $_POST['nombre_universidad'];
     $siglasUniversidad= $_POST['siglas_universidad'];
     include_once "../control/controlGeneral.php";
-    $result= insertUpdateUniversidad($idUniversidad,$nombreUniversidad,siglasUniversidad);
+    $result= insertUpdateUniversidad($idUniversidad,$nombreUniversidad,$siglasUniversidad);
     if($result){
         $mjeTipe = 1;
-        if($idProcedencia>0)
+        if($idUniversidad>0)
             $mjeText ="Se ha actualizado a: " . $nombreUniversidad;
         else{
             $mjeText = "Se ha registrado: ".$nombreUniversidad;
@@ -21,7 +21,7 @@ if (!isset($POST['id_universidad']) && !isset($POST['nombre_universidad'])&& !is
 }
 else{
     $mjeTipe = 0;
-    $mjeText="Faltan datos";
+    $mjeText="Faltan Datos";
 }
 
 

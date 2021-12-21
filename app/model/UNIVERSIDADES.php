@@ -58,7 +58,7 @@ class UNIVERSIDADES extends CONEXION_M
 
     function queryListaUniversidades(){
         $query="SELECT * FROM universidades 
-                where id_universidad <> 0 
+                where id_universidad > 0 
                 ORDER BY nombre ASC";
         $this->connect();
         $result = $this-> getData($query);
@@ -74,6 +74,13 @@ class UNIVERSIDADES extends CONEXION_M
     }
     function queryUpdateUniversidad(){
         $query="UPDATE `universidades` SET `nombre` = '".$this->getNombre()."', `siglas` = '".$this->getSiglas()."' WHERE `universidades`.`id_universidad` = ".$this->getIdUniversidad();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function queryDeleteUniversidad(){
+         $query="UPDATE `universidades` SET `id_universidad`=".$this->getIdUniversidad()."*-1 WHERE `id_universidad`=".$this->getIdUniversidad();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

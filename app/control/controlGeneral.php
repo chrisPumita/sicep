@@ -52,6 +52,13 @@ function insertUpdateUniversidad($idUniversidad,$nombreUniversidad,$siglasUniver
     $UNI->setSiglas($siglasUniversidad);
     return $idUniversidad>0 ? $UNI->queryUpdateUniversidad() : $UNI->queryInsertUniversidad();
 }
+
+function eliminaUnivesidad($id){
+    include_once "../model/UNIVERSIDADES.php";
+    $UNI = new UNIVERSIDADES();
+    $UNI->setIdUniversidad($id);
+    return $UNI->queryDeleteUniversidad();
+}
 //Funciones Aulas
 function getListaAulas($filtro, $tipo){
     include_once "../model/AULAS.php";
