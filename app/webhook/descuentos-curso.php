@@ -8,7 +8,7 @@ if (isset($_POST['id'])){
 else{
     $mje = array(
         "mjeType" => -1,
-        "Mensaje" => "Internal Error"
+        "Mensaje" => "Error, no IdCurso entry"
     );
     echo json_encode($mje);
 }

@@ -28,9 +28,7 @@ function buildHtmlSelectGrupos(datos) {
         try {
             consultaHorarioGpoList(idLastGpo);
         }
-        catch (e) {
-            console.log("ok");
-        }
+        catch (e) {/*No horarios result */  }
 
     }
     else{
@@ -92,9 +90,27 @@ $("#frm-add-grupo-curso").on("submit", function(e){
         }
     }).done(function(response){
         $("#frm-add-grupo-curso").trigger('reset');
-        consultaGrupos($("#idCurso").val());
+        consultaGrupos($("#idCursoGrupo").val());
+        console.log(response);
     });
     $("#modalCreaGrupoCurso").modal('hide');
 });
 
 
+function loadGeneraciones() {
+    let anio =yearToday();
+    let template = "";
+    for (let i = anio; i < anio+3; i++){
+        template += `<option value="${i}">${i}</option>`;
+    }
+    $("#generacion").html(template);
+}
+
+function loadSemestre() {
+    let anio =yearToday();
+    let lastAnio = anio-1;
+    let template = `<option value="${lastAnio}-2">${lastAnio}-2</option>
+                    <option value="${anio}-1">${anio}-1</option>
+                    <option value="${anio}-2">${anio}-2</option>`;
+    $("#semestre").html(template);
+}

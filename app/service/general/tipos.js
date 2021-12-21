@@ -27,19 +27,16 @@ function getModalidadCurso(tipo){
     //Funcionalidades del tipo_curso
     switch(tipo){
         case "0":
-            return "Otro";
+            return "Presencial";
             break;
         case "1":
-            return "Prescencial";
+            return "En Linea";
             break;
         case "2":
-            return "Virtual"
-            break;
-        case "3":
-            return "Mixto";
+            return "Mixto"
             break;
         default:
-            return "Error";
+            return "No definido";
             break;
     }
 }
@@ -71,7 +68,6 @@ function estadoCursoApoved(aprobado) {
     let texto = n == 1 ? `<i class="fas fa-check-circle"></i>` : `<i class="fas fa-hourglass-half"></i>`;
     return `<span class="badge bg-${color}">${texto}</span>`;
 }
-
 
 function estadoProfesorAdmin(admin_value) {
     return parseInt(admin_value)==1?`<a href="./lista-cuentas"><span class="badge bg-light-success">ADMIN</span></a>`:"";
@@ -136,4 +132,43 @@ function diaSemana(dia) {
             return "DOMINGO";
             break;
     }
+}
+
+function estadoAsig(estatus) {
+    switch (estatus) {
+        case "0":
+            return `<span class="badge bg-info">
+                        <div class="blob blue ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POR INICIAR
+                    </span>`;
+        case "1":
+            return `<span class="badge bg-success">
+                        <div class="blob green ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;En curso
+                    </span>`;
+        case "2":
+            return `<span class="badge bg-info">
+                        <div class="blob blue ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TERMINADO
+                    </span>`;
+        case "-1":
+            return `<span class="badge bg-danger">
+                        <div class="blob red ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CANCELADO
+                    </span>`;
+        default:
+            return `<span class="badge bg-info">
+                        <div class="blob blue ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NO DEFINIDO
+                    </span>`;
+    }
+}
+
+function getCampusCede(campus) {
+    if (campus=="0")
+        return "CAMPO 1";
+    else if (campus=="1")
+            return "CAMPO 4";
+    else
+        return "OTRO";
 }

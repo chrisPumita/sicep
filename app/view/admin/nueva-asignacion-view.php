@@ -145,19 +145,19 @@ $id= $_POST['id'];
                                 <div class="row">
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="inicioInc">Fecha límite de inscripciones:</label>
+                                            <label class="label" for="InicioCurso">Inicio de Clases:</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" id="inicioInc" name="inicioInc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                <input type="date" id="InicioCurso" name="InicioCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="inicioClases">Inicio de Clases:</label>
+                                            <label class="label" for="finCurso">Fin curso:</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" id="inicioClases" name="inicioClases" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                <input type="date" id="finCurso" name="finCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -169,18 +169,18 @@ $id= $_POST['id'];
                                             <div class="row">
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="inscDel">del </label>
+                                                        <label for="inicioInsc">del </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" idCurso="inscDel" name="inscDel" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                        <input type="date" idCurso="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="inscAl">al </label>
+                                                        <label for="finInsc">al </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" id="inscAl" name="inscAl" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                        <input type="date" id="finInsc" name="finInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,18 +192,18 @@ $id= $_POST['id'];
                                             <div class="row">
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="calDel">del </label>
+                                                        <label for="inicioCal">del </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" idCurso="calDel" name="calDel" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                        <input type="date" idCurso="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="col-2">
-                                                        <label for="calAl">al </label>
+                                                        <label for="finCal">al </label>
                                                     </div>
                                                     <div class="col-10">
-                                                        <input type="date" id="calAl" name="calAl" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                        <input type="date" id="finCal" name="finCal" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>

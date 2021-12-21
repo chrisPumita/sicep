@@ -29,7 +29,7 @@ async function listaGposCursoAjax(idCurso,route){
                 // console.log(res);
             },
             error: function() {
-                alert("Error 500 interno de Servidor");
+                alert("Error 500 interno de Servidor al consultar grupos");
             }
         }
     );
@@ -300,7 +300,7 @@ async function consultaInfoAsignacionAjax(idAsignacion,filtro){
                 //   console.log(res);
             },
             error: function() {
-                internalErrorAlert("Error 500 interno de Servidor");
+                internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
             }
         }
 

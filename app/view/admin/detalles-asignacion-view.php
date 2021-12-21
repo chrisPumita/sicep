@@ -22,13 +22,13 @@ $titulo = "Detalles de la Asignación" ?>
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3 id="nameCursoTittle">ASPEL NOI Basico</h3>
+                        <h3 id="nameCursoTittle"></h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
-                                <li class="breadcrumb-item"><a href="./detalles-curso" id="nameBreadCurso">ASPEL NOI Basico</a></li>
-                                <li class="breadcrumb-item active" aria-current="page" id="grupoBread">Grupo 2853</li>
+                                <li class="breadcrumb-item" id="liCursoAction"><a href="#" id="nameBreadCurso"></a></li>
+                                <li class="breadcrumb-item active" aria-current="page" id="grupoBread"></li>
                             </ol>
                         </nav>
                     </div>
@@ -42,9 +42,13 @@ $titulo = "Detalles de la Asignación" ?>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                    A continuación, se muestra la información del grupo, aquí puede modificar las fechas de inicio/término del curso.
+                                            Puede cambiar al profesor que impartirá el curso,
+                                            puede modificar el cupo original por si necesita más lugares o limitarlo
+                                            según lo necesite. También podrá modificar el costo que va a tener.
+                                            (Considere que los descuentos dependen del costo).
+                                            Revise las solicitudes de inscripción y apruebe o rechace la inscripción
+                                            del solicitante.
                                 </div>
                             </div>
                         </div>
@@ -53,12 +57,13 @@ $titulo = "Detalles de la Asignación" ?>
             </section>
             <!-- FIN SECCION CALLOUT INFO -->
             <!-- INICIO SECCION ESTADISTICAS ASIG -->
+<!--
             <section class="row">
                 <div class="col-12 col-lg-9">
                     <div class="row">
                         <div class="col-6 col-lg-4 col-md-6">
                             <div class="card">
-                                <div class="card-body px-3 img_bg_cards" style="background-image: url(../assets/images/icons/inscripciones4.svg);">
+                                <div class="card-body px-3 img_bg_cards"  style="background-image: url(../assets/images/icons/inscripciones4.svg);">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="text-muted font-semibold">ALUMNOS</h6>
@@ -69,7 +74,6 @@ $titulo = "Detalles de la Asignación" ?>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-6 col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 img_bg_cards" style="background-image: url(../assets/images/icons/grado4.svg);">
@@ -83,7 +87,6 @@ $titulo = "Detalles de la Asignación" ?>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-6 col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 img_bg_cards" style="background-image: url(../assets/images/icons/comunidad4.svg);">
@@ -107,28 +110,25 @@ $titulo = "Detalles de la Asignación" ?>
                                     <h5 class="font-bold pt-2">Fecha de inicio</h5>
                                     <h6 class="text-muted mb-0 pb-4">09 de noviembre, 2021</h6>
                                 </div>
-                                <!-- <h5 class="font-bold">Profesor</h5>
-                            <h6 class="text-muted mb-0">Andres Manuel Lopez Ortiz</h6> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            -->
             <!-- FIN SECCION ESTADISTICAS ASIG -->
             <!-- SECCION BANNER CURSO -->
+
             <section class="section">
                 <div class="card">
                     <div class="col-md-12 text-center">
-                        <div class="img" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
+                        <div class="img" id="fondoImg">
                             <div class="overlay"></div>
                             <div class="mx-auto">
                                 <h4 class="text-light text-left ">
-                                    <strong id="nameAsignacion">Grupo 2210 Aspel NOI Basico I 2021-1</strong>
-                                    <h5 class="text-secondary">Profesora Martha Areyano Felix</h5>
-                                    <span class="badge bg-success">
-                                            <div class="blob green ">
-                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTIVO
-                                        </span>
+                                    <strong id="nameAsignacion">{NAME}}</strong>
+                                    <h5 class="text-secondary" id="lblProfesorName">{PROFESOR_NAME}</h5>
+                                    <div id="statusFlag"></div>
                                 </h4>
                             </div>
                         </div>
@@ -149,98 +149,86 @@ $titulo = "Detalles de la Asignación" ?>
                                         <div class="col-sm-5">
                                             <h6 class="mb-0">Grupo</h6>
                                         </div>
-                                        <div class="col-sm-7 text-secondary">
-                                            2210
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblGrupo">  </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-5">
                                             <h6 class="mb-0">Generación</h6>
                                         </div>
-                                        <div class="col-sm-7 text-secondary">
-                                            2021-2
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblGeneracion"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Modalidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            En linea/Presencial
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblModalidad"> </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Cupo</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            35
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblCupo">  </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Sede</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            ----------
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblCampusCede">  </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Semanas</h6>
+                                        <div class="col-sm-5">
+                                            <h6 class="mb-0">Serestre</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            23
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblSemestre">  </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Costo</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            $1,200
-                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblCostoFinal"> </div>
                                     </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <h6 class="mb-0">NOTAS</h6>
+                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblNotas"> </div>
+                                    </div>
+                                    <hr>
                                 </div>
                                 <!-- fechas importantes-->
                                 <div class="row py-1 m-2">
                                     <h5 class="text-secondary">Fechas importantes:</h5>
                                     <div class="row py-2">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                             <h6 class="mb-0">Inscripciones</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            Del 27-05-2021 al 29-05-2021
-                                        </div>
+                                        <div class="col-sm-8 text-secondary" id="lblInsc"> </div>
                                     </div>
                                     <hr>
                                     <div class="row py-2">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
+                                            <h6 class="mb-0">Clases</h6>
+                                        </div>
+                                        <div class="col-sm-8 text-secondary" id="lblClases"> </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row py-2">
+                                        <div class="col-sm-4">
                                             <h6 class="mb-0">Calificaciones</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            Del 27-05-2021 al 29-05-2021
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row py-2">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Inicio de clases</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            Del 27-05-2021 al 29-05-2021
-                                        </div>
+                                        <div class="col-sm-8 text-secondary" id="lblCalif"> </div>
                                     </div>
                                     <hr>
                                 </div>
                                 <div class="row py-1 m-2">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#editar-detalles-curso">
+                                    <button class="btn btn-primary mr-3 mt-3 mb-3 w-50" data-bs-toggle="modal" data-bs-target="#editarDetallesAsig">
                                         <i class="fas fa-edit"></i> Editar detalles
                                     </button>
                                 </div>
@@ -253,30 +241,19 @@ $titulo = "Detalles de la Asignación" ?>
                         <div class="card mb-3">
                             <div class="card-body py-2">
                                 <div class="row py-1 m-2">
-                                    <h5 class="text-secondary">Descuentos:</h5>
-                                    <div class="row py-2 align-items-center">
-                                        <div class="col-sm-5">
-                                            <h6 class="mb-0">Comunidad FESC</h6>
-                                        </div>
-                                        <div class="col-sm-3 text-secondary text-center">
-                                            50%
-                                        </div>
-                                        <div class="col-sm-4 d-flex justify-content-end">
-                                            <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
-                                                <i class="fas fa-minus-circle"></i>
-                                            </button>
+                                    <h5 class="text-secondary">Precios Calculados:</h5>
+                                    <div class="callout callout-second bg-grey">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    El costo final para este curso es de <span class="badge bg-success" id="lblCostoFinalCallout"></span> a continuación
+                                                    se muestran los costos aplicados para cada uno de los estudiantes a quien va dirigido:
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editar-descuentos">
-                                            <i class="fas fa-plus"></i> Agregar
-                                        </button>
+                                    <div class="row py-2 align-items-center table-responsive" id="containerDescuentos">
+                                        <div class="card-body table-responsive" id="containerDescuentos"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -412,7 +389,6 @@ $titulo = "Detalles de la Asignación" ?>
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/modal-cancelar-insc.php" ?>
-            <?php include "modals/modal-horario-virtual.php"?>
             <?php include "modals/modal-documentos-alumno.php" ?>
             <?php include "modals/modal-editar-detalles-asignacion.php" ?>
             <?php include "modals/modal-editar-descuentos.php" ?>
@@ -425,8 +401,9 @@ $titulo = "Detalles de la Asignación" ?>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX-->
-    <script src="./service/asignacion-gral.js"></script>
-    <script src="./service/asignacion-detalles.js"></script>
+<script src="./service/general/tipos.js"></script>
+<script src="./service/asignacion-gral.js"></script>
+<script src="./service/asignacion-detalles.js"></script>
 
 </body>
 

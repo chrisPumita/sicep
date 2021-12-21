@@ -666,7 +666,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         }
         $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
        CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor,
-       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso,
+       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, c.banner_img,
        ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
        ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,

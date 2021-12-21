@@ -1,6 +1,6 @@
 
 <!--AGREGA PROFESOR INVITACION CUENTA -->
-<div class="modal fade text-left" id="editar-detalles-curso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+<div class="modal fade text-left" id="editarDetallesAsig" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -13,14 +13,14 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form action="#">
+            <form action="#" id="frm-update-detalles-asig">
                 <div class="modal-body">
                     <div class="callout callout-second bg-grey">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil impedit quaerat nostrum quidem voluptatum dignissimos pariatur illum blanditiis.
-                                </div>
+                                    Al cambiar los parametros de las fechas, estas se veran reflejadas de forma automatica, pero las
+                                solicitudes pendientes seguiran disponibles, estas solo afectarán a futuras inscripciones.</div>
                             </div>
                         </div>
                     </div>
@@ -35,32 +35,54 @@
                             <h5 class="text-start">Cambiar por:</h5>
                             <select class="form-control" id="profesorAsig" name="profesorAsig"></select>
                         </div>
-                        
-                        <div class="col-md-3">
-                            <h5 class="text-start">Grupo:</h5>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <h5 class="text-start">Grupo actual:</h5>
+                            <input type="text" class="form-control" id="grpoActual" name="grpoActual" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-start">Cambiar a:</h5>
                             <div class="d-flex">
-                                <select class="form-control" id="generacion">
-                                    <option value="2021">1101</option>
-                                    <option value="2022">1102</option>
-                                    <option value="2023">1103</option>
-                                    <option value="2024">1104</option>
+                                <select class="form-control" id="grupos">
                                 </select>
                                 <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalCreaGrupoCurso">
                                     <i class="fas fa-plus-square"></i>
                                 </button>
                             </div>
                         </div>
-
-                        <div class="col-md-3">
-                            <h5 class="text-start">Generación:</h5>
-                            <select class="form-control" id="semestre">
-                                <option value="2021-2">2020</option>
-                                <option value="2022-1">2021</option>
-                                <option value="2022-2">2022</option>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <h5 class="text-start">Generación actual:</h5>
+                            <input type="text" class="form-control" id="genActual" name="genActual" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-start">Cambiar a:</h5>
+                            <select class="form-control" id="generacion" name="generacion"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <h5 class="text-start">Semestre actual:</h5>
+                            <input type="text" class="form-control" id="semestreActual" name="semestreActual" disabled>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5 class="text-start">Cambiar a:</h5>
+                            <select class="form-control" id="semestre" name="semestre">
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <h5 class="text-start">Precio Lista:</h5>
+                            <input class="form-control" type="number" min="0" disabled name="costoRecom" id="costoRecom" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-start">Costo Aplicado:</h5>
+                            <input class="form-control" type="number" min="0" max="99999" name="costo" id="costo" value="0">
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-6">
                             <h5 class="text-start">Modalidad:</h5>
@@ -70,12 +92,10 @@
                                 <option value="2">Mixto</option>
                             </select>
                         </div>
-
                         <div class="col-md-3">
                             <h5 class="text-start">Cupo:</h5>
-                            <input class="form-control" type="number" value="20" id="numCupo">
+                            <input class="form-control" type="number" value="10" min="1" id="numCupo">
                         </div>
-
                         <div class="col-md-3">
                             <h5 class="text-start">Sede:</h5>
                             <select class="form-control" id="campus">
@@ -85,35 +105,29 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <div class="col-md-6">
-                            <h5 class="text-start">Semanas:</h5>
-                            <input class="form-control" type="number" min="0" max="99999" name="semanas" id="semanas" value="0">
-                        </div>
-
-                        <div class="col-md-6">
-                            <h5 class="text-start">Costo:</h5>
-                            <input class="form-control" type="number" min="0" max="99999" name="costo" id="costo" value="0">
+                        <div class="col-md-12">
+                            <h5 class="text-start">Notas:</h5>
+                            <textarea class="form-control" id="notas" name="notas" rows="2" placeholder="Escriba alguna nota importante aqui, este campo puede quedar vacio"></textarea>
                         </div>
                     </div>
                     <h6 class="heading-small text-secondary mb-4">Fechas importantes</h6>
                     <div class="row">
                         <div class="form-group row">
                             <div class="col-sm-2 mb-3 mb-sm-0">
-                                <label class="label" for="campo">Límite de inscripciones:</label>
+                                <label class="label" for="InicioCurso">Inicio de Clases:</label>
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0 ">
                                 <div class="row">
-                                    <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                    <input type="date" id="InicioCurso" name="InicioCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-2 mb-3 mb-sm-0">
-                                <label class="label" for="campo">Inicio de Clases:</label>
+                                <label class="label" for="finCurso">Fin curso:</label>
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0 ">
                                 <div class="row">
-                                    <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                    <input type="date" id="finCurso" name="finCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -125,18 +139,18 @@
                                 <div class="row">
                                     <div class="d-flex">
                                         <div class="col-2">
-                                            <label for="">del </label>
+                                            <label for="inicioInsc">del </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            <input type="date" idCurso="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="col-2">
-                                            <label for="">al </label>
+                                            <label for="finInsc">al </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            <input type="date" id="finInsc" name="finInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -148,18 +162,18 @@
                                 <div class="row">
                                     <div class="d-flex">
                                         <div class="col-2">
-                                            <label for="">del </label>
+                                            <label for="inicioCal">del </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            <input type="date" idCurso="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="col-2">
-                                            <label for="">al </label>
+                                            <label for="finCal">al </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" name="inicio" max="3000-12-31" min="1000-01-01" class="form-control">
+                                            <input type="date" id="finCal" name="finCal" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -170,8 +184,7 @@
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
-                        </div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button></div>
                     </div>
                 </div>
             </form>

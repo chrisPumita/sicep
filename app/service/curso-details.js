@@ -3,9 +3,9 @@ $(document).ready(function() {
     if(!cargaCursoDetails(-1,id))
         alert('NO DATA');
     consultaGrupos(id);
-    consultaTblDescuentos(id);
     cargaAulasListDespl();
     cargaTemario(id);
+    consultaTblDescuentos(id);
 });
 
 //* DETALLES GENERALES DEL CURSO*/
@@ -47,6 +47,8 @@ function buildHTMLValues(curso){
     $("#editarDirigido").val(curso.dirigido_a);
     $("#editarAntecedentes").val(curso.antecedentes);
     $("#editarCosto").val(curso.costo_sugerido);
+    $("#costoSugerido").html('$ '+curso.costo_sugerido);
+    $("#lblCostoFinalCallout").html('$ '+curso.costo_sugerido);
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
 }
@@ -208,6 +210,7 @@ function removeBanner() {
 function consultaTblDescuentos(idGpo) {
     consultaDescuentos(idGpo).then(function (e) {
         buildTBLHtmlDescuentos(e);
+        console.log(e);
     });
 }
 
@@ -218,7 +221,7 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
                             <thead>
                             <tr>
                                 <th>DIRIGIDO A</th>
-                                <th>SUGERIDO</th>
+                                <th>DESC %</th>
                                 <th>DESCUENTO</th>
                                 <th>TOTAL</th>
                                 <th></th>
@@ -228,15 +231,15 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
         DESCUENTOS.forEach(
             (des)=>
             {
-                let descApli = parseInt(des.porcentaje_desc)!=0 ? `<span class="badge bg-info"><i class="fas fa-tag"></i> ${des.porcentaje_desc}% OFF<br>-$ ${des.desTotal}</span>`: 'N/A';
+                let descApli = parseInt(des.porcentaje_desc)!=0 ? `<span class="badge bg-info"><i class="fas fa-tag"></i> ${des.porcentaje_desc}% OFF</span>`: 'SIN DESCUENTO';
                 let totalDesc = parseFloat(des.desTotal);
                 let totalPagoSugerido = parseFloat(des.costo_sugerido);
                 let total = totalPagoSugerido-totalDesc;
 
                 template += `<tr id_procedencia="${des.id_tipo_procedencia_fk}">
                                 <td>${des.tipo_procedencia}</td>
-                                <td>$ ${des.costo_sugerido}</td>
                                 <td>${descApli}</td>
+                                <td>-$${des.desTotal}</td>
                                 <td>$ ${total}</td>
                                 <td>
                                     <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">

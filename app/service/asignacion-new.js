@@ -22,23 +22,7 @@ async function cargaCursoDetailsBasic(filtro, idUnique) {
     $("#fondoImg").css("background", "url('"+curso.banner_img+"')");
 }
 
-function loadGeneraciones() {
-    let anio =yearToday();
-    let template = "";
-    for (let i = anio; i < anio+3; i++){
-        template += `<option value="${i}">${i}</option>`;
-    }
-    $("#generacion").html(template);
-}
 
-function loadSemestre() {
-    let anio =yearToday();
-    let lastAnio = anio-1;
-    let template = `<option value="${lastAnio}-2">${lastAnio}-2</option>
-                    <option value="${anio}-1">${anio}-1</option>
-                    <option value="${anio}-2">${anio}-2</option>`;
-    $("#semestre").html(template);
-}
 
 //******* INSERT ASIGNACION V.1.0 Chris RCSG **********************
 $("#frm-add-asignacion").on("submit", function(e){

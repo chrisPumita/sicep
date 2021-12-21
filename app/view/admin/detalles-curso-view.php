@@ -249,6 +249,13 @@ $titulo = "Detalles del curso"
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
+                                            <h6 class="mb-0">Costo Sugerido:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary text-bold" id="costoSugerido"></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
                                             <h6 class="mb-0">Registrado desde</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary text-bold" id="fechaCreacion"></div>
@@ -352,11 +359,16 @@ $titulo = "Detalles del curso"
                         <div class="row">
                             <!-- boton que da problemas en responsive -->
                             <div class="col-sm-12 col-md-6">
-                                <h5 class="text-secondary"><i class="fas fa-tags"></i> Publico y Descuentos Aplicados:</h5>
+                                <h5 class="text-secondary"><i class="fas fa-tags"></i> Público y Descuentos Aplicados:</h5>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="text-primary">De acuerdo al costo sugerido <span class="badge bg-success" id="lblCostoFinalCallout"></span>, estos serian los precios con descuento para cada
+                                Grupo de estudiantes que deseen cursar este curso. Considere que el precio puede cambiarse al
+                                momento de abrir un grupo</p>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
-                                <button class="btn btn-primary  me-1 mb-1"><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#horarioVirtual"></i>Agregar</button>
+                                <button class="btn btn-primary  me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual"><i class="fas fa-plus"></i>Agregar</button>
                                 </span>
                             </div>
                         </div>
