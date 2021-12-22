@@ -74,6 +74,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 </div>
                                 <div class="col-8 m-auto">
                                     <h5>Aprobado por:</h5>
+                                    <input type="hidden" value="1" id="valAcredCurso">
                                     <h5><strong>${obj_result[0].prefijo} ${obj_result[0].nombre} ${obj_result[0].app} ${obj_result[0].apm}</strong></h5>
                                     <h6>No Trabajador: ${obj_result[0].no_trabajador}</h6>
                                     <h6>${obj_result[0].cargo} de Departamento de ${obj_result[0].departamento}</h6>
@@ -96,6 +97,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                     <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
                 </div>
                 <div class="m-auto">
+                <input type="hidden" value="0" id="valAcredCurso">
                     <h5>Sin acreditar</h5>
                     <h6><strong>Este curso aun no se ha acreditado.</strong></h6>
                     <h6>Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos</h6>
@@ -134,27 +136,27 @@ function buildTBLHtmlTemario(TEMAS) {
             (tema)=>
             {
                 template+= `
-                            <tr id_tema="${tema.id_tema}">
-                                <td>${tema.indice}</td>
-                                <td>${tema.nombre}</td>
-                                <td>${tema.resumen}</td>
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>`;
+                        <tr id_tema="${tema.id_tema}">
+                            <td>${tema.indice}</td>
+                            <td>${tema.nombre}</td>
+                            <td>${tema.resumen}</td>
+                            <td>
+                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>`;
             }
         );
         template+= `
-                            </tbody>
-                          </table>`;
+                </tbody>
+              </table>`;
     }
     else{
         template= `
-                                <div class="alert alert-light alert-dismissible show fade">
-                                   No tenemos temas registrados. Agregue un tema.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>`;
+                <div class="alert alert-light alert-dismissible show fade">
+                   No tenemos temas registrados. Agregue un tema.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
     }
     $("#tblTemario").html(template);
 }
