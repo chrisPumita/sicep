@@ -598,11 +598,11 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $filtro = $valor_filtro >0 ? " and ag.estatus = ".$valor_filtro: "";
         $query ="select ag.id_asignacion , c.id_curso , c.nombre_curso , 
         concat(\"Prof. \",per.app,\" \",per.apm,\" \",per.nombre) as profesor,
-        g.grupo ,ag.modalidad , ag.cupo , 
+        g.grupo , c.tipo_curso , ag.modalidad , ag.campus_cede, c.no_sesiones, ag.cupo , ag.costo_real,
         concat(date_format(ag.fecha_creacion, \"%d %M %Y\"),\" al \", date_format(ag.fecha_lim_inscripcion,\"%d %M %Y\")) as inscripcion,
         concat(date_format(ag.fecha_inicio,\"%d %M %Y\") ,\" al \", date_format(ag.fecha_fin,\"%d %M %Y\")) as inicio,
         concat(date_format(ag.fecha_inicio_actas,\"%d %M %Y\") ,\" al \", date_format(ag.fecha_fin_actas,\"%d %M %Y\")) as calificaciones, 
-        ag.estatus as estatus_asignacion_grupo
+        ag.generacion, ag.estatus as estatus_asignacion_grupo
         from curso c , grupo g , asignacion_grupo ag , profesor prof , persona per
         where c.id_curso = g.id_curso_fk and ag.id_grupo_fk = g.id_grupo and prof.id_persona_fk = per.id_persona
         and ag.id_profesor_fk = prof.id_profesor".$filtro;
@@ -618,7 +618,8 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                 from asignacion_grupo ag,  inscripcion i ,alumno a , grupo g 
                 where ag.estatus =1 and ag.id_grupo_fk = g.id_grupo and g.estatus = 1
                 and i.id_asignacion_fk = ag.id_asignacion and i.id_alumno_fk = a.id_alumno 
-                and (i.estatus = 0 or i.pago_confirmado =0 or i.autorizacion_inscripcion =0 or i.estatus =0)
+                and (i.estatus = 0 or i.pago_confirmado =0 or i.autorizacion_inscripcion =0 or i.estatus =0 
+                         or not EXISTS (SELECT * from validacion_inscripcion vi where vi.id_inscripcion_fk = i.id_inscripcion))
                 and ag.id_asignacion = ".$id_asignacion;
         $this->connect();
         $result = $this->getData($query);
@@ -628,13 +629,14 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     function queryConsultaNumLugaresDisponibles($id_asignacion)
     {
-        $query = "select ag.cupo - count(a.id_alumno)  
+        $query = "select ag.cupo - count(a.id_alumno)  as lugaresDisponibles 
             from alumno a , persona p , inscripcion i , asignacion_grupo ag , grupo g 
             where a.id_persona = p.id_persona and a.id_alumno > 0 
             and a.estatus = 1 and p.estatus = 1 and i.id_alumno_fk = a.id_alumno 
             and i.pago_confirmado = 1 and i.autorizacion_inscripcion = 1 
             and i.estatus = 1 and ag.id_asignacion = i.id_asignacion_fk and ag.estatus = 1
-            and ag.id_grupo_fk = g.id_grupo and g.estatus = 1 and ag.id_asignacion = ".$id_asignacion;
+            and ag.id_grupo_fk = g.id_grupo and g.estatus = 1 and ag.id_asignacion = ".$id_asignacion."
+            and EXISTS (SELECT * from validacion_inscripcion vi where vi.id_inscripcion_fk = i.id_inscripcion)";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
