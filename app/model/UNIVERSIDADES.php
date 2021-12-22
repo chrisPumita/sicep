@@ -79,8 +79,8 @@ class UNIVERSIDADES extends CONEXION_M
         $this->close();
         return $result;
     }
-    public function queryDeleteUniversidad(){
-         $query="UPDATE `universidades` SET `id_universidad`=".$this->getIdUniversidad()."*-1 WHERE `id_universidad`=".$this->getIdUniversidad();
+    public function queryDeleteUniversidad($idUniversidad){
+         $query="UPDATE `universidades` SET `id_universidad`=".$idUniversidad."*-1 WHERE `id_universidad`=".$idUniversidad;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

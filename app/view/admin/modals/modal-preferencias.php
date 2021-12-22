@@ -48,7 +48,7 @@
                 <form id="frm-universidades">
                     <div class="row">
                         <div class="col-md-2 form-group">
-                            <input type="text" id="id_universidad" name="id_universidad">
+                            <input type="hidden" id="id_universidad" name="id_universidad">
                             <label for="nombreUni" class="text-primary">Nombre</label>
                         </div>
                         <div class="col-md-10 form-group">
@@ -113,13 +113,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-aulas">
                     <div class="row">
                         <div class="col-md-2 form-group">
                             <label for="edificio" class="text-primary">Edificio</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="text" class="form-control" id="id_aula" name="id_aula"aria-describedby="edificioHelp">
+                            <input type="hidden" class="form-control" id="id_aula" name="id_aula"aria-describedby="edificioHelp">
                             <input type="text" class="form-control" id="edificio" name="edificio" aria-describedby="edificioHelp" placeholder="Eje. A1, H, A2..">
                         </div>
                         <div class="col-md-2 form-group">

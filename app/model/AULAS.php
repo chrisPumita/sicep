@@ -107,7 +107,7 @@ class AULAS extends CONEXION_M
 
 
 
-    function crearNuevaAula(){
+    function queryInsertAula(){
         $query="INSERT INTO `aulas`(`id_aula`, `edificio`, `aula`, `campus`, `cupo`, `estado`) 
                 VALUES (NULL ,'".$this->getEdificio()."','".$this->getAula()."','".$this->getCampus()."','".$this->getCupo()."','".$this->getEstadoAula()."') ";
         $this->connect();
@@ -116,7 +116,7 @@ class AULAS extends CONEXION_M
         return $result;
     }
 
-    function editaAula(){
+    function queryUpdateAula(){
         $query="UPDATE `aulas` SET `edificio`='".$this->getEdificio()."',`aula`='".$this->getAula()."',`campus`='".$this->getCampus()."',
         `cupo`='".$this->getCupo()."',`estado`='".$this->getEstadoAula()."' WHERE `id_aula`=".$this->getIdAula();
         $this->connect();
@@ -125,7 +125,7 @@ class AULAS extends CONEXION_M
         return $result;
     }
 
-    function eliminarAula($idAula){
+    function queryDeleteAula($idAula){
         $query="DELETE FROM `aulas`  WHERE `id_aula`=".$idAula;
         $this->connect();
         $result = $this-> executeInstruction($query);

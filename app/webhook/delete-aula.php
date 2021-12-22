@@ -2,7 +2,7 @@
 if(isset($_POST['id'])){
     $id= $_POST['id'];
     include_once "../control/controlGeneral.php";
-    if(eliminaUnivesidad($id)){
+    if(deleteAula($id)){
         $mjeType="1";
         $mjeText="Se ha eliminado con exito";
     }

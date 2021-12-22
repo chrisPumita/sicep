@@ -232,7 +232,7 @@ $(document).on("click", ".deleteUni", function ()
     sweetConfirm('Eliminar Universidad', '¿Estas seguro de que deseas eliminar este universidad?', function (confirmed) {
         if (confirmed) {
             eliminaPreferencia(id,route).then(function () {
-                consultaProcedencias();
+                consultaUnis();
             });
         }
     });
@@ -240,7 +240,7 @@ $(document).on("click", ".deleteUni", function ()
 
 
 
-//Funciones  Aulas
+/***************** Funciones  Aulas  ******************/
 async function consultaAulas(filtro,tipo) {
     const JSONData = await consultaAulasAjax(filtro,tipo);
     buildHTMLTblAulas(JSONData);
@@ -270,7 +270,6 @@ function buildHTMLTblAulas(obj_result) {
     );
     $("#tbl-aulas").html(template);
 }
-//   ,aula,campus,cupo
 function editaAula(idAula,edificio,aula,campus,cupo){
     $("#modal_aulas").modal('show');
     $("#id_aula").val(idAula);
@@ -279,8 +278,50 @@ function editaAula(idAula,edificio,aula,campus,cupo){
     $("#abreviatura").val(campus);
     $("#cupo").val(cupo);
 }
+function limpiaAula(){
+    $("#modal_aulas").modal('show');
+    $("#id_aula").val(0);
+    $("#edificio").val("");
+    $("#aula").val("");
+    $("#abreviatura").val("");
+    $("#cupo").val("");
+}
 
-//Funciones Documentos
+
+$("#frm-aulas").on("submit", function(e){
+    //Ruta del Webbhook
+    let ruta = "./webhook/crud-aulas.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        id_aula: $("#id_aula").val() ,
+        edificio:$("#edificio").val() ,
+        aula:$("#aula").val() ,
+        campo:$("#abreviatura").val() ,
+        cupo:$("#cupo").val() 
+    };
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#modal_aulas").modal('hide');
+        consultaAulas();
+    });
+    e.preventDefault();
+});
+
+$(document).on("click", ".deleteAula", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id");
+    var route= "./webhook/delete-aula.php";
+    sweetConfirm('Eliminar Aula', '¿Estas seguro de que deseas eliminar esta aula?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                consultaAulas();
+            });
+        }
+    });
+});
+
+/*********Funciones Documentos********/
 async function consultaDocs() {
     const JSONData = await consultaDocsAjax();
     buildHTMLTblDocuments(JSONData);
@@ -302,8 +343,7 @@ function buildHTMLTblDocuments(obj_result) {
                             <td>${acre}</td>
                             <!-- BOTON ACCIONES -->
                             <td>
-                                <button type="button" class="btn btn-outline-primary"
-                                data-bs-toggle="modal" data-bs-target="#modal_documentos">
+                                <button type="button" class="btn btn-outline-primary" onclick="editaDocumento(${obj.id_documento},'${obj.nombre_doc}','${obj.formato_admitido}',${obj.peso_max_mb},${obj.tipo});">
                                 <i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger deleteDocumento"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -312,7 +352,15 @@ function buildHTMLTblDocuments(obj_result) {
     );
     $("#tbl-docs").html(template);
 }
-
+function editaDocumento(idDoc,nombreDoc,formato,peso,tipo){
+    //posible fallo en tipo
+    $("#modal_documentos").modal('show');
+    $("#id_doc").val(idDoc);
+    $("#nombre_doc").val(nombreDoc);
+    $("#abreviatura_doc").val(formato);
+    $("#peso_max").val(peso);
+    $("#customColorCheck6").val(tipo);
+}
 //LISTENER PARA ACCION DEL BOTON
 $(document).on("click", ".deleteDocumento", function ()
 {
@@ -322,13 +370,7 @@ $(document).on("click", ".deleteDocumento", function ()
   //  redirect_by_post(url, {  id: id }, false);
 });
 
-$(document).on("click", ".deleteAula", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id");
-    //  var url = './detalles-profesor';
-    //  redirect_by_post(url, {  id: id }, false);
-});
+
 
 
 

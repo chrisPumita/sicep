@@ -56,14 +56,31 @@ function insertUpdateUniversidad($idUniversidad,$nombreUniversidad,$siglasUniver
 function eliminaUnivesidad($id){
     include_once "../model/UNIVERSIDADES.php";
     $UNI = new UNIVERSIDADES();
-    $UNI->setIdUniversidad($id);
-    return $UNI->queryDeleteUniversidad();
+    return $UNI->queryDeleteUniversidad($id);
 }
 //Funciones Aulas
 function getListaAulas($filtro, $tipo){
     include_once "../model/AULAS.php";
     $AULA = new AULAS();
     return $AULA->listaAulas($filtro, $tipo);
+}
+
+function insertUpdateAula($params){
+    include_once "../model/AULAS.php";
+    $AULA = new AULAS();
+    $AULA->setIdAula($params['idAula']);
+    $AULA->setEdificio($params['edificio']);
+    $AULA->setAula($params['aula']);
+    $AULA->setCampus($params['campo']);
+    $AULA->setCupo($params['cupo']);
+    $AULA->setEstadoAula("1");
+    return $params['idAula']>0 ? $AULA->queryUpdateAula() : $AULA->queryInsertAula();
+}
+
+function deleteAula($id){
+    include_once "../model/AULAS.php";
+    $AULA = new AULAS();
+    return $AULA->queryDeleteAula($id);
 }
 //Funciones Documentos
 function getListaDocumentos(){
