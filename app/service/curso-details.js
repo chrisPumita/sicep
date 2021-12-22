@@ -218,12 +218,11 @@ function consultaTblDescuentos(idGpo) {
             let template;
             if (PROC_LIST.length > 0) {
                 template = `<form id="form-add-dirigido">
-                                <div class="form-group row p-3" id="containerLisGpos"><div class="col-md-4 text-end">
-                                        <label for="indice" class="text-primary">Seleccione Procedencia:</label>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <select class="form-control" id="listProcedencias"> 
-                                        `;
+                                <div class="form-group row p-3" id="containerLisGpos">
+                                <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupSelect01">Seleccione Procedencia</label>
+                                    <select class="form-control w-auto" id="listProcedencias"> 
+                                    `;
                 PROC_LIST.forEach(
                     (pro)=>
                     {
@@ -232,16 +231,15 @@ function consultaTblDescuentos(idGpo) {
                 );
 
                 template += `
-                                            </select>
-                                        </div>
-                                        <div class="col-4">
-                                            <button id="btnAddProcedencias" type="submit" class="btn btn-success me-1 mb-1">
-                                                <i class="fas fa-plus-square"></i> Agregar
-                                            </button>
-                                        </div>
-                                        <span id="alertProcedencias"></span>
-                                    </div>
-                                </form>`;
+                                    </select>
+                                     <input type="number" min="1" class="form-control" id="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-percent"></i> Descuento</label>
+                                  <button id="btnAddProcedencias" type="submit" class="btn btn-outline-success">
+                                        <i class="fas fa-plus-square"></i> Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>`;
             }
             else{
                 template = `<div class="alert alert-success d-flex align-items-center" role="alert">
@@ -303,7 +301,7 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
                                 <td>-$${des.desTotal}</td>
                                 <td>$ ${total_pago}</td>
                                 <td>
-                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editarDescuentos">
                                         <i class="fas fa-tag"></i> Editar</button>
                                     <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
                                 </td>

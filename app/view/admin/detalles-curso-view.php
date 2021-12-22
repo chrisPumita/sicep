@@ -493,6 +493,7 @@ $titulo = "Detalles del curso"
             <?php include "modals/modal-pdf-temario.php"?>
             <?php include "modals/modal-edita-curso.php"?>
             <?php include "modals/modal-add-grupo-curso.php"?>
+            <?php include "modals/modal-editar-descuentos.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
