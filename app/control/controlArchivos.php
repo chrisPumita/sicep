@@ -18,7 +18,6 @@ function modificaBannerCurso($idCurso, $nombreIMG1, $archivo1){
     move_uploaded_file($archivo1, $ruta1);
     rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/.jpg"
 
-
     include_once "../control/controlCursos.php";
     return updateBanner($idCurso,$path);
 }

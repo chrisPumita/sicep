@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['id'])){
     $id = $_POST['id'];
-    include_once "../control/controlImagenes.php";
+    include_once "../control/controlArchivos.php";
     if (removeBanner($id)){
         $mje = "Se removio el Banner actual";
         $type = 1;
