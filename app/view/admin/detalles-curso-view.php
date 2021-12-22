@@ -366,11 +366,7 @@ $titulo = "Detalles del curso"
                                 Grupo de estudiantes que deseen cursar este curso. Considere que el precio puede cambiarse al
                                 momento de abrir un grupo</p>
                             </div>
-                            <div class="col-sm-12 col-md-6">
-                                <span class="position-absolute  mx-3 end-0">
-                                <button class="btn btn-primary  me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual"><i class="fas fa-plus"></i>Agregar</button>
-                                </span>
-                            </div>
+                            <div class="col-sm-12 col-md-12" id="containerNewAsignaciones"> </div>
                         </div>
                     </div>
                     <div class="card-body table-responsive" id="containerDescuentos">

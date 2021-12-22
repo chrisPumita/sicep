@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     let id = $("#idCurso").val();
     if(!cargaCursoDetails(-1,id))
@@ -212,8 +213,66 @@ function removeBanner() {
 function consultaTblDescuentos(idGpo) {
     consultaDescuentos(idGpo).then(function (e) {
         buildTBLHtmlDescuentos(e);
-        console.log(e);
+        comparaProcedencias(e).then(function (PROC_LIST) {
+            console.log(PROC_LIST);
+            let template;
+            if (PROC_LIST.length > 0) {
+                template = `<form id="form-add-dirigido">
+                                <div class="form-group row p-3" id="containerLisGpos"><div class="col-md-4 text-end">
+                                        <label for="indice" class="text-primary">Seleccione Procedencia:</label>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <select class="form-control" id="listProcedencias"> 
+                                        `;
+                PROC_LIST.forEach(
+                    (pro)=>
+                    {
+                        template += `<option value="${pro.id_tipo_procedencia}">${pro.tipo_procedencia}</option>`;
+                    }
+                );
+
+                template += `
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <button id="btnAddProcedencias" type="submit" class="btn btn-success me-1 mb-1">
+                                                <i class="fas fa-plus-square"></i> Agregar
+                                            </button>
+                                        </div>
+                                        <span id="alertProcedencias"></span>
+                                    </div>
+                                </form>`;
+            }
+            else{
+                template = `<div class="alert alert-success d-flex align-items-center" role="alert">
+                              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                              <div>
+                                Este curso es apto para todo publico. Ya se han agregado todas las procedencias posibles.
+                              </div>
+                            </div>`;
+            }
+            $("#containerNewAsignaciones").html(template);
+        })
     });
+}
+
+async function comparaProcedencias(PROC_APLI) {
+    const PROCEDENCIAS = await consultaProcedenciasAjax("./");
+    let PROCEDENCIAS_LISTA = [];
+    console.log(PROCEDENCIAS);
+    console.log(PROC_APLI);
+    //comparamos las que existen y no y las mandamos a pintar en el modal
+    PROCEDENCIAS.forEach(
+        (pro)=>
+        {
+            let isExistinf = PROC_APLI.find(x => x.id_tipo_procedencia_fk === pro.id_tipo_procedencia);
+            if (isExistinf == null)
+            {
+                PROCEDENCIAS_LISTA.push(pro);
+            }
+        }
+    );
+    return PROCEDENCIAS_LISTA;
 }
 
 function buildTBLHtmlDescuentos(DESCUENTOS) {
@@ -234,15 +293,15 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
             (des)=>
             {
                 let descApli = parseInt(des.porcentaje_desc)!=0 ? `<span class="badge bg-info"><i class="fas fa-tag"></i> ${des.porcentaje_desc}% OFF</span>`: 'SIN DESCUENTO';
-                let totalDesc = parseFloat(des.desTotal);
                 let totalPagoSugerido = parseFloat(des.costo_sugerido);
-                let total = totalPagoSugerido-totalDesc;
+                let totalDesc = (totalPagoSugerido*parseFloat(des.porcentaje_desc))/100;
+                let total_pago = totalPagoSugerido-totalDesc;
 
                 template += `<tr id_procedencia="${des.id_tipo_procedencia_fk}">
                                 <td>${des.tipo_procedencia}</td>
                                 <td>${descApli}</td>
                                 <td>-$${des.desTotal}</td>
-                                <td>$ ${total}</td>
+                                <td>$ ${total_pago}</td>
                                 <td>
                                     <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
                                         <i class="fas fa-tag"></i> Editar</button>

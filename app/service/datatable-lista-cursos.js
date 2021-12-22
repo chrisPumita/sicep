@@ -48,7 +48,12 @@ function cargaCursosDataTable() {
         "columns":
             [
                 { data: 'codigo'},
-                { data: 'nombre_curso'
+                { data: 'nombre_curso',
+                    render: function ( data, type, row ){
+                        //funcion de tipos.js
+                        value = estadoCursoApoved(row.aprobado);
+                        return value+ ' '+row.nombre_curso;
+                    }
                 },
                 { data: null,
                     render: function ( data, type, row ){
@@ -84,16 +89,14 @@ function cargaCursosDataTable() {
                 },
                 { data: 'aprobado',
                     render: function ( data, type, row ){
-                        //funcion de tipos.js
-                        value = estadoCursoApoved(row.aprobado);
-                        return (row.aprobado ==='1'? 'APROBADO ':"PENDIENTE ")+value;
+                        return (row.aprobado ==='1'? 'APROBADO ':"PENDIENTE ");
                     }
                 },
                 {
                     data: 'ACTIONS',
                     render: function ( data, type, row ){
                         let template = '<a href="#" class="btn btn-primary viewCourse me-1 mb-1"><i class="far fa-eye"></i></a>';
-                        template+= row.aprobado ==='1'? '<a href="#" class="btn btn-secondary me-1 mb-1" onClick="openGroup('+row.id_curso+');"><i class="fas fa-users"></i>&nbsp; Abrir Grupo</a>':"";
+                        template+= row.aprobado ==='1'? '<a href="#" class="btn btn-secondary me-1 mb-1" onClick="openGroup('+row.id_curso+');"><i class="fas fa-users"></i>&nbsp;Nuevo</a>':"";
                         return template;
                     }
                 }
@@ -132,7 +135,7 @@ function cargaCursosDataTable() {
         var status = $(this).val();
         $('.status-dropdown').val(status);
         console.log(status);
-        dataTable.column(5).search(status).draw();
+        dataTable.column(6).search(status).draw();
     });
 
     $('.profesor-dropdown').on('change', function(e){
