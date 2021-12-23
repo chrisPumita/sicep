@@ -3,8 +3,9 @@ let ID_ASIG = $("#idAsignacion").val();
 $(document).ready(function() {
     consultaListaProfesores();
     loadGeneraciones();
-    loadSemestre();
-    consultaTblDescuentos();
+
+    loadSolicitudes(ID_ASIG);
+    loadInscripcionesConfirmadas(ID_ASIG);
 });
 
 window.onload = function(){
@@ -23,7 +24,6 @@ function consultaInfoAsignacion(idAsig,filtro) {
 }
 
 function loadDataAsignacion(asig){
-    console.log(asig);
     consultaGrupos(asig.id_curso).then(function () {
 
         $("#fondoImg").css("background", "url('"+asig.banner_img+"') center fixed no-repeat");
@@ -142,7 +142,6 @@ function buildTBLHtmlDescuentos(DESCUENTOS,costoAplicado) {
 
 $("#frm-update-detalles-asig").on("submit", function(e){
     e.preventDefault();
-    alert("");
     var f = $(this);
     var formData = new FormData(document.getElementById("frm-update-detalles-asig"));
     formData.append("dato", "valor");
@@ -161,6 +160,28 @@ $("#frm-update-detalles-asig").on("submit", function(e){
         consultaInfoAsignacion(ID_ASIG,1);
     });
     $("#editarDetallesAsig").modal('hide');
+});
+
+$("#frm-update-detalles-asig-fechas").on("submit", function(e){
+    e.preventDefault();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-update-detalles-asig-fechas"));
+    formData.append("dato", "valor");
+    $.ajax({
+        url: "./webhook/update-detalles-asig-fechas.php",
+        type: "post",
+        dataType: "json",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(res){
+            alertaEmergente(res.Mensaje);
+        }
+    }).done(function(response){
+        consultaInfoAsignacion(ID_ASIG,1);
+    });
+    $("#editarDetallesAsigFechas").modal('hide');
 });
 
 function openCurso(id) {

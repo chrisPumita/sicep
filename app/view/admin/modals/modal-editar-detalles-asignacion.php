@@ -1,5 +1,5 @@
 
-<!--AGREGA PROFESOR INVITACION CUENTA -->
+<!--DETALLES BASICOS DE LA ASIGNACION-->
 <div class="modal fade text-left" id="editarDetallesAsig" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
      <div class="modal-dialog modal-lg" role="document">
@@ -19,8 +19,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12 text-lg-start text-primary bg-gray">
-                                    Al cambiar los parametros de las fechas, estas se veran reflejadas de forma automatica, pero las
-                                solicitudes pendientes seguiran disponibles, estas solo afectarán a futuras inscripciones.</div>
+                                    Modifique los parametros de inscripcion, estos se veran reflejados de forma automática.</div>
                             </div>
                         </div>
                     </div>
@@ -111,6 +110,43 @@
                             <textarea class="form-control" id="notas" name="notas" rows="2" placeholder="Escriba alguna nota importante aqui, este campo puede quedar vacio"></textarea>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Actualizar</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade text-left" id="editarDetallesAsigFechas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="myModalLabel160">
+                    Editar detalles de la asignación
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <form action="#" id="frm-update-detalles-asig-fechas">
+                <div class="modal-body">
+                    <div class="callout callout-second bg-grey">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12 text-lg-start text-primary bg-gray">
+                                    Al cambiar los parametros de las fechas, estas se veran reflejadas de forma automatica, pero las
+                                    solicitudes pendientes seguiran disponibles, estas solo afectarán a futuras inscripciones.</div>
+                            </div>
+                        </div>
+                    </div>
                     <h6 class="heading-small text-secondary mb-4">Fechas importantes</h6>
                     <div class="row">
                         <div class="form-group row">
@@ -184,7 +220,8 @@
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Actualizar</button></div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
                     </div>
                 </div>
             </form>

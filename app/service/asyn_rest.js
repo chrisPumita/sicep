@@ -329,5 +329,22 @@ async function consultaProfesoresAJAX(filtro){
             alert("Error occured")
         }
     });
+}
 
+/* FUNCIONES DE SOLICITUDES Y LISTA DE GRUPOS*/
+async function consultaInfoAsignacionAjax(idAsignacion,filtro){
+    return $.ajax(
+        {
+            url:"./webhook/lista-asignaciones-details.php",
+            type: "POST",
+            data: {idAsignacion : idAsignacion, filtro:filtro},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
+            }
+        }
+    );
 }

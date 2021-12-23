@@ -122,17 +122,17 @@ function cargaTemario(idCurso) {
 function buildTBLHtmlTemario(TEMAS) {
     let template;
     if (TEMAS.length > 0) {
-        template+= `
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                <tr>
-                                    <th>INDICE</th>
-                                    <th>TEMA</th>
-                                    <th>DESCRIPCIÓN</th>
-                                    <th>ACCIONES</th>
-                                </tr>
-                                </thead>
-                            <tbody>`;
+        template= `
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>INDICE</th>
+                        <th>TEMA</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                    </thead>
+                <tbody>`;
         TEMAS.forEach(
             (tema)=>
             {

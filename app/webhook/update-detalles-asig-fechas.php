@@ -1,5 +1,4 @@
 <?php
-//Update asignacion data
 $mjeText="mensaje de Backend";
 $mje = array(
     "mjeType" => 1,

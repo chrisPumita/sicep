@@ -202,6 +202,15 @@ $titulo = "Detalles de la Asignación" ?>
                                     </div>
                                     <hr>
                                 </div>
+                                <div class="row py-1 m-2">
+                                    <button class="btn btn-primary mr-3 mt-3 mb-3 w-50" data-bs-toggle="modal" data-bs-target="#editarDetallesAsig">
+                                        <i class="fas fa-edit"></i> Editar detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body py-2">
                                 <!-- fechas importantes-->
                                 <div class="row py-1 m-2">
                                     <h5 class="text-secondary">Fechas importantes:</h5>
@@ -228,8 +237,8 @@ $titulo = "Detalles de la Asignación" ?>
                                     <hr>
                                 </div>
                                 <div class="row py-1 m-2">
-                                    <button class="btn btn-primary mr-3 mt-3 mb-3 w-50" data-bs-toggle="modal" data-bs-target="#editarDetallesAsig">
-                                        <i class="fas fa-edit"></i> Editar detalles
+                                    <button class="btn btn-primary mr-3 mt-3 mb-3 w-50" data-bs-toggle="modal" data-bs-target="#editarDetallesAsigFechas">
+                                        <i class="fas fa-edit"></i> Editar Fechas
                                     </button>
                                 </div>
                             </div>
