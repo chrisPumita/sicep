@@ -13,15 +13,15 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     private $fecha_creacion;
     private $fecha_inicio;
     private $fecha_fin;
+    private $fecha_inicio_inscripcion;
     private $fecha_lim_inscripcion;
     private $fecha_inicio_actas;
     private $fecha_fin_actas;
     private $cupo;
     private $costo_real;
-    private $descuento;
-    private $nivel_aplicacion_desc;
     private $notas;
     private $modalidad;
+    private $publico;
     /* Agregacion*/
     private $lista_horario_presencial;
     private $lista_horario_virtual;
@@ -244,6 +244,23 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     /**
      * @return mixed
      */
+    public function getFechaInicioInscripcion()
+    {
+        return $this->fecha_inicio_inscripcion;
+    }
+
+    /**
+     * @param mixed $fecha_inicio_inscripcion
+     */
+    public function setFechaInicioInscripcion($fecha_inicio_inscripcion): void
+    {
+        $this->fecha_inicio_inscripcion = $fecha_inicio_inscripcion;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getFechaLimInscripcion()
     {
         return $this->fecha_lim_inscripcion;
@@ -324,38 +341,6 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     /**
      * @return mixed
      */
-    public function getDescuento()
-    {
-        return $this->descuento;
-    }
-
-    /**
-     * @param mixed $descuento
-     */
-    public function setDescuento($descuento): void
-    {
-        $this->descuento = $descuento;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNivelAplicacionDesc()
-    {
-        return $this->nivel_aplicacion_desc;
-    }
-
-    /**
-     * @param mixed $nivel_aplicacion_desc
-     */
-    public function setNivelAplicacionDesc($nivel_aplicacion_desc): void
-    {
-        $this->nivel_aplicacion_desc = $nivel_aplicacion_desc;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNotas()
     {
         return $this->notas;
@@ -384,6 +369,23 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
     {
         $this->modalidad = $modalidad;
     }
+
+        /**
+     * @return mixed
+     */
+    public function getPublico()
+    {
+        return $this->publico;
+    }
+
+    /**
+     * @param mixed $publico
+     */
+    public function setPublico($publico): void
+    {
+        $this->publico = $publico;
+    }
+
 
     /**
      * @return mixed
@@ -524,32 +526,14 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     function queryInsertAsignacion()
     {
-        $query = "INSERT INTO `asignacion_grupo`(
-                               `id_asignacion`, 
-                               `id_grupo_fk`, 
-                               `id_profesor_fk`, 
-                               `generacion`, 
-                               `semestre`, 
-                               `campus_cede`, 
-                               `fecha_creacion`, 
-                               `fecha_inicio`, 
-                               `fecha_fin`, 
-                               `fecha_lim_inscripcion`, 
-                               `fecha_inicio_actas`, 
-                               `fecha_fin_actas`, 
-                               `cupo`, 
-                               `costo_real`, 
-                               `descuento`, 
-                               `nivel_aplicacion_desc`, 
-                               `notas`, 
-                               `modalidad`) 
-                    VALUES (NULL,'" . $this->getIdGrupoFk() . "','" . $this->getIdProfesorFk() .
-                    "','" . $this->getGeneracion() . "','" . $this->getSemestre() . "','" .
-                    $this->getCampusCede() . "', '".date('Y-m-d H:i:s')."','" . $this->getFechaInicio() .
-                    "','" . $this->getFechaFin() . "','" . $this->getFechaLimInscripcion() . "','" .
-                    $this->getFechaInicioActas() ."','" . $this->getFechaFinActas() . "','" . $this->getCupo() .
-                    "','" . $this->getCostoReal() . "','" . $this->getDescuento() . "','" .
-                    $this->getNivelAplicacionDesc() . "','" . $this->getNotas() . "','" . $this->getModalidad() . "')";
+        $query = "INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, 
+        `semestre`, `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, 
+        `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, `costo_real`, `notas`, `modalidad`,
+         `visible_publico`, `estatus`) VALUES ('".$this->getIdAsignacion()."', '".$this->getIdGrupoFk()."', '".$this->getIdProfesorFk()."',
+        '".$this->getGeneracion()."', '".$this->getSemestre()."', '".$this->getCampusCede()."', current_timestamp(), 
+        '".$this->getFechaInicio()."','".$this->getFechaFin()."', '".$this->getFechaInicioInscripcion()."', '".$this->getFechaLimInscripcion()."',
+         '".$this->getFechaInicioActas()."', '".$this->getFechaFinActas()."', '".$this->getCupo()."', '".$this->getCostoReal()."', 
+         '".$this->getNotas()."', '".$this->getModalidad()."', '".$this->getPublico()."', '1')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
