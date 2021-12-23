@@ -88,6 +88,18 @@ function getListaDocumentos(){
     $DOC = new DOCUMENTO();
     return $DOC->consultaDocumentos();
 }
+
+function insertUpdateDocumento($params){
+    include_once "../model/DOCUMENTO.php";
+    $DOC = new DOCUMENTO();
+    $DOC->setIdDocumento($params['idDoc']);
+    $DOC->setNombreDoc($params['nombreDoc']);
+    $DOC->setFormatoAdmitido($params['formato']);
+    $DOC->setTipo($params['admin']);
+    $DOC->setPesoMaxMb($params['peso']);
+    $DOC->setEstatusDocumento(1);
+    return $params['idDoc']>0 ? $DOC->queryUpdateDocumento() : $DOC->queryInsertDocumento();
+}
 //Funciones Estados
 function getListaEstados(){
     include_once "../model/ESTADO_REP.php";

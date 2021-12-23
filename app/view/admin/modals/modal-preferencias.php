@@ -169,7 +169,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-documentos">
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="nombre_doc" class="text-primary">Documento:</label>
@@ -182,7 +182,7 @@
                             <label for="edificio" class="text-primary">Formato</label>
                         </div>
                         <div class="col-md-9 form-group">
-                            <select class="form-control" id="abreviatura" name="abreviatura">
+                            <select class="form-control" id="abreviatura_doc" name="abreviatura_doc">
                                 <option value="PDF">PDF</option>
                                 <option value="IMG" selected>Imagen</option>
                                 <option value="DOC" selected>Documento de Word</option>
@@ -192,7 +192,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 form-group">
-                            <label for="peso_max" class="text-primary">Peso Máximo:</label>
+                            <label for="peso_max" class="text-primary">Peso Máximo (MB):</label>
                         </div>
                         <div class="col-md-9 form-group">
                             <input type="number" min="1" class="form-control" id="peso_max" aria-describedby="aulaHelp" placeholder="0">

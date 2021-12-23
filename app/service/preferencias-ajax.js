@@ -359,8 +359,40 @@ function editaDocumento(idDoc,nombreDoc,formato,peso,tipo){
     $("#nombre_doc").val(nombreDoc);
     $("#abreviatura_doc").val(formato);
     $("#peso_max").val(peso);
-    $("#customColorCheck6").val(tipo);
+    let tipoCheck= tipo<1 ? false : true;
+    $("#customColorCheck6").prop("checked", tipoCheck);
 }
+function nuevoDocumento(){
+    //posible fallo en tipo
+    $("#modal_documentos").modal('show');
+    $("#id_doc").val(0);
+    $("#nombre_doc").val("");
+    $("#abreviatura_doc").val("");
+    $("#peso_max").val("");
+    $("#customColorCheck6").prop("checked", false);
+}
+$("#frm-documentos").on("submit", function(e){
+    //Ruta del Webbhook
+    alert("Funcionando");
+    let ruta = "./webhook/crud-documentos.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        id_doc: $("#id_doc").val() ,
+        nombre_doc:$("#nombre_doc").val() ,
+        abreviatura_doc:$("#abreviatura_doc").val() ,
+        peso_max:$("#peso_max").val() ,
+        admin:$('#customColorCheck6').prop('checked')
+    };
+    params.admin = params.admin ? "1": "0";
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#modal_documentos").modal('hide');
+        consultaDocs();
+    });
+    e.preventDefault();
+});
+
+
 //LISTENER PARA ACCION DEL BOTON
 $(document).on("click", ".deleteDocumento", function ()
 {

@@ -117,7 +117,7 @@ class DOCUMENTO extends CONEXION_M implements I_DOCUMENTOS
         return $datos;
     }
 
-    function modificaDocumento()
+    function queryUpdateDocumento()
     {
 
         $sql = "UPDATE `documento` SET 
@@ -133,7 +133,7 @@ class DOCUMENTO extends CONEXION_M implements I_DOCUMENTOS
         return $result;
     }
 
-    function crearDocumento()
+    function queryInsertDocumento()
     {
         $sql = "INSERT INTO `documento`(`id_documento`,`nombre_doc`,`formato_admitido`,`tipo`,`peso_max_mb`,`estatus`)
             VALUES (NULL,'".$this->getNombreDoc()."','".$this->getFormatoAdmitido()."','".$this->getTipo()."','".$this->getPesoMaxMb()."','".$this->getEstatusDocumento()."');";
