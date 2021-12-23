@@ -119,14 +119,14 @@
                             <label for="edificio" class="text-primary">Edificio</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="hidden" class="form-control" id="id_aula" name="id_aula"aria-describedby="edificioHelp">
+                            <input type="text"  id="id_aula" name="id_aula" >
                             <input type="text" class="form-control" id="edificio" name="edificio" aria-describedby="edificioHelp" placeholder="Eje. A1, H, A2..">
                         </div>
                         <div class="col-md-2 form-group">
-                            <label for="aula" class="text-primary">Aula:</label>
+                            <label for="aulaName" class="text-primary">Aula:</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <input type="text" class="form-control" id="aula" name="aula"aria-describedby="aulaHelp" placeholder="101,201...">
+                            <input type="text" class="form-control" id="aulaName" name="aulaName"aria-describedby="aulaHelp" placeholder="101,201...">
                         </div>
                     </div>
                     <div class="row">
@@ -134,7 +134,7 @@
                             <label for="edificio" class="text-primary">Campo</label>
                         </div>
                         <div class="col-md-10 form-group">
-                            <select class="form-control" id="abreviatura" name="abreviatura">
+                            <select class="form-control" id="campusCede" name="campusCede">
                                 <option value="Campo 1">Campo 1.</option>
                                 <option value="Campo 4" selected>Campo 4</option>
                             </select>

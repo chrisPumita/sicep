@@ -89,6 +89,10 @@ function getListaDocumentos(){
     return $DOC->consultaDocumentos();
 }
 
+function eliminaDocumento($idDoc){
+    return true;
+}
+
 function insertUpdateDocumento($params){
     include_once "../model/DOCUMENTO.php";
     $DOC = new DOCUMENTO();

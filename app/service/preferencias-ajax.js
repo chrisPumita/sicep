@@ -274,16 +274,16 @@ function editaAula(idAula,edificio,aula,campus,cupo){
     $("#modal_aulas").modal('show');
     $("#id_aula").val(idAula);
     $("#edificio").val(edificio);
-    $("#aula").val(aula);
-    $("#abreviatura").val(campus);
+    $("#aulaName").val(aula);
+    $("#campusCede").val(campus);
     $("#cupo").val(cupo);
 }
 function limpiaAula(){
     $("#modal_aulas").modal('show');
     $("#id_aula").val(0);
     $("#edificio").val("");
-    $("#aula").val("");
-    $("#abreviatura").val("");
+    $("#aulaName").val("");
+    $("#campusCede").val("");
     $("#cupo").val("");
 }
 
@@ -295,14 +295,14 @@ $("#frm-aulas").on("submit", function(e){
     var params = {
         id_aula: $("#id_aula").val() ,
         edificio:$("#edificio").val() ,
-        aula:$("#aula").val() ,
-        campo:$("#abreviatura").val() ,
+        aula:$("#aulaName").val() ,
+        campo:$("#campusCede").val() ,
         cupo:$("#cupo").val() 
     };
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
         $("#modal_aulas").modal('hide');
-        consultaAulas();
+        consultaAulas(0,0);
     });
     e.preventDefault();
 });
@@ -315,7 +315,7 @@ $(document).on("click", ".deleteAula", function ()
     sweetConfirm('Eliminar Aula', '¿Estas seguro de que deseas eliminar esta aula?', function (confirmed) {
         if (confirmed) {
             eliminaPreferencia(id,route).then(function () {
-                consultaAulas();
+                consultaAulas(0,0);
             });
         }
     });
@@ -373,7 +373,6 @@ function nuevoDocumento(){
 }
 $("#frm-documentos").on("submit", function(e){
     //Ruta del Webbhook
-    alert("Funcionando");
     let ruta = "./webhook/crud-documentos.php";
     //Parametros que se van a enviar encapsulados
     var params = {
@@ -398,6 +397,15 @@ $(document).on("click", ".deleteDocumento", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
+    console.log(id);
+    var route= "./webhook/delete-documento.php";
+    sweetConfirm('ELIMINAR DOCUMENTO', '¿Estas seguro de que deseas eliminar esta el documento?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                consultaDocs();
+            });
+        }
+    });
   //  var url = './detalles-profesor';
   //  redirect_by_post(url, {  id: id }, false);
 });
