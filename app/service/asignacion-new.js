@@ -32,16 +32,18 @@ $("#frm-add-asignacion").on("submit", function(e){
         if (confirmed) {
             var formData = new FormData(document.getElementById("frm-add-asignacion"));
             formData.append("dato", "valor");
+            formData.append("publico", $("#chkPublica").prop('checked'));
             $.ajax({
                 url: "./webhook/add-asignacion.php",
-                type: "post",
-                dataType: "json",
+                type: "POST",
+                dataType: "html",
                 data: formData,
                 cache: false,
                 contentType: false,
                 processData: false
             })
             .done(function(res){
+                console.log(res);
                 sweetCustomDesicion(res.Mensaje, '¿Qué más desea hacer ahora?','<i class="far fa-eye"></i> Ver los registros','<i class="fas fa-undo-alt"></i> Registrar otro grupo','success', function (confirmed){
                     if (confirmed) {
                         window.location.href = "./lista-grupos";

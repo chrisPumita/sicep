@@ -32,8 +32,8 @@ function consultaAsignacionesHistoricasCurso($idCurso,$filtro,$idFiltro){
 function insertAsignacion($params){
     include_once "../model/ASIGNACION_GRUPO.php";
     $ASIG = new ASIGNACION_GRUPO();
-    $ASIG->setIdAsignacion($params['']);
-    $ASIG->setIdGrupoFk($params['idCurso']);
+    $publico = $params['publico']? 1:0;
+    $ASIG->setIdGrupoFk($params['grupos']);
     $ASIG->setIdProfesorFK($params['profesorAsig']);
     $ASIG->setGeneracion($params['generacion']);
     $ASIG->setSemestre($params['semestre']);
@@ -48,6 +48,6 @@ function insertAsignacion($params){
     $ASIG->setCostoReal($params['costo']);
     $ASIG->setNotas($params['notas']);
     $ASIG->setModalidad($params['modalidad']);
-    $ASIG->setPublico($params['chkPublica']);
+    $ASIG->setPublico($params['publico']);
     return $ASIG->queryInsertAsignacion();
 }

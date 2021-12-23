@@ -1,13 +1,10 @@
 <?php
-&& !isset($POST[''])
-//, ,, , ,, , , ,,,
-//notas
-if (!isset($_POST['idCurso']) && !isset($_POST['profesorAsig']) && !isset($_POST['modalidad'])&& !isset($_POST['grupos'])&& !isset($_POST['generacion'])
-&& !isset($_POST['semestre'])&& !isset($_POST['campus'])&& !isset($_POST['numCupo'])&& !isset($_POST['costo'])&& !isset($_POST['InicioCurso']) && !isset($_POST['finCurso'])
-&& !isset($_POST['inicioInsc'])&& !isset($_POST['finInsc']) && !isset($_POST['inicioCal'])&& !isset($_POST['finCal']))
+if (isset($_POST['grupos']) && isset($_POST['profesorAsig']) && isset($_POST['modalidad'])&& isset($_POST['generacion'])
+&& isset($_POST['semestre'])&& isset($_POST['campus'])&& isset($_POST['numCupo'])&& isset($_POST['costo'])&& isset($_POST['InicioCurso']) && isset($_POST['finCurso'])
+&& isset($_POST['inicioInsc'])&& isset($_POST['finInsc']) && isset($_POST['inicioCal'])&& isset($_POST['finCal']))
 {
     $params =[
-        "idCurso"=>$_POST['idCurso'],
+        "grupos"=>$_POST['grupos'],
         "profesorAsig"=>$_POST['profesorAsig'],
         "generacion"=>$_POST['generacion'],
         "semestre"=>$_POST['semestre'],
@@ -22,35 +19,28 @@ if (!isset($_POST['idCurso']) && !isset($_POST['profesorAsig']) && !isset($_POST
         "costo"=>$_POST['costo'],
         "notas"=>$_POST['notas'],
         "modalidad"=>$_POST['modalidad'],
-        "chkPublica"=> $_POST['chkPublica'],
-        //Duda
-        "grupos"=>$_POST['grupos']
+        "publico"=> $_POST['publico']
     ];
     include_once "../control/controlAsignaciones.php";
-    $result= insertAsignacion($params);
+    $result=insertAsignacion($params);
     if($result){
-        if($idDepto>0)
-            $mjeText ="Se ha actualizado a: " . $nombreDepto;
-        else{
-            $mjeText = "Se ha registrado: ".$nombreDepto;
-        }
-        $mje = array(
-            "mjeType" => "1",
-            "Mensaje" => $mjeText
-        );
-        echo json_encode($mje);    
+        $mjeType=1;
+        $mjeText = "Se ha creado una nueva asignacion";
     }
     else {
-        die;
+        $mjeType=-1;
+        $mjeText="Error Interno";
     }
 }
 else{
+    $mjeType="0";
     $mjeText="Faltan datos";
-    $mje = array(
-            "mjeType" => "-1",
-            "Mensaje" => $mjeText
-        );
-        echo json_encode($mje);    
 }
+
+$mje = array(
+    "mjeType" => $mjeType,
+    "Mensaje" => $mjeText
+);
+echo json_encode($mje);    
 
 

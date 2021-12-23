@@ -529,7 +529,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $query = "INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, 
         `semestre`, `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, 
         `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, `costo_real`, `notas`, `modalidad`,
-         `visible_publico`, `estatus`) VALUES ('".$this->getIdAsignacion()."', '".$this->getIdGrupoFk()."', '".$this->getIdProfesorFk()."',
+         `visible_publico`, `estatus`) VALUES (NULL, '".$this->getIdGrupoFk()."', '".$this->getIdProfesorFk()."',
         '".$this->getGeneracion()."', '".$this->getSemestre()."', '".$this->getCampusCede()."', current_timestamp(), 
         '".$this->getFechaInicio()."','".$this->getFechaFin()."', '".$this->getFechaInicioInscripcion()."', '".$this->getFechaLimInscripcion()."',
          '".$this->getFechaInicioActas()."', '".$this->getFechaFinActas()."', '".$this->getCupo()."', '".$this->getCostoReal()."', 
