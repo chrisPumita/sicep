@@ -2,7 +2,7 @@
 
 interface I_INSCRIPCION
 {
-    function consultaInscripciones($filtro,$valor);
+    function consultaSolcitudInscripciones($filtro,$idAsig,$valor);
 
     function registraInscripcion($id_alumno,$id_asig);
 

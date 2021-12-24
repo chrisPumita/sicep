@@ -44,8 +44,25 @@ function getLegibleFecha(stringFecha) {
 }
 
 function getLegibleFechaHora(stringFechaHora) {
-    var d1 = Date.createFromMysql(stringFecha);
+    var dateFormat, options;
+    options = {
+        weekday: 'short',
+        month: 'long',
+        day: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: 'numeric',
+        hour12:"true"
+    };
+
+    /*
+        var d1 = Date.createFromMysql(stringFecha);
     var options = {weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12:"true"};
     return d1.toLocaleString("es-ES", options);
+    * */
+    var d1 = Date.createFromMysql(stringFechaHora);
+    dateFormat = new Intl.DateTimeFormat('es-ES', options);
+
+    return  dateFormat.format(d1); // Salida: jue., 07 de julio de 2016 21:26
 }
 //Formato legible de hora y fecha procesados

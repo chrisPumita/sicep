@@ -348,3 +348,25 @@ async function consultaInfoAsignacionAjax(idAsignacion,filtro){
         }
     );
 }
+
+/*Async function return list json Solicitudes pendientes y Solic Acreditadas*/
+async function consultaListaInscAsig(idAsignacion) {
+    return await consultaListasInscripcionesAsigAJAX(idAsignacion);
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function consultaListasInscripcionesAsigAJAX(idAsig){
+    return $.ajax({
+        url: "./webhook/lista-inscripciones-asignacion.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idAsig : idAsig
+        },
+        success: function (response) {
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}

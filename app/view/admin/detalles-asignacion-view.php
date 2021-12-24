@@ -10,6 +10,19 @@ $titulo = "Detalles de la Asignación" ?>
 </head>
 
 <body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+</svg>
+
 <div id="app">
     <?php include "includes/sidebar.php"?>
     <div id="main">
@@ -286,105 +299,15 @@ $titulo = "Detalles de la Asignación" ?>
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-2">
                                             <div class="list-group" role="tablist">
-                                                <a class="list-group-item list-group-item-action active" id="tabla-presencial" data-bs-toggle="list" href="#horario-presencial" role="tab">Lista Oficial</a>
-                                                <a class="list-group-item list-group-item-action" id="tabla-virtual" data-bs-toggle="list" href="#horario-virtual" role="tab">Solicitudes</a>
+                                                <a class="list-group-item list-group-item-action active" id="acreditados_container" data-bs-toggle="list" href="#lista_oficial_container" role="tab">Lista Oficial <span class="badge bg-primary" id="badgeAprobados">0</span></a>
+                                                <a class="list-group-item list-group-item-action" id="pendientes" data-bs-toggle="list" href="#solic_pendientes_container" role="tab">Solicitudes <span class="badge bg-danger" id="badgePendientes">0</span></a>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-10 mt-1">
                                             <div class="tab-content text-justify" id="nav-tabContent">
-                                                <div class="tab-pane show active table-responsive" id="horario-presencial" role="tabpanel" aria-labelledby="tabla-presencial">
-                                                    <table class="table table-hover table-striped" id="tblListaGrupo">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>MATRICULA</th>
-                                                            <th>NOMBRE</th>
-                                                            <th>INCORPORACIÓN</th>
-                                                            <th>ESTADO</th>
-                                                            <th>CALIFICACIÓN</th>
-                                                            <th>CONSTANCIA</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tbl-listaGrupo">
-                                                        <tr id_grupo="1">
-                                                            <td>316345892</td>
-                                                            <td>Jennifer Morales Rosas</td>
-                                                            <td>19-OCT-2020</td>
-                                                            <td><span class="badge bg-success">ACTIVO</span></td>
-                                                            <td>No disponible</td>
-                                                            <td>Pendiente</td>
-                                                            <td>
-                                                                <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
-                                                                <a href="#" class="btn btn-outline-primary"><i class="far fa-file-alt"></i></a>
-                                                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
-                                                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id_grupo="2">
-                                                            <td>316345892</td>
-                                                            <td>Enrique Peña Nieto</td>
-                                                            <td>20-OCT-2020</td>
-                                                            <td><span class="badge bg-success">ACTIVO</span></td>
-                                                            <td>No disponible</td>
-                                                            <td>Pendiente</td>
-                                                            <td>
-                                                                <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
-                                                                <a href="#" class="btn btn-outline-primary"><i class="far fa-file-alt"></i></a>
-                                                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
-                                                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#horarioVirtual">
-                                                        <i class="fas fa-download"></i>Descargar
-                                                    </button>
+                                                <div class="tab-pane show active table-responsive" id="lista_oficial_container" role="tabpanel" aria-labelledby="acreditados_container">
                                                 </div>
-                                                <div class="tab-pane table-responsive" id="horario-virtual" role="tabpanel" aria-labelledby="tabla-virtual">
-                                                    <table class="table table-hover table-striped" id="tblSolInscripcion">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>MATRICULA</th>
-                                                            <th>NOMBRE</th>
-                                                            <th>PAGO</th>
-                                                            <th>INSCRIPCIÓN</th>
-                                                            <th>ESTADO</th>
-                                                            <th>NOTAS</th>
-                                                            <th> </th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tbl-SolInsc">
-                                                        <tr id_grupo="1">
-                                                            <td>316345892</td>
-                                                            <td>Jennifer Morales Rosas</td>
-                                                            <td><span class="badge bg-success">ACREDITADO</span></td>
-                                                            <td><span class="badge bg-warning">PENDIENTE</span></td>
-                                                            <td>Activo</td>
-                                                            <td>----------</td>
-                                                            <td></td>
-                                                            <!-- BOTON ACCIONES -->
-                                                            <td>
-                                                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
-                                                                <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
-                                                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id_grupo="2">
-                                                            <td>316345892</td>
-                                                            <td>Jennifer Morales Rosas</td>
-                                                            <td><span class="badge bg-success">ACREDITADO</span></td>
-                                                            <td><span class="badge bg-warning">PENDIENTE</span></td>
-                                                            <td>Activo</td>
-                                                            <td>----------</td>
-                                                            <td></td>
-                                                            <!-- BOTON ACCIONES -->
-                                                            <td>
-                                                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs"><i class="fas fa-folder"></i></a>
-                                                                <a href="./ficha-inscripcion" class="btn btn-outline-primary"><i class="far fa-eye"></i></a>
-                                                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-backdrop="false" data-bs-target="#confrimaCnacelacion"><i class="fas fa-times-circle"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <div class="tab-pane table-responsive" id="solic_pendientes_container" role="tabpanel" aria-labelledby="pendientes">
                                                 </div>
                                             </div>
                                         </div>
@@ -411,6 +334,7 @@ $titulo = "Detalles de la Asignación" ?>
 <?php include "includes/services-js.php"?>
 <!-- INCLUDE SERIVES AJAX-->
 <script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
 <script src="./service/asignacion-gral.js"></script>
 <script src="./service/asignacion-detalles.js"></script>
 

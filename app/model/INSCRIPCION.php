@@ -1,5 +1,5 @@
 <?php
-include_once "./interface/I_INSCRIPCION.php";
+include_once "interface/I_INSCRIPCION.php";
 include_once "CONEXION_M.php";
 class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
 {
@@ -13,31 +13,10 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
     private $fecha_conclusion;
     private $notas;
     private $estatus;
-    /*Composiciones*/
-    private $lista_archivos;
-
-    /* ASOCIACION de cla clase VALIDACION_INSCRIPCION*/
-    private $lista_validadiones_pagos;
 
     /*******************************************************************************
      * INICIAN Getters and Setters
      *******************************************************************************/
-
-    /**
-     * @return mixed
-     */
-    public function getListaValidadionesPagos()
-    {
-        return $this->consultaValidacionesInscripciones();
-    }
-
-    /**
-     * @param mixed $lista_validadiones_pagos
-     */
-    public function setListaValidadionesPagos($lista_validadiones_pagos): void
-    {
-        $this->lista_validadiones_pagos = $lista_validadiones_pagos;
-    }
 
     /**
      * @return mixed
@@ -199,22 +178,6 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         $this->estatus = $estatus;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getListaArchivos()
-    {
-        return $this->lista_archivos;
-    }
-
-    /**
-     * @param mixed $lista_archivos
-     */
-    public function setListaArchivos($lista_archivos): void
-    {
-        $this->lista_archivos = $lista_archivos;
-    }
-
     /*******************************************************************************
      * Terminan Getters and Setters
      *******************************************************************************/
@@ -223,27 +186,53 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
      * Inician Funciones implenebtadas de la Interface
      *******************************************************************************/
 
-    function consultaInscripciones($filtro,$valor)
+    /*Consulta las solicitudes aprobadas y no aprobadas de un grupo esoecifico*/
+    function consultaSolcitudInscripciones($filtro,$idAsig,$showAcredita)
     {
-        // 0  TODOS
-        // 1 una ins en espcifico
+        //la asignacion es mayor que 0, entonces filtramos solo de esa asignacion
+        $asigFiltro =  $idAsig>0 ? ' AND insc.id_asignacion_fk = '.$idAsig : "";
+        $colums = " ";
+        $fromTable = " ";
+        $join = " ";
+        if ($showAcredita) {
+            //vamos a mostrar las
+            $colums = ' , val_insc.id_inscripcion_fk, val_insc.id_profesor_admin_fk, val_insc.fecha_validacion, 
+                        val_insc.fecha_pago, val_insc.monto_pago_realizado, val_insc.descripcion, val_insc.notas AS notasAcredita  ';
+            $fromTable = ' , validacion_inscripcion val_insc ';
+            $join = '  AND val_insc.id_inscripcion_fk = insc.id_inscripcion ';
+        }
         switch ($filtro){
+            //todas las inscipciones sin filtro
             case "0":
                 $filtro = "";
                 break;
-
             case "1":
-                $filtro = " AND  I.id_inscripcion = ".$valor;
+                //todas las solicitudes pendientes
+                $filtro = " AND insc.id_inscripcion NOT IN (SELECT vi.id_profesor_admin_fk from validacion_inscripcion vi) ";
                 break;
-
+            case "2":
+                //todas las solicitudes aprobadas
+                $filtro = " AND insc.id_inscripcion IN (SELECT vi.id_profesor_admin_fk from validacion_inscripcion vi) ";
+                break;
             default:
                 $filtro="";
                 break;
         }
 
-        $sql = "SELECT I.*,P.*, A.* FROM inscripcion I, alumno A, persona P 
-                WHERE I.id_alumno_fk = A.id_alumno AND A.id_persona = P.id_persona ".$filtro." 
-                ORDER BY P.nombre, P.app, P.apm ASC";
+        $sql = "select per.nombre, per.app, per.apm, per.sexo,per.estatus AS estatusPersona, CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo,
+            per.telefono, 
+           al.id_alumno, al.matricula, al.nombre_uni, al.id_tipo_procedencia_fk, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image, 
+           al.estatus AS estatusAlumno, proc.id_tipo_procedencia, proc.tipo_procedencia, uni.id_universidad, uni.nombre AS nombreUni, uni.siglas,
+           mun.municipio, edos.estado AS edoRep, insc.id_inscripcion, insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia,
+           insc.fecha_solicitud, insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion, insc.id_asignacion_fk ".$colums."
+        from alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, 
+        inscripcion insc ".$fromTable."
+        where al.id_persona = per.id_persona
+        AND al.id_tipo_procedencia_fk = proc.id_tipo_procedencia
+        AND uni.id_universidad = al.id_universidad
+        AND edos.id_estado = mun.id_estado_fk
+        AND mun.id_municipio = al.id_municipio
+        AND insc.id_alumno_fk = al.id_alumno ".$join. $filtro. $asigFiltro." ORDER BY per.app, per.apm, per.nombre";
         //Abro conexion de consulta a BD
         $this->connect();
         $result = $this->getData($sql);
