@@ -184,10 +184,6 @@
                                         <div class="col-sm-9 text-primary text-bold" id="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur magni numquam corrupti in ducimus.</div>
                                     </div>                                   
                                 </div>
-
-                                <div class="card-body d-flex text-align-right p-0">
-                                    <a href="#" class="btn btn-primary btn-block ">Ver detalles</a>
-                                </div>
                             </div>
                         </div>
                         <!-- FIN DETALLES SERV SOCIAL-->
@@ -201,9 +197,15 @@
                                 <img class="card-img-top img-fluid" src="https://capacitate365.com/wp-content/uploads/2020/10/Curso-excel-completo.png" alt="Card image cap">
                                 <div class="card-body">
                                     <div class="row py-2">
-                                        <h5 class="text-secondary text-center">Curso de Excel básico para contadores</h5>
+                                        <h5 class="text-secondary">Información del curso:</h5>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Nombre del curso</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary text-bold" id="">Curso de Excel básico para contadores</div>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Grupo</h6>
@@ -242,13 +244,13 @@
                                         </div>
                                         <div class="col-sm-9 text-primary text-bold" id="">-50% ($500.00 MXN)</div>
                                     </div>
-                                    <!-- <hr>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Pago realizado</h6>
+                                            <h6 class="mb-0">Total de pago</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary text-bold" id="">$500.00 MXN</div>
-                                    </div> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -258,195 +260,89 @@
             </section>
             <!-- FIN seccion detalles-->
 
+            <!-- INICIA SECCION DE LISTA DE DOCUMENTOS -->
             <section class="section">
                 <div class="card">
                     <div class="card-header">
                       Revisión de documentos
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover table-striped" id="tbl1">
-                            <thead>
+                        <table class="table table-hover table-lg">
+                            <tbody>
                             <tr>
-                                <th>#</th>
-                                <th>GRUPO</th>
-                                <th>CURSO</th>
-                                <th>PROFESOR</th>
-                                <th>CUPO</th>
-                                <th>INICIO</th>
-                                <th>TIPO</th>
-                                <th>ESTATUS</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_grupo="3">
-                                <th scope="row">1</th>
-                                <td>1001</td>
-                                <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                <td>Christian Garduño Pioquinto</td>
-                                <td>15</td>
-                                <td>2021-06-30 00:00:00</td>
-                                <td>En linea y Precencial</td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                                <td class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
                                     </div>
                                 </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
+                                </td>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
+                                </td>
+                                <td class="col-auto">
+                                    <span class="badge bg-warning">Por revisar</span>
+                                </td>
+                                <td class="col-auto">
+                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
+                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
                                 </td>
                             </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+
+                            <tr>
+                                <td class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
                                     </div>
                                 </td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
+                                </td>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
+                                </td>
+                                <td class="col-auto">
+                                    <span class="badge bg-success">Aprovado</span>
+                                </td>
+                                <td class="col-auto">
+                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
+                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
+                                    </div>
+                                </td>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
+                                </td>
+                                <td class="col-auto">
+                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
+                                </td>
+                                <td class="col-auto">
+                                    <span class="badge bg-danger">Rechazado</span>
+                                </td>
+                                <td class="col-auto">
+                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
+                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-
-                    <div class="table-responsive">
-                                    <div class="card">
-                                        <div class="alert alert-primary">
-                                            <p>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Folio: 156156</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-paper-plane"></i> Enviar Mensaje</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="far fa-id-card"></i> Ver Datos</a>
-                                                <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i> Cancelar</a>
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <table class="table table-hover table-lg">
-                                        <tbody>
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
                 </div>
             </section>
+            <!-- FIN SECCION DE LISTA DE DOCUMENTOS -->
 
         </div>
         <footer class="text-center text-white ">

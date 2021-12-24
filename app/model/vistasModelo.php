@@ -8,12 +8,12 @@ class vistaModelo
     protected static function obtener_vistas_modelo_admin($vistas)
     {
         #Lista blanca de palabras de la url
-        $listaBlanca=["home","detalles-asignacion","detalles-curso","lista-cursos",
+        $listaBlanca=["home", "home-teach", "detalles-asignacion","detalles-curso","lista-cursos",
             "lista-profesores", "lista-alumnos", "lista-servicio-social",
         "detalles-profesor","nueva-asignacion","detalles-asignacion", "lista-asignaciones",
             "ficha-insc", "lista-cuentas","lista-servicio","nuevo-curso", "probar-modal", "detalles-alumno",
             "perfil", "detalles-admin","general","ficha-inscripcion","lista-grupos", "lista-servicio-social",
-            "historial-grupos","solicitudes-inscripcion","documentos","cuentas-alumnos","preferencias","plantilla","ficha-inscripcion"];
+            "historial-grupos","solicitudes-inscripcion","documentos","cuentas-alumnos","preferencias","plantilla","ficha-inscripcion", "lista-propuestas", "editar-detalles-propuesta"];
         #Verificamos si la vista que esta entrando esta en la lista blanca para poder moestrarla
         if (in_array($vistas,$listaBlanca))
         {

@@ -118,6 +118,13 @@
 
                 <li class="sidebar-title">Profesor</li>
 
+                <li class="sidebar-item ">
+                    <a href="./home-teach" class='sidebar-link'>
+                        <i class="fas fa-home"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-coffee"></i>
@@ -125,13 +132,10 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="#">Mis Cursos</a>
+                            <a href="./lista-propuestas">Propuestas</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="#">Proponer Nuevo</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="#">Ver todos</a>
                         </li>
                     </ul>
                 </li>
