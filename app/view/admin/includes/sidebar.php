@@ -24,7 +24,7 @@
                 <li class="sidebar-item  has-sub">
                     <a href="" class='sidebar-link'>
                         <i class="fas fa-graduation-cap"></i>
-                        <span>Cursos  <span class="badge bg-primary">6</span></span>
+                        <span id="contCursosSideBar"></span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
@@ -58,7 +58,7 @@
                 <li class="sidebar-item ">
                     <a href="./solicitudes-inscripcion" class='sidebar-link'>
                         <i class="fas fa-clipboard-check"></i>
-                        <span>Solicitudes  <span class="badge bg-danger">0</span></span>
+                        <span id="countSolicSidebar"></span>
                     </a>
                 </li>
                 <li class="sidebar-item ">

@@ -9,3 +9,9 @@ function getListaAlumnosAsignacion($idAsig){
     );
     return $ListaSolicitudes;
 }
+
+function countSolicitudesPendientes(){
+    include_once "../model/INSCRIPCION.php";
+    $objInsc = new INSCRIPCION();
+    return $objInsc->queryCountSolcitudesPendientes();
+}

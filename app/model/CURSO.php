@@ -1,7 +1,6 @@
 <?php
 
-include_once "DOCS_SOLICITADOS_CURSO.php";
-include_once "TEMAS.php";
+include_once "CONEXION_M.php";
 include_once "interface/I_CURSO.php";
 class CURSO extends CONEXION_M implements I_CURSO
 {
@@ -348,8 +347,7 @@ class CURSO extends CONEXION_M implements I_CURSO
                     WHERE   ag.id_grupo_fk = gpo.id_grupo and gpo.id_curso_fk = c.id_curso) AS grupos_abiertos
                         FROM curso c, profesor prof, persona pr
                             WHERE c.id_profesor_autor = prof.id_profesor 
-                            and prof.id_persona_fk = pr.id_persona ".$filtroidCurso." ".$filtro."
-                            order by c.nombre_curso";
+                            and prof.id_persona_fk = pr.id_persona ".$filtroidCurso." ".$filtro." order by c.nombre_curso ASC";
         $this->connect();
         $cursos=$this->getData($query);
         $this->close();
@@ -370,6 +368,16 @@ class CURSO extends CONEXION_M implements I_CURSO
         $detalles = $this-> getData($query);
         $this->close();
         return $detalles;
+    }
+
+    function queryCountPerdientesRevisar(){
+        $query = "SELECT * FROM curso 
+                    WHERE `curso`.`id_profesor_admin_acredita` IS NULL 
+                    AND `curso`.`aprobado` = 0 AND `curso`.`fecha_acreditacion` IS NULL";
+        $this->connect();
+        $datos = $this->numRows($query);
+        $this->close();
+        return $datos;
     }
 
     public function consultaGroupKeys($id_curso)

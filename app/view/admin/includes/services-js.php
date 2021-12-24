@@ -31,6 +31,19 @@
                 `Revisar cuentas <span class="badge bg-primary">${contadores.alumnosCountVerif}</span>` : `Revisar cuentas`;
             $("#counterSolicAlumnosView").html(contadorAlumnosVerTemplate);
 
+            /*
+            Solicitudes  <span class="badge bg-danger">0</span>
+            */
+
+            let contSolcPendtemplate = contadores.solPendientes >0 ?
+                `Solicitudes  <span class="badge bg-danger">${contadores.solPendientes}</span>` : `Solicitudes`;
+            $("#countSolicSidebar").html(contSolcPendtemplate);
+
+            
+            let contCursosPendRevtemplate = contadores.cursosPendRev >0 ?
+                `Cursos  <span class="badge bg-primary">${contadores.cursosPendRev}</span>` : `Cursos`;
+            $("#contCursosSideBar").html(contCursosPendRevtemplate);
+
         })
     }
 

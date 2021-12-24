@@ -251,6 +251,14 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         return $result;
     }
 
+    function queryCountSolcitudesPendientes(){
+        $query="select id_inscripcion from inscripcion where id_inscripcion NOT IN (SELECT `id_inscripcion_fk` FROM validacion_inscripcion)";
+        $this->connect();
+        $datos = $this->numRows($query);
+        $this->close();
+        return $datos;
+    }
+
     //envio true o false
     //confirmaPago(true);
     //confirmaPago(false);

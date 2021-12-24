@@ -99,3 +99,11 @@ function getDescuentos($idCurso){
     $DESC->setIdCursoFk($idCurso);
     return $DESC->queryConsultaDesceuntosCurso();
 }
+
+//CONTADORES
+
+function countCursosPendientesRevisar(){
+    include_once "../model/CURSO.php";
+    $obj_curso= new CURSO();
+    return $obj_curso->queryCountPerdientesRevisar();
+}

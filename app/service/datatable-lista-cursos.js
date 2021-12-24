@@ -89,7 +89,7 @@ function cargaCursosDataTable() {
                 },
                 { data: 'aprobado',
                     render: function ( data, type, row ){
-                        return (row.aprobado ==='1'? 'APROBADO ':"PENDIENTE ");
+                        return (row.id_profesor_admin_acredita!=null? 'APROBADO ':"PENDIENTE ");
                     }
                 },
                 {
@@ -101,6 +101,7 @@ function cargaCursosDataTable() {
                     }
                 }
             ],
+        "order": [[ 1, "asc" ],[2,"asc"]],
         "language": {
             "search": "Buscar",
             "lengthMenu": "Mostrar _MENU_ cursos por página",
