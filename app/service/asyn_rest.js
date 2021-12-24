@@ -370,3 +370,23 @@ async function consultaListasInscripcionesAsigAJAX(idAsig){
         }
     });
 }
+
+/*Async function return list json Solicitudes pendientes y Solic Acreditadas*/
+async function contadoresNavBar() {
+    return await contadorNavBarAJAX();
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function contadorNavBarAJAX(){
+    return $.ajax({
+        url: "./webhook/contadoresNavBar.php",
+        type: 'POST',
+        dataType: "json",
+        success: function (response) {
+        //   console.log(response);
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}

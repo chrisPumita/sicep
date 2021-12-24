@@ -58,7 +58,7 @@
                 <li class="sidebar-item ">
                     <a href="./solicitudes-inscripcion" class='sidebar-link'>
                         <i class="fas fa-clipboard-check"></i>
-                        <span>Solicitudes  <span class="badge bg-danger">4</span></span>
+                        <span>Solicitudes  <span class="badge bg-danger">0</span></span>
                     </a>
                 </li>
                 <li class="sidebar-item ">
@@ -98,14 +98,14 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-user-graduate"></i>
-                        <span>Alumnos  <span class="badge bg-primary">4</span></span>
+                        <span  id="counterSolicAlumnos"></span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
                             <a href="./lista-alumnos">Ver todos</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="./cuentas-alumnos">Revisar cuentas <span class="badge bg-primary">4</span></a>
+                            <a href="./cuentas-alumnos" id="counterSolicAlumnosView"></a>
                         </li>
                     </ul>
                 </li>

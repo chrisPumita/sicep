@@ -128,6 +128,12 @@
 <script src="./service/general/tools.js"></script>
 <script src="./service/datatable-lista-alumnos.js"></script>
 <script src="./service/filter_alumnos_datatable.js"></script>
+
+<script>
+    $(document).ready(function() {
+    cargaDatosAlumnosDataTable(1);
+    });
+</script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>
 

@@ -4,7 +4,7 @@ interface I_INSCRIPCION
 {
     function consultaSolcitudInscripciones($filtro,$idAsig,$valor);
 
-    function registraInscripcion($id_alumno,$id_asig);
+    function queryRegistraInscripcion();
 
     //Confirma el pago de la inscripcion y valida la autorizacion
     function confirmaPago($confirmacion);

@@ -240,13 +240,11 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         return $result;
     }
 
-    function registraInscripcion($id_alumno,$id_asig)
+    function queryRegistraInscripcion()
     {
-        $sql = "INSERT INTO `inscripcion` (`id_inscripcion`, `id_alumno_fk`, `id_asignacion_fk`, 
-                           `pago_confirmado`, `autorizacion_inscripcion`, `validacion_constancia`, `fecha_solicitud`, `fecha_conclusion`, `notas`, `estatus`) 
-            VALUES ('".$this->getIdInscripcion()."', '".$id_alumno."', '".$id_asig."', '0', '0', '0',
-             '".date('Y-m-d H:i:s')."', '".$this->getFechaConclusion()."', '".$this->getNotas()."', '1')";
-
+        $sql = "INSERT INTO `inscripcion` (`id_inscripcion`, `id_alumno_fk`, `id_asignacion_fk`, `pago_confirmado`, 
+                           `autorizacion_inscripcion`, `validacion_constancia`, `fecha_solicitud`, `fecha_conclusion`, `notas`, `estatus`) VALUES 
+                           ('".$this->getIdInscripcion()."', '".$this->getIdAlumnoFk()."', '".$this->getIdAsignacionFk()."', '0', '0', '0', CURRENT_TIMESTAMP, NULL, '', '1')";
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();

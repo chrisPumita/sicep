@@ -5,7 +5,7 @@ if($_POST['contrasena']== $_POST['contrasenaconfirmar']){
         "id_municipio"  => $_POST['municipios'],
         "id_universidad"  => $_POST['universidades'],
         "matricula"  => $_POST['matricula'],
-        //"nombre_uni"  => $_POST[''],
+        "nombre_uni"  => $_POST['nombreUni'],
         "idProcedencia"  => $_POST['procedencia'],
         "carrera_especialidad"  => $_POST['carrera'],
         "email"  => $_POST['correoAlumno'],

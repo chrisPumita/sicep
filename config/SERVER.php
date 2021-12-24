@@ -13,5 +13,5 @@ const SGDB = "mysql:host=".SERVER.";dbname=".DB;
 
 #Encriptar por hash
 const METHOD = "AES-256-CBC";
-const SECRET_KEY = '$SISEP@2021';
+const SECRET_KEY = '$SICEP@2022';
 const SECRET_IV = '037970';

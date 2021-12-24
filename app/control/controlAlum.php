@@ -18,7 +18,7 @@ function crearCuentaAlumno($params){
     $al->setIdMunicipio($params['id_municipio']);
     $al->setIdUniversidad($params['id_universidad']);
     $al->setMatricula($params['matricula']);
-    $al->setNombreUni($nombre_uni);
+    $al->setNombreUni($params['$nombre_uni']);
     $al->setIdProcedencia($params['idProcedencia']);
     $al->setCarreraEspecialidad($params['carrera_especialidad']);
     $al->setEmail($params['email']);
@@ -41,6 +41,12 @@ function consultaListaAlumnos($filtro,$idUnique){
     include_once "../model/ALUMNO.php";
     $objAlumn = new ALUMNO();
     return $objAlumn->queryConsultaListaAlumnos($filtro,$idUnique);
+}
+
+function countRevisionCuentas(){
+    include_once "../model/ALUMNO.php";
+    $objAlumn = new ALUMNO();
+    return $objAlumn->queryCountCuentasPorVerificar();
 }
 
 
