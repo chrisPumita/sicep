@@ -1,6 +1,6 @@
 <?php
 
-
+include_once "CONEXION_M.php";
 class TEMAS extends CONEXION_M
 {
 

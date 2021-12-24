@@ -41,7 +41,7 @@ function consultaAcredita($idCurso){
 //COnsulta de temario de curso especifico
 function consultaTemas($id_curso_fk)
 {
-    include_once "../model/CURSO.php";
+    include_once "../model/TEMAS.php";
     $temas = new TEMAS();
     return  $temas->consultaTemas($id_curso_fk);
 }
