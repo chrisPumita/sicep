@@ -3,7 +3,7 @@
 
 interface I_PROFESOR
 {
-    public function queryListaProfesoresAll($filtro);
+    public function queryListaProfesoresAll($filtro,$idProfesorUnique);
 
     public function queryListProfesoresNoAdmin();
 

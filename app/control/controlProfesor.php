@@ -1,10 +1,10 @@
 <?php
 
 //Funcion de Lista Profesores LFHL
-function consultaProfesores($filtro){
+function consultaProfesores($filtro,$idProfesorUnique){
     include_once "../model/PROFESOR.php";
     $PROFESORES = new PROFESOR();
-    return $PROFESORES->queryListaProfesoresAll($filtro);
+    return $PROFESORES->queryListaProfesoresAll($filtro,$idProfesorUnique);
 }
 
 function consultaListaAutoresCurso(){

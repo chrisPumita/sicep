@@ -390,3 +390,27 @@ async function contadorNavBarAJAX(){
         }
     });
 }
+
+
+/*Async function return list json PROFESORES Y SU CUENTA ADMIN SI TIENE*/
+async function consultaDetallesProfesor(idProfesor) {
+    return await consultaDetallesProfesorAJAX(idProfesor);
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function consultaDetallesProfesorAJAX(idProfesor){
+    return $.ajax({
+        url: "./webhook/lista-profesores-details.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idProfesor : idProfesor
+        },
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}

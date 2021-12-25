@@ -221,13 +221,14 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     /*******************************************************************************
      * Inician Funciones de Interfaz
      *******************************************************************************/
-   function queryListaProfesoresAll($filtro){
+   function queryListaProfesoresAll($filtro, $idProfesorUnique){
+       $onlyProfFiltro =  $idProfesorUnique>0 ? ' AND prof.`id_persona_fk` = '.$idProfesorUnique :'';
        switch ($filtro){
            case "1":
-               $condicion=" AND prof.`estatus`=1 ";
+               $condicion=" AND prof.`estatus`= 1 ";
                break;
            case "2":
-               $condicion=" AND prof.`estatus`=0 ";
+               $condicion=" AND prof.`estatus`= 0 ";
                break;
            default:
                $condicion="";
@@ -252,8 +253,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
 		prof.`id_persona_fk`=per.`id_persona`
         AND prof.`id_depto_fk`= depto.`id_depto`
         AND per.`estatus` = 1
-        ".$condicion."
-        ORDER BY `nombre_completo` ASC";
+        ".$condicion. $onlyProfFiltro." ORDER BY `nombre_completo` ASC";
        $this->connect();
        $datos = $this-> getData($query);
        $this->close();
