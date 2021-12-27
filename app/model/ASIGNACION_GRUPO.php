@@ -656,9 +656,12 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
        ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,
        ag.estatus AS statusAsignacion,
-       (select COUNT(*) from acta where id_asignacion_fk = ag.id_asignacion) AS inscritos,
-       (SELECT COUNT(*) FROM inscripcion insc WHERE insc.autorizacion_inscripcion = 0 AND
-               insc.pago_confirmado = 0 AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
+       (SELECT COUNT(*) from inscripcion insc where
+        insc.id_inscripcion  IN (select id_inscripcion_fk from validacion_inscripcion)
+        AND insc.id_asignacion_fk = ag.id_asignacion) AS inscritos,
+       (SELECT COUNT(*) from inscripcion insc where
+        insc.id_inscripcion NOT IN (select id_inscripcion_fk from validacion_inscripcion)
+        AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
         from persona per, profesor prof, asignacion_grupo ag, grupo gpo, curso c
         where per.id_persona = prof.id_persona_fk
           AND ag.id_profesor_fk = prof.id_profesor

@@ -58,7 +58,7 @@ function buildTBLListaOficial(LISTA) {
                 if (insc.validacion_constancia==="1"){
                     tramite = "CONCLUIDO, Constrancia Acreditada";
                 }
-                else if (isnc.estatusInscripcion === 1 ){
+                else if (insc.estatusInscripcion === 1 ){
                     tramite = "Por calificar";
                 }
                 else{

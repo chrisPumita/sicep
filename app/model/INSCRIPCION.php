@@ -208,11 +208,11 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
                 break;
             case "1":
                 //todas las solicitudes pendientes
-                $filtro = " AND insc.id_inscripcion NOT IN (SELECT vi.id_profesor_admin_fk from validacion_inscripcion vi) ";
+                $filtro = " AND insc.id_inscripcion NOT IN (SELECT vi.id_inscripcion_fk from validacion_inscripcion vi) ";
                 break;
             case "2":
                 //todas las solicitudes aprobadas
-                $filtro = " AND insc.id_inscripcion IN (SELECT vi.id_profesor_admin_fk from validacion_inscripcion vi) ";
+                $filtro = " AND insc.id_inscripcion IN (SELECT vi.id_inscripcion_fk from validacion_inscripcion vi) ";
                 break;
             default:
                 $filtro="";

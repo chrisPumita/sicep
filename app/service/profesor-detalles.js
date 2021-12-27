@@ -138,7 +138,7 @@ function cargaDataTableAsignaciones() {
                         if (porc<= 60) spanStyle = "success";
                         else if (porc >60 && porc <=80) spanStyle = "warning";
                         else spanStyle = "danger";
-                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span>';
+                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span> '+'<span class="badge bg-danger" id="badgePendientes"><i class="far fa-eye"></i> '+row.solicitudesPendientes+'</span>';
 
                         return template;
                     }
