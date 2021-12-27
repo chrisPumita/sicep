@@ -246,7 +246,8 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         prof.`email`, prof.`fecha_registro`, 
         prof.`estatus` AS estatus_profesor,
         admin.id_profesor_admin_fk, 
-        (case when admin.id_profesor_admin_fk is null then 0 else 1 end) as flagAdmin 
+        (case when admin.id_profesor_admin_fk is null then 0 else 1 end) as flagAdmin ,
+       (SELECT count(asig.id_profesor_fk) FROM asignacion_grupo asig WHERE prof.id_profesor = asig.id_profesor_fk) AS historialGpo
         FROM `persona` per,`departamentos` depto,`profesor` prof 
         left join administrador admin on admin.id_profesor_admin_fk = prof.id_profesor 
         WHERE 

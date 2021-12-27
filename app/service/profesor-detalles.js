@@ -5,6 +5,7 @@ window.onload = function(){
 $(document).ready(function() {
     let idProfesor = ID_PROFESOR;
     cargaDatosProfesor(idProfesor);
+    cargaDataTableAsignaciones();
 });
 
 function cargaDatosProfesor(idProfesor) {
@@ -86,4 +87,110 @@ function buildCardAdmin(ADMIN) {
                         </div>
                     </div>`;
     return template;
+}
+
+/// DATATABLE HISTORIAL
+function cargaDataTableAsignaciones() {
+    //headers
+    // GRUPO	CURSO	PROFESOR	INSCRITOS	PERIODO	TIPO	ESTADO
+    $('#tblHistAsigCurso').DataTable( {
+        "scrollX": true,
+        "ajax":
+            {
+                "url":"./webhook/lista-historico-asig-curso-datatable.php",
+                "data": {"idCurso": 0, "filtro": 2, "idFiltro":ID_PROFESOR},
+                "type": "POST"
+            },
+        //agregando attributo al fila
+        'createdRow': function( row, data, dataIndex ) {
+            $(row).attr('id_asignacion', data.id_asignacion);
+        },
+        "columns":
+            [
+                { data: null,
+                    render: function ( data, type, row ){
+                        let flagAdmin = estadoProfesorAdmin(row.flagAdmin);
+                        let status = row.estatus_profesor == 1 ? 'success':'warning';
+                        let template = `<div class="d-flex align-items-center" role="button" onclick="openAsig(${row.id_asignacion});">
+                                        <img height="60" src="${row.banner_img}" class="rounded float-start" alt="...">
+                                        <div class="d-flex flex-column justify-content-center px-3">
+                                            <p class="mb-0 text-xs">${row.nombre_curso}</p>
+                                        </div>
+                                    </div>`;
+                        return template;
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row )
+                    {
+                        return 'del '+ getLegibleFecha(row.fecha_inicio)+' <br>al '+getLegibleFecha(row.fecha_fin);
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                        return getTipoCurso(row.tipo_curso)+': '+getModalidadCurso(row.modalidad);
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                        let porc = (row.inscritos * 100)/row.cupo;
+                        let spanStyle;
+                        if (porc<= 60) spanStyle = "success";
+                        else if (porc >60 && porc <=80) spanStyle = "warning";
+                        else spanStyle = "danger";
+                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span>';
+
+                        return template;
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                        return 'Grupo: '+ row.grupo+'<br> Generación: '+row.generacion+'<br> Semestre: '+row.semestre;
+                    }
+                },
+                {
+                    data: 'ACTIONS',
+                    render: function ( data, type, row ){
+                        let template = '<a href="#" class="btn btn-primary viewAsignacion  me-1 mb-1" onclick="openAsig('+row.id_asignacion+');">' +
+                            '<i class="far fa-eye"></i></a>' +
+                            '<a href="#" class="btn btn-info me-1 mb-1"><i class="fas fa-list"></i></a>';
+                        return template;
+                    }
+                }
+            ],
+        "order": [[0, "asc" ]],
+        "language": {
+            "search": "Buscar",
+            "lengthMenu": " Mostrar _MENU_  cursos por página",
+            "zeroRecords": "No se han creado grupos de este Curso",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(Se filtro de _MAX_ cursos en total)",
+            "decimal": ".",
+            "thousands": ",",
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+    } );
+    //Evita el alert del warning
+    $.fn.dataTable.ext.errMode = 'none';
+
+    dataTable = $("#tblHistAsigCurso").DataTable({
+        "columnDefs": [
+            {
+                "targets": [7],
+                "visible": false
+            }
+        ]
+    });
+}
+
+function openAsig(id) {
+    let url = "./detalles-asignacion";
+    let data = {  id:id };
+    redirect_by_post(url, data, false);
 }

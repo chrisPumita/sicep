@@ -48,8 +48,26 @@ function cargaDatosProfesoresDataTable() {
                         return template;
                     }
                 },
-                { data: 'fecha_registro'},
-
+                { data: null,
+                    render: function ( data, type, row ){
+                        let template = `<div class="d-flex flex-column justify-content-center">
+                                            <p class="text-xs text-primary mb-0">${getLegibleFechaHora(row.fecha_registro)}</p>
+                                        </div>`;
+                        return template;
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                    let grupos = row.historialGpo > 0 ? `<span class="badge bg-info badge-pill badge-round ml-1"><i class="fas fa-chalkboard-teacher"></i> ${row.historialGpo}</span>` : 'Ninguno';
+                        let template = `<ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> ${grupos}</span>
+                                            
+                                        </li>
+                                    </ul>`;
+                        return template;
+                    }
+                },
                 { data: null,
                     render: function ( data, type, row ) {
                         let btnAcction = row.estatus_profesor != 1 ?
@@ -63,6 +81,7 @@ function cargaDatosProfesoresDataTable() {
                     }
                 }
             ],
+        "order": [[0, "asc" ]],
         "language": {
             "search": "Buscar",
             "lengthMenu": "Mostrar _MENU_ cursos por página",

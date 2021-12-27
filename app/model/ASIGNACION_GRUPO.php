@@ -627,6 +627,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
     //Function historial de asignaciones de un curso especifico
     // CHRIS RCGS 15/12/2021
+    // 0 Busqueda por curso 1-> pór asignacion 2-> por profesor
     function queryHistorialAsignacionesCurso($idCurso,$filtro, $idFiltro)
     {
         //se buscan el historial de in ID especifico
@@ -640,8 +641,8 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                     $filtro = " AND ag.id_asignacion = ".$idFiltro;
                     break;
                 case "2":
-                    //Buscar una todas las asignacion
-                    $filtro = "";
+                    //Buscar por profesor
+                    $filtro = " AND  prof.id_persona_fk = ".$idFiltro;
                     break;
             }
         }
@@ -663,7 +664,6 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
           AND ag.id_profesor_fk = prof.id_profesor
           AND ag.id_grupo_fk = gpo.id_grupo
           AND c.id_curso = gpo.id_curso_fk ".$idBusqueda." ".$filtro." ORDER BY ag.fecha_inicio ASC";
-
         $this->connect();
         $result = $this->getData($query);
         $this->close();

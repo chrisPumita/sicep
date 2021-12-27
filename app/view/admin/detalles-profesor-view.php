@@ -305,58 +305,30 @@
                 </div>
             </section>
 
+            <!-- seccion de historico de cursos -->
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Historial de grupos impartidos por este profesor
+                        Historico de Grupos creados de <span id="nombreCursoHistorial"></span>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
+                    <div class="card-body table-responsive">
+                        <!--Table prototype to use | tablas con  paginador-->
+                        <table class="table table-hover table-striped" id="tblHistAsigCurso" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>GRUPO</th>
                                 <th>CURSO</th>
-                                <th>CUPO</th>
-                                <th>INICIO</th>
+                                <th>PERIODO</th>
                                 <th>TIPO</th>
+                                <th>ESTADO</th>
+                                <th>DETALLES</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_grupo="3">
-                                <th scope="row">1</th>
-                                <td>1001</td>
-                                <td>Induccion al computo <span class="badge bg-warning">Terminado</span></td>
-                                <td>15</td>
-                                <td>2021-06-30 00:00:00</td>
-                                <td>En linea y Precencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">En Curso</span></td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </section>
+            <!-- fin seccion de historico de cursos -->
 
         </div>
         <footer class="text-center text-white ">
@@ -368,11 +340,14 @@
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
 
+-- INCLUDE DATATABLE -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+
+
 <!--CARGAR SERVICIOS AJAX-->
 <script src="./service/profesor-detalles.js"></script>
 <script src="./service/general/tools.js"></script>
 <script src="./service/general/tipos.js"></script>
-
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
@@ -394,8 +369,6 @@
     })
 
 </script>
-
-//profesores-detalles
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>

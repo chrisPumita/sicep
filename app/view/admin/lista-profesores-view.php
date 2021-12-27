@@ -85,6 +85,7 @@
                                 <th>DEPTO</th>
                                 <th>CONTACTO</th>
                                 <th>REGISTRO</th>
+                                <th>HISTORIAL</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>

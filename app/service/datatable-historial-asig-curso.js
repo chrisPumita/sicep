@@ -12,7 +12,7 @@ function cargaDataTableAsignaciones(idCurso) {
         "ajax":
             {
                 "url":"./webhook/lista-historico-asig-curso-datatable.php",
-                "data": {"idCurso": idCurso},
+                "data": {"idCurso": idCurso, "filtro": 0, "idFiltro":0},
                 "type": "POST"
             },
         //agregando attributo al fila
