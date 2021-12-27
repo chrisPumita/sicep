@@ -275,19 +275,13 @@ class PROFESOR extends PERSONA implements I_PROFESOR
 
     public function queryListProfesoresNoAdmin()
     {
-        $query = "SELECT DISTINCT per.`id_persona`, per.`nombre`, 
-        per.`app`, per.`apm`, per.`telefono`, 
-        per.`estatus` AS estatus_persona, prof.`id_profesor`, 
-        prof.`no_trabajador`, prof.`prefijo`, prof.`email`, 
-        prof.`fecha_registro`, prof.`estatus` AS estatus_profesor, 
-        depto.`id_depto`, depto.`nombre` AS depto_name 
+        $query = "SELECT DISTINCT per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`, 
+                per.`estatus` AS estatus_persona, prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, prof.`email`, 
+        prof.`fecha_registro`, prof.`estatus` AS estatus_profesor, depto.`id_depto`, depto.`nombre` AS depto_name 
         FROM `profesor` prof, `persona` per,`departamentos` depto 
         WHERE per.`id_persona` = prof.`id_persona_fk` 
-        AND prof.`estatus` = 1 AND per.`estatus`= 1 
-        AND depto.`id_depto`= prof.`id_depto_fk` 
-        AND prof.`id_profesor` NOT IN 
-            (SELECT admin.`id_profesor_admin_fk` 
-            FROM `administrador` admin) 
+        AND prof.`estatus` = 1 AND per.`estatus`= 1 AND depto.`id_depto`= prof.`id_depto_fk` 
+        AND prof.`id_profesor` NOT IN (SELECT admin.`id_profesor_admin_fk` FROM `administrador` admin) 
         ORDER BY `per`.`app`,`per`.`apm`,`per`.`nombre` ASC";
         $this->connect();
         $datos = $this-> getData($query);
@@ -307,21 +301,13 @@ class PROFESOR extends PERSONA implements I_PROFESOR
 
     function queryConsultaProfesor($id_profesor)
     {
-        $query="SELECT per.`id_persona`, 
-        per.`nombre`, per.`app`, per.`apm`, 
-        per.`telefono`, per.`sexo`, 
-        per.`estatus` AS estatus_persona, 
-        prof.`id_profesor`, prof.`no_trabajador`, 
-        prof.`prefijo`, prof.`email`, prof.`key_hash`, 
-        prof.`fecha_registro`, prof.`firma_digital`, 
-        prof.`firma_digital_img`, 
-        prof.`estatus` AS estatus_profesor, 
-        depto.`id_depto`, depto.`nombre` AS depto_name 
+        $query="SELECT per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`, per.`sexo`, 
+        per.`estatus` AS estatus_persona, prof.`id_profesor`, prof.`no_trabajador`,  prof.`prefijo`, prof.`email`, 
+       prof.`key_hash`, prof.`fecha_registro`, prof.`firma_digital`, prof.`firma_digital_img`, 
+       prof.`estatus` AS estatus_profesor, depto.`id_depto`, depto.`nombre` AS depto_name 
         FROM `profesor` prof, `persona` per,`departamentos` depto 
         WHERE prof.`id_persona_fk`=per.`id_persona` 
-        AND per.`estatus` = 1
-        AND prof.`id_depto_fk`= depto.`id_depto` 
-        AND prof.id_profesor =".$id_profesor." 
+        AND per.`estatus` = 1 AND prof.`id_depto_fk`= depto.`id_depto`  AND prof.id_profesor =".$id_profesor." 
         ORDER BY `per`.`app`,`per`.`apm`,`per`.`nombre` ASC";
         $this->connect();
         $datos = $this-> getData($query);
@@ -338,6 +324,17 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         '".$this->getFechaRegistro()."', 'NULL', 'NULL', './resource/default-avatar.jpg', '1')";
         $this->connect();
         $datos = $this-> executeInstruction($query);
+        $this->close();
+        return $datos;
+    }
+
+    function queryCardAdmin(){
+        $query = 'SELECT admin.id_profesor_admin_fk, admin.cargo, admin.permisos, admin.clave_confirmacion, admin.estatus, prof.*
+                    FROM administrador admin, profesor prof
+                    WHERE admin.id_profesor_admin_fk = prof.id_profesor
+                    AND prof.id_persona_fk =  '.$this->getIdProfesor();
+        $this->connect();
+        $datos = $this-> getData($query);
         $this->close();
         return $datos;
     }

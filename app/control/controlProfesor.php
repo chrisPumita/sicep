@@ -7,6 +7,27 @@ function consultaProfesores($filtro,$idProfesorUnique){
     return $PROFESORES->queryListaProfesoresAll($filtro,$idProfesorUnique);
 }
 
+//consulta la informacion de la cuenta de admin
+function consultaCuentaAdmin($idProfesor){
+    include_once "../model/PROFESOR.php";
+    $PROF = new PROFESOR();
+    $PROF->setIdProfesor($idProfesor);
+    return $PROF->queryCardAdmin($idProfesor);
+}
+
+function consultaProfesoresDetails($filtro,$idProfesorUnique){
+    $PROFES_DATA = consultaProfesores($filtro,$idProfesorUnique);
+    $profes = [];
+    foreach ($PROFES_DATA as $profe){
+        $profeTmp = array("DatosProfe"=>$profe,"datosAdmin"=>[]);
+        if (strcmp($profe['flagAdmin'], "1") === 0){
+            $profeTmp["DatosAdmin"]=consultaCuentaAdmin($idProfesorUnique)[0];
+        }
+        array_push($profes,$profeTmp);
+    }
+    return $profes;
+}
+
 function consultaListaAutoresCurso(){
     include_once "../model/PROFESOR.php";
     $PROFESORES = new PROFESOR();

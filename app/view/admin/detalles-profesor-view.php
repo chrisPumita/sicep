@@ -15,6 +15,58 @@
 <head>
     <?php include "includes/head.php"?>
     <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
+
+    <style>
+
+        .carousel-control-next, .carousel-control-prev {
+            width: auto!important;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url(../assets/images/next.png);
+        }
+        .carousel-control-prev-icon {
+            background-image: url(../assets/images/previous.png);
+        }
+
+
+
+        @media (max-width: 767px) {
+            .carousel-inner .carousel-item > div {
+                display: none;
+            }
+            .carousel-inner .carousel-item > div:first-child {
+                display: block;
+            }
+        }
+
+        .carousel-inner .carousel-item.active,
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+
+        /* medium and up screens */
+        @media (min-width: 768px) {
+
+            .carousel-inner .carousel-item-end.active,
+            .carousel-inner .carousel-item-next {
+                transform: translateX(25%);
+            }
+
+            .carousel-inner .carousel-item-start.active,
+            .carousel-inner .carousel-item-prev {
+                transform: translateX(-25%);
+            }
+        }
+
+        .carousel-inner .carousel-item-end,
+        .carousel-inner .carousel-item-start {
+            transform: translateX(0);
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -58,6 +110,7 @@
                     </div>
                 </div>
             </section>
+
             <section class="section">
                 <div class="row gutters-sm">
                     <div class="col-md-4 mb-3">
@@ -136,6 +189,123 @@
             </section>
 
             <section class="section">
+                <!-- ADMIN ACCOUNT ENABLE-->
+                <div class="section" id="sectionAdmin"> </div>
+                <!-- ADMIN ACCOUNT ENABLE-->
+            </section>
+            <section>
+                <div class="row gutters-sm">
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                Cursos Propuestos por el Profesor
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <div class="row mx-auto my-auto justify-content-center">
+                                        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2 bg-grey">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="col-12 col-md-3  px-3">
+                                                        <div class="card mb-2">
+                                                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                                                                 alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold">Card title</h4>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                    card's content.</p>
+                                                                <a class="btn btn-primary btn-md btn-rounded">Button</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            </a>
+                                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
                 <div class="card">
                     <div class="card-header">
                         Historial de grupos impartidos por este profesor
@@ -201,14 +371,28 @@
 <!--CARGAR SERVICIOS AJAX-->
 <script src="./service/profesor-detalles.js"></script>
 <script src="./service/general/tools.js"></script>
+<script src="./service/general/tipos.js"></script>
 
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
+    let items = document.querySelectorAll('.carousel .carousel-item')
+
+    items.forEach((el) => {
+        const minPerSlide = 4
+        let next = el.nextElementSibling
+        for (var i=1; i<minPerSlide; i++) {
+            if (!next) {
+                // wrap carousel by using first child
+                next = items[0]
+            }
+            let cloneChild = next.cloneNode(true)
+            el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    })
+
 </script>
 
 //profesores-detalles

@@ -104,6 +104,29 @@ function getNivelHTML(nivel) {
     return template;
 }
 
+function getNivelPermisos(nivel) {
+    let permisos = parseInt(nivel);
+    switch (permisos) {
+        case 0:
+            return '<i class="fas fa-circle text-yellow text-danger"></i> PERMISOS DENEGADOS';
+            break;
+        case 1:
+            return '<i class="fas fa-circle text-warning"></i> BAJO';
+            bg="warning";
+            break;
+        case 2:
+            return '<i class="fas fa-circle text-info"></i> MEDIO';
+            break;
+        case 3:
+            return '<i class="fas fa-circle text-success"></i> ALTO';
+            break;
+        default:
+            return '<i class="fas fa-circle text-dark"></i> NO IDENTIFICADO';
+            break;
+    }
+}
+
+
 function diaSemana(dia) {
     switch (dia) {
         case "0":
