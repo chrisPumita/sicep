@@ -260,7 +260,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         $filtroIdAlumno = $idAlumno > 0 ? " AND al.`id_alumno` = ".$idAlumno : "";
         $query = "SELECT al.`id_alumno`, al.`id_municipio`, mun.`id_estado_fk`, mun.`municipio`,
        al.`matricula`, al.`id_persona`, al.`carrera_especialidad`, al.perfil_image, al.nombre_uni,
-       al.`email`, al.`estatus` AS estatus_alumno, per.`id_persona`,
+       al.`email`, al.`estatus` AS estatus_alumno, per.`id_persona`,  al.fecha_registro,
        per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
        concat(per.`app`,' ', per.`apm`,' ', per.`nombre`) AS nombre_completo,
        per.`estatus` AS estatus_persona, per.`sexo`,tipproc.`id_tipo_procedencia`,
@@ -271,7 +271,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         WHERE al.`id_persona` = per.`id_persona`
           AND uni.id_universidad = al.id_universidad
           AND al.`id_municipio` = mun.`id_municipio`
-          AND edosRep.id_estado = mun.id_municipio
+          AND edosRep.id_estado = mun.id_estado_fk
           AND al.`id_tipo_procedencia_fk`= tipproc.`id_tipo_procedencia`
         ".$filtro." ".$filtroIdAlumno."
         ORDER BY per.`app`, per.`apm`,per.`nombre` ASC";

@@ -49,8 +49,8 @@
                     <!-- detalles del curso-->
                     <div class="col-md-7">
                         <div class="card">
-                            <div class="card-body py-4 px-5">
-                                <div class="d-flex align-items-center">
+                            <div class="card-body py-4 px-5 d-flex">
+                                <div class="col-sm-8 d-flex align-items-center">
                                     <div class="avatar avatar-xl">
                                         <img src="../assets/images/start-sesion.png" alt="Face 1">
                                     </div>
@@ -58,7 +58,11 @@
                                         <h4 class="font-bold">Aprobación pendiente</h4>
                                         <h6 class="text-muted mb-0">Si este curso ya está listo, puede enviarlo para su aprobación.</h6>
                                     </div>
-                                    <a href="#" class="btn btn-success"> <i class="fas fa-paper-plane"></i> Enviar</a>
+                                </div>
+                                <div class="col-sm-4 m-auto">
+                                    <div class="col-sm-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#updateDatosCursos"><i class="fas fa-paper-plane"></i> Terminar y Enviar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -105,6 +105,7 @@
                                 <th>MATRICULA</th>
                                 <th>UNIVERSIDAD</th>
                                 <th>CONTACTO</th>
+                                <th>FECHA</th>
                                 <th>CUENTA</th>
                                 <th>ACCIONES</th>
                             </tr>

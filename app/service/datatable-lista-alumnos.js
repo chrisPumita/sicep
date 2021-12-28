@@ -51,6 +51,11 @@ function cargaDatosAlumnosDataTable(typeFiltro) {
                 },
                 { data: null,
                     render: function ( data, type, row ){
+                        return getLegibleFechaHora(row.fecha_registro);
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
                         let status = row.id_alumno > 0 ? "ACTIVA":"SUSPENDIDA";
                         return status;
                     }
@@ -149,6 +154,11 @@ function cargaDatosAlumnosPendientesDataTable(typeFiltro) {
                                             <p class="text-xs text-primary mb-0">${row.municipio}</p>
                                         </div>`;
                         return template;
+                    }
+                },
+                { data: null,
+                    render: function ( data, type, row ){
+                        return getLegibleFechaHora(row.fecha_registro);
                     }
                 },
                 { data: null,
