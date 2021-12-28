@@ -3,53 +3,5 @@
 <script src="./service/profesor-add.js"></script>
 <script src="./service/general/swal-alerts.js"></script>
 <script src="./service/general/tools.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-        cargaListaDeplegableCursosActivos();
-        loadContaores();
-    });
-
-    function cargaListaDeplegableCursosActivos() {
-        cargaCursos(0,1).then(function (JSONData) {
-            let listaHtml = buildListaDesplCursos(JSONData);
-            $("#modal-lista-cursos").html(listaHtml);
-        });
-    }
-
-    function loadAsignacion() {
-        let url = "./nueva-asignacion";
-        let data = {  id: $("#modal-lista-cursos").val() };
-        redirect_by_post(url, data, false);
-    }
-
-    //loading contadores de navbar
-    function loadContaores(){
-        contadoresNavBar().then(function (contadores) {
-            console.log(contadores);
-
-            let contadorAlumnosTemplate = contadores.alumnosCountVerif >0 ?
-                `Alumnos  <span class="badge bg-primary">${contadores.alumnosCountVerif}</span>` : `Alumnos`;
-            $("#counterSolicAlumnos").html(contadorAlumnosTemplate);
-
-            let contadorAlumnosVerTemplate = contadores.alumnosCountVerif >0 ?
-                `Revisar cuentas <span class="badge bg-primary">${contadores.alumnosCountVerif}</span>` : `Revisar cuentas`;
-            $("#counterSolicAlumnosView").html(contadorAlumnosVerTemplate);
-
-            /*
-            Solicitudes  <span class="badge bg-danger">0</span>
-            */
-            let contSolcPendtemplate = contadores.solPendientes >0 ?
-                `Solicitudes  <span class="badge bg-danger">${contadores.solPendientes}</span>` : `Solicitudes`;
-            $("#countSolicSidebar").html(contSolcPendtemplate);
-
-            let contCursosPendRevtemplate = contadores.cursosPendRev >0 ?
-                `Cursos  <span class="badge bg-primary">${contadores.cursosPendRev}</span>` : `Cursos`;
-            $("#contCursosSideBar").html(contCursosPendRevtemplate);
-
-        })
-    }
-
-</script>
+<script src="./service/general/main-load-admin.js"></script>
 
