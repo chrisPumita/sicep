@@ -34,13 +34,13 @@
                                 </div>
                                 <div class="col-lg-10 col-9 d-flex">
                                     <div class="form-check mx-3">
-                                        <input class="form-check-input" type="radio" name="sexo" id="mujer" checked="">
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" checked="" value="1">
                                         <label class="form-check-label" for="mujer">
                                             Femenino
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sexo" id="hombre" >
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo"value="0">
                                         <label class="form-check-label" for="hombre">
                                             Masculino
                                         </label>

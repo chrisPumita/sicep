@@ -310,7 +310,7 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
             .$this->getCarreraEspecialidad()."',
             '".$this->getEmail()."', '"
             .$this->getPw()."', '"
-            .date('Y-m-d H:i:s')."', '', '"
+            .date('Y-m-d H:i:s')."', '../resources/default-avatar.png', '"
             .$this->getEstatusAlumno()."')";
         $this->connect();
         $result = $this->executeInstruction($query);

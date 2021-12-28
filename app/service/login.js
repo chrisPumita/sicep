@@ -97,6 +97,7 @@ function buildHTMLTblUnis(UNIS) {
             template += `<option value="${obj.id_universidad}">${obj.siglas} (${obj.nombre})</option>`;
         }
     );
+    template += `<option value="OTRO">Otro</option>`;
     $("#universidades").html(template);
 }
 
@@ -106,3 +107,9 @@ $("#estados").change(function ()
     let estado_sel = $("#estados").val();
     consultaMunicipios(estado_sel);
 });
+
+//LFHL pensando en como obtener el valor cuando se ahga el ONCHANGE pero con el nombre de la Universidad
+$( "#universidades" ).change(function() {
+    let cambio= $("#universidades").text();
+    alert(cambio);
+  });
