@@ -322,9 +322,11 @@ $(document).on("click", ".deleteAula", function ()
 });
 
 /*********Funciones Documentos********/
-async function consultaDocs() {
-    const JSONData = await consultaDocsAjax();
-    buildHTMLTblDocuments(JSONData);
+
+function consultaDocs(){
+    consultaDocsAsync().then(function (JSONData) {
+        buildHTMLTblDocuments(JSONData);
+    })
 }
 
 function buildHTMLTblDocuments(obj_result) {

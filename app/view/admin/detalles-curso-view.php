@@ -353,6 +353,28 @@ $titulo = "Detalles del curso"
                 </div>
             </section>
             <!-- fin seccion de temario -->
+
+            <!-- seccion de documentacion -->
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <!-- boton que da problemas en responsive -->
+                            <div class="col-sm-12 col-md-6">
+                                <h5 class="text-secondary"><i class="fas fa-folder-open"></i> Documentacion requerida</h5>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <span class="position-absolute  mx-3 end-0">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#documentacionModal">
+                                    <i class="fas fa-plus"></i> Agregar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive" id="tblDocSol"></div>
+                </div>
+            </section>
+            <!-- fin seccion de documentacion -->
             <!-- seccion de temario -->
             <section class="section" id="sectionDescuentos">
                 <div class="card">

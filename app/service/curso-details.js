@@ -6,8 +6,26 @@ $(document).ready(function() {
     consultaGrupos(id);
     cargaAulasListDespl();
     cargaTemario(id);
+    cargaTblDocumentacion(id);
     consultaTblDescuentos(id);
+    cargaListaDocsModal();
 });
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+function cargaListaDocsModal() {
+    consultaDocsAsync().then(function (JSONData) {
+        console.log(JSONData);
+        let template = "";
+        JSONData.forEach(
+            (doc)=>{template+= `<option value="${doc.id_documento}">${doc.nombre_doc}</option>`; }
+        );
+        $("#modalListDosc").html(template);
+    });
+}
 
 //* DETALLES GENERALES DEL CURSO*/
 async function cargaCursoDetails(filtro, idUnique) {
@@ -162,6 +180,68 @@ function buildTBLHtmlTemario(TEMAS) {
     $("#tblTemario").html(template);
 }
 
+function cargaTblDocumentacion(id) {
+    consultaDocumentacion(id).then(function (e) {
+       buildTBLHtmlDocsSol(e)
+    });
+}
+
+function buildTBLHtmlDocsSol(DOSC) {
+    console.log(DOSC);
+    let template;
+    if (DOSC.length > 0) {
+        template= `
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>DOCUMENTO</th>
+                        <th>DETALLES</th>
+                        <th>REVISA</th>
+                        <th>CONFIRMA INSCRIPCION</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                    </thead>
+                <tbody>`;
+        DOSC.forEach(
+            (doc)=>
+            {
+                let acre = doc.tipo == "1" ?`<i class="fas fa-user-shield"></i> ADMIN`:`CUALQUIERA`;
+                let confirmaInsc = doc.obligatorio == "1" ?  `<ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"  data-bs-toggle="tooltip" data-bs-placement="top" 
+                        title="Al confirmar la entrega de este documento, automaticamente se confirmará la inscripcion del alumno, y este quedará asentado el la lista oficial. ">
+                            <span> CONFIRMA</span>
+                            <span class="badge bg-success badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
+                        </li>
+                    </ul>` : `` ;
+                template+= `
+                        <tr id_tema="${doc.id_doc_sol}">
+                            <td>${doc.nombre_doc}</td>
+                            <td>${doc.formato_admitido} - ${doc.peso_max_mb}MB Max.</td>
+                            <td>${acre}</td>
+                            <td>${confirmaInsc}</td>
+                            <td>
+                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#documentacionModal"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>`;
+            }
+        );
+        template+= `
+                </tbody>
+              </table>`;
+    }
+    else{
+        template= `
+                <div class="alert alert-light alert-dismissible show fade">
+                   No hay documentos requeridos. Agregue los documentos que se requieren para inscribirse en algun grupo
+                   de este curso. Si no es necesario algun documento, omita esta opcion. Pero debe Acreditar las inscripciones
+                   de forma manual.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+    }
+    $("#tblDocSol").html(template);
+}
+
 function openGroup(id) {
     let url = "./nueva-asignacion";
     let data = {  id:id };
@@ -214,7 +294,6 @@ function consultaTblDescuentos(idGpo) {
     consultaDescuentos(idGpo).then(function (e) {
         buildTBLHtmlDescuentos(e);
         comparaProcedencias(e).then(function (PROC_LIST) {
-            console.log(PROC_LIST);
             let template;
             if (PROC_LIST.length > 0) {
                 template = `<form id="form-add-dirigido">
@@ -257,8 +336,6 @@ function consultaTblDescuentos(idGpo) {
 async function comparaProcedencias(PROC_APLI) {
     const PROCEDENCIAS = await consultaProcedenciasAjax("./");
     let PROCEDENCIAS_LISTA = [];
-    console.log(PROCEDENCIAS);
-    console.log(PROC_APLI);
     //comparamos las que existen y no y las mandamos a pintar en el modal
     PROCEDENCIAS.forEach(
         (pro)=>

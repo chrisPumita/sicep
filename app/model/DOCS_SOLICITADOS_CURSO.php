@@ -1,7 +1,7 @@
 <?php
 include("DOCUMENTO.php");
 include_once "interface/I_DOCS_SOLICITADOS.php";
-class DOCS_SOLICITADOS_CURSO extends  DOCUMENTO implements I_DOCS_SOLICITADOS
+class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
 {
     private $id_doc_sol;
     private $id_curso_fk;
@@ -57,12 +57,14 @@ class DOCS_SOLICITADOS_CURSO extends  DOCUMENTO implements I_DOCS_SOLICITADOS
     }
 
 
-    function consultarListaDocumentosSol($id_curso)
+    function queryListaDocumentosSol()
     {
-        $sql = "SELECT d.*, ds.`obligatorio` 
-                                    FROM `documento` d, `docs_solicitados_curso` ds  
-                                    WHERE d.`id_documento` = ds.`id_documento_fk` 
-                                    AND ds.`id_curso_fk`=" . $id_curso ;
+        $sql = "select doc.id_documento, doc.nombre_doc, doc.formato_admitido,
+                   doc.tipo, doc.peso_max_mb, doc.estatus, docs_cur.id_doc_sol,
+                   docs_cur.id_documento_fk, docs_cur.id_curso_fk, docs_cur.obligatorio
+                    from documento doc,  docs_solicitados_curso docs_cur
+                    where doc.id_documento = docs_cur.id_documento_fk
+                    AND docs_cur.`id_curso_fk`=" . $this->getIdCursoFk() ;
         $this->connect();
         $datos = $this-> getData($sql);
         $this->close();
@@ -70,31 +72,32 @@ class DOCS_SOLICITADOS_CURSO extends  DOCUMENTO implements I_DOCS_SOLICITADOS
     }
 
     //ejecuta la insctruccion y me regresa true si se efectuo de forma correcta
-    public function crearDocumentosSol()
+    public function queryAddListaDocSolCurso()
     {
-        $query = "INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, 
-                   `id_curso_fk`, `obligatorio`) 
-                  VALUES (NULL,'".$this->getIdDocumento()."','".$this->getIdCursoFk()."','".$this->getObligatorio()."')";
-
+        $query = "INSERT INTO seltic.docs_solicitados_curso (id_documento_fk, id_curso_fk, obligatorio)
+                    VALUES ('".$this->getIdDocumento()."','".$this->getIdCursoFk()."','".$this->getObligatorio()."')";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
 
-    function eliminaDocumentoSolicitado($id_documento_sol)
+    function queryEliminaDocumentoSolicitado()
     {
+        $query = "DELETE FROM seltic.docs_solicitados_curso
+                            WHERE id_doc_sol =  ".$this->getIdDocSol();
         $this->connect();
-        $datos = $this-> executeInstruction("DELETE FROM `docs_solicitados_curso` WHERE `id_doc_sol`= ".$id_documento_sol);
+        $datos = $this-> executeInstruction($query);
         $this->close();
         return $datos;
     }
 
-    function cambiarOblig($estatus)
+    function cambiarObligDocSol()
     {
         $this->connect();
-        $sql = "UPDATE `docs_solicitados_curso` SET `obligatorio` = '".$estatus."' 
-        WHERE `docs_solicitados_curso`.`id_doc_sol` = ".$this->getIdDocSol();
+        $sql = "UPDATE seltic.docs_solicitados_curso t
+                SET t.obligatorio = ".$this->getObligatorio()."
+                WHERE t.id_doc_sol  = ".$this->getIdDocSol();
         $response = $this-> executeInstruction($sql);
         $this->close();
         return $response;

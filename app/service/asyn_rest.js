@@ -21,7 +21,6 @@ async function cargaCursos(filtro, valueID) {
     return await consultaCursosAjax(filtro,valueID);
 }
 
-
 async function listaGposCursoAjax(idCurso,route){
     return $.ajax(
         {
@@ -112,6 +111,10 @@ async function consultaAulasAjax(filtro,tipo){
 }
 
 //Consulta documentos disponibles
+async function consultaDocsAsync() {
+    return await consultaDocsAjax();
+}
+
 async function consultaDocsAjax() {
     return $.ajax(
         {
@@ -289,7 +292,7 @@ async function consultaTemarioAjax(idCurso){
     );
 }
 
-/////PROMISE GENERAL CONSULTA DESCUENTOS
+/////PROMISE GENERAL CONSULTA TEMARIO REQUERE ID CURSO
 async function consultaTemario(idGrupo) {
     return await consultaTemarioAjax(idGrupo);
 }
@@ -304,6 +307,28 @@ async function consultaInfoAsignacionAjax(idAsignacion,filtro){
             dataType: "json",
             success: function(res){
                 //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
+            }
+        }
+
+    );
+}
+
+async function consultaDocumentacion(idCurso) {
+    return await consultaDocumentacionAjax(idCurso);
+}
+/// DOCUMENMTACION AJAX
+async function consultaDocumentacionAjax(idCUrso){
+    return $.ajax(
+        {
+            url:"./webhook/lista-doc-sol-curso.php",
+            type: "POST",
+            data: {idCurso : idCUrso},
+            dataType: "json",
+            success: function(res){
+               //    console.log(res);
             },
             error: function() {
                 internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
