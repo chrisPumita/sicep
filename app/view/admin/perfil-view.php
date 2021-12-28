@@ -147,7 +147,7 @@
                                     <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
                                     <p class="card-text text-muted">En este apartado puede cambiar su contraseña actual.</p>
                                     <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
-                                        <button type="button" class="btn btn-primary btn-sm">Cambiar</button>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
                                     </a>
                                 </div>
                             </div>
@@ -192,6 +192,7 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-cambiar-password.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,34 +31,17 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-12 order-md-1 order-last">
-                        <h3>Detalles <span id="nombreCursoTitulo"></span></h3>
+                        <h3>Editar detalles del curso propuesto</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="./lista-cursos">Cursos</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+                                <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="./lista-propuestas">Cursos Propuestos</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Editar detalles</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
-
-            <!-- seccion callout -->
-            <section class="row">
-                <div class="col-lg-12 col-lg-9">
-                    <div class="callout callout-second">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- seccion detalles y banner img -->
             <section class="section">
@@ -67,22 +49,16 @@
                     <!-- detalles del curso-->
                     <div class="col-md-7">
                         <div class="card">
-                            <div class="card-content">
-                                <div class="callout callout-primary p-0">
-                                    <div id="detallesAprobacionCurso">
-                                        <div class="d-flex">
-                                            <div class="m-auto">
-                                                <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
-                                            </div>
-                                            <div class="m-auto">
-                                                <h5>Sin acreditar</h5>
-                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
-                                            </div>
-                                            <div class="card-body d-flex text-align-right pb-0">
-                                                <a href="#" class="btn btn-success btn-block ">Acreditar</a>
-                                            </div>
-                                        </div>
+                            <div class="card-body py-4 px-5">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-xl">
+                                        <img src="../assets/images/start-sesion.png" alt="Face 1">
                                     </div>
+                                    <div class="ms-3 name">
+                                        <h4 class="font-bold">Aprobación pendiente</h4>
+                                        <h6 class="text-muted mb-0">Si este curso ya está listo, puede enviarlo para su aprobación.</h6>
+                                    </div>
+                                    <a href="#" class="btn btn-success"> <i class="fas fa-paper-plane"></i> Enviar</a>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +81,7 @@
                                         </div>
                                         <div id="collapse1" class="collapse pt-1" aria-labelledby="heading1"
                                             data-parent="#cardAccordion">
-                                            <p class="p-3" id="detallesCurso"></p>
+                                            <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, culpa. Voluptatem libero eligendi sapiente sunt reiciendis explicabo mollitia facilis aspernatur, consectetur incidunt debitis, officia delectus repudiandae natus sequi veniam iste.</p>
                                         </div>
 
                                         <!-- PARTE ACORDEON 2 -->
@@ -122,7 +98,7 @@
                                         </div>
                                         <div id="collapse2" class="collapse pt-1" aria-labelledby="heading2"
                                             data-parent="#cardAccordion">
-                                            <p class="p-3" id="objetivo"></p>
+                                            <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, culpa. Voluptatem libero eligendi sapiente sunt reiciendis</p>
                                         </div>
 
                                         <!-- PARTE ACORDEON 3 -->
@@ -139,7 +115,7 @@
                                         </div>
                                         <div id="collapse3" class="collapse pt-1" aria-labelledby="heading3"
                                              data-parent="#cardAccordion">
-                                            <p class="p-3" id="antecedentes"></p>
+                                            <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, culpa. Voluptatem libero eligendi sapiente sunt reiciendis</p>
                                         </div>
 
                                     </div>
@@ -150,42 +126,42 @@
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Dirigido a</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="dirigido_a">   </div>
+                                        <div class="col-sm-9 text-primary text-bold">Egresados</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Modalidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="modalidad"></div>
+                                        <div class="col-sm-9 text-primary text-bold">Presencial</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Código</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="codigoInfo"> </div>
+                                        <div class="col-sm-9 text-primary text-bold">54564</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Sesiones</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="sesionesInfo"></div>
+                                        <div class="col-sm-9 text-primary text-bold">15</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Costo Sugerido:</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="costoSugerido"></div>
+                                        <div class="col-sm-9 text-primary text-bold">$1,500</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Registrado desde</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="fechaCreacion"></div>
+                                        <div class="col-sm-9 text-primary text-bold">15 de Junio, 2021</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 d-flex justify-content-end">
@@ -206,7 +182,7 @@
                                             <img src="../assets/images/start-sesion.png" alt="Face 1">
                                         </div>
                                         <div class="ms-3 name">
-                                            <h5 class="font-bold" id="nombreAutor"></h5>
+                                            <h4 class="font-bold">Predro Rene Hernandez Suarez</h4>
                                             <h6 class="text-muted mb-0">AUTOR</h6>
                                         </div>
                                     </div>
@@ -215,7 +191,7 @@
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <span id="imgContainer"></span>
+                                <div class="img d-block w-100" style="background-image: url(../resources/banners/19/banner-20211222010305.jpg); height: 300px; "></div>
                                 <div class="card-body pt-3">
                                     <h4 class="card-title">Imagen del banner</h4>
                                     <p class="card-text">
@@ -248,7 +224,8 @@
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <span id="filePDF" class="me-1 mb-1"></span>
                                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                                        <a href="#" class="btn btn-outline-danger me-1 mb-1"><i class="fas fa-times"></i></a></div>
+                                        <a href="#" class="btn btn-outline-danger me-1 mb-1"><i class="fas fa-times"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +252,56 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body table-responsive" id="tblTemario"></div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>INDICE</th>
+                                <th>TEMA</th>
+                                <th>DESCRIPCIÓN</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr id_tema="2">
+                                    <td>1.1</td>
+                                    <td>Nombre de tema 2</td>
+                                    <td>Resumen de tema2</td>
+                                    <td>
+                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr id_tema="4">
+                                    <td>1.2</td>
+                                    <td>Nombre Actualizado de Tema</td>
+                                    <td>Resumen Actualizado de Tema</td>
+                                    <td>
+                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr id_tema="1">
+                                    <td>2.1</td>
+                                    <td>Nombre de tema</td>
+                                    <td>Resumen de tema</td>
+                                    <td>
+                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr id_tema="5">
+                                    <td>2.2</td>
+                                    <td>Nombre de tema 256</td>
+                                    <td>Resumen</td>
+                                    <td>
+                                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>  
+                    </div>                                      
                 </div>
             </section>
             <!-- fin seccion de temario -->

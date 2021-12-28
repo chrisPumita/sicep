@@ -146,7 +146,7 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="form-element-input.html">Actuales</a>
+                            <a href="./lista-grupos-profesor">Actuales</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-element-input-group.html">Actas</a>
