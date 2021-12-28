@@ -23,9 +23,11 @@ function addCurso($params){
     $CURSO->setAntecedentes($params['antecedentes']);
     $CURSO->setAprobado($params['aprobado']);
     $CURSO->setCostoSugerido($params['costo']);
+    //Apartado donde se mete el link despues de guardarlo en el servidor
     $CURSO->setLinkTemarioFk($params['linkTemario']);
     $CURSO->setFechaCreacion($params['fechaCreacion']);
     $CURSO->setFechaAcreditacion($params['fechaAcreditacion']);
+    //Apartado donde se mete el link despues de guardarlo en el servidor
     $CURSO->setBannerImg($params['banner']);
     $CURSO->setTipoCurso($params['tipoCurso']);
     return $CURSO->registraCurso();

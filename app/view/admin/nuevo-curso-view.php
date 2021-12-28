@@ -210,7 +210,7 @@
                                                     <p>Llene toda la información que se requiere.</p>
                                                     <div class="row">
                                                         <div class="col-md-12 mx-0">
-                                                            <form id="msform">
+                                                        <form id="msform">
                                                                 <!-- progressbar -->
                                                                 <ul id="progressbar">
                                                                     <li class="active" id="account"><strong>Información Básica</strong></li>
@@ -279,6 +279,16 @@
                                                                                                     <label for="editarCosto">Costo sugerido</label>
                                                                                                     <input type="number" class="form-control valid" id="costo" min="0" name="costo" requere="" value="0" >
                                                                                                 </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-4">
+                                                                                                <label for="tipoCurso">Tipo de Curso</label>
+                                                                                                <select class="form-control" id="tipoCurso" name="tipoCurso">
+                                                                                                    <option value="0">Curso</option>
+                                                                                                    <option value="1">Curso</option>
+                                                                                                    <option value="2">Diplomado</option>
+                                                                                                    <option value="3">Taller</option>
+                                                                                                    <option value="4">Seminario</option>
+                                                                                                </select>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

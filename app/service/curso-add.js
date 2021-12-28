@@ -1,15 +1,14 @@
  $(document).ready(function () {
     cargaListDocs();
-    alert("Funciona");
 });
 //Funcion tipo SUBMIT para envio de datos y peticiones a servidor LFHL
-$("#frm-add-modelo").on("submit", function(e){
+$("#msform").on("submit", function(e){
     var f = $(this);
-    var formData = new FormData(document.getElementById("frm-add-modelo"));
+    var formData = new FormData(document.getElementById("msform"));
     formData.append("dato", "valor");
     //formData.append(f.attr("name"), $(this)[0].files[0]);
     $.ajax({
-        url: "../webhook/add-modelo.php",
+        url: "./webhook/add-curso.php",
         type: "post",
         dataType: "html",
         data: formData,
@@ -18,29 +17,28 @@ $("#frm-add-modelo").on("submit", function(e){
         processData: false
     })
         .done(function(res){
+            console.log(res);
         $("#frm-add-modelo").trigger('reset');
-        $("#modaladdmodelo").modal('hide');
-        getMarcas();
         });
     e.preventDefault();
 });
 
 async function cargaListDocs() {
     const JSONData = await consultaDocsAjax();
-    //buildTableHTMLProcedencias(JSONData);
-    console.log(JSONData);
+    buildListGHTMLDocs(JSONData);
 }
 //lg-documentos
 
 function buildListGHTMLDocs(obj_result) {
     let template = "";
+    console.log(obj_result);
     obj_result.forEach(
         (obj_result)=>
         {
             template += `
             <label class="list-group-item">
-                <input class="form-check-input me-1" type="checkbox" value="">
-                Comprobante de pago
+                <input class="form-check-input me-1" type="checkbox" name="documentos[]" value="${obj_result.id_documento}">
+                ${obj_result.nombre_doc}
             </label>
             `;
         }
