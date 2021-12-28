@@ -1,9 +1,9 @@
 <?php
 /*Funcion para consultar todos los cursos LFHL*/
-function consultaCursos($estado_filtro, $id_curso){
+function consultaCursos($typeFiltro,$value){
     include_once "../model/CURSO.php";
     $CURSO = new CURSO();
-    $result = $CURSO->queryconsultaCursos($estado_filtro, $id_curso);
+    $result = $CURSO->queryconsultaCursos($typeFiltro,$value);
     return $result;
 }
 

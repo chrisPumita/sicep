@@ -642,7 +642,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                     break;
                 case "2":
                     //Buscar por profesor
-                    $filtro = " AND  prof.id_persona_fk = ".$idFiltro;
+                    $filtro = " AND  prof.id_profesor = ".$idFiltro;
                     break;
             }
         }

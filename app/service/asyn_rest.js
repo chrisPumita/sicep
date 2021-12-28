@@ -1,21 +1,26 @@
 //get courses
-async function consultaCursosAjax(filtro, idCursoEspc) {
+async function consultaCursosAjax(filtro, valueID) {
     return $.ajax({
         url: "./webhook/lista-cursos.php",
         type: 'POST',
         dataType: "json",
         data: {
             filtro: filtro,
-            id_curso_filtro : idCursoEspc
+            valueID : valueID
         },
         success: function(data){
-            // console.log(data);
+         //   console.log(data);
         },
         error: function() {
             alert("Error occured")
         }
     });
 }
+
+async function cargaCursos(filtro, valueID) {
+    return await consultaCursosAjax(filtro,valueID);
+}
+
 
 async function listaGposCursoAjax(idCurso,route){
     return $.ajax(

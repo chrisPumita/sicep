@@ -39,17 +39,6 @@ function cargaDataTableAsignaciones(idCurso) {
                     }
                 },
                 { data: null,
-                    render: function ( data, type, row ){
-                    //determinamos %
-                        let porc = (row.inscritos * 100)/row.cupo;
-                        let spanStyle;
-                        if (porc<= 60) spanStyle = "success";
-                        else if (porc >60 && porc <=80) spanStyle = "warning";
-                        else spanStyle = "danger";
-                        return '<span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span>'
-                    }
-                },
-                { data: null,
                     render: function ( data, type, row )
                     {
                         return 'del '+row.fecha_inicio+' <br>al '+row.fecha_fin;
@@ -62,7 +51,14 @@ function cargaDataTableAsignaciones(idCurso) {
                 },
                 { data: null,
                     render: function ( data, type, row ){
-                        return getEstatusAsignacion(row.statusAsignacion);
+                        let porc = (row.inscritos * 100)/row.cupo;
+                        let spanStyle;
+                        if (porc<= 60) spanStyle = "success";
+                        else if (porc >60 && porc <=80) spanStyle = "warning";
+                        else spanStyle = "danger";
+                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span> '+'<span class="badge bg-danger" id="badgePendientes"><i class="far fa-eye"></i> '+row.solicitudesPendientes+'</span>';
+
+                        return template;
                     }
                 },
                 { data: null,
@@ -79,7 +75,7 @@ function cargaDataTableAsignaciones(idCurso) {
                 }
             ],
         "language": {
-            "search": "Buscar",
+            "search": '<i class="fas fa-search"></i> ',
             "lengthMenu": " Mostrar _MENU_  cursos por página",
             "zeroRecords": "No se han creado grupos de este Curso",
             "info": "Mostrando página _PAGE_ de _PAGES_",

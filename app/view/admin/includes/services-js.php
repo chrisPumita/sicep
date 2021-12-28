@@ -1,5 +1,4 @@
 <script src="./service/asyn_rest.js"></script>
-<script src="./service/data-cursos-ajax.js"></script>
 <script src="./service/html-builds.js"></script>
 <script src="./service/profesor-add.js"></script>
 <script src="./service/general/swal-alerts.js"></script>
@@ -8,9 +7,16 @@
 
 <script>
     $(document).ready(function () {
-        cargaCursosListaDeplegableModal(1,0);
+        cargaListaDeplegableCursosActivos();
         loadContaores();
     });
+
+    function cargaListaDeplegableCursosActivos() {
+        cargaCursos(0,1).then(function (JSONData) {
+            let listaHtml = buildListaDesplCursos(JSONData);
+            $("#modal-lista-cursos").html(listaHtml);
+        });
+    }
 
     function loadAsignacion() {
         let url = "./nueva-asignacion";
@@ -34,12 +40,10 @@
             /*
             Solicitudes  <span class="badge bg-danger">0</span>
             */
-
             let contSolcPendtemplate = contadores.solPendientes >0 ?
                 `Solicitudes  <span class="badge bg-danger">${contadores.solPendientes}</span>` : `Solicitudes`;
             $("#countSolicSidebar").html(contSolcPendtemplate);
 
-            
             let contCursosPendRevtemplate = contadores.cursosPendRev >0 ?
                 `Cursos  <span class="badge bg-primary">${contadores.cursosPendRev}</span>` : `Cursos`;
             $("#contCursosSideBar").html(contCursosPendRevtemplate);

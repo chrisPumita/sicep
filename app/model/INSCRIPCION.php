@@ -346,4 +346,25 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         return $result;
     }
 
+    function queryConteoInscripcionesAnio(){
+        $query = "SELECT MONTH(insc.fecha_solicitud) Mes,
+       COUNT(*) CantMes FROM inscripcion insc
+        WHERE YEAR(insc.fecha_solicitud) = YEAR(CURDATE()) AND MONTH(insc.fecha_solicitud)
+        BETWEEN 1 and 12 GROUP BY MONTH(insc.fecha_solicitud) ORDER BY 1";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryConteoHM(){
+        $query = "SELECT per.sexo, COUNT(*) AS suma,
+                   (count(per.sexo)/(select count(*) from alumno))*100 as PORCENTAJE FROM alumno al, persona per
+                     WHERE per.id_persona = al.id_persona GROUP BY per.sexo";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
 }

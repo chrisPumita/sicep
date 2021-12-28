@@ -1,11 +1,14 @@
 window.onload = function(){
     //cargar desoues de consultar la informacion
+    cargaCursoPropuestos();
 }
 
 $(document).ready(function() {
-    let idProfesor = ID_PROFESOR;
+    let idProfesor = ID_PROF;
+    console.log(ID_PROF);
     cargaDatosProfesor(idProfesor);
     cargaDataTableAsignaciones();
+
 });
 
 function cargaDatosProfesor(idProfesor) {
@@ -14,6 +17,90 @@ function cargaDatosProfesor(idProfesor) {
         let ProfesorFound = response.profes[0];
         printHTMLDetails(ProfesorFound);
     })
+}
+function cargaCursoPropuestos() {
+    cargaCursos(2,ID_PROF).then(function (JSONData) {
+        console.log(JSONData);
+        let template = "";
+        if (JSONData.length>0){
+            template = `
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong>Se ecnontraron ${JSONData.length} cursos propuestos</strong>
+                   Elija uno pera ver los detalles
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column align-items-center text-center">
+                    <div class="row mx-auto my-auto justify-content-center">
+                        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" role="listbox">`;
+            let cont = 0;
+            let CSSCol = JSONData.length<4 ? 12 / JSONData.length : 3;
+            JSONData.forEach(
+                (curso)=>
+                {
+                    cont ++;
+                    let active = cont == 1 ? " active": "";
+                    template += `
+                        <div class="carousel-item ${active}">
+                            <div class="col-12 col-md-${CSSCol} px-3">
+                                <div class="card mb-2 bg-grey">
+                                    <img class="card-img-top" src="${curso.banner_img}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title font-weight-bold">${curso.codigo} ${curso.nombre_curso}</h4>
+                                        <span class="badge bg-success">Impartido ${curso.grupos_abiertos} veces</span>
+                                        <p class="card-text">${curso.descripcion}</p>
+                                        <h6>Creado el ${getLegibleFechaHora(curso.fecha_creacion)}</h6>
+                                        <div class="col-sm-12 d-flex justify-content-center">
+                                            <a href="${curso.link_temario_pdf}" download="" target="_blank" class="btn btn-primary me-1 mb-1">
+                                            <i class="fas fa-download"></i>Temario</a>
+                                            <button class="btn btn-primary me-1 mb-1" onclick="openCurso(${curso.id_curso});"><i class="fas fa-eye"></i> Detalles</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                }
+                );
+            template += `</div>
+                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let items = document.querySelectorAll('.carousel .carousel-item')
+                    items.forEach((el) => {
+                        const minPerSlide = ${JSONData.length}
+                        let next = el.nextElementSibling
+                        for (var i=0; i<minPerSlide; i++) {
+                            if (!next) {
+                                // wrap carousel by using first child
+                                next = items[0]
+                            }
+                            let cloneChild = next.cloneNode(true)
+                            el.appendChild(cloneChild.children[0])
+                            next = next.nextElementSibling
+                        }
+                    })
+                </script>`;
+        }
+        else{
+            template = `<div class="alert alert-info" role="alert">
+                          <h4 class="alert-heading">SIN CURSOS</h4>
+                          <p> Este profesor aún no ha propuesto ningún curso.</p>
+                          <hr>
+                          <p class="mb-0">Si espera un curso de este profesor, es posible que aun no lo haya enviado a revisión. Una vez recibamos la propuesta, esta aparecerá aquí o en menú CURSOS aparecerá la notificación de revisión y aparecerá como PENDIENTE</p>
+                        </div>`;
+        }
+        $("#bodyPrpuestas").html(template);
+
+
+    });
 }
 
 function printHTMLDetails(PROF_DATA) {
@@ -98,7 +185,7 @@ function cargaDataTableAsignaciones() {
         "ajax":
             {
                 "url":"./webhook/lista-historico-asig-curso-datatable.php",
-                "data": {"idCurso": 0, "filtro": 2, "idFiltro":ID_PROFESOR},
+                "data": {"idCurso": 0, "filtro": 2, "idFiltro":ID_PROF},
                 "type": "POST"
             },
         //agregando attributo al fila
@@ -160,7 +247,7 @@ function cargaDataTableAsignaciones() {
             ],
         "order": [[0, "asc" ]],
         "language": {
-            "search": "Buscar",
+            "search": '<i class="fas fa-search"></i> ',
             "lengthMenu": " Mostrar _MENU_  cursos por página",
             "zeroRecords": "No se han creado grupos de este Curso",
             "info": "Mostrando página _PAGE_ de _PAGES_",
@@ -193,4 +280,9 @@ function openAsig(id) {
     let url = "./detalles-asignacion";
     let data = {  id:id };
     redirect_by_post(url, data, false);
+}
+
+function openCurso(ID) {
+    var url = './detalles-curso';
+    redirect_by_post(url, {id: ID}, false);
 }

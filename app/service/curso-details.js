@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-    let id = $("#idCurso").val();
-    if(!cargaCursoDetails(-1,id))
+    let id = ID_CURSO;
+    if(!cargaCursoDetails(1,id))
         alert('NO DATA');
     consultaGrupos(id);
     cargaAulasListDespl();

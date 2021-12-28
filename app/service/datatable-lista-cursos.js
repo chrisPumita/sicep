@@ -15,6 +15,7 @@ $(document).ready(function() {
 $(document).on("click", ".viewCourse", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement;
+
     let id = $(elementClienteSelect).attr("id_curso");
     var url = './detalles-curso';
     redirect_by_post(url, {
@@ -37,7 +38,7 @@ function cargaCursosDataTable() {
             {
                 "url":"./webhook/lista-cursos-datatable.php",
                 "data": {
-                    "filtro": -1
+                    "filtro": 99, "value": 0
                 },
                 "type": "POST"
             },
@@ -103,7 +104,7 @@ function cargaCursosDataTable() {
             ],
         "order": [[ 1, "asc" ],[2,"asc"]],
         "language": {
-            "search": "Buscar",
+            "search": '<i class="fas fa-search"></i> ',
             "lengthMenu": "Mostrar _MENU_ cursos por página",
             "zeroRecords": "No hay cursos registrados",
             "info": "Mostrando página _PAGE_ de _PAGES_",

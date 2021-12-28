@@ -1,9 +1,10 @@
 <?php
 
 include_once "../control/controlCursos.php";
-if (isset($_POST['filtro'])){
+if (isset($_POST['filtro']) && isset($_POST['value'])){
     $filtro = $_POST['filtro'];
-    $data = consultaCursos($filtro,0);
+    $value = $_POST['value'];
+    $data = consultaCursos($filtro,$value);
     //var_dump(json_encode($data));
     //echo json_encode($data);
 

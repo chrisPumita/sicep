@@ -332,11 +332,28 @@ class CURSO extends CONEXION_M implements I_CURSO
      *******************************************************************************/
 
 //Funcion que trae todos los cursos, aprobados, por aprobar.
-    public function queryconsultaCursos($estado_filtro, $id_curso)
+    public function queryconsultaCursos($typeFiltro,$value)
     {
-        $filtro = $estado_filtro>=0 ? " AND c.aprobado = ".$estado_filtro: "";
-        $filtroidCurso = $id_curso > 0 ? " AND c.id_curso = ".$id_curso : "";
+        //revisar el tipo de filtro que esta ingresando
+        switch ($typeFiltro){
+            case "0":
+                $filtro = " AND c.aprobado = ".$value;
+                break;
 
+            case "1":
+                //trar el de un ID especifico
+                $filtro = " AND c.id_curso = ".$value;
+                break;
+
+                //Traemos los cursos realizados por un profesor
+            case "2":
+                $filtro = " AND c.id_profesor_autor = ".$value;
+                break;
+            //Traer todos los cursos
+            default:
+                $filtro = "";
+                break;
+        }
         $query="SELECT c.id_profesor_admin_acredita, c.id_curso, c.codigo, c.nombre_curso, 
                    c.dirigido_a, c.objetivo, c.`route`,c.descripcion, c.no_sesiones, 
                    c.antecedentes, c.costo_sugerido, c.link_temario_pdf, c.fecha_creacion, 
@@ -347,7 +364,7 @@ class CURSO extends CONEXION_M implements I_CURSO
                     WHERE   ag.id_grupo_fk = gpo.id_grupo and gpo.id_curso_fk = c.id_curso) AS grupos_abiertos
                         FROM curso c, profesor prof, persona pr
                             WHERE c.id_profesor_autor = prof.id_profesor 
-                            and prof.id_persona_fk = pr.id_persona ".$filtroidCurso." ".$filtro." order by c.nombre_curso ASC";
+                            and prof.id_persona_fk = pr.id_persona ".$filtro." order by c.nombre_curso ASC";
         $this->connect();
         $cursos=$this->getData($query);
         $this->close();

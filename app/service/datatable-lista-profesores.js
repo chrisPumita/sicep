@@ -16,7 +16,7 @@ function cargaDatosProfesoresDataTable() {
         "order": [[ 1, 'asc' ]],
         //agregando attributo al fila
         'createdRow': function( row, data, dataIndex ) {
-            $(row).attr('id_persona', data.id_persona);
+            $(row).attr('id_profesor', data.id_profesor);
         },
         "columns":
             [
@@ -83,7 +83,7 @@ function cargaDatosProfesoresDataTable() {
             ],
         "order": [[0, "asc" ]],
         "language": {
-            "search": "Buscar",
+            "search": '<i class="fas fa-search"></i> ',
             "lengthMenu": "Mostrar _MENU_ cursos por página",
             "zeroRecords": "No hay cursos registrados",
             "info": "Mostrando página _PAGE_ de _PAGES_",
@@ -117,7 +117,7 @@ function cargaDatosProfesoresDataTable() {
 $(document).on("click", ".btnViewPerfil", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_persona");
+    let id = $(elementClienteSelect).attr("id_profesor");
     var url = './detalles-profesor';
     redirect_by_post(url, {  id: id }, false);
 });
