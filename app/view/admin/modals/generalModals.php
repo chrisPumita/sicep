@@ -70,7 +70,15 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="depto" name="depto"><option value="5">Administracion</option><option value="6">Agricola</option><option value="2">Contabilidad</option><option value="3">IME</option><option value="1">Informatica</option><option value="7">ITSE</option><option value="4">Veterinaria</option></select>
+                            <select class="form-control" id="depto" name="depto">
+                                <option value="5">Administracion</option>
+                                <option value="6">Agricola</option>
+                                <option value="2">Contabilidad</option>
+                                <option value="3">IME</option>
+                                <option value="1">Informatica</option>
+                                <option value="7">ITSE</option>
+                                <option value="4">Veterinaria</option>
+                            </select>
                         </div>
                     </div>
                 </div>

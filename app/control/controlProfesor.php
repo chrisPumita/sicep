@@ -52,7 +52,6 @@ function addProfesor($params){
     $PROFESORES->setPrefijo($params['Prefijo']);
     $PROFESORES->setEmail($params['correo']);
     $PROFESORES->setPw(md5($params['pwd']));
-    $linkImg = "https://images.freeimages.com/images/premium/previews/4664/46645898-blue-profile-icon.jpg";
     //Preguntar para que funciona
     $PROFESORES->setKeyHash(md5($params['keyHash']));
     $PROFESORES->setFechaRegistro(date('Y-m-d H:i:s'));

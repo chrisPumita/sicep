@@ -322,7 +322,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         `email`, `pw`, `key_hash`, `fecha_registro`, `firma_digital`, `firma_digital_img`, `img_perfil`, `estatus`) 
         VALUES (NULL, '".$this->getIdPersona()."', '".$this->getIdDeptoFk()."', '".$this->getNoTrabajador()."', 
         '".$this->getPrefijo()."', '".$this->getEmail()."', '".$this->getPw()."', '".$this->getKeyHash()."', 
-        '".$this->getFechaRegistro()."', 'NULL', 'NULL', './resource/default-avatar.jpg', '1')";
+        '".$this->getFechaRegistro()."', 'NULL', 'NULL', '../resources/default-avatar.png', '1')";
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
