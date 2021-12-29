@@ -56,418 +56,80 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Grupos Actuales
+                        Historico de Grupos creados
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
-                            </div>
-                        </div>
                         <div class="row py-3">
                             <div class="dataTable-top">
                                 <div class="dataTable-dropdown">
-                                    <div class="row">
-                                        <div class="col-12 col-md-4 order-md-1">
+                                    <div class="row w-100">
+                                        <div class="col-12 col-md-auto order-md-1">
                                             <div class="form-group mx-3">
-                                                <label for="listaProfesores">Filtrar por </label>
-                                                <select id="listaProfesores" class="dataTable-selector form-select">
-                                                    <option value="5">Todos los Profesores</option>
-                                                    <option value="10">Profesor Name 1</option>
-                                                    <option value="10">Profesor Name 2</option>
-                                                    <option value="10">Profesor Name 3</option>
-                                                    <option value="10">Profesor Name 3</option>
-                                                </select>
+                                                <label for="listaProfesores">Filtrar por profesores</label>
+                                                <select id="listaProfesores" class="dataTable-selector form-select profesor-select"></select>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4 order-md-1">
+                                        <div class="col-12 col-md-3 order-md-1">
                                             <div class="form-group mx-3">
                                                 <label>Filtrar por curso</label>
-                                                <select class="dataTable-selector form-select">
-                                                    <option value="5">Curso 1</option>
-                                                    <option value="10">Curso 2</option>
-                                                    <option value="15">Curso 3</option>
-                                                    <option value="20">Curso 4</option>
-                                                    <option value="25">Curso 5</option>
-                                                    <option value="25">Curso 5</option>
-                                                </select>
+                                                <select id="listaCursos" class="dataTable-selector form-select curso-select"> </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4 order-md-1">
+                                        <div class="col-12 col-md-auto order-md-1">
                                             <div class="form-group mx-3">
-                                                <label>Periodo</label>
-                                                <select class="dataTable-selector form-select">
-                                                    <option value="5">2019</option>
-                                                    <option value="10">2020</option>
-                                                    <option value="15">2021</option>
-                                                    <option value="20">2022</option>
-                                                </select>
+                                                <label>Semestre</label>
+                                                <select id="listSemestres" class="dataTable-selector form-select semestre-select"></select>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="dataTable-search">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12 order-md-1">
-                                            <label>Ordenar por</label>
-                                            <select class="dataTable-selector form-select">
-                                                <option value="5">Nombre A-Z</option>
-                                                <option value="10">Nombre Z-A</option>
-                                                <option value="15">Primera-Ultima Generacion</option>
-                                                <option value="20">Ultima-Primera generacion</option>
-                                                <option value="25">Tipo A-Z</option>
-                                                <option value="25">Tipo Z-A</option>
-                                            </select>
+                                        <div class="col-12 col-md-auto order-md-1">
+                                        <div class="form-group mx-3">
+                                            <label>Generación</label>
+                                            <select id="listGeneraciones" class="dataTable-selector form-select generacion-select"></select>
                                         </div>
                                     </div>
-
+                                    </div>
                                 </div>
+
+                                <div class="dataTable-search">
+                                    <!--
+    <div class="row">
+        <div class="col-12 col-md-12 order-md-1">
+            <label>Ordenar por</label>
+            <select class="dataTable-selector form-select">
+                <option value="5">Nombre A-Z</option>
+                <option value="10">Nombre Z-A</option>
+                <option value="15">Primera-Ultima Generacion</option>
+                <option value="20">Ultima-Primera generacion</option>
+                <option value="25">Tipo A-Z</option>
+                <option value="25">Tipo Z-A</option>
+            </select>
+        </div>
+    </div>
+                                    -->
+                                </div>
+
                             </div>
                         </div>
-                        <hr>
-                        <table class="table table-hover table-striped" id="tbl1">
+                        <!--Table prototype to use | tablas con  paginador-->
+                        <table class="table table-hover table-striped display nowrap" id="tblHistAsigCurso" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>GRUPO</th>
-                                <th>CURSO</th>
                                 <th>PROFESOR</th>
-                                <th>CUPO</th>
+                                <th>CURSO</th>
                                 <th>INICIO</th>
+                                <th>TERMINO</th>
+                                <th>GRUPO</th>
+                                <th>GENERACION</th>
+                                <th>SEMESTRE</th>
                                 <th>TIPO</th>
-                                <th>ESTATUS</th>
+                                <th>ESTADO</th>
                                 <th>ACCIONES</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-grupos">
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="3">
-                                    <th scope="row">1</th>
-                                    <td>1001</td>
-                                    <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                    <td>Christian Garduño Pioquinto</td>
-                                    <td>15</td>
-                                    <td>2021-06-30 00:00:00</td>
-                                    <td>En linea y Precencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                                <tr id_grupo="5">
-                                    <th scope="row">2</th>
-                                    <td>1601</td>
-                                    <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                    <td>Christian Hdz Pioquinto</td>
-                                    <td>30</td>
-                                    <td>2021-07-26 00:00:00</td>
-                                    <td>Presencial</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                                        </div>
-                                    </td>
-                                    <!-- BOTON ACCIONES -->
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                    </td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
@@ -479,13 +141,13 @@
 <?php include "includes/services-js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<!-- Agregar solo cuando exista una tabla para mostrar-->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+
+<!--CARGAR SERVICIOS GENERALES-->
+<script src="./service/general/tipos.js"></script>
+<script src="./service/datatable-historial_asig.js"></script>
+<script src="./service/general/tools.js"></script>
 </body>
+
 
 </html>

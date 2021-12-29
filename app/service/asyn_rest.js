@@ -345,6 +345,10 @@ async function consultaDetallesAsignaciones(idAsignacion, filtro) {
 }
 
 //Funcion asincrona que regresa la lista de profesores activos
+async function consultaAsyncListaProfesores(filtro) {
+    return await consultaProfesoresAJAX(filtro);
+}
+
 async function consultaProfesoresAJAX(filtro){
     return $.ajax({
         url: "./webhook/lista-profesores.php",
@@ -441,6 +445,26 @@ async function consultaDetallesProfesorAJAX(idProfesor){
         },
         error: function() {
             alert("Error occured")
+        }
+    });
+}
+
+/*Async regresa lista de semestres y generaciones ya generadas*/
+async function consultaAsyncGenSemDist() {
+    return await consultaAsyncGenSemDistAJAX();
+}
+
+//Funcion ajax de generacion y semestres ya registrados
+async function consultaAsyncGenSemDistAJAX(){
+    return $.ajax({
+        url: "./webhook/lista-gen-sem-asig.php",
+        type: 'POST',
+        dataType: "json",
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer las generaciones");
         }
     });
 }

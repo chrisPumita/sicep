@@ -673,14 +673,20 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $result;
     }
 
-    function queryCreaAsignacion(){
-        $query = "INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, `semestre`, 
-                                `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, 
-                                `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, 
-                                `costo_real`, `notas`, `modalidad`, `visible_publico`, `estatus`) 
-                                VALUES (NULL, '40', '4', '2021', '2021-2', '4', CURRENT_TIMESTAMP, '2021-07-21 00:00:00', 
-                                        '2021-07-28', '2021-12-12', '2021-12-18', '2022-02-21', '2021-12-30', '30', '1500', 
-                                        'NOtas', '0', '1', '1');";
+    function queryDistingGeneraciones(){
+        $query = "SELECT DISTINCT (generacion)FROM  asignacion_grupo ORDER BY generacion";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryDistingSemestres(){
+        $query = "SELECT DISTINCT (semestre) FROM asignacion_grupo ORDER BY semestre";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
     }
 }
 

@@ -3,5 +3,5 @@
 <script src="./service/profesor-add.js"></script>
 <script src="./service/general/swal-alerts.js"></script>
 <script src="./service/general/tools.js"></script>
-<script src="./service/general/main-load-admin.js"></script>
+<script src="./service/main-load-admin.js"></script>
 

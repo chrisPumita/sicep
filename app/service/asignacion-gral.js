@@ -58,8 +58,9 @@ function htmlGposOptions(val) {
 }
 
 async function consultaListaProfesores() {
-    let profesores = await consultaProfesoresAJAX();
-    buildHTMLSelect(profesores);
+    consultaAsyncListaProfesores(1).then(function(profesores){
+        buildHTMLSelect(profesores);
+    })
 }
 
 function buildHTMLSelect(PROFESORES) {

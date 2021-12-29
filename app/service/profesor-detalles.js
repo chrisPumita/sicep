@@ -42,10 +42,11 @@ function cargaCursoPropuestos() {
                     let active = cont == 1 ? " active": "";
                     template += `
                         <div class="carousel-item ${active}">
-                            <div class="col-12 col-md-${CSSCol} px-3">
+                            <div class="col-12 col-md-${CSSCol} px-3  row-cols-1 g-3">
                                 <div class="card mb-2 bg-grey">
-                                    <img class="card-img-top" src="${curso.banner_img}"
-                                         alt="Card image cap">
+                                   <div class="card-image-wrapper">
+                                      <img src="${curso.banner_img}" class="card-img-top img-fluid" alt="...">
+                                    </div>
                                     <div class="card-body">
                                         <h4 class="card-title font-weight-bold">${curso.codigo} ${curso.nombre_curso}</h4>
                                         <span class="badge bg-success">Impartido ${curso.grupos_abiertos} veces</span>

@@ -1,4 +1,6 @@
 <?php
+
+/* NO IMPEMENTADO*/
 function consultaAsignacionGrupos($valorFiltro)
 {
     include_once "../model/ASIGNACION_GRUPO.php";
@@ -28,6 +30,8 @@ function consultaAsignacionesHistoricasCurso($idCurso,$filtro,$idFiltro){
     $ASIGNACION_GRUPO = new ASIGNACION_GRUPO();
     return $ASIGNACION_GRUPO->queryHistorialAsignacionesCurso($idCurso,$filtro,$idFiltro);
 }
+/* NO IMPEMENTADO*/
+
 
 function insertAsignacion($params){
     include_once "../model/ASIGNACION_GRUPO.php";
@@ -48,6 +52,15 @@ function insertAsignacion($params){
     $ASIG->setCostoReal($params['costo']);
     $ASIG->setNotas($params['notas']);
     $ASIG->setModalidad($params['modalidad']);
-    $ASIG->setPublico($params['publico']);
+    $ASIG->setPublico($publico);
     return $ASIG->queryInsertAsignacion();
+}
+
+function getListaFilstrosAsig(){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $GEN = new ASIGNACION_GRUPO();
+    return array(
+        "generaciones" => $GEN->queryDistingGeneraciones(),
+        "semestres"=> $GEN->queryDistingSemestres()
+    );
 }

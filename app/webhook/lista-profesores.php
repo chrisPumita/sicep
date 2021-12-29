@@ -1,4 +1,8 @@
 <?php
-
-include_once "../control/controlProfesor.php";
-echo json_encode(consultaProfesores(1,0));
+if (isset($_POST['filtro'])){
+    $filtro = $_POST['filtro'];
+    include_once "../control/controlProfesor.php";
+    echo json_encode(consultaProfesores($filtro,0));
+}
+else
+    die;
