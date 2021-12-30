@@ -41,7 +41,7 @@ function gen_no_contrato($strength = 16)  {
     return $random_string;
 }
 
-function gen_noPago($strength = 6)  {
+function genIdCurso($strength = 2)  {
     $input = '0123456789';
     $input_length = strlen($input);
     $random_string = '';

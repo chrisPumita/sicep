@@ -24,10 +24,10 @@ if(isset($_POST['nombre_curso']) && isset($_POST['descripcion_curso'])&& isset($
         $result = addCurso($params);
         if($result){
             $mjeType= 1;
-            $mensaje="Se ha registrado correctamente";
+            $mensaje=$result;
         } else{
             $mjeType=-1;
-            $mensaje="Error Interno";
+            $mensaje=$result;
         }
 }
 else {

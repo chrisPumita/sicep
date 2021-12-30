@@ -10,7 +10,10 @@ function consultaCursos($typeFiltro,$value){
 function addCurso($params){
     include_once "../model/CURSO.php";
     $CURSO= new CURSO();
-    $clave = date('YmdHis');
+    include_once "keyGen/generadorClaves.php";
+    $id= genIdCurso();
+    $clave=date('Ymd'+$id);
+    return $clave;
     $CURSO->setIdCurso($clave);
     $CURSO->setIdProfesorAdminAcredita($params['idProfesorAdmin']);
     $CURSO->setIdProfesorAutor($params['idAutor']);
