@@ -537,4 +537,12 @@ class CURSO extends CONEXION_M implements I_CURSO
         return $datos;
     }
 
+    public function queryUpdateLinkTemario(){
+        $query = "UPDATE `curso` SET `link_temario_pdf` = '".$this->getLinkTemarioPdf()."' WHERE `curso`.`id_curso` = ".$this->getIdCurso();
+        $this->connect();
+        $datos = $this->executeInstruction($query);
+        $this->close();
+        return $datos;
+    }
+
 }
