@@ -330,10 +330,32 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     }
 
     function queryCardAdmin(){
-        $query = 'SELECT admin.id_profesor_admin_fk, admin.cargo, admin.permisos, admin.clave_confirmacion, admin.estatus, prof.*
+        $query = 'SELECT admin.id_profesor_admin_fk, admin.cargo, admin.permisos, admin.clave_confirmacion, admin.estatus AS edoAdminCount, prof.*
                     FROM administrador admin, profesor prof
                     WHERE admin.id_profesor_admin_fk = prof.id_profesor
                     AND prof.id_profesor =  '.$this->getIdProfesor();
+        $this->connect();
+        $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
+
+    function queryCountProfesor(){
+        $query = "SELECT per.`id_persona`, 
+        per.`nombre`, per.`app`, per.`apm`, 
+        per.`telefono`, per.`sexo`, per.`estatus` AS estatus_persona, 
+        prof.img_perfil, prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
+        prof.`email`, prof.`fecha_registro`, prof.`estatus` AS estatus_profesor, 
+        concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
+        depto.`nombre` AS depto_name, prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
+        prof.`email`, prof.`fecha_registro`,  prof.`estatus` AS estatus_profesor, admin.id_profesor_admin_fk, 
+        (case when admin.id_profesor_admin_fk is null then 0 else 1 end) as flagAdmin
+        FROM `persona` per,`departamentos` depto,`profesor` prof 
+        left join administrador admin on admin.id_profesor_admin_fk = prof.id_profesor 
+        WHERE  prof.`id_persona_fk`=per.`id_persona`
+        AND prof.`id_depto_fk`= depto.`id_depto`
+        AND per.`estatus` = 1
+        AND prof.email = '".$this->getEmail()."' AND prof.pw = '".$this->getPw()."' ";
         $this->connect();
         $datos = $this-> getData($query);
         $this->close();

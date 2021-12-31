@@ -12,7 +12,7 @@ function consultaCuentaAdmin($idProfesor){
     include_once "../model/PROFESOR.php";
     $PROF = new PROFESOR();
     $PROF->setIdProfesor($idProfesor);
-    return $PROF->queryCardAdmin($idProfesor);
+    return $PROF->queryCardAdmin();
 }
 
 function consultaProfesoresDetails($filtro,$idProfesorUnique){
@@ -71,4 +71,12 @@ function consultaListaNoAdmin(){
     include_once "../model/PROFESOR.php";
     $obj_prof = new PROFESOR();
     return $obj_prof -> queryListProfesoresNoAdmin();
+}
+
+function consultaCuentaProfesor($email,$pw){
+    include_once "../model/PROFESOR.php";
+    $PROF = new PROFESOR();
+    $PROF->setEmail($email);
+    $PROF->setPw($pw);
+    return $PROF->queryCountProfesor();
 }

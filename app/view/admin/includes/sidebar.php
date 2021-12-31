@@ -12,12 +12,51 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
+                <li class="sidebar-title">Hola <?php echo $_SESSION['usuario'];?></li>
+                <li class="sidebar-item ">
+                    <a href="./home-teach" class='sidebar-link'>
+                        <i class="fas fa-home"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-coffee"></i>
+                        <span>Mis Cursos</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="./lista-propuestas">Propuestas</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="./nuevo-curso">Proponer Nuevo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-user-friends"></i>
+                        <span>Mis Grupos</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="./lista-grupos-profesor">Actuales</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="./prof-historial-grupos">Historial</a>
+                        </li>
+                    </ul>
+                </li>
+                <?php if( $_SESSION['admin']) {?>
                 <li class="sidebar-title">Administración</li>
 
                 <li class="sidebar-item ">
                     <a href="./home" class='sidebar-link'>
                         <i class="fas fa-th-large"></i>
-                        <span>Inicio</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
 
@@ -115,48 +154,7 @@
                         <span>Preferencias</span>
                     </a>
                 </li>
-
-                <li class="sidebar-title">Profesor</li>
-
-                <li class="sidebar-item ">
-                    <a href="./home-teach" class='sidebar-link'>
-                        <i class="fas fa-home"></i>
-                        <span>Inicio</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="fas fa-coffee"></i>
-                        <span>Mis Cursos</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./lista-propuestas">Propuestas</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="./nuevo-curso">Proponer Nuevo</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="fas fa-user-friends"></i>
-                        <span>Mis Grupos</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./lista-grupos-profesor">Actuales</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="./prof-historial-grupos">Historial</a>
-                        </li>
-                    </ul>
-                </li>
-
+                <?php }?>
                 <li class="sidebar-title">Cuenta</li>
                 <li class="sidebar-item  ">
                     <a href="./perfil" class='sidebar-link'>
@@ -165,7 +163,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item active ">
-                    <a href="./" class='sidebar-link'>
+                    <a href="./log-out.php" class='sidebar-link'>
                         <span><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</span>
                     </a>
                 </li>

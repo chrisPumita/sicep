@@ -1,6 +1,3 @@
-$(document).ready(function() {
-    });
-
 //Escucha
 $("#frm-add-profesor").on("submit", function(e){
     var f = $(this);

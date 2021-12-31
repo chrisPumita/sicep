@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2021 a las 03:14:42
+-- Tiempo de generación: 31-12-2021 a las 23:38:23
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -65,9 +65,9 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`id_profesor_admin_fk`, `cargo`, `permisos`, `clave_confirmacion`, `estatus`) VALUES
-(1, 'Jefe', 1, '4a7d1ed414474e4033ac29ccb8653d9b', 0),
+(1, 'Jefe', 1, '4a7d1ed414474e4033ac29ccb8653d9b', 1),
 (2, 'Coordinador', 2, '4a7d1ed414474e4033ac29ccb8653d9b', 1),
-(3, 'Analista', 3, '4a7d1ed414474e4033ac29ccb8653d9b', 0);
+(3, 'Analista', 3, '4a7d1ed414474e4033ac29ccb8653d9b', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,10 @@ INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona
 (88, 15, 3, 37, '314999038', 'IPN', 1, 'Informatica', 'sergio@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:47', '../resources/default-avatar.png', 1),
 (89, 15, 2, 38, '312850067', 'UNAM', 2, 'Economia', 'martin@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:47', '../resources/default-avatar.png', 1),
 (90, 15, 3, 39, '311337649', 'IPN', 1, 'Matematicas', 'veronica@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:47', '../resources/default-avatar.png', 1),
-(91, 23, 4, 10, '12345678', 'OTRA', 3, 'Materia Oscura', 'ejemplo@prueba@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-24 14:09:47', '../resources/default-avatar.png', 0);
+(91, 23, 4, 10, '12345678', 'OTRA', 3, 'Materia Oscura', 'ejemplo@prueba@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-24 14:09:47', '../resources/default-avatar.png', 0),
+(92, 575, 2, 20211228193223, '123156', '', 1, 'Quimica', 'manuel@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-28 19:32:23', '../resources/default-avatar.png', 0),
+(93, 276, 3, 20211228193851, '135156416', 'IPN', 1, 'Informatica', 'camila@hotmail.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 19:38:51', '../resources/default-avatar.png', 0),
+(94, 1889, 4, 20211228130159, '41561615', 'IPN', 5, 'Super heroe', 'peeter@spiderman.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 13:01:59', '../resources/default-avatar.png', 0);
 
 -- --------------------------------------------------------
 
@@ -196,15 +199,21 @@ CREATE TABLE `asignacion_grupo` (
 --
 
 INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, `semestre`, `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, `costo_real`, `notas`, `modalidad`, `visible_publico`, `estatus`) VALUES
-(1, 1, 1, 15, '2021-2', 1, '2021-05-24 05:00:00', '2021-05-24', '2021-05-24', '0000-00-00', '2021-05-27', '2021-05-26', '2021-05-27', 30, '1500.00', 'NOTAS APLICADAS', 1, 0, 1),
-(2, 2, 2, 15, '2021-2', 0, '2021-05-24 05:00:00', '2021-05-25', '2021-05-28', '0000-00-00', '2021-05-26', '2021-05-29', '2021-05-31', 30, '1000.00', 'SEGUNDO CURSO PRUEBA', 2, 0, 1),
-(3, 3, 4, 15, '2021-2', 1, '2021-06-16 05:00:00', '2021-06-30', '2021-09-16', '0000-00-00', '2021-06-23', '2021-09-27', '2021-09-30', 15, '1200.00', 'NOTAS APLICADAS', 1, 0, 1),
+(1, 1, 1, 2020, '2021-2', 1, '2021-05-24 05:00:00', '2021-05-24', '2021-05-24', '0000-00-00', '2021-05-27', '2021-05-26', '2021-05-27', 30, '1500.00', 'NOTAS APLICADAS', 1, 0, 1),
+(2, 2, 2, 2020, '2021-2', 0, '2021-05-24 05:00:00', '2021-05-25', '2021-05-28', '0000-00-00', '2021-05-26', '2021-05-29', '2021-05-31', 30, '1000.00', 'SEGUNDO CURSO PRUEBA', 2, 0, 1),
+(3, 3, 4, 2020, '2021-2', 1, '2021-06-16 05:00:00', '2021-06-30', '2021-09-16', '0000-00-00', '2021-06-23', '2021-09-27', '2021-09-30', 15, '1200.00', 'NOTAS APLICADAS', 1, 0, 1),
 (765432453, 5, 3, 2021, '2021-2', 2, '2021-07-12 05:00:00', '2021-07-26', '2021-09-29', '0000-00-00', '2021-07-19', '2021-09-20', '2021-07-26', 30, '1000.00', 'SIN NOTAS', 1, 0, 1),
 (765432454, 40, 4, 2021, '2021-2', 3, '2021-12-18 21:14:01', '2021-07-21', '2021-07-28', '2021-12-12', '2021-12-18', '2022-02-21', '2021-12-30', 30, '1500.00', 'NOTAS APLICADAS', 1, 1, 1),
 (765432455, 66, 9, 2023, '2021-1', 1, '2021-12-23 18:54:25', '2021-12-24', '2022-03-30', '2021-12-13', '2021-12-30', '2022-03-22', '2022-01-06', 20, '1000.00', 'Curso prueba de Chris', 2, 0, 1),
 (765432456, 67, 8, 2021, '2021-1', 1, '2021-12-23 18:57:45', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', 10, '800.00', 'SIN NOTAS', 0, 0, 1),
 (765432457, 68, 5, 2022, '2021-1', 1, '2021-12-23 19:25:41', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', '2021-12-23', 5, '500.00', 'PRUEBA CON JENNI', 2, 0, 1),
-(765432458, 48, 12, 2021, '2020-2', 1, '2021-12-27 20:06:56', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', 30, '2700.00', '', 0, 0, 1);
+(765432458, 48, 12, 2021, '2020-2', 1, '2021-12-27 20:06:56', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', '2021-12-27', 30, '2700.00', '', 0, 0, 1),
+(765432459, 48, 4, 2021, '2020-2', 1, '2021-12-28 17:49:49', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', 30, '3050.00', '', 0, 0, 1),
+(765432460, 62, 13, 2021, '2020-2', 1, '2021-12-29 00:04:49', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', 30, '3050.00', '', 0, 0, 1),
+(765432461, 48, 13, 2021, '2020-2', 1, '2021-12-29 00:05:38', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', '2021-12-28', 30, '3050.00', '', 0, 0, 1),
+(765432462, 48, 8, 2021, '2020-2', 1, '2021-12-29 00:06:21', '2022-01-01', '2022-01-31', '2021-12-01', '2021-12-31', '2022-02-01', '2022-02-11', 30, '3050.00', '', 0, 1, 1),
+(765432463, 59, 13, 2021, '2020-2', 1, '2021-12-30 22:06:46', '2021-12-05', '2021-12-10', '2021-12-01', '2021-12-03', '2021-12-26', '2021-12-31', 30, '3050.00', '', 0, 1, 1),
+(765432464, 47, 11, 2021, '2020-2', 1, '2021-12-30 22:20:48', '2021-12-01', '2021-12-31', '2021-12-19', '2021-12-30', '2020-01-01', '2022-01-06', 30, '2100.00', '', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -394,7 +403,19 @@ INSERT INTO `curso` (`id_curso`, `id_profesor_admin_acredita`, `id_profesor_auto
 (23, NULL, 3, '003', '', 'C++ Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/23/banner-20211228021024.webp', 4),
 (99, NULL, 9, '002', '', 'Java Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, '../resources/banners/99/banner-20211228021447.jpg', 1),
 (100, 3, 4, '004', '', 'Diseño Web', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '2700.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, '../resources/banners/100/banner-20211222000250.jpg', 1),
-(101, NULL, 9, '003', '', 'Phyton Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 1);
+(101, NULL, 9, '003', '', 'Phyton Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 1),
+(2021123042, NULL, 1, '3660', '', 'Trabajo en equipo', 'Alumnos de la carrera de Informática', 'Que los participantes reconozcan los elementos básicos del trabajo en equipo, la importancia del líder y de cada uno de los integrantes del equipo de trabajo, a través de la reflexión y desarrollo de habilidades y actitudes para el logro de los objetivos estratégicos.', 'Aprende a trabajar ene quipo mendiante tecnicas especializadas', 5, 'Ninguno', 0, '300.00', '../resources/temario/2021123042/temario-20211230195958.pdf', '2021-12-30 19:59:58', NULL, '../resources/banners/2021123042/banner-20211230195958.jpg', 3),
+(2112300654, NULL, 1, '1615', '', 'bgfbr', 'bgfbgf', 'bgfdbgf', 'bgfb', 1, 'bfgbf', 0, '0.00', '../resources/temario/', '2021-12-30 20:55:14', NULL, '../resources/banners/default.jpg', 1),
+(2112300843, NULL, 1, '150', '', 'Curso Z', 'bdfbdf', 'bfdbfd', 'vdfvbfd', 1, 'bdfbfd', 0, '500.00', '../resources/temario/', '2021-12-30 20:17:04', NULL, '../resources/banners/default.jpg', 3),
+(2112300873, NULL, 1, '25', '', 'vfdsv', 'vdfvdv', 'vdfvdsfv', 'vfdvfd', 1, 'vfdvdf', 0, '0.00', '../resources/temario/', '2021-12-30 20:38:33', NULL, '../resources/banners/default.jpg', 1),
+(2112301094, NULL, 1, '56546', '', 'bgfbgf', 'bfgbfg', 'bfgbfg', 'bgfbgf', 1, 'bfgbfg', 0, '0.00', '../resources/temario/', '2021-12-30 20:32:12', NULL, '../resources/banners/default.jpg', 1),
+(2112301484, NULL, 1, '3660', '', 'Curso prueba', 'Presentar a los estudiavdslemas.', 'Presentar a los estudiantes las características de la creatividad mediante actividades lúdicas que les permitan visualizar la utilidad que tienen las herramientas matemáticas en el aprendizaje y la resolución de problemas.', 'vfdbvfdbf', 1, 'Prvsdvermitadvsdvsdvsque tienen las herramientas matemáticas en el aprendizaje y la resolución de problemas.', 0, '300.00', '../resources/temario/2112301484/temario-20211230201423.pdf', '2021-12-30 20:14:22', NULL, '../resources/banners/2112301484/banner-20211230201423.jpg', 4),
+(2112302070, NULL, 1, '150', '', 'Curso Z', 'bdfbdf', 'bfdbfd', 'vdfvbfd', 1, 'bdfbfd', 0, '500.00', '../resources/temario/', '2021-12-30 20:17:45', NULL, '../resources/banners/default.jpg', 3),
+(2112304279, NULL, 1, '15', '', 'SEMINARIO XXXXXXXX', 'vfdvdf', 'dvfdvfd', 'vfdvf', 1, 'vdfvfdv', 0, '0.00', '../resources/temario/', '2021-12-30 20:52:32', NULL, '../resources/banners/default.jpg', 1),
+(2112305152, NULL, 1, '57657', '', 'bgfdbgfdbf', 'bdfbsdfvbs', 'bfdgbfesdbdf', 'bdfgbdfgbsd', 1, 'dbfdbfd', 0, '0.00', '../resources/temario/', '2021-12-30 20:36:40', NULL, '../resources/banners/default.jpg', 3),
+(2112306104, NULL, 1, '65464', '', 'bgfbfg', 'bfgbfgb', 'bfgbfgb', 'bfgbfg', 1, 'bfgbfg', 0, '0.00', '../resources/temario/', '2021-12-30 20:39:46', NULL, '../resources/banners/default.jpg', 1),
+(2112307208, NULL, 1, 'fgbfgbgf', '', 'TALLER NUEVO', 'bfgbgdfb', 'bgfbf', 'bfgbgfb', 1, 'dbfgdbdfgb', 0, '0.00', '../resources/temario/', '2021-12-30 20:49:20', NULL, '../resources/banners/default.jpg', 4),
+(2112318961, NULL, 1, '4561', '', 'Curso de lo que sea', 'vndfjknvdjk', 'njkvfndjkn', 'vfbdnjkvbn', 1, 'vfndjkvndfjk', 0, '1500.00', '../resources/temario/', '2021-12-31 12:02:58', NULL, '../resources/banners/ban-fesc.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -444,8 +465,16 @@ CREATE TABLE `docs_solicitados_curso` (
 --
 
 INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso_fk`, `obligatorio`) VALUES
-(1, 2, 3, 1),
-(2, 1, 3, 1);
+(1, 2, 3, 0),
+(2, 1, 3, 0),
+(4, 2, 4, 0),
+(5, 1, 1, 0),
+(6, 2, 2, 0),
+(7, 1, 10, 0),
+(8, 1, 11, 0),
+(9, 1, 12, 0),
+(10, 2, 12, 0),
+(11, 3, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -468,7 +497,7 @@ CREATE TABLE `documento` (
 
 INSERT INTO `documento` (`id_documento`, `nombre_doc`, `formato_admitido`, `tipo`, `peso_max_mb`, `estatus`) VALUES
 (1, 'CURP', 'pdf', 2, 2, 1),
-(2, 'CREDENCIAL', 'PDF', 0, 3, 1),
+(2, 'CREDENCIAL', 'pdf', 0, 3, 1),
 (3, 'FICHA DE PAGO', 'pdf', 1, 3, 1),
 (4, 'ACTA', 'pdf', 2, 5, 1),
 (5, 'EXPEDIENTE XXXX', '%', 0, 6, 1),
@@ -600,7 +629,8 @@ INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) VALUES
 (65, 1, '1009', 1),
 (66, 20, '666', 1),
 (67, 20, '667', 1),
-(68, 20, '668', 1);
+(68, 20, '668', 1),
+(69, 2112318961, '1000', 1);
 
 -- --------------------------------------------------------
 
@@ -3311,7 +3341,11 @@ INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `telefono`, `sexo`,
 (20210609044700, 'Juan', 'Perez', 'Sanchez', '56156156', 0, 1),
 (20210706223646, 'Fernando', 'Ledezma', 'Ramos', '55626262626', 0, 1),
 (20210710050742, 'FRancisco', 'ROmo', 'Segundo', '5565241529', 0, 1),
-(20211215032318, 'Agapito', 'Mendoza', 'Herrera', '5623568956', 0, 1);
+(20211215032318, 'Agapito', 'Mendoza', 'Herrera', '5623568956', 0, 1),
+(20211228031934, 'Marco', 'Solis', 'Balderas', '55235689', 0, 1),
+(20211228130159, 'Peter', 'Parker', 'Sanchez', '1531561325', 0, 1),
+(20211228193223, 'Manuel', 'Martinez', 'Hernandez', '5500000000', 0, 1),
+(20211228193851, 'Camila', 'Segura', 'Segura', '4561512', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3340,18 +3374,19 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_trabajador`, `prefijo`, `email`, `pw`, `key_hash`, `fecha_registro`, `firma_digital`, `firma_digital_img`, `img_perfil`, `estatus`) VALUES
-(1, 20210517145526, 5, '312260633', 'Lic', 'c@hotmail.com', '1234', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/default-avatar.png', 1),
-(2, 2, 6, '314206372', 'Dra', 'pao@hotmail.com', '9876', 'tgyhtyrgbwqw', '2021-05-19 13:58:22', 'ffgrvguhujuip', 'tuuvniusjkkjqa', '../resources/default-avatar.png', 1),
-(3, 20210528160010, 1, '25252525', 'Lic.', 'christian@gmail.com', 'bgfbfdbd', 'bgdfbd', '2021-05-31 00:00:00', 'vdfdbfdbdfb', 'bfdbfdbdf', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', 0),
+(1, 20210517145526, 5, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', 1),
+(2, 2, 6, '314206372', 'Dra', 'pao@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'tgyhtyrgbwqw', '2021-05-19 13:58:22', 'ffgrvguhujuip', 'tuuvniusjkkjqa', '../resources/default-avatar.png', 1),
+(3, 20210528160010, 1, '25252525', 'Lic.', 'christian@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'bgdfbd', '2021-05-31 00:00:00', 'vdfdbfdbdfb', 'bfdbfdbdf', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', 0),
 (4, 20210603052605, 1, '45415615', 'Lic.', 'algo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
 (5, 20210603052638, 2, '1515615', 'Lic.', 'xsnjcd@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
 (6, 20210603052822, 3, '16156156', 'Lic.', 'carmen@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
 (7, 20210604141732, 1, '56165156', 'Lic.', 'alvaro@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
 (8, 20210604142033, 2, '1651561', 'Lic.', 'luis@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 14:20:33', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
 (9, 20210604142356, 3, '561561651', 'Lic.', 'maria@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:23:58', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(10, 20210604143217, 5, '45615656156', 'Lic.', 'abril@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:32:17', '00000000000', '0000000000000', '../resources/default-avatar.png', 0),
+(10, 20210604143217, 5, '45615656156', 'Lic.', 'abril@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:32:17', '00000000000', '0000000000000', 'https://avatars.githubusercontent.com/u/25911844?v=4', 0),
 (11, 20210710050742, 2, '1561561', 'Lic.', 'cdso@gailc.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-07-09 22:07:42', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(12, 20211215032318, 4, '15615615', 'Lic.', 'algo@gmailcom', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-15 03:23:18', 'NULL', 'NULL', '../resources/default-avatar.png', 1);
+(12, 20211215032318, 4, '15615615', 'Lic.', 'algo@gmailcom', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-15 03:23:18', 'NULL', 'NULL', '../resources/default-avatar.png', 1),
+(13, 20211228031934, 7, '41565461123', 'Lic.', 'correosolis@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-28 03:19:34', 'NULL', 'NULL', 'https://avatars.githubusercontent.com/u/21067489?v=4', 1);
 
 -- --------------------------------------------------------
 
@@ -3396,7 +3431,8 @@ INSERT INTO `temas` (`id_tema`, `id_curso_fk`, `indice`, `nombre`, `resumen`) VA
 (6, 1, '1.0', 'Html basico', 'Aprenderas etiquetas html'),
 (7, 1, '1.1', 'Html intermedio', 'Aprenderas etiquetas maquetado'),
 (8, 1, '2.0', 'css basico', 'Aprenderas estilos css'),
-(9, 1, '3.0', 'css avanzado', 'Aprenderas estilos  avanzados css');
+(9, 1, '3.0', 'css avanzado', 'Aprenderas estilos  avanzados css'),
+(10, 12, '1.0', 'Introduccion', 'Se introduce a la informacion');
 
 -- --------------------------------------------------------
 
@@ -3722,7 +3758,7 @@ ALTER TABLE `acta`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT de la tabla `archivo`
@@ -3734,7 +3770,7 @@ ALTER TABLE `archivo`
 -- AUTO_INCREMENT de la tabla `asignacion_grupo`
 --
 ALTER TABLE `asignacion_grupo`
-  MODIFY `id_asignacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=765432459;
+  MODIFY `id_asignacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=765432465;
 
 --
 -- AUTO_INCREMENT de la tabla `aulas`
@@ -3764,7 +3800,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `docs_solicitados_curso`
 --
 ALTER TABLE `docs_solicitados_curso`
-  MODIFY `id_doc_sol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_doc_sol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `documento`
@@ -3782,7 +3818,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `horario_clase_presencial`
@@ -3806,7 +3842,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_social`
@@ -3818,7 +3854,7 @@ ALTER TABLE `servicio_social`
 -- AUTO_INCREMENT de la tabla `temas`
 --
 ALTER TABLE `temas`
-  MODIFY `id_tema` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_tema` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_procedencia`

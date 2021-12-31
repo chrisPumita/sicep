@@ -25,7 +25,7 @@ function addCurso($params,$documentacion){
     $CURSO->setCostoSugerido($params['costo']);
     $CURSO->setLinkTemarioPdf('../resources/temario/');
     $CURSO->setFechaCreacion(date("Y-m-d H:i:s"));
-    $CURSO->setBannerImg('../resources/banners/default.jpg');
+    $CURSO->setBannerImg('../resources/banners/ban-fesc.jpg');
     $CURSO->setTipoCurso($params['tipoCurso']);
     $obj_curso= $CURSO->registraCurso();
     //Si el curso se acredita verificamos los archivos que llegan.

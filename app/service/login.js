@@ -1,6 +1,5 @@
 // lo que sejecuta primero
 $(document).ready(function () {
-    console.log("Login services start");
     consultaEstadosRep();
     consultaMunicipios(1);
     consultaProcedencias();
@@ -77,7 +76,6 @@ async function consultaUnis() {
 }
 
 function buildHTMLProcedencias(PROCED) {
-    console.log(PROCED);
     let template = "";
     PROCED.forEach(
         (obj)=>
@@ -89,7 +87,6 @@ function buildHTMLProcedencias(PROCED) {
 }
 
 function buildHTMLTblUnis(UNIS) {
-    console.log(UNIS);
     let template = "";
     UNIS.forEach(
         (obj)=>
@@ -113,3 +110,72 @@ $( "#universidades" ).change(function() {
     let cambio= $("#universidades").text();
     alert(cambio);
   });
+
+
+
+//-------------------Star Sessions
+$('#frm-login').submit(function (e) {
+    e.preventDefault();
+    //se ejecuta el elemento submit
+    var user = $("#txtEmail").val();
+    var pw = $("#txtPw").val();
+    let titulo;
+    let texto;
+    let tipo ;
+    if (user == "" || pw == "") {
+        titulo= "Campos vacios";
+        texto= "Porfavor llena los datos que se solicitan";
+        tipo = "warning";
+        alerta(titulo,texto,tipo);
+    } else {
+        var formData = new FormData(document.getElementById("frm-login"));
+        formData.append("dato", "valor");
+        $.ajaxSetup({
+            beforeSend:function(){
+                $("#loading").removeClass("d-none");
+            },
+            complete:function(){
+                $("#loading").addClass("d-none");
+            }
+        });
+        $.ajax({
+            url: "app/webhook/login.php",
+            type: "post",
+            dataType: "html",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                console.log(response);
+                let obj_mje = JSON.parse(response);
+                console.log(obj_mje);
+                if (obj_mje.mjeType == "0") {
+                    titulo= "El "+ obj_mje.tipoCuenta+ " NO EXISTE";
+                    texto= obj_mje.Mensaje;
+                    tipo = "error";
+                    alerta(titulo,texto,tipo);
+                    //limpiar
+                    $('#frm-login').trigger('reset');
+                } else {
+                    var template = `
+                    <div class="alert alert-success" role="alert">
+                        <div class="d-flex align-items-center">
+                            <strong>${obj_mje.Mensaje}</strong>  Iniciando sesión...
+                            <div class="spinner-border ml-auto" role="status" aria-hidden="true">
+                            </div>
+                        </div>
+                    </div>`;
+                    //Domde quiero mostrar los elementos y lo llenamos con la plantilla hecha
+                    $("#loginMje").html(template);
+                    location.reload();
+                }
+            }
+        }).done(function (response) {
+
+        });
+    }
+    //Cancela las funciones basicas del boton submit y evita regrescar la pagina
+
+})
+//-------------------End StarSesion

@@ -12,15 +12,7 @@
             border-radius: 10px;
             box-shadow: 0px 10px 30px rgb(0 35 71 / 10%);
         }
-        .card .banner {
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 10rem;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            box-sizing: border-box;
-        }
+
         .card h2.name {
             text-align: center;
             padding: 0 2rem 0.5rem;

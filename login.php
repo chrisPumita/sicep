@@ -17,26 +17,33 @@
                 <h1>Bienvenido</h1>
                 <p class="auth-subtitle mb-sm-3">Ingresar al Sistema de Inscripción de Cursos </p>
 
-                <form action="./app/home">
+                <form id="frm-login">
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="email" class="form-control form-control-xl" placeholder="Correo" required>
+                        <input type="email" id="txtEmail" name="txtEmail" class="form-control form-control-xl" placeholder="Correo" required>
                         <div class="form-control-icon">
                             <i class="bi bi-person"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="password" class="form-control form-control-xl" placeholder="Contraseña">
+                        <input type="password" id="txtPw" name="txtPw" class="form-control form-control-xl" placeholder="Contraseña">
                         <div class="form-control-icon">
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
                         <div class="checkbox">
-                            <input type="checkbox" id="checkbox1" class="form-check-input" >
-                            <label for="checkbox1">Soy un profesor</label>
+                            <input type="checkbox" id="chkProf" name="chkProf" class="form-check-input" >
+                            <label for="chkProf">Soy un profesor</label>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block btn-lg shadow-lg">Iniciar</button>
+                    <button class="btn btn-primary mr-3 mt-3 mb-3" type="submit">
+                        <i class="fas fa-check-circle"></i> Iniciar</button>
+                    <span id="loading" class=" d-none">
+                        <img src="https://xn--paalesdetelapuebla-o0b.com/pdf/ajax-loader-bco.gif" width="60" alt="">
+                    </span>
+                    <span id="loginMje">
+
+                    </span>
                 </form>
                 <div class="text-center mt-5 text-lg fs-4">
                     <hr>
@@ -59,5 +66,4 @@
 <?php include "./modals/modal-add-alumno.php" ?>
 </body>
 <?php include "./includes/js.php" ?>
-
 </html>

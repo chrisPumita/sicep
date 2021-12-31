@@ -14,6 +14,7 @@ function cambiaEstatusAdmin($idAdmin,$statusActual){
     $objAdmin = new ADMIN();
     return $objAdmin->updateStatusAdmin($idAdmin,$statusActual=="1"?"0":"1");
 }
+
 function consultaAdministrador($id_admin){
     //incluir el modelo de ADMIN
     include_once "../model/ADMIN.php";
@@ -43,3 +44,4 @@ function verificaAdministrador($idProf, $clave, $nivel_permiso){
         return false;
     }
 }
+

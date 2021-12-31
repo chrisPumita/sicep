@@ -29,12 +29,11 @@ function cargaCursoPropuestos() {
                    Elija uno pera ver los detalles
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <div class="d-flex flex-column align-items-center text-center">
+                <div class="d-flex flex-column align-items-center text-center " style="contain: content;">
                     <div class="row mx-auto my-auto justify-content-center">
                         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">`;
             let cont = 0;
-            let CSSCol = JSONData.length<4 ? 12 / JSONData.length : 3;
             JSONData.forEach(
                 (curso)=>
                 {
@@ -42,11 +41,9 @@ function cargaCursoPropuestos() {
                     let active = cont == 1 ? " active": "";
                     template += `
                         <div class="carousel-item ${active}">
-                            <div class="col-12 col-md-${CSSCol} px-3  row-cols-1 g-3">
+                            <div class="col-12 col-xl-3 col-md-4 col-sm-12  px-3  row-cols-1 g-3">
                                 <div class="card mb-2 bg-grey">
-                                   <div class="card-image-wrapper">
-                                      <img src="${curso.banner_img}" class="card-img-top img-fluid" alt="...">
-                                    </div>
+                                    <div class="banner" style="background-image: url(${curso.banner_img});"></div>
                                     <div class="card-body">
                                         <h4 class="card-title font-weight-bold">${curso.codigo} ${curso.nombre_curso}</h4>
                                         <span class="badge bg-success">Impartido ${curso.grupos_abiertos} veces</span>
@@ -67,7 +64,7 @@ function cargaCursoPropuestos() {
                             <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             </a>
-                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                            <a class="carousel-control-next bg-transparent w-aut position-fixed" href="#recipeCarousel" role="button" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             </a>
                         </div>
@@ -76,7 +73,7 @@ function cargaCursoPropuestos() {
                 <script>
                     let items = document.querySelectorAll('.carousel .carousel-item')
                     items.forEach((el) => {
-                        const minPerSlide = ${JSONData.length}
+                        const minPerSlide = 4
                         let next = el.nextElementSibling
                         for (var i=0; i<minPerSlide; i++) {
                             if (!next) {
