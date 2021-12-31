@@ -158,7 +158,7 @@
                                     <h5 class="card-title font-weight-bold">Cambiar Clave de Confirmación</h5>
                                     <p class="card-text text-muted">En este apartado puede cambiar su clave de confirmación actual.</p>
                                     <a href="#">
-                                        <button type="button" class="btn btn-primary btn-sm">Cambiar</button>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarClave">Cambiar</button>
                                     </a>
                                 </div>
                             </div>
@@ -168,9 +168,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Generar Llave Confidencial</h5>
                                     <p class="card-text text-muted">En este apartado puede generar su llave confidencial.</p>
-                                    <button type="button" class="btn btn-primary btn-sm">Crear cuenta</button>
-                                    <a href="#" data-toggle="modal" data-target="#listaServicio">
-                                        <button type="button" class="btn btn-primary btn-sm">Generar</button>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#CambiarLlave">
+                                        <button type="button" class="btn btn-primary btn-sm">Modificae</button>
                                     </a>
                                 </div>
                             </div>
@@ -193,6 +192,8 @@
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
             <?php include "modals/modal-cambiar-password.php"?>
+            <?php include "modals/modal-cambiar-clave.php"?>
+            <?php include "modals/modal-llave.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>

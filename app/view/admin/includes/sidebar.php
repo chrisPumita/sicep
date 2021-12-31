@@ -135,7 +135,7 @@
                             <a href="./lista-propuestas">Propuestas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Proponer Nuevo</a>
+                            <a href="./nuevo-curso">Proponer Nuevo</a>
                         </li>
                     </ul>
                 </li>
@@ -149,10 +149,10 @@
                             <a href="./lista-grupos-profesor">Actuales</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-element-input-group.html">Actas</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-element-select.html">Historial</a>
+                            <a href="./prof-historial-grupos">Historial</a>
                         </li>
                     </ul>
                 </li>

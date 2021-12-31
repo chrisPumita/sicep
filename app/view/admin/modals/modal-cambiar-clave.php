@@ -1,5 +1,5 @@
 <!--primary theme Modal -->
-<div class="modal fade text-left" id="CambiarPsw" tabindex="-1"
+<div class="modal fade text-left" id="CambiarClave" tabindex="-1"
      role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
     <div class="modal-md modal-dialog modal-dialog-centered modal-dialog-scrollable"
@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <h6 class="text-start">Contraseña actual:</h6>
+                                <h6 class="text-start">Clave de confirmación actual:</h6>
                                 <input type="text" class="form-control round">
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-sm-12 py-3">
                             <div class="form-group">
-                                <h6 class="text-start">Contraseña nueva:</h6>
+                                <h6 class="text-start">Clave de confirmación nueva:</h6>
                                 <input type="text" class="form-control round">
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <h6 class="text-start">Confirmar contraseña:</h6>
+                                <h6 class="text-start">Confirmar Clave de confirmación:</h6>
                                 <input type="text" class="form-control round">
                             </div>
                         </div>
