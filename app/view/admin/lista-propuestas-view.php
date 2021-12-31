@@ -1,4 +1,4 @@
-<?php $titulo = "Cursos Registrados" ?>
+<?php $titulo = "Cursos Propuestos" ?>
 <!DOCTYPE html>
 <html lang="en">
 
