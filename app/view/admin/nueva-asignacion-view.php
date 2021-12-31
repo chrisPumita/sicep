@@ -85,7 +85,7 @@ $id= $_POST['id'];
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="hidden" id="idCurso" value="<?php echo $id ?>">
+                                            <input type="hidden" id="idCursoToAsig" value="<?php echo $id ?>">
                                             <label class="form-control-label" for="profesorAsig"><span class="obliga">*</span>Profesor asignado:</label>
                                             <select class="form-control" id="profesorAsig" name="profesorAsig">
                                             </select>

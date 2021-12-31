@@ -283,11 +283,11 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <label for="tipoCurso">Tipo de Curso</label>
                                                                                                 <select class="form-control" id="tipoCurso" name="tipoCurso">
-                                                                                                    <option value="0">Curso</option>
                                                                                                     <option value="1">Curso</option>
                                                                                                     <option value="2">Diplomado</option>
-                                                                                                    <option value="3">Taller</option>
-                                                                                                    <option value="4">Seminario</option>
+                                                                                                    <option value="3">Seminario</option>
+                                                                                                    <option value="4">Taller</option>
+                                                                                                    <option value="0">Otro</option>
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -374,11 +374,11 @@
                                                                     <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                                 </fieldset>
                                                                 <fieldset>
-                                                                    <div class="card">
+                                                                    <div class="card" id="cardResult">
                                                                         <div class="card-header">
                                                                             <div class="row align-items-center">
                                                                                 <div class="col-12">
-                                                                                    <h3 class="mb-0">SE HA REGISTRADO UN CURSO</h3>
+                                                                                    <h3 class="mb-0" id="mensajeResponseAdd">SE HA REGISTRADO UN CURSO</h3>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -391,20 +391,11 @@
                                                                                 </div> <br><br>
                                                                                 <div class="row justify-content-center">
                                                                                     <div class="col-7 text-center">
-                                                                                        <h5>Excelente!</h5>
+                                                                                        <h5>¿Qué desea hacer ahora?</h5>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="row justify-content-center">
-                                                                                    <a href="./catalogo.php">
-                                                                                        <button type="button" class="btn btn-primary">
-                                                                                            <i class="fas fa-coffee"></i> Ir a Mis Cursos
-                                                                                        </button>
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="row justify-content-center py-5" id="containerBotonesContratos">
-                                                                                    <div class="col-lg-12 col-auto" id="botonesContrato">
+                                                                                <div class="row justify-content-center" id="containerBtnAdd">
 
-                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

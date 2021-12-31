@@ -365,24 +365,6 @@ async function consultaProfesoresAJAX(filtro){
     });
 }
 
-/* FUNCIONES DE SOLICITUDES Y LISTA DE GRUPOS*/
-async function consultaInfoAsignacionAjax(idAsignacion,filtro){
-    return $.ajax(
-        {
-            url:"./webhook/lista-asignaciones-details.php",
-            type: "POST",
-            data: {idAsignacion : idAsignacion, filtro:filtro},
-            dataType: "json",
-            success: function(res){
-                //   console.log(res);
-            },
-            error: function() {
-                internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
-            }
-        }
-    );
-}
-
 /*Async function return list json Solicitudes pendientes y Solic Acreditadas*/
 async function consultaListaInscAsig(idAsignacion) {
     return await consultaListasInscripcionesAsigAJAX(idAsignacion);
@@ -468,3 +450,28 @@ async function consultaAsyncGenSemDistAJAX(){
         }
     });
 }
+
+/*Async regresa lista del historial de asignaciones*/
+async function consultaAsyncHistorialAsign(filtro,idFiltro) {
+    return await consultaAsyncHistorialAsignAJAX(filtro,idFiltro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncHistorialAsignAJAX(filtro,idFiltro){
+    return $.ajax({
+        url: "./webhook/lista-historico-asig.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            filtro: filtro,
+            idFiltro:idFiltro
+        },
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer las asignaciones historicas");
+        }
+    });
+}
+

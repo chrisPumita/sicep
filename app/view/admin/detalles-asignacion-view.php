@@ -135,7 +135,7 @@ $titulo = "Detalles de la Asignación" ?>
             <section class="section">
                 <div class="card">
                     <div class="col-md-12 text-center">
-                        <div class="img" id="fondoImg">
+                        <div class="img bannerImg" id="fondoImg">
                             <div class="overlay"></div>
                             <div class="mx-auto">
                                 <h4 class="text-light text-left ">

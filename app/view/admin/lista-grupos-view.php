@@ -9,12 +9,13 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgb(0 35 71 / 10%);
         }
         .card .banner {
             background-repeat: no-repeat;
             background-size: cover;
-            height: 11rem;
+            height: 10rem;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -115,107 +116,53 @@
                 <i class="bi bi-justify fs-3"></i>
             </a>
         </header>
-        <div class="page-content">
-            <div class="page-title">
-                <div class="row">
-                    <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Grupos Activos Actualmente</h3>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Grupos Activos</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <section class="row">
-                <div class="col-lg-12 col-lg-9">
-                    <div class="callout callout-second">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    Estos son los grupos abiertos actualmente, si desea ver grupos anteriores, porfavor de clic
-                                    al boton de "Ver Histórico". Si desea ver mas informacion del grupo abierto, asi como descargar
-                                    la lista de alumnos, de clic en "Mas Detalles".
-                                </div>
-                                <div class="col-sm-2 align-items-center">
-                                    <a href="./historial-grupos">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                                        <i class="fas fa-history"></i> Ver Histórico</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="row">
-                <div class="container-fluid">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filtrar Grupos
-                        </button>
-                        <div class="dropdown-menu" style="margin: 0px;">
-                            <a class="dropdown-item" href="#">En Curso</a>
-                            <a class="dropdown-item" href="#">Disponibles</a>
-                            <a class="dropdown-item" href="#">Ver todos</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="container py-2">
-                    <div class="row">
-                        <?php for ($i=0; $i < 5; $i++) { ?>
-                     <!-- Card Grupo Actual 1-->
-                        <div class="col-sm-4 col-md-4 py-3">
-                            <div class="card bg-light">
-                                <span class="badge bg-success position-absolute my-3 mx-3 end-0"><div class="blob green positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO</span>
-                                <div class="banner" style="background-image: url(https://logisticayaduanas.com.mx/wp-content/uploads/2018/06/banner-cursos-y-diplomados-en-comercio-exterior.jpg); ">
-                                </div>
-                                <span class="badge bg-info ">14 Lugares Disponibles</span>
-                                <h5 class="name text-center pt-lg-3">Introdcción al copmputo I</h5>
-                                <h6 class="name text-center text-secondary">Prof. Juan Perez Sanchez</h6>
-                                <div class="title">
-                                    <button type="button" class="btn btn-primary btn-icon icon-left ">
-                                        <i class="fas fa-clipboard-check"></i> Solicitudes <span class="badge bg-danger">4</span>
-                                    </button></div>
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong>GRUPO:</strong> 1501
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong>TIPO:</strong> SEMINARIO
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong>MODALIDAD:</strong> MIXTO
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                       <strong> Cupo: </strong><span> 30 Lugares</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong><i class="fas fa-paper-plane"></i> INSCRIPCIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong><i class="fas fa-caret-square-right text-success"></i> INICIO: 23 de enero de 2022 al 14 julio de 2022</strong>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong><i class="fas fa-check-double text-info"></i> CALIFICACIONES: 23 de enero de 2022 al 14 julio de 2022</strong>
-                                    </li>
-                                </ul>
-                                <div class="actions">
-                                    <a href="./detalles-asignacion">
-                                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                            <i class="fas fa-plus"></i> Mas detalles...</button>
-                                    </a>
 
+        <div class="container-fluid">
+            <div class="page-content">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Grupos Activos Actualmente</h3>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Grupos Activos</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 mb-4 bg-light rounded-3">
+                    <div class="container-fluid py-5">
+                        <h1 class="display-5 fw-bold">Grupos Activos</h1>
+                        <p class="col-md-12 fs-4">Los grupos presentados con<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span> indican
+                        que estan listos para ser publicados pero no estan visibles al publico. Los cursos mostrados con<span class="badge  position-relative">
+                                <span class="blob yellow" style="position: absolute; top: 0px; left: 10px; right: 0; bottom: 0;"></span></span>
+                            significa que requieren acciones.</p>
+                        <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                        <div class="row">
+                            <div class="col-sm-12 d-flex justify-content-end">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Filtrar Grupos
+                                    </button>
+                                    <div class="dropdown-menu" style="margin: 0px;">
+                                        <a class="dropdown-item" href="#">En Curso</a>
+                                        <a class="dropdown-item" href="#">Disponibles</a>
+                                        <a class="dropdown-item" href="#">Ver todos</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <?php }  ?>
+                        <div class="d-flex justify-content-around flex-wrap py-3" id="containerCardsAsig">
+                            <!-- AJAX RESPONSE DINAMIC-->
+                        </div>
                     </div>
                 </div>
-            </section>
+
+            </div>
         </div>
+
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
             <?php include "includes/footer.php" ?>
@@ -225,6 +172,9 @@
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
 
+<script src="./service/general/tipos.js"></script>
+<script src="./service/grupos-actuales.js"></script>
+<script src="./service/general/tools.js"></script>
 </body>
 
 </html>

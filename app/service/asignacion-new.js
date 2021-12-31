@@ -3,11 +3,12 @@ $(document).ready(function() {
 });
 
 window.onload = function() {
+    let idCursoAsig = $("#idCursoToAsig").val();
     loadGeneraciones();
     loadSemestre();
-    consultaGrupos($("#idCurso").val());
+    consultaGrupos(idCursoAsig);
     consultaListaProfesores();
-    cargaCursoDetailsBasic("-1",$("#idCurso").val());
+    cargaCursoDetailsBasic("1",idCursoAsig);
 };
 
 async function cargaCursoDetailsBasic(filtro, idUnique) {

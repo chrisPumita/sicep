@@ -45,19 +45,60 @@ function getEstatusAsignacion(tipo){
     //Funcionalidades del tipo_curso
     switch(tipo){
         case "0":
-            return '<i class="fas fa-clipboard-check text-light-grey "></i> Concluido';
+            return '<i class="fas fa-clipboard-check text-light-grey "></i> ARCHIVADO';
             break;
         case "1":
-            return '<i class="fas fa-user-clock text-success"></i> Inscripciones';
+            return '<i class="fas fa-user-clock text-success"></i> INSCRIPCIONES';
             break;
         case "2":
-            return '<i class="fas fa-spinner text-info"></i> En Curso';
+            return '<i class="fas fa-spinner text-info"></i> EN CURSO';
             break;
         case "3":
-            return '<i class="fas fa-clipboard-check text-success"></i> Inscripciones';
+            return '<i class="fas fa-clipboard-check text-success"></i> CALIFICACIONES';
             break;
         default:
-            return '<i class="fas fa-exclamation-triangle text-warning"></i> No definido';
+            return '<i class="fas fa-exclamation-triangle text-warning"></i> CONCLUIDO';
+            break;
+    }
+}
+function getEstatusAsignacionPlano(tipo){
+    //Funcionalidades del tipo_curso
+    switch(tipo){
+        case "0":
+            return 'ARCHIVADO';
+            break;
+        case "1":
+            return 'INSCRIPCIONES';
+            break;
+        case "2":
+            return 'EN CURSO';
+            break;
+        case "3":
+            return 'CALIFICACIONES';
+            break;
+        default:
+            return 'CONCLUIDO';
+            break;
+    }
+}
+
+function getEstatusAsignacionColorIndicator(tipo){
+    //Funcionalidades del tipo_curso
+    switch(tipo){
+        case "0":
+            return 'white';
+            break;
+        case "1":
+            return 'green';
+            break;
+        case "2":
+            return 'blue';
+            break;
+        case "3":
+            return 'purple';
+            break;
+        default:
+            return 'yellow';
             break;
     }
 }

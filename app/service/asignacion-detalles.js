@@ -246,7 +246,7 @@ function buildTBLSolicPendientes(LISTA) {
 function loadDataAsignacion(asig){
     consultaGrupos(asig.id_curso).then(function () {
 
-        $("#fondoImg").css("background", "url('"+asig.banner_img+"') center fixed no-repeat");
+        $("#fondoImg").css("background", "url('"+asig.banner_img+"')");
 
         $("#profesorAsig").prepend("<option value='0' selected>Ninguno</option>");
         $("#grupos").prepend("<option value='0' selected>Ninguno</option>");

@@ -7,13 +7,11 @@ function consultaCursos($typeFiltro,$value){
     return $result;
 }
 
-function addCurso($params){
+function addCurso($params,$documentacion){
     include_once "../model/CURSO.php";
     $CURSO= new CURSO();
     include_once "keyGen/generadorClaves.php";
-    $id= genIdCurso();
-    $clave=date('Ymd'+$id);
-    return $clave;
+    $clave = genIdCurso();
     $CURSO->setIdCurso($clave);
     $CURSO->setIdProfesorAdminAcredita($params['idProfesorAdmin']);
     $CURSO->setIdProfesorAutor($params['idAutor']);
@@ -44,7 +42,9 @@ function addCurso($params){
             include_once "controlArchivos.php";
             modificaBannerCurso($clave,$params['bannerName'],$params['bannerFile']);
         }
-        return true;
+
+        //Crear procedimiento para los documentos, si Documentos esta definido
+        return $clave;
     }
     else {
         return false;

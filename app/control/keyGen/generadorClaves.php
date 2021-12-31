@@ -41,15 +41,16 @@ function gen_no_contrato($strength = 16)  {
     return $random_string;
 }
 
-function genIdCurso($strength = 2)  {
+function genIdCurso($strength = 4)  {
     $input = '0123456789';
     $input_length = strlen($input);
     $random_string = '';
+    $year = date("Y")-2000;
     for($i = 0; $i < $strength; $i++) {
         $random_character = $input[mt_rand(0, $input_length - 1)];
         $random_string .= $random_character;
     }
-    return date("Ymd").$random_string; //2021816654321, 2021816123456
+    return $year.date("md").$random_string; //2021816654321, 2021816123456
 }
 function gen_PW_user($strength = 8)  {
     //Carácteres para la contraseña

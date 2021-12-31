@@ -644,6 +644,14 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                     //Buscar por profesor
                     $filtro = " AND  prof.id_profesor = ".$idFiltro;
                     break;
+                case "3":
+                    //Buscar actuales
+                    $filtro = " AND ag.estatus = ".$idFiltro;
+                    break;
+
+                default:
+                    $filtro = "";
+                    break;
             }
         }
         else{
@@ -655,18 +663,25 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
        ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
        ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,
-       ag.estatus AS statusAsignacion,
+       ag.estatus AS archiveAsig,
        (SELECT COUNT(*) from inscripcion insc where
-        insc.id_inscripcion  IN (select id_inscripcion_fk from validacion_inscripcion)
-        AND insc.id_asignacion_fk = ag.id_asignacion) AS inscritos,
+               insc.id_inscripcion  IN (select id_inscripcion_fk from validacion_inscripcion)
+                                                AND insc.id_asignacion_fk = ag.id_asignacion) AS inscritos,
        (SELECT COUNT(*) from inscripcion insc where
-        insc.id_inscripcion NOT IN (select id_inscripcion_fk from validacion_inscripcion)
-        AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes
+               insc.id_inscripcion NOT IN (select id_inscripcion_fk from validacion_inscripcion)
+                                                AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes,
+            if(ag.estatus>0,
+                if(now()>=ag.fecha_inicio && now()<=ag.fecha_fin,
+                    '2',
+                    if(now()>=ag.fecha_inicio_actas && now()<=ag.fecha_fin_actas,
+                        '3',
+                        if(now()>=ag.fecha_inicio_inscripcion && now()<= ag.fecha_lim_inscripcion,'1', '99')))
+                ,'0') as statusAsignacion
         from persona per, profesor prof, asignacion_grupo ag, grupo gpo, curso c
         where per.id_persona = prof.id_persona_fk
           AND ag.id_profesor_fk = prof.id_profesor
           AND ag.id_grupo_fk = gpo.id_grupo
-          AND c.id_curso = gpo.id_curso_fk ".$idBusqueda." ".$filtro." ORDER BY ag.fecha_inicio ASC";
+          AND c.id_curso = gpo.id_curso_fk ".$idBusqueda." ".$filtro." ORDER BY statusAsignacion, c.nombre_curso ASC";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

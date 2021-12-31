@@ -17,17 +17,21 @@ if(isset($_POST['nombre_curso']) && isset($_POST['descripcion_curso'])&& isset($
         "linkTemarioFile"=>$_FILES['temarioPDF']['tmp_name'],
         "bannerName"=>$_FILES['banner']['name'],
         "bannerFile"=>$_FILES['banner']['tmp_name'],
-        "tipoCurso"=>$_POST['tipoCurso'],
-        "documentos"=>$_POST['documentos']
+        "tipoCurso"=>$_POST['tipoCurso']
         ];
+        $documentacion = isset($_POST['documentos']) ? $_POST['documentos']: null;
+
         include_once "../control/controlCursos.php";
-        $result = addCurso($params);
+
+        $result = addCurso($params,$documentacion);
         if($result){
             $mjeType= 1;
-            $mensaje=$result;
+            $isReturn = $result;
+            $mensaje="Se ha creado una propuesta de curso";
         } else{
             $mjeType=-1;
-            $mensaje=$result;
+            $isReturn = 0;
+            $mensaje="No se ha podo almacenar el curso";
         }
 }
 else {
@@ -36,6 +40,8 @@ else {
 }    
 $mje = array(
     "mjeType" => $mjeType,
+    "idReturn" => $isReturn,
     "Mensaje" => $mensaje
   );
+
   echo json_encode($mje);    

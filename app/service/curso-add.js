@@ -12,14 +12,34 @@ $("#msform").on("submit", function(e){
         type: "post",
         dataType: "html",
         data: formData,
-        cache: false,
         contentType: false,
         processData: false
-    })
-        .done(function(res){
-            console.log(res);
+    }).done(function(res){
         $("#frm-add-modelo").trigger('reset');
-        });
+        loadContaores();
+        let mje=JSON.parse(res);
+        let template = `
+            <div class="col-sm-12 d-flex justify-content-center">
+                <a href="./lista-cursos">
+                <button type="button" class="btn btn-primary me-1 mb-1">
+                    <i class="fas fa-coffee"></i> Ver Mis cursos
+                </button>
+                </a>
+                <a href="./nuevo-curso">
+                    <button type="button" class="btn btn-info me-1 mb-1">
+                        <i class="fas fa-plus"></i> Crear Otro
+                    </button>
+                </a>
+                <button type="button" class="btn btn-success me-1 mb-1" onclick="detailsCurso(${mje.idReturn})">
+                    <i class="fas fa-graduation-cap"></i>Terminar Edición
+                </button>
+            </div>
+            
+            
+            `;
+        $("#mensajeResponseAdd").html(mje.Mensaje);
+        $("#containerBtnAdd").html(template);
+    });
     e.preventDefault();
 });
 
@@ -31,7 +51,6 @@ async function cargaListDocs() {
 
 function buildListGHTMLDocs(obj_result) {
     let template = "";
-    console.log(obj_result);
     obj_result.forEach(
         (obj_result)=>
         {
@@ -44,4 +63,12 @@ function buildListGHTMLDocs(obj_result) {
         }
     );
     $("#lg-documentos").html(template);
+}
+
+
+function detailsCurso(idCurso) {
+    var url = './detalles-curso';
+    redirect_by_post(url, {
+        id: idCurso
+    }, false);
 }

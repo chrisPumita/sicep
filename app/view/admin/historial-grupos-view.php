@@ -23,9 +23,8 @@
                         <h3>Historial de Grupos</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="#">Pagina</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">SubPagina</li>
+                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Hitorial</li>
                             </ol>
                         </nav>
                     </div>

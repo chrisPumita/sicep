@@ -7,6 +7,7 @@
     --alert:  indianred;
     --gray: #616A6B;
 }
+
 /*@over botstrap styles*/
 #main {
     padding: 0!important;
@@ -422,3 +423,19 @@ bd-callout+.bd-callout {
     /* Just to show the size of the image wrapper */
     background-color: darkgrey;
 }
+
+.list-group-info {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.bannerImg{
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center right !important;
+}
+
+.single_course:hover {
+    box-shadow: 0px 10px 30px rgb(0 35 71 / 50%);
+}
+
