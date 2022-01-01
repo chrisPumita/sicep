@@ -86,6 +86,18 @@ function eliminarAlumno($id_alumno)
     $obj_alumn = new ALUMNO();
     echo $obj_alumn->eliminaAlumno($id_alumno) ? "Se elimino profesor" : "No se pudo eliminar al alumno";
 }
+
+/**********************VERIFICADOR DE CUENTA ChrisRCSG**********************************/
+function consultaCuentaAlumno($correo,$pw){
+    include_once "../model/ALUMNO.php";
+    $ALUM = new ALUMNO();
+    $ALUM->setEmail($correo);
+    $ALUM->setPw($pw);
+    return $ALUM->queryAcountAlumno();
+}
+/**********************VERIFICADOR DE CUENTA**********************************/
+
+
 /****************************************************
  *
  *          P E N D I E N T E

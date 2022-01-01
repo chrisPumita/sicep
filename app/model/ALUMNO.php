@@ -2,7 +2,7 @@
 
 include_once "PERSONA.php";
 include_once "interface/I_ALUMNO.php";
-class ALUMNO extends  PERSONA implements I_ALUMNO
+class ALUMNO extends PERSONA implements I_ALUMNO
 {
     private $id_alumno;
     private $id_municipio;
@@ -265,9 +265,11 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
        concat(per.`app`,' ', per.`apm`,' ', per.`nombre`) AS nombre_completo,
        per.`estatus` AS estatus_persona, per.`sexo`,tipproc.`id_tipo_procedencia`,
        tipproc.`tipo_procedencia` AS nameproc, uni.nombre AS uni_name, uni.siglas,
-       edosRep.estado AS edoRepName, edosRep.abrev AS abrevEdo
-        FROM `alumno` al, universidades uni,
-             `persona` per , `tipo_procedencia` tipproc , `municipios` mun, estados edosRep
+       edosRep.estado AS edoRepName, edosRep.abrev AS abrevEdo,
+       ss.id_alumno_fk, ss.estatus AS statusSS, (case when ss.id_alumno_fk is null then 0 else 1 end) as flagServSoc
+        FROM  universidades uni, `persona` per , `tipo_procedencia` tipproc , 
+             `municipios` mun, estados edosRep, alumno al
+             left join servicio_social ss on ss.id_alumno_fk = al.id_alumno
         WHERE al.`id_persona` = per.`id_persona`
           AND uni.id_universidad = al.id_universidad
           AND al.`id_municipio` = mun.`id_municipio`
@@ -318,25 +320,27 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $result;
     }
 
-    function queryConsultaAlumno($id_alumno)
+    function queryConsultaAlumno()
     {
-        $query = "SELECT per.`id_persona`, per.`nombre` AS nombre_alumno, 
-        per.`app`, per.`apm`, alu.`email`, per.`telefono`, est.`estado`, 
-        mun.`municipio`, tipproc.`tipo_procedencia`, uni.`siglas`, 
-        uni.`nombre` AS nombre_uni, alu.`carrera_especialidad`, alu.`matricula`, 
-        per.`estatus`AS status_persona, tipproc.`id_tipo_procedencia`, 
-        alu.`id_alumno`, alu.`id_municipio` AS id_municipio_fk, 
-        alu.`id_universidad`, alu.`id_persona`, alu.`id_tipo_procedencia_fk`, 
-        uni.`id_universidad`, mun.`id_municipio`, mun.`id_estado_fk`, 
-        est.`id_estado`, est.`abrev` 
-        FROM `persona` per, `tipo_procedencia` tipproc, `alumno` alu, 
-        `universidades` uni, `municipios` mun, `estados` est 
-        WHERE per.`id_persona` = alu.`id_persona` 
-        AND tipproc.`id_tipo_procedencia` = alu.`id_tipo_procedencia_fk` 
-        AND alu.`id_municipio` = mun.`id_municipio` 
-        AND mun.`id_estado_fk` = est.`id_estado` 
-        AND alu.`id_universidad` = uni.`id_universidad`
-        AND alu.`id_alumno`= ".$id_alumno;
+        $query = "select  per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
+        concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
+        mun.`municipio`, tipproc.`tipo_procedencia`, uni.`siglas`,
+        uni.`nombre` AS nombre_uni, al.`carrera_especialidad`, al.`matricula`,
+        per.`estatus`AS status_persona, tipproc.`id_tipo_procedencia`,
+        al.`id_alumno`, al.`id_municipio` AS id_municipio_fk, al.`email`,
+        al.`id_universidad`, al.`id_persona`, al.`id_tipo_procedencia_fk`,
+        uni.`id_universidad`, mun.`id_municipio`, mun.`id_estado_fk`,
+        est.`id_estado`, est.`abrev`, est.`estado`, ss.id_alumno_fk,
+       (case when ss.id_alumno_fk is null then 0 else 1 end) as flagServSoc
+            from `persona` per, `tipo_procedencia` tipproc,
+                 `universidades` uni, `municipios` mun, `estados` est, alumno al
+             left join servicio_social ss on ss.id_alumno_fk = al.id_alumno
+            WHERE per.`id_persona` = al.`id_persona`
+              AND tipproc.`id_tipo_procedencia` = al.`id_tipo_procedencia_fk`
+              AND al.`id_municipio` = mun.`id_municipio`
+              AND mun.`id_estado_fk` = est.`id_estado`
+              AND al.`id_universidad` = uni.`id_universidad`
+        AND alu.`id_alumno`= ".$this->getIdAlumno();
         $this->connect();
         $datos = $this->getData($query);
         $this->close();
@@ -396,10 +400,10 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $result;
     }
 
-    function queryUpdateEstatusAlumno($id_alumno, $estatus)
+    function queryUpdateEstatusAlumno()
     {
-        $filtro = $id_alumno > 0 ? " WHERE `alumno`.`id_alumno`=" . $id_alumno : "";
-        $query = "UPDATE `alumno` SET `alumno`.`estatus` = '$estatus' ".$filtro;
+        $filtro = $this->getIdAlumno() > 0 ? " WHERE `alumno`.`id_alumno`=" . $this->getIdAlumno() : "";
+        $query = "UPDATE `alumno` SET `alumno`.`estatus` = '".$this->getEstatusAlumno()."' ".$filtro;
         $this->connect();
         $response = $this->executeInstruction($query);
         $this->close();
@@ -415,10 +419,10 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
         return $datos;
     }
 
-    function queryUpdatePw($id_alumn,$pwd)
+    function queryUpdatePw()
     {
         $query =    "UPDATE `alumno` 
-                    SET `pw` = '".$pwd."' 
+                    SET `pw` = '".$this->getPw()."' 
                     WHERE `alumno`.`id_alumno` = ".$this->id_alumno;
         $this->connect();
         $datos = $this->executeInstruction($query);
@@ -427,72 +431,17 @@ class ALUMNO extends  PERSONA implements I_ALUMNO
 
     }
 
-    function queryDeleteAlumno($id_alumno)
+    function queryDeleteAlumno()
     {
-        $query = "DELETE FROM `alumno` WHERE `alumno`.`id_alumno` =".$id_alumno;
+        $query = "DELETE FROM `alumno` WHERE `alumno`.`id_alumno` =".$this->getIdAlumno();
         $this->connect();
         $datos = $this->executeInstruction($query);
         $this->close();
         return $datos;
     }
 
-    function queryConsultaCuentaServSoc($id_alumn)
-    {
-        include_once "SERVICIO_SOCIAL.php";
-        $obj_serv = new SERVICIO_SOCIAL();
-        $obj_serv->setIdAlumno($this->getIdAlumno());
-        return $obj_serv->consultaCuenta();
-    }
-    /****************************************************
-     *
-     *          P E N D I E N T E
-     *
-     *  CREAR CUENTA SERVICIO SOCIAL
-     *
-     * **************************************************/
-    function queryCreateCuentaServSoc()
-    {
-        include_once "../model/SERVICIO_SOCIAL.php";
-        $objServSoc = new SERVICIO_SOCIAL();
-        $query = "INSERT INTO `servicio_social` (
-                               `id_alumno`, 
-                               `clave_acceso`, 
-                               `fecha_alta`, 
-                               `fecha_inicio_serv`, 
-                               `fecha_termino_serv`, 
-                               `notas`, 
-                               `permisos`, 
-                               `estatus`) 
-                               VALUES ('".$objServSoc->getIdAlumno($this->getIdAlumno())."', 
-                               '".$objServSoc->getClaveAcceso()."', 
-                               '".date('Y-m-d H:i:s')."', 
-                               '".$objServSoc->getFechaInicioServ()."', 
-                               '".$objServSoc->getFechaTerminoServ()."', 
-                               '".$objServSoc->getNotas()."', 
-                               '".$objServSoc->getPermisos()."', 
-                               '".$objServSoc->getEstatus()."')";
+    function queryAcountAlumno(){
 
-    }
-    /****************************************************
-     *
-     *          P E N D I E N T E
-     *
-     *  CREAR CUENTA SERVICIO SOCIAL
-     *
-     * **************************************************/
-    function modificarCuentaServSoc()
-    {
-        // TODO: Implement modificarCuentaServSoc() method.
-    }
-
-    function terminarServSoc()
-    {
-        // TODO: Implement terminarServSoc() method.
-    }
-
-    function cambiarClaveServSoc()
-    {
-        // TODO: Implement cambiarClaveServSoc() method.
     }
 
     /*******************************************************************************

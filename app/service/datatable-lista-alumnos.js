@@ -17,6 +17,7 @@ function cargaDatosAlumnosDataTable(typeFiltro) {
                     render: function ( data, type, row ){
                         let status = row.id_alumno > 0 ? `<i class="fas fa-check-circle text-primary avatar-status" data-bs-toggle="tooltip" data-bs-placement="top" title="Cuanta Verificada"></i>`:
                             `<i class="fas text-warning fa-exclamation-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Cuenta Suspendida"></i>`;
+                        let ss = parseInt(row.flagServSoc) > 0 ? `<p><a href="./lista-servicio-social"><span class="badge bg-${parseInt(row.statusSS)>0?'primary':'grey'}">Serv. Social</span></a></p>`:"";
                         let template = `<div class="d-flex align-items-center">
                                         <div class="avatar avatar-md">
                                             <img src="${row.perfil_image}" alt="" srcset="">
@@ -25,6 +26,7 @@ function cargaDatosAlumnosDataTable(typeFiltro) {
                                         <div class="d-flex flex-column justify-content-center px-3">
                                             <p class="mb-0 text-xs">${row.nombre_completo} </p>
                                             <p class="mb-0 text-sm text-primary">${row.nameproc}</p>
+                                            ${ss}
                                         </div>
                                     </div>`;
                         return template;

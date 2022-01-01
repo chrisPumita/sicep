@@ -35,6 +35,8 @@ function verificaCuentaUser($correo,$pw,$chkProf)
     }
     else{
         //verificamos cuenta de alumno
+        include_once "controlAlum.php";
+
         return array();
     }
 

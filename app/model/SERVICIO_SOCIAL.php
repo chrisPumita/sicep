@@ -1,7 +1,8 @@
 <?php
 
-
-class SERVICIO_SOCIAL
+include_once "ALUMNO.php";
+include_once "interface/I_SERVIO_SOCIAL.php";
+class SERVICIO_SOCIAL EXTENDS ALUMNO IMPLEMENTS I_SERVIO_SOCIAL
 {
     private $id_alumno;
     private $clave_acceso;
@@ -10,7 +11,7 @@ class SERVICIO_SOCIAL
     private $fecha_termino_serv;
     private $notas;
     private $permisos;
-    private $estatus;
+    private $estatusCuenta;
 
     /**
      * @return mixed
@@ -144,6 +145,67 @@ class SERVICIO_SOCIAL
     {
         $cuenta = "";
         return $cuenta;
+    }
+
+    function queryConsultaCuentaServSoc()
+    {
+        include_once "SERVICIO_SOCIAL.php";
+        $obj_serv = new SERVICIO_SOCIAL();
+        $obj_serv->setIdAlumno($this->getIdAlumno());
+        return $obj_serv->consultaCuenta();
+    }
+
+
+    /****************************************************
+     *
+     *          P E N D I E N T E
+     *
+     *  CREAR CUENTA SERVICIO SOCIAL
+     *
+     * **************************************************/
+    function queryCreateCuentaServSoc()
+    {
+        include_once "../model/SERVICIO_SOCIAL.php";
+        $objServSoc = new SERVICIO_SOCIAL();
+        $query = "INSERT INTO `servicio_social` (
+                               `id_alumno`, 
+                               `clave_acceso`, 
+                               `fecha_alta`, 
+                               `fecha_inicio_serv`, 
+                               `fecha_termino_serv`, 
+                               `notas`, 
+                               `permisos`, 
+                               `estatus`) 
+                               VALUES ('".$objServSoc->getIdAlumno($this->getIdAlumno())."', 
+                               '".$objServSoc->getClaveAcceso()."', 
+                               '".date('Y-m-d H:i:s')."', 
+                               '".$objServSoc->getFechaInicioServ()."', 
+                               '".$objServSoc->getFechaTerminoServ()."', 
+                               '".$objServSoc->getNotas()."', 
+                               '".$objServSoc->getPermisos()."', 
+                               '".$objServSoc->getEstatus()."')";
+
+    }
+    /****************************************************
+     *
+     *          P E N D I E N T E
+     *
+     *  CREAR CUENTA SERVICIO SOCIAL
+     *
+     * **************************************************/
+    function queryModificarCuentaServSoc()
+    {
+        // TODO: Implement modificarCuentaServSoc() method.
+    }
+
+    function queryTerminarServSoc()
+    {
+        // TODO: Implement terminarServSoc() method.
+    }
+
+    function queryCambiarClaveServSoc()
+    {
+        // TODO: Implement cambiarClaveServSoc() method.
     }
 
 
