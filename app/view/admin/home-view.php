@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-12 col-lg-3">
                     <div class="card">
-                        <div class="card-body py-4 px-5">
+                        <div class="card-body py-4 px-4">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-xl">
                                     <img src="<?php echo $_SESSION['img_perfil'];?>" alt="Face 1">
@@ -159,9 +159,9 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="card single_course pb-3" >
-                    <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                        <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                    </span>
+                                            <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
+                                                <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
+                                            </span>
                                         <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
                                         </div>
                                         <span class="badge bg-info ">0/20 Disponibles</span>

@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-12 col-lg-3">
                             <div class="card">
-                                <div class="card-body py-4 px-5">
+                                <div class="card-body py-4 px-4">
                                     <div class="d-flex align-items-center">
                                         <div class="avatar avatar-xl">
                                             <img src="<?php echo $_SESSION['img_perfil'];?>" alt="Face 1">
