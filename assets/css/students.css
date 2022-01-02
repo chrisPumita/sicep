@@ -1,0 +1,87 @@
+/*RCGS Configure CSS3+s Styles*/
+:root{
+    --primary: #196398;
+    --second: #CDAC12;
+    --ligth : #ffffff;
+    --grey: #dedede;
+    --alert:  indianred;
+    --gray: #616A6B;
+}
+
+
+.layout-horizontal .main-navbar {
+    background-color: var(--primary);
+    padding: 1rem;
+}
+
+.layout-horizontal .header-top .logo img {
+    height: 30px;
+}
+
+/*@over botstrap styles*/
+
+.bg-primary{background-color: var(--primary) !important;}
+.bg-light{background-color: var(--ligth) !important;}
+.bg-mix{background: linear-gradient(180deg,var(--ligth)50%,var(--grey));}
+.bg-grey{background-color: var(--grey) !important;}
+/*@over botstrap styles TEXT*/
+.text-light-grey{color: var(--grey) !important;}
+.text-primary{    color: var(--primary) !important;}
+.text-secondary{    color: var(--second) !important;}
+.text-grey {    color: var(--gray) !important;}
+.text-light {    color: var(--ligth) !important;}
+.label_mje{color: var(--alert);}
+.spinner-grow { width: 1rem; height: 1rem;}
+/*@over botstrap styles BOTONES */
+.btn-primary{    background-color: var(--primary) !important;}
+.btn-primary:hover{    background-color: var(--second) !important;}
+.btn-gray{ background-color: var(--gray) !important;}
+.bg_second { background-color: var(--second)!important;}
+
+.my-5 { margin-top: 0rem!important;}
+
+body {
+    font-weight: 200;
+    color: var(--primary);
+    background-color: var(--grey) !important;
+}
+
+.layout-horizontal .main-navbar ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+}
+
+.submenu-item:hover{
+    background-color: var(--grey) !important;
+}
+
+@media screen and (max-width: 1199px){
+    .layout-horizontal .main-navbar ul .menu-link {
+        color: var(--ligth)!important;
+    }
+
+    .layout-horizontal .main-navbar .submenu .submenu-group .submenu-item a:hover {
+        color: var(--primary) !important;
+    }
+
+    .layout-horizontal .main-navbar .submenu .submenu-group .submenu-item a {
+        color: var(--ligth) !important;
+    }
+
+    .menu-container{
+        display: block !important;
+    }
+
+    .layout-horizontal .main-navbar ul {
+        align-content: inherit !important;
+        align-items: inherit !important;
+        gap: 0 !important;
+    }
+}
+

@@ -322,7 +322,7 @@ class ALUMNO extends PERSONA implements I_ALUMNO
 
     function queryConsultaAlumno()
     {
-        $query = "select  per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
+        $query = "SELECT  per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
         concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
         mun.`municipio`, tipproc.`tipo_procedencia`, uni.`siglas`,
         uni.`nombre` AS nombre_uni, al.`carrera_especialidad`, al.`matricula`,
@@ -441,7 +441,31 @@ class ALUMNO extends PERSONA implements I_ALUMNO
     }
 
     function queryAcountAlumno(){
-
+            $query = "select  per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
+        concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
+        per.`estatus`AS status_persona, mun.`municipio`, tipproc.`tipo_procedencia`,
+       uni.`siglas`, uni.`nombre` AS nombre_uni, al.`carrera_especialidad`, al.`matricula`,
+         tipproc.`id_tipo_procedencia`, al.`id_alumno`, al.`id_municipio` AS id_municipio_fk,
+       al.`email`, al.`id_universidad`, al.`id_persona`, al.`id_tipo_procedencia_fk`,
+       al.estatus AS estatusAlumno, al.perfil_image,
+        uni.`id_universidad`, mun.`id_municipio`, mun.`id_estado_fk`,
+        est.`id_estado`, est.`abrev`, est.`estado`, ss.id_alumno_fk,
+        (case when ss.id_alumno_fk is null then 0 else 1 end) as flagServSoc
+        from `persona` per, `tipo_procedencia` tipproc,
+             `universidades` uni, `municipios` mun, `estados` est, alumno al
+             left join servicio_social ss on ss.id_alumno_fk = al.id_alumno
+        WHERE per.`id_persona` = al.`id_persona`
+          AND tipproc.`id_tipo_procedencia` = al.`id_tipo_procedencia_fk`
+          AND al.`id_municipio` = mun.`id_municipio`
+          AND mun.`id_estado_fk` = est.`id_estado`
+          AND al.`id_universidad` = uni.`id_universidad`
+          AND al.id_alumno>0
+         AND per.estatus = 1 AND al.email LIKE '".$this->getEmail()."'
+        AND al.pw LIKE '".$this->getPw()."'";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
     }
 
     /*******************************************************************************

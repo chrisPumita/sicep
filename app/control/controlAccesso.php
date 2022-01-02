@@ -36,8 +36,30 @@ function verificaCuentaUser($correo,$pw,$chkProf)
     else{
         //verificamos cuenta de alumno
         include_once "controlAlum.php";
+        $datosAlumno = consultaCuentaAlumno($correo,md5($pw));
+        if(count($datosAlumno) > 0 ){
+            //creamos la sesion
+            session_start();
+            $_SESSION['id_persona']     = $datosAlumno[0]['id_persona'];
+            $_SESSION['matricula']      = $datosAlumno[0]['matricula'];
+            $_SESSION['usuario']        = $datosAlumno[0]['nombre'];
+            $_SESSION['apaterno']       = $datosAlumno[0]['app'];
+            $_SESSION['amaterno']       = $datosAlumno[0]['apm'];
+            $_SESSION['correo_user']    = $datosAlumno[0]['email'];
+            $_SESSION['tipo_procedencia']          = $datosAlumno[0]['tipo_procedencia'];
 
-        return array();
+            $_SESSION['cuenta']         = $datosAlumno[0]['flagServSoc'] == "1"?'SERVICIO SOCIAL':'ALUMNO';
+            $_SESSION['serv']          = $datosAlumno[0]['flagServSoc'] == "1" ? true:false;
+            $_SESSION['id_alumno']     = $datosAlumno[0]['id_alumno'];
+
+            $_SESSION['perfil_image']     = $datosAlumno[0]['perfil_image'];
+            $_SESSION['nombre_completo']= $datosAlumno[0]['nombre_completo'];
+            $_SESSION['typeCount']      = 'student';
+            if ($_SESSION['serv']){
+                //Cargamos los atributos del servicio social
+            }
+        }
+        return $datosAlumno;
     }
 
 }
