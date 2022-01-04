@@ -16,8 +16,10 @@ $("#msform").on("submit", function(e){
         processData: false
     }).done(function(res){
         $("#frm-add-modelo").trigger('reset');
+        console.log(res);
         loadContaores();
         let mje=JSON.parse(res);
+        console.log(mje);
         let template = `
             <div class="col-sm-12 d-flex justify-content-center">
                 <a href="./lista-cursos">
@@ -34,8 +36,6 @@ $("#msform").on("submit", function(e){
                     <i class="fas fa-graduation-cap"></i>Terminar Edición
                 </button>
             </div>
-            
-            
             `;
         $("#mensajeResponseAdd").html(mje.Mensaje);
         $("#containerBtnAdd").html(template);
