@@ -8,10 +8,7 @@ async function consultaProcedencias() {
     buildHTMLProcedencias(JSONData);
 }
 
-async function consultaUnis() {
-    const JSONData = await consultaUnisAjax("./");
-   buildHTMLTblUnis(JSONData);
-}
+
 
 function buildHTMLProcedencias(obj_result) {
     let template = `<option value="">TODOS</option>`;
@@ -22,6 +19,11 @@ function buildHTMLProcedencias(obj_result) {
         }
     );
     $("#list-procedencias").html(template);
+}
+
+async function consultaUnis() {
+    const JSONData = await consultaUnisAjax("./");
+    buildHTMLTblUnis(JSONData);
 }
 
 function buildHTMLTblUnis(obj_result) {

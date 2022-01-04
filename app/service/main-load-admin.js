@@ -40,5 +40,8 @@ function loadContaores(){
             `Cursos  <span class="badge bg-primary">${contadores.cursosPendRev}</span>` : `Cursos`;
         $("#contCursosSideBar").html(contCursosPendRevtemplate);
 
+        let contArchvosRevisa = contadores.archivosPendientes >0 ?
+            `Documentos  <span class="badge bg-danger">${contadores.archivosPendientes}</span>` : `Solicitudes`;
+        $("#countDoscRevisaSidebar").html(contArchvosRevisa);
     })
 }

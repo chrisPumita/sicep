@@ -117,7 +117,7 @@
                             <h3>Grupos Activos Actualmente</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Grupos Activos</li>
                                 </ol>
                             </nav>
@@ -131,7 +131,9 @@
                         que estan listos para ser publicados pero no estan visibles al publico. Los cursos mostrados con<span class="badge  position-relative">
                                 <span class="blob yellow" style="position: absolute; top: 0px; left: 10px; right: 0; bottom: 0;"></span></span>
                             significa que requieren acciones.</p>
-                        <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                        <a href="./solicitudes-inscripcion">
+                            <button class="btn btn-primary btn-lg" type="button">Ver Solicitudes</button>
+                        </a>
                         <div class="row">
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <div class="dropdown">

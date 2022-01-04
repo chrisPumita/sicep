@@ -8,3 +8,9 @@ function getDocsSolCurso($idCurso){
     return $DS->queryListaDocumentosSol();
 }
 
+
+function getCountArchivosRevisa(){
+ include_once "../model/ARCHIVO.php";
+ $ARCH = new ARCHIVO();
+ return $ARCH->queryCountArchRevisa();
+}

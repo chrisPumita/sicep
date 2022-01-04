@@ -59,20 +59,11 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="" class='sidebar-link'>
+                <li class="sidebar-item ">
+                    <a href="./lista-cursos" class='sidebar-link'>
                         <i class="fas fa-graduation-cap"></i>
                         <span id="contCursosSideBar"></span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./nuevo-curso">Agregar</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="./lista-cursos">Ver todos</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -103,7 +94,7 @@
                 <li class="sidebar-item ">
                     <a href="./documentos" class='sidebar-link'>
                         <i class="fas fa-file-pdf"></i>
-                        <span>Documentos  <span class="badge bg-danger">150</span></span>
+                        <span id="countDoscRevisaSidebar"></span>
                     </a>
                 </li>
                 <li class="sidebar-item  has-sub">
@@ -122,20 +113,6 @@
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="fas fa-user-tie"></i>
-                        <span>Cuentas</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./lista-cuentas">Ver todas</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="./lista-servicio-social">Servicio Social</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
                         <i class="fas fa-user-graduate"></i>
                         <span  id="counterSolicAlumnos"></span>
                     </a>
@@ -148,6 +125,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="fas fa-user-tie"></i>
+                            <span>Cuentas</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="./lista-cuentas">Ver todas</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="./lista-servicio-social">Servicio Social</a>
+                            </li>
+                        </ul>
+                    </li>
                 <li class="sidebar-item ">
                     <a href="./preferencias" class='sidebar-link'>
                     <i class="fas fa-tasks"></i>

@@ -1,6 +1,6 @@
 <?php
-INCLUDE ("DOCS_SOLICITADOS_CURSO.php");
-include_once "./interface/I_ARCHIVO.php";
+include_once "DOCS_SOLICITADOS_CURSO.php";
+include_once "interface/I_ARCHIVO.php";
 class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 {
     private $id_archivo;
@@ -282,5 +282,13 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         }else{
             return false;
         }
+    }
+
+    function queryCountArchRevisa(){
+        $query="select * from archivo where estado_revision = 0 AND estado = 0";
+        $this->connect();
+        $datos = $this->numRows($query);
+        $this->close();
+        return $datos;
     }
 }

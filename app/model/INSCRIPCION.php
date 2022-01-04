@@ -219,12 +219,14 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
                 break;
         }
 
-        $sql = "select per.nombre, per.app, per.apm, per.sexo,per.estatus AS estatusPersona, CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo,
-            per.telefono, 
-           al.id_alumno, al.matricula, al.nombre_uni, al.id_tipo_procedencia_fk, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image, 
-           al.estatus AS estatusAlumno, proc.id_tipo_procedencia, proc.tipo_procedencia, uni.id_universidad, uni.nombre AS nombreUni, uni.siglas,
-           mun.municipio, edos.estado AS edoRep, insc.id_inscripcion, insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia,
-           insc.fecha_solicitud, insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion, insc.id_asignacion_fk ".$colums."
+        $sql = "select per.nombre, per.app, per.apm, per.sexo, per.estatus AS estatusPersona, 
+        CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo, per.telefono, al.id_alumno, al.matricula, 
+        al.nombre_uni, al.id_tipo_procedencia_fk, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image, 
+        al.estatus AS estatusAlumno, proc.id_tipo_procedencia, proc.tipo_procedencia, uni.id_universidad, 
+        uni.nombre AS nombreUni, uni.siglas, mun.municipio, edos.estado AS edoRep, insc.id_inscripcion, 
+        insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud, 
+        insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion, 
+        insc.id_asignacion_fk ".$colums."
         from alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, 
         inscripcion insc ".$fromTable."
         where al.id_persona = per.id_persona
@@ -239,6 +241,54 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         $this->close();
         return $result;
     }
+
+    /*
+     * ARCHIVO > estado
+        0. enviado para verificar (default)
+        1. verificado y aprobado
+        2. verificado y rechazado
+        3. incorrecto
+        4. falso
+        5. caducado
+        -. eliminado
+     * */
+    function querySolicInscPend(){
+        $filtro = $this->getIdInscripcion() >0 ? "AND insc.id_inscripcion = 525425424":"";
+        $sql = "select per.nombre, per.app, per.apm, per.sexo, per.estatus AS estatusPersona,
+       CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo, per.telefono, al.id_alumno, al.matricula,
+       al.nombre_uni, al.id_tipo_procedencia_fk, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image,
+       al.estatus AS estatusAlumno, proc.id_tipo_procedencia, proc.tipo_procedencia, uni.id_universidad,
+       uni.nombre AS nombreUni, uni.siglas, mun.municipio, edos.estado AS edoRep, insc.id_inscripcion,
+       insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud,
+       insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion,
+       insc.id_asignacion_fk,
+       asig.id_asignacion, asig.generacion, asig.semestre, asig.campus_cede, asig.fecha_creacion, asig.fecha_inicio,
+       asig.fecha_fin, asig.fecha_inicio_inscripcion, asig.fecha_lim_inscripcion, asig.fecha_inicio_actas,
+       asig.fecha_fin_actas, asig.cupo, asig.costo_real, asig.notas, asig.modalidad, asig.visible_publico, asig.estatus AS estatusAsig,
+       gpo.id_grupo, gpo.grupo, gpo.estatus AS estatusGpo, c.id_curso, c.codigo, c.route, c.nombre_curso, c.dirigido_a,
+       c.objetivo, c.descripcion, c.no_sesiones, c.antecedentes, c.link_temario_pdf, c.banner_img, c.tipo_curso,
+       (SELECT COUNT(*) FROM docs_solicitados_curso WHERE id_curso_fk =  c.id_curso ) AS n_sol,
+       (SELECT COUNT(*) FROM  archivo a  Left Join  docs_solicitados_curso ds
+         On  a.id_doc_sol_fk = ds.id_doc_sol WHERE a.estado = 1 AND a.id_inscripcion_fk = insc.id_inscripcion) AS n_enviados,
+       (select COUNT(*) from archivo ar where ar.estado = 0 AND ar.id_inscripcion_fk =insc.id_inscripcion) AS n_revisa
+        FROM alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, inscripcion insc,
+             asignacion_grupo asig, grupo gpo, curso c
+        WHERE al.id_persona = per.id_persona
+          AND al.id_tipo_procedencia_fk = proc.id_tipo_procedencia
+          AND uni.id_universidad = al.id_universidad
+          AND edos.id_estado = mun.id_estado_fk
+          AND mun.id_municipio = al.id_municipio
+          AND insc.id_alumno_fk = al.id_alumno
+          AND asig.id_asignacion = insc.id_asignacion_fk
+          AND gpo.id_grupo = asig.id_grupo_fk
+          AND gpo.id_curso_fk = c.id_curso
+          AND insc.id_inscripcion NOT IN (SELECT vi.id_inscripcion_fk from validacion_inscripcion vi) ".$filtro;
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
 
     function queryRegistraInscripcion()
     {

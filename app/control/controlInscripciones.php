@@ -15,3 +15,11 @@ function countSolicitudesPendientes(){
     $objInsc = new INSCRIPCION();
     return $objInsc->queryCountSolcitudesPendientes();
 }
+
+function getListaPendientes($idInsc){
+    include_once "../model/INSCRIPCION.php";
+    $objInsc = new INSCRIPCION();
+    $objInsc->setIdInscripcion($idInsc);
+    //recorrer el arrya contando documentacion
+    return  $objInsc-> querySolicInscPend();
+}

@@ -1,5 +1,5 @@
 <?php
-include("DOCUMENTO.php");
+include_once "DOCUMENTO.php";
 include_once "interface/I_DOCS_SOLICITADOS.php";
 class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
 {
