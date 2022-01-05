@@ -102,4 +102,20 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
         $this->close();
         return $response;
     }
+
+    //Funcion para concatenar querys para una lista de doc. sol.
+
+    public function  queryInsertLsDocsSol($lsDocSol){
+        $cont=0;
+        $query = "INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso_fk`, `obligatorio`) VALUES ";
+        foreach($lsDocSol as $doc){
+            $query.="(NULL, '".$doc."','".$this->getIdCursoFk()."', '0')";
+            $cont++;
+            $query.= count($lsDocSol)== $cont ? ";": ",";
+        }
+        $this->connect();
+        $resultado = $this-> executeInstruction($query);
+        $this->close();
+        return $resultado;
+    }
 }

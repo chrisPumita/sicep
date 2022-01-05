@@ -14,3 +14,10 @@ function getCountArchivosRevisa(){
  $ARCH = new ARCHIVO();
  return $ARCH->queryCountArchRevisa();
 }
+
+function addListaDocumentosSolicitados($idCurso,$listaDocSol){
+    include_once "../model/DOCS_SOLICITADOS_CURSO.php";
+    $DS = new DOCS_SOLICITADOS_CURSO();
+    $DS->setIdCursoFk($idCurso);
+    return $DS->queryInsertLsDocsSol($listaDocSol);
+}

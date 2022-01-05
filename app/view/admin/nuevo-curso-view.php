@@ -265,7 +265,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="form-group">
                                                                                                     <label for="editarModalidad">Codigo</label>
-                                                                                                    <input class="form-control valid" type="text" id="codigo" name="codigo" required="">
+                                                                                                    <input class="form-control valid" type="number" id="codigo" name="codigo" required="">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-3">

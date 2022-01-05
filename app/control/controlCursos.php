@@ -23,7 +23,7 @@ function addCurso($params,$documentacion){
     $CURSO->setNoSesiones($params['noSesiones']);
     $CURSO->setAntecedentes($params['antecedentes']);
     $CURSO->setCostoSugerido($params['costo']);
-    $CURSO->setLinkTemarioPdf('../resources/temario/');
+    $CURSO->setLinkTemarioPdf('');
     $CURSO->setFechaCreacion(date("Y-m-d H:i:s"));
     $CURSO->setBannerImg('../resources/banners/ban-fesc.jpg');
     $CURSO->setTipoCurso($params['tipoCurso']);
@@ -35,15 +35,19 @@ function addCurso($params,$documentacion){
         if($params['linkTemarioFile']!=""){
             //Generar el archivo en servidor
             include_once "controlArchivos.php";
-            modificaArchivoPdf($clave,$params['linkTemarioName'],$params['linkTemarioFile']);
+            modificaArchivoPdf($CURSO->getIdCurso(),$params['linkTemarioName'],$params['linkTemarioFile']);
         } 
         //verificamos si llega un archivo de banner
         if($params['bannerFile']!=""){
             include_once "controlArchivos.php";
             modificaBannerCurso($clave,$params['bannerName'],$params['bannerFile']);
         }
-
         //Crear procedimiento para los documentos, si Documentos esta definido
+        if(count($documentacion)>0){
+            //Mandar al control Documentos
+            include_once "controlDocumentos.php";
+            addListaDocumentosSolicitados($CURSO->getIdCurso(),$documentacion);
+        }
         return $clave;
     }
     else {
