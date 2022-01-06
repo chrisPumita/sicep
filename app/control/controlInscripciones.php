@@ -20,6 +20,19 @@ function getListaPendientes($idInsc){
     include_once "../model/INSCRIPCION.php";
     $objInsc = new INSCRIPCION();
     $objInsc->setIdInscripcion($idInsc);
-    //recorrer el arrya contando documentacion
     return  $objInsc-> querySolicInscPend();
+}
+
+function getListaInscYFiles($idUniqueIns){
+    include_once "../model/INSCRIPCION.php";
+    $I = new INSCRIPCION();
+    $I->setIdInscripcion($idUniqueIns);
+    return $I->queryLsSolDocPendiente();
+}
+
+function getListaFilesPendientesInsc($idInscipcion,$filtro){
+    include_once "../model/INSCRIPCION.php";
+    $I = new INSCRIPCION();
+    $I->setIdInscripcion($idInscipcion);
+    return $I->queryLsDocPendientesInscipcion($filtro);
 }

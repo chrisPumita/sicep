@@ -4,7 +4,6 @@
 
 <head>
     <?php include "includes/head.php"?>
-    <link rel="stylesheet" href="../assets/vendors/simple-datatables/style.css">
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Documentos Por Revisar <span class="badge bg-danger">150</span></h3>
+                        <h3>Documentos Por Revisar <span class="badge bg-danger" id="contadorDocs">0</span></h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -56,288 +55,7 @@
                        Documentos por Revisar
                     </div>
                     <div class="card-body">
-                        <div class="list-group">
-                            <div class="list-group-item list-group-item-action" id="heading1" data-bs-toggle="collapse"
-                               data-bs-target="#collapse1" aria-expanded="false"
-                               aria-controls="collapseOne" role="button">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div class="d-flex px-2 py-1 mb-0">
-                                        <div class="px-3">
-                                            <i class="fas fa-folder-open"></i>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-xs">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">Iniciacion al computo I [1003]</p>
-                                        </div>
-                                    </div>
-                                    <small><span class="badge bg-danger">4</span></small>
-                                </div>
-                            </div>
-                            <div id="collapse1" class="collapse pt-1" aria-labelledby="heading1"
-                                 data-parent="#cardAccordion">
-                                <div class="table-responsive">
-                                    <div class="card">
-                                        <div class="alert alert-primary">
-                                            <p>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Folio: 156156</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-paper-plane"></i> Enviar Mensaje</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="far fa-id-card"></i> Ver Datos</a>
-                                                <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i> Cancelar</a>
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <table class="table table-hover table-lg">
-                                        <tbody>
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="list-group-item list-group-item-action" id="heading2" data-bs-toggle="collapse"
-                                 data-bs-target="#collapse2" aria-expanded="false"
-                                 aria-controls="collapseOne" role="button">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div class="d-flex px-2 py-1 mb-0">
-                                        <div class="px-3">
-                                            <i class="fas fa-folder-open"></i>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-xs">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">Iniciacion al computo I [1003]</p>
-                                        </div>
-                                    </div>
-                                    <small><span class="badge bg-danger">4</span></small>
-                                </div>
-                            </div>
-                            <div id="collapse2" class="collapse pt-1" aria-labelledby="heading2"
-                                 data-parent="#cardAccordion">
-                                <div class="table-responsive">
-                                    <div class="card">
-                                        <div class="alert alert-primary">
-                                            <p>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Folio: 156156</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="fas fa-paper-plane"></i> Enviar Mensaje</a>
-                                                <a href="#" class="btn btn-outline-info"><i class="far fa-id-card"></i> Ver Datos</a>
-                                                <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i> Cancelar</a>
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <table class="table table-hover table-lg">
-                                        <tbody>
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-auto">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="spinner-grow text-danger" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0"> Por Revisar</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="list-group" id="containerFichas">
                         </div>
                     </div>
                 </div>
@@ -354,17 +72,10 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-<!-- INCLUDE SERIVES AJAX
-    <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<!-- Agregar solo cuando exista una tabla para mostrar-->
+<!-- INCLUDE SERIVES AJAX  -->
+<script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
+<script src="./service/revisa-socumentos.js"></script>
 </body>
 
 </html>

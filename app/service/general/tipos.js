@@ -236,3 +236,18 @@ function getCampusCede(campus) {
     else
         return "OTRO";
 }
+
+function getColorEstatusFile(estatus) {
+    switch (estatus) {
+        case "0":
+            return `warning`;
+        case "1":
+            return `success`;
+        case "2":
+            return `danger`;
+        case "3":
+            return `info`;
+        default:
+            return `black`;
+    }
+}

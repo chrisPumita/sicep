@@ -239,21 +239,35 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
        return $result;
     }
 
-    function queryListaArchivos(){
-        $query=" SELECT per.nombre,per.app,per.apm,insc.id_inscripcion,gpo.grupo,ar.estado_revision,docs.nombre_doc,ar.id_archivo
-                    FROM persona per,inscripcion insc,alumno al, grupo gpo,asignacion_grupo ag,archivo ar,docs_solicitados_curso docsol,documento docs
-                        WHERE per.id_persona=al.id_persona
-                        and al.id_alumno= insc.id_alumno_fk
-                        and insc.id_asignacion_fk= ag.id_asignacion
-                        and ag.id_grupo_fk=gpo.id_grupo
-                        and ar.id_inscripcion_fk=insc.id_inscripcion
-                        and ar.id_doc_sol_fk=docsol.id_doc_sol
-                        and docsol.id_documento_fk=docs.id_documento";
+    //Regresa una lista de ID que tiene almenos un archivo para ver/revisar
+    function queryListCountArchivosPendRev($filtro){
+        $contat = "AND A.estado_revision = 0 AND A.estado = 0 ";
+         switch ($filtro){
+            case "0":
+                //caso del filtro 1 Traer de todos las isncripciones
+                $contat .= "";
+                break;
+            case "1":
+                //traer los no revisados de alguna isncripcion especifica
+                $contat .= " AND a.id_inscripcion_fk =  ". $this->getIdInscripcionFk();
+                break;
+            default:
+                $contat = "";
+                break;
+        }
+        $query="SELECT a.id_archivo, a.id_doc_sol_fk, a.id_inscripcion_fk,
+       a.codigo_doc, a.name_archivo, a.name_file_md5, a.path, a.fecha_creacion,
+       a.notas, a.estado_revision, a.estado AS estadoFile,
+       ds.id_doc_sol, ds.obligatorio, d.id_documento, d.nombre_doc,
+       d.formato_admitido, d.tipo, d.peso_max_mb, d.estatus AS edoDoc
+        FROM archivo a, docs_solicitados_curso ds,
+                      documento d
+        WHERE a.id_doc_sol_fk = ds.id_doc_sol
+        AND ds.id_documento_fk = d.id_documento ".$contat;
         $this->connect();
         $datos = $this-> getData($query);
         $this->close();
         return $datos;
-
     }
     function queryUpdateEstadoArchivo($id,$estatus){
         $query="UPDATE `archivo` SET `estado_revision`='$estatus' WHERE `id_archivo`='$id'";
