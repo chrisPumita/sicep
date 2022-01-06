@@ -35,13 +35,16 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Una lista general de los documentos a revisar, puede revisar uno a uno e ir aceptando o descarganto.
-                                    Tenga en cuenta que al completar el 100% de revision de cada inscripcion, puede confirmar
-                                    la inscripcion y el alumno quedara automaticamente inscrito.
+                                    Por favor revise todos los documentos pendientes de las solicitudes.
+                                    Recuerden que no es necesario que la solicitud este ACREDITADA, solo se
+                                    muestran las solicitudes que tengan documentación pendiente para revisar.
+                                    Si desea ver todas las solicitudes, por favor de clic en Ver Solicitudes.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                        <i class="fas fa-plus"></i> Agregar</button>
+                                    <a href="./solicitudes-inscripcion">
+                                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                                            <i class="fas fa-clipboard-check"></i> Ver solicitudes</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +66,7 @@
 
         </div>
         <footer class="text-center text-white ">
-
-            <?php include "modals/modal-pdf-temario.php"?>
+            <?php include "modals/modal-vista-documento.php"?>
             <?php include "modals/generalModals.php"?>
             <?php include "includes/footer.php" ?>
         </footer>

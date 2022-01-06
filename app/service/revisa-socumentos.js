@@ -197,8 +197,8 @@ function showDocs(contador, collapse) {
                  (doc)=>{
                      console.log(doc);
                      template += `
-                            <tr>
-                                <td idDoc="${doc.id_archivo}">
+                            <tr  idDoc="${doc.id_archivo}">
+                                <td>
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="spinner-grow text-${getColorEstatusFile(doc.estado_revision)}" role="status"></div>
@@ -213,14 +213,15 @@ function showDocs(contador, collapse) {
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i></button>
-                                      <button type="button" class="btn btn-info"><i class="fas fa-download"></i></button>
+                                      <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
+                                      onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
+                                      <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-success"><i class="fas fa-check-square"></i></button>
-                                      <button type="button" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
+                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
+                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
                                     </div>
                                 </td>
                             </tr>`;
@@ -233,3 +234,69 @@ function showDocs(contador, collapse) {
          })
      }
 }
+
+//funciones de acceso
+function viewFileModal(path,name, id) {
+    let body = `<embed src="${path}" frameborder="0" width="100%" style="height: 70vh;">`;
+    $('#fileView').html(body);
+    $('#viewFileName').html(name);
+    $('#idDocument').val(id);
+}
+
+$(document).on("click", ".actionFile", function ()
+{
+    let ElementDOM = $(this)[0];
+    console.log(ElementDOM);
+    let actionToDo = $(ElementDOM).attr("action");
+    let MjeAction = getTipoAccion(actionToDo);
+    sweetConfirm(MjeAction, '¿Estas seguro de que deseas marcar el archivo como: '+MjeAction, function (confirmed) {
+        if (confirmed) {
+           //sendAcionFile
+            $("#modalViewFile").modal('hide');
+        }
+    });
+});
+
+$(document).on("click", ".btnConfirmFile", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
+    console.log(ElementDOM);
+    let idSelected = $(ElementDOM).attr("idDoc");
+    console.log(idSelected);
+    sweetConfirm("Acreitar Documento", '¿Estas seguro de que deseas ACREDITAR este documento?', function (confirmed) {
+        if (confirmed) {
+            //sendAcionFile
+           alert("CONFIRMADO");
+        }
+    });
+});
+
+$(document).on("click", ".btnCancelFile", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
+    console.log(ElementDOM);
+    let idSelected = $(ElementDOM).attr("idDoc");
+    console.log(idSelected);
+    sweetConfirm("RECHAZAR DOCUMENTO", '¿Estas seguro de que deseas RECHAZAR este documento? ', function (confirmed) {
+        if (confirmed) {
+            //sendAcionFile
+            alert("RECHAZADO");
+        }
+    });
+});
+
+
+function goAlumno() {
+
+}
+
+/*
+ARCHIVO > estado
+0. enviado para verificar (default)
+1. verificado y aprobado
+2. verificado y rechazado
+3. incorrecto
+4. falso
+5. caducado
+6. eliminado
+* */
