@@ -35,7 +35,7 @@
                         <div class="submenu-group-wrapper">
                             <ul class="submenu-group">
                                 <li class="submenu-item  ">
-                                    <a href="component-alert.html" class='submenu-link'><i class="fas fa-chalkboard-teacher"></i> Mis Cursos</a>
+                                    <a href="./mis-cursos" class='submenu-link'><i class="fas fa-chalkboard-teacher"></i> Mis Cursos</a>
                                 </li>
                                 <li class="submenu-item  ">
                                     <a href="component-breadcrumb.html" class='submenu-link'><i class="fas fa-certificate"></i> Constancias</a>
