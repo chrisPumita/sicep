@@ -114,6 +114,23 @@ body {
     box-shadow: 2px 2px 2px 2px #b8b8b869;
 }
 
+.card .banner {
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    height: 10rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
 @media screen and (max-width: 1199px){
     .layout-horizontal .main-navbar ul .menu-link {
         color: var(--ligth)!important;
