@@ -5,7 +5,7 @@ window.onload = function(){
 
 $(document).ready(function() {
     let idProfesor = ID_PROF;
-    console.log(ID_PROF);
+    console.log('ID PROFESOR: '+ID_PROF);
     cargaDatosProfesor(idProfesor);
     cargaDataTableAsignaciones();
 

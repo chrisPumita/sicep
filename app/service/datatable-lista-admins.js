@@ -64,7 +64,7 @@ function cargaAdminsDataTable() {
         "order": [[ 1, 'asc' ]],
         //agregando attributo al fila
         'createdRow': function( row, data, dataIndex ) {
-            $(row).attr('id_persona', data.id_persona);
+            $(row).attr('id_persona', data.id_profesor);
         },
         "columns":
             [

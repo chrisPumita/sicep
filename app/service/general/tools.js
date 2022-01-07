@@ -66,3 +66,10 @@ function getLegibleFechaHora(stringFechaHora) {
     return  dateFormat.format(d1); // Salida: jue., 07 de julio de 2016 21:26
 }
 //Formato legible de hora y fecha procesados
+
+function calculaDescuento(total,desc) {
+    let T = parseInt(total);
+    let D = parseInt(desc);
+    let TD =T-((D*T)/100);
+    return TD;
+}

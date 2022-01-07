@@ -308,7 +308,9 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
        c.objetivo, c.descripcion, c.no_sesiones, c.antecedentes, c.link_temario_pdf, c.banner_img, c.tipo_curso,
         insc.id_inscripcion, (SELECT COUNT(*) FROM archivo A
                WHERE A.estado_revision = 0 AND A.estado = 0
-                AND A.id_inscripcion_fk= insc.id_inscripcion) AS docsRevisar
+                AND A.id_inscripcion_fk= insc.id_inscripcion) AS docsRevisar,
+(SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP WHERE AP.id_curso_fk = c.id_curso
+                   AND AP.id_tipo_procedencia_fk = proc.id_tipo_procedencia) AS DESCUENTO
 FROM alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, inscripcion insc,
      asignacion_grupo asig, grupo gpo, curso c
 where al.id_persona = per.id_persona

@@ -24,6 +24,7 @@ function buildHTMLAcrrodion() {
         {
             sumaDocs += parseInt(SOL.docsRevisar);
             cont++;
+            let descuento = SOL.DESCUENTO === null ? 'No Aplica': '$'+calculaDescuento(SOL.costo_real,SOL.DESCUENTO)+' (-'+SOL.DESCUENTO+'%)';
             let estadoSolicitud = SOL.estatusInscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> PENDIENTE';
             let btnAcredita = SOL.estatusInscripcion ==="0" ? '<a href="#" class="btn btn-success"><i class="fas fa-check-square"></i>Acreditar</a>':'';
             template += `
@@ -50,6 +51,14 @@ function buildHTMLAcrrodion() {
                                 <div class="list-group" role="tablist">
                                     <a class="list-group-item list-group-item-action " id="list-home-list" data-bs-toggle="list" href="#list-1-${cont}"  role="tab"><i class="far fa-id-card"></i> Ficha De Inscripcion</a>
                                     <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="#list-2-${cont}" role="tab"><i class="fas fa-folder-open"></i> Documentos </a>
+                                </div>
+                                <div class="row py-1 m-2">
+                                    <p>
+                                        ${btnAcredita}
+                                        <a href="#" class="btn btn-primary" onclick="goDetailsAlumno('${SOL.id_alumno}');"><i class="fas fa-user"></i></a>
+                                        <a href="#" class="btn btn-secondary" onclick="goFichaInsc('${SOL.id_inscripcion}');"><i class="far fa-id-card"></i></a>
+                                        <a href="#" class="btn btn-danger" onclick="cancelarInscripcion(1)"><i class="fas fa-ban"></i></a>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-8 mt-1">
@@ -115,7 +124,7 @@ function buildHTMLAcrrodion() {
                                                             <div class="col-7 col-sm-3">
                                                                 <h6 class="mb-0">Descuento:</h6>
                                                             </div>
-                                                            <div class="col-5 col-sm-3 text-secondary">-</div>
+                                                            <div class="col-5 col-sm-3 text-secondary">${descuento}</div>
                                                         </div>
                                                         <hr>
                                                         <div class="row">
@@ -125,14 +134,6 @@ function buildHTMLAcrrodion() {
                                                             <div class="col-sm-6 text-secondary">${estadoSolicitud}</div>
                                                         </div>
                                                         <hr>
-                                                    </div>
-                                                    <div class="row py-1 m-2">
-                                                    <p>
-                                                        ${btnAcredita}
-                                                        <a href="#" class="btn btn-primary"><i class="fas fa-user"></i> Ver</a>
-                                                        <a href="#" class="btn btn-secondary"><i class="far fa-id-card"></i> Ficha Inscripcion</a>
-                                                        <a href="#" class="btn btn-danger" onclick="cancelarInscripcion(1)"><i class="fas fa-ban"></i> Cancelar </a>
-                                                    </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,8 +287,14 @@ $(document).on("click", ".btnCancelFile", function ()
 });
 
 
-function goAlumno() {
+function goFichaInsc(idInscripcion) {
+ let url = 'ficha-inscripcion';
+ redirect_by_post(url, {  id: idInscripcion }, false);
+}
 
+function goDetailsAlumno(idAlumno){
+    let url = 'detalles-alumno';
+    redirect_by_post(url, {  id: idAlumno }, false);
 }
 
 /*
