@@ -236,3 +236,47 @@ function getCampusCede(campus) {
     else
         return "OTRO";
 }
+
+function getColorEstatusFile(estatus) {
+    switch (estatus) {
+        case "0":
+            return `warning`;
+        case "1":
+            return `success`;
+        case "2":
+            return `danger`;
+        case "3":
+            return `info`;
+        default:
+            return `black`;
+    }
+}
+
+/*
+ARCHIVO > estado
+0. enviado para verificar (default)
+1. verificado y aprobado
+2. verificado y rechazado
+3. incorrecto
+4. falso
+5. caducado
+6. eliminado
+* */
+function getTipoAccion(name) {
+    switch (name) {
+        case "6":
+            return `ELIMINAR ARCHIVO`;
+        case "5":
+            return `ARCHIVO NO ACTUALIZADO`;
+        case "4":
+            return `ARCHIVO FALSO/ALTERADO`;
+        case "3":
+            return `ARCHIVO INCORRECTO`;
+        case "2":
+            return `ARCHIVO NO ACEPTADO`;
+        case "1":
+            return `ARCHIVO ACEPTADO`;
+        default:
+            return `ARCHIVO EN VALIDACION`;
+    }
+}

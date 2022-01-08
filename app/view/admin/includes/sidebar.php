@@ -35,7 +35,7 @@
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-chalkboard"></i>
                         <span>Mis Grupos</span>
                     </a>
                     <ul class="submenu ">

@@ -475,3 +475,52 @@ async function consultaAsyncHistorialAsignAJAX(filtro,idFiltro){
     });
 }
 
+
+/*Async regresa lista del solicitudes de inscripcion con documentos pendient3s por revisar*/
+async function consultaAsyncDocsInscRevisa(idFiltro) {
+    return await consultaAsyncDocsInscRevisaAJAX(idFiltro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncDocsInscRevisaAJAX(idFiltro){
+    return $.ajax({
+        url: "./webhook/lista-docs-insc-revisa.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idFiltro:idFiltro
+        },
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer la infoirmacion solicitada por revisar");
+        }
+    });
+}
+
+
+/*Async regresa lista del documentos pendient3s por revisar*/
+async function consultaAsyncDocsRevisa(idInscipcion,filtro) {
+    return await consultaAsyncDocsRevisaAJAX(idInscipcion,filtro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncDocsRevisaAJAX(idInscipcion,filtro){
+    return $.ajax({
+        url: "./webhook/lista-docs-insc-revisa-pendientes.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idInscipcion:idInscipcion,
+            filtro:filtro
+        },
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer los documentos por revisar");
+        }
+    });
+}
+
