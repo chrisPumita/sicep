@@ -312,7 +312,7 @@ $titulo = "Detalles del curso"
                                                 <label for="pdfFile" class="form-label">Seleccionar nuevo PDF</label>
                                                 <input type="hidden" id="idCursoPDF" name="idCursoPDF">
                                                 <div class="input-group mb-3">
-                                                    <input type="file" class="form-control" id="pdfFile" name="pdfFile">
+                                                    <input type="file" class="form-control" id="pdfFile" name="pdfFile" accept=".pdf">
                                                     <button class="btn btn-secondary" type="submit" id="btnSubir">Subir</button>
                                                 </div>
                                             </div>

@@ -4,7 +4,6 @@ if(isset($_POST['nombre_curso']) && isset($_POST['descripcion_curso'])&& isset($
     //Generamos el params y mandamos a crear al control para el curso
     $params =[
         "idProfesorAdmin"=>"",
-        "idAutor"=>1,
         "codigo"=>$_POST['codigo'],
         "nombre_curso"=>$_POST['nombre_curso'],
         "dirigido"=>$_POST['dirigido_A'],

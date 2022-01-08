@@ -12,9 +12,12 @@ function addCurso($params,$documentacion){
     $CURSO= new CURSO();
     include_once "keyGen/generadorClaves.php";
     $clave = genIdCurso();
+    //Entramos a la session
+    session_start();
+    $idAutor= $_SESSION['idProfesor'];
     $CURSO->setIdCurso($clave);
     $CURSO->setIdProfesorAdminAcredita($params['idProfesorAdmin']);
-    $CURSO->setIdProfesorAutor($params['idAutor']);
+    $CURSO->setIdProfesorAutor($idAutor);
     $CURSO->setCodigo($params['codigo']);
     $CURSO->setNombreCurso($params['nombre_curso']);
     $CURSO->setDirigidoA($params['dirigido']);
@@ -60,6 +63,23 @@ function consultaAcredita($idCurso){
     //return json_encode(CURSO::consultaAcredita($idCurso));
     $obj_curso= new CURSO();
     return $obj_curso->consultaAcreditacion($idCurso);
+}
+
+//Actualiza el estatus del curso
+function actualizaEstatusCurso($idCurso,$estatus){
+    include_once "../model/CURSO.php";
+    $CURSO= new CURSO();
+    //Inicamos la session
+    session_start();
+    $idProfesorAcredita= $_SESSION['idProfesor'];
+    $CURSO->setIdCurso($idCurso);
+    $CURSO->setAprobado($estatus);
+    //Acredita 1 inhabilita 0
+    $id= $estatus>0 ? 1 : 0;
+    //Seteamos el id para el profesor admin acredita
+    $CURSO->setIdProfesorAdminAcredita($idProfesorAcredita);
+    return $CURSO->queryUpdateEstatusCurso($id);
+
 }
 
 //COnsulta de temario de curso especifico

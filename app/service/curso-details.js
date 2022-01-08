@@ -66,6 +66,34 @@ function buildHTMLValues(curso){
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
 }
+function cambiaEstado(estatus,mensaje){
+    let idCurso= ID_CURSO;
+    let mjeText= "¿Estas seguro de que deseas "+mensaje+" este curso?";
+    sweetConfirm('Estado del curso', mjeText, function (confirmed) {
+        if (confirmed) {
+            //Realizamos el envio de datos del estatus, y del id del curso
+            $.ajax({
+                url: "./webhook/update-estatus-curso.php",
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    idCurso: idCurso,
+                    estatus : estatus
+                },
+                success: function(data){
+                    let id = ID_CURSO;
+                    cargaCursoDetails(1,id);
+                    console.log(data);
+                },
+                error: function(e) {
+                    console.log(e);
+                    alert("Error occured")
+                }
+            });
+        }
+    });
+}
+
 
 function detallesAcreditacion(id_Curso,acreditado) {
     let tmplate;
@@ -95,7 +123,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                                 </div>
                             </div>
                             <div class="card-body d-flex text-align-right">
-                                <a href="#" class="btn btn-danger btn-block "><i class="fas fa-power-off"></i> Inhabilitar</a>
+                                <a href="#" class="btn btn-danger btn-block " onclick="cambiaEstado(0,'Inhabilitar');"><i class="fas fa-power-off"></i> Inhabilitar</a>
                             </div>
 `;
                         $("#detallesAprobacionCurso").html(tmplate);
@@ -118,7 +146,7 @@ function detallesAcreditacion(id_Curso,acreditado) {
                 </div>
             </div>
             <div class="card-body d-flex text-align-right">
-                <a href="#" class="btn btn-success btn-block ">Acreditar</a>
+                <button type="button" class="btn btn-success btn-block"onclick="cambiaEstado(1,'Acreditar')">Acreditar</button>
             </div>`;
         $("#detallesAprobacionCurso").html(tmplate);
         $("#sectionDescuentos").html("");
@@ -261,9 +289,24 @@ function buildHTMLDespEdificios(AULAS) {
 }
 
 //Update FROM details curso
-
-
 //Update PDF Curso
+$("#inputPDF").on("submit", function(e){
+    var f = $(this);
+    var formData = new FormData(document.getElementById("inputPDF"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "./webhook/update-pdf-curso.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        contentType: false,
+        processData: false
+    }).done(function(res){
+        console.log(res);
+    });
+    e.preventDefault();
+});
 
 //Update Remove PDF curso
 function removeBanner() {
