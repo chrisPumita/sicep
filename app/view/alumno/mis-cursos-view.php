@@ -13,11 +13,11 @@
                 <div class="content-wrapper container">
                     <div class="page-heading">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Mis Grupos</h3>
+                            <h3>Mis Cursos</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Mis Grupos</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Mis Cursos</li>
                                 </ol>
                             </nav>
                         </div>
@@ -39,7 +39,7 @@
                                             </span>
                                             <div class="banner" style="background-image: url(../resources/banners/100/banner-20211222000250.jpg); ">
                                             </div>
-                                            <span class="badge bg-info ">0/30 Disponibles</span>
+                                            <span class="badge bg-success ">INSCRIPCIONES ABIERTAS</span>
                                             <h5 class="name text-center pt-lg-3">Diseño Web</h5>
                                             <h6 class="name text-center text-secondary">Grupo 1000</h6>
                                             <div class="recent-message d-flex px-3">
@@ -100,12 +100,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-center">
-                                                <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432462);">
+                                                <button class="btn btn-primary mr-3 me-1 mb-1"  data-bs-toggle="modal" data-bs-target="#detallesCurso">
                                                 <i class="fas fa-plus"></i> Mas info
                                                 </button>
-                                                <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                                </button>
+                                                <a href="./ficha-inscripcion">
+                                                    <button class="btn btn-success mr-3 me-1 mb-1">
+                                                    <i class="fas fa-clipboard-check"></i>Ver Inscripción
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="card single_course pb-3" style="width: 20rem;">
@@ -176,7 +178,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-center">
-                                                <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432465);">
+                                                <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#detallesCurso">
                                                 <i class="fas fa-plus"></i> Mas info
                                                 </button>
                                                 <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
@@ -252,7 +254,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-center">
-                                                <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
+                                                <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#detallesCurso">
                                                 <i class="fas fa-plus"></i> Mas info
                                                 </button>
                                                 <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
@@ -271,6 +273,7 @@
             </div>
         </div>
         <?php include 'includes/scripts.php'; ?>
+        <?php include "modals/detalles-curso.php"?>
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         <!-- Initialize Swiper -->

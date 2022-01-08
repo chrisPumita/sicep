@@ -44,7 +44,7 @@ class vistaModelo
 
     protected static function obtener_vistas_modelo_alumno($vistas){
             #Lista blanca de palabras de la url de alumno
-        $listaBlanca=["home","login","mis-cursos","solicitudes","documentacion","FAQs","perfil","servicio-social","template", "detalles-curso"];
+        $listaBlanca=["home","login","mis-cursos","solicitudes","documentacion","FAQs","perfil","servicio-social","template", "ficha-inscripcion"];
         #Verificamos si la vista que esta entrando esta en la lista blanca para poder moestrarla
         if (in_array($vistas,$listaBlanca))
         {

@@ -1,30 +1,21 @@
-<?php $titulo = "Detalles grupo" ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?php include_once "includes/head.php"; ?>
-        <!--swiper-->
-        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    </head>
-    <body>
-        <div id="app">
-            <div id="main" class="layout-horizontal">
-                <?php include_once "includes/header.php"; ?>
-                <div class="content-wrapper container">
-                    <div class="page-heading">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Iniciación al cómputo I - 3456</h3>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
-                                    <li class="breadcrumb-item"><a href="./mis-cursos">Mis cursos</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Iniciación al cómputo I</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="page-content">
-                        <section class="section">
+<!--primary theme Modal -->
+<div class="modal fade text-left" id="detallesCurso" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel160"
+     aria-hidden="true">
+    <div class="modal-full modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title white" id="myModalLabel160">
+                    Iniciación al computo I
+                </h5>
+                <button type="button" class="close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times text-light"></i>
+                </button>
+            </div>
+            <div class="modal-body bg-grey">
+            <section class="section">
                             <div class="card">
                                 <div class="card-body py-4 px-5 d-flex">
                                     <div class="col-sm-8 d-flex align-items-center">
@@ -52,8 +43,7 @@
                                     <div class="card">
                                         <div class="card-content">
                                             <div class="img d-block w-100" style="background-image: url(https://cambiodigital-ol.com/wp-content/uploads/2019/06/excel_logo2.jpg); height: 300px; "></div>
-                                            <span class="badge bg-info ">5/20 Disponibles</span>
-                                            <div class="card-body pt-3">
+                                           <div class="card-body pt-3">
 
                                                 <div class="card-content">
                                                     <div class="row py-1 m-2">
@@ -142,7 +132,7 @@
                                     <!-- profesor -->
                                     <div class="col-12 col-lg-12">
                                         <div class="card">
-                                            <div class="card-body py-4 px-5">
+                                            <div class="card-body py-4">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-xl">
                                                         <img src="../assets/images/start-sesion.png" alt="Face 1">
@@ -209,85 +199,73 @@
                         </section>
                         <!-- fin de seccion de detalles -->
 
-                        <!-- seccion de temario -->
+                        <!-- seccion de Horario -->
                         <section class="section">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
                                         <!-- boton que da problemas en responsive -->
                                         <div class="col-sm-12 col-md-6">
-                                            <h5 class="text-secondary"><i class="fas fa-bookmark"></i> Temario General</h5>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <span class="position-absolute  mx-3 end-0">
-                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewTema">
-                                            <i class="fas fa-plus"></i> Agregar</button>
-                                            </span>
+                                            <h5 class="text-secondary"><i class="fas fa-clock"></i> Horarios</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body table-responsive">
-                                    <table class="table table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>INDICE</th>
-                                                <th>TEMA</th>
-                                                <th>DESCRIPCIÓN</th>
-                                                <th>ACCIONES</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr id_tema="2">
-                                                <td>1.1</td>
-                                                <td>Nombre de tema 2</td>
-                                                <td>Resumen de tema2</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr id_tema="4">
-                                                <td>1.2</td>
-                                                <td>Nombre Actualizado de Tema</td>
-                                                <td>Resumen Actualizado de Tema</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr id_tema="1">
-                                                <td>2.1</td>
-                                                <td>Nombre de tema</td>
-                                                <td>Resumen de tema</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr id_tema="5">
-                                                <td>2.2</td>
-                                                <td>Nombre de tema 256</td>
-                                                <td>Resumen</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
+                                            <a class="list-group-item list-group-item-action active" id="lista-alumnos-tabla" data-bs-toggle="list" href="#lista-alumnos" role="tab" aria-selected="true">Precencial</a>
+                                            <a class="list-group-item list-group-item-action" id="lista-solicitudes-tabla" data-bs-toggle="list" href="#lista-solicitudes" role="tab" aria-selected="false">Virtual</a>
+                                        </div>
+                                        <div class="tab-content text-justify">
+                                            <div class="tab-pane fade table-responsive active show" id="lista-alumnos" role="tabpanel" aria-labelledby="lista-alumnos-tabla">
+                                                <h5>Horario presencial:</h5>
+                                                <div id="containerTblPresencial"> <div class="alert alert-info d-flex align-items-center" role="alert">
+                                                    <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"></use></svg>
+                                                <div>
+                                                <h4 class="alert-heading">Sin horario PRESENCIAL</h4>
+                                                <p>No encontramos horarios registrados. Si este curso es solo virtual omita este mensaje. Agregue el 
+                                                horario si es la primera vez que condigura este curso</p><hr>
+                                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                                    <i class="fas fa-plus"></i>Agregar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade table-responsive" id="lista-solicitudes" role="tabpanel" aria-labelledby="lista-solicitudes-tabla">
+                                    <h5>Horario virtual:</h5>
+                                    <div id="containerTblVirtual"> <div class="alert alert-info d-flex align-items-center" role="alert">
+                                        <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"></use></svg>
+                                        <div>
+                                            <h4 class="alert-heading">Sin horario VIRTUAL</h4>
+                                            <p>No encontramos horarios registrados. Si este curso es solo PRESENCIAL omita este mensaje. Agregue el 
+                                                horario si es la primera vez que condigura este curso</p><hr>
+                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                                                <i class="fas fa-plus"></i>Agregar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
                                 </div>
                             </div>
                         </section>
-                        <!-- fin seccion de temario -->
-                    </div>
-                </div>
-                <?php include 'includes/footer.php'; ?>
+                        <!-- fin seccion de Horario -->
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-light-secondary"
+                        data-bs-dismiss="modal">
+                    <i class="bx bx-x d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Close</span>
+                </button>
+                <button type="button" class="btn btn-primary ml-1"
+                        data-bs-dismiss="modal">
+                    <i class="bx bx-check d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Accept</span>
+                </button>
             </div>
         </div>
-        <?php include 'includes/scripts.php'; ?>
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-        <!-- Initialize Swiper -->
-        <!-- Initialize Swiper -->
-    </body>
-</html>
+    </div>
+</div>
