@@ -241,29 +241,36 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 
     //Regresa una lista de ID que tiene almenos un archivo para ver/revisar
     function queryListCountArchivosPendRev($filtro){
-        $contat = "AND A.estado_revision = 0 AND A.estado = 0 ";
+        $id = $this->getIdInscripcionFk() > 0 ? " AND insc.id_inscripcion =  ". $this->getIdInscripcionFk():'';
+        $contat = "";
          switch ($filtro){
             case "0":
-                //caso del filtro 1 Traer de todos las isncripciones
-                $contat .= "";
+                //NO considerar ningun filtro
+                $contat .= $id;
                 break;
             case "1":
-                //traer los no revisados de alguna isncripcion especifica
-                $contat .= " AND a.id_inscripcion_fk =  ". $this->getIdInscripcionFk();
+                //Traer todos los documentos no revisados
+            //    $contat .= $id."  AND arch.id_archivo IS NOT NULL AND arch.estado = 0 AND arch.estado_revision = 0 " ;
+              $contat = $id;
                 break;
             default:
-                $contat = "";
+                $contat = $id;
                 break;
         }
-        $query="SELECT a.id_archivo, a.id_doc_sol_fk, a.id_inscripcion_fk,
-       a.codigo_doc, a.name_archivo, a.name_file_md5, a.path, a.fecha_creacion,
-       a.notas, a.estado_revision, a.estado AS estadoFile,
-       ds.id_doc_sol, ds.obligatorio, d.id_documento, d.nombre_doc,
-       d.formato_admitido, d.tipo, d.peso_max_mb, d.estatus AS edoDoc
-        FROM archivo a, docs_solicitados_curso ds,
-                      documento d
-        WHERE a.id_doc_sol_fk = ds.id_doc_sol
-        AND ds.id_documento_fk = d.id_documento ".$contat;
+        $query="SELECT dsol.id_doc_sol, dsol.obligatorio, d.nombre_doc, insc.id_inscripcion,
+       arch.id_archivo, arch.path, d.id_documento,
+       d.formato_admitido, d.tipo, d.peso_max_mb, arch.fecha_creacion, arch.notas,
+       (case when arch.id_archivo is null then -1 else arch.estado end) as estatusFile,
+       (case when arch.id_archivo is null then -1 else arch.estado_revision end) as estadoRevisado
+        from documento d, curso c, grupo gpo, asignacion_grupo asig, inscripcion insc,
+             docs_solicitados_curso dsol LEFT JOIN archivo arch ON arch.id_doc_sol_fk = dsol.id_doc_sol
+        WHERE dsol.id_documento_fk = d.id_documento
+        AND c.id_curso = dsol.id_curso_fk
+        AND gpo.id_curso_fk = c.id_curso
+        AND asig.id_grupo_fk = gpo.id_grupo
+        AND insc.id_asignacion_fk = asig.id_asignacion
+         ".$contat. " ORDER BY estadoRevisado DESC";
+
         $this->connect();
         $datos = $this-> getData($query);
         $this->close();

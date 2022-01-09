@@ -1,4 +1,10 @@
-<?php $titulo = "Ficha de inscripción" ?>
+<?php $titulo = "Ficha de inscripción";
+    $id = $_POST['id'];
+    if (!isset($_POST['id']))
+        header("Location: ./lista-alumnos");
+
+    echo '<script> window.ID_INSC = '.$id.'; </script>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +26,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Ficha de Inscripción</h3>
+                        <h3>Ficha de Inscripción <?php echo $id; ?></h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home-admin.php">Inicio</a></li>
@@ -37,7 +43,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body py-4 px-2">
+                            <div class="card-body py-3 px-2">
                                 <div class="d-flex">
                                     <div class="m-auto">
                                         <div class="spinner-grow bg-dark mr-1" role="status" style="width: 2rem; height: 2rem"></div>
@@ -45,12 +51,14 @@
                                     <div class="col-8 m-auto">
                                         <h5>Pago del Curso</h5>
                                         <h6>Pagado el 25 de enero de 2022</h6>
-                                        <select class="form-control" id="status-pago">
-                                            <option>Acreditado</option>
-                                            <option>Verificado y Rechazado</option>
-                                            <option>Pendiente</option>
-                                        </select>
-                                        <a href="#" class="btn btn-success btn-block "><i class="fas fa-power-off"></i> Aplicar</a>
+                                        <div class="d-flex justify-center align-items-center">
+                                            <select class="form-control px-2" id="status-pago">
+                                                <option>Acreditado</option>
+                                                <option>Verificado y Rechazado</option>
+                                                <option>Pendiente</option>
+                                            </select>
+                                            <a href="#" class="btn btn-success btn-block mx-3 "><i class="fas fa-power-off"></i> Aplicar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +67,7 @@
 
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body py-4 px-2">
+                            <div class="card-body py-3 px-2">
                                 <div class="d-flex">
                                     <div class="m-auto">
                                         <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
@@ -76,6 +84,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-10 d-flex align-items-center">
+                        <h3>Detalles de la Inscripción</h3>
+                    </div>
+                    <div class="col-sm-2 align-items-center">
+                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                            <i class="fas fa-print"></i> Imprimir</button>
+                    </div>
+                </div>
+                <hr>
                 <div class="row">
                     <!-- DETALLES PERSONALES ACADEM -->
                     <div class="col-md-6">
@@ -353,17 +371,11 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-<!-- INCLUDE SERIVES AJAX
-    <script src="./service/lista-alumnos.js"></script>
--- INCLUDE SERIVES AJAX -->
-<!-- Agregar solo cuando exista una tabla para mostrar-->
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<!-- Agregar solo cuando exista una tabla para mostrar-->
+<!-- INCLUDE SERIVES AJAX  -->
+<script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
+
+<script src="./service/inscripcion-detalles.js"></script>
 </body>
 
 </html>

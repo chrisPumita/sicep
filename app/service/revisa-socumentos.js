@@ -40,7 +40,7 @@ function buildHTMLAcrrodion() {
                             <p class="text-xs text-secondary mb-0">${SOL.nombre_curso} [${SOL.grupo}]</p>
                         </div>
                     </div>
-                    <small><span class="badge bg-danger" id="contadorBadgeCol-${cont}">${SOL.docsRevisar}</span></small>
+                    <small><span class="badge bg-danger" id="contadorBadgeCol-${cont}">${SOL.n_revisa}</span></small>
                 </div>
             </div>
             <div id="collapse${cont}" class="collapse pt-1" aria-labelledby="heading${cont}" data-parent="#cardAccordion">
@@ -184,46 +184,88 @@ function showDocs(contador, collapse) {
 
      if (!$('#'+idAcordion).hasClass("collapsed")){
          consultaAsyncDocsRevisa(idInsc,1).then(function (response) {
+             console.log(response);
              let template = `
                         <table class="table table-hover table-lg">
                             <tbody><thead>
                                 <tr>
                                     <th>DOCUMENTO</th>
-                                    <th>SUBIDA</th>
+                                    <th>ESTADO</th>
                                     <th>VER</th>
-                                    <th>VERIFICAR</th>
+                                    <th>OPCIONES</th>
                                 </tr>
                             </thead>`;
              response.forEach(
                  (doc)=>{
-                     console.log(doc);
+                     //Validando el arrrchivo a spara presentarlo
+                    let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
+                     let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
+                     let styleTr ='';
+                     console.log(estadoFile);
+                     switch (estadoFile) {
+                         case 0:
+                             botonesPDF =
+                                 `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
+                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
+                              <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
+                            </div>`;
+
+                             botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
+                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
+                                    </div>`;
+
+                             fechaInfo = "Revisar Documento. <br> Subido el " + doc.fecha_creacion;
+                            // styleTr = 'style="background-color: lightgray;"';
+                             badgeRevisa = "<span class='badge bg-warning'>REVISAR</span>";
+                             break;
+                         case 1:
+                             botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
+                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
+                              <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
+                            </div>`;
+                             botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
+                                    </div>`;
+
+                             fechaInfo = `Documento <span class='badge bg-success'>Aprobado</span>. <br> Subido el ${doc.fecha_creacion}`;
+                             break;
+
+                         case -1:
+                             botonesPDF = "";
+                             botonesAcion = "";
+                             fechaInfo = "Esperando..."
+                             break;
+
+                         default:
+                             botonesPDF = "";
+                             botonesAcion = "";
+                             fechaInfo = "El archivo fue rechazado y regresado al alumno.";
+                             break;
+                     }
+
                      template += `
-                            <tr  idDoc="${doc.id_archivo}">
+                            <tr  idDoc="${doc.id_archivo}" ${styleTr}>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="spinner-grow text-${getColorEstatusFile(doc.estado_revision)}" role="status"></div>
+                                            <div class="spinner-grow text-${getColorEstatusFile(doc.estatusFile)}" role="status"></div>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">${doc.nombre_doc}</p>
+                                            <p class="mb-0 text-xs">${doc.nombre_doc} ${badgeRevisa}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fas fa-file-upload"></i> ${doc.fecha_creacion}
+                                    ${fechaInfo}
                                 </td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
-                                      onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
-                                      <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
-                                    </div>
+                                    ${botonesPDF}
                                 </td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
-                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
-                                    </div>
+                                    ${botonesAcion}
                                 </td>
                             </tr>`;
                  }

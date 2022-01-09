@@ -20,14 +20,14 @@ function getListaPendientes($idInsc){
     include_once "../model/INSCRIPCION.php";
     $objInsc = new INSCRIPCION();
     $objInsc->setIdInscripcion($idInsc);
-    return  $objInsc-> querySolicInscPend();
+    return  $objInsc-> queryFichasInscripcion(false,true);
 }
 
 function getListaInscYFiles($idUniqueIns){
     include_once "../model/INSCRIPCION.php";
     $I = new INSCRIPCION();
     $I->setIdInscripcion($idUniqueIns);
-    return $I->queryLsSolDocPendiente();
+    return $I->queryFichasInscripcion(true,false);
 }
 
 function getListaFilesPendientesInsc($idInscipcion,$filtro){

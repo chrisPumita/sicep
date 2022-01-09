@@ -280,3 +280,22 @@ function getTipoAccion(name) {
             return `ARCHIVO EN VALIDACION`;
     }
 }
+
+
+function getTipoEstado(estatusFIle, statusRevisado){
+    let fileE = parseInt(estatusFIle);
+    let reviE = parseInt(statusRevisado);
+
+    if (fileE == -1 && reviE == -1){
+        return -1;
+    }
+    else if (fileE == 0 && reviE == 0){
+        return 0;
+    }
+    else if (fileE == 1 && reviE == 1){
+        return 1;
+    }
+    else{
+        return null;
+    }
+}
