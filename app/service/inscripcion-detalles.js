@@ -11,10 +11,39 @@ function consultaInfoInscripcion() {
             let cardHTML = buildCardSerSoc(result.C_SS);
             $("#acountSS").html(cardHTML);
         }
+        if (result.VALIDACION!=null){
+            let cardInscripcionAcredita = buildCardInscripcion(result.VALIDACION);
+            $("#cardPago").html(cardInscripcionAcredita);
+        }
         let tablDocs = buildTBLDocsSolicitados(result.DOCS);
         $("#containerDocs").html(tablDocs);
     })
 }
+
+function buildCardInscripcion(DATOS){
+    return `
+        <div class="card">
+            <div class="card-body py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <div class="col-2 m-auto">
+                        <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
+                    </div>
+                    <div class="col-7 m-auto">
+                        <h5>Inscripción acreditada</h5>
+                        <input type="hidden" value="1" id="valAcredCurso">
+                        <h5><strong>{nombreAcreditado}</strong></h5>
+                        <h6>{DeptoName}</h6>
+                        
+                    </div>
+                    <div class="col-3 m-auto">
+                    <a href="#" class="btn btn-danger btn-block "><i class="fas fa-ban"></i> Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+}
+
+
 
 function buildHTMLFicha(FICHA) {
     let DATOS = FICHA.DATOS;
@@ -50,6 +79,7 @@ function buildHTMLFicha(FICHA) {
     let totalPago = DATOS.DESCUENTO === null ? '$ '+DATOS.costo_real+' MXN': '$ '+calculaDescuento(DATOS.costo_real,DATOS.DESCUENTO)+' MXN';
     $("#fichaDesc").html(descuento);
     $("#fichaTotal").html(totalPago);
+    $("#cardPagoTotal").html(totalPago);
     $("#fichaNotas").html(DATOS.notasInscripcion.length>0?DATOS.notasInscripcion.length:'Sin nota alguna');
 }
 
@@ -96,3 +126,32 @@ function buildCardSerSoc(SS) {
 /*
 <i class="fas fa-check-circle text-primary avatar-status" data-bs-toggle="tooltip" data-bs-placement="top" title="Cuanta Verificada"></i>
 * */
+
+//btnValidatePago
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".btnValidatePago", function ()
+{
+    let valorAccion = $("#status-pago").val();
+    console.log(valorAccion);
+    let action, mje;
+    if (valorAccion === "1"){
+        mje = "Acreditar el pago del curso";
+        action = "ACREDITAR";
+    }
+    else if (valorAccion === "2"){
+        mje = "Acreditar la inscripcion<br> SIN PAGO";
+        action = "ACREDITAR";
+    }
+    else{
+        mje = "Cancelar inscripción";
+        action = "CANCELAR";
+    }
+
+    sweetConfirm(mje, '¿Estas seguro de que deseas '+action+' esta inscripcion?', function (confirmed) {
+        if (confirmed) {
+            //sendAcionFile
+            alert("CONFIRMADO");
+        }
+    });
+});

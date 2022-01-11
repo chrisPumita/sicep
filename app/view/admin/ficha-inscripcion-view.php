@@ -41,43 +41,42 @@
             <!-- inicia seccion detalles alumno -->
             <section class="section">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div id="cardValidate"  class="col-md-6">
                         <div class="card">
-                            <div class="card-body py-3 px-2">
-                                <div class="d-flex">
-                                    <div class="m-auto">
-                                        <div class="spinner-grow bg-dark mr-1" role="status" style="width: 2rem; height: 2rem"></div>
+                            <div class="card-body py-4 px-5">
+                                <div class="d-flex align-items-center" role="button" onclick="visitAlumno();">
+                                    <div class="avatar avatar-xl">
+                                        <span class=" position-absolute bottom-0 end-0 estatusAvatar" id="fichaValidaAlumno"></span>
+                                        <img id="avatarImage" src="../assets/images/start-sesion.png" alt="Face 1">
                                     </div>
-                                    <div class="col-8 m-auto">
-                                        <h5>Pago del Curso</h5>
-                                        <h6>Pagado el 25 de enero de 2022</h6>
-                                        <div class="d-flex justify-center align-items-center">
-                                            <select class="form-control px-2" id="status-pago">
-                                                <option>Acreditado</option>
-                                                <option>Verificado y Rechazado</option>
-                                                <option>Pendiente</option>
-                                            </select>
-                                            <a href="#" class="btn btn-success btn-block mx-3 "><i class="fas fa-power-off"></i> Aplicar</a>
-                                        </div>
+                                    <div class="ms-3 name">
+                                        <h4 class="font-bold" id="fichaName">{name}</h4>
+                                        <h5 class="text-muted mb-0" id="fichaCarrera">{carrera}</h5>
+                                        <h6 class="text-muted mb-0" id="fichaProcedencia">{procedencia}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="card">
+                    <div class="col-12 col-md-6" id="cardPago">
+                        <div class="card"  >
                             <div class="card-body py-3 px-2">
                                 <div class="d-flex">
                                     <div class="m-auto">
-                                        <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
+                                        <div class="spinner-grow bg-danger mr-1" role="status" style="width: 2rem; height: 2rem"></div>
                                     </div>
                                     <div class="col-8 m-auto">
-                                        <h5>Inscripción acreditada</h5>
-                                        <input type="hidden" value="1" id="valAcredCurso">
-                                        <h5><strong>Lic Cesar Haziel Pineda Pacheco</strong></h5>
-                                        <h6>Jefe de Departamento de Administracion</h6>
-                                        <a href="#" class="btn btn-danger btn-block "><i class="fas fa-power-off"></i> Inhabilitar</a>
+                                        <h5>Pago del Curso</h5>
+                                        <h6>PENDIENTE <span id="cardPagoTotal"></span></h6>
+                                        <div class="d-flex justify-center align-items-center">
+                                            <select class="form-control px-2" id="status-pago">
+                                                <option     value="1" selected="selected">Acreditar Pago</option>
+                                                <option     value="2" >Acreditar Sin Pago</option>
+                                                <option     value="0" >Cancelar Inscripcion</option>
+                                            </select>
+                                            <a href="#" class="btn btn-success btn-block mx-3 btnValidatePago">
+                                                <i class="fas fa-check"></i> Aplicar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -97,21 +96,6 @@
                 <div class="row">
                     <!-- DETALLES PERSONALES ACADEM -->
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body py-4 px-5">
-                                <div class="d-flex align-items-center" role="button" onclick="visitAlumno();">
-                                    <div class="avatar avatar-xl">
-                                        <span class=" position-absolute bottom-0 end-0 estatusAvatar" id="fichaValidaAlumno"></span>
-                                        <img id="avatarImage" src="../assets/images/start-sesion.png" alt="Face 1">
-                                    </div>
-                                    <div class="ms-3 name">
-                                        <h4 class="font-bold" id="fichaName">{name}</h4>
-                                        <h5 class="text-muted mb-0" id="fichaCarrera">{carrera}</h5>
-                                        <h6 class="text-muted mb-0" id="fichaProcedencia">{procedencia}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card">
                             <div class="card-body py-2">
                                 <div class="row py-1 m-2">

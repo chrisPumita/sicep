@@ -64,3 +64,9 @@ function getValidaInscripcionDetails($idInscipcion){
     $I->setIdInscripcion($idInscipcion);
     return $I->detallesValidacion();
 }
+
+function getEstadisticaAnualInscripciones(){
+    include_once "../model/INSCRIPCION.php";
+    $I = new INSCRIPCION();
+    return $I->queryEstadisticasAnioSolicitudes();
+}
