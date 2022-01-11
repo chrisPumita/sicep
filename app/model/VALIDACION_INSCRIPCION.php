@@ -136,4 +136,28 @@ class VALIDACION_INSCRIPCION extends CONEXION_M
         return $result;
     }
 
+    function queryFichaValidacion(){
+        $sql = "SELECT per.`id_persona`,
+               per.`nombre`, per.`app`, per.`apm`,
+               per.`telefono`, per.`sexo`, per.`estatus` AS estatus_persona,
+               prof.img_perfil, prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`,
+               prof.`email`, prof.`fecha_registro`, prof.`estatus` AS estatus_profesor,
+               concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
+               depto.`nombre` AS depto_name, prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`,
+               prof.`email`, prof.`fecha_registro`,  prof.`estatus` AS estatus_profesor,
+               vi.id_inscripcion_fk, vi.fecha_validacion, vi.fecha_pago, vi.monto_pago_realizado,
+               vi.descripcion, vi.notas
+        FROM `persona` per,`departamentos` depto,`profesor` prof, validacion_inscripcion vi,
+             administrador admin
+        WHERE  prof.`id_persona_fk`=per.`id_persona`
+          AND prof.`id_depto_fk`= depto.`id_depto`
+        AND  admin.id_profesor_admin_fk = prof.id_profesor
+        AND vi.id_profesor_admin_fk = admin.id_profesor_admin_fk
+        AND vi.id_inscripcion_fk = ".$this->getIdInscripcionFk();
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
 }

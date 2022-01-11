@@ -26,12 +26,12 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Ficha de Inscripción <?php echo $id; ?></h3>
+                        <h3>Ficha de Inscripción [<?php echo $id; ?>]</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./home-admin.php">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="./lista-alumnos-view.php">Lista de alumnos</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Manolo Perez Ramirez</li>
+                                <li class="breadcrumb-item active" aria-current="page" id="breadName">{name}</li>
                             </ol>
                         </nav>
                     </div>
@@ -99,15 +99,15 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body py-4 px-5">
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center" role="button" onclick="visitAlumno();">
                                     <div class="avatar avatar-xl">
-                                        <img src="../assets/images/start-sesion.png" alt="Face 1">
+                                        <span class=" position-absolute bottom-0 end-0 estatusAvatar" id="fichaValidaAlumno"></span>
+                                        <img id="avatarImage" src="../assets/images/start-sesion.png" alt="Face 1">
                                     </div>
                                     <div class="ms-3 name">
-                                        <h4 class="font-bold">Christian Pioquinto</h4>
-                                        <h5 class="text-muted mb-0">Licenciatura en Informática</h5>
-                                        <h5 class="text-muted mb-0">Alumno FESC</h5>
-                                        <h6>Cuenta verificada</h6>
+                                        <h4 class="font-bold" id="fichaName">{name}</h4>
+                                        <h5 class="text-muted mb-0" id="fichaCarrera">{carrera}</h5>
+                                        <h6 class="text-muted mb-0" id="fichaProcedencia">{procedencia}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -118,23 +118,29 @@
                                     <h5 class="text-secondary">Datos personales:</h5>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
+                                            <h6 class="mb-0">Sexo</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaSexo">{sexo}</div>
+                                    </div>
+                                    <hr><div class="row py-1">
+                                        <div class="col-sm-3">
                                             <h6 class="mb-0">Teléfono</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">55 1080 1566</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaTelefono">{tel}</div>
                                     </div>
                                     <hr>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Correo electrónico</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">chris.foppy@gmail.com</div>
+                                        <div class="col-sm-9 text-primary text-bold"  id="fichaCorreo">{mail}</div>
                                     </div>
                                     <hr>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Localidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Nicolás Romero, EDOMEX</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaLocalidad">{localidad}</div>
                                     </div>
                                 </div>
                                 <div class="row py-1 m-2">
@@ -143,28 +149,28 @@
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Carrera</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Licenciatura en informática</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="carrera">{carrera}</div>
                                     </div>
                                     <hr>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Universidad</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Universidad Nacional Autónoma de México</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaNameUni">{nameUni}</div>
                                     </div>
                                     <hr>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Matrícula</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">316348852</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaMatricula">{matricula}</div>
                                     </div>
                                     <hr>
                                     <div class="row py-1">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Fecha de Registro</h6>
+                                            <h6 class="mb-0">Cuenta</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">28 de Junio, 2020</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaAltaCuenta">{date}</div>
                                     </div>                                    
                                 </div>
                             </div>
@@ -172,108 +178,100 @@
                         <!-- FIN DETALLES ACADEMICOS Y PER -->
 
                         <!-- INICIO DETALLES SERV SOCIAL -->                       
-                        <div class="card">
-                            <div class="card-body pb-3">
-                                <div class="m-auto">
-                                    <h5>Información de Servicio Social</h5>
-                                    Este alumno está registrado con una cuenta de Servicio Social
-                                </div>
-
-                                <div class="row py-3">
-                                    <h5 class="text-secondary">Detalles:</h5>
-                                    <div class="row py-1">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Inicio de servicio</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">22 de Febrero, 2020</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row py-1">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Fin de servicio</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">22 de Agosto, 2020</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row py-1">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Notas</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur magni numquam corrupti in ducimus.</div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card" id="acountSS"></div>
                         <!-- FIN DETALLES SERV SOCIAL-->
                     </div>
                     
 
-                    <!-- INICIO INFO CURSO BANNER -->
+                    <!-- INICIO INFO CURSO -->
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="https://capacitate365.com/wp-content/uploads/2020/10/Curso-excel-completo.png" alt="Card image cap">
+                                <img class="card-img-top img-fluid" id="bannerCurso" src="../resources/banners/ban-fesc.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <div class="row py-2">
                                         <h5 class="text-secondary">Información del curso:</h5>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Nombre del curso</h6>
+                                            <h6 class="mb-0">Curso</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Curso de Excel básico para contadores</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaNameCurso">{nameCurso}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <h6 class="mb-0">Grupo</h6>
+                                        </div>
+                                        <div class="col-sm-2 text-primary text-bold" id="fichaGrupo">{gpo}</div>
+                                        <div class="col-sm-4">
+                                            <h6 class="mb-0">Semestre</h6>
+                                        </div>
+                                        <div class="col-sm-4 text-primary text-bold" id="fichasemestre">{sem}</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Grupo</h6>
+                                            <h6 class="mb-0">Generacion</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">2650</div>
+                                        <div class="col-sm-2 text-primary text-bold" id="fichaGen">{gen}</div>
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Sede</h6>
+                                        </div>
+                                        <div class="col-sm-4 text-primary text-bold" id="fichaCampus">{sede}</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Profesor</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">Ricardo Anaya López</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="fichaProfe">{profe}</div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Fecha de Inscripción</h6>
+                                            <h6 class="mb-0">Inscripción</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">30 de Junio, 2020</div>
+                                        <div class="col-sm-9 text-primary text-bold" id="idFechaSol">{fecha}</div>
                                     </div>
-                                    
+
                                     <div class="row py-3 mt-2">
                                         <h5 class="text-secondary">Información de costo:</h5>
                                     </div>
-                                    
+
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Costo de curso</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">$1000.00 MXN</div>
+                                        <div class="col-sm-7 text-primary text-bold" id="fichaCoste">{coste}</div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Descuento aplicado</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">-50% ($500.00 MXN)</div>
+                                        <div class="col-sm-7 text-primary text-bold" id="fichaDesc">{desc}</div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">Total de pago</h6>
                                         </div>
-                                        <div class="col-sm-9 text-primary text-bold" id="">$500.00 MXN</div>
+                                        <div class="col-sm-7 text-primary text-bold" id="fichaTotal">{total}</div>
                                     </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <h6 class="mb-0">Notas</h6>
+                                        </div>
+                                        <div class="col-sm-7 text-primary text-bold" id="fichaNotas">{notes}</div>
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- FIN INFO CURSO BANNER -->
+                    <!-- FIN INFO CURSO -->
                 </div>
             </section>
             <!-- FIN seccion detalles-->
@@ -285,78 +283,88 @@
                       Revisión de documentos
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover table-lg">
-                            <tbody>
-                            <tr>
-                                <td class="col-auto">
-                                    <div class="d-flex align-items-center">
-                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
+                        <div class="tab-content text-justify" id="nav-tabContent">
+                            <div class="tab-pane show " id="list-1-1" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="col-12 col-md-12">
+                                    <div class="card mb-3">
+                                        <div class="py-2">
+                                            <div class="row py-1 m-2">
+                                                <h5 class="text-secondary">Ficha de Inscipción: No1415254252</h5>
+                                                <div class="row py-2">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Curso:</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">Diccionarios de datos GRUPO: 666</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-7 col-sm-3">
+                                                        <h6 class="mb-0">Semestre</h6>
+                                                    </div>
+                                                    <div class="col-5 col-sm-3 text-secondary">2021-2</div>
+                                                    <div class="col-7 col-sm-3">
+                                                        <h6 class="mb-0">Generación</h6>
+                                                    </div>
+                                                    <div class="col-5 col-sm-3 text-secondary">2020</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Modalidad</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">En Linea</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Procedencia:</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">Comunidad UNAM </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Contacto:</h6>
+                                                    </div>
+                                                    <div class="col-sm-7 text-secondary"><a href="mailto:lucia@hotmail.com" class="text-secondary"><i class="fas fa-paper-plane"></i> lucia@hotmail.com</a>
+                                                        <br> <i class="fas fa-mobile-alt"></i> 5587481564</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Solicitud:</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">mié, 16 de diciembre de 2020 11:09 a.&nbsp;m.</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-7 col-sm-3">
+                                                        <h6 class="mb-0">Costo:</h6>
+                                                    </div>
+                                                    <div class="col-5 col-sm-3 text-secondary">$1500.00</div>
+                                                    <div class="col-7 col-sm-3">
+                                                        <h6 class="mb-0">Descuento:</h6>
+                                                    </div>
+                                                    <div class="col-5 col-sm-3 text-secondary">No Aplica</div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <h6 class="mb-0">Estatus de la Inscripción</h6>
+                                                    </div>
+                                                    <div class="col-sm-4 text-secondary"><i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  </div>
+                                                    <div class="col-sm-4 text-secondary"><i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </div>
                                     </div>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                </td>
-                                <td class="col-auto">
-                                    <span class="badge bg-warning">Por revisar</span>
-                                </td>
-                                <td class="col-auto">
-                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-auto">
-                                    <div class="d-flex align-items-center">
-                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                    </div>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                </td>
-                                <td class="col-auto">
-                                    <span class="badge bg-success">Aprovado</span>
-                                </td>
-                                <td class="col-auto">
-                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-auto">
-                                    <div class="d-flex align-items-center">
-                                        <p class="font-bold ms-3 mb-0">Comprobante de Pago</p>
-                                    </div>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-upload"></i> 15 enero 2022 05:16:15 PM</p>
-                                </td>
-                                <td class="col-auto">
-                                    <p class=" mb-0"><i class="fas fa-quote-left"></i> Documento invalido</p>
-                                </td>
-                                <td class="col-auto">
-                                    <span class="badge bg-danger">Rechazado</span>
-                                </td>
-                                <td class="col-auto">
-                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal-pdf-temario"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-download"></i></a>
-                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check-square"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane active" id="list-2-1" role="tabpanel" aria-labelledby="list-profile-list">
+                                <div class="table-responsive" id="containerDocs"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -364,6 +372,7 @@
 
         </div>
         <footer class="text-center text-white ">
+            <?php include "modals/modal-vista-documento.php"?>
             <?php include "modals/generalModals.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
@@ -376,6 +385,7 @@
 <script src="./service/general/tools.js"></script>
 
 <script src="./service/inscripcion-detalles.js"></script>
+<script src="./service/documentacion-gral.js"></script>
 </body>
 
 </html>

@@ -16,6 +16,22 @@ class SERVICIO_SOCIAL EXTENDS ALUMNO IMPLEMENTS I_SERVIO_SOCIAL
     /**
      * @return mixed
      */
+    public function getEstatusCuenta()
+    {
+        return $this->estatusCuenta;
+    }
+
+    /**
+     * @param mixed $estatusCuenta
+     */
+    public function setEstatusCuenta($estatusCuenta): void
+    {
+        $this->estatusCuenta = $estatusCuenta;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getIdAlumno()
     {
         return $this->id_alumno;
@@ -141,18 +157,17 @@ class SERVICIO_SOCIAL EXTENDS ALUMNO IMPLEMENTS I_SERVIO_SOCIAL
         $this->estatus = $estatus;
     }
 
-    public function consultaCuenta()
-    {
-        $cuenta = "";
-        return $cuenta;
-    }
 
-    function queryConsultaCuentaServSoc()
+    function queryConsultaFichaCuentaServSoc()
     {
-        include_once "SERVICIO_SOCIAL.php";
-        $obj_serv = new SERVICIO_SOCIAL();
-        $obj_serv->setIdAlumno($this->getIdAlumno());
-        return $obj_serv->consultaCuenta();
+        $sql = "SELECT ss.id_alumno_fk, ss.fecha_alta,
+       ss.fecha_inicio_serv, ss.fecha_termino_serv,
+       ss.notas, ss.permisos, ss.estatus AS estatusSS
+        FROM servicio_social ss WHERE ss.id_alumno_fk = ". $this->getIdAlumno();
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
     }
 
 
@@ -209,4 +224,8 @@ class SERVICIO_SOCIAL EXTENDS ALUMNO IMPLEMENTS I_SERVIO_SOCIAL
     }
 
 
+    function queryConsultaListaCuentasSS()
+    {
+        // TODO: Implement queryConsultaListaCuentasSS() method.
+    }
 }

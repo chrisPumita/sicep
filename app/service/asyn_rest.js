@@ -524,3 +524,27 @@ async function consultaAsyncDocsRevisaAJAX(idInscipcion,filtro){
     });
 }
 
+/*Async regresa lista del documentos pendient3s por revisar*/
+async function consultaAsyncFichaInsc(idInscipcion,filtro) {
+    return await consultaAsyncFichaInscAJAX(idInscipcion,filtro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncFichaInscAJAX(idInscipcion,filtro){
+    return $.ajax({
+        url: "./webhook/detalles-ficha-inscripcion.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idInscipcion:idInscipcion,
+            filtro:filtro
+        },
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer los documentos por revisar");
+        }
+    });
+}
+

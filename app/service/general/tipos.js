@@ -299,3 +299,43 @@ function getTipoEstado(estatusFIle, statusRevisado){
         return null;
     }
 }
+
+function cuentaAlumnoDraw(tipo) {
+ //   ``
+    return parseInt(tipo) === 1 ? `<i class="fas fa-check-circle text-primary" 
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Cuanta Verificada"></i>
+                        `: `<i class="fas text-warning fa-exclamation-circle" 
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Cuenta No Verificada"></i>`;
+}
+
+function sexoPersona(tipo) {
+    let sexo = parseInt(tipo);
+    switch (sexo) {
+        case 0:
+            return 'Hombre';
+            break;
+        case 1:
+            return 'Mujer';
+        break;
+        default:
+            return 'No especificado';
+        break;
+    }
+    return null;
+}
+
+function estadoServSoc(tipo) {
+    let sexo = parseInt(tipo);
+    switch (sexo) {
+        case 0:
+            return '<i class="fas fa-circle text-grey"></i> TERMINADO';
+            break;
+        case 1:
+            return '<i class="fas fa-circle text-success"></i> EN CURSO';
+        break;
+        default:
+            return '<i class="fas fa-circle text-danger"></i>DESHABILITADO';
+        break;
+    }
+    return null;
+}

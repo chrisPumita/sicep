@@ -276,7 +276,7 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
        uni.nombre AS nombreUni, uni.siglas, mun.municipio, edos.estado AS edoRep, insc.id_inscripcion,
        insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud,
        insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion,
-       insc.id_asignacion_fk,
+       insc.id_asignacion_fk, asig.id_profesor_fk,
        asig.id_asignacion, asig.generacion, asig.semestre, asig.campus_cede, asig.fecha_creacion, asig.fecha_inicio,
        asig.fecha_fin, asig.fecha_inicio_inscripcion, asig.fecha_lim_inscripcion, asig.fecha_inicio_actas,
        asig.fecha_fin_actas, asig.cupo, asig.costo_real, asig.notas, asig.modalidad, asig.visible_publico, asig.estatus AS estatusAsig,
@@ -287,7 +287,9 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
          On  a.id_doc_sol_fk = ds.id_doc_sol WHERE a.estado = 1 AND a.id_inscripcion_fk = insc.id_inscripcion) AS n_enviados,
        (select COUNT(*) from archivo ar where ar.estado <> 0 AND ar.id_inscripcion_fk =insc.id_inscripcion) AS n_retornados,
        (SELECT COUNT(*) FROM archivo A  WHERE A.estado_revision = 0 AND A.estado = 0 AND A.id_inscripcion_fk= insc.id_inscripcion) AS n_revisa,
-        (SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP WHERE AP.id_curso_fk = c.id_curso AND AP.id_tipo_procedencia_fk = proc.id_tipo_procedencia) AS DESCUENTO
+        (SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP WHERE AP.id_curso_fk = c.id_curso AND AP.id_tipo_procedencia_fk = proc.id_tipo_procedencia) AS DESCUENTO,
+       (SELECT  CONCAT(prof.prefijo,'. ',per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo
+FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`id_persona` AND prof.id_profesor = asig.id_profesor_fk) AS profesor
         FROM alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, inscripcion insc,
              asignacion_grupo asig, grupo gpo, curso c
         WHERE al.id_persona = per.id_persona
@@ -310,6 +312,14 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         $files = new ARCHIVO();
         $files->setIdInscripcionFk($this->getIdInscripcion());
         return  $files->queryListCountArchivosPendRev($filtro);
+    }
+
+    public function detallesValidacion()
+    {
+        include "VALIDACION_INSCRIPCION.php";
+        $VALIDA = new VALIDACION_INSCRIPCION();
+        $VALIDA->setIdInscripcionFk($this->getIdInscripcion());
+        return $VALIDA->queryFichaValidacion();
     }
 
 

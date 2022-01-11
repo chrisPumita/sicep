@@ -492,3 +492,20 @@ bd-callout+.bd-callout {
 .swiper-button-next, .swiper-rtl .swiper-button-prev {
     color: var(--primary) !important;
 }
+
+.estatusAvatar{
+    background-color: var(--ligth);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    text-align: center;
+    align-content: center;
+    padding: 3px;
+}
+
+.dotDocs{
+    width: 10px !important;
+    height: 10px !important;
+    margin: 3px !important;
+}
