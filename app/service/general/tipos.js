@@ -280,3 +280,62 @@ function getTipoAccion(name) {
             return `ARCHIVO EN VALIDACION`;
     }
 }
+
+
+function getTipoEstado(estatusFIle, statusRevisado){
+    let fileE = parseInt(estatusFIle);
+    let reviE = parseInt(statusRevisado);
+
+    if (fileE == -1 && reviE == -1){
+        return -1;
+    }
+    else if (fileE == 0 && reviE == 0){
+        return 0;
+    }
+    else if (fileE == 1 && reviE == 1){
+        return 1;
+    }
+    else{
+        return null;
+    }
+}
+
+function cuentaAlumnoDraw(tipo) {
+ //   ``
+    return parseInt(tipo) === 1 ? `<i class="fas fa-check-circle text-primary" 
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Cuanta Verificada"></i>
+                        `: `<i class="fas text-warning fa-exclamation-circle" 
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Cuenta No Verificada"></i>`;
+}
+
+function sexoPersona(tipo) {
+    let sexo = parseInt(tipo);
+    switch (sexo) {
+        case 0:
+            return 'Hombre';
+            break;
+        case 1:
+            return 'Mujer';
+        break;
+        default:
+            return 'No especificado';
+        break;
+    }
+    return null;
+}
+
+function estadoServSoc(tipo) {
+    let sexo = parseInt(tipo);
+    switch (sexo) {
+        case 0:
+            return '<i class="fas fa-circle text-grey"></i> TERMINADO';
+            break;
+        case 1:
+            return '<i class="fas fa-circle text-success"></i> EN CURSO';
+        break;
+        default:
+            return '<i class="fas fa-circle text-danger"></i>DESHABILITADO';
+        break;
+    }
+    return null;
+}

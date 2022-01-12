@@ -25,7 +25,8 @@ function buildHTMLAcrrodion() {
             sumaDocs += parseInt(SOL.docsRevisar);
             cont++;
             let descuento = SOL.DESCUENTO === null ? 'No Aplica': '$'+calculaDescuento(SOL.costo_real,SOL.DESCUENTO)+' (-'+SOL.DESCUENTO+'%)';
-            let estadoSolicitud = SOL.estatusInscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> PENDIENTE';
+            let estadoSolicitud = SOL.autorizacion_inscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  ';
+            let estadoPago = SOL.pago_confirmado ==="1" ? '<i class="fas fa-hand-holding-usd text-success"></i> PAGADO':'<i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE ';
             let btnAcredita = SOL.estatusInscripcion ==="0" ? '<a href="#" class="btn btn-success"><i class="fas fa-check-square"></i>Acreditar</a>':'';
             template += `
             <div class="list-group-item list-group-item-action" idInsc="${SOL.id_inscripcion}" id="heading${cont}" data-bs-toggle="collapse" 
@@ -40,7 +41,7 @@ function buildHTMLAcrrodion() {
                             <p class="text-xs text-secondary mb-0">${SOL.nombre_curso} [${SOL.grupo}]</p>
                         </div>
                     </div>
-                    <small><span class="badge bg-danger" id="contadorBadgeCol-${cont}">${SOL.docsRevisar}</span></small>
+                    <small><span class="badge bg-danger" id="contadorBadgeCol-${cont}">${SOL.n_revisa}</span></small>
                 </div>
             </div>
             <div id="collapse${cont}" class="collapse pt-1" aria-labelledby="heading${cont}" data-parent="#cardAccordion">
@@ -128,10 +129,11 @@ function buildHTMLAcrrodion() {
                                                         </div>
                                                         <hr>
                                                         <div class="row">
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-4">
                                                                 <h6 class="mb-0">Estatus de la Inscripción</h6>
                                                             </div>
-                                                            <div class="col-sm-6 text-secondary">${estadoSolicitud}</div>
+                                                            <div class="col-sm-4 text-secondary">${estadoSolicitud}</div>
+                                                            <div class="col-sm-4 text-secondary">${estadoPago}</div>
                                                         </div>
                                                         <hr>
                                                     </div>
@@ -184,107 +186,13 @@ function showDocs(contador, collapse) {
 
      if (!$('#'+idAcordion).hasClass("collapsed")){
          consultaAsyncDocsRevisa(idInsc,1).then(function (response) {
-             let template = `
-                        <table class="table table-hover table-lg">
-                            <tbody><thead>
-                                <tr>
-                                    <th>DOCUMENTO</th>
-                                    <th>SUBIDA</th>
-                                    <th>VER</th>
-                                    <th>VERIFICAR</th>
-                                </tr>
-                            </thead>`;
-             response.forEach(
-                 (doc)=>{
-                     console.log(doc);
-                     template += `
-                            <tr  idDoc="${doc.id_archivo}">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <div class="spinner-grow text-${getColorEstatusFile(doc.estado_revision)}" role="status"></div>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
-                                            <p class="mb-0 text-xs">${doc.nombre_doc}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fas fa-file-upload"></i> ${doc.fecha_creacion}
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
-                                      onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
-                                      <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
-                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
-                                    </div>
-                                </td>
-                            </tr>`;
-                 }
-             );
-             template += `</tbody>
-                        </table>`;
+             console.log(response);
+            let templateDocs = buildTBLDocsSolicitados(response);
              let container = $("#containerDocs-"+contador);
-             container.html(template);
+             container.html(templateDocs);
          })
      }
 }
-
-//funciones de acceso
-function viewFileModal(path,name, id) {
-    let body = `<embed src="${path}" frameborder="0" width="100%" style="height: 70vh;">`;
-    $('#fileView').html(body);
-    $('#viewFileName').html(name);
-    $('#idDocument').val(id);
-}
-
-$(document).on("click", ".actionFile", function ()
-{
-    let ElementDOM = $(this)[0];
-    console.log(ElementDOM);
-    let actionToDo = $(ElementDOM).attr("action");
-    let MjeAction = getTipoAccion(actionToDo);
-    sweetConfirm(MjeAction, '¿Estas seguro de que deseas marcar el archivo como: '+MjeAction, function (confirmed) {
-        if (confirmed) {
-           //sendAcionFile
-            $("#modalViewFile").modal('hide');
-        }
-    });
-});
-
-$(document).on("click", ".btnConfirmFile", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
-    console.log(ElementDOM);
-    let idSelected = $(ElementDOM).attr("idDoc");
-    console.log(idSelected);
-    sweetConfirm("Acreitar Documento", '¿Estas seguro de que deseas ACREDITAR este documento?', function (confirmed) {
-        if (confirmed) {
-            //sendAcionFile
-           alert("CONFIRMADO");
-        }
-    });
-});
-
-$(document).on("click", ".btnCancelFile", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
-    console.log(ElementDOM);
-    let idSelected = $(ElementDOM).attr("idDoc");
-    console.log(idSelected);
-    sweetConfirm("RECHAZAR DOCUMENTO", '¿Estas seguro de que deseas RECHAZAR este documento? ', function (confirmed) {
-        if (confirmed) {
-            //sendAcionFile
-            alert("RECHAZADO");
-        }
-    });
-});
 
 
 function goFichaInsc(idInscripcion) {

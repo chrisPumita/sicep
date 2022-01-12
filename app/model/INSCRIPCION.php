@@ -252,8 +252,23 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
         5. caducado
         -. eliminado
      * */
-    function querySolicInscPend(){
-        $filtro = $this->getIdInscripcion() >0 ? "AND insc.id_inscripcion = ".$this->getIdInscripcion():"";
+
+    /// FUNCION GENERAL.--->
+    function queryFichasInscripcion($docSol,$notValidate)
+    {
+        $filtro = "";
+        //FUNCION UNIFICADA
+        //Realizar el : REQUIERE si tiene algun documento solicitado  para presentar
+        $filtro .= $notValidate ? "AND insc.id_inscripcion NOT IN (SELECT vi.id_inscripcion_fk from validacion_inscripcion vi)": "";
+
+        //valida si el es para un ID espcifico
+        $filtro .= $this->getIdInscripcion() >0 ? "AND insc.id_inscripcion = ".$this->getIdInscripcion():"";
+
+        $hasDocsRevisa = "AND insc.id_inscripcion IN  (SELECT I.id_inscripcion FROM inscripcion I  INNER JOIN archivo A
+                     On  A.id_inscripcion_fk = I.id_inscripcion  AND A.estado_revision = 0 AND A.estado = 0  GROUP BY id_inscripcion) ";
+
+        $filtro .= $docSol ? $hasDocsRevisa : "";
+
         $sql = "select per.nombre, per.app, per.apm, per.sexo, per.estatus AS estatusPersona,
        CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo, per.telefono, al.id_alumno, al.matricula,
        al.nombre_uni, al.id_tipo_procedencia_fk, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image,
@@ -261,7 +276,7 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
        uni.nombre AS nombreUni, uni.siglas, mun.municipio, edos.estado AS edoRep, insc.id_inscripcion,
        insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud,
        insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion,
-       insc.id_asignacion_fk,
+       insc.id_asignacion_fk, asig.id_profesor_fk,
        asig.id_asignacion, asig.generacion, asig.semestre, asig.campus_cede, asig.fecha_creacion, asig.fecha_inicio,
        asig.fecha_fin, asig.fecha_inicio_inscripcion, asig.fecha_lim_inscripcion, asig.fecha_inicio_actas,
        asig.fecha_fin_actas, asig.cupo, asig.costo_real, asig.notas, asig.modalidad, asig.visible_publico, asig.estatus AS estatusAsig,
@@ -270,7 +285,11 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
        (SELECT COUNT(*) FROM docs_solicitados_curso WHERE id_curso_fk =  c.id_curso ) AS n_sol,
        (SELECT COUNT(*) FROM  archivo a  Left Join  docs_solicitados_curso ds
          On  a.id_doc_sol_fk = ds.id_doc_sol WHERE a.estado = 1 AND a.id_inscripcion_fk = insc.id_inscripcion) AS n_enviados,
-       (select COUNT(*) from archivo ar where ar.estado = 0 AND ar.id_inscripcion_fk =insc.id_inscripcion) AS n_revisa
+       (select COUNT(*) from archivo ar where ar.estado <> 0 AND ar.id_inscripcion_fk =insc.id_inscripcion) AS n_retornados,
+       (SELECT COUNT(*) FROM archivo A  WHERE A.estado_revision = 0 AND A.estado = 0 AND A.id_inscripcion_fk= insc.id_inscripcion) AS n_revisa,
+        (SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP WHERE AP.id_curso_fk = c.id_curso AND AP.id_tipo_procedencia_fk = proc.id_tipo_procedencia) AS DESCUENTO,
+       (SELECT  CONCAT(prof.prefijo,'. ',per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo
+FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`id_persona` AND prof.id_profesor = asig.id_profesor_fk) AS profesor
         FROM alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, inscripcion insc,
              asignacion_grupo asig, grupo gpo, curso c
         WHERE al.id_persona = per.id_persona
@@ -281,54 +300,9 @@ class INSCRIPCION extends CONEXION_M implements I_INSCRIPCION
           AND insc.id_alumno_fk = al.id_alumno
           AND asig.id_asignacion = insc.id_asignacion_fk
           AND gpo.id_grupo = asig.id_grupo_fk
-          AND gpo.id_curso_fk = c.id_curso
-          AND insc.id_inscripcion NOT IN (SELECT vi.id_inscripcion_fk from validacion_inscripcion vi) ".$filtro;
+          AND gpo.id_curso_fk = c.id_curso ".$filtro;
         $this->connect();
         $result = $this->getData($sql);
-        $this->close();
-        return $result;
-    }
-
-    //Regresa solo lista de solicitudes Acreditadas/no acreditadas que tengan documentacion P/revisar
-    function queryLsSolDocPendiente(){
-        $filtro = $this->getIdInscripcion() > 0 ? ' AND insc.id_inscripcion = '.$this->getIdInscripcion():'';
-
-        $query = "SELECT per.nombre, per.app, per.apm, per.sexo, per.estatus AS estatusPersona,
-       CONCAT(per.app, ' ',per.apm, ' ', per.nombre) AS nombre_completo, per.telefono, al.id_alumno, al.matricula,
-       al.nombre_uni, al.carrera_especialidad, al.email, al.fecha_registro, al.perfil_image,
-       al.estatus AS estatusAlumno, proc.id_tipo_procedencia, proc.tipo_procedencia, uni.id_universidad,
-       uni.nombre AS nombreUni, uni.siglas, mun.municipio, edos.estado AS edoRep, insc.id_inscripcion,
-       insc.pago_confirmado, insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud,
-       insc.fecha_conclusion, insc.notas AS notasInscripcion, insc.estatus AS estatusInscripcion,
-       insc.id_asignacion_fk,
-       asig.id_asignacion, asig.generacion, asig.semestre, asig.campus_cede, asig.fecha_creacion, asig.fecha_inicio,
-       asig.fecha_fin, asig.fecha_inicio_inscripcion, asig.fecha_lim_inscripcion, asig.fecha_inicio_actas,
-       asig.fecha_fin_actas, asig.cupo, asig.costo_real, asig.notas, asig.modalidad, asig.visible_publico, asig.estatus AS estatusAsig,
-       gpo.grupo, gpo.estatus AS estatusGpo, c.id_curso, c.codigo, c.nombre_curso, c.dirigido_a,
-       c.objetivo, c.descripcion, c.no_sesiones, c.antecedentes, c.link_temario_pdf, c.banner_img, c.tipo_curso,
-        insc.id_inscripcion, (SELECT COUNT(*) FROM archivo A
-               WHERE A.estado_revision = 0 AND A.estado = 0
-                AND A.id_inscripcion_fk= insc.id_inscripcion) AS docsRevisar,
-(SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP WHERE AP.id_curso_fk = c.id_curso
-                   AND AP.id_tipo_procedencia_fk = proc.id_tipo_procedencia) AS DESCUENTO
-FROM alumno al, persona per,tipo_procedencia proc,universidades uni, estados edos, municipios mun, inscripcion insc,
-     asignacion_grupo asig, grupo gpo, curso c
-where al.id_persona = per.id_persona
-  AND al.id_tipo_procedencia_fk = proc.id_tipo_procedencia
-  AND uni.id_universidad = al.id_universidad
-  AND edos.id_estado = mun.id_estado_fk
-  AND mun.id_municipio = al.id_municipio
-  AND insc.id_alumno_fk = al.id_alumno
-  AND asig.id_asignacion = insc.id_asignacion_fk
-  AND gpo.id_grupo = asig.id_grupo_fk
-  AND gpo.id_curso_fk = c.id_curso
-   AND insc.id_inscripcion IN
-      (SELECT I.id_inscripcion FROM inscripcion I  INNER JOIN archivo A
-       On  A.id_inscripcion_fk = I.id_inscripcion
-           AND A.estado_revision = 0 AND A.estado = 0
-      GROUP BY id_inscripcion) ".$filtro;
-        $this->connect();
-        $result = $this->getData($query);
         $this->close();
         return $result;
     }
@@ -339,6 +313,15 @@ where al.id_persona = per.id_persona
         $files->setIdInscripcionFk($this->getIdInscripcion());
         return  $files->queryListCountArchivosPendRev($filtro);
     }
+
+    public function detallesValidacion()
+    {
+        include "VALIDACION_INSCRIPCION.php";
+        $VALIDA = new VALIDACION_INSCRIPCION();
+        $VALIDA->setIdInscripcionFk($this->getIdInscripcion());
+        return $VALIDA->queryFichaValidacion();
+    }
+
 
     function queryRegistraInscripcion()
     {
@@ -434,42 +417,38 @@ where al.id_persona = per.id_persona
         return $result;
     }
 
-    //Funcion validate
-    function  contarHome(){
-        $sql="SELECT (SELECT COUNT(*) FROM curso WHERE curso.id_profesor_admin_acredita IS NOT NULL AND curso.aprobado = 1) as cursos,
-               (SELECT COUNT(*) FROM inscripcion, inscripcion_acta
-                WHERE inscripcion.validacion_constancia=0
-                  AND inscripcion.id_inscripcion IN (SELECT inscripcion_acta.id_inscripcion_acta FROM inscripcion_acta)
-                  AND inscripcion_acta.id_inscripcion_acta NOT IN (SELECT constancia_alumno.id_inscripcion_acta_fk FROM constancia_alumno)) as constancias,
-               (SELECT COUNT(*) FROM alumno, persona WHERE alumno.estatus=1 and persona.estatus=1 and persona.id_persona=alumno.id_persona) as alumno,
-               (SELECT COUNT(*) FROM inscripcion WHERE inscripcion.autorizacion_inscripcion=0) as inscripcion";
+    function queryEstadisticasAnioSolicitudes(){
+        $sql = "select Mes, anio, Valor, Orden from (
+                select 'Enero' as Mes, YEAR(I.fecha_solicitud) AS anio, (13 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor
+                from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 1
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE)
+                and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Febrero' as Mes, YEAR(I.fecha_solicitud) AS anio, (14 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 2
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Marzo' as Mes, YEAR(I.fecha_solicitud) AS anio, (15 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 3
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Abril' as Mes, YEAR(I.fecha_solicitud) AS anio, (16 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 4
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Mayo' as Mes, YEAR(I.fecha_solicitud) AS anio, (17 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 5
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Junio' as Mes, YEAR(I.fecha_solicitud) AS anio, (18 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 6
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Julio' as Mes, YEAR(I.fecha_solicitud) AS anio, (19 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 7
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Agosto' as Mes, YEAR(I.fecha_solicitud) AS anio, (20 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 8
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Septiembre' as Mes, YEAR(I.fecha_solicitud) AS anio, (21 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 9
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Octube' as Mes, YEAR(I.fecha_solicitud) AS anio, (22 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 10
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Noviembre' as Mes, YEAR(I.fecha_solicitud) AS anio, (23 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 10
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                union select 'Diciembre' as Mes, YEAR(I.fecha_solicitud) AS anio, (24 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 12
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+            ) t order by anio DESC, orden ASC";
         $this->connect();
         $result = $this->getData($sql);
         $this->close();
         return $result;
     }
-
-    //CHRIS
-    function queryConteoInscripcionesAnio(){
-        $query = "SELECT MONTH(insc.fecha_solicitud) Mes,
-       COUNT(*) CantMes FROM inscripcion insc
-        WHERE YEAR(insc.fecha_solicitud) = YEAR(CURDATE()) AND MONTH(insc.fecha_solicitud)
-        BETWEEN 1 and 12 GROUP BY MONTH(insc.fecha_solicitud) ORDER BY 1";
-        $this->connect();
-        $result = $this->getData($query);
-        $this->close();
-        return $result;
-    }
-
-    //CRIS
-    function queryConteoHM(){
-        $query = "SELECT per.sexo, COUNT(*) AS suma,
-                   (count(per.sexo)/(select count(*) from alumno))*100 as PORCENTAJE FROM alumno al, persona per
-                     WHERE per.id_persona = al.id_persona GROUP BY per.sexo";
-        $this->connect();
-        $result = $this->getData($query);
-        $this->close();
-        return $result;
-    }
-
 }

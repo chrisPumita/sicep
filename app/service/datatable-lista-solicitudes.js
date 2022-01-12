@@ -21,7 +21,7 @@ function cargaSolicitudesDataTable() {
             $(row).attr('folio', data.id_inscripcion);
         },
         "drawCallback": function( settings, start, end, max, total, pre ) {
-          //  console.log(this.fnSettings().json); /* for json response you can use it also*/
+            console.log(this.fnSettings().json); /* for json response you can use it also*/
             //alert(this.fnSettings().fnRecordsTotal()); // total number of rows
             $("#badgePendientes").html(this.fnSettings().fnRecordsTotal()); //
         },
@@ -84,11 +84,11 @@ function cargaSolicitudesDataTable() {
                         template = `<div class="progress-wrapper">
                                         <div class="progress-info">
                                             <div class="progress-percentage">
-                                                <span class="text-sm font-weight-bold">${row.n_sol} Solicitados</span>
+                                                <span class="text-sm font-weight-bold">${row.n_enviados} / ${row.n_sol} Entregados</span>
                                             </div>
                                         </div>
                                         <div class="progress">
-                                            <div class="progress-bar bg-${color}" role="progressbar" aria-valuenow="${row.n_enviados}" aria-valuemax="${row.n_enviados}" style="width: ${porcentaje}%;">${row.n_enviados} entregados</div>
+                                            <div class="progress-bar bg-${color}" role="progressbar" aria-valuenow="${row.n_enviados}" aria-valuemax="${row.n_enviados}" style="width: ${porcentaje}%;">${row.n_enviados}</div>
                                         </div>
                                     </div>`;
                     }
@@ -157,9 +157,8 @@ $(document).on("click", ".btnViewFicha", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement;
     let id = $(elementClienteSelect).attr("folio");
-    var url = './detalles-profesor';
-    alert(id);
- //   redirect_by_post(url, {  id: id }, false);
+    var url = './ficha-inscripcion';
+    redirect_by_post(url, {  id: id }, false);
 });
 
 $(document).on("click", ".btnCancelInsc", function ()

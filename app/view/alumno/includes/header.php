@@ -38,7 +38,7 @@
                                     <a href="./mis-cursos" class='submenu-link'><i class="fas fa-chalkboard-teacher"></i> Mis Cursos</a>
                                 </li>
                                 <li class="submenu-item  ">
-                                    <a href="component-breadcrumb.html" class='submenu-link'><i class="fas fa-certificate"></i> Constancias</a>
+                                    <a href="./constancias" class='submenu-link'><i class="fas fa-certificate"></i> Constancias</a>
                                 </li>
                             </ul>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="submenu-group-wrapper">
                             <ul class="submenu-group">
                                 <li class="submenu-item  ">
-                                    <a href="layout-default.html" class='submenu-link'><i class="fas fa-folder-open"></i> Documentacion</a>
+                                    <a href="./documentacion" class='submenu-link'><i class="fas fa-folder-open"></i> Documentacion</a>
                                 </li>
                                 <li class="submenu-item  ">
                                     <a href="layout-vertical-1-column.html" class='submenu-link'><i class="far fa-paper-plane"></i> Enviadas</a>

@@ -18,3 +18,8 @@ function cuentaDocsPendRev(){
     include_once "../control/controlDocumentos.php";
     return getCountArchivosRevisa();
 }
+
+function estadisticasInscripcionesHome(){
+    include_once "../control/controlInscripciones.php";
+    return getEstadisticaAnualInscripciones();
+}

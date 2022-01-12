@@ -4,6 +4,8 @@ interface I_INSCRIPCION
 {
     function consultaSolcitudInscripciones($filtro,$idAsig,$valor);
 
+    function queryFichasInscripcion($docSol,$notValidate);
+
     function queryRegistraInscripcion();
 
     //Confirma el pago de la inscripcion y valida la autorizacion
