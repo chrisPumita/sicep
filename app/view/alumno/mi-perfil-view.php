@@ -1,100 +1,160 @@
-<?php $titulo = "Inicio - Alumno" ?>
+<?php $titulo = "Mi Perfil" ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <?php include_once "includes/head.php"; ?>
-    <!--css-->
-</head>
-<body>
-<div id="app">
-    <div id="main" class="layout-horizontal">
-        <?php include_once "includes/header.php"; ?>
-
-        <div class="content-wrapper container">
-            <div class="page-heading">
-                <h3>TEMPLATE DEMO</h3>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Mis Cursos</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-9">
-                        <div class="row">
+    <head>
+        <?php include_once "includes/head.php"; ?>
+        <!--css-->
+    </head>
+    <body>
+        <div id="app">
+            <div id="main" class="layout-horizontal">
+                <?php include_once "includes/header.php"; ?>
+                <div class="content-wrapper container">
+                    <div class="page-heading">
+                        <h3>Mi Perfil</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Mi Perfil</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="page-content">
+                        <section class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Titulo de card contenido</h4>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>Editar información personal</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3 border-right">
+                                                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                            <img class="rounded-circle mt-5" width="150px" src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4">
+                                                            <!-- <div class="file btn btn-lg btn-primary">
+                                                                <i class="fas fa-edit"></i>
+                                                                <input type="file" name="file"/>
+                                                            </div> -->
+                                                            <span class="font-weight-bold">Christian</span><span class="text-black-50">chris@reckreastudios.com</span><span> </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 border-right">
+                                                        <div class="p-3 py-5">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                    <input type="text" id="nombre_profesor" name="nombre_profesor" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                    <input type="text" id="app" name="app" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                    <input type="text" id="apm" name="apm" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Telefono">
+                                                                </div>
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <select class="form-control" id="localidad" name="localidad">
+                                                                        <option value="0">Nicolás Romero</option>
+                                                                        <option value="1">Cuautitlán Izcalli</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <select class="form-control" id="estado" name="estado">
+                                                                        <option value="0">Estado de México</option>
+                                                                        <option value="1">Ciudad de México</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="alert alert-success" role="alert">
+                                                                <h4 class="alert-heading">Recuerda...</h4>
+                                                                <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                                                                <!-- <hr>
+                                                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <input type="text" id="procedencia" name="procedencia" class="form-control" placeholder="Procedencia" aria-label="Procedencia">
+                                                                </div>
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" aria-label="Matricula">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                    <input type="text" id="carrera" name="carrera" class="form-control" placeholder="Carrera" aria-label="Carrera">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <!-- CONTENIDO -->
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="card">
+                                            <div class="card-body p-3 pb-4">
+                                                <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
+                                                <p class="card-text text-muted">Aqui puedes cambiar tu contraseña actual.</p>
+                                                <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
+                                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <div class="card-body p-3 pb-2">
+                                                    <h4 class="card-title">Subir Documento para Verificación</h4>
+                                                    <label for="pdfFile" class="form-label">En este apartado puedes subir tu documento para verificar tu situación académica.</label>
+                                                    <div class="row">
+                                                        <div class="col-sm-10">
+                                                            <form id="inputPDF">
+                                                                <div class="mb-3">
+                                                                    <input type="hidden" id="" name="">
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="file" class="form-control" id="pdfFile" name="pdfFile" accept=".pdf">
+                                                                        <button class="btn btn-secondary" type="submit" id="btnSubir">Subir</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span id="filePDF" class="me-1 mb-1"></span>
+                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
+                                                            <a href="#" class="btn btn-outline-danger me-1 mb-1"><i class="fas fa-times"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Documentos Pendientes</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1"><i class="fas fa-file-upload"></i> Ficha de Pago</h5>
-                                            <small><i class="fas fa-circle text-warning"></i></small>
-                                        </div>
-                                        <p class="mb-1">
-                                            Inciciacion al computo 1
-                                        </p>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1"><i class="fas fa-file-upload"></i> Credencial Estudiante</h5>
-                                            <small><i class="fas fa-circle text-warning"></i></small>
-                                        </div>
-                                        <p class="mb-1">
-                                            Inciciacion al computo 1
-                                        </p>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1"><i class="fas fa-file-upload"></i> INE</h5>
-                                            <small><i class="fas fa-circle text-danger"></i></small>
-                                        </div>
-                                        <p class="mb-1">
-                                            Inciciacion al computo 1
-                                        </p>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1"><i class="fas fa-file-upload"></i> Constancia Nivel 1</h5>
-                                            <small><i class="fas fa-circle text-warning"></i></small>
-                                        </div>
-                                        <p class="mb-1">
-                                            Inciciacion al computo 1
-                                        </p>
-                                    </a>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-primary font-bold mt-3'>Ver todos</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
+                <?php include 'includes/footer.php'; ?>
+                <?php include "modals/modal-cambiar-password.php"?>
             </div>
         </div>
-        <?php include 'includes/footer.php'; ?>
-    </div>
-</div>
-<?php include 'includes/scripts.php'; ?>
-
-<!-- Files JS -->
-
-</body>
+        <?php include 'includes/scripts.php'; ?>
+        <!-- Files JS -->
+    </body>
 </html>

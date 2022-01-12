@@ -106,7 +106,7 @@
                     <div class="submenu-group-wrapper">
                         <ul class="submenu-group">
                             <li class="submenu-item  ">
-                                <a href="#" class='submenu-link'>Mi Perfil</a>
+                                <a href="./mi-perfil" class='submenu-link'>Mi Perfil</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="#" class='submenu-link'>Servicio Social</a>
