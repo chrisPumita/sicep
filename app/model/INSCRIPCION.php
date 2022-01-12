@@ -345,29 +345,33 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
     //envio true o false
     //confirmaPago(true);
     //confirmaPago(false);
-    function confirmaPago($confirmacion)
+    function confirmaPagoRealizado($confirmacion)
     {
-        $sql = "UPDATE `inscripcion` SET 
-                         `pago_confirmado` = '".($confirmacion?1:0)."', 
-                         `autorizacion_inscripcion` = '".($confirmacion?1:0)."', 
-                         `notas`= CONCAT(notas,' ', '".$this->getNotas()."') 
-                WHERE `inscripcion`.`id_inscripcion` = ". $this->getIdInscripcion();
-
+        $valConfir = $confirmacion ? '1':'-1';
+        $estatus = $confirmacion ? '1':'0';
+        $conclusion = $confirmacion ? 't.fecha_conclusion = NULL, ': " t.fecha_conclusion = CURRENT_TIMESTAMP,";
+        $sql = "UPDATE seltic.inscripcion t
+                SET t.pago_confirmado          = ".$valConfir.",
+                    t.autorizacion_inscripcion = ".$valConfir.", ".$conclusion."
+                    t.notas = t.notas + '".$this->getNotas()."',
+                    t.estatus                  = ".$estatus."
+                WHERE t.id_inscripcion = ". $this->getIdInscripcion();
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();
         return $result;
     }
 
-    function validaAutorizacion($id_admin,$fechaPago,$monto,$desc,$notas)
+    function creaValidacionInscripcion($id_admin,$monto,$desc)
     {
         include_once "VALIDACION_INSCRIPCION.php";
         $obj_valida = new VALIDACION_INSCRIPCION();
-        $obj_valida->setFechaPago($fechaPago);
         $obj_valida->setMontoPagoRealizado($monto);
         $obj_valida->setDescripcion($desc);
-        $obj_valida->setNota($notas);
-        return $obj_valida->validaInscripcion($this->getIdInscripcion(),$id_admin);
+        $obj_valida->setNota($this->getNotas());
+        $obj_valida->setIdProfesorAdminFk($id_admin);
+        $obj_valida->setIdInscripcionFk($this->getIdInscripcion());
+        return $obj_valida->queryValidaInscripcion();
     }
 
     function inscribeEnActa()
@@ -385,6 +389,26 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
         // TODO: Implement eliminaRegistroInscripcion() method.
     }
 
+    function queryFichaInscripcionCostos(){
+        $sql = "select insc.id_inscripcion, insc.id_alumno_fk, insc.id_asignacion_fk, insc.pago_confirmado,
+       insc.autorizacion_inscripcion, insc.validacion_constancia, insc.fecha_solicitud,
+       insc.fecha_conclusion, insc.notas, insc.estatus AS edoInsc,
+       al.id_alumno, al.id_tipo_procedencia_fk,al.estatus AS edoAlumno, ag.costo_real,
+       tp.tipo_procedencia, c.nombre_curso, gpo.grupo,
+       (SELECT AP.porcentaje_desc FROM asignacion_procedencia  AP
+       WHERE AP.id_curso_fk = c.id_curso AND AP.id_tipo_procedencia_fk = al.id_tipo_procedencia_fk) AS descuento
+        from inscripcion insc, alumno al, asignacion_grupo ag, grupo gpo, curso c, tipo_procedencia tp
+        where insc.id_alumno_fk = al.id_alumno
+          AND tp.id_tipo_procedencia = al.id_tipo_procedencia_fk
+          AND insc.id_asignacion_fk = ag.id_asignacion
+          AND ag.id_grupo_fk = gpo.id_grupo
+          AND gpo.id_curso_fk = c.id_curso
+        AND insc.id_inscripcion = ".$this->getIdInscripcion();
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
 
     /*******************************************************************************
      * Terminan Funciones implementadas de la Interface
@@ -394,29 +418,6 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
     /*******************************************************************************
      * Inician Otras funciones
      *******************************************************************************/
-
-    function consultaValidacionesInscripciones()
-    {
-
-        $sql = "SELECT `id_inscripcion_fk`, `id_profesor_admin_fk`, `fecha_validacion`, `fecha_pago`, `monto_pago_realizado`, `descripcion`, `notas` 
-                FROM `validacion_inscripcion` WHERE `id_inscripcion_fk` = ".$this->getIdInscripcion();
-        //Abro conexion de consulta a BD
-        $this->connect();
-        $result = $this->getData($sql);
-        $this->close();
-        return $result;
-    }
-
-    //Funcion validate
-    function  consultaPagosRealizados(){
-        $sql = "SELECT `id_inscripcion_fk`, `id_profesor_admin_fk`, `fecha_validacion`,`fecha_pago`, `monto_pago_realizado`, `descripcion`, `notas` 
-                FROM `validacion_inscripcion` WHERE `fecha_validacion` IS NOT NULL ORDER BY `fecha_pago` DESC ";
-        $this->connect();
-        $result = $this->getData($sql);
-        $this->close();
-        return $result;
-    }
-
     function queryEstadisticasAnioSolicitudes(){
         $sql = "select Mes, anio, Valor, Orden from (
                 select 'Enero' as Mes, YEAR(I.fecha_solicitud) AS anio, (13 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor

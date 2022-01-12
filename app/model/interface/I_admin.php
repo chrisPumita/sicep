@@ -6,5 +6,5 @@ interface I_admin
     public function queryListaAdministradores();
     public function queryUpdateStatusAdmin($admin,$estatus);
     public function queryDeleteAdmin($admin);
-    public function queryBuscaCuentaAdmin($id_profesor_admin);
+    public function queryBuscaCuentaAdmin();
 }

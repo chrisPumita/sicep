@@ -9,10 +9,7 @@ interface I_INSCRIPCION
     function queryRegistraInscripcion();
 
     //Confirma el pago de la inscripcion y valida la autorizacion
-    function confirmaPago($confirmacion);
-
-    //crea una validacion
-    function validaAutorizacion($id_admin,$fechaPago,$monto,$desc,$notas);
+    function confirmaPagoRealizado($confirmacion);
 
     function inscribeEnActa();
 

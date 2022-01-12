@@ -29,8 +29,9 @@
                         <h3>Ficha de Inscripción [<?php echo $id; ?>]</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="./home-admin.php">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="./lista-alumnos-view.php">Lista de alumnos</a></li>
+                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="./lista-alumnos">Alumnos</a></li>
+                                <li class="breadcrumb-item"><a href="./solicitudes-inscripcion">Solicitudes</a></li>
                                 <li class="breadcrumb-item active" aria-current="page" id="breadName">{name}</li>
                             </ol>
                         </nav>
@@ -370,6 +371,7 @@
 
 <script src="./service/inscripcion-detalles.js"></script>
 <script src="./service/documentacion-gral.js"></script>
+<script src="./service/acounts-security.js"></script>
 </body>
 
 </html>

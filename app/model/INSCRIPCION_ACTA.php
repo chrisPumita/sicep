@@ -1,6 +1,5 @@
 <?php
 include ("INSCRIPCION.php");
-
 class INSCRIPCION_ACTA extends INSCRIPCION
 {
     private $id_inscripcion_acta;

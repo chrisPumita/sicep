@@ -5,7 +5,6 @@ class VALIDACION_INSCRIPCION extends CONEXION_M
 {
     private $id_inscripcion_fk;
     private $id_profesor_admin_fk;
-    private $fecha_validacion;
     private $fecha_pago;
     private $monto_pago_realizado;
     private $descripcion;
@@ -41,22 +40,6 @@ class VALIDACION_INSCRIPCION extends CONEXION_M
     public function setIdProfesorAdminFk($id_profesor_admin_fk): void
     {
         $this->id_profesor_admin_fk = $id_profesor_admin_fk;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFechaValidacion()
-    {
-        return $this->fecha_validacion;
-    }
-
-    /**
-     * @param mixed $fecha_validacion
-     */
-    public function setFechaValidacion($fecha_validacion): void
-    {
-        $this->fecha_validacion = $fecha_validacion;
     }
 
     /**
@@ -124,12 +107,11 @@ class VALIDACION_INSCRIPCION extends CONEXION_M
     }
 
     //Llamado de control de verificacion
-    function validaInscripcion($id_inscripcion,$id_admin){
+    function queryValidaInscripcion(){
         $sql = "INSERT INTO `validacion_inscripcion` (
-        `id_inscripcion_fk`, `id_profesor_admin_fk`, `fecha_validacion`, `fecha_pago`, `monto_pago_realizado`, `descripcion`, `notas`) 
-        VALUES (
-        '".$id_inscripcion."', '".$id_admin."', '".date('Y-m-d H:i:s')."', '".$this->getFechaPago()."', 
-        '".$this->getMontoPagoRealizado()."', '".$this->getDescripcion()."', '".$this->getNota()."');";
+            `id_inscripcion_fk`, `id_profesor_admin_fk`, `fecha_validacion`, `fecha_pago`, `monto_pago_realizado`, `descripcion`, `notas`) 
+                VALUES ('".$this->getIdInscripcionFk()."', '".$this->getIdProfesorAdminFk()."', 
+                CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '".$this->getMontoPagoRealizado()."', '".$this->getDescripcion()."', '".$this->getNota()."')";
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();

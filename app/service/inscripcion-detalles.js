@@ -21,6 +21,7 @@ function consultaInfoInscripcion() {
 }
 
 function buildCardInscripcion(DATOS){
+    console.log(DATOS);
     return `
         <div class="card">
             <div class="card-body py-3 px-4">
@@ -28,15 +29,14 @@ function buildCardInscripcion(DATOS){
                     <div class="col-2 m-auto">
                         <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
                     </div>
-                    <div class="col-7 m-auto">
+                    <div class="col-7 m-auto" role="button" onclick="viewDetailsPago();">
                         <h5>Inscripción acreditada</h5>
                         <input type="hidden" value="1" id="valAcredCurso">
-                        <h5><strong>{nombreAcreditado}</strong></h5>
-                        <h6>{DeptoName}</h6>
-                        
+                        <h5><strong>${DATOS.prefijo}. ${DATOS.nombre_completo}</strong></h5>
+                        <h6>${DATOS.depto_name}</h6>
                     </div>
                     <div class="col-3 m-auto">
-                    <a href="#" class="btn btn-danger btn-block "><i class="fas fa-ban"></i> Cancelar</a>
+                    <button class="btn btn-danger btn-block btnCancelSubscripcion"><i class="fas fa-ban"></i> Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -133,6 +133,7 @@ function buildCardSerSoc(SS) {
 $(document).on("click", ".btnValidatePago", function ()
 {
     let valorAccion = $("#status-pago").val();
+    let id = ID_INSC;
     console.log(valorAccion);
     let action, mje;
     if (valorAccion === "1"){
@@ -151,7 +152,43 @@ $(document).on("click", ".btnValidatePago", function ()
     sweetConfirm(mje, '¿Estas seguro de que deseas '+action+' esta inscripcion?', function (confirmed) {
         if (confirmed) {
             //sendAcionFile
-            alert("CONFIRMADO");
+            confirmaCuentaAdmin("1",valorAccion,id).then(function (result) {
+                console.log(result);
+                if (result == -1){
+                    titulo= "Contraseña invalida";
+                    texto= "Porfavor llena los datos que se solicitan";
+                    tipo = "warning";
+                    alerta(titulo,texto,tipo);
+                }
+                else if (result.validacion) {
+                    alertaEmergente(result.mensaje);//reload
+                    consultaInfoInscripcion();
+                    loadContaores();
+                }
+                else if (!result.validacion){
+                    titulo= result.mensaje;
+                    texto= "Contraseña Incorrecta";
+                    tipo = "warning";
+                    alerta(titulo,texto,tipo);
+                }
+            })
         }
     });
 });
+
+
+$(document).on("click", ".btnCancelSubscripcion", function ()
+{
+    sweetConfirm('Cancelar inscripción', '¿Estas seguro de que deseas CANCELAR esta inscripcion?', function (confirmed) {
+        if (confirmed) {
+            //sendAcionFile
+            alert("PRESIJNO YES");
+        }
+    });
+});
+
+
+function viewDetailsPago() {
+    alert("VER DETALLES");
+}
+
