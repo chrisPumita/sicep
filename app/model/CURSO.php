@@ -464,7 +464,6 @@ class CURSO extends CONEXION_M implements I_CURSO
                     `costo_sugerido` = '".$this->getCostoSugerido()."', 
                     `tipo_curso` = '".$this->getTipoCurso()."' 
                     WHERE `curso`.`id_curso` = '".$this->getIdCurso()."'";
-                    return $query;
         $this->connect();
         $response = $this->executeInstruction($query);
         $this->close();

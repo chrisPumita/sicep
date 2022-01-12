@@ -299,20 +299,19 @@ $("#frm-update-curso").on("submit", function(e){
         editarObjetivo : $("#editarObjetivo").val(),
         editarDirigido : $("#editarDirigido").val(),
         editarAntecedentes : $("#editarAntecedentes").val(),
-        editarModalidad : $("#editarModalidad").val(),
+        editarModalidad : $("#editaTipoCurso").val(),
         editarSesiones : $("#editarSesiones").val(),
         editarCosto : $("#editarCosto").val()
     };
-    alert("Enviando a enviaForm");
-    //Funcion async
-    enviaForm(formData,route).then(function () {
-        alert("Entramos correctamente");
+    console.log(params);
+        //Funcion async
+    enviaForm(params,route).then(function () {
         $("#updateDatosCursos").modal('hide');
         let id= ID_CURSO;
         cargaCursoDetails(1, id);
-        e.preventDefault();
+        
     });
-
+    e.preventDefault();
 });
 
 

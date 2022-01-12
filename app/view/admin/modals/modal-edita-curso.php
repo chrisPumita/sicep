@@ -59,7 +59,7 @@
                                         <label class="text-primary" for="editarModalidad">Tipo</label>
                                     </div>
                                     <div class="col-md-10 form-group">
-                                        <select class="form-control" id="editarModalidad" name="editarModalidad">
+                                        <select class="form-control" id="editaTipoCurso" name="editaTipoCurso">
                                             <option value="1">Curso</option>
                                             <option value="2">Diplomado</option>
                                             <option value="3">Seminario</option>

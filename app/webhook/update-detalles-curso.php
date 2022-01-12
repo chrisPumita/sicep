@@ -14,11 +14,11 @@ if(isset($_POST['idCurso']) && isset($_POST['editarNombreCurso'])&& isset($_POST
             "noSesiones"=> $_POST['editarSesiones'],
             "costo"=> $_POST['editarCosto']
         ];
-        include_once "../control/controlCurso.php";
+        include_once "../control/controlCursos.php";
     $result = updateDetallesCurso($params);
     if($result){
         $mjeType=1;
-        $mjeText= $result;
+        $mjeText= "Se ha actualizado correctamente";
 
     } else{
         $mjeType=-1;
