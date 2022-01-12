@@ -66,6 +66,7 @@ function buildHTMLValues(curso){
     $("#editarModalidad").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
 }
+//Update Acreditar/ Remover Acreditacion Curso
 function cambiaEstado(estatus,mensaje){
     let idCurso= ID_CURSO;
     let mjeText= "¿Estas seguro de que deseas "+mensaje+" este curso?";
@@ -289,6 +290,33 @@ function buildHTMLDespEdificios(AULAS) {
 }
 
 //Update FROM details curso
+$("#frm-update-curso").on("submit", function(e){
+    let route = "./webhook/update-detalles-curso.php";
+    var params = {
+        idCurso : $("#idCurso").val(),
+        editarNombreCurso : $("#editarNombreCurso").val(),
+        editarDescripcion : $("#editarDescripcion").val(),
+        editarObjetivo : $("#editarObjetivo").val(),
+        editarDirigido : $("#editarDirigido").val(),
+        editarAntecedentes : $("#editarAntecedentes").val(),
+        editarModalidad : $("#editarModalidad").val(),
+        editarSesiones : $("#editarSesiones").val(),
+        editarCosto : $("#editarCosto").val()
+    };
+    alert("Enviando a enviaForm");
+    //Funcion async
+    enviaForm(formData,route).then(function () {
+        alert("Entramos correctamente");
+        $("#updateDatosCursos").modal('hide');
+        let id= ID_CURSO;
+        cargaCursoDetails(1, id);
+        e.preventDefault();
+    });
+
+});
+
+
+
 //Update PDF Curso
 $("#inputPDF").on("submit", function(e){
     var f = $(this);
@@ -323,7 +351,7 @@ function removeBanner() {
 
 //Update remove PDF
 
-//Update Acreditar/ Remover Acreditacion Curso
+
 
 //CRUD TEMARIO
 

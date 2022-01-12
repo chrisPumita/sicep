@@ -167,6 +167,7 @@ async function consultaMunicipioAjax(route,idEdo) {
 
 ///////////////////// PREFERENCIAS ////////////////
 async function enviaForm(params,route){
+    alert("entramos");
     const mensaje = await sendBackEndPreferencias(params, route);
     //Mensaje en JS para usar con SwatAlert
     alertaEmergente(mensaje.Mensaje);

@@ -16,14 +16,14 @@
             <div class="modal-body">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" id="frm-update-curso">
+                        <form id="frm-update-curso">
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-2">
                                         <label for="editarNombreCurso" class="text-primary">Nombre del curso</label>
                                     </div>
                                     <div class="col-md-10 form-group">
-                                        <input type="hidden" value="<?php echo $id?>" id="idCurso">
+                                        <input type="hidden" value="<?php echo $id?>" id="idCurso" name="idCurso">
                                         <input type="text" class="form-control" name="editarNombreCurso" id="editarNombreCurso" placeholder="Nombre del curso">
                                     </div>
 
@@ -60,11 +60,11 @@
                                     </div>
                                     <div class="col-md-10 form-group">
                                         <select class="form-control" id="editarModalidad" name="editarModalidad">
-                                            <option value="0">Curso</option>
-                                            <option value="1">Diplomado</option>
-                                            <option value="2">Seminario</option>
-                                            <option value="3">Taller</option>
-                                            <option value="4">Otro</option>
+                                            <option value="1">Curso</option>
+                                            <option value="2">Diplomado</option>
+                                            <option value="3">Seminario</option>
+                                            <option value="4">Taller</option>
+                                            <option value="0">Otro</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">

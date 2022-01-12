@@ -7,6 +7,21 @@ function consultaCursos($typeFiltro,$value){
     return $result;
 }
 
+//funcion que actualiza los detalles del curso
+function updateDetallesCurso($params){
+    include_once "../model/CURSO.php";
+    $CURSO = new CURSO();
+    $CURSO ->setIdCurso($params['idCurso']);
+    $CURSO->setNombreCurso($params['nombre_curso']);
+    $CURSO->setDirigidoA($params['dirigidoA']);
+    $CURSO->setObjetivo($params['objetivo']);
+    $CURSO->setDescripcion($params['descripcion']);
+    $CURSO->setNoSesiones($params['noSesiones']);
+    $CURSO->setAntecedentes($params['antecedentes']);
+    $CURSO->setCostoSugerido($params['costo']);
+    $CURSO->setTipoCurso($params['tipoCurso']);
+    return $CURSO->actualizaCurso();
+}
 function addCurso($params,$documentacion){
     include_once "../model/CURSO.php";
     $CURSO= new CURSO();
