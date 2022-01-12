@@ -322,7 +322,7 @@ $titulo = "Detalles del curso"
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <span id="filePDF" class="me-1 mb-1"></span>
                                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                                        <a href="#" class="btn btn-outline-danger me-1 mb-1"><i class="fas fa-times"></i></a></div>
+                                        <a href="#" class="btn btn-outline-danger me-1 mb-1" onclick="removeTemario()"><i class="fas fa-times"></i></a></div>
                                 </div>
                             </div>
                         </div>

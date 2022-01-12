@@ -330,6 +330,9 @@ $("#inputPDF").on("submit", function(e){
         contentType: false,
         processData: false
     }).done(function(res){
+        $("#inputPDF").trigger('reset');
+        let id= ID_CURSO;
+        cargaCursoDetails(-1,id);
         console.log(res);
     });
     e.preventDefault();
@@ -349,7 +352,17 @@ function removeBanner() {
 }
 
 //Update remove PDF
-
+function removeTemario() {
+    let id = $("#idCurso").val();
+    var route= "./webhook/remove-pdf-curso.php";
+    sweetConfirm('Remover Temario', '¿Estas seguro de que deseas eliminar el temario de este Curso?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                cargaCursoDetails(-1,id);
+            });
+        }
+    });
+}
 
 
 //CRUD TEMARIO

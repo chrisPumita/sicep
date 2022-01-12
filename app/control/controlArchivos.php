@@ -48,3 +48,10 @@ function modificaArchivoPdf($idCurso, $nombrePDF, $archivo1){
     include_once "../control/controlCursos.php";
     return  updateLinkTemario($idCurso,$path);
 }
+
+function removePdfCurso($idCurso){
+    include_once "../control/controlCursos.php";
+    //default path
+    $path = NULL;
+    return updateLinkTemario($idCurso,$path);
+}
