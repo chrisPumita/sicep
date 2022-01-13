@@ -63,7 +63,7 @@ function buildHTMLValues(curso){
     $("#editarCosto").val(curso.costo_sugerido);
     $("#costoSugerido").html('$ '+curso.costo_sugerido);
     $("#lblCostoFinalCallout").html('$ '+curso.costo_sugerido);
-    $("#editarModalidad").val(curso.tipo_curso);
+    $("#editaTipoCurso").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
 }
 //Update Acreditar/ Remover Acreditacion Curso

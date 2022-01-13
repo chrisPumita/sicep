@@ -25,9 +25,9 @@ $("#frm-add-alumno").on("submit", function(e){
         processData: false
     })
         .done(function(res){
-            console.log(res);
-        $("#frm-add-alumno").trigger('reset');
-        $("#inlineForm").modal('hide');
+            alerta("Tu registro fue exitoso","Porfavor, ingresa con los datos que proporcionaste","success");
+            $("#frm-add-alumno").trigger('reset');
+            $("#inlineForm").modal('hide');
         });
     e.preventDefault();
 });
