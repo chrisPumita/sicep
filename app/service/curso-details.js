@@ -184,8 +184,8 @@ function buildTBLHtmlTemario(TEMAS) {
                             <td>${tema.nombre}</td>
                             <td>${tema.resumen}</td>
                             <td>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addNewTema"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                <button class="btn btn-outline-primary" onclick="editaTema(${tema.id_tema},${tema.indice},'${tema.nombre}','${tema.resumen}')"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
             }
@@ -303,8 +303,7 @@ $("#frm-update-curso").on("submit", function(e){
         editarSesiones : $("#editarSesiones").val(),
         editarCosto : $("#editarCosto").val()
     };
-    console.log(params);
-        //Funcion async
+    //Funcion async
     enviaForm(params,route).then(function () {
         $("#updateDatosCursos").modal('hide');
         let id= ID_CURSO;
@@ -365,7 +364,59 @@ function removeTemario() {
 }
 
 
-//CRUD TEMARIO
+//CRUD TEMARIO 
+//Linea 187 LIMPIA Y EDITA MODAL
+function editaTema(idTema,indice,nombreTema,descripcion){
+    $("#addNewTema").modal('show');
+    $("#id_tema").val(idTema);
+    $("#indice").val(indice);
+    $("#nombre_tema").val(nombreTema);
+    $("#descripcion-tema").val(descripcion);
+}
+
+function limpiaModalTema(){
+    $("#addNewTema").modal('show');
+    $("#id_tema").val(0);
+    $("#indice").val("");
+    $("#nombre_tema").val("");
+    $("#descripcion-tema").val("");
+}
+//Envio datos CRUD temario
+$("#frm-temario").on("submit", function(e){
+    let route= "./webhook/crud-temario.php";
+    var params={
+        idCurso: $("#idCurso").val(),
+        idTema:$("#id_tema").val(),
+        indice : $("#indice").val(),
+        nombreTema:$("#nombre_tema").val() ,
+        descripcion :$("#descripcion-tema").val() 
+    };
+    enviaForm(params,route).then(function () {
+        $("#frm-temario").trigger('reset');
+        $("#addNewTema").modal('hide');
+        let id= ID_CURSO;
+        cargaTemario(id);
+        
+    });
+    e.preventDefault();
+});
+
+//Elimina tema
+$(document).on("click", ".deleteTema", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id_tema");
+    var route= "./webhook/delete-tema.php";
+    sweetConfirm('Eliminar Departamento', '¿Estas seguro de que deseas eliminar este departamento?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                let id= ID_CURSO;
+                cargaTemario(id);
+            });
+        }
+    });
+});
+
 
 //CRUD DESCUENTOS
 function consultaTblDescuentos(idGpo) {

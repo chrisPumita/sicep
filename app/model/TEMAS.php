@@ -100,7 +100,7 @@ private $resumen;
         $this->close();
         return $temas;
     }
-    function agregaTema()
+    function queryInsertTema()
     {
         $query = "INSERT INTO `temas` (
                      `id_tema`, 
@@ -117,18 +117,18 @@ private $resumen;
         $this->close();
         return $datos;
     }
-    function quitarTema($idTema)
+    function queryDeleteTema()
     {
-        $query = "DELETE FROM `temas` WHERE `temas`.`id_tema` = ".$idTema;
+        $query = "DELETE FROM `temas` WHERE `temas`.`id_tema` = ".$this->getIdTema();
         $this->connect();
-        $this->executeInstruction($query);
+        $resultado= $this->executeInstruction($query);
         $this->close();
-        return true;
+        return $resultado;
     }
 
 
     //eliminar el obj de que no llega por parametro
-    function actualizaTema()
+    function queryUpdateTema()
     {
         $query =    "UPDATE `temas` 
                     SET `indice` = '".$this->getIndice()."', 

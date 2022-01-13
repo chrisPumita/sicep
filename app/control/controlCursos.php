@@ -104,6 +104,26 @@ function consultaTemas($id_curso_fk)
     $temas = new TEMAS();
     return  $temas->consultaTemas($id_curso_fk);
 }
+//Funcion add tema a curso
+function insertUpdateTema($params){
+    include_once "../model/TEMAS.php";
+    $TEMA = new TEMAS();
+    $TEMA->setIdTema($params['idTema']);
+    $TEMA->setIdCursoFk($params['idCurso']);
+    $TEMA->setIndice($params['indice']);
+    $TEMA->setNombre($params['nombreTema']);
+    $TEMA->setResumen($params['resumen']);
+    return $params['idTema']>0 ? $TEMA->queryUpdateTema() : $TEMA->queryInsertTema();
+}
+
+//funcion elimina tema de curso
+function deleteTema($id){
+    include_once "../model/TEMAS.php";
+    $TEMA = new TEMAS();
+    $TEMA->setIdTema($id);
+    return $TEMA->queryDeleteTema();
+}
+//COnsult lista de grupos por curso
 
 function consultaListaGrupos($idCurso){
     include_once "../model/CURSO.php";

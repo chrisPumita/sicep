@@ -14,7 +14,7 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form action="frm-temario">
+            <form id="frm-temario">
                 <div class="modal-body">
                     <div class="callout callout-second bg-grey">
                         <div class="container-fluid">
@@ -41,7 +41,7 @@
                             <label for="nombre_tema" class="text-primary">Tema:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="text" class="form-control" name="nombre_tema" id="noimbre_tema" placeholder="Escriba el nombre del tema">
+                            <input type="text" class="form-control" name="nombre_tema" id="nombre_tema" placeholder="Escriba el nombre del tema">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -56,7 +56,7 @@
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Agregar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Agregar" class="btn btn-primary btn-user btn-block">
                         </div>
                     </div>
                 </div>

@@ -343,7 +343,7 @@ $titulo = "Detalles del curso"
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <span class="position-absolute  mx-3 end-0">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewTema">
+                                <button class="btn btn-primary" onclick="limpiaModalTema()">
                                     <i class="fas fa-plus"></i> Agregar</button>
                                 </span>
                             </div>
