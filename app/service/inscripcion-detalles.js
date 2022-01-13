@@ -11,13 +11,41 @@ function consultaInfoInscripcion() {
             let cardHTML = buildCardSerSoc(result.C_SS);
             $("#acountSS").html(cardHTML);
         }
-        if (result.VALIDACION!=null){
-            let cardInscripcionAcredita = buildCardInscripcion(result.VALIDACION);
-            $("#cardPago").html(cardInscripcionAcredita);
+        if (parseInt(result.DATOS.autorizacion_inscripcion)>=0){
+            if (result.VALIDACION!=null){
+                let cardInscripcionAcredita = buildCardInscripcion(result.VALIDACION);
+                $("#cardPago").html(cardInscripcionAcredita);
+            }
         }
+        else{
+            let cardCancelado = buildCardInscripcionCancelacion(result.DATOS);
+            $("#cardPago").html(cardCancelado);
+        }
+
         let tablDocs = buildTBLDocsSolicitados(result.DOCS);
         $("#containerDocs").html(tablDocs);
     })
+}
+
+function buildCardInscripcionCancelacion(DATOS){
+    console.log(DATOS);
+    let template = `<div class="card">
+                            <div class="card-body py-3 px-2">
+                                <div class="d-flex">
+                                    <div class="m-auto">
+                                        <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
+                                    </div>
+                                    <div class="col-8 m-auto">
+                                        <h3>CANCELADO</h3>
+                                        <h6>Cancelado el <span id="cardPagoTotal">${getLegibleFechaHora(DATOS.fecha_conclusion)}</span></h6>
+                                        <div class="d-flex justify-center align-items-center">
+                                        <h6>El alumno tendra que volver a enviar solicitud</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+    return template;
 }
 
 function buildCardInscripcion(DATOS){
@@ -27,7 +55,7 @@ function buildCardInscripcion(DATOS){
             <div class="card-body py-3 px-4">
                 <div class="d-flex align-items-center">
                     <div class="col-2 m-auto">
-                        <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
+                        <img src="../assets/images/icons/checked1.svg" width="80" alt="svg ok">
                     </div>
                     <div class="col-7 m-auto" role="button" onclick="viewDetailsPago();">
                         <h5>Inscripción acreditada</h5>

@@ -7,7 +7,7 @@ if (isset($val)&&isset($password)) {
     if (procesaInscripcionValidacion($password,$idFichaInsc,$val)){
         $action = true;
         $validation =true;
-        $mensaje = "CAMBIO REALZIADO: ".$val." PW: ".$password. " ID:".$idFichaInsc;
+        $mensaje = "Se ha actualizado la solicitud ".$idFichaInsc;
     }
     else{
         $action = false;

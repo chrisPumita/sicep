@@ -306,7 +306,10 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     }
 
     function queryCountArchRevisa(){
-        $query="select * from archivo where estado_revision = 0 AND estado = 0";
+        $query="select a.id_archivo from archivo a, inscripcion i
+                where a.id_inscripcion_fk = i.id_inscripcion
+                      AND a.estado_revision = 0 AND a.estado = 0
+                AND i.autorizacion_inscripcion>=0";
         $this->connect();
         $datos = $this->numRows($query);
         $this->close();

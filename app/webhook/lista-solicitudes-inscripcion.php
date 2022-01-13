@@ -3,7 +3,7 @@
 $idInsc = $_POST['idInsc'];
 if (isset($idInsc)){
     include_once "../control/controlInscripciones.php";
-    $data = getListaPendientes($idInsc);
+    $data = getListaPendientes($idInsc,false);
 }
 else{
     $data = array();

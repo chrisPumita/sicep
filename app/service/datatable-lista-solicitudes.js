@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("SERVICE SOLICITUDES ON");
     cargaSolicitudesDataTable();
     cargaListasCursos();
     consultaProcedencias();

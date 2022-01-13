@@ -407,6 +407,25 @@ async function contadorNavBarAJAX(){
     });
 }
 
+/*Async function return list json Solicitudes pendientes y Solic Acreditadas*/
+async function contadoresDashboard() {
+    return await contadoresDashboardAJAX();
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function contadoresDashboardAJAX(){
+    return $.ajax({
+        url: "./webhook/contadoresDashBoard.php",
+        type: 'POST',
+        dataType: "json",
+        success: function (response) {
+            //   console.log(response);
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}
 
 /*Async function return list json PROFESORES Y SU CUENTA ADMIN SI TIENE*/
 async function consultaDetallesProfesor(idProfesor) {

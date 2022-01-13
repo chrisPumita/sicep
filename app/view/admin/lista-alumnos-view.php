@@ -92,8 +92,8 @@
                                     </div>
                                     <select class="form-control status-dropdown">
                                         <option value="">TODOS</option>
-                                        <option value="ACTIVA">ACTIVAS</option>
-                                        <option value="SUSPENDIDA">SUSPENDIDAS</option>
+                                        <option value="ACTIVA">ACTIVA</option>
+                                        <option value="SUSPENDIDA">SUSPENDIDA</option>
                                     </select>
                                 </div>
                             </div>

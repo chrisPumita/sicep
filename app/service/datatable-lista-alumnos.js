@@ -232,7 +232,7 @@ $('.universidad-dropdown').on('change', function(e){
 $('.status-dropdown').on('change', function(e){
     var status = $(this).val();
     $('.status-dropdown').val(status);
-    dataTable.column(4).search(status).draw();
+    dataTable.column(5).search(status).draw();
 });
 
 $('.sexo-dropdown').on('change', function(e){

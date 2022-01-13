@@ -4,7 +4,7 @@ interface I_INSCRIPCION
 {
     function consultaSolcitudInscripciones($filtro,$idAsig,$valor);
 
-    function queryFichasInscripcion($docSol,$notValidate);
+    function queryFichasInscripcion($docSol,$notValidate,$filtroArchive);
 
     function queryRegistraInscripcion();
 

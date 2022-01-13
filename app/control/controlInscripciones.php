@@ -89,11 +89,11 @@ function countSolicitudesPendientes(){
     return $objInsc->queryCountSolcitudesPendientes();
 }
 
-function getListaPendientes($idInsc){
+function getListaPendientes($idInsc,$showArchive){
     include_once "../model/INSCRIPCION.php";
     $objInsc = new INSCRIPCION();
     $objInsc->setIdInscripcion($idInsc);
-    return  $objInsc-> queryFichasInscripcion(false,true);
+    return  $objInsc-> queryFichasInscripcion(false,true,$showArchive);
 }
 
 function getListaInscYFiles($idUniqueIns)
@@ -101,7 +101,7 @@ function getListaInscYFiles($idUniqueIns)
     include_once "../model/INSCRIPCION.php";
     $I = new INSCRIPCION();
     $I->setIdInscripcion($idUniqueIns);
-    return $I->queryFichasInscripcion(true, false);
+    return $I->queryFichasInscripcion(true, false,false);
 }
 
 //busca solo una inscripcion, por lo que tambien buscamos los la documentacion
@@ -111,7 +111,7 @@ function getinfoInsc($idInsc){
     $I = new INSCRIPCION();
     $I->setIdInscripcion($idInsc);
     $FichaValida = getValidaInscripcionDetails($idInsc);
-    $DatosFicha = $I->queryFichasInscripcion(false,false)[0];
+    $DatosFicha = $I->queryFichasInscripcion(false,false,true)[0];
     $Documentos = getListaFilesPendientesInsc($idInsc,0);
     $I->setIdAlumnoFk($DatosFicha['id_alumno']);
     $cuentaSS = consultaCuentaServSoc($I->getIdAlumnoFk());
@@ -136,12 +136,6 @@ function getValidaInscripcionDetails($idInscipcion){
     $I = new INSCRIPCION();
     $I->setIdInscripcion($idInscipcion);
     return $I->detallesValidacion();
-}
-
-function getEstadisticaAnualInscripciones(){
-    include_once "../model/INSCRIPCION.php";
-    $I = new INSCRIPCION();
-    return $I->queryEstadisticasAnioSolicitudes();
 }
 
 function consultaFichaPagoInscripcion($idInsc){

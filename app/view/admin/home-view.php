@@ -39,9 +39,10 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                    Bienvenido al apartado administrativo de SISEP, aquí podrá encontrar toda la
+                                    información referente a las inscripciones a los cursos y crear/modificar/eliminar
+                                    etc. Cualquier parte del sistema, así como crear y publicar grupos para la
+                                    inscripción de los alumnos.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <a href="./lista-cursos">
@@ -63,7 +64,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="text-muted font-semibold">CURSOS</h6>
-                                            <h3 class="font-extrabold mb-0 text-primary">16</h3>
+                                            <h3 class="font-extrabold mb-0 text-primary" id="panelCursosCount">0</h3>
                                             <h6 class="font-semibold text-success">Cursos activos</h6>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="text-muted font-semibold">ALUMNOS</h6>
-                                            <h3 class="font-extrabold mb-0 text-primary">183,000</h3>
+                                            <h3 class="font-extrabold mb-0 text-primary" id="panelAlumnosCount">0</h3>
                                             <h6 class="font-semibold text-success">Registrados</h6>
                                         </div>
                                     </div>
@@ -89,8 +90,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="text-muted font-semibold">SOLCITUDES</h6>
-                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
-                                            <h6 class="font-semibold text-warning">de Inscripción por revisar</h6>
+                                            <h3 class="font-extrabold mb-0 text-primary" id="panelSolCount">0</h3>
+                                            <h6 class="font-semibold text-warning">por revisar</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +103,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="text-muted font-semibold">CONSTANCIAS</h6>
-                                            <h3 class="font-extrabold mb-0 text-primary">1,000</h3>
+                                            <h3 class="font-extrabold mb-0 text-primary" id="panelConstanciasCount">0</h3>
                                             <h6 class="font-semibold text-warning">Por acreditar</h6>
                                         </div>
                                     </div>
@@ -114,7 +115,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Registros de alumnos</h4>
+                                    <h4>Solicitudes de Inscripción Recibidas</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="chart-profile-visit"></div>
@@ -139,7 +140,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4>Visita a la página</h4>
+                            <h4>Alumnos registrados</h4>
                         </div>
                         <div class="card-body">
                             <div id="chart-visitors-profile"></div>
@@ -156,401 +157,8 @@
                     <div class="card-body">
                         <!-- Swiper -->
                         <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="card single_course pb-3" >
-                                            <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                                                <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                                            </span>
-                                        <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
-                                        </div>
-                                        <span class="badge bg-info ">0/20 Disponibles</span>
-                                        <h5 class="name text-center pt-lg-3">Word</h5>
-                                        <h6 class="name text-center text-secondary">Grupo 666</h6>
-                                        <div class="recent-message d-flex px-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../resources/default-avatar.png">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Maria Hernandez Romero</h5>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <div class="list-group list-group-horizontal mb-1 px-2 text-center" role="tablist">
-                                                <a class="list-group-item list-group-info list-group-item-action active" id="list1-1" data-bs-toggle="list" href="#list-1-1" role="tab">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list2-1" data-bs-toggle="list" href="#list-2-1" role="tab">
-                                                    <i class="fas fa-caret-square-right"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list3-1" data-bs-toggle="list" href="#list-3-1" role="tab">
-                                                    <i class="fas fa-check-double"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list4-1" data-bs-toggle="list" href="#list-4-1" role="tab">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                            </div>
-                                            <div class="tab-content text-justify">
-                                                <div class="tab-pane fade show active" id="list-1-1" role="tabpanel" aria-labelledby="list1-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-paper-plane"></i> Inscripciones<br> del lunes, 13 de diciembre de 2021<br> al jueves, 30 de diciembre de 2021</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-2-1" role="tabpanel" aria-labelledby="list2-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-caret-square-right text-success"></i> Periodo escolar <br> del viernes, 24 de diciembre de 2021<br> al miércoles, 30 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-3-1" role="tabpanel" aria-labelledby="list3-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-check-double text-info"></i> Calificaciones<br> del martes, 22 de marzo de 2022<br> al martes, 22 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-4-1" role="tabpanel" aria-labelledby="list4-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-tag"></i>Costo:<strong> $1000.00</strong>
-                                                        </li>
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-chalkboard"></i>Diplomado (9 Sesiones)<strong>Mixto</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
-                                                <i class="fas fa-plus"></i> Mas info
-                                            </button>
-
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card single_course pb-3" >
-                    <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                        <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                    </span>
-                                        <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
-                                        </div>
-                                        <span class="badge bg-info ">0/20 Disponibles</span>
-                                        <h5 class="name text-center pt-lg-3">Word</h5>
-                                        <h6 class="name text-center text-secondary">Grupo 666</h6>
-                                        <div class="recent-message d-flex px-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../resources/default-avatar.png">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Maria Hernandez Romero</h5>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <div class="list-group list-group-horizontal mb-1 px-2 text-center" role="tablist">
-                                                <a class="list-group-item list-group-info list-group-item-action active" id="list1-1" data-bs-toggle="list" href="#list-1-1" role="tab">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list2-1" data-bs-toggle="list" href="#list-2-1" role="tab">
-                                                    <i class="fas fa-caret-square-right"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list3-1" data-bs-toggle="list" href="#list-3-1" role="tab">
-                                                    <i class="fas fa-check-double"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list4-1" data-bs-toggle="list" href="#list-4-1" role="tab">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                            </div>
-                                            <div class="tab-content text-justify">
-                                                <div class="tab-pane fade show active" id="list-1-1" role="tabpanel" aria-labelledby="list1-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-paper-plane"></i> Inscripciones<br> del lunes, 13 de diciembre de 2021<br> al jueves, 30 de diciembre de 2021</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-2-1" role="tabpanel" aria-labelledby="list2-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-caret-square-right text-success"></i> Periodo escolar <br> del viernes, 24 de diciembre de 2021<br> al miércoles, 30 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-3-1" role="tabpanel" aria-labelledby="list3-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-check-double text-info"></i> Calificaciones<br> del martes, 22 de marzo de 2022<br> al martes, 22 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-4-1" role="tabpanel" aria-labelledby="list4-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-tag"></i>Costo:<strong> $1000.00</strong>
-                                                        </li>
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-chalkboard"></i>Diplomado (9 Sesiones)<strong>Mixto</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
-                                                <i class="fas fa-plus"></i> Mas info
-                                            </button>
-
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card single_course pb-3" >
-                    <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                        <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                    </span>
-                                        <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
-                                        </div>
-                                        <span class="badge bg-info ">0/20 Disponibles</span>
-                                        <h5 class="name text-center pt-lg-3">Word</h5>
-                                        <h6 class="name text-center text-secondary">Grupo 666</h6>
-                                        <div class="recent-message d-flex px-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../resources/default-avatar.png">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Maria Hernandez Romero</h5>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <div class="list-group list-group-horizontal mb-1 px-2 text-center" role="tablist">
-                                                <a class="list-group-item list-group-info list-group-item-action active" id="list1-1" data-bs-toggle="list" href="#list-1-1" role="tab">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list2-1" data-bs-toggle="list" href="#list-2-1" role="tab">
-                                                    <i class="fas fa-caret-square-right"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list3-1" data-bs-toggle="list" href="#list-3-1" role="tab">
-                                                    <i class="fas fa-check-double"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list4-1" data-bs-toggle="list" href="#list-4-1" role="tab">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                            </div>
-                                            <div class="tab-content text-justify">
-                                                <div class="tab-pane fade show active" id="list-1-1" role="tabpanel" aria-labelledby="list1-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-paper-plane"></i> Inscripciones<br> del lunes, 13 de diciembre de 2021<br> al jueves, 30 de diciembre de 2021</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-2-1" role="tabpanel" aria-labelledby="list2-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-caret-square-right text-success"></i> Periodo escolar <br> del viernes, 24 de diciembre de 2021<br> al miércoles, 30 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-3-1" role="tabpanel" aria-labelledby="list3-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-check-double text-info"></i> Calificaciones<br> del martes, 22 de marzo de 2022<br> al martes, 22 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-4-1" role="tabpanel" aria-labelledby="list4-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-tag"></i>Costo:<strong> $1000.00</strong>
-                                                        </li>
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-chalkboard"></i>Diplomado (9 Sesiones)<strong>Mixto</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
-                                                <i class="fas fa-plus"></i> Mas info
-                                            </button>
-
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card single_course pb-3" >
-                    <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                        <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                    </span>
-                                        <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
-                                        </div>
-                                        <span class="badge bg-info ">0/20 Disponibles</span>
-                                        <h5 class="name text-center pt-lg-3">Word</h5>
-                                        <h6 class="name text-center text-secondary">Grupo 666</h6>
-                                        <div class="recent-message d-flex px-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../resources/default-avatar.png">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Maria Hernandez Romero</h5>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <div class="list-group list-group-horizontal mb-1 px-2 text-center" role="tablist">
-                                                <a class="list-group-item list-group-info list-group-item-action active" id="list1-1" data-bs-toggle="list" href="#list-1-1" role="tab">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list2-1" data-bs-toggle="list" href="#list-2-1" role="tab">
-                                                    <i class="fas fa-caret-square-right"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list3-1" data-bs-toggle="list" href="#list-3-1" role="tab">
-                                                    <i class="fas fa-check-double"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list4-1" data-bs-toggle="list" href="#list-4-1" role="tab">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                            </div>
-                                            <div class="tab-content text-justify">
-                                                <div class="tab-pane fade show active" id="list-1-1" role="tabpanel" aria-labelledby="list1-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-paper-plane"></i> Inscripciones<br> del lunes, 13 de diciembre de 2021<br> al jueves, 30 de diciembre de 2021</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-2-1" role="tabpanel" aria-labelledby="list2-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-caret-square-right text-success"></i> Periodo escolar <br> del viernes, 24 de diciembre de 2021<br> al miércoles, 30 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-3-1" role="tabpanel" aria-labelledby="list3-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-check-double text-info"></i> Calificaciones<br> del martes, 22 de marzo de 2022<br> al martes, 22 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-4-1" role="tabpanel" aria-labelledby="list4-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-tag"></i>Costo:<strong> $1000.00</strong>
-                                                        </li>
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-chalkboard"></i>Diplomado (9 Sesiones)<strong>Mixto</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
-                                                <i class="fas fa-plus"></i> Mas info
-                                            </button>
-
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card single_course pb-3" >
-                    <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
-                        <div class="blob blue positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO <span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>
-                    </span>
-                                        <div class="banner" style="background-image: url(../resources/banners/20/banner-20211221234318.jpg); ">
-                                        </div>
-                                        <span class="badge bg-info ">0/20 Disponibles</span>
-                                        <h5 class="name text-center pt-lg-3">Word</h5>
-                                        <h6 class="name text-center text-secondary">Grupo 666</h6>
-                                        <div class="recent-message d-flex px-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../resources/default-avatar.png">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Maria Hernandez Romero</h5>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <div class="list-group list-group-horizontal mb-1 px-2 text-center" role="tablist">
-                                                <a class="list-group-item list-group-info list-group-item-action active" id="list1-1" data-bs-toggle="list" href="#list-1-1" role="tab">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list2-1" data-bs-toggle="list" href="#list-2-1" role="tab">
-                                                    <i class="fas fa-caret-square-right"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list3-1" data-bs-toggle="list" href="#list-3-1" role="tab">
-                                                    <i class="fas fa-check-double"></i>
-                                                </a>
-                                                <a class="list-group-item list-group-info list-group-item-action" id="list4-1" data-bs-toggle="list" href="#list-4-1" role="tab">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                            </div>
-                                            <div class="tab-content text-justify">
-                                                <div class="tab-pane fade show active" id="list-1-1" role="tabpanel" aria-labelledby="list1-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-paper-plane"></i> Inscripciones<br> del lunes, 13 de diciembre de 2021<br> al jueves, 30 de diciembre de 2021</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-2-1" role="tabpanel" aria-labelledby="list2-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-caret-square-right text-success"></i> Periodo escolar <br> del viernes, 24 de diciembre de 2021<br> al miércoles, 30 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-3-1" role="tabpanel" aria-labelledby="list3-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <strong><i class="fas fa-check-double text-info"></i> Calificaciones<br> del martes, 22 de marzo de 2022<br> al martes, 22 de marzo de 2022</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane fade" id="list-4-1" role="tabpanel" aria-labelledby="list4-1">
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-tag"></i>Costo:<strong> $1000.00</strong>
-                                                        </li>
-                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <i class="fas fa-chalkboard"></i>Diplomado (9 Sesiones)<strong>Mixto</strong>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(765432455);">
-                                                <i class="fas fa-plus"></i> Mas info
-                                            </button>
-
-                                            <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">Slide 6</div>
-                                <div class="swiper-slide">Slide 7</div>
-                                <div class="swiper-slide">Slide 8</div>
-                                <div class="swiper-slide">Slide 9</div>
+                            <div class="swiper-wrapper" id="swiperCardsContainer">
+                                <!--AJAX response-->
                             </div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
@@ -997,8 +605,8 @@
 <?php include "includes/services-js.php"?>
 
 <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="../assets/js/pages/dashboard.js"></script>
-
+<script src="./service/general/tipos.js"></script>
+<script src="./service/dashboard.js"></script>
 
 <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <!-- INCLUDE SERIVES AJAX
