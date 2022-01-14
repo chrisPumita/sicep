@@ -77,4 +77,12 @@ class DESCUENTOS extends CONEXION_M
         return $result;
     }
 
+    function queryUpdateDescuento(){
+        $query="UPDATE `asignacion_procedencia` SET `porcentaje_desc` = '".$this->getPorcentajeDesc()."' 
+        WHERE `asignacion_procedencia`.`id_tipo_procedencia_fk` = ".$this->getIdTipoProcedenciaFk()." AND `asignacion_procedencia`.`id_curso_fk` = ".$this->getIdCursoFk();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

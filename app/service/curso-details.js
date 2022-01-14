@@ -460,20 +460,6 @@ function consultaTblDescuentos(idGpo) {
     });
 }
 
-$("#frm-add-dirigido-desc").on("submit", function(e){
-    alert("Jalo");
-    /*
-    enviaForm(params,route).then(function () {
-        $("#frm-temario").trigger('reset');
-        $("#addNewTema").modal('hide');
-        let id= ID_CURSO;
-        cargaTemario(id);
-        
-    });*/
-    e.preventDefault();
-});
-
-
 async function comparaProcedencias(PROC_APLI) {
     const PROCEDENCIAS = await consultaProcedenciasAjax("./");
     let PROCEDENCIAS_LISTA = [];
@@ -519,7 +505,7 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
                                 <td>-$${des.desTotal}</td>
                                 <td>$ ${total_pago}</td>
                                 <td>
-                                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editarDescuentos">
+                                    <button class="btn btn-primary me-1 mb-1" onclick="editaDescuentoCurso(${des.id_tipo_procedencia_fk},'${des.tipo_procedencia}',${des.porcentaje_desc})">
                                         <i class="fas fa-edit"></i> Editar</button>
                                     <button class="btn btn-danger me-1 mb-1 btnDeleteDesc"><i class="fas fa-user-times"></i></button>
                                 </td>
@@ -543,6 +529,31 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
     }
     $("#containerDescuentos").html(template);
 }
+
+//CRUD DESCUENTO
+function editaDescuentoCurso(idProcedencia,nombreProcedencia,descuento){
+    $("#editarDescuentos").modal('show');
+    $("#idProcedenenciaSelect").val(idProcedencia);
+    $("#lblProcedenciaSelected").val(nombreProcedencia);
+    $("#editaDescuentoProcedencia").val(descuento);
+}
+//Funcion actualiza descuento
+$("#frm-update-descuento").on("submit", function(e){
+    var params={
+        idCurso : ID_CURSO,
+        idProcedencia : $("#idProcedenenciaSelect").val(),
+        descuento: $("#editaDescuentoProcedencia").val()
+    }
+    let route= "./webhook/update-descuento.php";
+    enviaForm(params,route).then(function () {
+        $("#frm-update-descuento").trigger('reset');
+        $("#editarDescuentos").modal('hide');
+        let id= ID_CURSO;
+        consultaTblDescuentos(id);
+        
+    });
+    e.preventDefault();
+});
 
 //Elimina descuento
 

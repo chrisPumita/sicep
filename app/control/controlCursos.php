@@ -186,6 +186,16 @@ function deleteDescuento($idCurso,$idProcedencia){
     $DESC->setIdTipoProcedenciaFk($idProcedencia);
     return $DESC->queryDeleteDescuento();
 }
+
+//funcion actuliza descuento
+function updateDescuento($params){
+    include_once "../model/DESCUENTOS.php";
+    $DESC = new DESCUENTOS();
+    $DESC->setIdCursoFk($params['idCurso']);
+    $DESC->setIdTipoProcedenciaFk($params['idProcedencia']);
+    $DESC->setPorcentajeDesc($params['descuento']);
+    return $DESC->queryUpdateDescuento();
+}
 //CONTADORES
 
 function countCursosPendientesRevisar(){

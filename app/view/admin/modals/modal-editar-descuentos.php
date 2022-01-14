@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 form-group">
-                            <input type="text" id="idProcedenenciaSelect">
+                            <input type="hidden" id="idProcedenenciaSelect">
                             <label for="lblProcedencia" class="text-primary">Procedencia</label>
                         </div>
                         <div class="col-md-8 form-group">
@@ -37,7 +37,7 @@
                             <label for="Cupo" class="text-primary">Descuentos (%):</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="number" min="0" max="100" class="form-control" id="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0">
+                            <input type="number" min="0" max="100" class="form-control" id="editaDescuentoProcedencia" aria-describedby="aulaHelp" placeholder="0">
                         </div>
                     </div>
                 </div>
