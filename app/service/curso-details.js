@@ -423,26 +423,23 @@ function consultaTblDescuentos(idGpo) {
         comparaProcedencias(e).then(function (PROC_LIST) {
             let template;
             if (PROC_LIST.length > 0) {
-                template = `<form id="frm-add-dirigido-desc">
+                template = `<form id="frm-add-desc">
                                 <div class="form-group row p-3" id="containerLisGpos">
                                 <div class="input-group mb-3">
                                 <label class="input-group-text" for="inputGroupSelect01">Seleccione Procedencia</label>
                                     <select class="form-control w-auto" id="listProcedencias" name="listProcedencias"> 
                                     `;
-                PROC_LIST.forEach(
-                    (pro)=>
-                    {
-                        template += `<option value="${pro.id_tipo_procedencia}">${pro.tipo_procedencia}</option>`;
-                    }
-                );
-
+                                PROC_LIST.forEach(
+                                    (pro)=>
+                                    {
+                                        template += `<option value="${pro.id_tipo_procedencia}">${pro.tipo_procedencia}</option>`;
+                                    }
+                                );
                 template += `
                                     </select>
                                      <input type="number" min="0"  max="100" required class="form-control" id="descuentoProcedencia" name="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0" value="0">
                                     <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-percent"></i> Descuento</label>
-                                    <button id="btnAddProcedencia" type="submit" class="btn btn-primary">
-                                    <i class="fas fa-sync-alt"></i> Actualizar
-                                    </button>
+                                    <button id="btnAddProcedencia" type="button" class="btn btn-primary" onclick="addDescCurso();"> <i class="fas fa-sync-alt"></i> Agregar </button>
                                 </div>
                             </div>
                         </form>`;
@@ -554,24 +551,23 @@ $("#frm-update-descuento").on("submit", function(e){
     });
     e.preventDefault();
 });
-//Funcion agrega descuento
-$("#frm-add-dirigido-desc").on("submit", function(e){
-    alert("Funciono");
-    /*var params={
+
+function addDescCurso() {
+    var params={
         idCurso : ID_CURSO,
-        idProcedencia : $("#idProcedenenciaSelect").val(),
-        descuento: $("#editaDescuentoProcedencia").val()
+        idProcedencia : $("#listProcedencias").val(),
+        descuento: $("#descuentoProcedencia").val()
     }
-    let route= "./webhook/update-descuento.php";
+    console.log(params)
+    let route= "./webhook/update-descuento.phppppppppp";
     enviaForm(params,route).then(function () {
         $("#frm-update-descuento").trigger('reset');
         $("#editarDescuentos").modal('hide');
         let id= ID_CURSO;
-        consultaTblDescuentos(id);
-        
-    });*/
-    e.preventDefault();
-});
+        consultaTblDescuentos(ID_CURSO);
+    });
+}
+
 //Elimina descuento
 
 
