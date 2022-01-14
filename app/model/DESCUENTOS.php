@@ -68,5 +68,13 @@ class DESCUENTOS extends CONEXION_M
         $this->close();
         return $horario;
     }
+    function queryDeleteDescuento(){
+        $query = "DELETE FROM `asignacion_procedencia` WHERE `asignacion_procedencia`.`id_tipo_procedencia_fk` = ".$this->getIdTipoProcedenciaFk()." 
+        AND `asignacion_procedencia`.`id_curso_fk` = ".$this->getIdCursoFk();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 
 }

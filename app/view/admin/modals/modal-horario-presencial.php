@@ -10,7 +10,7 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-
+            <form id="frm-add-horario-presencial">
             <div class="modal-body py-0">
                 <div class="callout callout-second bg-grey py-2">
                     <div class="container-fluid">
@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <h6 class="text-start">Día de clase:</h6>
@@ -72,7 +73,6 @@
                     <p class="fst-italic text-primary">Esta aula permite únicamente un cupo de <span id="cupoAula"></span> alumnos.</p>
                 </div>
             </div>
-
             <div class="modal-footer p-0">
                 <div class="form-group row">
                     <div class="col-12">
@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

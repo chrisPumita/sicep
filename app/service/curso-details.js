@@ -407,7 +407,7 @@ $(document).on("click", ".deleteTema", function ()
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id_tema");
     var route= "./webhook/delete-tema.php";
-    sweetConfirm('Eliminar Departamento', '¿Estas seguro de que deseas eliminar este departamento?', function (confirmed) {
+    sweetConfirm('Eliminar Tema', '¿Estas seguro de que deseas eliminar este Tema?', function (confirmed) {
         if (confirmed) {
             eliminaPreferencia(id,route).then(function () {
                 let id= ID_CURSO;
@@ -416,8 +416,6 @@ $(document).on("click", ".deleteTema", function ()
         }
     });
 });
-
-
 //CRUD DESCUENTOS
 function consultaTblDescuentos(idGpo) {
     consultaDescuentos(idGpo).then(function (e) {
@@ -425,11 +423,11 @@ function consultaTblDescuentos(idGpo) {
         comparaProcedencias(e).then(function (PROC_LIST) {
             let template;
             if (PROC_LIST.length > 0) {
-                template = `<form id="form-add-dirigido">
+                template = `<form id="frm-add-dirigido-desc">
                                 <div class="form-group row p-3" id="containerLisGpos">
                                 <div class="input-group mb-3">
                                 <label class="input-group-text" for="inputGroupSelect01">Seleccione Procedencia</label>
-                                    <select class="form-control w-auto" id="listProcedencias"> 
+                                    <select class="form-control w-auto" id="listProcedencias" name="listProcedencias"> 
                                     `;
                 PROC_LIST.forEach(
                     (pro)=>
@@ -440,9 +438,9 @@ function consultaTblDescuentos(idGpo) {
 
                 template += `
                                     </select>
-                                     <input type="number" min="1" class="form-control" id="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0">
+                                     <input type="number" min="0"  max="100" required class="form-control" id="descuentoProcedencia" name="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0" value="0">
                                     <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-percent"></i> Descuento</label>
-                                  <button id="btnAddProcedencias" type="submit" class="btn btn-outline-success">
+                                    <button type="submit" class="btn btn-outline-success">
                                         <i class="fas fa-plus-square"></i> Agregar
                                     </button>
                                 </div>
@@ -461,6 +459,20 @@ function consultaTblDescuentos(idGpo) {
         })
     });
 }
+
+$("#frm-add-dirigido-desc").on("submit", function(e){
+    alert("Jalo");
+    /*
+    enviaForm(params,route).then(function () {
+        $("#frm-temario").trigger('reset');
+        $("#addNewTema").modal('hide');
+        let id= ID_CURSO;
+        cargaTemario(id);
+        
+    });*/
+    e.preventDefault();
+});
+
 
 async function comparaProcedencias(PROC_APLI) {
     const PROCEDENCIAS = await consultaProcedenciasAjax("./");
@@ -508,8 +520,8 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
                                 <td>$ ${total_pago}</td>
                                 <td>
                                     <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#editarDescuentos">
-                                        <i class="fas fa-tag"></i> Editar</button>
-                                    <button class="btn btn-danger me-1 mb-1 remove"><i class="fas fa-user-times"></i></button>
+                                        <i class="fas fa-edit"></i> Editar</button>
+                                    <button class="btn btn-danger me-1 mb-1 btnDeleteDesc"><i class="fas fa-user-times"></i></button>
                                 </td>
                             </tr>`;
             }
@@ -531,6 +543,30 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
     }
     $("#containerDescuentos").html(template);
 }
+
+//Elimina descuento
+
+
+$(document).on("click", ".btnDeleteDesc", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let idProcedencia = $(ElementDOM).attr("id_procedencia");
+    let idCurso = ID_CURSO;
+    var params = {
+        idCurso: idCurso,
+        idProcedencia : idProcedencia
+    };
+    var route= "./webhook/delete-descuento.php";
+    sweetConfirm('Eliminar Descuento', '¿Estas seguro de que deseas eliminar este descuento?', function (confirmed) {
+        if (confirmed) {
+            enviaForm(params,route).then(function () {
+                consultaTblDescuentos(idCurso);
+            });
+            
+        }
+        e.preventDefault();
+    });
+});
 
 //CRUD HORARIO VIRTUAL / PRESENCIAL
 function consultaHorarioGpoList(idGpo) {
@@ -665,3 +701,24 @@ function buildHtmlHPContainer(HPresencial) {
     }
     $("#containerTblPresencial").html(template);
 }
+//Agrega Horario Presencial
+/*
+$("#frm-temario").on("submit", function(e){
+    let route= "./webhook/crud-temario.php";
+    var params={
+        idCurso: $("#idCurso").val(),
+        idTema:$("#id_tema").val(),
+        indice : $("#indice").val(),
+        nombreTema:$("#nombre_tema").val() ,
+        descripcion :$("#descripcion-tema").val() 
+    };
+    enviaForm(params,route).then(function () {
+        $("#frm-temario").trigger('reset');
+        $("#addNewTema").modal('hide');
+        let id= ID_CURSO;
+        cargaTemario(id);
+        
+    });
+    e.preventDefault();
+});
+*/

@@ -178,7 +178,14 @@ function getDescuentos($idCurso){
     $DESC->setIdCursoFk($idCurso);
     return $DESC->queryConsultaDesceuntosCurso();
 }
-
+//Funcion elimina Descuento
+function deleteDescuento($idCurso,$idProcedencia){
+    include_once "../model/DESCUENTOS.php";
+    $DESC = new DESCUENTOS();
+    $DESC->setIdCursoFk($idCurso);
+    $DESC->setIdTipoProcedenciaFk($idProcedencia);
+    return $DESC->queryDeleteDescuento();
+}
 //CONTADORES
 
 function countCursosPendientesRevisar(){
