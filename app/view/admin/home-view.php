@@ -15,10 +15,21 @@
 </head>
 
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+</svg>
+
 <div id="app">
     <?php include "includes/sidebar.php"?>
     <div id="main">
-
         <header class="mb-3">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
@@ -148,7 +159,6 @@
                     </div>
                 </div>
             </section>
-
             <section class="row">
                 <div class="card">
                     <div class="card-header">
@@ -165,289 +175,9 @@
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-
                 </div>
-
             </section>
 
-            <section class="section">
-                <div class="card">
-                    <div class="card-header">
-                        Grupos Actuales
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl1">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>GRUPO</th>
-                                <th>CURSO</th>
-                                <th>PROFESOR</th>
-                                <th>CUPO</th>
-                                <th>INICIO</th>
-                                <th>TIPO</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_grupo="3">
-                                <th scope="row">1</th>
-                                <td>1001</td>
-                                <td>Induccion al computo <span class="badge bg-warning">Inactivo</span></td>
-                                <td>Christian Garduño Pioquinto</td>
-                                <td>15</td>
-                                <td>2021-06-30 00:00:00</td>
-                                <td>En linea y Precencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-                            <tr id_grupo="5">
-                                <th scope="row">2</th>
-                                <td>1601</td>
-                                <td>Macros en Excel <span class="badge bg-success">Activo</span></td>
-                                <td>Christian Hdz Pioquinto</td>
-                                <td>30</td>
-                                <td>2021-07-26 00:00:00</td>
-                                <td>Presencial</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-clock"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-tasks"></i> Solicitudes</a>
-                                </td>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </section>
-
-            <section class="section">
-                <div class="card">
-                    <div class="card-header">
-                        Documentación Pendiente
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover table-striped" id="tbl2">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Inscripcion</th>
-                                <th>Documento</th>
-                                <th>Alumno</th>
-                                <th>Curso</th>
-                                <th>Grupo</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-grupos">
-                            <tr id_doc="1">
-                                <th scope="row">1</th>
-                                <td>123456789</td>
-                                <td>Credencial <span class="badge bg-warning">Por revisar</span></td>
-                                <td>Cesar Haziel Pineda Pacheco</td>
-                                <td>Computo I</td>
-                                <td>666</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Documentación Completa</a>
-                                </td>
-                            </tr>
-                            <tr id_doc="1">
-                                <th scope="row">1</th>
-                                <td>123456789</td>
-                                <td>Credencial <span class="badge bg-warning">Por revisar</span></td>
-                                <td>Cesar Haziel Pineda Pacheco</td>
-                                <td>Computo I</td>
-                                <td>666</td>
-                                <!-- BOTON ACCIONES -->
-                                <td>
-                                    <a href="#" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-ban"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-outline-info"><i class="fas fa-folder-open"></i> Documentación Completa</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </section>
             <section class="row">
                 <div class="col-12 col-lg-12">
                     <div class="row">
@@ -455,12 +185,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Profesores</h5>
-                                    <p class="card-text text-muted">En este apartado se pueden realizar distintas acciones de gestion para las cuentas de profesores.</p>
-                                    <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
-                                        <button type="button" class="btn btn-primary btn-sm">Crear cuenta</button>
-                                    </a>
+                                    <p class="card-text text-muted">Administrar las cuentas de los profesores. Altas y bajas de profesores.</p>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addNewProfesor">Crear cuenta</button>
                                     <a href="./lista-profesores">
-                                        <button type="button" class="btn btn-primary btn-sm">Gestión de cuentas</button>
+                                        <button type="button" class="btn btn-primary btn-sm">Cuentas Profesores</button>
                                     </a>
                                 </div>
                             </div>
@@ -469,21 +197,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cuentas Administrativas</h5>
-                                    <p class="card-text text-muted">Crear nueva cuenta administrativa para entrar al sistema de Administración.</p>
+                                    <p class="card-text text-muted">Gestionar las cuentas de Administración del sistema.</p>
                                     <a href="./lista-cuentas">
-                                        <button type="button" class="btn btn-primary btn-sm">Ir</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Servicio Social</h5>
-                                    <p class="card-text text-muted">Cree o gestiones cuentas de alumno de servicio social.</p>
-                                    <button type="button" class="btn btn-primary btn-sm">Crear cuenta</button>
-                                    <a href="#" data-toggle="modal" data-target="#listaServicio">
-                                        <button type="button" class="btn btn-primary btn-sm">Ver Alumnos</button>
+                                        <button type="button" class="btn btn-primary btn-sm">Gestionar Cuentas</button>
                                     </a>
                                 </div>
                             </div>
@@ -492,9 +208,23 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Alumnos</h5>
-                                    <p class="card-text text-muted">Buscar alumno para ver su situacion actual dentro del sistema de inscripción de cursos. Ingresar numero de cuenta registrado por el alumno.</p>
+                                    <p class="card-text text-muted">Verifique las cuentas del alumnos registrados y valide la procedencia del alumno.</p>
+                                    <a href="./cuentas-alumnos">
+                                        <button type="button" class="btn btn-primary btn-sm">Revisar cuentas</button>
+                                    </a>
+                                    <a href="./lista-alumnos" data-toggle="modal" data-target="#listaServicio">
+                                        <button type="button" class="btn btn-primary btn-sm">Ver Alumnos</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">Buscar Alumno</h5>
+                                    <p class="card-text text-muted">Escriba el No de cuenta/Matricula.</p>
                                     <form class="form-inline position-relative my-2 d-flex">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar alumno" aria-label="Search">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Escriba No Cta / Matricula" aria-label="Search">
                                         <button class="btn btn-search position-relative posicion-btn" type="submit"><img src="../assets/images/icons/buscar1.svg" width="24px"></button>
                                     </form>
                                 </div>
@@ -506,86 +236,22 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Cursos Recientes</h4>
-                                    <p>Estos sonnlos los ultimos cursos aprobados</p>
+                                    <p>Cursos diponibles para abrir grupos nuevos al semestre actual.</p>
                                 </div>
-                                <div class="card-body">
-                                    <div id="carouselExampleFade" class="carousel slide carousel-fade"
-                                         data-bs-ride="carouselfade">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
-                                                class="active"></li>
-                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#carouselExampleFade" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="../assets/images/samples/1.png" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>First slide label</h5>
-                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="../assets/images/samples/2.png" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Second slide label</h5>
-                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="../assets/images/samples/3.png" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Third slide label</h5>
-                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleFade" role="button"
-                                           data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleFade" role="button"
-                                           data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </a>
-                                    </div>
+                                <div class="card-body" id="caroucel-courses-dashboard">
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-5">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Pagos Recientes</h4>
-                                </div>
                                 <div class="card-content">
                                     <div class="card-body">
+                                        <h4 class="card-title">Pagos Recientes</h4>
                                         <p>
                                             Ultimos pagos registrados en el sistema
                                         </p>
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
-                                                    <small>$30,000</small>
-                                                </div>
-                                                <small>2021-06-15 08:20:21</small>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
-                                                    <small>$30,000</small>
-                                                </div>
-                                                <small>2021-06-15 08:20:21</small>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No 123456789 </h6>
-                                                    <small>$30,000</small>
-                                                </div>
-                                                <small>2021-06-15 08:20:21</small>
-                                            </a>
+                                        <div class="list-group" id="listaUltimosPagos">
                                         </div>
                                     </div>
                                 </div>
@@ -608,7 +274,6 @@
 <script src="./service/general/tipos.js"></script>
 <script src="./service/dashboard.js"></script>
 
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <!-- INCLUDE SERIVES AJAX
 
 <script src="./service/lista-alumnos.js"></script>-->
@@ -659,15 +324,7 @@
         },
     });
 </script>
-<!-- INCLUDE SERIVES AJAX -->
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#tbl1');
-    let dataTable = new simpleDatatables.DataTable(table1);
 
-    let table2 = document.querySelector('#tbl2');
-    let dataTable2 = new simpleDatatables.DataTable(table2);
-</script>
 </body>
 
 </html>

@@ -90,4 +90,22 @@ class ESTADISTICAS extends CONEXION_M
         $this->close();
         return $result;
     }
+
+    function  consultaUltimosPagos($limit){
+        $limite = $limit >0 ? 'LIMIT '.$limit:'';
+        $sql="SELECT vi.id_inscripcion_fk, vi.fecha_validacion,
+       vi.fecha_pago, vi.monto_pago_realizado, vi.descripcion, vi.notas,
+       concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo
+        FROM validacion_inscripcion vi, administrador admin,
+                         profesor prof, persona per
+        WHERE vi.id_profesor_admin_fk = admin.id_profesor_admin_fk
+        AND prof.id_profesor = admin.id_profesor_admin_fk
+        AND per.id_persona = prof.id_persona_fk
+        AND fecha_validacion BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
+        ORDER BY fecha_validacion DESC ".$limite;
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
 }

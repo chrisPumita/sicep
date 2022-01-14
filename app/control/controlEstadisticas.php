@@ -31,7 +31,8 @@ function getDataDashboard(){
         "countConstancias" => $ES->queryCuentaConstancias(),
         "countRegistros" => $ES->queryEstadisticasAnioSolicitudes(),
         "countsPanels" => $ES->numericDashbiard(),
-        "conteoHM" => $ES->queryConteoHM()
+        "conteoHM" => $ES->queryConteoHM(),
+        "ultimosPagos"=>$ES->consultaUltimosPagos(10)
     );
     return $resultados;
 }

@@ -2,6 +2,7 @@ console.log("DASHBOAR ACTIVE");
 window.onload = function(){
     cargaEstadisticas();
     cargaGruposActuales();
+    cargaCursosActivos();
 }
 
 function cargaEstadisticas() {
@@ -17,6 +18,7 @@ function buildPanelEstadistica(datos) {
     $("#panelConstanciasCount").html(datos.countConstancias);
     loadEstadisticaHM(datos.conteoHM);
     loadInscripciones(datos.countRegistros);
+    loadUltimosPagos(datos.ultimosPagos);
 }
 
 function loadEstadisticaHM(DATA) {
@@ -87,7 +89,6 @@ function loadInscripciones(DATA) {
     chartProfileVisit.render();
 }
 
-
 async function cargaGruposActuales() {
     consultaAsyncHistorialAsign(3,1).then(function (datos) {
         let lista = datos.filter(x=>parseInt(x.statusAsignacion)<10);
@@ -96,7 +97,6 @@ async function cargaGruposActuales() {
 }
 
 function buildHTMLCardsDashboard(lista) {
-    console.log(lista);
     let template = "";
     let contador =0;
     lista.forEach(
@@ -193,8 +193,125 @@ function buildHTMLCardsDashboard(lista) {
     $("#swiperCardsContainer").html(template);
 }
 
+function loadUltimosPagos(DATA) {
+    console.log(DATA);
+    let template = ``;
+    if (DATA.length > 0) {
+        DATA.forEach(
+            (pago)=>
+            {
+                template += `<a href="#" class="list-group-item list-group-item-action" onclick="goFichaInsc('${pago.id_inscripcion_fk}');"
+                data-bs-toggle="tooltip" data-bs-placement="top" title="${pago.notas}">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1"><i class="fas fa-tag"></i> Inscripcion No ${pago.id_inscripcion_fk} </h6>
+                                                    <small>$${pago.monto_pago_realizado}</small>
+                                                </div>
+                                                <small>${pago.nombre_completo} | ${pago.fecha_validacion}</small>
+                                            </a>`;
+            }
+        );
+        template +=`<div class="row py-3">
+                        <div class="col-sm-12 d-flex justify-content-end">
+                            <a href="#" class="btn btn-primary me-1 mb-1">Ver todos</a>
+                        </div>
+                    </div>`;
+    }
+    else{
+        template = `<div class="alert alert-success" role="alert">
+                      <h4 class="alert-heading">No hay pagos aun</h4>
+                      <p>No se han registrado Pagos en los ultimos 30 Días.</p>
+                      <hr>
+                      <p class="mb-0">Si desea ver todos los pagos registrados, de clic <a href="#">aqui</a></p>
+                    </div>`;
+    }
+    $("#listaUltimosPagos").html(template);
+}
+
+function cargaCursosActivos() {
+    //llamado a funcion asincrona de cursos
+    cargaCursos(0,1).then(function (JSONData) {
+        console.log(JSONData);
+        let listaHtml = buildCaroucelDashboardCursos(JSONData);
+        $("#caroucel-courses-dashboard").html(listaHtml);
+    });
+}
+
+function buildCaroucelDashboardCursos(CURSOS) {
+    let template = "";
+    if (CURSOS.length > 0) {
+    template +=  `<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carouselfade">
+                        <ol class="carousel-indicators">`;
+    for (let i = 0; i < CURSOS.length; i++){
+        let active = i==0 ? 'class="active"':'';
+        template +=  `<li data-bs-target="#carouselExampleFade" data-bs-slide-to="${i}" ${active}></li>`;
+    }
+
+        template +=  ` </ol>
+                    <div class="carousel-inner"> `;
+        for (let i = 0; i < CURSOS.length; i++){
+            let active = i==0 ? 'active':'';
+            template +=  `<div class="carousel-item ${active}">
+                            <div class="overlay" style="z-index: 0; opacity: 0.5;" ></div>
+                            <img src="${CURSOS[i].banner_img}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>${CURSOS[i].nombre_curso}</h5>
+                                <p>Creado por ${CURSOS[i].nombre_completo}</p>
+                                <a href="#" class="btn btn-primary viewCourse me-1 mb-1" onclick="viewCurso(${CURSOS[i].id_curso})"><i class="far fa-eye"></i> Ver más..</a>
+                                <a href="#" class="btn btn-primary viewCourse me-1 mb-1" onclick="openGroup(${CURSOS[i].id_curso})"><i class="fas fa-users"></i> Abrir Grupo</a>
+                            </div>
+                        </div>`;
+        }
+        template +=  `
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleFade" role="button"  data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleFade" role="button"
+                           data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>`;
+    }
+    else{
+        template = `<div class="alert alert-danger " role="alert">
+                        <div class="d-flex align-items-center">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                            <p>No hay ningun curso disponible. Porfavor acredite un curso para comenzar a operar.</p>  
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-end">
+                            <a href="./lista-cursos">
+                            <button type="button" class="btn btn-primary btn-sm">Ver cursos</button>
+                            </a>
+                        </div>
+                       
+                    </div>`;
+    }
+
+    return template;
+}
+
+
 function openAsig(id) {
     let url = "./detalles-asignacion";
     let data = {  id:id };
     redirect_by_post(url, data, false);
+}
+
+
+function viewCurso(id) {
+    var url = './detalles-curso';
+    redirect_by_post(url, { id: id }, false);
+}
+
+function openGroup(id) {
+    let url = "./nueva-asignacion";
+    let data = {  id:id };
+    redirect_by_post(url, data, false);
+}
+
+function goFichaInsc(idInscripcion) {
+    let url = 'ficha-inscripcion';
+    redirect_by_post(url, {  id: idInscripcion }, false);
 }
