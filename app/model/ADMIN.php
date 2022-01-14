@@ -120,7 +120,8 @@ class ADMIN extends PROFESOR implements I_admin
     }
 
     function  queryUpdateAccount($idAdmin,$cargo,$permisosA){
-        $sql = "UPDATE `administrador` SET `cargo`='".$cargo."' , `permisos`='".$permisosA."' WHERE `id_profesor_admin_fk`=".$idAdmin;
+        $sql = "UPDATE `administrador` SET `cargo`='".$cargo."' , `permisos`='".$permisosA."' 
+        WHERE `id_profesor_admin_fk`=".$idAdmin;
         $this->connect();
         $datos = $this->executeInstruction($sql);
         $this->close();
@@ -137,5 +138,16 @@ class ADMIN extends PROFESOR implements I_admin
         $datos = $this-> getData($sql);
         $this->close();
         return $datos;
+    }
+
+    public function queryAddNewAccount()
+    {
+        $sql = "INSERT INTO `administrador` (`id_profesor_admin_fk`, `cargo`, `permisos`, `clave_confirmacion`, `estatus`) 
+                VALUES ('".$this->getIdProfesor()."', '".$this->getCargo()."', '".$this->getPermisos().
+            "', '".$this->getClaveConfirmacion()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($sql);
+        $this->close();
+        return $result;
     }
 }

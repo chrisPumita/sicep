@@ -44,8 +44,7 @@
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                         <!-- Button trigger for primary themes modal -->
-                                        <button type="button" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target="#primary">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateAdminAccount">
                                             Nueva Cuenta
                                         </button>
                                 </div>
@@ -94,6 +93,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 <script src="./service/general/tipos.js"></script>
 <script src="./service/general/tools.js"></script>
+<script src="./service/acounts-security.js"></script>
 <script src="./service/datatable-lista-admins.js"></script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 </body>

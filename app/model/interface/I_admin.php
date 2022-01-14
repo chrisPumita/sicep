@@ -7,4 +7,5 @@ interface I_admin
     public function queryUpdateStatusAdmin($admin,$estatus);
     public function queryDeleteAdmin($admin);
     public function queryBuscaCuentaAdmin();
+    public function queryAddNewAccount();
 }

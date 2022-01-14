@@ -49,7 +49,7 @@ function pintaDatosProfesorHTML(prof) {
     $('#nombreProfesor').html(prof.prefijo+". "+prof.nombre+" "+prof.app+" "+prof.apm);
     $('#correoProfesor').html(prof.email);
     $('#deptoProfesor').html(prof.depto_name);
-    $('#fechaRegistroProfesor').html(prof.fecha_registro);
+    $('#fechaRegistroProfesor').html(getLegibleFechaHora(prof.fecha_registro));
     $('#alertMje').fadeIn(1000);
 }
 
@@ -160,4 +160,55 @@ $(document).on("click", ".btnChangeStatus", function ()
     let id = $(elementClienteSelect).attr("id_persona");
     var url = './detalles-profesor';
     alert("Cambiar estado");
+});
+
+$(document).on("click", ".btnValidateNewAdmin", function ()
+{
+    let cargo = $("#txtcargo").val();
+    let id = $("#listaDesProfesores").val();
+    let nivel = $("#permisos").val();
+    var combo = document.getElementById("listaDesProfesores");
+    var selected = combo.options[combo.selectedIndex].text;
+    if (cargo===""){
+        alerta("Falta el Cargo","Agregue el cargo del nuevo administrador");
+        $("#txtcargo").addClass("bg-warning");
+    }
+    else{
+        if (selected==="Seleccionar..."){
+            alerta("Seleccione Profesor","Seleccione un profesor de la lista desplegable");
+        }
+        else{
+            $("#txtcargo").removeClass("bg-warning");
+            $("#modalCreateAdminAccount").modal('hide');
+            sweetConfirm('Nuevo Administrador', '¿Estas seguro de que desea agregar a '+selected+ ' como ADMINISTRADOR?', function (confirmed) {
+                if (confirmed) {
+                    confirmaAddCuentaAdmin(id,nivel,cargo).then(function (result) {
+                        console.log(result);
+                        if (result == -1){
+                            titulo= "Contraseña invalida";
+                            texto= "Porfavor llena los datos que se solicitan";
+                            tipo = "warning";
+                            alerta(titulo,texto,tipo);
+                        }
+                        else if (result.validacion) {
+                            alertaEmergente(result.mensaje);//reload
+                            $('#containerSend').addClass('d-none');
+                            cargaListaProfesoresNoAdmin();
+                            var table = $('#tblProfesores').DataTable( {
+                                ajax: "data.json"
+                            } );
+                            table.ajax.reload( null, false );
+                        }
+                        else if (!result.validacion){
+                            titulo= result.mensaje;
+                            texto= "Contraseña Incorrecta";
+                            tipo = "warning";
+                            alerta(titulo,texto,tipo);
+                        }
+                    })
+                }
+            });
+        }
+
+    }
 });

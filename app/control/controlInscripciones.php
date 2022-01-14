@@ -1,25 +1,8 @@
 <?php
-/*******************************************************************************
- * VALIDACIONES
- *******************************************************************************/
-
-//COntrolar el flujo de inscripciones
-//global variable
-//alto  3
-//medio 2
-//bajo  1
-//todos 0
-//para registrar un pago, necesito un nivel de acceso 3 (alto)
-define('NVL_REG_PGO', 3);
-define('NVL_REG_CONST',2);
 
 function procesaInscripcionValidacion($password,$idFichaInsc,$val){
-    //vamos a procesar la opcion que esta entrando
-    include_once "controlPermisos.php";
-    session_start();
-    $idAdmin = $_SESSION['idProfesor'];
-    if (verificaAdministrador($idAdmin,$password,NVL_REG_PGO))
-    {
+    include_once "controlAdmin.php";
+    if (validacionAdminAccount($password,NVL_REG_PGO)){
         switch ($val){
             case '0':
                 #se cancela la inscripcion
@@ -60,12 +43,10 @@ function procesaInscripcionValidacion($password,$idFichaInsc,$val){
         $I->setIdInscripcion($idFichaInsc);
         $I->setNotas($notas);
         if($I->confirmaPagoRealizado($confirmacionPago)&&$confirmacionPago){
+            $idAdmin = $_SESSION['idProfesor'];
             return $I->creaValidacionInscripcion($idAdmin,$subtotal,$info);
         }
         return true;
-    }
-    else{
-        return false;
     }
 }
 
