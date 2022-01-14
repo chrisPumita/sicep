@@ -439,7 +439,7 @@ function consultaTblDescuentos(idGpo) {
                                     </select>
                                      <input type="number" min="0"  max="100" required class="form-control" id="descuentoProcedencia" name="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0" value="0">
                                     <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-percent"></i> Descuento</label>
-                                    <button id="btnAddProcedencia" type="button" class="btn btn-primary" onclick="addDescCurso();"> <i class="fas fa-sync-alt"></i> Agregar </button>
+                                    <button id="btnAddProcedencia" type="button" class="btn btn-primary" onclick="addDescCurso();"> <i class="fas fa-plus-square"></i> Agregar </button>
                                 </div>
                             </div>
                         </form>`;
@@ -559,18 +559,14 @@ function addDescCurso() {
         descuento: $("#descuentoProcedencia").val()
     }
     console.log(params)
-    let route= "./webhook/update-descuento.phppppppppp";
+    let route= "./webhook/add-descuento.php";
     enviaForm(params,route).then(function () {
-        $("#frm-update-descuento").trigger('reset');
-        $("#editarDescuentos").modal('hide');
+        $("#frm-add-desc").trigger('reset');
         let id= ID_CURSO;
         consultaTblDescuentos(ID_CURSO);
     });
 }
-
 //Elimina descuento
-
-
 $(document).on("click", ".btnDeleteDesc", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement;

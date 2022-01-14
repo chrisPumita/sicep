@@ -85,4 +85,13 @@ class DESCUENTOS extends CONEXION_M
         $this->close();
         return $result;
     }
+
+    function queryInsertDescuento(){
+        $query="INSERT INTO `asignacion_procedencia` (`id_tipo_procedencia_fk`, `id_curso_fk`, `porcentaje_desc`) 
+        VALUES ('".$this->getIdTipoProcedenciaFk()."', '".$this->getIdCursoFk()."', '".$this->getPorcentajeDesc()."')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

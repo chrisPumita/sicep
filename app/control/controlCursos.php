@@ -196,6 +196,16 @@ function updateDescuento($params){
     $DESC->setPorcentajeDesc($params['descuento']);
     return $DESC->queryUpdateDescuento();
 }
+
+//funcion agrega descuento
+function insertDescuento($params){
+    include_once "../model/DESCUENTOS.php";
+    $DESC = new DESCUENTOS();
+    $DESC->setIdCursoFk($params['idCurso']);
+    $DESC->setIdTipoProcedenciaFk($params['idProcedencia']);
+    $DESC->setPorcentajeDesc($params['descuento']);
+    return $DESC->queryInsertDescuento();
+}
 //CONTADORES
 
 function countCursosPendientesRevisar(){
