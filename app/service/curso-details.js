@@ -440,8 +440,8 @@ function consultaTblDescuentos(idGpo) {
                                     </select>
                                      <input type="number" min="0"  max="100" required class="form-control" id="descuentoProcedencia" name="descuentoProcedencia" aria-describedby="aulaHelp" placeholder="0" value="0">
                                     <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-percent"></i> Descuento</label>
-                                    <button type="submit" class="btn btn-outline-success">
-                                        <i class="fas fa-plus-square"></i> Agregar
+                                    <button id="btnAddProcedencia" type="submit" class="btn btn-primary">
+                                    <i class="fas fa-sync-alt"></i> Actualizar
                                     </button>
                                 </div>
                             </div>
@@ -554,7 +554,24 @@ $("#frm-update-descuento").on("submit", function(e){
     });
     e.preventDefault();
 });
-
+//Funcion agrega descuento
+$("#frm-add-dirigido-desc").on("submit", function(e){
+    alert("Funciono");
+    /*var params={
+        idCurso : ID_CURSO,
+        idProcedencia : $("#idProcedenenciaSelect").val(),
+        descuento: $("#editaDescuentoProcedencia").val()
+    }
+    let route= "./webhook/update-descuento.php";
+    enviaForm(params,route).then(function () {
+        $("#frm-update-descuento").trigger('reset');
+        $("#editarDescuentos").modal('hide');
+        let id= ID_CURSO;
+        consultaTblDescuentos(id);
+        
+    });*/
+    e.preventDefault();
+});
 //Elimina descuento
 
 
