@@ -22,7 +22,7 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="./assets/css/material-kit.css?v=3.0.0" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <style>
+
         <style type="text/css">
           .background {
               position: absolute;
@@ -70,7 +70,10 @@
             transform: rotate(-45deg);
             line-height: 1;
         }
-    </style>
+
+          .swiper-slide {
+              background: none;
+          }
     </style>
 </head>
 
@@ -193,8 +196,7 @@
                     of the hight standards.
                 </p>
                   <p class="mb-0">
-
-                      <a href="#" class="btn btn-primary py-3">Regístrate</a>
+                      <a href="#" class="btn btn-primary py-3 mt-4">Regístrate</a>
                   </p>
               </div>
             </div>
@@ -204,244 +206,46 @@
     </section>
     <!-- END Section with four info areas left & one card right with image and waves -->
     <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
+      <section class="pb-5 position-relative bg-gradient-dark-invert mx-n3">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 text-start mb-0 mt-5">
+                      <h3 class="text-white z-index-1 position-relative text-primary"><span id="countAsig">{n}</span> GRUPOS ABIERTOS</h3>
+                      <p class="text-white opacity-8 mb-0 text-primary">Seleccion un grupo y manda tu solicitud. Envia la documentación solicitada y
+                          listo. Descrubre los descuentos que tenemos. Los cursos indicados con <span class="badge bg-dark position-relative">
+                      <span class="blob green positionBadge"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSCRIPCIONES
+                      </span> estan disponibles para inscribirse. NO pierdas tu lugar.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="container-fluid">
+              <div class="row">
+                  <!-- Swiper -->
+                  <div class="swiper SwiperAsig py-6">
+                      <div class="swiper-wrapper" id="swiperCardsContainerAsig">
+                          <!--AJAX response-->
+                      </div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-pagination"></div>
+                  </div>
+              </div>
+          </div>
+      </section>
     <section class="pb-5 position-relative bg-gradient-dark mx-n3">
       <div class="container">
         <div class="row">
           <div class="col-md-8 text-start mb-0 mt-5">
-            <h3 class="text-white z-index-1 position-relative">Tenemos cursos para ti</h3>
-            <p class="text-white opacity-8 mb-0">Selecciona un los Cursos que ofrecemo e inscríbete</p>
+            <h3 class="text-white z-index-1 position-relative">CONOCE TODOS LOS CURSOS</h3>
+            <p class="text-white opacity-8 mb-0">Cada semestre se abren grupos para diferentes cursos. Revisa la oferta que tenemos para ti.</p>
           </div>
         </div>
       </div>
       <div class="container-fluid">
         <div class="row">
             <!-- Swiper -->
-            <div class="swiper mySwiper py-6">
+            <div class="swiper SwiperCursos py-6">
                 <div class="swiper-wrapper" id="swiperCardsContainer">
-                    <div class="swiper-slide">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-4">
-                        <div class="card card-profile mt-4" data-animation="true">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a class="d-block blur-shadow-image">
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                                </a>
-                                <div class="colored-shadow" style="background-image: url(&quot;https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg&quot;);"></div>
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="d-flex mt-n6 mx-auto">
-                                    <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
-                                        <i class="material-icons text-lg">refresh</i>
-                                    </a>
-                                    <button class="btn btn-link text-info me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                                        <i class="material-icons text-lg">edit</i>
-                                    </button>
-                                </div>
-                                <h5 class="font-weight-normal mt-3">
-                                    <a href="javascript:;">Cozy 5 Stars Apartment</a>
-                                </h5>
-                                <p class="mb-0">
-                                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                                </p>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer d-flex">
-                                <p class="font-weight-normal my-auto">$899/night</p>
-                                <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p class="text-sm my-auto"> Barcelona, Spain</p>
-                            </div>
-                        </div>
-                    </div>
                     <!--AJAX response-->
                 </div>
                 <div class="swiper-button-next"></div>
@@ -453,28 +257,28 @@
     </section>
 
     <!-- -------- Marcas, lenguajes de programacion, etc -------- -->
-    <section class="pt-4 pb-6" id="count-stats">
+    <section class="pt-6 pb-6" id="count-stats">
       <div class="container">
         <div class="row justify-content-center text-center">
           <div class="col-md-3">
-            <h1 class="text-gradient text-primary" id="state1" countTo="15000">0</h1>
+            <h1 class="text-gradient text-primary"><span id="state1" countTo="15000">0</span>+</h1>
             <h5>CERTIFICADOS</h5>
-            <p>Más de 15,000 certificados entregados</p>
+            <p>Más de 15,000 certificados entregados en distintas carreras</p>
           </div>
           <div class="col-md-3">
             <h1 class="text-gradient text-primary"><span id="state2" countTo="25000">0</span>+</h1>
             <h5>ALUMNOS</h5>
-            <p>Más de 25000 Alumnos se han inscrito</p>
+            <p>Más de 25000 Alumnos se han inscrito a algun curso</p>
           </div>
           <div class="col-md-3">
-            <h1 class="text-gradient text-primary"><span id="state3" countTo="24">0</span>+</h1>
-            <h5>Support</h5>
+            <h1 class="text-gradient text-primary"><span id="state3" countTo="15">0</span>+</h1>
+            <h5>CURSOS</h5>
             <p>Tenemos mas de 25 Cursos Diferentes ajustados a tu horario</p>
           </div>
         </div>
       </div>
     </section>
-      <section class="img" style="background-image: url(./assets/images/online_clases.jpg);">
+      <section class="img  mx-n3" style="background-image: url(./assets/images/online_clases.jpg);">
           <div class="container-fluid">
               <div class="row justify-content-center">
                   <div class="col-md-12 text-center">
@@ -653,6 +457,8 @@
 
   <!--AJAX SERIVICE-->
   <script src="./app/service/web-site.js" type="text/javascript"></script>
+  <script src="./app/service/general/tipos.js" type="text/javascript"></script>
+  <script src="./app/service/general/tools.js" type="text/javascript"></script>
 
   <script>
     // get the element to animate
@@ -706,11 +512,11 @@
             }
           }
           if (document.getElementById('state3')) {
-            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
-            if (!countUp2.error) {
-              countUp2.start();
+            const countUp3 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp3.error) {
+              countUp3.start();
             } else {
-              console.error(countUp2.error);
+              console.error(countUp3.error);
             };
           }
           animateComplete = false;
@@ -762,7 +568,7 @@
   <!-- Initialize Swiper -->
   <!-- Initialize Swiper -->
   <script>
-      var swiper = new Swiper(".mySwiper", {
+      let propiedades = {
           slidesPerView: 1,
           spaceBetween: 10,
           pagination: {
@@ -801,7 +607,10 @@
                   spaceBetween: 50,
               }
           },
-      });
+      };
+
+      var swiper = new Swiper(".SwiperCursos", propiedades);
+      var swiperAsig = new Swiper(".SwiperAsig", propiedades);
   </script>
 
 </body>
