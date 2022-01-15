@@ -3,7 +3,6 @@ include_once "DOCUMENTO.php";
 include_once "interface/I_DOCS_SOLICITADOS.php";
 class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
 {
-    //Obligatorio = 1 Se activa inscripcion 0 no se activa inscripcion
     private $id_doc_sol;
     private $id_documento_fk;
     private $id_curso_fk;
@@ -80,7 +79,7 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
                    doc.tipo, doc.peso_max_mb, doc.estatus, docs_cur.id_doc_sol,
                    docs_cur.id_documento_fk, docs_cur.id_curso_fk, docs_cur.obligatorio
                     from documento doc,  docs_solicitados_curso docs_cur
-                    where doc.id_documento = docs_cur.id_documento_fk
+                    where doc.id_documento = docs_cur.id_documento_fk AND docs_cur.id_doc_sol>0
                     AND docs_cur.`id_curso_fk`=" . $this->getIdCursoFk() ;
         $this->connect();
         $datos = $this-> getData($sql);
@@ -91,8 +90,8 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
     //ejecuta la insctruccion y me regresa true si se efectuo de forma correcta
     function queryEliminaDocumentoSolicitado()
     {
-        $query = "DELETE FROM seltic.docs_solicitados_curso
-                            WHERE id_doc_sol =  ".$this->getIdDocSol();
+        $query="UPDATE `docs_solicitados_curso` SET `id_doc_sol` = ".$this->getIdDocSol()."*-1 
+        WHERE `docs_solicitados_curso`.`id_doc_sol` = ".$this->getIdDocSol();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();

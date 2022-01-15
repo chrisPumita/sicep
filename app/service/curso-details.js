@@ -244,8 +244,8 @@ function buildTBLHtmlDocsSol(DOSC) {
                             <td>${acre}</td>
                             <td>${confirmaInsc}</td>
                             <td>
-                                <a href="#" class="btn btn-outline-primary" onclick="editaDocumentacion(${doc.id_doc_sol},${doc.id_documento_fk},${doc.obligatorio})"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
+                                <button class="btn btn-outline-primary" onclick="editaDocumentacion(${doc.id_doc_sol},${doc.id_documento_fk},${doc.obligatorio})"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger deleteDocSol"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
             }
@@ -298,7 +298,21 @@ $("#frm-add-update-docs").on("submit", function(e){
     });
     e.preventDefault();
 });
-
+//Elimina Documento Solicitado
+$(document).on("click", ".deleteDocSol", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id_doc_sol");
+    var route= "./webhook/delete-doc-sol.php";
+    sweetConfirm('Eliminar Documento', '¿Estas seguro de que deseas eliminar este Documento?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                let id= ID_CURSO;
+                cargaTblDocumentacion(id);
+            });
+        }
+    });
+});
 
 function openGroup(id) {
     let url = "./nueva-asignacion";
@@ -618,7 +632,6 @@ $(document).on("click", ".btnDeleteDesc", function ()
             });
             
         }
-        e.preventDefault();
     });
 });
 

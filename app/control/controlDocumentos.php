@@ -31,3 +31,10 @@ function insertUpdateDocSol($params){
     $DS->setObligatorio($params['obligatorio']);
     return $params['idDocSol']>0 ? $DS->queryUpdateDocSolCurso() : $DS->queryInsertDocSolCurso();
 }
+
+function deleteDocumentoSolicitado($idDocSol){
+    include_once "../model/DOCS_SOLICITADOS_CURSO.php";
+    $DS = new DOCS_SOLICITADOS_CURSO();
+    $DS->setIdDocSol($idDocSol);
+    return $DS->queryEliminaDocumentoSolicitado();
+}   
