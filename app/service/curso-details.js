@@ -238,13 +238,13 @@ function buildTBLHtmlDocsSol(DOSC) {
                         </li>
                     </ul>` : `` ;
                 template+= `
-                        <tr id_tema="${doc.id_doc_sol}">
+                        <tr id_doc_sol="${doc.id_doc_sol}">
                             <td>${doc.nombre_doc}</td>
                             <td>${doc.formato_admitido} - ${doc.peso_max_mb}MB Max.</td>
                             <td>${acre}</td>
                             <td>${confirmaInsc}</td>
                             <td>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#documentacionModal"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-outline-primary" onclick="editaDocumentacion(${doc.id_doc_sol},${doc.id_documento_fk},${doc.obligatorio})"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>`;
@@ -265,6 +265,40 @@ function buildTBLHtmlDocsSol(DOSC) {
     }
     $("#tblDocSol").html(template);
 }
+//Funcion agrega documentacion solicitada
+function addDocumentacion(){
+    $("#documentacionModal").modal('show');
+    $("#idDocumentoSolicitado").val(0);
+    $("#inscripcionConfirm").val(0);
+}
+
+//funcion actualiza documento solicitado
+function editaDocumentacion(idDocSol,idDoc,inscripcion){
+    $("#documentacionModal").modal('show');
+    $("#idDocumentoSolicitado").val(idDocSol); 
+    $("#modalListDosc").val(idDoc);
+    $("#inscripcionConfirm").val(inscripcion);
+}
+//funcion actualiza agrega documento solicitado
+$("#frm-add-update-docs").on("submit", function(e){
+    let route = "./webhook/crud-doc-sol.php";
+    var params = {
+        idDocSol : $("#idDocumentoSolicitado").val(),
+        idDocumento : $("#modalListDosc").val(),
+        idCurso : ID_CURSO,
+        obligatorio : $("#inscripcionConfirm").val()
+    };
+    //Funcion async
+    enviaForm(params,route).then(function () {
+        $("#documentacionModal").modal('hide');
+        $("#frm-add-update-docs").trigger('reset');
+        let id= ID_CURSO;
+        cargaTblDocumentacion(id);
+        
+    });
+    e.preventDefault();
+});
+
 
 function openGroup(id) {
     let url = "./nueva-asignacion";

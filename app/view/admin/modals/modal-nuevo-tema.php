@@ -80,7 +80,7 @@
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form action="frm-temario">
+            <form id="frm-add-update-docs">
                 <div class="modal-body">
                     <div class="callout callout-second bg-light-info">
                         <div class="container-fluid">
@@ -98,10 +98,9 @@
                             <label for="indice" class="text-primary">Documento:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="text" id="idCurso" name="idCurso" value="0">
+                            <input type="hidden" id="idDocumentoSolicitado" name="idDocumentoSolicitado" value="0">
                             <select class="form-control" id="modalListDosc" name="modalListDosc">
-                                <option value="0">DOC 1</option>
-                                <option value="1">DOC2</option>
+                                            <!-- AJAX RESPONSE -->    
                             </select>
                         </div>
                     </div>
@@ -110,16 +109,16 @@
                             <label for="nombre_tema" class="text-primary">Confirmar Inscripción:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <select class="form-control" id="editarModalidad" name="editarModalidad">
-                                <option value="0">SI</option>
-                                <option value="1">NO</option>
+                            <select class="form-control" id="inscripcionConfirm" name="inscripcionConfirm">
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
                             </select> </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="form-group row">
                         <div class="col-12">
-                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Agregar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                            <input type="submit" id="btnEnviar" name="btnEnviar" value="Agregar" class="btn btn-primary btn-user btn-block">
                         </div>
                     </div>
                 </div>

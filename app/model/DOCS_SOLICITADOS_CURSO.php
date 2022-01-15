@@ -3,7 +3,9 @@ include_once "DOCUMENTO.php";
 include_once "interface/I_DOCS_SOLICITADOS.php";
 class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
 {
+    //Obligatorio = 1 Se activa inscripcion 0 no se activa inscripcion
     private $id_doc_sol;
+    private $id_documento_fk;
     private $id_curso_fk;
     private $obligatorio;
 
@@ -22,6 +24,21 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
     public function setIdDocSol($id_doc_sol): void
     {
         $this->id_doc_sol = $id_doc_sol;
+    }
+/**
+     * @return mixed
+     */
+    public function getIdDocumentoFk()
+    {
+        return $this->id_documento_fk;
+    }
+
+    /**
+     * @param mixed $id_documento_fk
+     */
+    public function setIdDocumentoFk($id_documento_fk): void
+    {
+        $this->id_documento_fk = $id_documento_fk;
     }
 
     /**
@@ -72,16 +89,6 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
     }
 
     //ejecuta la insctruccion y me regresa true si se efectuo de forma correcta
-    public function queryAddListaDocSolCurso()
-    {
-        $query = "INSERT INTO seltic.docs_solicitados_curso (id_documento_fk, id_curso_fk, obligatorio)
-                    VALUES ('".$this->getIdDocumento()."','".$this->getIdCursoFk()."','".$this->getObligatorio()."')";
-        $this->connect();
-        $result = $this-> executeInstruction($query);
-        $this->close();
-        return $result;
-    }
-
     function queryEliminaDocumentoSolicitado()
     {
         $query = "DELETE FROM seltic.docs_solicitados_curso
@@ -117,5 +124,24 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
         $resultado = $this-> executeInstruction($query);
         $this->close();
         return $resultado;
+    }
+
+    
+    public function queryInsertDocSolCurso()
+    {
+        $query="INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso_fk`, `obligatorio`) 
+        VALUES (NULL , '".$this->getIdDocumentoFk()."', '".$this->getIdCursoFk()."', '".$this->getObligatorio()."')";
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function queryUpdateDocSolCurso(){
+        $query="UPDATE `docs_solicitados_curso` SET `id_documento_fk` = '".$this->getIdDocumentoFk()."',
+         `obligatorio` = '".$this->getObligatorio()."' WHERE `docs_solicitados_curso`.`id_doc_sol` = ".$this->getIdDocSol();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

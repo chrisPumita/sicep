@@ -221,3 +221,9 @@ function updateLinkTemario($idCurso,$path){
     $obj_curso->setLinkTemarioPdf($path);
     return $obj_curso->queryUpdateLinkTemario();
 }
+
+function controlUpdateInsertDocSol($params){
+    //Mandamos al control correcto 
+    include_once "controlDocumentos.php";
+    return insertUpdateDocSol($params);
+}
