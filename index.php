@@ -1,3 +1,29 @@
+<?php
+    session_start();
+    $btnWeb = "";
+    if(isset($_SESSION['typeCount'])&&$_SESSION['typeCount']=="student" ){
+        $btnWeb = '<div class="dropdown ">
+                      <button class="btn btn-primary btn-sm dropdown-toggle d-flex align-items-center mt-4 mx-2 ms-lg-6 ps-4 mb-0 me-1 mt-2 mt-md-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="user-img d-flex align-items-center">
+                            <div class="avatar avatar-sm mx-1">
+                                <img src="./resources/default-avatar.png">
+                            </div>
+                        </div>Hola '.$_SESSION['usuario'] .'
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="./app/home" target="_blank">Ir al Home</a></li>
+                        <li><a class="dropdown-item" href="./app/mi-perfil" target="_blank">Perfil</a></li>
+                        <li><a class="dropdown-item" href="./app/log-out.php">Salir</a></li>
+                      </ul>
+                    </div>';
+    }
+    else{
+        $btnWeb = '<a href="./login.php">
+                      <button type="button" class="btn btn-primary mt-4 mx-2 ms-lg-6 ps-4 mb-0 me-1 mt-2 mt-md-0">Iniciar Sesión</button> 
+                  </a>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
 
@@ -100,9 +126,9 @@
                 <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#" tabindex="-1" aria-disabled="true">CONTACTO</a>
             </div>
         </ul>
-          <span class="navbar-text">
-              <a href="./login.php"> <button type="button" class="btn btn-primary mt-4 mx-2 ms-lg-6 ps-4 mb-0 me-1 mt-2 mt-md-0">Iniciar Sesión</button> </a>
-      </span>
+            <span class="navbar-text">
+                  <?php echo $btnWeb ?>
+            </span>
       </div>
     </div>
   </nav>
