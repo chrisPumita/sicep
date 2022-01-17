@@ -3,8 +3,8 @@
 
 interface I_HORARIO_GPO
 {
-    function CrearHorario();
-    function updateHorario();
+    function queryInsertHorario();
+    function queryUpdateHorario();
     function eliminarhorario();
     function queryConsultaHorario();
 }

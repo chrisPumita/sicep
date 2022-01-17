@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">
-                    Editar horario presencial
+                    Editar/Agregar horario presencial
                 </h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times text-light"></i>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <input type="text" id="idHorarioPresencial">
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <h6 class="text-start">Día de clase:</h6>
@@ -76,7 +76,7 @@
             <div class="modal-footer p-0">
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                        <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block">
                     </div>
                 </div>
             </div>

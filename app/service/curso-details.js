@@ -715,6 +715,7 @@ function buildHtmlHVContainer(HVirtual) {
 
 function buildHtmlHPContainer(HPresencial) {
     //TRabajando con presenciales
+    console.log(HPresencial);
     let template = "";
     if (HPresencial.length>0){
         template =`<table class="table table-hover table-striped" id="tblPresencial">
@@ -740,7 +741,7 @@ function buildHtmlHPContainer(HPresencial) {
                             <td>${h.hora_term}</td>
                             <td>${h.duracion} min.</td>
                             <td>
-                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                                <button class="btn btn-primary me-1 mb-1" onclick="editaHorarioPresencial(${h.id_horario_pres},${h.dia_semana},'${h.hora_inicio}', '${h.hora_term}',${h.duracion},${h.id_aula})">
                                     <i class="fas fa-clock"></i> Editar</button>
                                 <button class="btn btn-danger me-1 mb-1 removeHP"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -749,7 +750,7 @@ function buildHtmlHPContainer(HPresencial) {
         );
         template += ` </tbody>
                     </table>
-                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                    <button class="btn btn-primary me-1 mb-1" onclick="agregaHorarioPresencial()">
                         <i class="fas fa-plus"></i>Agregar
                     </button>`;
     }
@@ -759,8 +760,8 @@ function buildHtmlHPContainer(HPresencial) {
                         <div>
                         <h4 class="alert-heading">Sin horario PRESENCIAL</h4>
                         <p>No encontramos horarios registrados. Si este curso es solo virtual omita este mensaje. Agregue el 
-                    horario si es la primera vez que condigura este curso</p><hr>
-                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioPresencial">
+                    horario si es la primera vez que configura este curso</p><hr>
+                         <button class="btn btn-primary me-1 mb-1" onclick="agregaHorarioPresencial()">
                             <i class="fas fa-plus"></i>Agregar
                          </button>
                           </div>
@@ -768,24 +769,39 @@ function buildHtmlHPContainer(HPresencial) {
     }
     $("#containerTblPresencial").html(template);
 }
+
+//Funcion agrega horario presencial
+function agregaHorarioPresencial(){
+    $("#horarioPresencial").modal('show');
+    $("#idHorarioPresencial").val(0);
+    $("#diaClase").val(1);
+    $("#minDuracionPrecencial").val(60);
+}
+function editaHorarioPresencial(idHorPres,dia,horaInicio, horaTerm,duracion,idAula){
+    $("#horarioPresencial").modal('show');
+    $("#idHorarioPresencial").val(idHorPres);
+    $("#diaClase").val(dia);
+    $("#hrsInicioPrecencial").val(horaInicio);
+    $("#hrsFinPrecencial").val(horaTerm);
+    $("#minDuracionPrecencial").val(duracion);
+    $("#aulas").val(idAula);
+}
 //Agrega Horario Presencial
-/*
-$("#frm-temario").on("submit", function(e){
-    let route= "./webhook/crud-temario.php";
+
+$("#frm-add-horario-presencial").on("submit", function(e){
+    let route= "./webhook/crud-horario-p.php";
     var params={
-        idCurso: $("#idCurso").val(),
-        idTema:$("#id_tema").val(),
-        indice : $("#indice").val(),
-        nombreTema:$("#nombre_tema").val() ,
-        descripcion :$("#descripcion-tema").val() 
+        idHorPres: $("#idHorarioPresencial").val(),
+        idGrupo:$("#grupos").val(),
+        idAula : $("#aulas").val(),
+        dia:$("#diaClase").val() ,
+        horaInicio :$("#hrsInicioPrecencial").val(),
+        duracion : $("#minDuracionPrecencial").val()
     };
     enviaForm(params,route).then(function () {
-        $("#frm-temario").trigger('reset');
-        $("#addNewTema").modal('hide');
-        let id= ID_CURSO;
-        cargaTemario(id);
-        
+        $("#frm-add-horario-presencial").trigger('reset');
+        $("#horarioPresencial").modal('hide');
+        consultaHorario($("#grupos").val());
     });
     e.preventDefault();
 });
-*/

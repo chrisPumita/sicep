@@ -157,12 +157,24 @@ function getHorariosGrupo($idGrupo){
     );
     return $HORARIO;
 }
-
+//Horarios presenciales
 function getHorarioPresencial($idGrupo){
     include_once "../model/HORARIO_CLASE_P.php";
     $HP = new HORARIO_CLASE_P();
-    $HP->setIdGrupo($idGrupo);
+    $HP->setIdGrupoFk($idGrupo);
     return $HP->queryConsultaHorario();
+}
+//Insert/Update Horario Presencial
+function insertUpdateHorarioP($params){
+    include_once "../model/HORARIO_CLASE_P.php";
+    $HP = new HORARIO_CLASE_P();
+    $HP->setIdHorarioPres($params['idHorarioPres']);
+    $HP->setIdGrupoFk($params['idGrupoFk']);
+    $HP->setIdAulaFk($params['idAulaFk']);
+    $HP->setDiaSemana($params['diaSemana']);
+    $HP->setHoraInicio($params['horaInicio']);
+    $HP->setDuracion($params['duracion']);
+    return $params['idHorarioPres']>0 ? $HP->queryUpdateHorario() : $HP->queryInsertHorario();
 }
 
 function getHorarioVirtual($idGrupo){

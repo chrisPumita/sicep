@@ -5,8 +5,11 @@ class HORARIO_CLASE_P extends CONEXION_M implements I_HORARIO_GPO
 {
 
     private $id_horario_pres;
-    private $id_grupo;
+    private $id_grupo_fk;
+    private $id_aula_fk;
     private $dia_semana;
+    private $hora_inicio;
+    private $duracion;
 
     /**
      * @return mixed
@@ -27,17 +30,33 @@ class HORARIO_CLASE_P extends CONEXION_M implements I_HORARIO_GPO
     /**
      * @return mixed
      */
-    public function getIdGrupo()
+    public function getIdGrupoFk()
     {
-        return $this->id_grupo;
+        return $this->id_grupo_fk;
     }
 
     /**
-     * @param mixed $id_grupo
+     * @param mixed $id_grupo_fk
      */
-    public function setIdGrupo($id_grupo): void
+    public function setIdGrupoFk($id_grupo_fk): void
     {
-        $this->id_grupo = $id_grupo;
+        $this->id_grupo_fk = $id_grupo_fk;
+    }
+
+/**
+     * @return mixed
+     */
+    public function getIdAulaFk()
+    {
+        return $this->id_aula_fk;
+    }
+
+    /**
+     * @param mixed $id_aula_fk
+     */
+    public function setIdAulaFk($id_aula_fk): void
+    {
+        $this->id_aula_fk = $id_aula_fk;
     }
 
     /**
@@ -87,23 +106,23 @@ class HORARIO_CLASE_P extends CONEXION_M implements I_HORARIO_GPO
     {
         $this->duracion = $duracion;
     }
-    private $hora_inicio;
-    private $duracion;
 
 
-    function CrearHorario()
+    function queryInsertHorario()
     {
-        $query="INSERT INTO `horario_clase_presencial`(`id_horario_pres`, `id_asignacion_fk`, `id_aula_fk`, `dia_semana`, `hora_inicio`, `duracion`) 
-                VALUES (NULL,'".$this->getIdAsignacionFk()."','".$this->getIdAula()."','".$this->getDiaSemana()."','".$this->getHoraInicio()."','".$this->getDuracion()."');";
+        $query="INSERT INTO `horario_clase_presencial` (`id_horario_pres`, `id_grupo_fk`, `id_aula_fk`, `dia_semana`, `hora_inicio`, `duracion`) 
+        VALUES (NULL, '".$this->getIdGrupoFk()."', '".$this->getIdAulaFk()."', '".$this->getDiaSemana()."', '".$this->getHoraInicio()."', '".$this->getDuracion()."')";
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
         return $datos;
     }
 
-    function updateHorario()
+    function queryUpdateHorario()
     {
-        $query="UPDATE `horario_clase_presencial` SET `id_asignacion_fk`='".$this->getIdAsignacionFk()."',`id_aula_fk`='".$this->getIdAula()."',`dia_semana`='".$this->getDiaSemana()."',`hora_inicio`='".$this->getHoraInicio()."',`duracion`='".$this->getDuracion()."' WHERE `id_horario_pres`=".$this->getIdHorarioPres();
+        $query="UPDATE `horario_clase_presencial` SET `id_grupo_fk` = '".$this->getIdGrupoFk()."', `id_aula_fk` = '".$this->getIdAulaFk()."', 
+        `dia_semana` = '".$this->getDiaSemana()."', `hora_inicio` = '".$this->getHoraInicio()."', `duracion` = '".$this->getDuracion()."'
+         WHERE `horario_clase_presencial`.`id_horario_pres` = ".$this->getIdHorarioPres();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
@@ -126,7 +145,7 @@ class HORARIO_CLASE_P extends CONEXION_M implements I_HORARIO_GPO
                     from horario_clase_presencial hp, grupo gpo, aulas a
                     WHERE gpo.id_grupo = hp.id_grupo_fk
                       AND a.id_aula = hp.id_aula_fk
-                    AND gpo.id_grupo = ".$this->getIdGrupo()." ORDER BY hp.dia_semana";
+                    AND gpo.id_grupo = ".$this->getIdGrupoFk()." ORDER BY hp.dia_semana";
         $this->connect();
         $horario=$this->getData($query);
         $this->close();
