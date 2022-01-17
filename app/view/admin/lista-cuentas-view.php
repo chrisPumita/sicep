@@ -1,4 +1,8 @@
-<?php $titulo = "Cuentas Administrativas" ?>
+<?php $titulo = "Cuentas Administrativas";
+    session_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
