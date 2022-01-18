@@ -241,7 +241,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
         prof.`email`, prof.`fecha_registro`, prof.`estatus` AS estatus_profesor, 
         concat(per.nombre, ' ', per.app,' ', per.apm) AS nombre_completo,
-        depto.`nombre` AS depto_name,
+        depto.`nombre` AS depto_name, depto.id_depto,
         prof.`id_profesor`, prof.`no_trabajador`, prof.`prefijo`, 
         prof.`email`, prof.`fecha_registro`, 
         prof.`estatus` AS estatus_profesor,

@@ -48,7 +48,7 @@ async function consultaDeptosAjax() {
             type: 'POST',
             dataType: "json",
             success: function(data){
-                // console.log(data);
+                console.log(data);
             },
             error: function() {
                 alert("Error occured")

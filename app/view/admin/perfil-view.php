@@ -71,12 +71,12 @@
                         <div class="row">
                             <div class="col-md-3 border-right">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                    <img class="rounded-circle mt-5" width="150px" src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4">
+                                    <img class="rounded-circle mt-5" width="150px" id="avatarImagePerfil">
                                     <div class="file btn btn-lg btn-primary">
                                         <i class="fas fa-edit"></i>
                                         <input type="file" name="file"/>
                                     </div>
-                                    <span class="font-weight-bold">Christian</span><span class="text-black-50">chris@reckreastudios.com</span><span> </span>
+                                    <span class="font-weight-bold" id="nombreProfesorImg">Christian</span><span class="text-black-50" id="correoProfesorImg">chris@reckreastudios.com</span><span> </span>
                                 </div>
                             </div>
                             <div class="col-md-9 border-right">
@@ -86,27 +86,27 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-3 mb-3 mb-sm-0">
-                                            <select class="form-control" id="prefijo" name="prefijo">
-                                                <option>Lic.</option>
-                                                <option>Mto.</option>
-                                                <option>Dr.</option>
+                                            <select class="form-control" id="prefijoProfesor" name="prefijoProfesor">
+                                                <option value="Lic">Lic.</option>
+                                                <option value="Mto">Mto.</option>
+                                                <option value="Dr">Dr.</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-9 mb-3 mb-sm-0">
-                                            <input type="text" id="nombre_profesor" name="nombre_profesor" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                            <input type="text" id="nombre_profesor_perfil" name="nombre_profesor_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" id="app" name="app" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
+                                            <input type="text" id="app_perfil" name="app_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
                                         </div>
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" id="apm" name="apm" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                            <input type="text" id="apm_perfil" name="apm_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" id="sexo" name="sexo">
+                                            <select class="form-control" id="sexo_perfil" name="sexo_perfil">
                                                 <option value="0">Hombre</option>
                                                 <option value="1">Mujer</option>
                                             </select>
@@ -114,22 +114,22 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Telefono">
+                                            <input type="text" id="telefono_perfil" name="telefono_perfil" class="form-control" placeholder="Teléfono" aria-label="Telefono">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
+                                            <input type="text" id="correo_perfil" name="correo_perfil" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" id="notrabajador" name="notrabajador" class="form-control" placeholder="Número de Trabajador" aria-label="No. Trabajador">
+                                            <input type="text" id="notrabajador_perfil" name="notrabajador_perfil" class="form-control" placeholder="Número de Trabajador" aria-label="No. Trabajador">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <select class="form-control" id="depto" name="depto"><option value="5">Administracion</option><option value="6">Agricola</option><option value="2">Contabilidad</option><option value="3">IME</option><option value="1">Informatica</option><option value="7">ITSE</option><option value="4">Veterinaria</option></select>
+                                            <select class="form-control" id="depto_perfil" name="depto_perfil"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -203,6 +203,8 @@
 <?php include "includes/services-js.php"?>
 
 <!-- Agregar solo cuando exista una tabla para mostrar-->
+<script src="./service/asyn_rest.js"></script>
+<script src="./service/controlPerfil.js"></script>
 </body>
 
 </html>
