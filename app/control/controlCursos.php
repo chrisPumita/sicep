@@ -184,11 +184,28 @@ function deleteHorarioP($idHorario){
     return $HP->queryDeleteHorario();
 }
 
+//Funciones Horario virtual
 function getHorarioVirtual($idGrupo){
     include_once "../model/HORARIO_CLASE_V.php";
     $HV = new HORARIO_CLASE_V();
     $HV->setIdGrupo($idGrupo);
     return $HV->queryConsultaHorario();
+}
+
+//CRUD HV
+function insertUpdateHV($params){
+    include_once "../model/HORARIO_CLASE_V.php";
+    $HV = new HORARIO_CLASE_V();
+    $HV->setIdHorarioVirtual($params['idHorarioV']);
+    $HV->setIdGrupo($params['idGrupoFk']);
+    $HV->setDiaSemana($params['diaSemana']);
+    $HV->setHoraInicio($params['horaInicio']);
+    $HV->setDuracion($params['duracion']);
+    $HV->setReunion($params['reunion']);
+    $HV->setPlataforma($params['plataforma']);
+    $HV->setUrlReunion($params['urlReunion']);
+    $HV->setUrlPlataforma($params['urlPlataforma']);
+    return $params['idHorarioV']>0 ? $HV->queryUpdateHorario() : $HV->queryInsertHorario();
 }
 
 function getDescuentos($idCurso){

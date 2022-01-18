@@ -26,8 +26,9 @@
                 <form id="frm-add-hor-vir">
                 <div class="form-group row">
                     <div class="col-sm-12">
+                        <input type="hidden" id="idHorarioV">
                         <h6 class="text-start">Día de clase:</h6>
-                        <select class="form-control" id="diaClase">
+                        <select class="form-control" id="diaClaseV">
                             <option value="1">Lunes</option>
                             <option value="2">Martes</option>
                             <option value="3">Miércoles</option>
@@ -42,19 +43,19 @@
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <h6 class="text-start">Hora de Inicio:</h6>
-                        <input class="form-control" type="time" value="07:00:00" id="hrsInicio">
+                        <input class="form-control" type="time" value="07:00:00" id="hrsInicioV">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <h6 class="text-start">Hora de Termino:</h6>
-                        <input class="form-control" disabled type="time" value="07:30" id="hrsInicio">
+                        <input class="form-control" disabled type="time" value="07:30" id="hrsTerminoV">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <h6 class="text-start">Duración (minutos):</h6>
-                        <input class="form-control" type="number" value="30" id="minDuracion">
+                        <input class="form-control" type="number" value="30" id="minDuracionV">
                     </div>
                 </div>
                 
@@ -67,30 +68,29 @@
                     <div class="col-sm-12">
                         <h6 class="text-start">Plataforma virtual:</h6>
                         <select class="form-control" id="plataforma">
-                            <option value="">Aulas virtuales/Moddle</option>
-                            <option value="">Classroom</option>
-                            <option value="">Microsoft Teams</option>
-                            <option value="">Edmodo</option>
-                            <option value="">Grupo de Facebook</option>
-                            <option value="">Grupo de WhatsApp</option>
-                            <option value="">Otro</option>
+                            <option value="MODDLE">Aulas virtuales/Moddle</option>
+                            <option value="CLASSROOM">Classroom</option>
+                            <option value="TEAMS">Microsoft Teams</option>
+                            <option value="EDMODO">Edmodo</option>
+                            <option value="FACEBOOK">Grupo de Facebook</option>
+                            <option value="WHATSAPP">Grupo de WhatsApp</option>
+                            <option value="OTRO">Otro</option>
                         </select>
-                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                        
+                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma" id="linkPlataforma">
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <h6 class="text-start">Videoconferencias:</h6>
-                        <select class="form-control" id="generacion">
-                            <option value="">Zoom</option>
-                            <option value="">Meet</option>
-                            <option value="">Webex</option>
-                            <option value="">Microsoft Teams</option>
-                            <option value="">Facebook Messenger</option>
-                            <option value="">Otro</option>
+                        <select class="form-control" id="reunion">
+                            <option value="ZOOM">Zoom</option>
+                            <option value="MEET">Meet</option>
+                            <option value="WEBEX">Webex</option>
+                            <option value="TEAMS">Microsoft Teams</option>
+                            <option value="MESSENGER">Facebook Messenger</option>
+                            <option value="OTRO">Otro</option>
                         </select>
-                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkPlataforma">                         
+                        <input type="text" class="form-control mt-2" placeholder="Enlace" aria-label="linkreunion" id="linkreunion">                         
                     </div>
                 </div>              
             </div>
@@ -98,7 +98,7 @@
             <div class="modal-footer p-0">
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block" data-bs-dismiss="modal">
+                        <input type="submit" id="btnEnviar" name="btnEnviar" value="Guardar" class="btn btn-primary btn-user btn-block">
                     </div>
                 </div>
             </div>

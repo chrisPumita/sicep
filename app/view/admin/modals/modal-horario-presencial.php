@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="idHorarioPresencial">
+                <input type="hidden" id="idHorarioPresencial">
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <h6 class="text-start">Día de clase:</h6>

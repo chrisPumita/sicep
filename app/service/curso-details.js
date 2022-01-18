@@ -658,6 +658,7 @@ function buildHTMLHorarioContainers(HORARIOS) {
 function buildHtmlHVContainer(HVirtual) {
     //TRabajando con virtuales
     let template = "";
+    console.log(HVirtual);
     if (HVirtual.length>0){
         template =`<table class="table table-hover table-striped" id="tblPresencial">
                         <thead>
@@ -684,7 +685,7 @@ function buildHtmlHVContainer(HVirtual) {
                             <td><a href="${h.url_plataforma}" TARGET="_blank">${h.plataforma}</a></td>
                             <td><a href="${h.url_reunion}" TARGET="_blank">${h.reunion}</a></td>
                             <td>
-                                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="##horarioVirtual">
+                                <button class="btn btn-primary me-1 mb-1" onclick="editaHorarioVirtual(${h.id_horario_virtual},${h.dia_semana},'${h.hora_inicio}','${h.hora_term}',${h.duracion},'${h.plataforma}','${h.url_plataforma}','${h.reunion}','${h.url_reunion}')">
                                     <i class="fas fa-clock"></i> Editar</button>
                                 <button class="btn btn-danger me-1 mb-1 deleteHorario"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -693,7 +694,7 @@ function buildHtmlHVContainer(HVirtual) {
         );
         template += ` </tbody>
                     </table>
-                    <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                    <button class="btn btn-primary me-1 mb-1" onclick="agregaHorarioVirtual()">
                         <i class="fas fa-plus"></i>Agregar
                     </button>`;
     }
@@ -704,7 +705,7 @@ function buildHtmlHVContainer(HVirtual) {
                         <h4 class="alert-heading">Sin horario VIRTUAL</h4>
                         <p>No encontramos horarios registrados. Si este curso es solo PRESENCIAL omita este mensaje. Agregue el 
                     horario si es la primera vez que condigura este curso</p><hr>
-                         <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#horarioVirtual">
+                         <button class="btn btn-primary me-1 mb-1" onclick="agregaHorarioVirtual()">
                             <i class="fas fa-plus"></i>Agregar
                          </button>
                           </div>
@@ -715,7 +716,6 @@ function buildHtmlHVContainer(HVirtual) {
 
 function buildHtmlHPContainer(HPresencial) {
     //TRabajando con presenciales
-    console.log(HPresencial);
     let template = "";
     if (HPresencial.length>0){
         template =`<table class="table table-hover table-striped" id="tblPresencial">
@@ -803,7 +803,9 @@ $("#frm-add-horario-presencial").on("submit", function(e){
         $("#horarioPresencial").modal('hide');
         //Checar la funcion que se manda a llamar para volver a cargar todo
         let id= $("#grupos").val();
-        consultaHorario(id);
+        consultaHorario(id).then(function (e) {
+            buildHTMLHorarioContainers(e)
+        });
     });
     e.preventDefault();
 });
@@ -818,8 +820,61 @@ $(document).on("click", ".deleteHorarioP", function ()
             eliminaPreferencia(id,route).then(function () {
                 let id= $("#grupos").val();
                 //Checar la funcion que se manda a llamar para volver a cargar todo
-                consultaHorario(id);
+                consultaHorario(id).then(function (e) {
+                    buildHTMLHorarioContainers(e)
+                });
             });            
         }
     });
+});
+
+//Funciones para horario virtual CRUD
+
+function agregaHorarioVirtual(){
+    $("#horarioVirtual").modal('show');
+    $("#idHorarioV").val(0);
+    $("#diaClase").val(1);
+    $("#hrsInicio").val('07:00:00');
+    $("#minDuracion").val(30);
+    $("#plataforma").val('MODDLE');
+    $("#linkPlataforma").val('');
+    $("#reunion").val('ZOOM');
+    $("#linkreunion").val('');
+}
+function editaHorarioVirtual(idHorarioV,diaSemana,horaInicio,horaTerm,duracion,plataforma,urlPlataforma,reunion,urlReunion){
+    $("#horarioVirtual").modal('show');
+    $("#idHorarioV").val(idHorarioV);
+    $("#diaClaseV").val(diaSemana);
+    $("#hrsInicioV").val(horaInicio);
+    $("#hrsTerminoV").val(horaTerm);
+    $("#minDuracionV").val(duracion);
+    $("#plataforma").val(plataforma);
+    $("#linkPlataforma").val(urlPlataforma);
+    $("#reunion").val(reunion);
+    $("#linkreunion").val(urlReunion);
+}
+//Funcion submit del modal
+$("#frm-add-hor-vir").on("submit", function(e){
+    let route= "./webhook/crud-horario-v.php";
+    var params={
+        idHorarioV: $("#idHorarioV").val(),
+        idGrupo:$("#grupos").val(),
+        dia:$("#diaClaseV").val() ,
+        horaInicio :$("#hrsInicioV").val(),
+        duracion : $("#minDuracionV").val(),
+        reunion : $("#reunion").val(),
+        urlReunion : $("#linkreunion").val(),
+        plataforma : $("#plataforma").val(),
+        urlPlataforma : $("#linkPlataforma").val()
+    };
+    enviaForm(params,route).then(function () {
+        $("#frm-add-hor-vir").trigger('reset');
+        $("#horarioVirtual").modal('hide');
+        //Checar la funcion que se manda a llamar para volver a cargar todo
+        let id= $("#grupos").val();
+        consultaHorario(id).then(function (e) {
+            buildHTMLHorarioContainers(e)
+        });
+    });
+    e.preventDefault();
 });
