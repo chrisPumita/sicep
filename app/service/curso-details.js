@@ -13,7 +13,6 @@ $(document).ready(function() {
 
 function cargaListaDocsModal() {
     consultaDocsAsync().then(function (JSONData) {
-        console.log(JSONData);
         let template = "";
         JSONData.forEach(
             (doc)=>{template+= `<option value="${doc.id_documento}">${doc.nombre_doc}</option>`; }
@@ -84,10 +83,8 @@ function cambiaEstado(estatus,mensaje){
                 success: function(data){
                     let id = ID_CURSO;
                     cargaCursoDetails(1,id);
-                    console.log(data);
                 },
                 error: function(e) {
-                    console.log(e);
                     alert("Error occured")
                 }
             });
@@ -211,7 +208,6 @@ function cargaTblDocumentacion(id) {
 }
 
 function buildTBLHtmlDocsSol(DOSC) {
-    console.log(DOSC);
     let template;
     if (DOSC.length > 0) {
         template= `
@@ -380,7 +376,6 @@ $("#inputPDF").on("submit", function(e){
         $("#inputPDF").trigger('reset');
         let id= ID_CURSO;
         cargaCursoDetails(-1,id);
-        console.log(res);
     });
     e.preventDefault();
 });
@@ -574,7 +569,6 @@ function buildTBLHtmlDescuentos(DESCUENTOS) {
     }
     $("#containerDescuentos").html(template);
 }
-
 //CRUD DESCUENTO
 function editaDescuentoCurso(idProcedencia,nombreProcedencia,descuento){
     $("#editarDescuentos").modal('show');
@@ -606,7 +600,7 @@ function addDescCurso() {
         idProcedencia : $("#listProcedencias").val(),
         descuento: $("#descuentoProcedencia").val()
     }
-    console.log(params)
+    
     let route= "./webhook/add-descuento.php";
     enviaForm(params,route).then(function () {
         $("#frm-add-desc").trigger('reset');
@@ -654,11 +648,9 @@ function buildHTMLHorarioContainers(HORARIOS) {
     buildHtmlHPContainer(HORARIOS.HP);
     buildHtmlHVContainer(HORARIOS.HV);
 }
-
 function buildHtmlHVContainer(HVirtual) {
     //TRabajando con virtuales
     let template = "";
-    console.log(HVirtual);
     if (HVirtual.length>0){
         template =`<table class="table table-hover table-striped" id="tblPresencial">
                         <thead>
