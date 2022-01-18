@@ -129,10 +129,11 @@ class HORARIO_CLASE_P extends CONEXION_M implements I_HORARIO_GPO
         return $datos;
     }
 
-    function eliminarhorario()
+    function queryDeletehorario()
     {
+        $query="DELETE FROM `horario_clase_presencial` WHERE `horario_clase_presencial`.`id_horario_pres` = ".$this->getIdHorarioPres();
         $this->connect();
-        $datos = $this-> executeInstruction("DELETE FROM `horario_clase_presencial` WHERE `id_horario_pres`=".$id_Asignatura);
+        $datos = $this-> executeInstruction($query);
         $this->close();
         return $datos;
     }

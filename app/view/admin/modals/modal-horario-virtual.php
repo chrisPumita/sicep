@@ -23,6 +23,7 @@
                         </div>
                     </div>
                 </div>
+                <form id="frm-add-hor-vir">
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <h6 class="text-start">Día de clase:</h6>
@@ -101,6 +102,7 @@
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

@@ -159,17 +159,18 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_GPO
 
     function queryInsertHorario()
     {
-        $query = "INSERT INTO `horario_clase_virtual`(`id_horario_virtual`, `id_asignacion_fk`, `dia_semana`, `hora_inicio`, `duracion`, `reunion`, `plataforma`, `url_reunion`, `url_plataforma`) 
-                    VALUES (NULL,'".$this->getIdAsignacionFk()."','".$this->getDiaSemana()."','".$this->getHoraInicio()."','".$this->getDuracion()."','".$this->getReunion()."','".$this->getPlataforma()."','".$this->getUrlReunion()."','".$this->getUrlPlataforma()."')";
+        $query="INSERT INTO `horario_clase_virtual` (`id_horario_virtual`, `id_grupo_fk`, `dia_semana`, `hora_inicio`, `duracion`, `reunion`, 
+        `plataforma`, `url_reunion`, `url_plataforma`) VALUES (NULL, '".$this->getIdGrupo()."', '".$this->getDiaSemana()."', '".$this->getHoraInicio()."',
+         '".$this->getDuracion()."', '".$this->getReunion()."', '".$this->getPlataforma()."', '".$this->getUrlReunion()."', '".$this->getUrlPlataforma()."')";
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
         return $datos;
     }
 
-    function eliminarhorario()
+    function queryDeletehorario()
     {
-        $query = "DELETE FROM `horario_clase_virtual` WHERE `id_horario_virtual`=" . $id_horario_v;
+        $query = "DELETE FROM `horario_clase_virtual` WHERE `id_horario_virtual`=" .$this->getIdHorarioVirtual();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
@@ -178,7 +179,9 @@ class HORARIO_CLASE_V extends CONEXION_M implements I_HORARIO_GPO
 
     function queryUpdateHorario()
     {
-        $query = "UPDATE `horario_clase_virtual` SET `id_asignacion_fk`='".$this->getIdAsignacionFk()."',`dia_semana`='".$this->getDiaSemana()."',`hora_inicio`='".$this->getHoraInicio()."',`duracion`='".$this->getDuracion()."',`reunion`='".$this->getReunion()."',`plataforma`='".$this->getPlataforma()."',`url_reunion`='".$this->getUrlReunion()."',`url_plataforma`='".$this->getUrlPlataforma()."' WHERE `id_horario_virtual`=".$this->getIdHorarioVirtual();
+        $query="UPDATE `horario_clase_virtual` SET `id_grupo_fk` = '".$this->getIdGrupo()."', `dia_semana` = '".$this->getDiaSemana()."', 
+        `hora_inicio` = '".$this->getHoraInicio()."', `duracion` = '".$this->getDuracion()."', `reunion` = '".$this->getReunion()."', 
+        `plataforma` = '".$this->getPlataforma()."', `url_reunion` = '".$this->getUrlReunion()."', `url_plataforma` = '".$this->getUrlPlataforma()."' WHERE `horario_clase_virtual`.`id_horario_virtual` = ".$this->getIdHorarioVirtual();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();

@@ -176,6 +176,13 @@ function insertUpdateHorarioP($params){
     $HP->setDuracion($params['duracion']);
     return $params['idHorarioPres']>0 ? $HP->queryUpdateHorario() : $HP->queryInsertHorario();
 }
+//Funcion elimina horario presencial
+function deleteHorarioP($idHorario){
+    include_once "../model/HORARIO_CLASE_P.php";
+    $HP = new HORARIO_CLASE_P();
+    $HP->setIdHorarioPres($idHorario);
+    return $HP->queryDeleteHorario();
+}
 
 function getHorarioVirtual($idGrupo){
     include_once "../model/HORARIO_CLASE_V.php";
