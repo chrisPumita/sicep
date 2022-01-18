@@ -207,7 +207,13 @@ function insertUpdateHV($params){
     $HV->setUrlPlataforma($params['urlPlataforma']);
     return $params['idHorarioV']>0 ? $HV->queryUpdateHorario() : $HV->queryInsertHorario();
 }
-
+//Funcion elimina Horario Virtual
+function deleteHorarioV($idHorario){
+    include_once "../model/HORARIO_CLASE_V.php";
+    $HV = new HORARIO_CLASE_V();
+    $HV->setIdHorarioVirtual($idHorario);
+    return $HV->queryDeleteHorario();
+}
 function getDescuentos($idCurso){
     include_once "../model/DESCUENTOS.php";
     $DESC = new DESCUENTOS();

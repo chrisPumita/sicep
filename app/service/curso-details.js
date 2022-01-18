@@ -687,7 +687,7 @@ function buildHtmlHVContainer(HVirtual) {
                             <td>
                                 <button class="btn btn-primary me-1 mb-1" onclick="editaHorarioVirtual(${h.id_horario_virtual},${h.dia_semana},'${h.hora_inicio}','${h.hora_term}',${h.duracion},'${h.plataforma}','${h.url_plataforma}','${h.reunion}','${h.url_reunion}')">
                                     <i class="fas fa-clock"></i> Editar</button>
-                                <button class="btn btn-danger me-1 mb-1 deleteHorario"><i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-danger me-1 mb-1 deleteHorarioV"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
             }
@@ -877,4 +877,21 @@ $("#frm-add-hor-vir").on("submit", function(e){
         });
     });
     e.preventDefault();
+});
+$(document).on("click", ".deleteHorarioV", function ()
+{
+    let ElementDOM = $(this)[0].parentElement.parentElement;
+    let id = $(ElementDOM).attr("id_horario");
+    var route= "./webhook/delete-horario-v.php";
+    sweetConfirm('Eliminar Horario', '¿Estas seguro de que deseas eliminar este Horario?', function (confirmed) {
+        if (confirmed) {
+            eliminaPreferencia(id,route).then(function () {
+                let id= $("#grupos").val();
+                //Checar la funcion que se manda a llamar para volver a cargar todo
+                consultaHorario(id).then(function (e) {
+                    buildHTMLHorarioContainers(e)
+                });
+            });            
+        }
+    });
 });
