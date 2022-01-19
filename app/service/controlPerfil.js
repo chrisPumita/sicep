@@ -1,11 +1,12 @@
 $(document).ready(function() {
     consultaIdProfesor();
-    consultaDeptos();
 });
-
-async function consultaDeptos() {
+window.onload = function() {
+    consultaDeptosPerfil();
+  };
+async function consultaDeptosPerfil() {
     const JSONData = await consultaDeptosAjax();
-    buildSelectDptos(JSONData);
+    buildSelectDeptosPerfil(JSONData);
 }
 
 function consultaIdProfesor(){
@@ -39,12 +40,13 @@ function buildHTMLDatosPeril(datosProfesor){
     $("#correo_perfil").val(profesor.email);
     $("#notrabajador_perfil").val(profesor.no_trabajador);
     $("#depto_perfil").val(profesor.id_depto);
+    $("#idProfesor").val(profesor.id_profesor);
     //Pintamos HTML debajo de imagen de perfil
     $("#nombreProfesorImg").html(profesor.nombre);
     $("#correoProfesorImg").html(profesor.email);
 }
 
-function buildSelectDptos(departamentos){
+function buildSelectDeptosPerfil(departamentos){
     console.log(departamentos);
     let template = "";
     departamentos.forEach(
@@ -54,4 +56,9 @@ function buildSelectDptos(departamentos){
         }
     );
     $("#depto_perfil").html(template);
+}
+function editaFotoPerfil(){
+    let idProfesor= $("#idProfesor").val();
+    $("#idProfesorImg").val(idProfesor);
+    $("#updateFotoPerfil").modal('show');
 }

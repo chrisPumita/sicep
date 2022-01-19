@@ -72,10 +72,7 @@
                             <div class="col-md-3 border-right">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                     <img class="rounded-circle mt-5" width="150px" id="avatarImagePerfil">
-                                    <div class="file btn btn-lg btn-primary">
-                                        <i class="fas fa-edit"></i>
-                                        <input type="file" name="file"/>
-                                    </div>
+                                        <button class="btn btn-primary" type="button" id="inputGroupFileAddon04" onclick="editaFotoPerfil()"> <i class="fas fa-edit"></i></i> Editar</button>
                                     <span class="font-weight-bold" id="nombreProfesorImg">Christian</span><span class="text-black-50" id="correoProfesorImg">chris@reckreastudios.com</span><span> </span>
                                 </div>
                             </div>
@@ -86,6 +83,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-3 mb-3 mb-sm-0">
+                                            <input type="text" id="idProfesor">
                                             <select class="form-control" id="prefijoProfesor" name="prefijoProfesor">
                                                 <option value="Lic">Lic.</option>
                                                 <option value="Mto">Mto.</option>
@@ -124,7 +122,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                            <input type="text" id="notrabajador_perfil" name="notrabajador_perfil" class="form-control" placeholder="Número de Trabajador" aria-label="No. Trabajador">
+                                            <input type="text" id="notrabajador_perfil" name="notrabajador_perfil" disabled=""class="form-control" placeholder="Número de Trabajador" aria-label="No. Trabajador">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -132,6 +130,7 @@
                                             <select class="form-control" id="depto_perfil" name="depto_perfil"></select>
                                         </div>
                                     </div>
+                                    <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04"><i class="fas fa-sync-alt"></i> Actualizar</button>
                                 </div>
                             </div>
                         </div>
@@ -195,13 +194,13 @@
             <?php include "modals/modal-cambiar-clave.php"?>
             <?php include "modals/modal-llave.php"?>
             <?php include "modals/modal-firma-digital.php"?>
+            <?php include "modals/modal-update-foto-perfil.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
-
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="./service/asyn_rest.js"></script>
 <script src="./service/controlPerfil.js"></script>
