@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    consultaIdProfesor();
+    consultaPefilProfesor().then(function (resultado) {
+        buildHTMLDatosPeril(resultado);
+    })
 });
 window.onload = function() {
     consultaDeptosPerfil();
@@ -9,26 +11,10 @@ async function consultaDeptosPerfil() {
     buildSelectDeptosPerfil(JSONData);
 }
 
-function consultaIdProfesor(){
-    $.ajax({
-        url: "./webhook/datos-profesor.php",
-        type: 'POST',
-        dataType: "json",
-        data: { },
-        success: function(data){
-                //console.log(data);
-                buildHTMLDatosPeril(data);
-        },
-        error: function(e) {
-            alert("Error occured")
-            //console.log(e);
-        }
-    });
-}
+
 
 //Constructor de datos HTML del profesor
-function buildHTMLDatosPeril(datosProfesor){
-    let profesor=datosProfesor[0];
+function buildHTMLDatosPeril(profesor){
     console.log(profesor);
     $("#avatarImagePerfil").attr("src",profesor.img_perfil);
     $("#prefijoProfesor").val(profesor.prefijo);

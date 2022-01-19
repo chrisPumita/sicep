@@ -1,10 +1,9 @@
 <?php
 session_start();
-$idProfesor = $_SESSION['idProfesor'];
     include_once "../control/controlProfesor.php";
-    $profes = consultaProfesores(0,$idProfesor);
-    if(count($profes)>0){
-        echo json_encode($profes);
+    $profe = consultaProfesores(0,$_SESSION['idProfesor']);
+    if(count($profe)>0){
+        echo json_encode($profe[0]);
     } else{
         $mjeType=0;
         $mjeText="No se han encontrado datos";

@@ -377,11 +377,11 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         return $datos;
     }
 
-    function queryUpdatePw($id_profesor,$pw)
+    function queryUpdatePw()
     {
         $query="UPDATE `profesor` 
-        SET `pw`='".$pw."' 
-        WHERE `id_profesor`=".$id_profesor;
+        SET `pw`='".$this->getPw()."' 
+        WHERE `id_profesor`=".$this->getIdProfesor();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();

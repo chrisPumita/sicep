@@ -73,10 +73,31 @@ function consultaListaNoAdmin(){
     return $obj_prof -> queryListProfesoresNoAdmin();
 }
 
-function consultaCuentaProfesor($email,$pw){
+function consultaCuentaProfesor($email,$pwEncrypted){
     include_once "../model/PROFESOR.php";
     $PROF = new PROFESOR();
     $PROF->setEmail($email);
-    $PROF->setPw($pw);
+    $PROF->setPw($pwEncrypted);
     return $PROF->queryCountProfesor();
+}
+
+function cambiaContrasenia($id,$email,$pwAnterior,$nueva){
+    $tmpProfe = consultaCuentaProfesor($email,md5($pwAnterior));
+    if (count($tmpProfe)>0){
+        include_once "../model/PROFESOR.php";
+        $prof = new PROFESOR();
+        $prof->setIdProfesor($id);
+        $prof->setPw(md5($nueva));
+        return $prof->queryUpdatePw();
+    }
+    else{
+        return false;
+    }
+}
+
+
+function actualizaPerfil($datos){
+
+    //aqui se actualiza la sesion
+    
 }

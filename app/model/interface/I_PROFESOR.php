@@ -15,7 +15,7 @@ interface I_PROFESOR
 
     function queryUpdateProfesor();
 
-    function queryUpdatePw($id_profesor,$pw);
+    function queryUpdatePw();
 
     function queryDeleteProfesor($id_profesor);
 

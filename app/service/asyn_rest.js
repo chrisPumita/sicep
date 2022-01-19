@@ -567,3 +567,22 @@ async function consultaAsyncFichaInscAJAX(idInscipcion,filtro){
     });
 }
 
+async function consultaPefilProfesorAjax(){
+    return $.ajax({
+        url: "./webhook/datos-profesor.php",
+        type: 'POST',
+        dataType: "json",
+        data: { },
+        success: function(data){
+            //console.log(data);
+        },
+        error: function(e) {
+            alert("Error occured")
+            //console.log(e);
+        }
+    });
+}
+
+async function consultaPefilProfesor() {
+    return await consultaPefilProfesorAjax();
+}

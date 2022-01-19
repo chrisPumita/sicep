@@ -201,6 +201,31 @@
 </div>
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
+<script>
+
+    $(document).on("click", ".custom-file-input", function() {
+        var file = $(this).parents().find(".file");
+        file.trigger("click");
+    });
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#preview").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+
+</script>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <script src="./service/asyn_rest.js"></script>
 <script src="./service/controlPerfil.js"></script>

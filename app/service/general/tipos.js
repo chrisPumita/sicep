@@ -170,30 +170,30 @@ function getNivelPermisos(nivel) {
 
 function diaSemana(dia) {
     switch (dia) {
-        case "0":
+        case "1":
             return "LUNES";
             break;
-        case "1":
+        case "2":
             return "MARTES";
             break;
-        case "2":
-            return "MIERCOLES";
-            break;
         case "3":
-            return "JUEVES";
+            return "MIERCOLES";
             break;
         case "4":
-            return "VIERNES";
+            return "JUEVES";
             break;
         case "5":
-            return "SABADO";
+            return "VIERNES";
             break;
         case "6":
-            return "MIERCOLES";
+            return "SABADO";
+            break;
+        case "7":
+            return "DOMINGO";
             break;
 
         default:
-            return "DOMINGO";
+            return "ERROR";
             break;
     }
 }
