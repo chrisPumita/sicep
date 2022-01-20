@@ -77,7 +77,8 @@ function consultaAcredita($idCurso){
     include_once "../model/CURSO.php";
     //return json_encode(CURSO::consultaAcredita($idCurso));
     $obj_curso= new CURSO();
-    return $obj_curso->consultaAcreditacion($idCurso);
+    $obj_curso->setIdCurso($idCurso);
+    return $obj_curso->consultaAcreditacion();
 }
 
 //Actualiza el estatus del curso
