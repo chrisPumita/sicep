@@ -55,7 +55,6 @@ function nuevoDepto(){
 //******* C R U  D    D E P A R T A M E N T O V.2.1 Chris RCSG **********************
 $("#frm-depto").on("submit", function(e){
     //Ruta del Webbhook
-    e.preventDefault();
     let ruta = "./webhook/crud-depto.php";
     //Parametros que se van a enviar encapsulados
     var params = {
@@ -67,6 +66,7 @@ $("#frm-depto").on("submit", function(e){
         $("#modal_depto").modal('hide');
         consultaDeptos();
     });
+    e.preventDefault();
 });
 
 //Elimar depto

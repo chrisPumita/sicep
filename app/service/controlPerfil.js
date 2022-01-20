@@ -48,3 +48,27 @@ function editaFotoPerfil(){
     $("#idProfesorImg").val(idProfesor);
     $("#updateFotoPerfil").modal('show');
 }
+
+//Update datos del perfil
+$("#frm-update-perfil-profesor").on("submit", function(e){
+    //Ruta del Webbhook
+    let ruta = "./webhook/update-datos-profesor.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        prefijo : $("#prefijoProfesor").val(),
+        nombre_profesor : $("#nombre_profesor_perfil").val(),
+        app_profesor : $("#app_perfil").val(),
+        apm_profesor : $("#apm_perfil").val(),
+        sexo : $("#sexo_perfil").val(),
+        telefono : $("#telefono_perfil").val(),
+        correo : $("#correo_perfil").val(),
+        departamento : $("#depto_perfil").val()
+    };
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        consultaPefilProfesor().then(function (resultado) {
+            buildHTMLDatosPeril(resultado);
+        })
+    });
+    e.preventDefault();
+});

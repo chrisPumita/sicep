@@ -96,8 +96,34 @@ function cambiaContrasenia($id,$email,$pwAnterior,$nueva){
 }
 
 
-function actualizaPerfil($datos){
-
-    //aqui se actualiza la sesion
-
+function actualizaPerfil($params){
+    include_once "../model/PROFESOR.php";
+    $PROF = new PROFESOR();
+    //Seteamos todos los datos que se cambiaron
+    //Datos de la persona 
+    session_start();
+    $PROF->setIdPersona($_SESSION['idPersona']);
+    $PROF->setNombre($params['nombre']);
+    $PROF->setApp($params['app']);
+    $PROF->setApm($params['apm']);
+    $PROF->setTelefono($params['telefono']);
+    $PROF->setSexo($params['sexo']);
+    //Datos del profesor
+    $PROF->setIdProfesor($_SESSION['idProfesor']);
+    $PROF->setIdDeptoFk($params['idDepartamento']);
+    $PROF->setPrefijo($params['prefijo']);
+    $PROF->setEmail($params['correo']);
+    if($PROF->queryUpdatePersona()){
+        //Si se actualiza la persona, se actualiza al profesor
+        if($PROF->queryUpdateProfesor()){
+            //Si se actualiza el profesor, actualizamos la session
+            $_SESSION['usuario']= $PROF->getNombre();
+            $_SESSION['apaterno']= $PROF->getApp();
+            $_SESSION['amaterno']= $PROF->getApm();
+            $_SESSION['correo_user']= $PROF->getEmail();
+            $_SESSION['nombre_completo']= $PROF->getNombre()." ".$PROF->getApp()." ".$PROF->getApm();
+            return true;
+        }
+    }
+    return false;
 }

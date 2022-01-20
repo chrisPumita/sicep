@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-3 mb-3 mb-sm-0">
-                                            <input type="text" id="idProfesor">
+                                            <form id="frm-update-perfil-profesor">
                                             <select class="form-control" id="prefijoProfesor" name="prefijoProfesor">
                                                 <option value="Lic">Lic.</option>
                                                 <option value="Mto">Mto.</option>
@@ -130,8 +130,9 @@
                                             <select class="form-control" id="depto_perfil" name="depto_perfil"></select>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04"><i class="fas fa-sync-alt"></i> Actualizar</button>
+                                    <button class="btn btn-primary" type="submit" ><i class="fas fa-sync-alt"></i> Actualizar</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

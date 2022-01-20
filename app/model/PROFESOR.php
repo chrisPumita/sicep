@@ -367,7 +367,6 @@ class PROFESOR extends PERSONA implements I_PROFESOR
         $query="UPDATE `profesor` 
         SET 
         `id_depto_fk`='".$this->getIdDeptoFk()."',
-        `no_trabajador`='".$this->getNoTrabajador()."',
         `prefijo`='".$this->getPrefijo()."',
         `email`='".$this->getEmail()."' 
         WHERE `id_profesor`=".$this->getIdProfesor();
