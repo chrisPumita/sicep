@@ -52,7 +52,8 @@ function cargaCursosDataTable() {
                 { data: 'nombre_curso',
                     render: function ( data, type, row ){
                         //funcion de tipos.js
-                        value = estadoCursoApoved(row.aprobado);
+                        acreditado = row.id_profesor_admin_acredita != null ? true:false;
+                        value = estadoCursoApoved(row.aprobado,acreditado);
                         return value+ ' '+row.nombre_curso;
                     }
                 },

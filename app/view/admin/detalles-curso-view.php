@@ -65,10 +65,7 @@ $titulo = "Detalles del curso"
                                     perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
                                     necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
                                 </div>
-                                <div class="col-sm-2 align-items-center">
-                                    <button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(<?php echo $id ?>)">
-                                        <i class="fas fa-users"></i> Abrir grupo</button>
-                                </div>
+                                <div class="col-sm-2 align-items-center" id="btnAbrirCurso" > </div>
                             </div>
                         </div>
                     </div>
@@ -319,10 +316,7 @@ $titulo = "Detalles del curso"
                                         </form>
                                     </div>
                                     <hr>
-                                    <div class="col-sm-12 d-flex justify-content-end">
-                                        <span id="filePDF" class="me-1 mb-1"></span>
-                                        <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                                        <a href="#" class="btn btn-outline-danger me-1 mb-1" onclick="removeTemario()"><i class="fas fa-times"></i></a></div>
+                                    <div class="col-sm-12 d-flex justify-content-end" id="containerPDF"></div>
                                 </div>
                             </div>
                         </div>
@@ -526,7 +520,6 @@ $titulo = "Detalles del curso"
 <!-- INCLUDE SERIVES AJAX
     <script src="./service/lista-alumnos.js"></script>
 -- INCLUDE DATATABLE -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
 
 <!--CARGAR SERVICIOS AJAX-->

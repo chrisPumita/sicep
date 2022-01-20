@@ -69,7 +69,7 @@ function cargaDataTableAsignaciones(idCurso) {
                 {
                     data: 'ACTIONS',
                     render: function ( data, type, row ){
-                        let template = '<a href="#" class="btn btn-primary viewAsignacion  me-1 mb-1" onclick="openAsig('+row.id_asignacion+');"><i class="far fa-eye"></i>&nbsp;</a><button class="btn btn-info me-1 mb-1"><i class="fas fa-list"></i></button>';
+                        let template = '<a href="#" class="btn btn-primary viewAsignacion  me-1 mb-1" onclick="openAsig('+row.id_asignacion+');"><i class="far fa-eye"></i>&nbsp;</a>';
                         return template;
                     }
                 }

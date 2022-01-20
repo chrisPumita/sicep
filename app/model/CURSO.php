@@ -545,9 +545,9 @@ class CURSO extends CONEXION_M implements I_CURSO
         return $datos;
     }
 
-    public function queryUpdateEstatusCurso($id){
+    public function queryUpdateEstatusCurso(){
         //Cuando se acredita, se genera el profesor acredita, sino, significa que solo se desactiva
-        $filtro= $id>0 ? "`id_profesor_admin_acredita` = '".$this->getIdProfesorAdminAcredita()."'," : "";
+        $filtro= $this->getIdProfesorAdminAcredita() > 0 ? "`id_profesor_admin_acredita` = '".$this->getIdProfesorAdminAcredita()."'," : "";
         $query = "UPDATE `curso` SET ".$filtro." `aprobado` = '".$this->getAprobado()."' WHERE `curso`.`id_curso` =".$this->getIdCurso();
         $this->connect();
         $result = $this->executeInstruction($query);

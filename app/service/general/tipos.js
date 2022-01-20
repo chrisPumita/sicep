@@ -103,10 +103,18 @@ function getEstatusAsignacionColorIndicator(tipo){
     }
 }
 
-function estadoCursoApoved(aprobado) {
+function estadoCursoApoved(aprobado,acreditado) {
     let n = parseInt(aprobado)
-    let color = n == 1 ? `success` : `warning`;
-    let texto = n == 1 ? `<i class="fas fa-check-circle"></i>` : `<i class="fas fa-hourglass-half"></i>`;
+    let color,texto;
+    if (acreditado){
+        color = n == 1 ? `success` : `warning`;
+        texto = n == 1 ? `<i class="fas fa-check-circle"></i>` : `<i class="fas fa-hourglass-half"></i>`;
+    }
+    else{
+        color = "info";
+        texto =`<i class="fas fa-exclamation-triangle"></i>`;
+    }
+
     return `<span class="badge bg-${color}">${texto}</span>`;
 }
 

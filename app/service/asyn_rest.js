@@ -586,3 +586,28 @@ async function consultaPefilProfesorAjax(){
 async function consultaPefilProfesor() {
     return await consultaPefilProfesorAjax();
 }
+
+///////// ACREDITACION DEL CURSO
+
+
+async function consultaDetailsAcredCursoAjax(id_Curso){
+    return $.ajax({
+        url:"./webhook/acreditacion-curso.php",
+        data: {
+            idCurso : id_Curso
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data){
+            //console.log(data);
+        },
+        error: function(e) {
+            alert("Error occured")
+            //console.log(e);
+        }
+    });
+}
+
+async function consultaDetailsAcredCurso(id_Curso) {
+    return await consultaPefilProfesorAjax(id_Curso);
+}

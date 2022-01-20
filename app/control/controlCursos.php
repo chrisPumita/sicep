@@ -81,20 +81,21 @@ function consultaAcredita($idCurso){
 }
 
 //Actualiza el estatus del curso
-function actualizaEstatusCurso($idCurso,$estatus){
+function actualizaEstatusCurso($idCurso,$estatus,$isAcredit){
     include_once "../model/CURSO.php";
     $CURSO= new CURSO();
-    //Inicamos la session
-    session_start();
-    $idProfesorAcredita= $_SESSION['idProfesor'];
     $CURSO->setIdCurso($idCurso);
     $CURSO->setAprobado($estatus);
-    //Acredita 1 inhabilita 0
-    $id= $estatus>0 ? 1 : 0;
+    if($isAcredit){
+        $CURSO->setIdProfesorAdminAcredita(0);
+        //ya esta acreditado solo cambiamos el estado
+    }
+    else{
+        session_start();
+        $CURSO->setIdProfesorAdminAcredita($_SESSION['idProfesor']);
+    }
     //Seteamos el id para el profesor admin acredita
-    $CURSO->setIdProfesorAdminAcredita($idProfesorAcredita);
-    return $CURSO->queryUpdateEstatusCurso($id);
-
+    return $CURSO->queryUpdateEstatusCurso();
 }
 
 //COnsulta de temario de curso especifico
