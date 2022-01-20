@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-8 form-group">
                             <input type="hidden" id="id_tema" name="id_tema" value="0">
-                            <input type="text" class="form-control" name="indice" id="indice" placeholder="Ejemplo 1.2.1">
+                            <input type="text" class="form-control" name="indice" id="indice" placeholder="Ejemplo 1.2.1" required="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -41,7 +41,7 @@
                             <label for="nombre_tema" class="text-primary">Tema:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="text" class="form-control" name="nombre_tema" id="nombre_tema" placeholder="Escriba el nombre del tema">
+                            <input type="text" class="form-control" name="nombre_tema" id="nombre_tema" placeholder="Escriba el nombre del tema" required="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -49,7 +49,7 @@
                             <label for="descripcion-tema" class="text-primary">Descripción:</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <textarea class="form-control" id="descripcion-tema" name="descripcion-tema" rows="3" placeholder="Describa el tema"></textarea>
+                            <textarea class="form-control" id="descripcion-tema" name="descripcion-tema" rows="3" placeholder="Describa el tema" required=""></textarea>
                         </div>
                     </div>
                 </div>
