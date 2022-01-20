@@ -6,7 +6,6 @@ $(document).ready(function() {
 
 function cargaAsignacionesActuales() {
     consultaAsyncHistorialAsign(3,1).then(function (datos) {
-        console.log(datos);
         buildHTMLCards(datos);
     })
 }
@@ -17,14 +16,8 @@ function buildHTMLCards(lista) {
     lista.forEach(
         (doc)=>{
             let colorStatusCurso = getEstatusAsignacionColorIndicator(doc.statusAsignacion);
-            let btnSolic = parseInt(doc.solicitudesPendientes) >0 ? `
-                        <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                <i class="fas fa-clipboard-check"></i>Solicitudes <span class="badge bg-danger">4</span>
-                        </button>`
-                :`
-                <button class="btn btn-primary mr-3 me-1 mb-1" disabled data-bs-toggle="modal" data-bs-target="#addNewProfesor">
-                                <i class="fas fa-clipboard-check"></i>Sin solicitudes
-                        </button>`;
+            let btnSolic = parseInt(doc.solicitudesPendientes) >0 ? `<span class="badge bg-danger">${doc.solicitudesPendientes}</span>`
+                :``;
             let visible = doc.visible_publico === "1" ? '':'<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>';
             contador++;
             template+= `
@@ -98,7 +91,9 @@ function buildHTMLCards(lista) {
                         <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(${doc.id_asignacion});">
                                 <i class="fas fa-plus"></i> Mas info
                         </button>
-                        ${btnSolic}
+                        <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                <i class="fas fa-clipboard-check"></i>Solicitudes ${btnSolic}
+                        </button>
                     </div>
                 </div>`;
         }

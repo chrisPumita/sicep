@@ -81,6 +81,8 @@
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-documentos-alumno.php"?>
+            <?php include "modals/modal-vista-documento.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
@@ -97,6 +99,7 @@
 <script src="./service/general/tipos.js"></script>
 <script src="./service/general/tools.js"></script>
 <script src="./service/datatable-lista-solicitudes.js"></script>
+<script src="./service/documentacion-gral.js"></script>
 </body>
 
 </html>

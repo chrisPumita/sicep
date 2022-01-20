@@ -132,7 +132,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tab-pane active" id="list-2-1" role="tabpanel" aria-labelledby="list-profile-list">
-                                                                                <div class="table-responsive" id="containerDocs-1">
+                                                                                <div  id="containerDocs-1">
                                                                                     <table class="table table-hover table-lg">
                                                                                         <tbody></tbody>
                                                                                         <thead>

@@ -83,12 +83,19 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <h5 class="text-start">Modalidad:</h5>
                             <select class="form-control" id="modalidad">
                                 <option value="0">Presencial</option>
                                 <option value="1">En Línea</option>
                                 <option value="2">Mixto</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="text-start">Visibilidad:</h5>
+                            <select class="form-control" id="visibilidad">
+                                <option value="0">Ocultar</option>
+                                <option value="1">Visible</option>
                             </select>
                         </div>
                         <div class="col-md-3">

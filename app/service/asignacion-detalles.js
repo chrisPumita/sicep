@@ -3,6 +3,7 @@ let ID_ASIG = $("#idAsignacion").val();
 $(document).ready(function() {
     consultaListaProfesores();
     loadGeneraciones();
+    loadSemestre();
     loadSolicitudes(ID_ASIG);
 });
 
@@ -65,7 +66,7 @@ function buildTBLListaOficial(LISTA) {
                     tramite = "iniciado";
                 }
                 template += `
-                <tr id_grupo="${insc.id_inscripcion}">
+                <tr folio="${insc.id_inscripcion}">
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-md">
@@ -105,11 +106,11 @@ function buildTBLListaOficial(LISTA) {
                         </div>
                     </td>
                     <td>
-                           <a href="./ficha-inscripcion" class="btn btn-primary viewDetailsSolicitud" 
+                           <a href="#" class="btn btn-primary btnViewFicha" 
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Ver ficha de Inscripcion">
                            <i class="far fa-file-alt"></i>
                            </a>
-                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs" 
+                        <a href="#" class="btn btn-outline-primary btnVieDocs" data-bs-toggle="modal" data-bs-target="#viewDocsInscripcion" 
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Ver documentacion">
                         <i class="fas fa-folder"></i>
                         </a>
@@ -166,7 +167,7 @@ function buildTBLSolicPendientes(LISTA) {
                 let statusInsc = insc.autorizacion_inscripcion === "1"? ' APROBADA' :' POR REVISAR';
                 let estatusAlumnos = insc.estatusAlumno === "1" ? 'success':'danger';
                 template += `
-                <tr id_grupo="${insc.id_inscripcion}">
+                <tr folio="${insc.id_inscripcion}">
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-md">
@@ -212,11 +213,11 @@ function buildTBLSolicPendientes(LISTA) {
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Aprobar">
                             <i class="fas fa-check-circle"></i>
                             </a>
-                          <a href="./ficha-inscripcion" class="btn btn-primary viewDetailsSolicitud" 
+                          <a href="#" class="btn btn-primary btnViewFicha" 
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Ver ficha de Inscripcion">
                            <i class="far fa-file-alt"></i>
                            </a>
-                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previaDocs" 
+                            <a href="#" class="btn btn-outline-primary btnVieDocs" data-bs-toggle="modal" data-bs-target="#viewDocsInscripcion" 
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Ver documentacion">
                             <i class="fas fa-folder"></i>
                             </a>
@@ -252,12 +253,13 @@ function loadDataAsignacion(asig){
         $("#grupos").prepend("<option value='0' selected>Ninguno</option>");
         $("#generacion").prepend("<option value='0' selected>Ninguno</option>");
         $("#semestre").prepend("<option value='0' selected>Ninguno</option>");
-
+        let visible = asig.visible_publico === "1" ? '<i class="fas fa-eye text-primary"></i> VISIBLE' : '<i class="fas fa-eye-slash text-danger"></i> NO PUBLICADO';
         $("#liCursoAction").on("click", );
         $('#liCursoAction').attr('onClick', 'openCurso('+asig.id_curso+');');
         $("#nameAsignacion").html(asig.nombre_curso);
         $("#nameCursoTittle").html(asig.nombre_curso);
         $("#nameBreadCurso").html(asig.nombre_curso);
+        $("#lblVisible").html(visible);
         $("#grupoBread").html('GPO-'+asig.grupo+' - GEN'+ asig.generacion);
         $("#profesorAsigActual").val(asig.prefijo+' '+asig.nombre_completo);
         $("#lblProfesorName").html(asig.prefijo+' '+asig.nombre_completo);
@@ -277,7 +279,6 @@ function loadDataAsignacion(asig){
         $("#lblClases").html('<strong>del </strong> '+getLegibleFecha(asig.fecha_inicio) +' <br> <strong> al </strong>'+getLegibleFecha(asig.fecha_fin));
         $("#lblCalif").html('<strong>del </strong> '+getLegibleFecha(asig.fecha_inicio_actas) +' <br> <strong> al </strong>'+getLegibleFecha(asig.fecha_fin_actas));
 
-
         $("#grpoActual").val(asig.grupo);
         $("#genActual").val(asig.generacion);
         $("#semestreActual").val(asig.semestre);
@@ -289,6 +290,7 @@ function loadDataAsignacion(asig){
         $("#costo").val(asig.costo_real);
         $("#lblCostoFinalCallout").html('$ '+asig.costo_real);
         $("#costoRecom").val(asig.costo_sugerido);
+        $("#visibilidad").val(asig.visible_publico);
 
         $("#InicioCurso").val(asig.fecha_inicio);
         $("#finCurso").val(asig.fecha_fin);
@@ -414,3 +416,25 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".btnViewFicha", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement;
+    console.log(elementClienteSelect);
+    let id = $(elementClienteSelect).attr("folio");
+    var url = './ficha-inscripcion';
+    redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".btnVieDocs", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("folio");
+    console.log(id);
+    consultaAsyncDocsRevisa(id,1).then(function (response) {
+        console.log(response);
+        let templateDocs = buildTBLDocsSolicitados(response);
+        $("#containerDocs").html(templateDocs);
+    })
+});

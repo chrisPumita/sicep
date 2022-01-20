@@ -1,8 +1,8 @@
-
+//regresa un template datatable con una lista de documentos
 function buildTBLDocsSolicitados(DOCS) {
     let template;
     if (DOCS.length > 0){
-        template = `
+        template = `<div class="table-responsive">
                         <table class="table table-hover table-lg">
                             <tbody><thead>
                                 <tr>
@@ -35,7 +35,7 @@ function buildTBLDocsSolicitados(DOCS) {
 
                         fechaInfo = "Revisar Documento. <br> Subido el " + doc.fecha_creacion;
                         // styleTr = 'style="background-color: lightgray;"';
-                        badgeRevisa = "<span class='badge bg-warning'>REVISAR</span>";
+                        badgeRevisa = "<br><span class='badge bg-warning'>REVISAR</span>";
                         break;
                     case 1:
                         botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -65,17 +65,17 @@ function buildTBLDocsSolicitados(DOCS) {
 
                 template += `
                             <tr  idDoc="${doc.id_archivo}" ${styleTr}>
-                                <td>
+                                <td class="text-sm-start">
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="spinner-grow text-${getColorEstatusFile(doc.estatusFile)}" role="status"></div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-center px-3">
+                                        <div class="d-flex flex-column justify-content-md-start px-3">
                                             <p class="mb-0 text-xs">${doc.nombre_doc} ${badgeRevisa}</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="text-sm-start">
                                     ${fechaInfo}
                                 </td>
                                 <td>
@@ -88,9 +88,9 @@ function buildTBLDocsSolicitados(DOCS) {
             }
         );
         template += `</tbody>
-                        </table>
+                        </table></div>
         <div class="container">
-            <div class="row small">
+            <div class="row small text-primary">
                 <div class="col-12 col-md-2">
                  <i class="fas fa-circle text-success dotDocs small"></i> Acreditado
                 </div>
@@ -104,8 +104,8 @@ function buildTBLDocsSolicitados(DOCS) {
                 <i class="fas fa-circle text-black dotDocs small"></i>  Esperando que el alumno suba el archivo
                 </div>
             </div>
-           
-        </div>`;
+        </div>
+    `;
     }
     else{
         template += `<div class="alert alert-success" role="alert">

@@ -102,7 +102,7 @@ function cargaSolicitudesDataTable() {
                     let alertaRevisa = parseInt(row.n_revisa) >0 ? `<span class="badge bg-danger">${row.n_revisa}</span>`: '';
                         let template = `<a href="#" class="btn btn-info btnViewFicha"><i class="fas fa-eye"></i></a>
                             <a href="#" class="btn btn-danger btnCancelInsc"><i class="fas fa-ban"></i></a>
-                            <a href="#" class="btn btn-outline-info btnVieDocs"><i class="fas fa-folder-open"></i> ${alertaRevisa}</a>`;
+                            <a href="#" class="btn btn-outline-info btnVieDocs"  data-bs-toggle="modal" data-bs-target="#viewDocsInscripcion"><i class="fas fa-folder-open"></i> ${alertaRevisa}</a>`;
                         return template;
                     }
                 }
@@ -172,8 +172,11 @@ $(document).on("click", ".btnVieDocs", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement;
     let id = $(elementClienteSelect).attr("folio");
-    var url = './detalles-profesor';
-    alert("Ver MODAL dosc de " + id);
+    consultaAsyncDocsRevisa(id,1).then(function (response) {
+        console.log(response);
+        let templateDocs = buildTBLDocsSolicitados(response);
+       $("#containerDocs").html(templateDocs);
+    })
 });
 
 function cargaListasCursos() {

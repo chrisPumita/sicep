@@ -54,7 +54,7 @@ $titulo = "Detalles de la Asignación" ?>
                     <div class="callout callout-second">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-10">
                                     A continuación, se muestra la información del grupo, aquí puede modificar las fechas de inicio/término del curso.
                                             Puede cambiar al profesor que impartirá el curso,
                                             puede modificar el cupo original por si necesita más lugares o limitarlo
@@ -62,6 +62,22 @@ $titulo = "Detalles de la Asignación" ?>
                                             (Considere que los descuentos dependen del costo).
                                             Revise las solicitudes de inscripción y apruebe o rechace la inscripción
                                             del solicitante.
+                                </div>
+                                <div class="col-sm-2 align-items-center">
+                                    <!-- Example single danger button -->
+                                    <div class="btn-group w-100 mr-3 mt-3 mb-3">
+                                        <button type="button" class="btn btn-primary dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                            Opciones
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Concluir</a></li>
+                                            <li><a class="dropdown-item" href="#">Generar Constancias</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Termino Forzado</a></li>
+                                            <li><a class="dropdown-item" href="#">Archivar</a></li>
+                                            <li><a class="dropdown-item" href="#">Cancelar Grupo</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -209,6 +225,13 @@ $titulo = "Detalles de la Asignación" ?>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-5">
+                                            <h6 class="mb-0">Visibilidad</h6>
+                                        </div>
+                                        <div class="col-sm-7 text-secondary" id="lblVisible"> </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5">
                                             <h6 class="mb-0">NOTAS</h6>
                                         </div>
                                         <div class="col-sm-7 text-secondary" id="lblNotas"> </div>
@@ -321,7 +344,8 @@ $titulo = "Detalles de la Asignación" ?>
         </div>
         <footer class="text-center text-white ">
             <?php include "modals/modal-cancelar-insc.php" ?>
-            <?php include "modals/modal-documentos-alumno.php" ?>
+            <?php include "modals/modal-documentos-alumno.php"?>
+            <?php include "modals/modal-vista-documento.php"?>
             <?php include "modals/modal-editar-detalles-asignacion.php" ?>
             <?php include "modals/modal-editar-descuentos.php" ?>
             <?php include "modals/generalModals.php"?>
@@ -337,6 +361,7 @@ $titulo = "Detalles de la Asignación" ?>
 <script src="./service/general/tools.js"></script>
 <script src="./service/asignacion-gral.js"></script>
 <script src="./service/asignacion-detalles.js"></script>
+<script src="./service/documentacion-gral.js"></script>
 
 </body>
 

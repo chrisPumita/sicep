@@ -347,7 +347,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane active" id="list-2-1" role="tabpanel" aria-labelledby="list-profile-list">
-                                <div class="table-responsive" id="containerDocs"></div>
+                                <div id="containerDocs"></div>
                             </div>
                         </div>
                     </div>

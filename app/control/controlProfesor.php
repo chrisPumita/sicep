@@ -99,5 +99,5 @@ function cambiaContrasenia($id,$email,$pwAnterior,$nueva){
 function actualizaPerfil($datos){
 
     //aqui se actualiza la sesion
-    
+
 }
