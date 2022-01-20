@@ -45,13 +45,25 @@ function buildHTMLValues(curso){
     $("#antecedentes").html(curso.antecedentes);
     let img = `<div class="img d-block w-100" style="background-image: url(${curso.banner_img}); height: 300px; "></div>`;
     $("#imgContainer").html(img);
-    let pdfFile = `<a href="${curso.link_temario_pdf}" download="" target="_blank"  class="btn btn-primary"><i class="fas fa-download"></i></a>`;
-    $("#filePDF").html(pdfFile);
-    let tmpPdf = `<embed src="${curso.link_temario_pdf}" type="application/pdf" width="100%" height="600px" />`;
-    $("#filePdfView").html(tmpPdf);
+    // PDF TEMARIO
+    let containerPDF;
+    if (curso.link_temario_pdf===""){
+        containerPDF =`<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+                          <strong>NO HAY TEMARIO PDF</strong> Cargue un archivo PDF con el temario del curso.
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+    }
+    else{
+        containerPDF =`<a href="${curso.link_temario_pdf}" download="" target="_blank"  class="btn btn-primary me-1 mb-1"><i class="fas fa-download"></i></a>
+                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
+                <a href="#" class="btn btn-outline-danger me-1 mb-1" onclick="removeTemario()"><i class="fas fa-times"></i></a></div>`;
+        let tmpPdf = `<embed src="${curso.link_temario_pdf}" type="application/pdf" width="100%" height="600px" />`;
+        $("#filePdfView").html(tmpPdf);
+    }
+    $("#containerPDF").html(containerPDF);
     //consulto los detalles de la acredsitacion del curso
-    acreditado = curso.id_profesor_admin_acredita != null ? true:false;
-    detallesAcreditacion(curso.id_curso,acreditado);
+    let acreditado = curso.id_profesor_admin_acredita != null ? true:false;
+    let aprobado = curso.aprobado === "1" ? true:false;
     // cargar los datos al form
     $("#editarNombreCurso").val(curso.nombre_curso);
     $("#editarDescripcion").val(curso.descripcion);
@@ -64,9 +76,13 @@ function buildHTMLValues(curso){
     $("#lblCostoFinalCallout").html('$ '+curso.costo_sugerido);
     $("#editaTipoCurso").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
+    console.log(curso);
+    detallesAcreditacion(curso.id_curso,acreditado,aprobado);
+    let botonOpenGrupo = acreditado && aprobado ? `<button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(${curso.id_curso})"><i class="fas fa-users"></i> Abrir grupo</button>`:"";
+    $("#btnAbrirCurso").html(botonOpenGrupo);
 }
 //Update Acreditar/ Remover Acreditacion Curso
-function cambiaEstado(estatus,mensaje){
+function cambiaEstado(estatus,mensaje,isAcredit){
     let idCurso= ID_CURSO;
     let mjeText= "¿Estas seguro de que deseas "+mensaje+" este curso?";
     sweetConfirm('Estado del curso', mjeText, function (confirmed) {
@@ -78,57 +94,47 @@ function cambiaEstado(estatus,mensaje){
                 dataType: "json",
                 data: {
                     idCurso: idCurso,
-                    estatus : estatus
+                    estatus : estatus,
+                    isAcredit : isAcredit
                 },
                 success: function(data){
+                    console.log(data);
                     let id = ID_CURSO;
                     cargaCursoDetails(1,id);
                 },
                 error: function(e) {
                     alert("Error occured")
+                    console.log(e);
                 }
             });
         }
     });
 }
 
-
-function detallesAcreditacion(id_Curso,acreditado) {
+function buildCardStatusAcreditacion(obj_result,acreditado,activo) {
     let tmplate;
     if(acreditado){
-        $.ajax(
-            {
-                url:"./webhook/acreditacion-curso.php",
-                data: {
-                    idCurso : id_Curso
-                },
-                type: "POST",
-                success: function (response)
-                {
-                    let obj_result = JSON.parse(response);
-                    if (obj_result.length == 1){
-                        tmplate =`
-                            <div class="d-flex">
-                                <div class="m-auto">
-                                    <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
-                                </div>
-                                <div class="col-8 m-auto">
-                                    <h5>Aprobado por:</h5>
-                                    <input type="hidden" value="1" id="valAcredCurso">
-                                    <h5><strong>${obj_result[0].prefijo} ${obj_result[0].nombre} ${obj_result[0].app} ${obj_result[0].apm}</strong></h5>
-                                    <h6>No Trabajador: ${obj_result[0].no_trabajador}</h6>
-                                    <h6>${obj_result[0].cargo} de Departamento de ${obj_result[0].departamento}</h6>
-                                </div>
-                            </div>
-                            <div class="card-body d-flex text-align-right">
-                                <a href="#" class="btn btn-danger btn-block " onclick="cambiaEstado(0,'Inhabilitar');"><i class="fas fa-power-off"></i> Inhabilitar</a>
-                            </div>
-`;
-                        $("#detallesAprobacionCurso").html(tmplate);
-                    }
-                }
-            }
-        );
+        let leyenda = activo ? `<h6><i class="fas fa-circle text-success"></i> CURSO ACTIVO</h6>`:`<h6><i class="fas fa-circle text-warning"></i> CURSO SUSPENDIDO</h6>`;
+        let btnActiva = activo ? `<a href="#" class="btn btn-warning me-1 mb-1" onclick="cambiaEstado(0,'Suspender',true);"><i class="fas fa-clock"></i> Suspender</a>`
+            : `<a href="#" class="btn btn-success me-1 mb-1" onclick="cambiaEstado(1,'Habilitar',true);"><i class="fas fa-clock"></i> Habilitar</a>`;
+        tmplate =`
+                <div class="d-flex">
+                    <div class="m-auto">
+                        <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
+                    </div>
+                    <div class="col-8 m-auto">
+                        <h5>Aprobado por:</h5>
+                        <input type="hidden" value="1" id="valAcredCurso">
+                        <h5><strong>${obj_result.prefijo} ${obj_result.nombre} ${obj_result.app} ${obj_result.apm}</strong></h5>
+                        <h6>No Trabajador: ${obj_result.no_trabajador}</h6>
+                        <h6>Departamento de ${obj_result.depto_name}</h6>
+                        ${leyenda}
+                    </div>
+                </div>
+                <div class="col-auto px-3 d-flex justify-content-end">
+                    ${btnActiva}
+                </div>
+            `;
     }
     else{
         tmplate =`
@@ -144,12 +150,18 @@ function detallesAcreditacion(id_Curso,acreditado) {
                 </div>
             </div>
             <div class="card-body d-flex text-align-right">
-                <button type="button" class="btn btn-success btn-block"onclick="cambiaEstado(1,'Acreditar')">Acreditar</button>
+                <button type="button" class="btn btn-success btn-block"onclick="cambiaEstado(1,'Acreditar',false)">Acreditar</button>
             </div>`;
-        $("#detallesAprobacionCurso").html(tmplate);
-        $("#sectionDescuentos").html("");
 
+        $("#sectionDescuentos").html("");
     }
+    $("#detallesAprobacionCurso").html(tmplate);
+}
+
+function detallesAcreditacion(id_Curso,acreditado,activo) {
+    consultaDetailsAcredCurso(id_Curso).then(function (result) {
+        buildCardStatusAcreditacion(result,acreditado,activo);
+    })
 }
 
 function cargaTemario(idCurso) {
@@ -375,7 +387,7 @@ $("#inputPDF").on("submit", function(e){
     }).done(function(res){
         $("#inputPDF").trigger('reset');
         let id= ID_CURSO;
-        cargaCursoDetails(-1,id);
+        cargaCursoDetails(1,id);
     });
     e.preventDefault();
 });
@@ -400,7 +412,7 @@ function removeTemario() {
     sweetConfirm('Remover Temario', '¿Estas seguro de que deseas eliminar el temario de este Curso?', function (confirmed) {
         if (confirmed) {
             eliminaPreferencia(id,route).then(function () {
-                cargaCursoDetails(-1,id);
+                cargaCursoDetails(1,id);
             });
         }
     });

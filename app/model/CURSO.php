@@ -371,7 +371,7 @@ class CURSO extends CONEXION_M implements I_CURSO
         return $cursos;
     }
 
-    public function consultaAcreditacion($idCurso){
+    public function consultaAcreditacion(){
         $this->connect();
         $query = "select curso.id_profesor_admin_acredita, 
        admin.permisos, admin.cargo, prof.prefijo, prof.no_trabajador, 
@@ -381,7 +381,7 @@ class CURSO extends CONEXION_M implements I_CURSO
           and admin.id_profesor_admin_fk = prof.id_profesor 
           and prof.id_depto_fk = depto.id_depto 
           and prof.id_persona_fk = per.id_persona 
-          and `id_curso` = ". $idCurso;
+          and `id_curso` = ". $this->getIdCurso();
         $detalles = $this-> getData($query);
         $this->close();
         return $detalles;
@@ -545,9 +545,9 @@ class CURSO extends CONEXION_M implements I_CURSO
         return $datos;
     }
 
-    public function queryUpdateEstatusCurso($id){
+    public function queryUpdateEstatusCurso(){
         //Cuando se acredita, se genera el profesor acredita, sino, significa que solo se desactiva
-        $filtro= $id>0 ? "`id_profesor_admin_acredita` = '".$this->getIdProfesorAdminAcredita()."'," : "";
+        $filtro= $this->getIdProfesorAdminAcredita() > 0 ? "`id_profesor_admin_acredita` = '".$this->getIdProfesorAdminAcredita()."'," : "";
         $query = "UPDATE `curso` SET ".$filtro." `aprobado` = '".$this->getAprobado()."' WHERE `curso`.`id_curso` =".$this->getIdCurso();
         $this->connect();
         $result = $this->executeInstruction($query);
