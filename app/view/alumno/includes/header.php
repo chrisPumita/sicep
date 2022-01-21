@@ -56,7 +56,10 @@
                                     <a href="./documentacion" class='submenu-link'><i class="fas fa-folder-open"></i> Documentacion</a>
                                 </li>
                                 <li class="submenu-item  ">
-                                    <a href="layout-vertical-1-column.html" class='submenu-link'><i class="far fa-paper-plane"></i> Enviadas</a>
+                                    <a href="./inscripcion" class='submenu-link'><i class="far fa-paper-plane"></i> Inscripcion</a>
+                                </li>
+                                <li class="submenu-item  ">
+                                    <a href="#" class='submenu-link'><i class="far fa-paper-plane"></i> Enviadas</a>
                                 </li>
                                 <li class="submenu-item  ">
                                     <a href="layout-vertical-navbar.html" class='submenu-link'><i class="fas fa-ban"></i> Rechazadas</a>
