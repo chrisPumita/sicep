@@ -75,3 +75,14 @@ function consultaOfertaAlumno($idAlumno){
     $ASI = new ASIGNACION_GRUPO();
     return $ASI->queryAsignacionesAlumno(1,$idAlumno);
 }
+
+function consultaAsigAlumno($idAlumno){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $ASI = new ASIGNACION_GRUPO();
+    return $ASI->queryAsignacionesAlumno(2,$idAlumno);
+}
+
+function consultaAsigGeneralALumno($idAlumno){
+    return array("oferta"=> consultaOfertaAlumno($idAlumno),
+                  "misCursos"=>consultaAsigAlumno($idAlumno));
+}

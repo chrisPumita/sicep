@@ -10,7 +10,7 @@ async function consultaAsyncOfertaAsigAJAX(){
         type: 'POST',
         dataType: "json",
         success: function (response) {
-               console.log(response);
+             //  console.log(response);
         },
         error: function() {
             alert("Error al tratar de traer las asignaciones historicas");

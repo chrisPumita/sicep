@@ -733,7 +733,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                 case "2":
                     $datosOferta = "";
                     //traer todas las asignaciones a las que esta inscrito
-                    $filtro = " AND ag.id_asignacion NOT IN 
+                    $filtro = " AND ag.id_asignacion IN 
                                 (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.") ";
                     break;
                 default:
@@ -746,7 +746,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         }
         $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
        CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor,
-       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, c.banner_img,
+       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, c.banner_img, c.link_temario_pdf,
        ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
        ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
        ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,

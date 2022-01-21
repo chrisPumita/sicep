@@ -41,98 +41,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Historial Cursos</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <i class="fas fa-circle text-primary"></i>
-                                                    <h5 class="mb-0 ms-3">En curso</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <h5 class="mb-0">0</h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <i class="fas fa-circle text-success"></i>
-                                                    <h5 class="mb-0 ms-3">Terminados</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <h5 class="mb-0">0</h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <i class="fas fa-circle text-danger"></i>
-                                                    <h5 class="mb-0 ms-3">Cancelados</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <h5 class="mb-0">0</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
+                            <div class="col-12 col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>Mis Cursos</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-striped" id="" style="width:100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>NOMBRE</th>
-                                                    <th>PROFESOR</th>
-                                                    <th>TIPO</th>
-                                                    <th>TEMARIO</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr id_curso="1">
-                                                    <td>002</td>
-                                                    <td>Excel Avanzado</td>
-                                                    <td>
-                                                        <p class="mb-0 text-xs">Diplomado</p>
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf " class="btn btn-primary" target="_blank">
-                                                            <i class="fas fa-file-download"></i>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ver-detalles-prop"><i class="far fa-eye"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr id_curso="2">
-                                                    <td>003</td>
-                                                    <td>Excel Básico para contadores</td>
-                                                    <td>
-                                                        <p class="mb-0 text-xs">Curso</p>
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf " class="btn btn-primary" target="_blank">
-                                                            <i class="fas fa-file-download"></i>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ver-detalles-prop"><i class="far fa-eye"></i></a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="table-responsive" id="containerMisCursos">
                                         </div>
                                     </div>
                                 </div>
@@ -202,12 +117,54 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Historial Cursos</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-circle text-primary"></i>
+                                            <h5 class="mb-0 ms-3">En curso</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="mb-0">0</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-circle text-success"></i>
+                                            <h5 class="mb-0 ms-3">Terminados</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="mb-0">0</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-circle text-danger"></i>
+                                            <h5 class="mb-0 ms-3">Cancelados</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="mb-0">0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </section>
             </div>
         </div>
         <?php include 'includes/footer.php'; ?>
         <?php include 'modals/modal-inscribir-alumno.php'; ?>
+        <?php include 'modals/modal-pdf-temario.php'; ?>
     </div>
 </div>
 <?php include 'includes/scripts.php'; ?>

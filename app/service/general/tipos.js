@@ -216,7 +216,7 @@ function estadoAsig(estatus) {
         case "1":
             return `<span class="badge bg-success">
                         <div class="blob green ">
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;En curso
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO
                     </span>`;
         case "2":
             return `<span class="badge bg-info">
@@ -227,6 +227,11 @@ function estadoAsig(estatus) {
             return `<span class="badge bg-danger">
                         <div class="blob red ">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CANCELADO
+                    </span>`;
+        case "99":
+            return `<span class="badge bg-success">
+                        <div class="blob blue ">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCLUIDO
                     </span>`;
         default:
             return `<span class="badge bg-info">

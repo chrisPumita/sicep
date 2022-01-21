@@ -5,9 +5,62 @@ $(document).ready(function() {
 
 function cargaAsignacionesAlumno() {
     consultaAsyncOfertaAsignAlu().then(function (datos) {
-       console.log(datos);
-        buildHTMLCards(datos);
+        console.log(datos);
+        buildHTMLCards(datos.oferta);
+        buildHTMLMisCursosTable(datos.misCursos);
     })
+}
+
+function buildHTMLMisCursosTable(lista) {
+    let template = "";
+    let cont = 0;
+    if (lista.length > 0) {
+        template+= `<table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <th>PROFESOR</th>
+                            <th>DETALLES</th>
+                            <th>ESTADO</th>
+                            <th>TEMARIO</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+                        lista.forEach(
+                            (curso)=>{
+                                cont++;
+                                let pdfBoton = curso.link_temario_pdf.length>0 ? `<button type="button" class="btn btn-primary" 
+                                        data-bs-toggle="modal" data-bs-target="#modalPdftemario" onclick="viewPDFModal('${curso.link_temario_pdf}','${curso.nombre_curso}');"><i class="fas fa-download"></i></button> `:"";
+                                template+= `<tr id_curso="${curso.id_asignacion}">
+                                            <td>${curso.nombre_curso} (${getTipoCurso(curso.tipo_curso)})
+                                            <p>Modalida: ${getModalidadCurso(curso.modalidad)}</p></td>
+                                            <td>${curso.nombre_completo}</td>
+                                            <td>
+                                                <p class="mb-0 text-xs">Grupo: ${curso.grupo}</p>
+                                                <p class="mb-0 text-xs">Generacion: ${curso.generacion}</p>
+                                            </td>
+                                            <td>
+                                                ${estadoAsig(curso.statusAsignacion)}
+                                            </td>                                            
+                                            <td>
+                                                 ${pdfBoton}
+                                               <button type="button" class="btn btn-primary"><i class="fas fa-th-list"></i></button>
+                                            </td>
+</td>
+                                        </tr>`;
+                            }
+                        );
+
+        template +=`
+                        </tbody>
+                    </table>`;
+
+    }
+    else {
+
+    }
+
+    $("#containerMisCursos").html(template);
 }
 
 function buildHTMLCards(lista) {
@@ -35,14 +88,8 @@ function buildHTMLCards(lista) {
                 let lugares = `<span class="badge bg-${colorBadge} position-absolute my-3 mx-3">${textoLugares}</span>`;
 
                 let colorStatusCurso = getEstatusAsignacionColorIndicator(doc.statusAsignacion);
-                let btnSolic = parseInt(doc.statusAsignacion) == 1 ? `
-                        <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalInscripcion">
-                                <i class="fas fa-clipboard-check"></i> Inscribirme 
-                        </button>`
-                    :`
-                <button class="btn btn-primary mr-3 me-1 mb-1"  data-bs-toggle="modal" data-bs-target="#modalInscripcion">
-                                <i class="fas fa-clipboard-check"></i> Inscribirme <span class="badge bg-danger">!</span>
-                        </button>`;
+                let btnSolic = parseInt(doc.statusAsignacion) == 1 ? ``
+                    :`<span class="badge bg-danger">!</span>`;
                 let visible = doc.visible_publico === "1" ? '':'<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>';
                 contador++;
                 template+= `
@@ -109,10 +156,12 @@ function buildHTMLCards(lista) {
                         </div>
                     </div>
                     <div class="col-sm-12 d-flex justify-content-center">
-                        <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(${doc.id_asignacion});">
+                        <button class="btn btn-primary mr-3 me-1 mb-1"  data-bs-toggle="modal" data-bs-target="#modalInscripcion">
                                 <i class="fas fa-plus"></i> Mas info
                         </button>
-                        ${btnSolic}
+                         <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(${doc.id_asignacion});">
+                                <i class="fas fa-clipboard-check"></i> Inscribirme ${btnSolic}
+                        </button>
                     </div>
                 </div>
             </div>`;
@@ -132,4 +181,15 @@ function buildHTMLCards(lista) {
         $("#swiperCardsContainer").addClass("d-none");
         $("#alertOferta").html(template);
     }
+}
+
+function viewPDFModal(link,curso) {
+    //let template = `<embed src="${link}" frameborder="0" width="100%" height="100%">`;
+    let template = `<iframe src="${link}" style="width:100%; height:100%;" frameborder="0"></iframe>`;
+    $("#filePdfView").html(template);
+    $("#modalTittle").html("Temario de "+curso);
+}
+
+function openAsig(id) {
+    alert("Abrir open"+ id);
 }
