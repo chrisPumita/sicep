@@ -77,7 +77,7 @@
                                 <a href="#" class='submenu-link'><i class="fas fa-file-alt"></i> Manual</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="#" class='submenu-link'><i class="fas fa-question"></i> Preguntas Frecuentes</a>
+                                <a href="./faqs" class='submenu-link'><i class="fas fa-question"></i> Preguntas Frecuentes</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="#" class='submenu-link'><i class="fab fa-rebel"></i> Acerca de</a>

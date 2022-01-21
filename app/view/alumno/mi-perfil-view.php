@@ -37,6 +37,7 @@
                                                                 <i class="fas fa-edit"></i>
                                                                 <input type="file" name="file"/>
                                                             </div> -->
+                                                            <button class="btn btn-primary" type="button"> <i class="fas fa-edit"></i> Editar</button>
                                                             <span class="font-weight-bold">Christian</span><span class="text-black-50">chris@reckreastudios.com</span><span> </span>
                                                         </div>
                                                     </div>
@@ -75,12 +76,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="alert alert-success" role="alert">
-                                                                <h4 class="alert-heading">Recuerda...</h4>
-                                                                <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
-                                                                <!-- <hr>
-                                                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
-                                                            </div>
+                                                            
                                                             <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                                     <input type="text" id="procedencia" name="procedencia" class="form-control" placeholder="Procedencia" aria-label="Procedencia">
@@ -96,6 +92,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 text-end">
+                                                        <button type="button" class="btn btn-primary ">Guardar Cambios</button>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -118,6 +120,13 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-8">
+                                        <div class="alert alert-success alert-dismissible" role="alert">
+                                            <h4 class="alert-heading">Recuerda...</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                                            <!-- <hr>
+                                            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+                                        </div>
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body p-3 pb-2">
