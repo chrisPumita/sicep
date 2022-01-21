@@ -232,22 +232,22 @@
     </section>
     <!-- END Section with four info areas left & one card right with image and waves -->
     <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
-      <section class="pb-5 position-relative bg-gradient-dark-invert mx-n3">
+      <section class="pb-5 position-relative bg-gradient-dark-invert mx-n3"  id="alertOferta">
           <div class="container">
               <div class="row">
                   <div class="col-md-12 text-start mb-0 mt-5">
                       <h3 class="text-white z-index-1 position-relative text-primary"><span id="countAsig">{n}</span> GRUPOS ABIERTOS</h3>
-                      <p class="text-white opacity-8 mb-0 text-primary">Seleccion un grupo y manda tu solicitud. Envia la documentación solicitada y
+                      <p class="text-white opacity-8 mb-0 text-primary">Selecciona un grupo y manda tu solicitud. Envia la documentación solicitada y
                           listo. Descrubre los descuentos que tenemos. Los cursos indicados con <span class="badge bg-dark position-relative">
                       <span class="blob green positionBadge"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSCRIPCIONES
-                      </span> estan disponibles para inscribirse. NO pierdas tu lugar.</p>
+                      </span> estan disponibles para inscribirse. NO PIERDAS TU LUGAR.</p>
                   </div>
               </div>
           </div>
           <div class="container-fluid">
               <div class="row">
                   <!-- Swiper -->
-                  <div class="swiper SwiperAsig py-6">
+                  <div class="swiper SwiperAsig py-6" id="swiperContainer">
                       <div class="swiper-wrapper" id="swiperCardsContainerAsig">
                           <!--AJAX response-->
                       </div>

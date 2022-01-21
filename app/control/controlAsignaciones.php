@@ -64,3 +64,14 @@ function getListaFilstrosAsig(){
         "semestres"=> $GEN->queryDistingSemestres()
     );
 }
+
+//*************************
+/// FUNCIONES ALUMNOS
+//*************************
+
+//Regresa una lista de asignaciones que el alumno puede enviar solicitud
+function consultaOfertaAlumno($idAlumno){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $ASI = new ASIGNACION_GRUPO();
+    return $ASI->queryAsignacionesAlumno(1,$idAlumno);
+}

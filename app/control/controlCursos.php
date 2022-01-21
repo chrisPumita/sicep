@@ -78,7 +78,8 @@ function consultaAcredita($idCurso){
     //return json_encode(CURSO::consultaAcredita($idCurso));
     $obj_curso= new CURSO();
     $obj_curso->setIdCurso($idCurso);
-    return $obj_curso->consultaAcreditacion();
+    $card = $obj_curso->consultaAcreditacion();
+    return count($card)>0 ? $card[0] : false;
 }
 
 //Actualiza el estatus del curso
