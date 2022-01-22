@@ -25,6 +25,14 @@
                         <span>Inicio</span>
                     </a>
                 </li>
+                <?php if($_SESSION['serv']){ ?>
+                <li class="menu-item  ">
+                    <a href="./template" class='menu-link'>
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Servicio Social</span>
+                    </a>
+                </li>
+                <?php } ?>
                 <li class="menu-item  has-sub">
                     <a href="#" class='menu-link'>
                         <i class="fas fa-layer-group"></i>
@@ -89,7 +97,7 @@
                 </div>
                 </li>
             </ul>
-            <ul class="w-100 justify-content-end d-flex">
+            <ul class="w-50 justify-content-end d-flex">
                 <li class="menu-item  has-sub dropdown-menu-end"">
                 <a href="#" class='menu-link'>
                     <div class="user-menu d-flex">
@@ -111,9 +119,11 @@
                             <li class="submenu-item  ">
                                 <a href="./mi-perfil" class='submenu-link'>Mi Perfil</a>
                             </li>
+                            <?php if($_SESSION['serv']){ ?>
                             <li class="submenu-item  ">
-                                <a href="#" class='submenu-link'>Servicio Social</a>
+                                <a href="./template" class='submenu-link'>Servicio Social</a>
                             </li>
+                            <?php } ?>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

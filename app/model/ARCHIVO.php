@@ -276,6 +276,32 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         $this->close();
         return $datos;
     }
+
+    function queryListFilesPendientesAlumno($idAlumno,$showPendientes){
+        $inscripcion = $this->getIdInscripcionFk() > 0 ? " AND insc.id_inscripcion =  ". $this->getIdInscripcionFk():'';
+        $pendintes = $showPendientes ? "HAVING estadoRevisado <> 1 ":"";
+        $query="SELECT insc.id_inscripcion, insc.id_alumno_fk, dsol.id_doc_sol, dsol.obligatorio, d.nombre_doc, insc.id_inscripcion,
+       arch.id_archivo, arch.path, d.id_documento,arch.notas AS notasFile, c.id_curso, c.nombre_curso,
+       d.formato_admitido, d.tipo, d.peso_max_mb, arch.fecha_creacion, arch.notas,gpo.grupo,
+       (case when arch.id_archivo is null then -1 else arch.estado end) as estatusFile,
+       (case when arch.id_archivo is null then -1 else arch.estado_revision end) as estadoRevisado
+        FROM documento d, curso c, grupo gpo, asignacion_grupo asig, inscripcion insc,
+             docs_solicitados_curso dsol LEFT JOIN archivo arch ON arch.id_doc_sol_fk = dsol.id_doc_sol
+        WHERE dsol.id_documento_fk = d.id_documento
+          AND c.id_curso = dsol.id_curso_fk
+          AND gpo.id_curso_fk = c.id_curso
+          AND asig.id_grupo_fk = gpo.id_grupo
+          AND insc.id_asignacion_fk = asig.id_asignacion
+            AND insc.id_alumno_fk = ".$idAlumno."
+        ".$inscripcion." ".$pendintes."
+        ORDER BY estadoRevisado DESC, d.nombre_doc ASC";
+
+        $this->connect();
+        $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
+
     function queryUpdateEstadoArchivo($id,$estatus){
         $query="UPDATE `archivo` SET `estado_revision`='$estatus' WHERE `id_archivo`='$id'";
         $this->connect();

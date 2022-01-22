@@ -713,7 +713,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
             //revisar tipo de filtro
             switch ($filtro){
                 case "0":
-                    //traer todas las asignaciones a las que esta inscrito
+                    //traer detalles de una asignacion especifica
                     $filtro = "  AND ag.id_asignacion = ".$this->getIdAsignacion();
                     $datosOferta = "";
                     break;
@@ -734,7 +734,18 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                     $datosOferta = "";
                     //traer todas las asignaciones a las que esta inscrito
                     $filtro = " AND ag.id_asignacion IN 
-                                (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.") ";
+                                (SELECT vi.id_inscripcion_fk FROM validacion_inscripcion vi, inscripcion i
+                                    WHERE vi.id_inscripcion_fk = i.id_inscripcion
+                                    AND i.id_alumno_fk =  ".$idFiltro.") ";
+                    break;
+                case "3":
+                    $datosOferta = "";
+                    //traer todas las asignaciones del alumno que ha enviado
+                    $filtro = " AND ag.id_asignacion IN 
+                                (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.") 
+                                AND ag.id_asignacion NOT IN  (SELECT vi.id_inscripcion_fk FROM validacion_inscripcion vi, inscripcion i
+                                    WHERE vi.id_inscripcion_fk = i.id_inscripcion
+                                    AND i.id_alumno_fk =  ".$idFiltro.") ";
                     break;
                 default:
                     $filtro = "";
@@ -766,5 +777,6 @@ where per.id_persona = prof.id_persona_fk
         $this->close();
         return $result;
     }
+
 }
 

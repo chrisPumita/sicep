@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log("HOME FUNCIONANDO");
     cargaAsignacionesAlumno();
+    cargaListaDoscPndientes();
 });
 
 function cargaAsignacionesAlumno() {
@@ -8,9 +9,41 @@ function cargaAsignacionesAlumno() {
         console.log(datos);
         buildHTMLCards(datos.oferta);
         buildHTMLMisCursosTable(datos.misCursos);
+        buildHTMLSolicitudesEnviadas(datos.enviados);
     })
 }
 
+function buildHTMLSolicitudesEnviadas(lista) {
+    let template = "";
+    console.log(lista);
+    if (lista.length > 0) {
+        template+= `<div class="list-group small">`;
+        lista.forEach(
+            doc=>{
+                template+= `
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso}</h6>
+                                    <span class="badge text-primary">GPO: ${doc.grupo}</span>
+                                </div>
+                                <p class="mb-1">
+                                    Prof. ${doc.nombre_completo}
+                                </p>
+                            </a>
+                        `;
+
+            }
+        );
+        template+= `</div>`;
+    }
+    else{
+        template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
+                      <strong>Sin solicitudes</strong> No hay solicitudes pendientes.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+    }
+    $("#containerSolEnviadas").html(template);
+}
 function buildHTMLMisCursosTable(lista) {
     let template = "";
     let cont = 0;
@@ -46,7 +79,6 @@ function buildHTMLMisCursosTable(lista) {
                                                  ${pdfBoton}
                                                <button type="button" class="btn btn-primary"><i class="fas fa-th-list"></i></button>
                                             </td>
-</td>
                                         </tr>`;
                             }
                         );
@@ -57,7 +89,14 @@ function buildHTMLMisCursosTable(lista) {
 
     }
     else {
-
+        template +=`<div class="alert alert-success" role="alert">
+                      <h4 class="alert-heading">No tienes ningún curso</h4>
+                      <p>No hemos encontrado algun curso. Si ya mandaste tu solicitud, y enviado toda la documentacion requerida,
+                      es posible que aun este en proceso de <strong>acreditación</strong> por lo que debes ser paciente y esperar.
+                      Recuerda que es necesiario enviar todos los documentos requeridos y realizar el pago correspondiente de ser necesario.</p>
+                      <hr>
+                      <p class="mb-0">Si deseas revisar la documentación que se te solicita, <a href="./documentacion">da clic aqui.</a></p>
+                    </div>`;
     }
 
     $("#containerMisCursos").html(template);
@@ -183,6 +222,59 @@ function buildHTMLCards(lista) {
     }
 }
 
+function buildHTMLListDoscPend(lista) {
+    let template = "";
+    console.log(lista);
+    if (lista.length > 0) {
+        template+= `<div class="list-group small">`;
+        lista.forEach(
+          doc=>{
+              let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
+              let colorBadge = "";
+              switch (estadoFile) {
+                  case 0: //archivo enviado
+                      colorBadge = "warning";
+                      break;
+                  case 1: // archivo recivido
+                      colorBadge = "success";
+                      break;
+
+                  case -1:
+                        //archivo con detallle
+                      colorBadge = "danger";
+                      break;
+
+                  default:
+                      botonesPDF = "";
+                      botonesAcion = "";
+                      fechaInfo = "El archivo fue rechazado y regresado al alumno.";
+                      break;
+              }
+              template+= `
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1"><i class="fas fa-file-upload"></i> ${doc.nombre_doc}</h6>
+                                    <small><i class="fas fa-circle text-${colorBadge}"></i></small>
+                                </div>
+                                <p class="mb-1">
+                                    ${doc.nombre_curso} (${doc.grupo})
+                                </p>
+                            </a>
+                        `;
+
+          }
+        );
+        template+= `</div>`;
+    }
+    else{
+        template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
+                      <strong>Buenas noticias!</strong> No hay documentos pendientes por enviar
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+    }
+    $("#containerDocsPend").html(template);
+}
+
 function viewPDFModal(link,curso) {
     //let template = `<embed src="${link}" frameborder="0" width="100%" height="100%">`;
     let template = `<iframe src="${link}" style="width:100%; height:100%;" frameborder="0"></iframe>`;
@@ -192,4 +284,10 @@ function viewPDFModal(link,curso) {
 
 function openAsig(id) {
     alert("Abrir open"+ id);
+}
+
+function cargaListaDoscPndientes() {
+    consultaAsyncDocsRevisaAlu(0,1).then(function (result) {
+        buildHTMLListDoscPend(result);
+    })
 }

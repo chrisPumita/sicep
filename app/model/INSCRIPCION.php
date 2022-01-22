@@ -316,6 +316,13 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
         return  $files->queryListCountArchivosPendRev($filtro);
     }
 
+    function queryLsDocsInscAlumno($idAlumno,$showOnlyePend){
+        include "ARCHIVO.php";
+        $files = new ARCHIVO();
+        $files->setIdInscripcionFk($this->getIdInscripcion());
+        return $files->queryListFilesPendientesAlumno($idAlumno,$showOnlyePend);
+    }
+
     public function detallesValidacion()
     {
         include "VALIDACION_INSCRIPCION.php";

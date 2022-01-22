@@ -18,7 +18,6 @@ function buildTBLDocsSolicitados(DOCS) {
                 let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
                 let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
                 let styleTr ='';
-                console.log(estadoFile);
                 switch (estadoFile) {
                     case 0:
                         botonesPDF =

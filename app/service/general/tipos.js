@@ -210,27 +210,27 @@ function estadoAsig(estatus) {
     switch (estatus) {
         case "0":
             return `<span class="badge bg-info">
-                        <div class="blob blue ">
+                        <div class="blob blue d-none d-sm-flex">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POR INICIAR
                     </span>`;
         case "1":
             return `<span class="badge bg-success">
-                        <div class="blob green ">
+                        <div class="blob green d-none d-sm-flex">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EN CURSO
                     </span>`;
         case "2":
             return `<span class="badge bg-info">
-                        <div class="blob blue ">
+                        <div class="blob blue d-none d-sm-flex">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TERMINADO
                     </span>`;
         case "-1":
             return `<span class="badge bg-danger">
-                        <div class="blob red ">
+                        <div class="blob red d-none d-sm-flex">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CANCELADO
                     </span>`;
         case "99":
             return `<span class="badge bg-success">
-                        <div class="blob blue ">
+                        <div class="blob blue d-none d-sm-flex">
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCLUIDO
                     </span>`;
         default:

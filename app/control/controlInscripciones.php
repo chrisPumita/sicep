@@ -125,3 +125,15 @@ function consultaFichaPagoInscripcion($idInsc){
     $FICHA ->setIdInscripcion($idInsc);
     return $FICHA ->queryFichaInscripcionCostos();
 }
+
+//////////////////////////////////
+/// FUNCIONES PANEL ALUMNOS ////
+//////////////////////////////
+
+function consultaDocumentacionAlumno($idInsc,$onlyPend){
+    include_once "../model/INSCRIPCION.php";
+    $INSC = new INSCRIPCION();
+    $INSC->setIdInscripcion($idInsc);
+    session_start();
+    return $INSC->queryLsDocsInscAlumno($_SESSION['id_alumno'],$onlyPend);
+}
