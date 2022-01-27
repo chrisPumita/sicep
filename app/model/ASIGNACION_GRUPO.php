@@ -540,18 +540,28 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         return $result;
     }
 
-    function queryUpdateAsignacion()
+    function queryUpdateDatosAsignacion()
     {
-        $query = "UPDATE `asignacion_grupo` SET `id_grupo_fk`='".$this->getIdGrupoFk()                                                      ."',`id_profesor_fk`='".$this->getIdProfesorFk()."',`generacion`='".$this->getGeneracion()."',`semestre`='".$this->getSemestre()."',`campus_cede`='".$this->getCampusCede()."',
-                            `fecha_inicio`='".$this->getFechaInicio()."',`fecha_fin`='".$this->getFechaFin()."',`fecha_lim_inscripcion`='".$this->getFechaLimInscripcion()."',`fecha_inicio_actas`='".$this->getFechaInicioActas()."',
-                            `fecha_fin_actas`='".$this->getFechaFinActas()."',`cupo`='".$this->getCupo()."',`costo_real`='".$this->getCostoReal()."',`descuento`='".$this->getDescuento()."',`nivel_aplicacion_desc`='".$this->getNivelAplicacionDesc()."',
-                            `notas`='".$this->getNotas()."',`modalidad`='".$this->getModalidad()."' WHERE `id_asignacion`=".$this->getIdAsignacion();
+        $filtroProf= $this->getIdProfesorFk()>0 ? " `id_profesor_fk`='".$this->getIdProfesorFk()."' ," : "";
+        $filtroGrupo = $this->getIdGrupoFk()>0 ? " `id_grupo_fk`='".$this->getIdGrupoFk()."', " : "";
+        $filtroGen = $this->getGeneracion()>0 ? " `generacion`='".$this->getGeneracion()."', " : "";
+        $filtroSem= $this->getSemestre()>0? " `semestre`='".$this->getSemestre()."', ": "";
+
+        $query="UPDATE `asignacion_grupo` SET ".$filtroGrupo . $filtroProf. $filtroGen . $filtroSem ."`campus_cede` = '".$this->getCampusCede()."', `cupo` = '".$this->getCupo()."',
+        `costo_real` = '".$this->getCostoReal()."', `notas` = '".$this->getNotas()."', `modalidad` = '".$this->getModalidad()."',
+        `visible_publico` = '".$this->getPublico()."' WHERE `asignacion_grupo`.`id_asignacion` = ".$this->getIdAsignacion();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
     }
 
+
+    function queryUpdateFechasAsignacion(){
+        /**
+         * `fecha_inicio`='".$this->getFechaInicio()."',`fecha_fin`='".$this->getFechaFin()."',`fecha_lim_inscripcion`='".$this->getFechaLimInscripcion()."',`fecha_inicio_actas`='".$this->getFechaInicioActas()."',`fecha_fin_actas`='".$this->getFechaFinActas().",
+         */
+    }
     function queryUpdateEstatus($id_asignacion,$estatus)
     {
         $query="UPDATE `grupo` SET `estatus`='".$estatus."' WHERE `id_grupo`=".$id_asignacion;

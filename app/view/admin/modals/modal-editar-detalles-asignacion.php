@@ -85,7 +85,7 @@
                     <div class="form-group row">
                         <div class="col-md-3">
                             <h5 class="text-start">Modalidad:</h5>
-                            <select class="form-control" id="modalidad">
+                            <select class="form-control" id="modalidad-edita">
                                 <option value="0">Presencial</option>
                                 <option value="1">En Línea</option>
                                 <option value="2">Mixto</option>

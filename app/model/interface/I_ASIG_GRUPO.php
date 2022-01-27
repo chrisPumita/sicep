@@ -9,7 +9,8 @@ interface I_ASIG_GRUPO
     public function queryConsultaAsignacionProfesor($id);
     function queryInsertAsignacion();
     function queryUpdateEstatus($id_asignacion,$estatus);
-    function queryUpdateAsignacion();
+    function queryUpdateDatosAsignacion();
+    function queryUpdateFechasAsignacion();
     function queryConsultaAsignacionGrupos($valorFiltro);
 
 }

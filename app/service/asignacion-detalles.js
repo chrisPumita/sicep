@@ -363,25 +363,28 @@ function buildTBLHtmlDescuentos(DESCUENTOS,costoAplicado) {
 }
 
 $("#frm-update-detalles-asig").on("submit", function(e){
-    e.preventDefault();
-    var f = $(this);
-    var formData = new FormData(document.getElementById("frm-update-detalles-asig"));
-    formData.append("dato", "valor");
-    $.ajax({
-        url: "./webhook/update-detalles-asig.php",
-        type: "post",
-        dataType: "json",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(res){
-            alertaEmergente(res.Mensaje);
-        }
-    }).done(function(response){
+    //Ruta del Webbhook
+    let ruta = "./webhook/update-detalles-asig.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        idAsignacion : $("#idAsignacion").val(),
+        idProfesorAsig : $("#profesorAsig").val(),
+        idGrupo : $("#grupos").val(),
+        idGeneracion : $("#generacion").val(),
+        semestre : $("#semestre").val(),
+        costo : $("#costo").val(),
+        modalidad : $("#modalidad-edita").val(),
+        visibilidad : $("#visibilidad").val(),
+        cupo: $("#numCupo").val(),
+        campus :$("#campus").val(),
+        notas : $("#notas").val()
+    };
+    console.log(params);
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
         consultaInfoAsignacion(ID_ASIG,1);
     });
-    $("#editarDetallesAsig").modal('hide');
+    e.preventDefault();
 });
 
 $("#frm-update-detalles-asig-fechas").on("submit", function(e){
