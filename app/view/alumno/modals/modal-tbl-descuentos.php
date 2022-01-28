@@ -1,7 +1,7 @@
 <!--Modal para PDF -->
 <div class="modal fade text-left" id="modalDescuentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
-    <div class="modal-xl modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
          role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -17,6 +17,8 @@
                 <h1>Descuentos</h1>
             </div>
             <div class="modal-footer">
+                <p class="small">* Envia tu comprobante que acredite tu situacion academica y asi acceder a los descuentos ofrecidos a las
+                    distintas comunidades.</p>
                 <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                     Aceptar
                 </button>

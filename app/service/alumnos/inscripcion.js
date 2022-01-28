@@ -104,3 +104,57 @@ function buildTBLHtmlDescuentosAsigInscribe(DESCUENTOS,costoAplicado) {
     $("#containerDescuentos").html(template);
     $("#listaDirige").html(lista);
 }
+
+//bntInpcion
+
+
+$(document).on("click", ".bntInpcion", function ()
+{
+    //data-bs-toggle="modal" data-bs-target="#solicitud"
+    sweetConfirm('Confirma tu inscripción', '¿Estas seguro de que inscribirte a este curso?', async function (confirmed) {
+        if (confirmed) {
+            let result = await inscribeCursoAjax();
+            if (result.messageType == 1){
+                alertaEmergente(result.messageText);
+                $('#solicitud').modal("show");
+                $('#btnsend').remove();
+                $('#alertConfimInscripcion').html("Te has inscrito correcpatemte. Espera la acreditación de tu solicitud.");
+                let template = `<h4 class="card-title">Estado actual</h4>
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-xl">
+                                            <img src="../assets/images/icons/checked1.svg" alt="Face 1">
+                                        </div>
+                                        <div class="ms-3 name">
+                                            <h6 class="text-muted mb-0" >Solicitud enviada Porfavor revisa tu el estado de tu solicitud de inscripción en <a href="./mis-cursos">"Mis Cursos"</a>.</h6>
+                                        </div>
+                                    </div>
+`;
+                $('#costeInscrito').html(template);
+
+                $("#imgAlertInscripcion").attr("src","../assets/images/icons/checked1.svg");
+            }
+            else if (result.messageType == 0){
+                alerta("Inscripcion no completada",result.messageText, "error");
+
+            }
+            else { alerta("Inscripcion no completada",result.messageText, "error"); }
+            console.log(result);
+
+        }
+    });
+});
+
+async function inscribeCursoAjax(){
+    return $.ajax({
+        url: "../app/webhook/alumno.inscribeCurso.php",
+        type: 'POST',
+        data: {idAsig:ID_ASIG},
+        dataType: "json",
+        success: function (response) {
+            //  console.log(response);
+        },
+        error: function() {
+            alerta("Error al tratar de inscribirte");
+        }
+    });
+}

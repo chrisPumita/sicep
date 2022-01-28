@@ -22,10 +22,11 @@ function buildHTMLSolicitudesEnviadas(lista) {
                 template+= `
                             <a href="#" class="list-group-item list-group-item-action" >
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso} <span class="small"> (grupo ${doc.grupo})</span></h6>
-                                    <span class="badge text-primary">folio ${doc.id_inscripcion}</span>
+                                    <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso}</h6>
+                                    <span class="badge text-primary">grupo ${doc.grupo}</span>
                                 </div>
                                 <p class="mb-1">
+                                No. ${doc.id_inscripcion} <br>
                                     Prof. ${doc.profesor} <br>
                                     <i class="far fa-paper-plane"></i> enviada el ${doc.fecha_solicitud}
                                 </p>

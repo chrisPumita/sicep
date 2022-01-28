@@ -141,3 +141,13 @@ function consultaFichaInscAlumno($idAlumno,$idIdInsc,$tipo){
     $FICHA ->setIdInscripcion($idIdInsc);
     return $FICHA ->queryFichasInscripcionAlumnos($tipo);
 }
+
+function enviarSolicitudInscripcion($idAlumno,$idAsig){
+    include_once "../model/INSCRIPCION.php";
+    include_once "keyGen/generadorClaves.php";
+    $FICHA = new INSCRIPCION();
+    $FICHA->setIdInscripcion(gen_no_inscripcion());
+    $FICHA->setIdAlumnoFk($idAlumno);
+    $FICHA->setIdAsignacionFk($idAsig);
+    return $FICHA->queryRegistraInscripcion();
+}

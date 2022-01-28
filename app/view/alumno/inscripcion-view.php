@@ -26,8 +26,7 @@ $titulo = "Inscripción";
                     <h3>Inscripción a <span id="nameCursoTittle"></span></h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="./mis-cursos">Cursos Abiertos</a></li>
+                            <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Inscripción</li>
                         </ol>
                     </nav>
@@ -134,7 +133,7 @@ $titulo = "Inscripción";
                             <div class="col-md-5">
                                 <!-- costo -->
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body" id="costeInscrito">
                                         <span class="badge bg-info position-absolute my-0 mx-3 end-0" role="button"
                                               data-bs-toggle="modal" data-bs-target="#modalDescuentos">
                                                 <i class="fas fa-tags"></i>&nbsp;Ver descuentos
@@ -182,19 +181,18 @@ $titulo = "Inscripción";
                     <section class="section">
                         <div class="card">
                             <div class="card-body py-4 px-5 d-flex">
-                                <div class="row">
+                                <div class="row w-100">
                                     <div class="col-12 col-sm-8 d-flex align-items-center">
                                         <div class="avatar avatar-xl">
-                                            <img src="../assets/images/ok.svg" alt="Face 1">
+                                            <img id="imgAlertInscripcion" src="../assets/images/icons/checked3.svg" alt="Face 1">
                                         </div>
                                         <div class="ms-3 name">
-                                            <!-- <h4 class="font-bold">Inscribirse</h4> -->
-                                            <h6 class="text-muted mb-0">Una vez termines tu inscripción un administrador procederá a su validación por lo que asegurate de llenar y subir correctamente todos los documentos requeridos.</h6>
+                                            <h6 class="text-muted mb-0" id="alertConfimInscripcion">Una vez termines tu inscripción un administrador procederá a su validación por lo que asegurate de llenar y subir correctamente todos los documentos requeridos.</h6>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4 m-auto">
                                         <div class="col-sm-12 d-flex justify-content-end">
-                                            <button type="button" class="btn btn-primary btn-block me-1 mb-1" data-bs-toggle="modal" data-bs-target="#solicitud">Inscribirse</button>
+                                            <button type="button" class="btn btn-primary btn-block me-1 mb-1 bntInpcion" id="btnsend">Inscribirse</button>
                                         </div>
                                     </div>
                                 </div>

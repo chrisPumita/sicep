@@ -1,8 +1,8 @@
 $(document).ready(function () {
     cargaListaDeplegableCursosActivos();
     loadContaores();
+    setInterval(loadContaores,1000);
 });
-
 function cargaListaDeplegableCursosActivos() {
     cargaCursos(0,1).then(function (JSONData) {
         let listaHtml = buildListaDesplCursos(JSONData);
@@ -19,8 +19,6 @@ function loadAsignacion() {
 //loading contadores de navbar
 function loadContaores(){
     contadoresNavBar().then(function (contadores) {
-        console.log(contadores);
-
         let contadorAlumnosTemplate = contadores.alumnosCountVerif >0 ?
             `Alumnos  <span class="badge bg-primary">${contadores.alumnosCountVerif}</span>` : `Alumnos`;
         $("#counterSolicAlumnos").html(contadorAlumnosTemplate);
@@ -43,5 +41,13 @@ function loadContaores(){
         let contArchvosRevisa = contadores.archivosPendientes >0 ?
             `Documentos  <span class="badge bg-danger">${contadores.archivosPendientes}</span>` : `Solicitudes`;
         $("#countDoscRevisaSidebar").html(contArchvosRevisa);
+
+
+        try {
+            $("#panelSolCount").html(contadores.solPendientes);
+        }
+        catch (e) {
+
+        }
     })
 }

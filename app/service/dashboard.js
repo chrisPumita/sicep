@@ -1,4 +1,3 @@
-console.log("DASHBOAR ACTIVE");
 window.onload = function(){
     cargaEstadisticas();
     cargaGruposActuales();
