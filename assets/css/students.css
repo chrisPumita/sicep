@@ -366,4 +366,13 @@ body {
     }
 }
 
+.tachado {
+    text-decoration: line-through;
+}
 
+
+@media (max-width: 1200px){
+    .w-100-mobile {
+        width: 100% !important;
+    }
+}

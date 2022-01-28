@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("HOME FUNCIONANDO");
     cargaAsignacionesAlumno();
     cargaListaDoscPndientes();
 });
@@ -21,13 +20,14 @@ function buildHTMLSolicitudesEnviadas(lista) {
         lista.forEach(
             doc=>{
                 template+= `
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <a href="#" class="list-group-item list-group-item-action" >
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso}</h6>
-                                    <span class="badge text-primary">GPO: ${doc.grupo}</span>
+                                    <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso} <span class="small"> (grupo ${doc.grupo})</span></h6>
+                                    <span class="badge text-primary">folio ${doc.id_inscripcion}</span>
                                 </div>
                                 <p class="mb-1">
-                                    Prof. ${doc.nombre_completo}
+                                    Prof. ${doc.profesor} <br>
+                                    <i class="far fa-paper-plane"></i> enviada el ${doc.fecha_solicitud}
                                 </p>
                             </a>
                         `;
@@ -64,20 +64,21 @@ function buildHTMLMisCursosTable(lista) {
                                 cont++;
                                 let pdfBoton = curso.link_temario_pdf.length>0 ? `<button type="button" class="btn btn-primary" 
                                         data-bs-toggle="modal" data-bs-target="#modalPdftemario" onclick="viewPDFModal('${curso.link_temario_pdf}','${curso.nombre_curso}');"><i class="fas fa-download"></i></button> `:"";
-                                template+= `<tr id_curso="${curso.id_asignacion}">
+                                template+= `<tr folio="${curso.id_inscripcion}">
                                             <td>${curso.nombre_curso} (${getTipoCurso(curso.tipo_curso)})
                                             <p>Modalida: ${getModalidadCurso(curso.modalidad)}</p></td>
-                                            <td>${curso.nombre_completo}</td>
+                                            <td>${curso.profesor}</td>
                                             <td>
                                                 <p class="mb-0 text-xs">Grupo: ${curso.grupo}</p>
                                                 <p class="mb-0 text-xs">Generacion: ${curso.generacion}</p>
+                                                <p class="mb-0 text-xs">Semestre: ${curso.semestre}</p>
                                             </td>
                                             <td>
-                                                ${estadoAsig(curso.statusAsignacion)}
+                                                ${estadoAsig(curso.estatusInscripcion)}
                                             </td>                                            
                                             <td>
                                                  ${pdfBoton}
-                                               <button type="button" class="btn btn-primary"><i class="fas fa-th-list"></i></button>
+                                               <button type="button" class="btn btn-primary btnViewFichaInsc"><i class="fas fa-th-list"></i></button>
                                             </td>
                                         </tr>`;
                             }
@@ -86,7 +87,6 @@ function buildHTMLMisCursosTable(lista) {
         template +=`
                         </tbody>
                     </table>`;
-
     }
     else {
         template +=`<div class="alert alert-success" role="alert">
@@ -282,12 +282,24 @@ function viewPDFModal(link,curso) {
     $("#modalTittle").html("Temario de "+curso);
 }
 
-function openAsig(id) {
-    alert("Abrir open"+ id);
-}
+
 
 function cargaListaDoscPndientes() {
     consultaAsyncDocsRevisaAlu(0,1).then(function (result) {
         buildHTMLListDoscPend(result);
     })
+}
+
+$(document).on("click", ".btnViewFichaInsc", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("folio");
+    var url = './ficha-inscripcion';
+    redirect_by_post(url, {  id: id }, false);
+});
+
+function openAsig(id) {
+    //inscripcion
+    var url = './inscripcion';
+    redirect_by_post(url, {  id: id }, false);
 }

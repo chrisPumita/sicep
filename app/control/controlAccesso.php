@@ -51,6 +51,7 @@ function verificaCuentaUser($correo,$pw,$chkProf)
             $_SESSION['cuenta']         = $datosAlumno[0]['flagServSoc'] == "1"?'SERVICIO SOCIAL':'ALUMNO';
             $_SESSION['serv']          = $datosAlumno[0]['flagServSoc'] == "1" ? true:false;
             $_SESSION['id_alumno']     = $datosAlumno[0]['id_alumno'];
+            $_SESSION['id_tipo_procedencia']     = $datosAlumno[0]['id_tipo_procedencia_fk'];
 
             $_SESSION['perfil_image']     = $datosAlumno[0]['perfil_image'];
             $_SESSION['nombre_completo']= $datosAlumno[0]['nombre_completo'];

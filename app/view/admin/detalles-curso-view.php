@@ -1,6 +1,6 @@
 <?php
 if (!isset($_POST['id'])){
-    echo "<script>location.href ='javascript:history.back()';</script>";
+    header("Location: ./lista-cursos");
 }
 else{
     $id = $_POST['id'];
