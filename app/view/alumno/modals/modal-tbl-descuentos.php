@@ -1,5 +1,6 @@
 <!--Modal para PDF -->
-<div class="modal fade text-left" id="modalDescuentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+<div class="modal fade text-left" id="modalDescuentos" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel160"
      aria-hidden="true">
     <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable"
          role="document">

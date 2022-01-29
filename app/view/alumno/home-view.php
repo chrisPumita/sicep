@@ -222,6 +222,7 @@
         <?php include 'includes/footer.php'; ?>
         <?php include 'modals/modal-inscribir-alumno.php'; ?>
         <?php include 'modals/modal-pdf-temario.php'; ?>
+        <?php include "modals/modal-tbl-descuentos.php" ?>
     </div>
 </div>
 <?php include 'includes/scripts.php'; ?>
