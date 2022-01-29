@@ -185,7 +185,7 @@
                                             <label for="inicioInsc">del </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" idCurso="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                            <input type="date" id="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -208,7 +208,7 @@
                                             <label for="inicioCal">del </label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="date" idCurso="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                            <input type="date" id="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="d-flex">

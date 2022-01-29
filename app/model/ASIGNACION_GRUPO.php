@@ -558,9 +558,14 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
 
 
     function queryUpdateFechasAsignacion(){
-        /**
-         * `fecha_inicio`='".$this->getFechaInicio()."',`fecha_fin`='".$this->getFechaFin()."',`fecha_lim_inscripcion`='".$this->getFechaLimInscripcion()."',`fecha_inicio_actas`='".$this->getFechaInicioActas()."',`fecha_fin_actas`='".$this->getFechaFinActas().",
-         */
+        $query="UPDATE `asignacion_grupo` SET `fecha_inicio` = '".$this->getFechaInicio()."', `fecha_fin` = '".$this->getFechaFin()."', 
+        `fecha_inicio_inscripcion` = '".$this->getFechaInicioInscripcion()."', `fecha_lim_inscripcion` = '".$this->getFechaLimInscripcion()."', 
+        `fecha_inicio_actas` = '".$this->getFechaInicioActas()."', `fecha_fin_actas` = '".$this->getFechaFinActas()."' 
+        WHERE `asignacion_grupo`.`id_asignacion` = ".$this->getIdAsignacion();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
     function queryUpdateEstatus($id_asignacion,$estatus)
     {

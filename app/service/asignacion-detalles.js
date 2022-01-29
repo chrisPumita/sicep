@@ -364,7 +364,7 @@ function buildTBLHtmlDescuentos(DESCUENTOS,costoAplicado) {
 
 $("#frm-update-detalles-asig").on("submit", function(e){
     //Ruta del Webbhook
-    let ruta = "./webhook/update-detalles-asig.php";
+    let ruta = "./webhook/update-fechas-asig.php";
     //Parametros que se van a enviar encapsulados
     var params = {
         idAsignacion : $("#idAsignacion").val(),
@@ -382,31 +382,32 @@ $("#frm-update-detalles-asig").on("submit", function(e){
     console.log(params);
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
+        $("#editarDetallesAsig").modal('hide');
         consultaInfoAsignacion(ID_ASIG,1);
     });
     e.preventDefault();
 });
 
 $("#frm-update-detalles-asig-fechas").on("submit", function(e){
-    e.preventDefault();
-    var f = $(this);
-    var formData = new FormData(document.getElementById("frm-update-detalles-asig-fechas"));
-    formData.append("dato", "valor");
-    $.ajax({
-        url: "./webhook/update-detalles-asig-fechas.php",
-        type: "post",
-        dataType: "json",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(res){
-            alertaEmergente(res.Mensaje);
-        }
-    }).done(function(response){
+    //Ruta del Webbhook
+    let ruta = "./webhook/update-fechas-asignacion.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        idAsignacion : $("#idAsignacion").val(),
+        inicioCurso: $("#InicioCurso").val(),
+        finCurso:$("#finCurso").val(),
+        inicioInsc:$("#inicioInsc").val(),
+        finInsc: $("#finInsc").val(),
+        inicioCal: $("#inicioCal").val(),
+        finCal: $("#finCal").val()
+    };
+    console.log(params);
+    //Llamado de la funcion Async y resolviendo la promesa
+    enviaForm(params,ruta).then(function () {
+        $("#editarDetallesAsigFechas").modal('hide');
         consultaInfoAsignacion(ID_ASIG,1);
     });
-    $("#editarDetallesAsigFechas").modal('hide');
+    e.preventDefault();
 });
 
 function openCurso(id) {

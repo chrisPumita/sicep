@@ -66,19 +66,24 @@ function updateDatosAsignacion($params){
     $ASIG->setGeneracion($params['newGeneracion']);
     $ASIG->setSemestre($params['newSemestre']);
     $ASIG->setCampusCede($params['newCampus']);
-    /* Fechas otro update
-    $ASIG->setFechaInicio($params['InicioCurso']);
-    $ASIG->setFechaFin($params['finCurso']);
-    $ASIG->setFechaInicioInscripcion($params['inicioInsc']);
-    $ASIG->setFechaLimInscripcion($params['finInsc']);
-    $ASIG->setFechaInicioActas($params['inicioCal']);
-    $ASIG->setFechaFinActas($params['finCal']);*/
     $ASIG->setCupo($params['newCupo']);
     $ASIG->setCostoReal($params['newCosto']);
     $ASIG->setNotas($params['newNotas']);
     $ASIG->setModalidad($params['newModalidad']);
     $ASIG->setPublico($publico);
     return $ASIG->queryUpdateDatosAsignacion();
+}
+function updateFechasAsignacion($params){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $ASIG = new ASIGNACION_GRUPO();
+    $ASIG->setIdAsignacion($params['idAsignacion']);
+    $ASIG->setFechaInicio($params['inicioCurso']);
+    $ASIG->setFechaFin($params['finCurso']);
+    $ASIG->setFechaInicioInscripcion($params['inicioInsc']);
+    $ASIG->setFechaLimInscripcion($params['finInsc']);
+    $ASIG->setFechaInicioActas($params['inicioCal']);
+    $ASIG->setFechaFinActas($params['finCal']);
+    return $ASIG->queryUpdateFechasAsignacion();
 }
 
 function getListaFilstrosAsig(){

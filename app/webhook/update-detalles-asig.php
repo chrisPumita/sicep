@@ -1,10 +1,7 @@
 <?php
 //Update asignacion data
-if( isset($_POST['idAsignacion']) && isset($_POST['idProfesorAsig'])&& isset($_POST['idGrupo'])&& isset($_POST['idGeneracion'])
-&& isset($_POST['semestre']) && isset($_POST['costo'])&& isset($_POST['modalidad']) && isset($_POST['visibilidad'])
+if( isset($_POST['idAsignacion']) && isset($_POST['costo'])&& isset($_POST['modalidad']) && isset($_POST['visibilidad'])
 && isset($_POST['cupo']) && isset($_POST['campus']) && isset($_POST['notas'])){
-// 
-//
     $params = [
         "idAsignacion"=>$_POST['idAsignacion'],
         "newProfAsig"=> $_POST['idProfesorAsig'],
