@@ -7,7 +7,7 @@
         <section class="bg-ligth">
 
             <!-- LLAMADA -->
-            <a class="btn btn-link btn-floating btn-lg text-light m-1" target="_blank" href="#!" role="button" data-mdb-ripple-color="dark">
+            <a class="btn btn-link btn-floating btn-lg text-light m-1" target="_blank" href="#" role="button" data-mdb-ripple-color="dark">
                 <i class="fas fa-phone"></i>
             </a>
             <!-- EMAIL -->
@@ -21,7 +21,7 @@
             </a>
 
             <!-- Youyubr -->
-            <a class="btn btn-link btn-floating btn-lg text-light m-1" target="_blank" href="https://www.youtube.com/channel/UCORpUwvwlIiv8Oacp9Xt8RA" role="button" data-mdb-ripple-color="grey">
+            <a class="btn btn-link btn-floating btn-lg text-light m-1" target="_blank" href="https://www.youtube.com/c/Coordinaci%C3%B3ndeInform%C3%A1ticaFESC" role="button" data-mdb-ripple-color="grey">
                 <i class="fab fa-youtube"></i>
             </a>
             <!-- MAPS -->

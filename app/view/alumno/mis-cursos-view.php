@@ -16,7 +16,7 @@
                             <h3>Mis Cursos</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Mis Cursos</li>
                                 </ol>
                             </nav>
@@ -257,7 +257,7 @@
                                                 <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#detallesCurso">
                                                 <i class="fas fa-plus"></i> Mas info
                                                 </button>
-                                                <button class="btn btn-primary mr-3 me-1 mb-1" disabled="" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                                                <button class="btn btn-primary mr-3 me-1 mb-1" disabled="">
                                                 <i class="fas fa-clipboard-check"></i>Sin solicitudes
                                                 </button>
                                             </div>

@@ -169,7 +169,7 @@
               <div class="col-md-6">
                 <div class="info">
                   <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
-                  <h5>Multidisciplina</h5>
+                  <h5>Multidisciplinarios</h5>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam aspernatur cum
                       eligendi est fuga id inventore, ipsa iste libero mollitia odit officiis quas sequi
                       tempore velit veritatis voluptate!</p>
@@ -376,6 +376,7 @@
     </section>
     <!-- -------- TERMINAN SECCIONES  ------- -->
   </div>
+  
   <footer class="footer pt-5 mt-5">
     <div class="container">
       <div class=" row">
@@ -467,6 +468,7 @@
       </div>
     </div>
   </footer>
+  <!-- <?php include "../alumno/modals/detalles-curso.php"?> -->
   <!--   Core JS Files   -->
   <script src="./assets/vendors/jquery/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
