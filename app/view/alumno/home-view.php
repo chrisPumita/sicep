@@ -79,11 +79,6 @@
                                 <div class="row" id="containerDocsPend">
 
                                 </div>
-                                <div class="row d-flex justify-content-center  py-3 px-3">
-                                    <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalInscripcion">
-                                        <i class="fas fa-plus"></i>Ver todo
-                                    </button>
-                                </div>
                             </div>
                         </div>
                         <div class="card">
@@ -92,77 +87,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="row" id="containerSolEnviadas">
-                                    <div class="list-group small">
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> ACTA</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
 
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> CERTIFICADO 1 NVL</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> CERTIFICADO 2 NVL</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> CREDENCIAL</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> CREDENCIAL</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Excel Avanzado (1603)
-                                            </p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> CURP</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-1"><i class="fas fa-file-upload"></i> FICHA DE PAGO</h6>
-                                                <small><i class="fas fa-circle text-danger"></i></small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Inteligencia Artificial (1000)
-                                            </p>
-                                        </a>
-                                    </div></div>
+                                </div>
                                 <div class="row d-flex justify-content-center  py-3 px-3">
                                     <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalInscripcion">
                                         <i class="fas fa-plus"></i>Ver todo

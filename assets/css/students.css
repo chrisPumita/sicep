@@ -388,6 +388,11 @@ body {
     padding: 3px;
 }
 
+.collapseTittle:hover {
+    background-color: var(--second) !important;
+    color: var(--primary) !important;
+}
+
 @media (max-width: 1200px){
     .w-100-mobile {
         width: 100% !important;

@@ -163,25 +163,25 @@ $titulo = "Inicio - Alumno"; ?>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-3">
                                             <h6 class="mb-0">Grupo</h6>
                                         </div>
-                                        <div class="col-sm-2 text-primary text-bold" id="fichaGrupo"></div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3 text-primary text-bold" id="fichaGrupo"></div>
+                                        <div class="col-sm-3">
                                             <h6 class="mb-0">Semestre</h6>
                                         </div>
-                                        <div class="col-sm-4 text-primary text-bold" id="fichasemestre"></div>
+                                        <div class="col-sm-3 text-primary text-bold" id="fichasemestre"></div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Generacion</h6>
                                         </div>
-                                        <div class="col-sm-2 text-primary text-bold" id="fichaGen"></div>
+                                        <div class="col-sm-3 text-primary text-bold" id="fichaGen"></div>
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Sede</h6>
                                         </div>
-                                        <div class="col-sm-4 text-primary text-bold" id="fichaCampus"></div>
+                                        <div class="col-sm-3 text-primary text-bold" id="fichaCampus"></div>
                                     </div>
                                     <hr>
                                     <div class="row">

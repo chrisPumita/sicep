@@ -18,7 +18,7 @@ function buildHTMLSolicitudesEnviadas(lista) {
         lista.forEach(
             doc=>{
                 template+= `
-                            <a href="#" class="list-group-item list-group-item-action" >
+                            <a href="#" class="list-group-item list-group-item-action" onclick="viewFicchaInscripcion('${doc.id_inscripcion}');" >
                                 <div class="d-flex w-100 justify-content-between">
                                     <h6 class="mb-1"><i class="fas fa-rocket"></i> ${doc.nombre_curso}</h6>
                                     <span class="badge text-primary">grupo ${doc.grupo}</span>
@@ -43,6 +43,7 @@ function buildHTMLSolicitudesEnviadas(lista) {
     }
     $("#containerSolEnviadas").html(template);
 }
+
 function buildHTMLMisCursosTable(lista) {
     let template = "";
     let cont = 0;
@@ -61,7 +62,6 @@ function buildHTMLMisCursosTable(lista) {
                         <tbody>`;
                         lista.forEach(
                             (curso)=>{
-                                console.log(curso);
                                 cont++;
                                 let pdfBoton = curso.link_temario_pdf.length>0 ? `<button type="button" class="btn btn-primary" 
                                         data-bs-toggle="modal" data-bs-target="#modalPdftemario" onclick="viewPDFModal('${curso.link_temario_pdf}','${curso.nombre_curso}');"><i class="fas fa-file-pdf"></i></button> `:"";
@@ -232,45 +232,64 @@ function buildHTMLListDoscPend(lista) {
     let template = "";
     console.log(lista);
     if (lista.length > 0) {
-        template+= `<div class="list-group small">`;
-        lista.forEach(
-          doc=>{
-              let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
-              let colorBadge = "";
-              switch (estadoFile) {
-                  case 0: //archivo enviado
-                      colorBadge = "warning";
-                      break;
-                  case 1: // archivo recivido
-                      colorBadge = "success";
-                      break;
+        let listaAgrupada = agrupar(lista);
+            console.log(listaAgrupada);
+    let contador = 0;
+    template+= `<div class="accordion accordion-flush" id="accordionFlushExample">`;
+        listaAgrupada.forEach(curso=>{
+            contador++;
+            template+= `<div class="accordion-item">
+                        <button class="list-group-item list-group-item-action collapseTittle"  data-bs-toggle="collapse" 
+                        data-bs-target="#flush-collapse${contador}" aria-expanded="false" aria-controls="flush-collapse${contador}">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1"><i class="fas fa-chalkboard"></i> Grupo ${curso.grupo} </h6>
+                                <small><span class="badge bg-primary">${curso.DOCS.length}</span></small>
+                            </div>
+                            <p class="mb-1">
+                               ${curso.curso}
+                            </p>
+                        </button>
+                        <div id="flush-collapse${contador}" class="accordion-collapse collapse" aria-labelledby="flush-heading${contador}" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul class="list-group">`;
+                                curso.DOCS.forEach(doc=>{
+                                    let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
+                                    let colorBadge = "", icon;
+                                    switch (estadoFile) {
+                                        case 0: //archivo enviado
+                                            colorBadge = "info";
+                                            icon = '<i class="fas fa-paper-plane"></i>';
+                                            break;
+                                        case 1: // archivo recivido
+                                            colorBadge = "success";
+                                            icon = '<i class="fas fa-check-square"></i>';
+                                            break;
 
-                  case -1:
-                        //archivo con detallle
-                      colorBadge = "danger";
-                      break;
+                                        case -1:
+                                            //archivo con detallle
+                                            colorBadge = "warning";
+                                            icon = '<i class="fas fa-upload"></i>';
+                                            break;
 
-                  default:
-                      botonesPDF = "";
-                      botonesAcion = "";
-                      fechaInfo = "El archivo fue rechazado y regresado al alumno.";
-                      break;
-              }
-              template+= `
-                            <a href="#" class="list-group-item list-group-item-action" onclick="viewFicchaInscripcion('${doc.id_inscripcion}');">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1"><i class="fas fa-file-upload"></i> ${doc.nombre_doc}</h6>
-                                    <small><i class="fas fa-circle text-${colorBadge}"></i></small>
-                                </div>
-                                <p class="mb-1">
-                                    ${doc.nombre_curso} (${doc.grupo})
-                                </p>
-                            </a>
-                        `;
+                                        default:
+                                            colorBadge = "danger";
+                                            icon = '<i class="fas fa-exclamation-circle"></i>';
+                                            fechaInfo = "El archivo fue rechazado y regresado al alumno.";
+                                            break;
+                                    }
+                                    template+= `
+                                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " onclick="viewFicchaInscripcion(${doc.id_inscripcion});" role="button">
+                                        <span>${doc.nombre_doc}</span>
+                                        <span class="badge bg-${colorBadge} badge-pill badge-round ml-1 small">${icon}</span>
+                                    </li>`;
+                                })
 
-          }
-        );
-        template+= `</div>`;
+                               template+= ` </ul>
+                            </div>
+                        </div>
+                    </div>`;
+        });
+    template+= ` </div>`;
     }
     else{
         template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -288,7 +307,23 @@ function viewPDFModal(link,curso) {
     $("#modalTittle").html("Temario de "+curso);
 }
 
-
+function agrupar(listaDocs) {
+    var nuevoArray    = []
+    var arrayTemporal = []
+    for(var i=0; i<listaDocs.length; i++){
+        if(listaDocs[i].estatusFile!=1){
+            arrayTemporal = nuevoArray.filter(resp => resp["id"] == listaDocs[i]["id_inscripcion"]);
+            if(arrayTemporal.length>0){
+                nuevoArray[nuevoArray.indexOf(arrayTemporal[0])]["DOCS"].push(listaDocs[i])
+            }else{
+                nuevoArray.push({
+                    "id" : listaDocs[i]["id_inscripcion"] , "curso" : listaDocs[i]["nombre_curso"] , "grupo" : listaDocs[i]["grupo"] ,
+                    "DOCS" : [listaDocs[i]]});
+            }
+        }
+    }
+    return nuevoArray;
+}
 
 function cargaListaDoscPndientes() {
     consultaAsyncDocsRevisaAlu(0,1).then(function (result) {

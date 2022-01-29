@@ -175,7 +175,7 @@ function buildHTMLFicha(FICHA) {
     $("#fichaAltaCuenta").html('Registrada el '+getLegibleFechaHora(DATOS.fecha_registro));
     //DETALLES DEL CURSO
     $("#bannerCurso").attr("src",DATOS.banner_img);
-    $("#idFechaSol").html('Recibida el '+getLegibleFechaHora(DATOS.fecha_solicitud));
+    $("#idFechaSol").html('Enviada el '+getLegibleFechaHora(DATOS.fecha_solicitud));
     $("#fichaNameCurso").html(DATOS.codigo+' '+DATOS.nombre_curso);
     $("#fichaGrupo").html(DATOS.grupo);
     $("#fichasemestre").html(DATOS.semestre);

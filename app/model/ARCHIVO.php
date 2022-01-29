@@ -279,7 +279,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 
     function queryListFilesPendientesAlumno($idAlumno,$showPendientes){
         $inscripcion = $this->getIdInscripcionFk() > 0 ? " AND insc.id_inscripcion =  ". $this->getIdInscripcionFk():'';
-        $pendintes = $showPendientes ? "HAVING estadoRevisado <> 1 ":"";
+        $pendintes = $showPendientes ? "HAVING estatusFile <> 1 ":"";
         $query="SELECT insc.id_inscripcion, insc.id_alumno_fk, dsol.id_doc_sol, dsol.obligatorio, d.nombre_doc, insc.id_inscripcion,
        arch.id_archivo, arch.path, d.id_documento,arch.notas AS notasFile, c.id_curso, c.nombre_curso,
        d.formato_admitido, d.tipo, d.peso_max_mb, arch.fecha_creacion, arch.notas,gpo.grupo,
