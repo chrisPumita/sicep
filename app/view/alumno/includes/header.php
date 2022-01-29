@@ -3,7 +3,7 @@
     <div class="header-top">
         <div class="container">
             <div class="logo">
-                <a href="../">
+                <a href="./home">
                     <img src="../assets/images/logo/logo.png" alt="Logo" srcset="">
                 </a>
             </div>
@@ -97,7 +97,7 @@
                 </div>
                 </li>
             </ul>
-            <ul class="w-50 justify-content-end d-flex">
+            <ul class=" w-50 w-100-mobile  justify-content-end d-flex">
                 <li class="menu-item  has-sub dropdown-menu-end"">
                 <a href="#" class='menu-link'>
                     <div class="user-menu d-flex">

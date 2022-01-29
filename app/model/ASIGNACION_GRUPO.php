@@ -663,6 +663,13 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                     //Buscar actuales
                     $filtro = " AND ag.estatus = ".$idFiltro;
                     break;
+                case "4":
+                    //caso de oferta del alumno
+                    $filtro = "
+                            AND ag.visible_publico = 1 AND ag.id_asignacion NOT IN 
+                                (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.")
+                            HAVING statusAsignacion < 99";
+                    break;
                 default:
                     $filtro = "";
                     break;
@@ -717,81 +724,5 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $this->close();
         return $result;
     }
-
-    //////////////////////////////////
-    ///  ALUMNOS FUNCIONES  //////////
-    //////////////////////////////////
-    function queryAsignacionesAlumno($filtro, $idFiltro)
-    {
-        if ($filtro!=0){
-            //El filtro refiere a una asignacion o asignaciones
-            //revisar tipo de filtro
-            switch ($filtro){
-                case "0":
-                    //traer detalles de una asignacion especifica
-                    $filtro = "  AND ag.id_asignacion = ".$this->getIdAsignacion();
-                    $datosOferta = "";
-                    break;
-                case "1":
-                    //traer todas las asignaciones ofertadas para este alumno
-                    $datosOferta = "(SELECT COUNT(*) from inscripcion insc where
-               insc.id_inscripcion  IN (select id_inscripcion_fk from validacion_inscripcion)
-                                                AND insc.id_asignacion_fk = ag.id_asignacion) AS inscritos,
-       (SELECT COUNT(*) from inscripcion insc where
-               insc.id_inscripcion NOT IN (select id_inscripcion_fk from validacion_inscripcion)
-                                                AND insc.id_asignacion_fk = ag.id_asignacion) AS solicitudesPendientes,";
-                    $filtro = "
-                            AND ag.id_asignacion NOT IN 
-                                (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.")
-                            HAVING statusAsignacion < 99";
-                    break;
-                case "2":
-                    $datosOferta = "";
-                    //traer todas las asignaciones a las que esta inscrito
-                    $filtro = " AND ag.id_asignacion IN 
-                                (SELECT vi.id_inscripcion_fk FROM validacion_inscripcion vi, inscripcion i
-                                    WHERE vi.id_inscripcion_fk = i.id_inscripcion
-                                    AND i.id_alumno_fk =  ".$idFiltro.") ";
-                    break;
-                case "3":
-                    $datosOferta = "";
-                    //traer todas las asignaciones del alumno que ha enviado
-                    $filtro = " AND ag.id_asignacion IN 
-                                (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.") 
-                                AND ag.id_asignacion NOT IN  (SELECT vi.id_inscripcion_fk FROM validacion_inscripcion vi, inscripcion i
-                                    WHERE vi.id_inscripcion_fk = i.id_inscripcion
-                                    AND i.id_alumno_fk =  ".$idFiltro.") ";
-                    break;
-                default:
-                    $filtro = "";
-                    break;
-            }
-        }
-        else{
-            $filtro = "";
-        }
-        $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
-       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor,
-       gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, c.banner_img, c.link_temario_pdf,
-       ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
-       ag.semestre, ag.campus_cede, ag.fecha_inicio, ag.fecha_fin, ag.fecha_inicio_inscripcion, ag.fecha_lim_inscripcion,
-       ag.fecha_inicio_actas, ag.fecha_fin_actas, ag.cupo, ag.costo_real, ag.notas, ag.modalidad,
-       ag.estatus AS archiveAsig,
-              ".$datosOferta."
-       if(ag.estatus>0,
-          if(now()>=ag.fecha_inicio && now()<=ag.fecha_fin, '2',
-             if(now()>=ag.fecha_inicio_actas && now()<=ag.fecha_fin_actas, '3',
-                if(now()>=ag.fecha_inicio_inscripcion && now()<= ag.fecha_lim_inscripcion,'1', '99'))) ,'0') as statusAsignacion
-from persona per, profesor prof, asignacion_grupo ag, grupo gpo, curso c
-where per.id_persona = prof.id_persona_fk
-  AND ag.id_profesor_fk = prof.id_profesor
-  AND ag.id_grupo_fk = gpo.id_grupo AND ag.visible_publico = 1
-  AND c.id_curso = gpo.id_curso_fk ".$filtro." ORDER BY statusAsignacion, c.nombre_curso ASC";
-        $this->connect();
-        $result = $this->getData($query);
-        $this->close();
-        return $result;
-    }
-
 }
 

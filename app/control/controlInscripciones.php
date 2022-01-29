@@ -50,10 +50,6 @@ function procesaInscripcionValidacion($password,$idFichaInsc,$val){
     }
 }
 
-/*******************************************************************************
- * INICIAN Getters and Setters
- *******************************************************************************/
-
 function getListaAlumnosAsignacion($idAsig){
     include_once "../model/INSCRIPCION.php";
     $objInsc = new INSCRIPCION();
@@ -136,4 +132,22 @@ function consultaDocumentacionAlumno($idInsc,$onlyPend){
     $INSC->setIdInscripcion($idInsc);
     session_start();
     return $INSC->queryLsDocsInscAlumno($_SESSION['id_alumno'],$onlyPend);
+}
+
+function consultaFichaInscAlumno($idAlumno,$idIdInsc,$tipo){
+    include_once "../model/INSCRIPCION.php";
+    $FICHA = new INSCRIPCION();
+    $FICHA ->setIdAlumnoFk($idAlumno);
+    $FICHA ->setIdInscripcion($idIdInsc);
+    return $FICHA ->queryFichasInscripcionAlumnos($tipo);
+}
+
+function enviarSolicitudInscripcion($idAlumno,$idAsig){
+    include_once "../model/INSCRIPCION.php";
+    include_once "keyGen/generadorClaves.php";
+    $FICHA = new INSCRIPCION();
+    $FICHA->setIdInscripcion(gen_no_inscripcion());
+    $FICHA->setIdAlumnoFk($idAlumno);
+    $FICHA->setIdAsignacionFk($idAsig);
+    return $FICHA->queryRegistraInscripcion();
 }

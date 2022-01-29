@@ -1,9 +1,16 @@
 $(document).ready(function() {
     cargaSolicitudesDataTable();
+    setInterval(reloadDatatble,5000);
     cargaListasCursos();
     consultaProcedencias();
 });
 
+function reloadDatatble() {
+    var table = $('#tblSolicitudes').DataTable( {
+        ajax: "data.json"
+    } );
+    table.ajax.reload( null, false );
+}
 
 function cargaSolicitudesDataTable() {
     $('#tblSolicitudes').DataTable( {
@@ -20,7 +27,6 @@ function cargaSolicitudesDataTable() {
             $(row).attr('folio', data.id_inscripcion);
         },
         "drawCallback": function( settings, start, end, max, total, pre ) {
-            console.log(this.fnSettings().json); /* for json response you can use it also*/
             //alert(this.fnSettings().fnRecordsTotal()); // total number of rows
             $("#badgePendientes").html(this.fnSettings().fnRecordsTotal()); //
         },

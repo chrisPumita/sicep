@@ -4,10 +4,9 @@ class ESTADISTICAS extends CONEXION_M
 {
     function queryEstadisticasAnioSolicitudes(){
         $sql = "select Mes, anio, Valor, Orden from (
-                select 'Ene' as Mes, YEAR(I.fecha_solicitud) AS anio, (13 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor
+                select 'Ene' as Mes, YEAR(I.fecha_solicitud) AS anio, (13 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 12 MONTH))) mod 12 as Orden, count(*) as Valor
                 from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 1
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE)
-                and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
+                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
                 union select 'Feb' as Mes, YEAR(I.fecha_solicitud) AS anio, (14 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 2
                 and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
                 union select 'Mar' as Mes, YEAR(I.fecha_solicitud) AS anio, (15 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 3

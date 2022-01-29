@@ -3,6 +3,9 @@
 async function consultaAsyncOfertaAsignAlu() {
     return await consultaAsyncOfertaAsigAJAX();
 }
+async function consultaAsyncDetailsAsigInscribe(idAsig) {
+    return await consultaAsyncAJAXDetailsAsigInscribe(idAsig);
+}
 
 async function consultaAsyncOfertaAsigAJAX(){
     return $.ajax({
@@ -16,6 +19,45 @@ async function consultaAsyncOfertaAsigAJAX(){
             alert("Error al tratar de traer las asignaciones historicas");
         }
     });
+}
+//
+async function consultaAsyncAJAXDetailsAsigInscribe(idAsig){
+    return $.ajax({
+        url: "../app/webhook/alumno.detailsAsigInscribe.php",
+        type: 'POST',
+        data: {idAsig:idAsig},
+        dataType: "json",
+        success: function (response) {
+            //  console.log(response);
+        },
+        error: function() {
+            alert("Error al tratar de traer los detalles de la asignacion");
+        }
+    });
+}
+
+
+
+async function consultaDescuentosAsigInscribe(idGrupo) {
+    return await consultaDescuentosAsigInscribeAjax(idGrupo);
+}
+
+async function consultaDescuentosAsigInscribeAjax(id){
+    return $.ajax(
+        {
+            url: "../app/webhook/descuentos-curso.php",
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+                //  console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
 }
 
 ///DOCUMENTACION

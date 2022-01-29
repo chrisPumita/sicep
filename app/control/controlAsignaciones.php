@@ -102,22 +102,12 @@ function getListaFilstrosAsig(){
 function consultaOfertaAlumno($idAlumno){
     include_once "../model/ASIGNACION_GRUPO.php";
     $ASI = new ASIGNACION_GRUPO();
-    return $ASI->queryAsignacionesAlumno(1,$idAlumno);
-}
-function consultaSolEnviadasAlumno($idAlumno){
-    include_once "../model/ASIGNACION_GRUPO.php";
-    $ASI = new ASIGNACION_GRUPO();
-    return $ASI->queryAsignacionesAlumno(3,$idAlumno);
+    return  $ASI->queryHistorialAsignacionesCurso(0,4,$idAlumno);
 }
 
-function consultaAsigAlumno($idAlumno){
-    include_once "../model/ASIGNACION_GRUPO.php";
-    $ASI = new ASIGNACION_GRUPO();
-    return $ASI->queryAsignacionesAlumno(2,$idAlumno);
-}
-
-function consultaAsigGeneralALumno($idAlumno){
-    return array("oferta"=> consultaOfertaAlumno($idAlumno),
-                  "misCursos"=>consultaAsigAlumno($idAlumno),
-                    "enviados"=>consultaSolEnviadasAlumno($idAlumno));
+function matchProcedenciaAlumnoDesc($id_asignacion,$idProcedencia){
+    include_once "../model/INSCRIPCION.php";
+    $FICHA = new INSCRIPCION();
+    $FICHA->setIdAsignacionFk($id_asignacion);
+    return $FICHA ->queryInfoDescAplicable($idProcedencia);
 }

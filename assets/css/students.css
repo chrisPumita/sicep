@@ -366,4 +366,30 @@ body {
     }
 }
 
+.tachado {
+    text-decoration: line-through;
+}
 
+.list-group-item.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+
+.estatusAvatar {
+    background-color: var(--ligth);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    text-align: center;
+    align-content: center;
+    padding: 3px;
+}
+
+@media (max-width: 1200px){
+    .w-100-mobile {
+        width: 100% !important;
+    }
+}
