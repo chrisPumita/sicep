@@ -364,7 +364,7 @@ function buildTBLHtmlDescuentos(DESCUENTOS,costoAplicado) {
 
 $("#frm-update-detalles-asig").on("submit", function(e){
     //Ruta del Webbhook
-    let ruta = "./webhook/update-fechas-asig.php";
+    let ruta = "./webhook/update-detalles-asig.php";
     //Parametros que se van a enviar encapsulados
     var params = {
         idAsignacion : $("#idAsignacion").val(),
@@ -379,7 +379,6 @@ $("#frm-update-detalles-asig").on("submit", function(e){
         campus :$("#campus").val(),
         notas : $("#notas").val()
     };
-    console.log(params);
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
         $("#editarDetallesAsig").modal('hide');
@@ -401,7 +400,6 @@ $("#frm-update-detalles-asig-fechas").on("submit", function(e){
         inicioCal: $("#inicioCal").val(),
         finCal: $("#finCal").val()
     };
-    console.log(params);
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
         $("#editarDetallesAsigFechas").modal('hide');
