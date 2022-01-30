@@ -14,7 +14,7 @@
                         <h3>Preguntas Frecuentes</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">FAQ's</li>
                             </ol>
                         </nav>
@@ -31,9 +31,9 @@
                                             <div class="card-body">
                                                 <!-- CONTENIDO -->
                                                 <!-- <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQ</h3> -->
-                                                <p class="text-center mb-5">
+                                                <!-- <p class="text-center mb-5">
                                                     Find the answers for the most frequently asked questions below
-                                                </p>
+                                                </p> -->
                                                 <div class="row">
                                                     <div class="col-md-6 col-lg-4 mb-4">
                                                         <h6 class="mb-3 text-primary"><i class="far fa-paper-plane text-primary pe-2"></i> A simple

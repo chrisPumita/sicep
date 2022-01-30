@@ -15,7 +15,7 @@
                 <h3>Mis constancias</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="./mis-cursos">Mis Cursos</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Mis Constancias</li>
                         </ol>

@@ -1,6 +1,6 @@
 //regresa un template datatable con una lista de documentos
 function buildTBLDocsSolicitados(DOCS) {
-    let template;
+    let template = "";
     if (DOCS.length > 0){
         template = `<div class="table-responsive">
                         <table class="table table-hover table-lg">

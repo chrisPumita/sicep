@@ -40,6 +40,14 @@
 
 .my-5 { margin-top: 0rem!important;}
 
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--second);
+}
 body {
     font-weight: 200;
     color: var(--primary);
@@ -386,6 +394,11 @@ body {
     text-align: center;
     align-content: center;
     padding: 3px;
+}
+
+.collapseTittle:hover {
+    background-color: var(--second) !important;
+    color: var(--primary) !important;
 }
 
 @media (max-width: 1200px){

@@ -1,4 +1,4 @@
-<?php $titulo = "Inicio - Alumno" ?>
+<?php $titulo = "Acerca de" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +12,16 @@
 
         <div class="content-wrapper container">
             <div class="page-heading">
-                <h3>TEMPLATE DEMO</h3>
+                <h3>Acerca de</h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./home">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Mis Cursos</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-content">
+                
                 <section class="row">
                     <div class="col-12 col-lg-9">
                         <div class="row">

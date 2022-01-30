@@ -324,6 +324,9 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
                 $filtro = "   AND insc.id_inscripcion IN (SELECT id_inscripcion_fk FROM validacion_inscripcion)
                                 AND insc.autorizacion_inscripcion > 0 AND insc.estatus = 1 ";
                 break;
+            case "2":
+                $filtro = " AND insc.autorizacion_inscripcion < 0 ";
+                break;
             default:
                 $filtro = " ";
                 break;

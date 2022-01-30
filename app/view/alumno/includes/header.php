@@ -61,16 +61,10 @@
                         <div class="submenu-group-wrapper">
                             <ul class="submenu-group">
                                 <li class="submenu-item  ">
-                                    <a href="./documentacion" class='submenu-link'><i class="fas fa-folder-open"></i> Documentacion</a>
+                                    <a href="./documentacion" class='submenu-link'><i class="fas fa-folder-open"></i> Documentación</a>
                                 </li>
                                 <li class="submenu-item  ">
-                                    <a href="./inscripcion" class='submenu-link'><i class="far fa-paper-plane"></i> Inscripcion</a>
-                                </li>
-                                <li class="submenu-item  ">
-                                    <a href="#" class='submenu-link'><i class="far fa-paper-plane"></i> Enviadas</a>
-                                </li>
-                                <li class="submenu-item  ">
-                                    <a href="layout-vertical-navbar.html" class='submenu-link'><i class="fas fa-ban"></i> Rechazadas</a>
+                                    <a href="./mis-cursos" class='submenu-link'><i class="far fa-paper-plane"></i> Enviadas</a>
                                 </li>
                         </div>
                     </div>
@@ -91,7 +85,7 @@
                                 <a href="./faqs" class='submenu-link'><i class="fas fa-question"></i> Preguntas Frecuentes</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="#" class='submenu-link'><i class="fab fa-rebel"></i> Acerca de</a>
+                                <a href="./about" class='submenu-link'><i class="fab fa-rebel"></i> Acerca de</a>
                             </li>
                     </div>
                 </div>

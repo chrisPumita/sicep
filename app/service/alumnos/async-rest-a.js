@@ -107,3 +107,47 @@ async function consultaAsyncDocsRevisaAluAJAX(idInscipcion,filtro){
         }
     });
 }
+
+async function consultaTemarioOferta(idGrupo) {
+    return await consultaTemarioAjax(idGrupo);
+}
+async function consultaTemarioAjax(idCurso){
+    return $.ajax(
+        {
+            url:"./webhook/temario-curso.php",
+            type: "POST",
+            data: {idCurso : idCurso},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}
+
+/////PROMISE GENERAL Consulta de Horarios
+async function consultaHorarioOferta(idGrupo) {
+    return await consultaHorariosAjax(idGrupo);
+}
+
+async function consultaHorariosAjax(id){
+    return $.ajax(
+        {
+            url: "./webhook/horarios-grupo.php",
+            type: "POST",
+            data: {id : id},
+            dataType: "json",
+            success: function(res){
+                //   console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor");
+            }
+        }
+
+    );
+}

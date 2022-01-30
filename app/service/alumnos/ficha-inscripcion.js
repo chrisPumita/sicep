@@ -9,35 +9,76 @@ function consultaInfoInscripcionAlumno() {
     //llamado a ffuncion asincrona
     consultaAsyncFichaInscAlumno(ID_FICHA,0).then(function (result) {
         console.log(result);
-
         $("#tiitleCurso").html(result.DATOS.nombre_curso);
-
         buildHTMLFicha(result);
-        /*
-if (result.C_SS != null) {
-    let cardHTML = buildCardSerSoc(result.C_SS);
-    $("#acountSS").html(cardHTML);
-}
-if (parseInt(result.DATOS.autorizacion_inscripcion)>=0){
-    if (result.VALIDACION!=null){
-        let cardInscripcionAcredita = buildCardInscripcion(result.VALIDACION);
-        $("#cardPago").html(cardInscripcionAcredita);
-    }
-}
-else{
-    let cardCancelado = buildCardInscripcionCancelacion(result.DATOS);
-    $("#cardPago").html(cardCancelado);
-}
-* */
+
+        if (parseInt(result.DATOS.autorizacion_inscripcion)>=0){
+            let cardInscripcionAcredita
+            if (result.VALIDACION!=null){
+                cardInscripcionAcredita = buildCardInscripcion(result.VALIDACION);
+            }
+            else{
+                cardInscripcionAcredita = buildCardEnviada(result.VALIDACION);
+            }
+
+            $("#cardPago").html(cardInscripcionAcredita);
+        }
+        else{
+            let cardCancelado = buildCardInscripcionCancelacion(result.DATOS);
+            $("#cardPago").html(cardCancelado);
+            $("#containerTblDocs").remove();
+        }
         let tablDocs = buildTBLDocsSolicitadosAlumno(result.DOCS);
         $("#containerDocs").html(tablDocs);
-
-
     })
 }
 
+function buildCardInscripcionCancelacion(DATOS){
+    console.log(DATOS);
+    let template = `<div class="d-flex">
+                        <div class="m-auto">
+                            <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
+                        </div>
+                        <div class="col-8 m-auto">
+                            <h3>CANCELADO</h3>
+                            <h6>Tu solicitud fue cancelada el <span id="cardPagoTotal">${getLegibleFechaHora(DATOS.fecha_conclusion)}</span></h6>
+                            <div class="d-flex justify-center align-items-center">
+                            <h6>Ya no puedes inscribirte al curso</h6>
+                            </div>
+                        </div>
+                    </div>`;
+    return template;
+}
+
+function buildCardEnviada(DATOS){
+    console.log(DATOS);
+    let template = `<div class="d-flex">
+                                    <div class="m-auto">
+                                        <img src="../assets/images/icons/mail2.svg" width="80" alt="svg ok">
+                                    </div>
+                                    <div class="col-8 m-auto">
+                                        <h5>Enviada</h5>
+                                        <h6>Tu solicitud ha sido enviada, pero aun no se ha revisado.</h6>
+                                    </div>
+                                </div>`;
+    return template;
+}
+
+function buildCardInscripcion(DATOS){
+    console.log(DATOS);
+    return `<div class="d-flex">
+                <div class="col-auto m-auto">
+                    <img src="../assets/images/icons/checked1.svg" width="80" alt="svg ok">
+                </div>
+                <div class="col-8 m-auto">
+                    <h5>Inscripción <strong>acreditada</strong></h5>
+                    <h6>Se acredito el ${DATOS.fecha_validacion}</h6>
+                </div>
+            </div>`;
+}
+
 function buildTBLDocsSolicitadosAlumno(DOCS) {
-    let template;
+    let template ="";
     if (DOCS.length > 0){
         template = `<div class="table-responsive">
                         <table class="table table-hover table-lg">
@@ -175,7 +216,7 @@ function buildHTMLFicha(FICHA) {
     $("#fichaAltaCuenta").html('Registrada el '+getLegibleFechaHora(DATOS.fecha_registro));
     //DETALLES DEL CURSO
     $("#bannerCurso").attr("src",DATOS.banner_img);
-    $("#idFechaSol").html('Recibida el '+getLegibleFechaHora(DATOS.fecha_solicitud));
+    $("#idFechaSol").html('Enviada el '+getLegibleFechaHora(DATOS.fecha_solicitud));
     $("#fichaNameCurso").html(DATOS.codigo+' '+DATOS.nombre_curso);
     $("#fichaGrupo").html(DATOS.grupo);
     $("#fichasemestre").html(DATOS.semestre);
