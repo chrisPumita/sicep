@@ -49,18 +49,10 @@ $titulo = "Inicio - Alumno"; ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" >
                         <div class="card">
-                            <div class="card-body py-4 px-2">
-                                <div class="d-flex">
-                                    <div class="m-auto">
-                                        <img src="../assets/images/icons/ok.svg" width="80" alt="svg ok">
-                                    </div>
-                                    <div class="col-8 m-auto">
-                                        <h5>Inscripción acreditada</h5>
-                                        <h6>El 19 de Enero del 2021</h6>
-                                    </div>
-                                </div>
+                            <div class="card-body py-4 px-2" id="cardPago">
+
                             </div>
                         </div>
 
@@ -240,7 +232,7 @@ $titulo = "Inicio - Alumno"; ?>
             <!-- FIN seccion detalles-->
 
             <!-- INICIA SECCION DE LISTA DE DOCUMENTOS -->
-                <section class="section">
+                <section class="section" id="containerTblDocs">
                     <div class="card">
                         <div class="card-header">
                             Revisión de documentos

@@ -33,7 +33,7 @@ function getModalidadCurso(tipo){
             return "En Linea";
             break;
         case "2":
-            return "Mixto"
+            return "Hídrida"
             break;
         default:
             return "No definido";

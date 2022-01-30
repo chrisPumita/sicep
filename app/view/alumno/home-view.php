@@ -96,57 +96,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Historial Cursos</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fas fa-circle text-primary"></i>
-                                            <h5 class="mb-0 ms-3">En curso</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <h5 class="mb-0">0</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fas fa-circle text-success"></i>
-                                            <h5 class="mb-0 ms-3">Terminados</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <h5 class="mb-0">0</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fas fa-circle text-danger"></i>
-                                            <h5 class="mb-0 ms-3">Cancelados</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <h5 class="mb-0">0</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-
                     </div>
 
                 </section>
             </div>
         </div>
         <?php include 'includes/footer.php'; ?>
-        <?php include 'modals/modal-inscribir-alumno.php'; ?>
+        <?php include 'modals/modal-horario.php'; ?>
+        <?php include 'modals/modal-detalles-curso.php'; ?>
         <?php include 'modals/modal-pdf-temario.php'; ?>
         <?php include "modals/modal-tbl-descuentos.php" ?>
     </div>

@@ -40,6 +40,14 @@
 
 .my-5 { margin-top: 0rem!important;}
 
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--second);
+}
 body {
     font-weight: 200;
     color: var(--primary);

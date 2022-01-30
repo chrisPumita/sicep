@@ -224,6 +224,11 @@ async function cargaAulasListDespl() {
 }
 
 /// HORARIOS DE LOS CURSOS
+/////PROMISE GENERAL Consulta de Horarios
+async function consultaHorario(idGrupo) {
+    return await consultaHorariosAjax(idGrupo);
+}
+
 async function consultaHorariosAjax(id){
     return $.ajax(
         {
@@ -240,11 +245,6 @@ async function consultaHorariosAjax(id){
         }
 
     );
-}
-
-/////PROMISE GENERAL Consulta de Horarios
-async function consultaHorario(idGrupo) {
-    return await consultaHorariosAjax(idGrupo);
 }
 
 /// DESCUENTOS DE LOS CURSOS
@@ -273,7 +273,10 @@ async function consultaDescuentos(idGrupo) {
 
 /// TEMAS DEL CURSO
 
-/// DESCUENTOS DE LOS CURSOS
+/////PROMISE GENERAL CONSULTA TEMARIO REQUERE ID CURSO
+async function consultaTemario(idGrupo) {
+    return await consultaTemarioAjax(idGrupo);
+}
 async function consultaTemarioAjax(idCurso){
     return $.ajax(
         {
@@ -290,11 +293,6 @@ async function consultaTemarioAjax(idCurso){
         }
 
     );
-}
-
-/////PROMISE GENERAL CONSULTA TEMARIO REQUERE ID CURSO
-async function consultaTemario(idGrupo) {
-    return await consultaTemarioAjax(idGrupo);
 }
 
 /// DESCUENTOS DE LOS CURSOS
