@@ -174,10 +174,6 @@ async function consultaDocumentacionAjax(idCUrso){
     );
 }
 
-
-
-
-///CANCELACION DEL CURSO ALMNO
 async function cancelarSolicitudAlumno(idSolicitud) {
     return await cancelarSolicitudAlumnoAjax(idSolicitud);
 }
