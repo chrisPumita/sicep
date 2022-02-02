@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row g-4">
-                                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                                            <div class="col-lg-3 col-md-6 wow fadeInUp" >
                                                 <div class="team-item bg_second">
                                                     <div class="overflow-hidden">
                                                         <img class="img-fluid" src="https://scontent.fmex5-1.fna.fbcdn.net/v/t31.18172-8/22289903_1897413380579223_6268681408762075381_o.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=BVnM1RvXH3YAX8qvSuP&tn=-nB_kfWDs3LT2dlm&_nc_ht=scontent.fmex5-1.fna&oh=00_AT-5ijBivG0Im9JZaezYsmyTOYqAgTdl2Q2H-N5Aj9J-Jg&oe=6221121A" width="100%" alt="">
@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                                            <div class="col-lg-3 col-md-6 wow fadeInUp" >
                                                 <div class="team-item bg_second">
                                                     <div class="overflow-hidden">
                                                         <img class="img-fluid" src="https://avatars.githubusercontent.com/u/19921111?v=4" width="100%" alt="">
@@ -68,7 +68,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                                            <div class="col-lg-3 col-md-6 wow fadeInUp" >
                                                 <div class="team-item bg_second">
                                                     <div class="overflow-hidden">
                                                         <img class="img-fluid" src="https://avatars.githubusercontent.com/u/83323088?v=4" width="100%" alt="">
@@ -86,7 +86,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                                            <div class="col-lg-3 col-md-6 wow fadeInUp" >
                                                 <div class="team-item bg_second">
                                                     <div class="overflow-hidden">
                                                         <img class="img-fluid" src="https://avatars.githubusercontent.com/u/57198260?v=4" width="100%" alt="">
