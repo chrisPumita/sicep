@@ -151,3 +151,51 @@ async function consultaHorariosAjax(id){
 
     );
 }
+
+async function consultaDocumentacionOferta(idCurso) {
+    return await consultaDocumentacionAjax(idCurso);
+}
+/// DOCUMENMTACION AJAX
+async function consultaDocumentacionAjax(idCUrso){
+    return $.ajax(
+        {
+            url:"./webhook/lista-doc-sol-curso.php",
+            type: "POST",
+            data: {idCurso : idCUrso},
+            dataType: "json",
+            success: function(res){
+                //    console.log(res);
+            },
+            error: function() {
+                internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
+            }
+        }
+
+    );
+}
+
+
+
+
+///CANCELACION DEL CURSO ALMNO
+async function cancelarSolicitudAlumno(idSolicitud) {
+    return await cancelarSolicitudAlumnoAjax(idSolicitud);
+}
+
+async function cancelarSolicitudAlumnoAjax(idSolicitud){
+    return $.ajax({
+        url:"../app/webhook/alumno.cancelSolicitud.php",
+        data: {
+            idSolicitud : idSolicitud
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data){
+            //console.log(data);
+        },
+        error: function(e) {
+            alert("Error occured")
+            //console.log(e);
+        }
+    });
+}

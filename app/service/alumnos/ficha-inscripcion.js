@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-    console.log(ID_FICHA);
     consultaInfoInscripcionAlumno();
 });
 
@@ -8,7 +7,6 @@ $(document).ready(function() {
 function consultaInfoInscripcionAlumno() {
     //llamado a ffuncion asincrona
     consultaAsyncFichaInscAlumno(ID_FICHA,0).then(function (result) {
-        console.log(result);
         $("#tiitleCurso").html(result.DATOS.nombre_curso);
         buildHTMLFicha(result);
 
@@ -27,6 +25,7 @@ function consultaInfoInscripcionAlumno() {
             let cardCancelado = buildCardInscripcionCancelacion(result.DATOS);
             $("#cardPago").html(cardCancelado);
             $("#containerTblDocs").remove();
+            $("#btnPrinter").remove();
         }
         let tablDocs = buildTBLDocsSolicitadosAlumno(result.DOCS);
         $("#containerDocs").html(tablDocs);
@@ -34,7 +33,6 @@ function consultaInfoInscripcionAlumno() {
 }
 
 function buildCardInscripcionCancelacion(DATOS){
-    console.log(DATOS);
     let template = `<div class="d-flex">
                         <div class="m-auto">
                             <img src="../assets/images/icons/cancel.svg" width="80" alt="svg ok">
@@ -65,14 +63,13 @@ function buildCardEnviada(DATOS){
 }
 
 function buildCardInscripcion(DATOS){
-    console.log(DATOS);
     return `<div class="d-flex">
                 <div class="col-auto m-auto">
                     <img src="../assets/images/icons/checked1.svg" width="80" alt="svg ok">
                 </div>
                 <div class="col-8 m-auto">
                     <h5>Inscripción <strong>acreditada</strong></h5>
-                    <h6>Se acredito el ${DATOS.fecha_validacion}</h6>
+                    <h6>Se acredito el  ${getLegibleFechaHora(DATOS.fecha_validacion)}</h6>
                 </div>
             </div>`;
 }

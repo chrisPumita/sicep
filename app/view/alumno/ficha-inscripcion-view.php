@@ -43,9 +43,8 @@ $titulo = "Inicio - Alumno"; ?>
                     <div class="col-sm-10 d-flex align-items-center">
                         <h4  id="tiitleCurso"></h4>
                     </div>
-                    <div class="col-sm-2 align-items-center">
-                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                            <i class="fas fa-print"></i> Imprimir</button>
+                    <div class="col-sm-2 align-items-center" id="btnPrinter">
+                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3"> <i class="fas fa-print"></i> Imprimir</button>
                     </div>
                 </div>
                 <div class="row">

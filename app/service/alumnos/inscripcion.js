@@ -4,7 +4,6 @@ $(document).ready(function() {
 
 function consultaDetallesInscripcion(idAsig) {
     consultaAsyncDetailsAsigInscribe(idAsig).then(function (result) {
-        console.log(result);
         loadDataAsignacion(result.datos,result.descuento);
     })
 
@@ -81,8 +80,6 @@ $(document).on("click", ".bntInpcion", function ()
 
             }
             else { alerta("Inscripcion no completada",result.messageText, "error"); }
-            console.log(result);
-
         }
     });
 });

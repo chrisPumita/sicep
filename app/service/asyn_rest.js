@@ -605,7 +605,3 @@ async function consultaDetailsAcredCursoAjax(id_Curso){
         }
     });
 }
-
-async function consultaDetailsAcredCurso(id_Curso) {
-    return await consultaDetailsAcredCursoAjax(id_Curso);
-}

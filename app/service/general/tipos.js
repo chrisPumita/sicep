@@ -98,7 +98,7 @@ function getEstatusAsignacionColorIndicator(tipo){
             return 'purple';
             break;
         default:
-            return 'yellow';
+            return 'white';
             break;
     }
 }

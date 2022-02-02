@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 function cargaAsignacionesAlumno() {
     consultaAsyncOfertaAsignAlu().then(function (datos) {
-        console.log(datos);
         buildHTMLCards(datos.oferta);
         buildHTMLMisCursosTable(datos.misCursos);
         buildHTMLSolicitudesEnviadas(datos.enviados,datos.cancelados);
@@ -190,7 +189,7 @@ function buildHTMLCards(lista) {
                                 <i class="fas fa-ellipsis-h"></i>
                             </a>
                         </div>
-                        <div class="tab-content text-justify small">
+                        <div class="tab-content px-2 text-justify small">
                             <div class="tab-pane fade show active" id="list-1-${contador}"  aria-labelledby="list1-${contador}">
                                 <ul class="list-group">
                                     <li class="list-group-item justify-content-between align-items-center">
@@ -227,20 +226,18 @@ function buildHTMLCards(lista) {
                     <div class="col-sm-12 d-block justify-content-center ">
                          <div class="btn-group btn-group-sm" role="group" aria-label="...">
                            <button type="button" class="btn btn-outline-primary" onclick="viewDescuentos('${doc.id_curso}','${doc.costo_real}');" data-bs-toggle="modal" data-bs-target="#modalDescuentos"><i class="fas fa-tag"></i></button>
-                          ${botonPdf}
+                        ${botonPdf}
                           <button type="button" class="btn btn-outline-primary" onclick="consultaHorarioGpoListModal('${doc.id_grupo}','${doc.modalidad}')"   data-bs-toggle="modal" data-bs-target="#modalHorario"><i class="fas fa-clock" ></i></button>
                           <button type="button" class="btn btn-outline-primary" onclick="viewDetailsOferta('${doc.descripcion}','${doc.dirigido_a}','${doc.objetivo}','${doc.notas}','${doc.antecedentes}','${doc.id_curso}','${doc.nombre_curso}');" data-bs-toggle="modal" data-bs-target="#detallesCurso" > <i class="fas fa-list"></i></button>
                         </div>
-                         <button class="btn btn-primary mr-3 me-1  btn-sm" onclick="openAsig(${doc.id_asignacion});">
-                                <i class="fas fa-clipboard-check"></i> Inscribirme ${btnSolic}
-                        </button>
+                         <button class="btn btn-primary mr-3 me-1  btn-sm" onclick="openAsig(${doc.id_asignacion});"><i class="fas fa-clipboard-check"></i> Inscribirme ${btnSolic}</button>
                     </div>
                 </div>
             </div>`;
             }
         );
         $("#swiperCardsContainer").html(template);
-        let mensajeAdvertencia = `<span class="badge bg-danger">!</span> Considere que su inscripcion puede ser <strong>rechazada</strong>`;
+        let mensajeAdvertencia = `<span class="badge bg-danger">!</span> Considere que su solicitud puede ser <strong>rechazada</strong>`;
         $("#alertOferta").html(mensajeAdvertencia);
     }else{
         template+= `<div class="alert alert-success" role="alert">
@@ -325,40 +322,7 @@ function buildHTMLListDoscPend(lista) {
     $("#containerDocsPend").html(template);
 }
 
-function viewPDFModal(link,curso) {
-    //let template = `<embed src="${link}" frameborder="0" width="100%" height="100%">`;
-    let template = `<iframe src="${link}" style="width:100%; height:100%;" frameborder="0"></iframe>`;
-    $("#filePdfView").html(template);
-    $("#modalTittle").html("Temario de "+curso);
-}
-function viewDetailsOferta(desc,dirigido,objetivo,notas,antecedentes, idCurso, nombreCurso) {
-    $("#modalDetails").html(desc);
-    $("#modalObjetivo").html(objetivo);
-    $("#modalAntecede").html(antecedentes);
-    $("#modalDirige").html(dirigido);
-    $("#idDetailsOferta").html(nombreCurso);
-    $("#modalNotas").html(notas ===""? "SIN NOTAS": notas);
-    //buscar el horario del curso
-    cargaTemarioOferta(idCurso);
-}
 
-function agrupar(listaDocs) {
-    var nuevoArray    = []
-    var arrayTemporal = []
-    for(var i=0; i<listaDocs.length; i++){
-        if(listaDocs[i].estatusFile!=1){
-            arrayTemporal = nuevoArray.filter(resp => resp["id"] == listaDocs[i]["id_inscripcion"]);
-            if(arrayTemporal.length>0){
-                nuevoArray[nuevoArray.indexOf(arrayTemporal[0])]["DOCS"].push(listaDocs[i])
-            }else{
-                nuevoArray.push({
-                    "id" : listaDocs[i]["id_inscripcion"] , "curso" : listaDocs[i]["nombre_curso"] , "grupo" : listaDocs[i]["grupo"] ,
-                    "DOCS" : [listaDocs[i]]});
-            }
-        }
-    }
-    return nuevoArray;
-}
 
 function cargaListaDoscPndientes() {
     consultaAsyncDocsRevisaAlu(0,1).then(function (result) {
@@ -374,177 +338,3 @@ $(document).on("click", ".btnViewFichaInsc", function ()
     redirect_by_post(url, {  id: id }, false);
 });
 
-function viewFicchaInscripcion(id) {
-    var url = './ficha-inscripcion';
-    redirect_by_post(url, {  id: id }, false);
-}
-
-function openAsig(id) {
-    //inscripcion
-    var url = './inscripcion';
-    redirect_by_post(url, {  id: id }, false);
-}
-
-function viewDescuentos(idCurso,costoAplicado) {
-    consultaTblDescuentosAplicadosAlumno(idCurso,costoAplicado);
-}
-
-function cargaTemarioOferta(idCurso) {
-    consultaTemarioOferta(idCurso).then(function (e) {
-        buildTBLHtmlTemarioModal(e);
-    });
-}
-
-function buildTBLHtmlTemarioModal(TEMAS) {
-    let template;
-    if (TEMAS.length > 0) {
-        template= `
-                <table class="table table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>INDICE</th>
-                        <th>TEMA</th>
-                        <th>DESCRIPCIÓN</th>
-                    </tr>
-                    </thead>
-                <tbody>`;
-        TEMAS.forEach(
-            (tema)=>
-            {
-                template+= `
-                        <tr id_tema="${tema.id_tema}">
-                            <td>${tema.indice}</td>
-                            <td>${tema.nombre}</td>
-                            <td>${tema.resumen}</td>
-                        </tr>`;
-            }
-        );
-        template+= `
-                </tbody>
-              </table>`;
-    }
-    else{
-        template= `
-                <div class="alert alert-light alert-dismissible show fade">
-                   No tenemos temas registrados.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
-    }
-    $("#tblTemario").html(template);
-}
-
-function consultaHorarioGpoListModal(idGpo,modalidad) {
-    consultaHorarioOferta(idGpo).then(function (e) {
-        console.log(e);
-        buildHTMLHorarioContainers(e,modalidad)
-    });
-}
-
-function buildHTMLHorarioContainers(HORARIOS,MODALIDAD) {
-    //Separando los tipo de horario
-    $("#containerTblPresencial").html("");
-    $("#containerTblVirtual").html("");
-    if (MODALIDAD === "0"){
-        //Presencial
-        buildHtmlHPContainer(HORARIOS.HP);
-    }
-    else if (MODALIDAD === "1"){
-        buildHtmlHVContainer(HORARIOS.HV);
-    }else{
-        buildHtmlHPContainer(HORARIOS.HP);
-        buildHtmlHVContainer(HORARIOS.HV);
-    }
-
-
-}
-function buildHtmlHVContainer(HVirtual) {
-    //TRabajando con virtuales
-    let template = `<h5 class="text-secondary"><i class="far fa-clock"></i> Horario Virtual</h5>`;
-    if (HVirtual.length>0){
-        template +=`
-                    <table class="table table-hover table-striped" id="tblPresencial">
-                        <thead>
-                        <tr>
-                            <th>DIA</th>
-                            <th>INICIO</th>
-                            <th>TERMINO</th>
-                            <th>DURACION</th>
-                            <th>PLATAFORMA</th>
-                            <th>SALA</th>
-                        </tr>
-                        </thead>
-                        <tbody>`;
-        HVirtual.forEach(
-            (h)=>
-            {
-                template += `
-                        <tr id_horario="${h.id_horario_virtual}">
-                            <td>${diaSemana(h.dia_semana)}</td>
-                            <td>${h.hora_inicio}</td>
-                            <td>${h.hora_term}</td>
-                            <td>${h.duracion} min.</td>
-                            <td>${h.plataforma}</td>
-                            <td>${h.reunion}</td>
-                        </tr>`;
-            }
-        );
-        template += ` </tbody>
-                    </table>`;
-    }
-    else{
-        template += ` <div class="alert alert-info d-flex align-items-center" role="alert">
-                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                        <div>
-                        <h4 class="alert-heading">Sin registro</h4>
-                        <p>Aun no hemos registrado los horarios. Porfavor de estar pendiente al sitio para poder ver el 
-                        horario establecido.</p>
-                          </div>
-                        </div>`;
-    }
-    $("#containerTblVirtual").html(template);
-}
-
-function buildHtmlHPContainer(HPresencial) {
-    //TRabajando con presenciales
-    let template = `<h5 class="text-secondary"><i class="far fa-clock"></i> Horario Precencial</h5>`;
-    if (HPresencial.length>0){
-        template +=`
-                    
-                    <table class="table table-hover table-striped" id="tblPresencial">
-                        <thead>
-                        <tr>
-                            <th>DIA</th>
-                            <th>SALON</th>
-                            <th>INICIO</th>
-                            <th>TERMINO</th>
-                            <th>DURACION</th>
-                        </tr>
-                        </thead>
-                        <tbody>`;
-        HPresencial.forEach(
-            (h)=>
-            {
-                template += `
-                        <tr id_horario="${h.id_horario_pres}">
-                            <td>${diaSemana(h.dia_semana)}</td>
-                            <td>${h.edificio}-${h.grupo} (${h.campus})</td>
-                            <td>${h.hora_inicio}</td>
-                            <td>${h.hora_term}</td>
-                            <td>${h.duracion} min.</td>
-                        </tr>`;
-            }
-        );
-        template += ` </tbody>
-                    </table>`;
-    }
-    else{
-        template += ` <div class="alert alert-info d-flex align-items-center" role="alert">
-                            <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                        <div>
-                        <h4 class="alert-heading">Sin registro</h4>
-                        <p>Aun no hemos registrado los horarios. Porfavor de estar pendiente al sitio para poder ver el horario establecido.</p>
-                          </div>
-                        </div>`;
-    }
-    $("#containerTblPresencial").html(template);
-}
