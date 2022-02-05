@@ -352,3 +352,21 @@ function estadoServSoc(tipo) {
     }
     return null;
 }
+
+function aceptFiles(tipo) {
+    let acept;
+    switch (tipo) {
+        case "pdf":
+            acept = ".pdf";
+            break;
+        case "%":
+            acept = "image/*,.pdf";
+            break;
+        case "img": case "IMG":
+            acept = "";
+            break;        default:
+            acept = "image/*,.pdf";
+            break;
+    }
+    return acept;
+}

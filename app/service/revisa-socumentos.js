@@ -1,7 +1,6 @@
 // lo que sejecuta primero
 var SOLICITUDES = null;
 $(document).ready(function () {
-    console.log("REVISA DOCUMENTOS");
     consultaDocsPorRevisar();
 });
 
@@ -15,20 +14,20 @@ function consultaDocsPorRevisar() {
 
 function buildHTMLAcrrodion() {
     //Working with solicitudes OBJ
-    console.log(SOLICITUDES);
     let template = '';
     let cont = 0;
     let sumaDocs = 0;
-    SOLICITUDES.forEach(
-        (SOL)=>
-        {
-            sumaDocs += parseInt(SOL.docsRevisar);
-            cont++;
-            let descuento = SOL.DESCUENTO === null ? 'No Aplica': '$'+calculaDescuento(SOL.costo_real,SOL.DESCUENTO)+' (-'+SOL.DESCUENTO+'%)';
-            let estadoSolicitud = SOL.autorizacion_inscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  ';
-            let estadoPago = SOL.pago_confirmado ==="1" ? '<i class="fas fa-hand-holding-usd text-success"></i> PAGADO':'<i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE ';
-            let btnAcredita = SOL.estatusInscripcion ==="0" ? '<a href="#" class="btn btn-success"><i class="fas fa-check-square"></i>Acreditar</a>':'';
-            template += `
+    if(SOLICITUDES.length > 0) {
+        SOLICITUDES.forEach(
+            (SOL)=>
+            {
+                sumaDocs += parseInt(SOL.docsRevisar);
+                cont++;
+                let descuento = SOL.DESCUENTO === null ? 'No Aplica': '$'+calculaDescuento(SOL.costo_real,SOL.DESCUENTO)+' (-'+SOL.DESCUENTO+'%)';
+                let estadoSolicitud = SOL.autorizacion_inscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  ';
+                let estadoPago = SOL.pago_confirmado ==="1" ? '<i class="fas fa-hand-holding-usd text-success"></i> PAGADO':'<i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE ';
+                let btnAcredita = SOL.estatusInscripcion ==="0" ? '<a href="#" class="btn btn-success"><i class="fas fa-check-square"></i>Acreditar</a>':'';
+                template += `
             <div class="list-group-item list-group-item-action" idInsc="${SOL.id_inscripcion}" id="heading${cont}" data-bs-toggle="collapse" 
             data-bs-target="#collapse${cont}" aria-expanded="true"  aria-controls="collapseOne" role="button" onclick="showDocs('${cont}',this);">
                 <div class="d-flex w-100 justify-content-between">
@@ -152,8 +151,18 @@ function buildHTMLAcrrodion() {
                     </div>
                 </div>
             </div>`;
-        }
-    );
+            }
+        );
+    }
+    else{
+        template += `<div class="alert alert-success" role="alert">
+                      <h4 class="alert-heading">Excelente trabajo!</h4>
+                      <p>No tenemos documentos por revisar. Se han revisado todos los documentos o los alumnos no han 
+                      enviado la documentación aun.</p>
+                      <hr>
+                      <p class="mb-0">Si desea ver la documentación pendiente por cada Solicitud de Inscripcion de <a href="./lista-grupos">clic aqui</a> y elija un grupo.</p>
+                    </div>`;
+    }
     $("#containerFichas").html(template);
     $("#contadorDocs").html(sumaDocs);
 }

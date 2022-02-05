@@ -75,6 +75,7 @@ function buildCardInscripcion(DATOS){
 }
 
 function buildTBLDocsSolicitadosAlumno(DOCS) {
+    console.log(DOCS)
     let template ="";
     if (DOCS.length > 0){
         template = `<div class="table-responsive">
@@ -109,7 +110,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
 
                         fechaInfo = "Documento enviado el " + getLegibleFechaHora(doc.fecha_creacion);
                         // styleTr = 'style="background-color: lightgray;"';
-                        badgeRevisa = "<br><span class='badge bg-warning'>REVISAR</span>";
+                        badgeRevisa = "<br><span class='badge bg-info'>ENVIADO</span>";
                         break;
                     case 1:
                         botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -126,19 +127,21 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
 
                     case -1:
                         botonesPDF = "";
-                        botonesAcion = "";
-                        fechaInfo = "Sibir..."
+                        botonesAcion = `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                      <button type="button" class="btn btn-primary btnUpload" onclick="modalOpen('${doc.formato_admitido}');"><i class="fas fa-upload"></i></button>
+                                    </div>`;
+                        fechaInfo = "Pendiente para subir..."
                         break;
 
                     default:
                         botonesPDF = "";
                         botonesAcion = "";
-                        fechaInfo = "El archivo fue rechazado y regresado al alumno.";
+                        fechaInfo = "El archivo fue rechazado debe subirse nuevamente";
                         break;
                 }
 
                 template += `
-                            <tr  idDoc="${doc.id_archivo}" ${styleTr}>
+                            <tr  idDoc="${doc.id_archivo}" idDocSol="${doc.id_doc_sol}" docSol="${doc.nombre_doc}" ${styleTr}>
                                 <td class="text-sm-start">
                                     <div class="d-flex align-items-center">
                                         <div>
@@ -169,13 +172,13 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                  <i class="fas fa-circle text-success dotDocs small"></i> Acreditado
                 </div>
                 <div class="col-12 col-md-2">
-                 <i class="fas fa-circle text-warning dotDocs small"></i>   Por Revisar
+                 <i class="fas fa-circle text-warning dotDocs small"></i> Enviado a Revisión
                 </div>
                 <div class="col-12 col-md-2">
-                  <i class="fas fa-circle text-info dotDocs small"></i>  Rechazado
+                  <i class="fas fa-circle text-info dotDocs small"></i> Rechazado
                 </div>
                 <div class="col-auto">
-                <i class="fas fa-circle text-black dotDocs small"></i>  Esperando que el alumno suba el archivo
+                <i class="fas fa-circle text-black dotDocs small"></i> Pendiente para subir
                 </div>
             </div>
         </div>
@@ -253,3 +256,62 @@ async function consultaAsyncFichaInscAlumnoAJAX(idInscipcion,filtro){
         }
     });
 }
+
+$(document).on("click", ".btnUpload", function ()
+{
+    let lementDOM = $(this)[0].parentElement.parentElement.parentElement;
+    let idDoc = $(lementDOM).attr("iddoc");
+    let idDocSol = $(lementDOM).attr("iddocsol");
+    let idDocSolName = $(lementDOM).attr("docSol");
+    $("#dosSolName").html("Subir "+idDocSolName);
+    $("#folio").val(ID_FICHA );
+    $("#idDocSol").val(idDocSol);
+    $("#idFile").val(idDoc!= "null"?idDoc:0);
+});
+
+function modalOpen(acepta) {
+    $("#modal-uploadFile").modal('show');
+    let aceptaType = aceptFiles(acepta);
+    $("#archivo").attr('accept',aceptaType);
+}
+
+//Update PDF Curso
+$("#frm-upload-file").on("submit", function(e){
+    e.preventDefault();
+    let fileSelect = document.getElementsByName("fileupload");
+    console.log(fileSelect);
+        var f = $(this);
+        console.log(f)
+        var formData = new FormData(document.getElementById("frm-upload-file"));
+        formData.append("dato", "valor");
+        //formData.append(f.attr("name"), $(this)[0].files[0]);
+        $.ajax({
+            url: "../app/webhook/alumno.upload-file.php",
+            type: "post",
+            dataType: "html",
+            data: formData,
+            contentType: false,
+            processData: false
+        }).done(function(res){
+            console.log(res);
+            let response = JSON.parse(res);
+            console.log(response);
+            let titulo;
+            if (response.type == 1){
+                titulo= "ARCHIVO ENVIADO";
+            }
+            else if (response.type == 0){
+                titulo= "NO SELECCIONÓ UN ARCHIVO";
+            }
+            else{
+                titulo= "ERROR GENERRAL";
+            }
+            alerta(titulo,response.mensaje,response.action);
+            $("#frm-upload-file").trigger('reset');
+            $("#modal-uploadFile").modal('hide');
+        });
+
+
+
+});
+

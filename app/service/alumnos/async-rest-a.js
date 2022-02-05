@@ -195,3 +195,29 @@ async function cancelarSolicitudAlumnoAjax(idSolicitud){
         }
     });
 }
+
+///////////////////// PREFERENCIAS ////////////////
+async function enviaFormAlumno(params,route){
+    const mensaje = await sendBackEndAlumnoAjax(params, route);
+    //Mensaje en JS para usar con SwatAlert
+    alertaEmergente(mensaje.Mensaje);
+}
+
+async function sendBackEndAlumnoAjax(params,route){
+    return $.ajax(
+        {
+            url: route,
+            type: "POST",
+            data: params,
+            dataType: "json",
+            cache: false,
+            success: function(res){
+                console.log(res);
+            },
+            error: function(e) {
+                console.log(e);
+                alert("Error 500 interno Ajax");
+            }
+        }
+    );
+}

@@ -55,3 +55,7 @@ function removePdfCurso($idCurso){
     $path = NULL;
     return updateLinkTemario($idCurso,$path);
 }
+
+function procesaDocInscAlumno($archivo,$nombreFILE,$idFile,$folio){
+    return true;
+}
