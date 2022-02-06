@@ -22,7 +22,6 @@
                             
                             Recomendamos una resolución de 600px por 300px
                         </p>
-                        <input type="text" id="idProfesorImg">
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="imgPerfil" class="text-primary">Seleccionar foto de perfil</label>
@@ -33,8 +32,8 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
-            </form>
         </div>
     </div>
 </div>

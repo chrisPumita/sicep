@@ -471,5 +471,11 @@ class ALUMNO extends PERSONA implements I_ALUMNO
     /*******************************************************************************
      * Terminan Funciones de Interfaz
      *******************************************************************************/
-
+    function queryUpdateFotoAlumno(){
+        $query = "UPDATE `alumno` SET `perfil_image` = '".$this->getPerfilImage()."' WHERE `alumno`.`id_alumno` = ".$this->getIdAlumno();
+        $this->connect();
+        $datos = $this->executeInstruction($query);
+        $this->close();
+        return $datos;
+    }
 }

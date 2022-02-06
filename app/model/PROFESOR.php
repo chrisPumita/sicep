@@ -17,6 +17,7 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     private $firma_digital;
     private $firma_digital_img;
     private $estatus_profesor;
+    private $img_perfil;
 
     /*******************************************************************************
      * Inician Getters and Setters
@@ -213,7 +214,21 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     {
         $this->estatus_profesor = $estatus_profesor;
     }
+/**
+     * @return mixed
+     */
+    public function getImgPerfil()
+    {
+        return $this->img_perfil;
+    }
 
+    /**
+     * @param mixed $img_perfil
+     */
+    public function setImgPerfil($img_perfil): void
+    {
+        $this->img_perfil = $img_perfil;
+    }
     /*******************************************************************************
      * Terminan Getters and Setters
      *******************************************************************************/
@@ -410,4 +425,13 @@ class PROFESOR extends PERSONA implements I_PROFESOR
     /*******************************************************************************
      * Terminan Funciones de Interfaz
      *******************************************************************************/
+
+     function queryUpdateFotoProfesor(){
+        $query="UPDATE `profesor` SET `img_perfil` = '".$this->getImgPerfil()."' WHERE `profesor`.`id_profesor` = ".$this->getIdProfesor();
+        $this->connect();
+        $datos = $this-> executeInstruction($query);
+        $this->close();
+        return $datos;
+         
+     }
 }

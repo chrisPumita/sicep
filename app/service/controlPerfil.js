@@ -72,3 +72,30 @@ $("#frm-update-perfil-profesor").on("submit", function(e){
     });
     e.preventDefault();
 });
+
+//Update foto perfil profesor
+$("#frm-foto-perfil").on("submit", function(e){
+    //Ruta del Webbhook
+    var formData = new FormData(document.getElementById("frm-foto-perfil"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "./webhook/update-image-perfil.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        contentType: false,
+        processData: false
+    }).done(function(res){
+        $("#frm-foto-perfil").trigger('reset');
+        $("#updateFotoPerfil").modal('hide');
+        var mensaje= JSON.parse(res);
+        if(mensaje.mjeType ==0){
+            alertaEmergente(mensaje.Mensaje);
+        } else{
+            location.reload();
+        }        
+        
+    });
+    e.preventDefault();
+});

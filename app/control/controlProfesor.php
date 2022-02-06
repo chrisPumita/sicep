@@ -127,3 +127,11 @@ function actualizaPerfil($params){
     }
     return false;
 }
+
+function updateFotoProfesor($idProfesor,$path){
+    include_once "../model/PROFESOR.php";
+    $PROF = new PROFESOR();
+    $PROF->setIdProfesor($idProfesor);
+    $PROF->setImgPerfil($path);
+    return $PROF->queryUpdateFotoProfesor();
+}

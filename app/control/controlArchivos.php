@@ -55,3 +55,33 @@ function removePdfCurso($idCurso){
     $path = NULL;
     return updateLinkTemario($idCurso,$path);
 }
+
+function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
+    //toda la logica del profesor
+
+    $carpeta = '../../resources/avatars/'.$id; // URL COMPLETA
+    if (!file_exists($carpeta)) {
+        mkdir($carpeta, 0777, true);
+    }
+    $nombre = "pimg-".date('YmdHis');
+    $nombre =str_replace(' ', '', $nombre);
+    $ruta1 = $carpeta.'/'.$nombreImg; // RUTA1 EXAMPLE: ""
+    $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
+
+    $path = '../resources/avatars/'.$id.'/'.$nombre.'.'.$extension;
+
+    //BOrrando los elementos que puedan existir en la carpeta
+    $dir = $carpeta.'/';
+    foreach(glob($dir.'*.*') as $v){ unlink($v); }
+
+    move_uploaded_file($imgFile, $ruta1);
+    rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/.jpg"
+    if ($typeAccess == 0){
+        include_once "../control/controlAlum.php";
+        return updateFotoAlumno($id,$path);
+    }
+    else{
+        include_once "../control/controlProfesor.php";
+        return updateFotoProfesor($id,$path);
+    }
+}

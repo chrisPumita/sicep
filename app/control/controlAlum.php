@@ -87,6 +87,14 @@ function eliminarAlumno($id_alumno)
     echo $obj_alumn->eliminaAlumno($id_alumno) ? "Se elimino profesor" : "No se pudo eliminar al alumno";
 }
 
+/***********  A C T U A L I Z A R  F O T O  P E R F I L     LFHL*************/
+function updateFotoAlumno($idAlumno,$path){
+    include_once "../model/ALUMNO.php";
+    $ALUMNO = new ALUMNO();
+    $ALUMNO->setIdAlumno($idAlumno);
+    $ALUMNO->setPerfilImage($path);
+    return $ALUMNO->queryUpdateFotoAlumno();
+}
 /**********************VERIFICADOR DE CUENTA ChrisRCSG**********************************/
 function consultaCuentaAlumno($correo,$pw){
     include_once "../model/ALUMNO.php";
