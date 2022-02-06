@@ -43,9 +43,8 @@ $titulo = "Inicio - Alumno"; ?>
                     <div class="col-sm-10 d-flex align-items-center">
                         <h4  id="tiitleCurso"></h4>
                     </div>
-                    <div class="col-sm-2 align-items-center">
-                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
-                            <i class="fas fa-print"></i> Imprimir</button>
+                    <div class="col-sm-2 align-items-center" id="btnPrinter">
+                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3"> <i class="fas fa-print"></i> Imprimir</button>
                     </div>
                 </div>
                 <div class="row">
@@ -238,191 +237,22 @@ $titulo = "Inicio - Alumno"; ?>
                             Revisión de documentos
                         </div>
                         <div class="card-body table-responsive">
-                            <div class="tab-content text-justify" id="nav-tabContent">
-                                <div class="tab-pane show " id="list-1-1" role="tabpanel" aria-labelledby="list-home-list">
-                                    <div class="col-12 col-md-12">
-                                        <div class="card mb-3">
-                                            <div class="py-2">
-                                                <div class="row py-1 m-2">
-                                                    <h5 class="text-secondary">Ficha de Inscipción: No1415254252</h5>
-                                                    <div class="row py-2">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Curso:</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">Diccionarios de datos GRUPO: 666</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-7 col-sm-3">
-                                                            <h6 class="mb-0">Semestre</h6>
-                                                        </div>
-                                                        <div class="col-5 col-sm-3 text-secondary">2021-2</div>
-                                                        <div class="col-7 col-sm-3">
-                                                            <h6 class="mb-0">Generación</h6>
-                                                        </div>
-                                                        <div class="col-5 col-sm-3 text-secondary">2020</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Modalidad</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">En Linea</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Procedencia:</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">Comunidad UNAM </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Contacto:</h6>
-                                                        </div>
-                                                        <div class="col-sm-7 text-secondary"><a href="mailto:lucia@hotmail.com" class="text-secondary"><i class="fas fa-paper-plane"></i> lucia@hotmail.com</a>
-                                                            <br> <i class="fas fa-mobile-alt"></i> 5587481564</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Solicitud:</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">mié, 16 de diciembre de 2020 11:09 a.&nbsp;m.</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-7 col-sm-3">
-                                                            <h6 class="mb-0">Costo:</h6>
-                                                        </div>
-                                                        <div class="col-5 col-sm-3 text-secondary">$1500.00</div>
-                                                        <div class="col-7 col-sm-3">
-                                                            <h6 class="mb-0">Descuento:</h6>
-                                                        </div>
-                                                        <div class="col-5 col-sm-3 text-secondary">No Aplica</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <h6 class="mb-0">Estatus de la Inscripción</h6>
-                                                        </div>
-                                                        <div class="col-sm-4 text-secondary"><i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  </div>
-                                                        <div class="col-sm-4 text-secondary"><i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE </div>
-                                                    </div>
-                                                    <hr>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane active" id="list-2-1" role="tabpanel" aria-labelledby="list-profile-list">
-                                    <div id="containerDocs"><div class="table-responsive">
-                                            <table class="table table-hover table-lg">
-                                                <tbody></tbody><thead>
-                                                <tr>
-                                                    <th>DOCUMENTO</th>
-                                                    <th>ESTADO</th>
-                                                    <th>VER</th>
-                                                    <th>OPCIONES</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody><tr iddoc="null">
-                                                    <td class="text-sm-start">
-                                                        <div class="d-flex align-items-center">
-                                                            <div>
-                                                                <div class="spinner-grow text-black" role="status"></div>
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-md-start px-3">
-                                                                <p class="mb-0 text-xs">Tarjeta de la Leche </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-sm-start">
-                                                        Esperando...
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                </tr>
-                                                <tr iddoc="null">
-                                                    <td class="text-sm-start">
-                                                        <div class="d-flex align-items-center">
-                                                            <div>
-                                                                <div class="spinner-grow text-black" role="status"></div>
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-md-start px-3">
-                                                                <p class="mb-0 text-xs">FICHA DE PAGO </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-sm-start">
-                                                        Esperando...
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                </tr>
-                                                <tr iddoc="null">
-                                                    <td class="text-sm-start">
-                                                        <div class="d-flex align-items-center">
-                                                            <div>
-                                                                <div class="spinner-grow text-black" role="status"></div>
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-md-start px-3">
-                                                                <p class="mb-0 text-xs">CURP </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-sm-start">
-                                                        Esperando...
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                </tr></tbody>
-                                            </table></div>
-                                        <div class="container">
-                                            <div class="row small text-primary">
-                                                <div class="col-12 col-md-2">
-                                                    <i class="fas fa-circle text-success dotDocs small"></i> Acreditado
-                                                </div>
-                                                <div class="col-12 col-md-2">
-                                                    <i class="fas fa-circle text-warning dotDocs small"></i>   Por Revisar
-                                                </div>
-                                                <div class="col-12 col-md-2">
-                                                    <i class="fas fa-circle text-info dotDocs small"></i>  Rechazado
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-circle text-black dotDocs small"></i>  Esperando que el alumno suba el archivo
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div id="containerDocs"><div class="table-responsive"> </div>
                         </div>
                     </div>
                 </section>
             <!-- FIN SECCION DE LISTA DE DOCUMENTOS -->
-
-        </div>
+            </div>
         </div>
         <?php include 'includes/footer.php'; ?>
     </div>
 </div>
-<?php include 'includes/scripts.php'; ?>
-<?php include 'includes/js.php'; ?>
-<?php include 'includes/serivices-js.php'; ?>
+<?php
+     include 'includes/scripts.php';
+     include 'includes/js.php';
+     include 'includes/serivices-js.php';
+     include 'modals/modal-upload-file.php';
+ ?>
 <!-- Files JS -->
 <script src="./service/alumnos/ficha-inscripcion.js"></script>
 

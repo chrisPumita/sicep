@@ -39,9 +39,8 @@ function loadContaores(){
         $("#contCursosSideBar").html(contCursosPendRevtemplate);
 
         let contArchvosRevisa = contadores.archivosPendientes >0 ?
-            `Documentos  <span class="badge bg-danger">${contadores.archivosPendientes}</span>` : `Solicitudes`;
+            `Documentos  <span class="badge bg-danger">${contadores.archivosPendientes}</span>` : `Documentos`;
         $("#countDoscRevisaSidebar").html(contArchvosRevisa);
-
 
         try {
             $("#panelSolCount").html(contadores.solPendientes);

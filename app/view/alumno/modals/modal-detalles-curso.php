@@ -77,27 +77,12 @@
                 <div class="row py-1 m-2">
                     <h5 class="text-secondary"><i class="fas fa-bookmark"></i> Temario General</h5>
                     <div class="card-body table-responsive" id="tblTemario">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th>INDICE</th>
-                                <th>TEMA</th>
-                                <th>DESCRIPCIÓN</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr id_tema="14">
-                                <td>1.1</td>
-                                <td>Introduccion</td>
-                                <td>Tema introductorio</td>
-                            </tr>
-                            <tr id_tema="15">
-                                <td>1.2</td>
-                                <td>Tema 2.2</td>
-                                <td>Ejemplo de tema</td>
-                            </tr>
-                            </tbody>
-                        </table></div>
+                    </div>
+                </div>
+                <!-- fin de seccion de detalles -->
+                <div class="row py-1 m-2">
+                    <h5 class="text-secondary"><i class="fas fa-bookmark"></i> Documentación Solicitada</h5>
+                    <div class="card-body table-responsive" id="tblDocSol"></div>
                 </div>
             </div>
             <div class="modal-footer">

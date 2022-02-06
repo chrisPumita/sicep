@@ -145,24 +145,26 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
-                                    <p class="card-text text-muted">En este apartado puede cambiar su contraseña actual.</p>
+                                    <p class="card-text text-muted">En este apartado puede cambiar su contraseña actual de su cuenta.</p>
                                     <a href="#">
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        <?php if( $_SESSION['admin']) {?>
                         <div class="col-xl-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cambiar Clave de Confirmación</h5>
-                                    <p class="card-text text-muted">En este apartado puede cambiar su clave de confirmación.</p>
+                                    <p class="card-text text-muted">En este apartado puede cambiar su clave de confirmación de administrador.</p>
                                     <a href="#">
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarClave">Cambiar</button>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPswAdmin">Cambiar</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        <?php }?>
                         <div class="col-xl-3">
                             <div class="card">
                                 <div class="card-body">

@@ -19,7 +19,15 @@
                     <div class="table-responsive">
                         <div class="row py-1 m-2">
                             <div id="containerTblPresencial"> </div>
-                            <div id="containerTblVirtual"> </div>
+                            <div id="containerTblVirtual">
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"></use></svg>
+                                    <div>
+                                        <h4 class="alert-heading">Sin registro</h4>
+                                        <p>Aun no hemos registrado los horarios. Porfavor de estar pendiente al sitio para poder ver el horario establecido.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

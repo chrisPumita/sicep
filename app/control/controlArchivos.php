@@ -55,7 +55,6 @@ function removePdfCurso($idCurso){
     $path = NULL;
     return updateLinkTemario($idCurso,$path);
 }
-
 function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     //toda la logica del profesor
 
@@ -84,4 +83,7 @@ function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
         include_once "../control/controlProfesor.php";
         return updateFotoProfesor($id,$path);
     }
+}
+function procesaDocInscAlumno($archivo,$nombreFILE,$idFile,$folio){
+    return true;
 }

@@ -183,7 +183,7 @@
                         </div>
                         <div class="col-md-9 form-group">
                             <select class="form-control" id="abreviatura_doc" name="abreviatura_doc">
-                                <option value="PDF">PDF</option>
+                                <option value="pdf">PDF</option>
                                 <option value="IMG" selected>Imagen</option>
                                 <option value="DOC" selected>Documento de Word</option>
                                 <option value="%" selected>Cualquiera</option>

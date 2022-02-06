@@ -36,7 +36,7 @@ class mainModel
     }
 
     /** Funcion para limpiar cadenas y evitar inyeccion de sql */
-    protected static function limpiar_cadena($cadena)
+    public static function limpiar_cadena($cadena)
     {
         #elimina espacios dentro de los string
         $cadena = trim($cadena);

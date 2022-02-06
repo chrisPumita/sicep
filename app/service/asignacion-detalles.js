@@ -283,7 +283,7 @@ function loadDataAsignacion(asig){
         $("#genActual").val(asig.generacion);
         $("#semestreActual").val(asig.semestre);
         $("#idCursoGrupo").val(asig.id_curso);
-        $("#modalidad").val(asig.modalidad);
+        $("#modalidad-edita").val(asig.modalidad);
         $("#numCupo").val(asig.cupo);
         $("#campus").val(asig.campus_cede);
         $("#notas").val(asig.notas);

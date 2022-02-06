@@ -273,6 +273,7 @@ function buildTBLHtmlDocsSol(DOSC) {
     }
     $("#tblDocSol").html(template);
 }
+
 //Funcion agrega documentacion solicitada
 function addDocumentacion(){
     $("#documentacionModal").modal('show');

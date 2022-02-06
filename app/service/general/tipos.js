@@ -98,7 +98,7 @@ function getEstatusAsignacionColorIndicator(tipo){
             return 'purple';
             break;
         default:
-            return 'yellow';
+            return 'white';
             break;
     }
 }
@@ -351,4 +351,22 @@ function estadoServSoc(tipo) {
         break;
     }
     return null;
+}
+
+function aceptFiles(tipo) {
+    let acept;
+    switch (tipo) {
+        case "pdf":
+            acept = ".pdf";
+            break;
+        case "%":
+            acept = "image/*,.pdf";
+            break;
+        case "img": case "IMG":
+            acept = "";
+            break;        default:
+            acept = "image/*,.pdf";
+            break;
+    }
+    return acept;
 }
