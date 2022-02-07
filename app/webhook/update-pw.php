@@ -1,11 +1,13 @@
 <?php
 
 if(isset($_POST['pwd']) && isset($_POST['pwdNew']) && isset($_POST['pwdNewConf'])){
+    include_once "../model/mainModel.php";
     //ressibir PW ACTIUAL | PW NUEVO | CONFIRMA PW
     //IF QUE Compruebe que el PW nuevo y el PW confirma sean iguales
     $pwAnterior = $_POST['pwd'];
-    $pwNueva = $_POST['pwdNew'];
-    $pwConfirm = $_POST['pwdNewConf'];
+    $pwAnterior = mainModel::limpiar_cadena($pwAnterior);
+    $pwNueva    = mainModel::limpiar_cadena($_POST['pwdNew']);
+    $pwConfirm  = mainModel::limpiar_cadena($_POST['pwdNewConf']);
     if ($pwNueva == $pwConfirm){
         session_start();
         $correo = $_SESSION['correo_user'] ;

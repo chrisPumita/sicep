@@ -167,5 +167,6 @@
         <?php include 'includes/js.php'; ?>
         <?php include 'includes/serivices-js.php'; ?>
         <!-- Files JS -->
+        <script src="./service/alumnos/perfil.js"></script>
     </body>
 </html>

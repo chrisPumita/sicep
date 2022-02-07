@@ -1,0 +1,7 @@
+console.log("VISTA PERSIL");
+
+/*LOGICA DE UPDATE FOTO PERFIL
+
+
+UPDATE DATOS
+*/

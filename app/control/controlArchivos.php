@@ -57,8 +57,8 @@ function removePdfCurso($idCurso){
 }
 function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     //toda la logica del profesor
-
-    $carpeta = '../../resources/avatars/'.$id; // URL COMPLETA
+    $folder = md5($id.$typeAccess);
+    $carpeta = '../../resources/avatars/'.$folder; // URL COMPLETA
     if (!file_exists($carpeta)) {
         mkdir($carpeta, 0777, true);
     }
@@ -67,7 +67,7 @@ function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     $ruta1 = $carpeta.'/'.$nombreImg; // RUTA1 EXAMPLE: ""
     $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
 
-    $path = '../resources/avatars/'.$id.'/'.$nombre.'.'.$extension;
+    $path = '../resources/avatars/'.$folder.'/'.$nombre.'.'.$extension;
 
     //BOrrando los elementos que puedan existir en la carpeta
     $dir = $carpeta.'/';
@@ -81,7 +81,9 @@ function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     }
     else{
         include_once "../control/controlProfesor.php";
-        return updateFotoProfesor($id,$path);
+        $result = updateFotoProfesor($id,$path);
+        if ($result) $_SESSION['img_perfil'] = $path;
+        return $result;
     }
 }
 
