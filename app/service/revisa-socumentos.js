@@ -2,6 +2,7 @@
 var SOLICITUDES = null;
 $(document).ready(function () {
     consultaDocsPorRevisar();
+    setInterval(consultaDocsPorRevisar,5000);
 });
 
 function consultaDocsPorRevisar() {

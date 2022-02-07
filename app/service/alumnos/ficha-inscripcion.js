@@ -299,12 +299,13 @@ $("#frm-upload-file").on("submit", function(e){
             let titulo;
             if (response.type == 1){
                 titulo= "ARCHIVO ENVIADO";
+                consultaInfoInscripcionAlumno();
             }
             else if (response.type == 0){
                 titulo= "NO SELECCIONÓ UN ARCHIVO";
             }
             else{
-                titulo= "ERROR GENERRAL";
+                titulo= "ERROR GENERAL";
             }
             alerta(titulo,response.mensaje,response.action);
             $("#frm-upload-file").trigger('reset');

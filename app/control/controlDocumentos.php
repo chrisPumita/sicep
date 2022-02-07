@@ -8,7 +8,7 @@ function getDocsSolCurso($idCurso){
     return $DS->queryListaDocumentosSol();
 }
 
-
+//funcion OK
 function getCountArchivosRevisa(){
  include_once "../model/ARCHIVO.php";
  $ARCH = new ARCHIVO();

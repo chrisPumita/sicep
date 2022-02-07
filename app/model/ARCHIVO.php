@@ -5,30 +5,12 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 {
     private $id_archivo;
     private $id_inscripcion_fk;
-    private $codigo_doc;
     private $name_archivo;
-    private $name_file_md5;
     private $path;
     private $fecha_creacion;
     private $notas;
     private $estado_revision;
     private $estadoArchivo;
-
-    /**
-     * @return mixed
-     */
-    public function getEstadoArchivo()
-    {
-        return $this->estadoArchivo;
-    }
-
-    /**
-     * @param mixed $estadoArchivo
-     */
-    public function setEstadoArchivo($estadoArchivo): void
-    {
-        $this->estadoArchivo = $estadoArchivo;
-    }
 
     /**
      * @return mixed
@@ -45,8 +27,6 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     {
         $this->id_archivo = $id_archivo;
     }
-
-
 
     /**
      * @return mixed
@@ -67,22 +47,6 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     /**
      * @return mixed
      */
-    public function getCodigoDoc()
-    {
-        return $this->codigo_doc;
-    }
-
-    /**
-     * @param mixed $codigo_doc
-     */
-    public function setCodigoDoc($codigo_doc): void
-    {
-        $this->codigo_doc = $codigo_doc;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNameArchivo()
     {
         return $this->name_archivo;
@@ -94,22 +58,6 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     public function setNameArchivo($name_archivo): void
     {
         $this->name_archivo = $name_archivo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNameFileMd5()
-    {
-        return $this->name_file_md5;
-    }
-
-    /**
-     * @param mixed $name_file_md5
-     */
-    public function setNameFileMd5($name_file_md5): void
-    {
-        $this->name_file_md5 = $name_file_md5;
     }
 
     /**
@@ -176,70 +124,45 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         $this->estado_revision = $estado_revision;
     }
 
-    function queryInsertArchivo()
+    /**
+     * @return mixed
+     */
+    public function getEstadoArchivo()
     {
-        $query="INSERT INTO `archivo`(`id_archivo`, `id_doc_sol_fk`, `id_inscripcion_fk`, `codigo_doc`, `name_archivo`, `name_file_md5`, `path`, `fecha_creacion`, `notas`, `estado_revision`, `estado`) 
-                                      VALUES (NULL,'".$this->getIdDocSol()."','".$this->getIdInscripcionFk()."','".$this->getCodigoDoc()."','".$this->getNameArchivo()."','".$this->getNameFileMd5().
-            "','".$this->getPath()."','".$this->getFechaCreacion()."','".$this->getNotas()."','".$this->getEstadoRevision()."','".$this->getEstadoArchivo()."');";
+        return $this->estadoArchivo;
+    }
+
+    /**
+     * @param mixed $estadoArchivo
+     */
+    public function setEstadoArchivo($estadoArchivo): void
+    {
+        $this->estadoArchivo = $estadoArchivo;
+    }
+
+    function queryInsertArchivoSolicituAlumno()
+    {
+        $query="INSERT INTO `archivo` (`id_archivo`, `id_doc_sol_fk`, `id_inscripcion_fk`, `name_archivo`, `path`, 
+                       `fecha_creacion`, `notas`, `estado_revision`, `estado`) 
+                       VALUES (NULL, '".$this->getIdDocSol()."', '".$this->getIdInscripcionFk()."', '".$this->getNameArchivo()."',
+                        '".$this->getPath()."', CURRENT_TIMESTAMP, '".$this->getNotas()."', '0', '0')";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
-
-    function queryConsultaArchivos($id_inscripcion)
-    {
-        $query="SELECT 
-                    archivo.id_inscripcion_fk,
-                    documento.nombre_doc as documento_solicitado,
-                    documento.formato_admitido,
-                    documento.peso_max_mb,
-                    docs_solicitados_curso.obligatorio,
-                    archivo.codigo_doc,
-                    archivo.name_archivo as documento_subido,
-                    archivo.fecha_creacion,
-                    archivo.notas,
-                    archivo.estado_revision,
-                    archivo.estado
-                        FROM archivo , docs_solicitados_curso ,documento 
-                            WHERE archivo.id_doc_sol_fk=docs_solicitados_curso.id_doc_sol
-                                AND docs_solicitados_curso.id_documento_fk =documento.id_documento
-                                AND archivo.id_inscripcion_fk=".$id_inscripcion;
-       $this->connect();
-        $datos = $this-> getData($query);
-        $this->close();
-        return $datos;
-    }
-
 
     function queryUpdateArchivo()
     {
-        $query="UPDATE `archivo` SET `id_doc_sol_fk`='".$this->getIdDocSol()."',`id_inscripcion_fk`='".$this->getIdInscripcionFk()."',`codigo_doc`='".$this->getCodigoDoc()."'
-                ,`name_archivo`='".$this->getNameArchivo()."',`name_file_md5`='".$this->getNameFileMd5()."',`path`='".$this->getPath()."',`fecha_creacion`='".$this->getFechaCreacion()."'
-                ,`notas`='".$this->getNotas()."',`estado_revision`='".$this->getEstadoRevision()."',`estado`='".$this->getEstadoArchivo()."' 
-                WHERE `id_archivo`=".$this->getIdArchivo();
+        $query="";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
- 
-
-    function queryDeleteArchivo($id_archivo)
-    {
-        $this->connect();
-        $datos = $this-> executeInstruction("DELETE FROM `archivo` WHERE `id_archivo`=".$id_archivo);
-        $this->close();
-        return $datos;
-    }
-
-    function queryDeleteArchivoPath($path)
-    {
-       $result= unlink($path);
-       return $result;
-    }
 
     //Regresa una lista de ID que tiene almenos un archivo para ver/revisar
+    //funcion OK
     function queryListCountArchivosPendRev($filtro){
         $id = $this->getIdInscripcionFk() > 0 ? " AND insc.id_inscripcion =  ". $this->getIdInscripcionFk():'';
         $contat = "";
@@ -277,6 +200,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
+    //funcion OK
     function queryListFilesPendientesAlumno($idAlumno,$showPendientes){
         $inscripcion = $this->getIdInscripcionFk() > 0 ? " AND insc.id_inscripcion =  ". $this->getIdInscripcionFk():'';
         $pendintes = $showPendientes ? "HAVING estatusFile <> 1 ":"";
@@ -302,6 +226,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
+    //funcion REESCRIBIR
     function queryUpdateEstadoArchivo($id,$estatus){
         $query="UPDATE `archivo` SET `estado_revision`='$estatus' WHERE `id_archivo`='$id'";
         $this->connect();
@@ -310,27 +235,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
-    function queryCreateArchivoPath($nombreArchivo,$Archivo)
-    {
-
-        $inscripcion = $this->getIdInscripcionFk();
-        $carpeta = "../model/prueba/" . $inscripcion;
-        if (!file_exists($carpeta)) {
-            if(!mkdir("$carpeta", 0777, true) ){
-                echo "error al crear la carpeta";
-            }
-        }
-        $ruta = $carpeta . '/' . md5($nombreArchivo);
-        /*if (empty($nombreArchivo)) {
-            $ruta = "";
-        }*/
-        if(move_uploaded_file($Archivo, $ruta)){
-            return $ruta;
-        }else{
-            return false;
-        }
-    }
-
+    //funcion OK
     function queryCountArchRevisa(){
         $query="select a.id_archivo from archivo a, inscripcion i
                 where a.id_inscripcion_fk = i.id_inscripcion
@@ -338,6 +243,51 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
                 AND i.autorizacion_inscripcion>=0";
         $this->connect();
         $datos = $this->numRows($query);
+        $this->close();
+        return $datos;
+    }
+
+    //funcion OK
+    function queryValidaDocSolMatch($idAlumno){
+        $query = "SELECT doc.id_documento, doc.nombre_doc, doc.formato_admitido, doc.tipo, doc.peso_max_mb,
+       ds.id_doc_sol, ds.id_curso_fk, ds.obligatorio,
+       c.id_curso
+        FROM docs_solicitados_curso ds, curso c, documento doc
+        WHERE ds.id_curso_fk = c.id_curso
+        AND doc.id_documento = ds.id_documento_fk
+        AND ds.id_doc_sol = ".$this->getIdDocSol()."
+        AND c.id_curso IN (SELECT c.id_curso FROM inscripcion insc, asignacion_grupo ag,
+                                                  grupo gpo, curso c
+                           WHERE insc.id_asignacion_fk = ag.id_asignacion
+                             AND gpo.id_grupo = ag.id_grupo_fk
+                             AND c.id_curso = gpo.id_curso_fk
+                             AND insc.id_alumno_fk = ".$idAlumno."
+                             AND insc.id_inscripcion = ".$this->getIdInscripcionFk().")";
+        $this->connect();
+        $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
+
+    //funcion OK
+    function queryValidaDocEntregadoMatch($idAlumno){
+        $query = "SELECT doc.id_documento, doc.nombre_doc, doc.formato_admitido, doc.tipo, doc.peso_max_mb,
+       ds.id_doc_sol, ds.id_curso_fk, ds.obligatorio, c.id_curso, a.*
+        FROM docs_solicitados_curso ds, curso c, documento doc, archivo a
+        WHERE ds.id_curso_fk = c.id_curso
+          AND doc.id_documento = ds.id_documento_fk
+          AND a.id_doc_sol_fk = ds.id_doc_sol
+          AND ds.id_doc_sol = 33
+          AND a.id_archivo = 22
+            AND c.id_curso IN (SELECT c.id_curso 
+                                FROM inscripcion insc, asignacion_grupo ag,  grupo gpo, curso c
+                                 WHERE insc.id_asignacion_fk = ag.id_asignacion
+                                   AND gpo.id_grupo = ag.id_grupo_fk
+                                   AND c.id_curso = gpo.id_curso_fk
+                                   AND insc.id_alumno_fk = 95
+                                   AND insc.id_inscripcion = 22012804715989)";
+        $this->connect();
+        $datos = $this-> getData($query);
         $this->close();
         return $datos;
     }
