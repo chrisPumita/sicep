@@ -65,3 +65,14 @@ function verificaCuentaUser($correo,$pw,$chkProf)
 
 }
 
+function updatePassword($id,$email,$pwdAnterior,$pwdNueva,$typeAcces){
+    if($typeAcces>0){
+        include_once "controlProfesor.php";
+        return cambiaContrasenia($id,$email,$pwdAnterior,$pwdNueva);
+    } else {
+        include_once "controlAlum.php";
+        return updatePwdAlumn($id,$email,$pwAnterior,$pwNueva);
+    }
+    return false;
+}
+

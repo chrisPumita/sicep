@@ -13,26 +13,13 @@ if(isset($_POST['pwd']) && isset($_POST['pwdNew']) && isset($_POST['pwdNewConf']
         $correo = $_SESSION['correo_user'] ;
         $tipo =  $_SESSION['typeCount'] == "admin" ? 1 : 0 ;
         $id = $_SESSION['typeCount'] == "admin" ? $_SESSION['idProfesor']  : $_SESSION['id_alumno'] ;
-        if ($tipo == 1){
-            //toda la logica del profesor
-            include_once "../control/controlProfesor.php";
-            if (cambiaContrasenia($id,$correo,$pwAnterior,$pwNueva)){
-                $mjeType =1;
-                $mjeText="Se ha actualizado con exito";
-            }else {
-                $mjeType =-1;
-                $mjeText="La contraseña actual no coincide.";
-            }
-        }
-        else{
-            include_once "../control/controlAlum.php";
-            if(updatePwdAlumn($id,$correo,$pwAnterior,$pwNueva)){
-                $mjeType =1;
-                $mjeText="Se ha actualizado con exito";
-            } else{
-                $mjeType =-1;
-                $mjeText="La contraseña anterior no coincide";
-            }
+    include_once "../control/controlAccesso.php";
+        if(updatePassword($id,$correo,$pwAnterior,$pwNueva,$tipo)){
+            $mjeType =1;
+            $mjeText="Se ha actualizado con exito";
+        } else {
+            $mjeType =-1;
+            $mjeText="La contraseña actual es incorrecta";
         }
     }
     else{

@@ -101,26 +101,33 @@ $("#frm-foto-perfil").on("submit", function(e){
 });
 
 $("#frm-update-pwd").on("submit", function(e){
-    //Ruta del Webbhook
-    let ruta = "./webhook/update-pw.php";
-    //Parametros que se van a enviar encapsulados
-    var params = {
-        pwd : $("#pwdOld").val(),
-        pwdNew : $("#pwdNew").val(),
-        pwdNewConf : $("#pwdNewC").val()
-    };
-    console.log(params);
-    if(params.pwdNew != params.pwdNewConf){
-        alertaEmergente("Las contraseñas no coinciden");
+    //Cambiar datos de condicion por .val()
+    if($("#pwdOld").val() !="" && $("#pwdNew").val() !="" && $("#pwdNewC").val()!=""){
+            //Ruta del Webbhook
+        let ruta = "./webhook/update-pw.php";
+        //Parametros que se van a enviar encapsulados
+        var params = {
+            pwd : $("#pwdOld").val(),
+            pwdNew : $("#pwdNew").val(),
+            pwdNewConf : $("#pwdNewC").val()
+        };
+        if(params.pwdNew != params.pwdNewConf){
+            alerta("No se pudo realizar la operacion","Las nuevas contraseñas no coinciden","error");
+        } else {
+            //Llamado de la funcion Async y resolviendo la promesa
+            enviaForm(params,ruta).then(function () {
+                $("#frm-update-pwd").trigger('reset');
+                $("#CambiarPsw").modal('hide');
+                consultaPefilProfesor().then(function (resultado) {
+                    buildHTMLDatosPeril(resultado);
+                    e.preventDefault();
+                })
+            });
+        } 
     } else {
-        //Llamado de la funcion Async y resolviendo la promesa
-        enviaForm(params,ruta).then(function () {
-            $("#frm-update-pwd").trigger('reset');
-            $("#CambiarPsw").modal('hide');
-            consultaPefilProfesor().then(function (resultado) {
-                buildHTMLDatosPeril(resultado);
-            })
-        });
-    } 
+        alerta("No se pudo realizar la operacion","Los campos estan vacios","warning");
+    }
     e.preventDefault();
 });
+
+//Se realizara el cambio de contraseña de administrador
