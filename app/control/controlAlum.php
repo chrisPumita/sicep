@@ -73,11 +73,18 @@ function consultaAlumno($id_alumno){
     return $json_data;
 }
 
-function updatePwdAlumn($id_alumn,$pwd)
+function updatePwdAlumn($idAlumno,$email,$pwdAnterior,$pwdNueva)
 {
-    include_once "../model/ALUMNO.php";
-    $objAlum = new ALUMNO();
-    echo $objAlum->modifcaPw($id_alumn, md5($pwd))?"Se modifico la contraseña correctamente":"No se pudo modificar la contraseña";
+    $tmpAlumno= consultaCuentaAlumno($email,$pwdAnterior);
+    if(count($tmpAlumno)>0){
+        include_once "../model/ALUMNO.php";
+        $ALUMNO = new ALUMNO();
+        $ALUMNO->setIdAlumno($idAlumno);
+        $ALUMNO->setPw(md5($pwdNueva));
+        return $ALUMNO->queryUpdatePw();
+    } else {
+        return false;
+    }
 }
 
 function eliminarAlumno($id_alumno)

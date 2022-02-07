@@ -81,13 +81,13 @@ function consultaCuentaProfesor($email,$pwEncrypted){
     return $PROF->queryCountProfesor();
 }
 
-function cambiaContrasenia($id,$email,$pwAnterior,$nueva){
+function cambiaContrasenia($idProfesor,$email,$pwAnterior,$pwdNew){
     $tmpProfe = consultaCuentaProfesor($email,md5($pwAnterior));
     if (count($tmpProfe)>0){
         include_once "../model/PROFESOR.php";
         $prof = new PROFESOR();
-        $prof->setIdProfesor($id);
-        $prof->setPw(md5($nueva));
+        $prof->setIdProfesor($idProfesor);
+        $prof->setPw(md5($pwdNew));
         return $prof->queryUpdatePw();
     }
     else{

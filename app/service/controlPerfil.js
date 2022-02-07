@@ -99,3 +99,28 @@ $("#frm-foto-perfil").on("submit", function(e){
     });
     e.preventDefault();
 });
+
+$("#frm-update-pwd").on("submit", function(e){
+    //Ruta del Webbhook
+    let ruta = "./webhook/update-pw.php";
+    //Parametros que se van a enviar encapsulados
+    var params = {
+        pwd : $("#pwdOld").val(),
+        pwdNew : $("#pwdNew").val(),
+        pwdNewConf : $("#pwdNewC").val()
+    };
+    console.log(params);
+    if(params.pwdNew != params.pwdNewConf){
+        alertaEmergente("Las contraseñas no coinciden");
+    } else {
+        //Llamado de la funcion Async y resolviendo la promesa
+        enviaForm(params,ruta).then(function () {
+            $("#frm-update-pwd").trigger('reset');
+            $("#CambiarPsw").modal('hide');
+            consultaPefilProfesor().then(function (resultado) {
+                buildHTMLDatosPeril(resultado);
+            })
+        });
+    } 
+    e.preventDefault();
+});
