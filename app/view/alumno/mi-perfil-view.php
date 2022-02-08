@@ -171,5 +171,6 @@
         <?php include 'includes/serivices-js.php'; ?>
         <!-- Files JS -->
         <script src="./service/alumnos/perfil.js"></script>
+        <script src="./service/global.async.js"></script>
     </body>
 </html>

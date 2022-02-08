@@ -255,39 +255,3 @@ async function consultaProcedenciasAjax(route) {
         }
     );
 }
-
-async function consultaMunicipioAjax(route,idEdo) {
-    return $.ajax(
-        {
-            url: route+"webhook/lista-municipios.php",
-            type: 'POST',
-            dataType: "json",
-            data: {
-                filtro : idEdo
-            },
-            success: function(data){
-              //  console.log(data);
-            },
-            error: function(e) {
-                console.log(e);
-                alert("Error al consultar municipios")
-            }
-        }
-    );
-}
-
-async function consultaEdosRepAjax(route) {
-    return $.ajax(
-        {
-            url:route+"webhook/lista-estados-rep.php",
-            dataType: "json",
-            success: function(data){
-              //  console.log(data);
-            },
-            error: function(e) {
-                console.log(e);
-                alert("Error al traer estados")
-            }
-        }
-    );
-}

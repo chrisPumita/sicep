@@ -28,7 +28,7 @@ function buildSelectProcedencias(procedencias){
 
 //Estados
 async function consultaEdos(){
-    const JSONData =  await consultaEdosRepAjax("../app/");
+    const JSONData =  await g_consultaEdosRep("../app/");
     buildSelectEdos(JSONData);
 }
 function buildSelectEdos(estados){
@@ -44,17 +44,15 @@ function buildSelectEdos(estados){
 }
 
 //Municipios
-async function consultaMunicipios(idEdo){
-    const JSONData =  await consultaMunicipioAjax("../app/",idEdo);
-    buildSelectMunicipios(JSONData);
-}
-function buildSelectMunicipios(municipios){
+
+function buildSelectMunicipios(municipios,idMun){
     console.log(municipios);
     let template = "";
     municipios.forEach(
         (municipio)=>
         {
-            template += `<option value="${municipio.id_municipio}">${municipio.municipio}</option>`;
+            let select = idMun === municipio.id_municipio ? "selected" : "";
+            template += `<option value="${municipio.id_municipio}" ${select}>${municipio.municipio}</option>`;
         }
     );
     $("#localidad_alumno_perfil").html(template);
@@ -75,13 +73,18 @@ function buildHTMLDatosPeril(alumno){
     //Pintamos HTML debajo de imagen de perfil
     $("#nombreAlumnoImg").html(alumno.nombre_completo);
     $("#correoAlumnoImg").html(alumno.email);
-    let result= consultaMunicipios(alumno.id_estado_fk);
-    if(result){
-        $("#localidad_alumno_perfil").val(alumno.id_municipio);
-    }
-    
-    
+    conusltaMuncipios(alumno.id_estado_fk,alumno.id_municipio);
 }
+
+function conusltaMuncipios(idEdo,idMunSelect) {
+    let ruta = '../app/';
+    g_consultaMunicipio(ruta,idEdo).then(function (result) {
+        buildSelectMunicipios(result,idMunSelect);
+    })
+}
+
+//onchange FUNCION EN SELECT EDTADO
+//ACTUALIZAR LOS MUNICIPIOS
 
 /*LOGICA DE UPDATE FOTO PERFIL
 
