@@ -38,7 +38,7 @@
                                                                 <input type="file" name="file"/>
                                                             </div> -->
                                                             <button class="btn btn-primary" type="button"> <i class="fas fa-edit"></i> Editar</button>
-                                                            <span class="font-weight-bold" id="nombreAlumnoImg">Christian</span><span class="text-black-50" id="correoAlumnoImg">chris@reckreastudios.com</span><span> </span>
+                                                            <span class="font-weight-bold" id="nombreAlumnoImg">${NAME}</span><span class="text-black-50" id="correoAlumnoImg">${EMAIL}</span><span> </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-9 border-right">
@@ -64,16 +64,19 @@
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="localidad_alumno_perfil" name="localidad_alumno_perfil">
-                                                                        <option value="0">Nicolás Romero</option>
-                                                                        <option value="1">Cuautitlán Izcalli</option>
+                                                                    <select class="form-control" id="sexo_alumno_perfil" name="sexo_alumno_perfil">
+                                                                        <option value="0">Hombre</option>
+                                                                        <option value="1">Mujer</option>
                                                                     </select>
                                                                 </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="estado_alumno_perfil" name="estado_alumno_perfil">
-                                                                        <option value="0">Estado de México</option>
-                                                                        <option value="1">Ciudad de México</option>
-                                                                    </select>
+                                                                    <select class="form-control" id="estado_alumno_perfil" name="estado_alumno_perfil"></select>
+                                                                </div>
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <select class="form-control" id="localidad_alumno_perfil" name="localidad_alumno_perfil"></select>
                                                                 </div>
                                                             </div>
                                                             

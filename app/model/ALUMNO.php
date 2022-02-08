@@ -412,7 +412,9 @@ class ALUMNO extends PERSONA implements I_ALUMNO
 
     function queryUpdateAlumno()
     {
-        $query = "";
+        $query = "UPDATE `alumno` SET `id_municipio` = '".$this->getIdMunicipio()."', `id_tipo_procedencia_fk` = '".$this->getIdProcedencia()."', 
+        `carrera_especialidad` = '".$this->getCarreraEspecialidad()."', `email` = '".$this->getEmail()."' 
+        WHERE `alumno`.`id_alumno` = ".$this->getIdAlumno();
         $this->connect();
         $datos = $this->executeInstruction($query);
         $this->close();

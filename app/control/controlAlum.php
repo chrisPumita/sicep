@@ -1,5 +1,4 @@
 <?php
-
 function crearCuentaAlumno($params){
     include_once "../model/CLAVES.php";
     //verificar si existe una cuenta
@@ -56,13 +55,24 @@ function updateEstatusAlumno($id,$status){
     return $objAlum->updateEstatusAlumno($id,$status=="1"?"0":"1");
 }
 
-function updateAlumno($id_municipio, $id_universidad,$matricula,
-                      $nombre_uni,$idProcedencia, $carrera_especialidad,
-                      $email,$pw,$nombre,$app,$apm,$telefono,$sexo)
+function updateAlumno($params)
 {
+    //Obtenemos el id de la session 
+    session_start();
     include_once "../model/ALUMNO.php";
-    $objAlum = new ALUMNO();
-    return $objAlum->modificaAlumno();
+    $ALUMNO = new ALUMNO();
+    //Control para la persona
+    $ALUMNO->setNombre($params['nombre']);
+    $ALUMNO->setApp($params['app']);
+    $ALUMNO->setApm($params['apm']);
+    $ALUMNO->setTelefono($params['telefono']);
+    //Control para el alumno 
+    $ALUMNO->setIdAlumno($_SESSION['id_alumno']);
+    $ALUMNO->setIdMunicipio($params['idMunicipio']);
+    $ALUMNO->setIdProcedencia($params['idProcedencia']);
+    $ALUMNO->setCarreraEspecialidad($params['carreraEsp']);
+    $ALUMNO->setEmail($params['email']);
+    return $ALUMNO->queryUpdateAlumno();
 }
 
 function consultaAlumno($id_alumno){
