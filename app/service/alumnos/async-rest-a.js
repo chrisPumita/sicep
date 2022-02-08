@@ -199,6 +199,7 @@ async function cancelarSolicitudAlumnoAjax(idSolicitud){
 ///////////////////// PREFERENCIAS (SIMILAR) ////////////////
 async function enviaFormAlumno(params,route){
     const mensaje = await sendBackEndAlumnoAjax(params, route);
+    console.log(mensaje);
     //Mensaje en JS para usar con SwatAlert
     alertaEmergente(mensaje.Mensaje);
 }

@@ -41,11 +41,12 @@
                                                             <span class="font-weight-bold" id="nombreAlumnoImg">${NAME}</span><span class="text-black-50" id="correoAlumnoImg">${EMAIL}</span><span> </span>
                                                         </div>
                                                     </div>
+                                                    <form id="frm-update-perfil-alumno">
                                                     <div class="col-md-9 border-right">
                                                         <div class="p-3 py-5">
                                                             <div class="form-group row">
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="nombre_alumno" name="nombre_alumno_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                                                    <input type="text" id="nombre_alumno_perfil" name="nombre_alumno_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
                                                                 </div>
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
                                                                     <input type="text" id="app_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
@@ -85,7 +86,7 @@
                                                                 <select class="form-control" name="procedencia" id="procedencia"></select>
                                                                 </div>
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="matricula_alumno_perfil" name="matricula_alumno_perfil" class="form-control" placeholder="Matricula" aria-label="Matricula">
+                                                                    <input type="text"  id="matricula_alumno_perfil" name="matricula_alumno_perfil" class="form-control" placeholder="Matricula" aria-label="Matricula" disabled>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -98,11 +99,12 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-12 text-end">
-                                                        <button type="button" class="btn btn-primary ">Guardar Cambios</button>
+                                                        <button type="submit" class="btn btn-primary ">Guardar Cambios</button>
                                                     </div>
 
                                                 </div>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

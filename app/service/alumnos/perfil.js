@@ -66,6 +66,7 @@ function buildHTMLDatosPeril(alumno){
     $("#apm_alumno_perfil").val(alumno.apm);
     $("#telefono_alumno_perfil").val(alumno.telefono);
     $("#correo_alumno_perfil").val(alumno.email);
+    $("#sexo_alumno_perfil").val(alumno.sexo);
     $("#estado_alumno_perfil").val(alumno.id_estado_fk);
     $("#procedencia").val(alumno.id_tipo_procedencia);
     $("#matricula_alumno_perfil").val(alumno.matricula);
@@ -90,3 +91,33 @@ function conusltaMuncipios(idEdo,idMunSelect) {
 
 UPDATE DATOS
 */
+$("#frm-update-perfil-alumno").on("submit", function(e){
+    if($("#nombre_alumno_perfil").val() != "" && $("#app_alumno_perfil").val() != "" && $("#apm_alumno_perfil").val() != "" 
+    && $("#telefono_alumno_perfil").val() != "" && $("#carrera_alumno_perfil").val() != "" && $("#correo_alumno_perfil").val() != ""){
+        //Ruta del Webbhook
+        let ruta = "../app/webhook/alumno.update-alumno.php";
+        //Parametros que se van a enviar encapsulados
+        var params = {
+            nombre_alumno : $("#nombre_alumno_perfil").val(),
+            app_alumno : $("#app_alumno_perfil").val(),
+            apm_alumno : $("#apm_alumno_perfil").val(),
+            sexo_alumno : $("#sexo_alumno_perfil").val(),
+            telefono_alumno : $("#telefono_alumno_perfil").val(),
+            email_alumno : $("#correo_alumno_perfil").val(),
+            idMunicipio: $("#localidad_alumno_perfil").val(),
+            idProcedencia: $("#procedencia").val(),
+            carreraEspecialidad : $("#carrera_alumno_perfil").val()
+        };
+        //Llamado de la funcion Async y resolviendo la promesa
+        enviaFormAlumno(params,ruta).then(function () {
+            consultaPefilAlumno().then(function (resultado) {
+                buildHTMLDatosPeril(resultado);
+            })
+            e.preventDefault();
+        });
+
+    } else {
+        alerta("No se puede completar la solicitud","Motivo: Faltan campos por llenar","warning");
+    }
+    e.preventDefault();
+});

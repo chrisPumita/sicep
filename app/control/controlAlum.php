@@ -62,17 +62,36 @@ function updateAlumno($params)
     include_once "../model/ALUMNO.php";
     $ALUMNO = new ALUMNO();
     //Control para la persona
+    $ALUMNO->setIdPersona($_SESSION['id_persona']);
     $ALUMNO->setNombre($params['nombre']);
     $ALUMNO->setApp($params['app']);
     $ALUMNO->setApm($params['apm']);
     $ALUMNO->setTelefono($params['telefono']);
-    //Control para el alumno 
-    $ALUMNO->setIdAlumno($_SESSION['id_alumno']);
-    $ALUMNO->setIdMunicipio($params['idMunicipio']);
-    $ALUMNO->setIdProcedencia($params['idProcedencia']);
-    $ALUMNO->setCarreraEspecialidad($params['carreraEsp']);
-    $ALUMNO->setEmail($params['email']);
-    return $ALUMNO->queryUpdateAlumno();
+    $ALUMNO->setSexo($params['sexo']);
+    $PERSONA = $ALUMNO->queryUpdatePersona();
+    if($PERSONA){
+        //Control para el alumno 
+        $ALUMNO->setIdAlumno($_SESSION['id_alumno']);
+        $ALUMNO->setIdMunicipio($params['idMunicipio']);
+        $ALUMNO->setIdProcedencia($params['idProcedencia']);
+        $ALUMNO->setCarreraEspecialidad($params['carreraEsp']);
+        $ALUMNO->setEmail($params['email']);
+        $alumno = $ALUMNO->queryUpdateAlumno();
+        if($alumno ){
+            //Actualizamos valores en el $_SESSION
+            $_SESSION['usuario'] = $ALUMNO->getNombre();
+            $_SESSION['apaterno'] = $ALUMNO->getApp();
+            $_SESSION['amaterno'] = $ALUMNO->getApm();
+            $_SESSION['correo_user'] = $ALUMNO->getEmail();
+            //Preguntar a Chris como hacerle aqui hahaha xD
+            //$_SESSION['tipo_procedencia'] = $ALUMNO->get();
+            $_SESSION['id_tipo_procedencia'] = $ALUMNO->getIdProcedencia();
+            $_SESSION['nombre_completo'] = $ALUMNO->getNombre()." ".$ALUMNO->getApp()." ".$ALUMNO->getApm();
+            return true;
+        }
+    }
+    return false;
+    
 }
 
 function consultaAlumno($id_alumno){
