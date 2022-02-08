@@ -221,3 +221,73 @@ async function sendBackEndAlumnoAjax(params,route){
         }
     );
 }
+async function consultaPefilAlumnoAjax(){
+    return $.ajax({
+        url: "../app/webhook/alumno.datos.php",
+        type: 'POST',
+        dataType: "json",
+        data: { },
+        success: function(data){
+            console.log(data);
+        },
+        error: function(e) {
+            alert("Error occured")
+            console.log(e);
+        }
+    });
+}
+
+async function consultaPefilAlumno() {
+    return await consultaPefilAlumnoAjax();
+}
+
+async function consultaProcedenciasAjax(route) {
+    return $.ajax(
+        {
+            url:route+"webhook/lista-dependencias.php",
+            dataType: "json",
+            success: function(data){
+                // console.log(data);
+            },
+            error: function() {
+                alert("Error occured")
+            }
+        }
+    );
+}
+
+async function consultaMunicipioAjax(route,idEdo) {
+    return $.ajax(
+        {
+            url: route+"webhook/lista-municipios.php",
+            type: 'POST',
+            dataType: "json",
+            data: {
+                filtro : idEdo
+            },
+            success: function(data){
+              //  console.log(data);
+            },
+            error: function(e) {
+                console.log(e);
+                alert("Error al consultar municipios")
+            }
+        }
+    );
+}
+
+async function consultaEdosRepAjax(route) {
+    return $.ajax(
+        {
+            url:route+"webhook/lista-estados-rep.php",
+            dataType: "json",
+            success: function(data){
+              //  console.log(data);
+            },
+            error: function(e) {
+                console.log(e);
+                alert("Error al traer estados")
+            }
+        }
+    );
+}

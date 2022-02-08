@@ -32,45 +32,45 @@
                                                 <div class="row">
                                                     <div class="col-md-3 border-right">
                                                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                            <img class="rounded-circle mt-5" width="150px" src="https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4">
+                                                            <img class="rounded-circle mt-5" width="150px" id="avatarImagePerfilAlumno">
                                                             <!-- <div class="file btn btn-lg btn-primary">
                                                                 <i class="fas fa-edit"></i>
                                                                 <input type="file" name="file"/>
                                                             </div> -->
                                                             <button class="btn btn-primary" type="button"> <i class="fas fa-edit"></i> Editar</button>
-                                                            <span class="font-weight-bold">Christian</span><span class="text-black-50">chris@reckreastudios.com</span><span> </span>
+                                                            <span class="font-weight-bold" id="nombreAlumnoImg">Christian</span><span class="text-black-50" id="correoAlumnoImg">chris@reckreastudios.com</span><span> </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-9 border-right">
                                                         <div class="p-3 py-5">
                                                             <div class="form-group row">
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="nombre_profesor" name="nombre_profesor" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                                                    <input type="text" id="nombre_alumno" name="nombre_alumno_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
                                                                 </div>
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="app" name="app" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
+                                                                    <input type="text" id="app_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
                                                                 </div>
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="apm" name="apm" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                                                    <input type="text" id="apm_alumno_perfil" name="apm_alumno_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Telefono">
+                                                                    <input type="text" id="telefono_alumno_perfil" name="telefono_alumno_perfil" class="form-control" placeholder="Teléfono" aria-label="Telefono">
                                                                 </div>
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
+                                                                    <input type="text" id="correo_alumno_perfil" name="correo_alumno_perfil" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="localidad" name="localidad">
+                                                                    <select class="form-control" id="localidad_alumno_perfil" name="localidad_alumno_perfil">
                                                                         <option value="0">Nicolás Romero</option>
                                                                         <option value="1">Cuautitlán Izcalli</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="estado" name="estado">
+                                                                    <select class="form-control" id="estado_alumno_perfil" name="estado_alumno_perfil">
                                                                         <option value="0">Estado de México</option>
                                                                         <option value="1">Ciudad de México</option>
                                                                     </select>
@@ -79,15 +79,15 @@
                                                             
                                                             <div class="form-group row">
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="procedencia" name="procedencia" class="form-control" placeholder="Procedencia" aria-label="Procedencia">
+                                                                <select class="form-control" name="procedencia" id="procedencia"></select>
                                                                 </div>
                                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" aria-label="Matricula">
+                                                                    <input type="text" id="matricula_alumno_perfil" name="matricula_alumno_perfil" class="form-control" placeholder="Matricula" aria-label="Matricula">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                    <input type="text" id="carrera" name="carrera" class="form-control" placeholder="Carrera" aria-label="Carrera">
+                                                                    <input type="text" id="carrera_alumno_perfil" name="carrera_alumno_perfil" class="form-control" placeholder="Carrera" aria-label="Carrera">
                                                                 </div>
                                                             </div>
                                                         </div>
