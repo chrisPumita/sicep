@@ -6,23 +6,22 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <p class="modal-title white" id="updateFotoPerfil">
-                    Actualizar foto de perfil
+                   Actualizar foto de perfil
                 </p>
                 <button type="button" class="close"
                         data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times text-light"></i>
                 </button>
             </div>
-            <form id="frm-foto-perfil">
+            <form id="frm-foto-perfil-alumno">
                 <div class="modal-body">
                     <img src="../resources/banners/default.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
                     <div class="card-body">
                         <h4 class="card-title">Imagen de perfil</h4>
                         <p class="card-text text-primary">
-
+                            
                             Recomendamos una resolución de 600px por 300px
                         </p>
-                        <input type="text" id="idProfesorImg">
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="imgPerfil" class="text-primary">Seleccionar foto de perfil</label>
@@ -33,8 +32,8 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
-            </form>
         </div>
     </div>
 </div>

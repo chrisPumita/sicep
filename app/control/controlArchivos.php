@@ -77,7 +77,11 @@ function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/.jpg"
     if ($typeAccess == 0){
         include_once "../control/controlAlum.php";
-        return updateFotoAlumno($id,$path);
+        $result= updateFotoAlumno($id,$path);
+        if($result){
+            $_SESSION['perfil_image'] = $path;
+            return $result;
+        }
     }
     else{
         include_once "../control/controlProfesor.php";

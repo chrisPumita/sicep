@@ -37,7 +37,7 @@
                                                                 <i class="fas fa-edit"></i>
                                                                 <input type="file" name="file"/>
                                                             </div> -->
-                                                            <button class="btn btn-primary" type="button"> <i class="fas fa-edit"></i> Editar</button>
+                                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateFotoPerfil"><i class="fas fa-edit"></i> Editar</button>
                                                             <span class="font-weight-bold" id="nombreAlumnoImg">${NAME}</span><span class="text-black-50" id="correoAlumnoImg">${EMAIL}</span><span> </span>
                                                         </div>
                                                     </div>
@@ -52,7 +52,7 @@
                                                                     <input type="text" id="app_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
                                                                 </div>
                                                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="apm_alumno_perfil" name="apm_alumno_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                                                    <input type="text" id="apm_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -166,6 +166,7 @@
                 </div>
                 <?php include 'includes/footer.php'; ?>
                 <?php include "modals/modal-cambiar-password.php"?>
+                <?php include "modals/modal-update-foto-perfil.php"?>
             </div>
         </div>
         <?php include 'includes/scripts.php'; ?>
@@ -174,5 +175,31 @@
         <!-- Files JS -->
         <script src="./service/alumnos/perfil.js"></script>
         <script src="./service/global.async.js"></script>
+        <script>
+
+            $(document).on("click", ".custom-file-input", function() {
+                var file = $(this).parents().find(".file");
+                file.trigger("click");
+            });
+            $('input[type="file"]').change(function(e) {
+                var fileName = e.target.files[0].name;
+                $("#preview").val(fileName);
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    // get loaded data and render thumbnail.
+                    document.getElementById("preview").src = e.target.result;
+                };
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
+            });
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+
+
+        </script>
+
     </body>
 </html>

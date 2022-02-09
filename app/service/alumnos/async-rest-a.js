@@ -201,7 +201,21 @@ async function enviaFormAlumno(params,route){
     const mensaje = await sendBackEndAlumnoAjax(params, route);
     console.log(mensaje);
     //Mensaje en JS para usar con SwatAlert
-    alertaEmergente(mensaje.Mensaje);
+    switch(mensaje.mjeType){
+        case -1:
+            alerta(mensaje.Mensaje,"","error");
+            break;
+        case 0:
+            alerta(mensaje.Mensaje,"","warning");
+            break;
+        case 1:
+            alertaEmergente(mensaje.Mensaje);
+            break;
+        default:
+            alertaEmergente("No a entrado el swtich");
+            break;
+    }
+    
 }
 
 async function sendBackEndAlumnoAjax(params,route){

@@ -84,6 +84,33 @@ function conusltaMuncipios(idEdo,idMunSelect) {
     })
 }
 
+
+$("#frm-foto-perfil-alumno").on("submit", function(e){
+    //Ruta del Webbhook
+    var formData = new FormData(document.getElementById("frm-foto-perfil-alumno"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../app/webhook/update-image-perfil.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        contentType: false,
+        processData: false
+    }).done(function(res){
+        $("#frm-foto-perfil-alumno").trigger('reset');
+        $("#updateFotoPerfil").modal('hide');
+        var mensaje= JSON.parse(res);
+        if(mensaje.mjeType ==0){
+            alerta(mensaje.Mensaje,"","warning");
+        } else{
+            location.reload();
+        }        
+        e.preventDefault();
+    });
+    e.preventDefault();
+});
+
 //onchange FUNCION EN SELECT EDTADO
 //ACTUALIZAR LOS MUNICIPIOS
 
