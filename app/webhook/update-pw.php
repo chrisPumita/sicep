@@ -16,7 +16,7 @@ if(isset($_POST['pwd']) && isset($_POST['pwdNew']) && isset($_POST['pwdNewConf']
     include_once "../control/controlAccesso.php";
         if(updatePassword($id,$correo,$pwAnterior,$pwNueva,$tipo)){
             $mjeType =1;
-            $mjeText="Se ha actualizado con exito";
+            $mjeText="Se ha actualizado la contraseña con exito";
         } else {
             $mjeType =-1;
             $mjeText="La contraseña actual es incorrecta";

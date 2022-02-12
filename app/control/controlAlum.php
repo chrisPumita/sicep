@@ -104,7 +104,7 @@ function consultaAlumno($id_alumno){
 
 function updatePwdAlumn($idAlumno,$email,$pwdAnterior,$pwdNueva)
 {
-    $tmpAlumno= consultaCuentaAlumno($email,$pwdAnterior);
+    $tmpAlumno= consultaCuentaAlumno($email,md5($pwdAnterior));
     if(count($tmpAlumno)>0){
         include_once "../model/ALUMNO.php";
         $ALUMNO = new ALUMNO();

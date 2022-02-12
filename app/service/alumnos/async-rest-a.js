@@ -7,13 +7,13 @@ async function consultaAsyncDetailsAsigInscribe(idAsig) {
     return await consultaAsyncAJAXDetailsAsigInscribe(idAsig);
 }
 
-async function consultaAsyncOfertaAsigAJAX(){
+async function consultaAsyncOfertaAsigAJAX() {
     return $.ajax({
         url: "../app/webhook/alumno.lista-asig-oferta.php",
         type: 'POST',
         dataType: "json",
-        success: function (response) {
-             //  console.log(response);
+        success: function(response) {
+            //  console.log(response);
         },
         error: function() {
             alert("Error al tratar de traer las asignaciones historicas");
@@ -21,13 +21,13 @@ async function consultaAsyncOfertaAsigAJAX(){
     });
 }
 //
-async function consultaAsyncAJAXDetailsAsigInscribe(idAsig){
+async function consultaAsyncAJAXDetailsAsigInscribe(idAsig) {
     return $.ajax({
         url: "../app/webhook/alumno.detailsAsigInscribe.php",
         type: 'POST',
-        data: {idAsig:idAsig},
+        data: { idAsig: idAsig },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             //  console.log(response);
         },
         error: function() {
@@ -42,14 +42,13 @@ async function consultaDescuentosAsigInscribe(idGrupo) {
     return await consultaDescuentosAsigInscribeAjax(idGrupo);
 }
 
-async function consultaDescuentosAsigInscribeAjax(id){
-    return $.ajax(
-        {
+async function consultaDescuentosAsigInscribeAjax(id) {
+    return $.ajax({
             url: "../app/webhook/descuentos-curso.php",
             type: "POST",
-            data: {id : id},
+            data: { id: id },
             dataType: "json",
-            success: function(res){
+            success: function(res) {
                 //  console.log(res);
             },
             error: function() {
@@ -67,15 +66,15 @@ async function consultaAsyncDocsInscRevisaAlu(idFiltro) {
 }
 
 //Funcion ajax de asignaciones
-async function consultaAsyncDocsInscRevisaAluAJAX(idFiltro){
+async function consultaAsyncDocsInscRevisaAluAJAX(idFiltro) {
     return $.ajax({
         url: "./webhook/alumno.docs-insc-revisa.php",
         type: 'POST',
         dataType: "json",
         data: {
-            idFiltro:idFiltro
+            idFiltro: idFiltro
         },
-        success: function (response) {
+        success: function(response) {
             //   console.log(response);
         },
         error: function() {
@@ -85,21 +84,21 @@ async function consultaAsyncDocsInscRevisaAluAJAX(idFiltro){
 }
 
 /*Async regresa lista del documentos pendient3s por revisar*/
-async function consultaAsyncDocsRevisaAlu(idInscipcion,filtro) {
-    return await consultaAsyncDocsRevisaAluAJAX(idInscipcion,filtro);
+async function consultaAsyncDocsRevisaAlu(idInscipcion, filtro) {
+    return await consultaAsyncDocsRevisaAluAJAX(idInscipcion, filtro);
 }
 
 //Funcion ajax de asignaciones
-async function consultaAsyncDocsRevisaAluAJAX(idInscipcion,filtro){
+async function consultaAsyncDocsRevisaAluAJAX(idInscipcion, filtro) {
     return $.ajax({
         url: "./webhook/alumno.lista-docs-insc-revisa-pendientes.php",
         type: 'POST',
         dataType: "json",
         data: {
-            idInscipcion:idInscipcion,
-            filtro:filtro
+            idInscipcion: idInscipcion,
+            filtro: filtro
         },
-        success: function (response) {
+        success: function(response) {
             //   console.log(response);
         },
         error: function() {
@@ -111,14 +110,13 @@ async function consultaAsyncDocsRevisaAluAJAX(idInscipcion,filtro){
 async function consultaTemarioOferta(idGrupo) {
     return await consultaTemarioAjax(idGrupo);
 }
-async function consultaTemarioAjax(idCurso){
-    return $.ajax(
-        {
-            url:"./webhook/temario-curso.php",
+async function consultaTemarioAjax(idCurso) {
+    return $.ajax({
+            url: "./webhook/temario-curso.php",
             type: "POST",
-            data: {idCurso : idCurso},
+            data: { idCurso: idCurso },
             dataType: "json",
-            success: function(res){
+            success: function(res) {
                 //   console.log(res);
             },
             error: function() {
@@ -134,14 +132,13 @@ async function consultaHorarioOferta(idGrupo) {
     return await consultaHorariosAjax(idGrupo);
 }
 
-async function consultaHorariosAjax(id){
-    return $.ajax(
-        {
+async function consultaHorariosAjax(id) {
+    return $.ajax({
             url: "./webhook/horarios-grupo.php",
             type: "POST",
-            data: {id : id},
+            data: { id: id },
             dataType: "json",
-            success: function(res){
+            success: function(res) {
                 //   console.log(res);
             },
             error: function() {
@@ -156,14 +153,13 @@ async function consultaDocumentacionOferta(idCurso) {
     return await consultaDocumentacionAjax(idCurso);
 }
 /// DOCUMENMTACION AJAX
-async function consultaDocumentacionAjax(idCUrso){
-    return $.ajax(
-        {
-            url:"./webhook/lista-doc-sol-curso.php",
+async function consultaDocumentacionAjax(idCUrso) {
+    return $.ajax({
+            url: "./webhook/lista-doc-sol-curso.php",
             type: "POST",
-            data: {idCurso : idCUrso},
+            data: { idCurso: idCUrso },
             dataType: "json",
-            success: function(res){
+            success: function(res) {
                 //    console.log(res);
             },
             error: function() {
@@ -178,35 +174,34 @@ async function cancelarSolicitudAlumno(idSolicitud) {
     return await cancelarSolicitudAlumnoAjax(idSolicitud);
 }
 
-async function cancelarSolicitudAlumnoAjax(idSolicitud){
+async function cancelarSolicitudAlumnoAjax(idSolicitud) {
     return $.ajax({
-        url:"../app/webhook/alumno.cancelSolicitud.php",
+        url: "../app/webhook/alumno.cancelSolicitud.php",
         data: {
-            idSolicitud : idSolicitud
+            idSolicitud: idSolicitud
         },
         type: "POST",
         dataType: "json",
-        success: function(data){
+        success: function(data) {
             //console.log(data);
         },
         error: function(e) {
             alert("Error occured")
-            //console.log(e);
+                //console.log(e);
         }
     });
 }
 
 ///////////////////// PREFERENCIAS (SIMILAR) ////////////////
-async function enviaFormAlumno(params,route){
+async function enviaFormAlumno(params, route) {
     const mensaje = await sendBackEndAlumnoAjax(params, route);
-    console.log(mensaje);
     //Mensaje en JS para usar con SwatAlert
-    switch(mensaje.mjeType){
+    switch (mensaje.mjeType) {
         case -1:
-            alerta(mensaje.Mensaje,"","error");
+            alerta(mensaje.Mensaje, "", "error");
             break;
         case 0:
-            alerta(mensaje.Mensaje,"","warning");
+            alerta(mensaje.Mensaje, "", "warning");
             break;
         case 1:
             alertaEmergente(mensaje.Mensaje);
@@ -215,34 +210,32 @@ async function enviaFormAlumno(params,route){
             alertaEmergente("No a entrado el swtich");
             break;
     }
-    
+
 }
 
-async function sendBackEndAlumnoAjax(params,route){
-    return $.ajax(
-        {
-            url: route,
-            type: "POST",
-            data: params,
-            dataType: "json",
-            cache: false,
-            success: function(res){
-                console.log(res);
-            },
-            error: function(e) {
-                console.log(e);
-                alert("Error 500 interno Ajax");
-            }
+async function sendBackEndAlumnoAjax(params, route) {
+    return $.ajax({
+        url: route,
+        type: "POST",
+        data: params,
+        dataType: "json",
+        cache: false,
+        success: function(res) {
+            console.log(res);
+        },
+        error: function(e) {
+            console.log(e);
+            alert("Error 500 interno Ajax");
         }
-    );
+    });
 }
-async function consultaPefilAlumnoAjax(){
+async function consultaPefilAlumnoAjax() {
     return $.ajax({
         url: "../app/webhook/alumno.datos.php",
         type: 'POST',
         dataType: "json",
-        data: { },
-        success: function(data){
+        data: {},
+        success: function(data) {
             console.log(data);
         },
         error: function(e) {
@@ -257,16 +250,14 @@ async function consultaPefilAlumno() {
 }
 
 async function consultaProcedenciasAjax(route) {
-    return $.ajax(
-        {
-            url:route+"webhook/lista-dependencias.php",
-            dataType: "json",
-            success: function(data){
-                // console.log(data);
-            },
-            error: function() {
-                alert("Error occured")
-            }
+    return $.ajax({
+        url: route + "webhook/lista-dependencias.php",
+        dataType: "json",
+        success: function(data) {
+            // console.log(data);
+        },
+        error: function() {
+            alert("Error occured")
         }
-    );
+    });
 }
