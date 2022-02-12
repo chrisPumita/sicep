@@ -148,3 +148,35 @@ $("#frm-update-perfil-alumno").on("submit", function(e){
     }
     e.preventDefault();
 });
+
+
+//Cambio de PWD
+$("#frm-update-pwd-alumno").on("submit", function(e){
+    //Cambiar datos de condicion por .val()
+    if($("#pwdOld").val() !="" && $("#pwdNew").val() !="" && $("#pwdNewC").val()!=""){
+            //Ruta del Webbhook
+        let ruta = "../app/webhook/update-pw.php";
+        //Parametros que se van a enviar encapsulados
+        var params = {
+            pwd : $("#pwdOld").val(),
+            pwdNew : $("#pwdNew").val(),
+            pwdNewConf : $("#pwdNewC").val()
+        };
+        if(params.pwdNew != params.pwdNewConf){
+            alerta("No se pudo realizar la operacion","Las nuevas contraseñas no coinciden","error");
+        } else {
+            //Llamado de la funcion Async y resolviendo la promesa
+            enviaFormAlumno(params,ruta).then(function () {
+                $("#frm-update-pwd-alumno").trigger('reset');
+                $("#CambiarPsw").modal('hide');
+                consultaPefilProfesor().then(function (resultado) {
+                    buildHTMLDatosPeril(resultado);
+                    e.preventDefault();
+                })
+            });
+        } 
+    } else {
+        alerta("No se pudo realizar la operacion","Los campos estan vacios","warning");
+    }
+    e.preventDefault();
+});

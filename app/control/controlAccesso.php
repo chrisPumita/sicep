@@ -71,7 +71,7 @@ function updatePassword($id,$email,$pwdAnterior,$pwdNueva,$typeAcces){
         return cambiaContrasenia($id,$email,$pwdAnterior,$pwdNueva);
     } else {
         include_once "controlAlum.php";
-        return updatePwdAlumn($id,$email,$pwAnterior,$pwNueva);
+        return updatePwdAlumn($id,$email,$pwdAnterior,$pwdNueva);
     }
     return false;
 }
