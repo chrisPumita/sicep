@@ -110,7 +110,6 @@ function buildHTMLMisCursos(lista) {
                       <hr>
                       <p class="mb-0">Si tienes alguna duda de los cursos, porfavor comunicare directamente al centro de computo.</p>
                     </div>`;
-        $("#swiperCardsContainer").addClass("d-none");
         $("#containerCardsAsig").html(template);
     }
 }
@@ -121,7 +120,6 @@ function buildHTMLEnviadas(lista) {
     if(lista.length >0) {
         lista.forEach(
             (doc)=>{
-
                 let lugares = doc.validacion_constancia ==="1" ? `<a class=" position-absolute my-3 mx-3" href="./constancias"><span class="badge bg-primary" role="button"><i class="fas fa-file-contract"></i> CONSTANCIA</span></a> `: "";
 
                 let colorStatusCurso = getEstatusAsignacionColorIndicator(doc.statusAsignacion);
@@ -204,15 +202,14 @@ function buildHTMLEnviadas(lista) {
                 </div>`;
             }
         );
-        $("#swiperCardsContainer").html(template);
     }else{
         template+= `<div class="alert alert-success alert-dismissible fade show w-100" role="alert">
                       <strong>Sin solicitudes </strong> No hay solicitudes pendientes por aprobar. Si deseas inscribirte a algun curso,
                       revisa <a href="./home"> tu inicio</a> los grupos abiertos.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
-        $("#swiperCardsContainer").html(template);
     }
+    $("#swiperCardsContainer").html(template);
 }
 
 function buildHTMLSolicitudesCanceladas(lista) {
