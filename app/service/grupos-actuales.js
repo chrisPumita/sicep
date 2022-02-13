@@ -13,14 +13,15 @@ function cargaAsignacionesActuales() {
 function buildHTMLCards(lista) {
     let template = "";
     let contador =0;
-    lista.forEach(
-        (doc)=>{
-            let colorStatusCurso = getEstatusAsignacionColorIndicator(doc.statusAsignacion);
-            let btnSolic = parseInt(doc.solicitudesPendientes) >0 ? `<span class="badge bg-danger">${doc.solicitudesPendientes}</span>`
-                :``;
-            let visible = doc.visible_publico === "1" ? '':'<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>';
-            contador++;
-            template+= `
+    if(lista.length > 0) {
+        lista.forEach(
+            (doc)=>{
+                let colorStatusCurso = getEstatusAsignacionColorIndicator(doc.statusAsignacion);
+                let btnSolic = parseInt(doc.solicitudesPendientes) >0 ? `<span class="badge bg-danger">${doc.solicitudesPendientes}</span>`
+                    :``;
+                let visible = doc.visible_publico === "1" ? '':'<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span>';
+                contador++;
+                template+= `
                 <div class="card single_course pb-3" style="width: 20rem;">
                     <span class="badge bg-dark position-absolute my-3 mx-3 end-0">
                         <div class="blob ${colorStatusCurso} positionBadge"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${getEstatusAsignacionPlano(doc.statusAsignacion)} ${visible}
@@ -96,8 +97,18 @@ function buildHTMLCards(lista) {
                         </button>
                     </div>
                 </div>`;
-        }
-    );
+            }
+        );
+    }
+    else{
+        template+= `<div class="alert alert-success w-100" role="alert">
+              <h4 class="alert-heading">No hay grupos abiertos!</h4>
+              <p>No ecnontramos grupos activos. Ya todos fueron revisados o no se ha creado ninguno.</p>
+              <hr>
+              <p class="mb-0">Vaya a <strong>CURSOS</strong> y abra un grupo nuevo.</p>
+            </div>`;
+    }
+
     $("#containerCardsAsig").html(template);
 }
 

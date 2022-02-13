@@ -1,5 +1,6 @@
 <?php $titulo = "Nueva Asignacion de Grupo";
 $id= $_POST['id'];
+if(!isset($id)) header("Location: ./lista-cursos");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,14 +143,28 @@ $id= $_POST['id'];
                                 </div>
                                 <hr>
                                 <h6 class="heading-small text-muted mb-4">Fechas importantes</h6>
-                                <div class="row">
+                                <div class="row text-end">
+                                    <div class="form-group row">
+                                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                            <label class="label" for="inicioInsc">Inscripciones del</label>
+                                        </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
+                                            <input type="date" id="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0 ">
+                                            <label for="finInsc">al </label>
+                                        </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
+                                            <input type="date" id="finInsc" name="finInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
                                             <label class="label" for="InicioCurso">Inicio de Clases:</label>
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" id="InicioCurso" name="InicioCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                <input type="date" id="InicioCurso" name="InicioCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
                                             </div>
                                         </div>
                                         <div class="col-sm-2 mb-3 mb-sm-0">
@@ -157,56 +172,22 @@ $id= $_POST['id'];
                                         </div>
                                         <div class="col-sm-4 mb-3 mb-sm-0 ">
                                             <div class="row">
-                                                <input type="date" id="finCurso" name="finCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
+                                                <input type="date" id="finCurso" name="finCurso" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="campo">Inscripciones</label>
+                                            <label class="label" for="inicioCal">Calificaciones del</label>
                                         </div>
-                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
-                                            <div class="row">
-                                                <div class="d-flex">
-                                                    <div class="col-2">
-                                                        <label for="inicioInsc">del </label>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <input type="date" idCurso="inicioInsc" name="inicioInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <div class="col-2">
-                                                        <label for="finInsc">al </label>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <input type="date" id="finInsc" name="finInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                            <input type="date" id="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
                                         </div>
                                         <div class="col-sm-2 mb-3 mb-sm-0">
-                                            <label class="label" for="campo">Calificaciones</label>
+                                            <label for="finCal">al </label>
                                         </div>
-                                        <div class="col-sm-4 mb-3 mb-sm-0 ">
-                                            <div class="row">
-                                                <div class="d-flex">
-                                                    <div class="col-2">
-                                                        <label for="inicioCal">del </label>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <input type="date" idCurso="inicioCal" name="inicioCal" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <div class="col-2">
-                                                        <label for="finCal">al </label>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <input type="date" id="finCal" name="finCal" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                            <input type="date" id="finCal" name="finCal" max="3000-12-31" min="1000-01-01"  value="<?php echo date("Y-m-d");?>" class="form-control fecha">
                                         </div>
                                     </div>
                                 </div>
@@ -224,7 +205,7 @@ $id= $_POST['id'];
                                     <h6 class="heading-small text-muted mb-4">Crear y publicar</h6>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <strong><i class="fas fa-eye"></i> Publicar Ahora:</strong> Si decide publicar el grupo ahora, este aparecerá en
-                                        la pagina principal y quedará disponible para que los alumnos se inscriban. Sicreo nuevo grupo, los descuentos no estan habilitados y
+                                        la pagina principal y quedará disponible para que los alumnos se inscriban. Si creó nuevo grupo, los descuentos no estan habilitados y
                                         queda predeeterminado todo el público. <a href="./help"><i class="fas fa-question-circle"></i></a>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
@@ -255,6 +236,7 @@ $id= $_POST['id'];
 <?php include "includes/js.php"?>
 <?php include "includes/services-js.php"?>
 <!-- Agregar solo cuando exista una tabla para mostrar-->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="./service/asignacion-new.js"></script>
 <script src="./service/asignacion-gral.js"></script>
 </body>

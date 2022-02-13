@@ -1,7 +1,3 @@
-$(document).ready(function() {
-
-});
-
 window.onload = function() {
     let idCursoAsig = $("#idCursoToAsig").val();
     loadGeneraciones();
@@ -9,6 +5,8 @@ window.onload = function() {
     consultaGrupos(idCursoAsig);
     consultaListaProfesores();
     cargaCursoDetailsBasic("1",idCursoAsig);
+    
+    compruebaFechas();
 };
 
 async function cargaCursoDetailsBasic(filtro, idUnique) {
@@ -58,3 +56,92 @@ $("#frm-add-asignacion").on("submit", function(e){
         }
     });
 });
+
+
+function compruebaFechas() {
+    let inicioInsc = $("#inicioInsc").val();
+    var fechaInsc = new Date(inicioInsc);
+    var dias = 15; // Número de días a agregar
+    var meses = 4;
+    fechaInsc.setDate(fechaInsc.getDate() + dias);
+    $("#finInsc").attr('min',inicioInsc);
+    $("#finInsc").val(formatDate(fechaInsc));
+    $("#InicioCurso").attr('min',inicioInsc);
+    $("#InicioCurso").val(formatDate(fechaInsc));
+
+    $("#finCurso").attr('min',formatDate(fechaInsc));
+    var fechaFin = new Date(formatDate(fechaInsc));
+    fechaFin.setMonth(fechaFin.getMonth() + meses);
+    $("#finCurso").val(formatDate(fechaFin));
+
+    $("#inicioCal").attr('min',formatDate(fechaFin));
+    $("#inicioCal").val(formatDate(fechaFin));
+
+    $("#finCal").attr('min',formatDate(fechaFin));
+    let fechaCalFin = fechaFin;
+    fechaCalFin.setDate(fechaCalFin.getDate() + dias);
+    $("#finCal").val(formatDate(fechaCalFin));
+
+}
+
+function formatDate(date) {
+    let y = date.getFullYear();
+    let m =  (date.getMonth() + 1)<10 ?  '0'+(date.getMonth() + 1) :  (date.getMonth() + 1);
+    let d = date.getDate()<10 ? '0'+date.getDate():date.getDate();
+    let formatted_date = y + "-" + m + "-" +d;
+    return formatted_date;
+}
+
+$('#inicioInsc').change(function() {
+    let inicioInsc = $("#inicioInsc").val();
+    var fechaInsc = new Date(inicioInsc);
+    var dias = 15; // Número de días a agregar
+    fechaInsc.setDate(fechaInsc.getDate() + dias);
+    $("#finInsc").attr('min',inicioInsc);
+    $("#finInsc").val(formatDate(fechaInsc));
+    $("#InicioCurso").attr('min',inicioInsc);
+    $("#InicioCurso").val(formatDate(fechaInsc));
+});
+
+$('#InicioCurso').change(function() {
+    let inicioCurso = $("#InicioCurso").val();
+    var fechaInsc = new Date(inicioCurso);
+    var meses = 4;
+    $("#finCurso").attr('min',inicioCurso);
+    var fechaFin = new Date(formatDate(fechaInsc));
+    fechaFin.setMonth(fechaFin.getMonth() + meses);
+    $("#finCurso").val(formatDate(fechaFin));
+});
+
+$('#finCurso').change(function() {
+    let fecha = $("#finCurso").val();
+    let fechaCalFin  = new Date(fecha);
+    $("#inicioCal").attr('min',fecha);
+    $("#inicioCal").val(fecha);
+
+    let dias = 15;
+    $("#finCal").attr('min',fecha);
+    fechaCalFin.setDate(fechaCalFin.getDate() + dias);
+    $("#finCal").val(formatDate(fechaCalFin));
+});
+
+$('#inicioCal').change(function() {
+    let fecha = $("#inicioCal").val();
+    let fechaCalFin  = new Date(fecha);
+    let dias = 15;
+    $("#finCal").attr('min',fecha);
+    fechaCalFin.setDate(fechaCalFin.getDate() + dias);
+    $("#finCal").val(formatDate(fechaCalFin));
+});
+
+function dateToday() {
+    var fecha = new Date(); //Fecha actual
+    var mes = fecha.getMonth()+1; //obteniendo mes
+    var dia = fecha.getDate(); //obteniendo dia
+    var ano = fecha.getFullYear(); //obteniendo año
+    if(dia<10)
+        dia='0'+dia; //agrega cero si el menor de 10
+    if(mes<10)
+        mes='0'+mes //agrega cero si el menor de 10
+   return ano+"-"+mes+"-"+dia;
+}
