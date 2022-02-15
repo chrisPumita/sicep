@@ -261,3 +261,27 @@ async function consultaProcedenciasAjax(route) {
         }
     });
 }
+
+/****************
+ *  FUNCION ASINCRONA DE CANCELACION DE DOCUMENTO
+ * ***************/
+async function actionDocumentFileAjax(idFile,idDocSol,idAsig){
+    return $.ajax({
+        url: "../app/webhook/alumno.action-file.php",
+        type: 'POST',
+        data: {idAsig:idAsig,
+                idFile:idFile,
+                idDocSol:idDocSol},
+        dataType: "json",
+        success: function (response) {
+              console.log(response);
+        },
+        error: function() {
+            alerta("Error al tratar de inscribirte");
+        }
+    });
+}
+
+async function actionDocumentFile(idFile,iddocSol,idAsig){
+    return await actionDocumentFileAjax(idFile,iddocSol,idAsig);
+}

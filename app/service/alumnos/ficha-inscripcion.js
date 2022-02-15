@@ -49,7 +49,6 @@ function buildCardInscripcionCancelacion(DATOS){
 }
 
 function buildCardEnviada(DATOS){
-    console.log(DATOS);
     let template = `<div class="d-flex">
                                     <div class="m-auto">
                                         <img src="../assets/images/icons/mail2.svg" width="80" alt="svg ok">
@@ -75,7 +74,6 @@ function buildCardInscripcion(DATOS){
 }
 
 function buildTBLDocsSolicitadosAlumno(DOCS) {
-    console.log(DOCS)
     let template ="";
     if (DOCS.length > 0){
         template = `<div class="table-responsive">
@@ -85,7 +83,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                                     <th>DOCUMENTO</th>
                                     <th>DETALLES</th>
                                     <th>VER</th>
-                                    <th>SUBIR</th>
+                                    <th>OPCIONES</th>
                                 </tr>
                             </thead>`;
         DOCS.forEach(
@@ -98,31 +96,26 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                     case 0:
                         botonesPDF =
                             `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
+                              <button type="button" class="btn btn-primary" 
                               onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
                               <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
                             </div>`;
 
                         botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
                                       <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
                                     </div>`;
 
                         fechaInfo = "Documento enviado el " + getLegibleFechaHora(doc.fecha_creacion);
-                        // styleTr = 'style="background-color: lightgray;"';
                         badgeRevisa = "<br><span class='badge bg-info'>ENVIADO</span>";
                         break;
                     case 1:
                         botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
+                              <button type="button" class="btn btn-primary" 
                               onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
                               <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
                             </div>`;
-                        botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
-                                    </div>`;
-
-                        fechaInfo = `Documento <span class='badge bg-success'>Aprobado</span>. <br> Subido el ${doc.fecha_creacion}`;
+                        botonesAcion =``;
+                        fechaInfo = `Documento <span class='badge bg-success'>Aprobado</span>. <br> Subido el ${getLegibleFechaHora(doc.fecha_creacion)}`;
                         break;
 
                     case -1:
@@ -140,8 +133,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                         break;
                 }
 
-                template += `
-                            <tr  idDoc="${doc.id_archivo}" idDocSol="${doc.id_doc_sol}" docSol="${doc.nombre_doc}" ${styleTr}>
+                template += `<tr  idDoc="${doc.id_archivo}" idDocSol="${doc.id_doc_sol}" docSol="${doc.nombre_doc}" ${styleTr}>
                                 <td class="text-sm-start">
                                     <div class="d-flex align-items-center">
                                         <div>
@@ -187,10 +179,12 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
     else{
         template += `<div class="alert alert-success" role="alert">
                       <h4 class="alert-heading">Sin documentación</h4>
-                      <p>Este curso no necesita documentación. Por lo que solo es necesario acreditar la inscripcion de forma manual.
+                      <p>Este curso no necesita documentación: Porfavor de esperar a que la inscripción sea aprobada por 
+                      el departamento correspondiente.  
                       </p>
                       <hr>
-                      <p class="mb-0">Si esto es un error y se necesita documentación alguna, porfavot vaya al Curso y edite la documentacion requerida.</p>
+                      <p class="mb-0">Si tu solicitud aun no se ha acreditado. Porfavor envia un correo al Centro de Computo para agilizar
+                      tu proceso de inscripoción y revisar tu situación.</p>
                     </div>`;
     }
     return template;
@@ -269,6 +263,32 @@ $(document).on("click", ".btnUpload", function ()
     $("#idFile").val(idDoc!= "null"?idDoc:0);
 });
 
+$(document).on("click", ".btnCancelFile", function ()
+{
+    let elementDOM = $(this)[0].parentElement.parentElement.parentElement;
+    let idDocSol = $(elementDOM).attr("iddocsol");
+    let name = $(elementDOM).attr("docSol");
+    let idFile = $(elementDOM).attr("iddoc");
+    sweetConfirm('Cancelar envio del documento: '+ name, '¿Estas seguro de que quitar este documento?' +
+        ' el documento se borrará y deberas subirlo nuevamente', async function (confirmed) {
+        if (confirmed) {
+            actionDocumentFile(idFile,idDocSol,ID_FICHA).then(function (result) {
+                if (result.messageType == 1){
+                    alertaEmergente(result.messageText);
+                    consultaInfoInscripcionAlumno();
+                }
+                else if (result.messageType == 0){
+                    alerta("Archivo no procesado",result.messageText, "error");
+
+                }
+                else { alerta("Error interno",result.messageText, "error"); }
+            })
+
+        }
+    });
+
+});
+
 function modalOpen(acepta) {
     $("#modal-uploadFile").modal('show');
     let aceptaType = aceptFiles(acepta);
@@ -316,3 +336,11 @@ $("#frm-upload-file").on("submit", function(e){
 
 });
 
+
+function viewFileModal(path,name, id) {
+    let body = `<embed src="${path}" frameborder="0" width="100%" style="height: 70vh;">`;
+    $('#fileView').html(body);
+    $('#modalViewFile').modal('show');
+    $('#viewFileName').html(name);
+    $('#idDocument').val(id);
+}

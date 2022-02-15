@@ -245,6 +245,7 @@ $titulo = "Inicio - Alumno"; ?>
             </div>
         </div>
         <?php include 'includes/footer.php'; ?>
+        <?php include 'modals/modal-view-document.php'; ?>
     </div>
 </div>
 <?php

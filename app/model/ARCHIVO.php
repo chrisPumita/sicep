@@ -269,25 +269,34 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
+
+
     //funcion OK
-    function queryValidaDocEntregadoMatch($idAlumno){
-        $query = "SELECT doc.id_documento, doc.nombre_doc, doc.formato_admitido, doc.tipo, doc.peso_max_mb,
-       ds.id_doc_sol, ds.id_curso_fk, ds.obligatorio, c.id_curso, a.*
+    function queryValidaDocEntregadoMatch($idAlumno,$idDocSol){
+        $query = "SELECT a.id_archivo, a.path
         FROM docs_solicitados_curso ds, curso c, documento doc, archivo a
         WHERE ds.id_curso_fk = c.id_curso
           AND doc.id_documento = ds.id_documento_fk
           AND a.id_doc_sol_fk = ds.id_doc_sol
-          AND ds.id_doc_sol = 33
-          AND a.id_archivo = 22
+          AND ds.id_doc_sol = ".$idDocSol."
+          AND a.id_archivo = ".$this->getIdArchivo()."
             AND c.id_curso IN (SELECT c.id_curso 
                                 FROM inscripcion insc, asignacion_grupo ag,  grupo gpo, curso c
                                  WHERE insc.id_asignacion_fk = ag.id_asignacion
                                    AND gpo.id_grupo = ag.id_grupo_fk
                                    AND c.id_curso = gpo.id_curso_fk
-                                   AND insc.id_alumno_fk = 95
-                                   AND insc.id_inscripcion = 22012804715989)";
+                                   AND insc.id_alumno_fk = ".$idAlumno."
+                                   AND insc.id_inscripcion = ".$this->getIdInscripcionFk().")";
         $this->connect();
         $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
+
+    public function queryBorrarArchivo(){
+        $sql = "DELETE FROM `archivo` WHERE `archivo`.`id_archivo` = ".$this->getIdArchivo();
+        $this->connect();
+        $datos = $this-> executeInstruction($sql);
         $this->close();
         return $datos;
     }
