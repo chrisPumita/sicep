@@ -55,8 +55,8 @@ function loadInscripciones(DATA) {
     datos = [];
     meses = [];
     DATA.forEach(item => {
-        datos.push(item.Valor);
-        meses.push(item.Mes +' '+item.anio);
+        datos.push(item.cantidad);
+        meses.push(item.mes +' '+item.anio);
     });
 
     var optionsProfileVisit = {

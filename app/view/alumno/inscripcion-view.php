@@ -191,7 +191,7 @@ $titulo = "Inscripción";
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4 m-auto">
-                                        <div class="col-sm-12 d-flex justify-content-end">
+                                        <div class="col-sm-12 d-flex justify-content-end" id="succesBoton">
                                             <button type="button" class="btn btn-primary btn-block me-1 mb-1 bntInpcion" id="btnsend">Inscribirse</button>
                                         </div>
                                     </div>

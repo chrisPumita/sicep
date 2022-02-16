@@ -1,6 +1,24 @@
 $(document).ready(function() {
     consultaDetallesInscripcion(ID_ASIG);
+    buscaInscrpcion(ID_ASIG);
 });
+
+function buscaInscrpcion(idAsig){
+    buscaInscripcion(idAsig).then(function (response) {
+        console.log(response);
+        if (!response.option){
+            alerta("SOLICITUD REALIZADA",response.messageText,"success");
+            inscripcionSuccess();
+        }
+        else{
+            alerta("ANTES DE INICIAR","Revisa el horario y temario del " +
+                "curso/taller. Considera que tu inscripción requiere documentación que, " +
+                "de no enviar es posible que tu solicitud se cancele. Envia tu comprobante de " +
+                "pago según sea el caso.","info");
+        }
+    });
+
+}
 
 function consultaDetallesInscripcion(idAsig) {
     consultaAsyncDetailsAsigInscribe(idAsig).then(function (result) {
@@ -46,7 +64,24 @@ function loadDataAsignacion(asig,descuento){
         loadPrecioDes(descuento,asig.costo_real);
 }
 
-
+function inscripcionSuccess() {
+    $('#btnsend').remove();
+    $('#alertConfimInscripcion').html("Tu solicitud se envio de forma correcta. Espera la acreditación de tu solicitud.");
+    let boton = `<a href="./mis-cursos"><button class="btn btn-primary mr-3 me-1  btn-sm"><i class="fas fa-chalkboard-teacher"></i> Mis Cursos </button></a>`;
+    let template = `<h4 class="card-title">Estado actual</h4>
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-xl">
+                                            <img src="../assets/images/icons/checked1.svg" alt="Face 1">
+                                        </div>
+                                        <div class="ms-3 name">
+                                            <h6 class="text-muted mb-0" >Solicitud enviada Porfavor revisa tu el estado de tu solicitud de inscripción en <a href="./mis-cursos">"Mis Cursos"</a>.</h6>
+                                        </div>
+                                    </div>
+`;
+    $('#costeInscrito').html(template);
+    $('#succesBoton').html(boton);
+    $("#imgAlertInscripcion").attr("src","../assets/images/icons/checked1.svg");
+}
 //bntInpcion
 
 
@@ -59,21 +94,7 @@ $(document).on("click", ".bntInpcion", function ()
             if (result.messageType == 1){
                 alertaEmergente(result.messageText);
                 $('#solicitud').modal("show");
-                $('#btnsend').remove();
-                $('#alertConfimInscripcion').html("Te has inscrito correcpatemte. Espera la acreditación de tu solicitud.");
-                let template = `<h4 class="card-title">Estado actual</h4>
-                                    <div class="d-flex">
-                                        <div class="avatar avatar-xl">
-                                            <img src="../assets/images/icons/checked1.svg" alt="Face 1">
-                                        </div>
-                                        <div class="ms-3 name">
-                                            <h6 class="text-muted mb-0" >Solicitud enviada Porfavor revisa tu el estado de tu solicitud de inscripción en <a href="./mis-cursos">"Mis Cursos"</a>.</h6>
-                                        </div>
-                                    </div>
-`;
-                $('#costeInscrito').html(template);
-
-                $("#imgAlertInscripcion").attr("src","../assets/images/icons/checked1.svg");
+                inscripcionSuccess();
             }
             else if (result.messageType == 0){
                 alerta("Inscripcion no completada",result.messageText, "error");

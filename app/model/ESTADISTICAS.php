@@ -3,33 +3,11 @@ include_once "CONEXION_M.php";
 class ESTADISTICAS extends CONEXION_M
 {
     function queryEstadisticasAnioSolicitudes(){
-        $sql = "select Mes, anio, Valor, Orden from (
-                select 'Ene' as Mes, YEAR(I.fecha_solicitud) AS anio, (13 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 12 MONTH))) mod 12 as Orden, count(*) as Valor
-                from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 1
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Feb' as Mes, YEAR(I.fecha_solicitud) AS anio, (14 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 2
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Mar' as Mes, YEAR(I.fecha_solicitud) AS anio, (15 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 3
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Abr' as Mes, YEAR(I.fecha_solicitud) AS anio, (16 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 4
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'May' as Mes, YEAR(I.fecha_solicitud) AS anio, (17 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 5
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Jun' as Mes, YEAR(I.fecha_solicitud) AS anio, (18 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 6
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Jul' as Mes, YEAR(I.fecha_solicitud) AS anio, (19 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 7
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Ago' as Mes, YEAR(I.fecha_solicitud) AS anio, (20 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 8
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Sep' as Mes, YEAR(I.fecha_solicitud) AS anio, (21 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 9
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Oct' as Mes, YEAR(I.fecha_solicitud) AS anio, (22 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 10
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Nov' as Mes, YEAR(I.fecha_solicitud) AS anio, (23 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 10
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-                union select 'Dic' as Mes, YEAR(I.fecha_solicitud) AS anio, (24 - EXTRACT(MONTH FROM DATE_SUB(NOW(),INTERVAL 1 YEAR))) mod 12 as Orden, count(*) as Valor from inscripcion I where EXTRACT(MONTH FROM I.fecha_solicitud) = 12
-                and I.fecha_solicitud between CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE) and DATE_ADD(CAST(DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 YEAR) ,'%Y-%m-01') as DATE), INTERVAL 1 YEAR)
-            ) t order by anio DESC, orden ASC";
+        $sql = "SELECT count(*) as cantidad,
+                    MONTHNAME(t.fecha_solicitud) as mes, YEAR(t.fecha_solicitud) as anio
+                FROM
+                    inscripcion t
+                GROUP BY EXTRACT(YEAR_MONTH FROM t.fecha_solicitud) ASC LIMIT 12";
         $this->connect();
         $result = $this->getData($sql);
         $this->close();

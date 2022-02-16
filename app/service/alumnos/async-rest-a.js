@@ -20,6 +20,25 @@ async function consultaAsyncOfertaAsigAJAX() {
         }
     });
 }
+
+async function buscaInscripcion(idAsig) {
+    return await buscaInscripcionAjax(idAsig);
+}
+
+async function buscaInscripcionAjax(idAsig) {
+    return $.ajax({
+        url: "../app/webhook/alumno.revisaInscPrevia.php",
+        type: 'POST',
+        data:{idAsig:idAsig},
+        dataType: "json",
+        success: function(response) {
+            //  console.log(response);
+        },
+        error: function() {
+            alert("Error interno");
+        }
+    });
+}
 //
 async function consultaAsyncAJAXDetailsAsigInscribe(idAsig) {
     return $.ajax({
