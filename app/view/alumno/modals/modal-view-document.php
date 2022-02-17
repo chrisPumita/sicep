@@ -16,7 +16,7 @@
             <div class="modal-body" id="fileView">
                 <!--JS-->
             </div>
-            <input type="text" id="idDocument">
+            <input type="hidden" id="idDocument">
             <div class="modal-footer"><button type="button" class="btn btn-light-secondary"  data-bs-dismiss="modal">
                     <i class="bx bx-x d-block d-sm-none"></i>  <span class="d-none d-sm-block">Cerrar</span>
                 </button>

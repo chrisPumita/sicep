@@ -304,3 +304,49 @@ async function actionDocumentFileAjax(idFile,idDocSol,idAsig){
 async function actionDocumentFile(idFile,iddocSol,idAsig){
     return await actionDocumentFileAjax(idFile,iddocSol,idAsig);
 }
+
+/*DOCUMENTACION*/
+/*Async regresa lista del solicitudes de inscripcion con documentos pendient3s por revisar*/
+async function consultaAsyncDocsInscRevisaAlum(idFiltro) {
+    return await consultaAsyncDocsInscRevisaAlumAJAX(idFiltro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncDocsInscRevisaAlumAJAX(idFiltro){
+    return $.ajax({
+        url: "../app/webhook/lista-docs-insc-revisa.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idFiltro:idFiltro
+        },
+        success: function (response) {
+        },
+        error: function() {
+            alert("Error al tratar de traer la infoirmacion solicitada por revisar");
+        }
+    });
+}
+
+/*Async regresa lista del documentos pendient3s por revisar*/
+async function consultaAsyncDocsRevisaAlum(idInscipcion,filtro) {
+    return await consultaAsyncDocsRevisaAlumAJAX(idInscipcion,filtro);
+}
+
+//Funcion ajax de asignaciones
+async function consultaAsyncDocsRevisaAlumAJAX(idInscipcion,filtro){
+    return $.ajax({
+        url: "./webhook/lista-docs-insc-revisa-pendientes.php",
+        type: 'POST',
+        dataType: "json",
+        data: {
+            idInscipcion:idInscipcion,
+            filtro:filtro
+        },
+        success: function (response) {
+        },
+        error: function() {
+            alert("Error al tratar de traer los documentos por revisar");
+        }
+    });
+}

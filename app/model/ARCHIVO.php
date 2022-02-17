@@ -186,14 +186,14 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
        (case when arch.id_archivo is null then -1 else arch.estado end) as estatusFile,
        (case when arch.id_archivo is null then -1 else arch.estado_revision end) as estadoRevisado
         from documento d, curso c, grupo gpo, asignacion_grupo asig, inscripcion insc,
-             docs_solicitados_curso dsol LEFT JOIN archivo arch ON arch.id_doc_sol_fk = dsol.id_doc_sol
+             docs_solicitados_curso dsol LEFT JOIN archivo arch 
+                 ON (arch.id_doc_sol_fk = dsol.id_doc_sol AND arch.id_inscripcion_fk = ".$this->getIdInscripcionFk().")
         WHERE dsol.id_documento_fk = d.id_documento
         AND c.id_curso = dsol.id_curso_fk
         AND gpo.id_curso_fk = c.id_curso
         AND asig.id_grupo_fk = gpo.id_grupo
         AND insc.id_asignacion_fk = asig.id_asignacion
          ".$contat. " ORDER BY estadoRevisado DESC";
-
         $this->connect();
         $datos = $this-> getData($query);
         $this->close();
@@ -210,7 +210,8 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
        (case when arch.id_archivo is null then -1 else arch.estado end) as estatusFile,
        (case when arch.id_archivo is null then -1 else arch.estado_revision end) as estadoRevisado
         FROM documento d, curso c, grupo gpo, asignacion_grupo asig, inscripcion insc,
-             docs_solicitados_curso dsol LEFT JOIN archivo arch ON arch.id_doc_sol_fk = dsol.id_doc_sol
+             docs_solicitados_curso dsol LEFT JOIN archivo arch 
+              ON (arch.id_doc_sol_fk = dsol.id_doc_sol AND arch.id_inscripcion_fk = ".$this->getIdInscripcionFk().")
         WHERE dsol.id_documento_fk = d.id_documento
           AND c.id_curso = dsol.id_curso_fk
           AND gpo.id_curso_fk = c.id_curso
@@ -219,7 +220,6 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
             AND insc.id_alumno_fk = ".$idAlumno."
         ".$inscripcion." ".$pendintes."
         ORDER BY estadoRevisado DESC, d.nombre_doc ASC";
-
         $this->connect();
         $datos = $this-> getData($query);
         $this->close();

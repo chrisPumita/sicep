@@ -256,6 +256,7 @@ $titulo = "Inicio - Alumno"; ?>
  ?>
 <!-- Files JS -->
 <script src="./service/alumnos/ficha-inscripcion.js"></script>
+<script src="./service/alumnos/document-gral.js"></script>
 
 </body>
 </html>
