@@ -497,6 +497,17 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
         return $result;
     }
 
+
+    function queryRevisaInscripcionAlumno(){
+        $sql = "select id_inscripcion from inscripcion
+                        WHERE id_asignacion_fk = ".$this->getIdAsignacionFk()." 
+                        AND id_alumno_fk = ".$this->getIdAlumnoFk();
+        $this->connect();
+        $result = $this->numRows($sql);
+        $this->close();
+        return $result;
+    }
+
     /*******************************************************************************
      * Terminan Funciones implementadas de la Interface
      *******************************************************************************/

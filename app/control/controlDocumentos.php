@@ -37,4 +37,4 @@ function deleteDocumentoSolicitado($idDocSol){
     $DS = new DOCS_SOLICITADOS_CURSO();
     $DS->setIdDocSol($idDocSol);
     return $DS->queryEliminaDocumentoSolicitado();
-}   
+}

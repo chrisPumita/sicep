@@ -8,4 +8,11 @@ function buildListaDesplCursos(jsonData) {
     return template;
 }
 
+function buildHTMLListDespDeptos(deptos) {
+    let template="";
+    deptos.forEach(depto => {
+        template+=`<option value="${depto.id_depto}">${depto.nombre}</option> `;
+    });
+    return template;
+}
 

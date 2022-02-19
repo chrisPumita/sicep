@@ -49,7 +49,6 @@ function buildCardInscripcionCancelacion(DATOS){
 }
 
 function buildCardEnviada(DATOS){
-    console.log(DATOS);
     let template = `<div class="d-flex">
                                     <div class="m-auto">
                                         <img src="../assets/images/icons/mail2.svg" width="80" alt="svg ok">
@@ -72,128 +71,6 @@ function buildCardInscripcion(DATOS){
                     <h6>Se acredito el  ${getLegibleFechaHora(DATOS.fecha_validacion)}</h6>
                 </div>
             </div>`;
-}
-
-function buildTBLDocsSolicitadosAlumno(DOCS) {
-    console.log(DOCS)
-    let template ="";
-    if (DOCS.length > 0){
-        template = `<div class="table-responsive">
-                        <table class="table table-hover table-lg">
-                            <tbody><thead>
-                                <tr>
-                                    <th>DOCUMENTO</th>
-                                    <th>DETALLES</th>
-                                    <th>VER</th>
-                                    <th>SUBIR</th>
-                                </tr>
-                            </thead>`;
-        DOCS.forEach(
-            (doc)=>{
-                //Validando el arrrchivo a spara presentarlo
-                let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
-                let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
-                let styleTr ='';
-                switch (estadoFile) {
-                    case 0:
-                        botonesPDF =
-                            `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
-                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
-                              <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
-                            </div>`;
-
-                        botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-success btnConfirmFile"><i class="fas fa-check-square"></i></button>
-                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
-                                    </div>`;
-
-                        fechaInfo = "Documento enviado el " + getLegibleFechaHora(doc.fecha_creacion);
-                        // styleTr = 'style="background-color: lightgray;"';
-                        badgeRevisa = "<br><span class='badge bg-info'>ENVIADO</span>";
-                        break;
-                    case 1:
-                        botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
-                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
-                              <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
-                            </div>`;
-                        botonesAcion =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-danger btnCancelFile"><i class="fas fa-window-close"></i></button>
-                                    </div>`;
-
-                        fechaInfo = `Documento <span class='badge bg-success'>Aprobado</span>. <br> Subido el ${doc.fecha_creacion}`;
-                        break;
-
-                    case -1:
-                        botonesPDF = "";
-                        botonesAcion = `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                      <button type="button" class="btn btn-primary btnUpload" onclick="modalOpen('${doc.formato_admitido}');"><i class="fas fa-upload"></i></button>
-                                    </div>`;
-                        fechaInfo = "Pendiente para subir..."
-                        break;
-
-                    default:
-                        botonesPDF = "";
-                        botonesAcion = "";
-                        fechaInfo = "El archivo fue rechazado debe subirse nuevamente";
-                        break;
-                }
-
-                template += `
-                            <tr  idDoc="${doc.id_archivo}" idDocSol="${doc.id_doc_sol}" docSol="${doc.nombre_doc}" ${styleTr}>
-                                <td class="text-sm-start">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <div class="spinner-grow text-${getColorEstatusFile(doc.estatusFile)}" role="status"></div>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-md-start px-3">
-                                            <p class="mb-0 text-xs">${doc.nombre_doc} ${badgeRevisa}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-sm-start">
-                                    ${fechaInfo}
-                                </td>
-                                <td>
-                                    ${botonesPDF}
-                                </td>
-                                <td>
-                                    ${botonesAcion}
-                                </td>
-                            </tr>`;
-            }
-        );
-        template += `</tbody>
-                        </table></div>
-        <div class="container">
-            <div class="row small text-primary">
-                <div class="col-12 col-md-2">
-                 <i class="fas fa-circle text-success dotDocs small"></i> Acreditado
-                </div>
-                <div class="col-12 col-md-2">
-                 <i class="fas fa-circle text-warning dotDocs small"></i> Enviado a Revisión
-                </div>
-                <div class="col-12 col-md-2">
-                  <i class="fas fa-circle text-info dotDocs small"></i> Rechazado
-                </div>
-                <div class="col-auto">
-                <i class="fas fa-circle text-black dotDocs small"></i> Pendiente para subir
-                </div>
-            </div>
-        </div>
-    `;
-    }
-    else{
-        template += `<div class="alert alert-success" role="alert">
-                      <h4 class="alert-heading">Sin documentación</h4>
-                      <p>Este curso no necesita documentación. Por lo que solo es necesario acreditar la inscripcion de forma manual.
-                      </p>
-                      <hr>
-                      <p class="mb-0">Si esto es un error y se necesita documentación alguna, porfavot vaya al Curso y edite la documentacion requerida.</p>
-                    </div>`;
-    }
-    return template;
 }
 
 function buildHTMLFicha(FICHA) {
@@ -249,70 +126,10 @@ async function consultaAsyncFichaInscAlumnoAJAX(idInscipcion,filtro){
             filtro:filtro
         },
         success: function (response) {
-            //   console.log(response);
+               console.log(response);
         },
         error: function() {
             alert("Error al tratar de traer los documentos por revisar");
         }
     });
 }
-
-$(document).on("click", ".btnUpload", function ()
-{
-    let lementDOM = $(this)[0].parentElement.parentElement.parentElement;
-    let idDoc = $(lementDOM).attr("iddoc");
-    let idDocSol = $(lementDOM).attr("iddocsol");
-    let idDocSolName = $(lementDOM).attr("docSol");
-    $("#dosSolName").html("Subir "+idDocSolName);
-    $("#folio").val(ID_FICHA );
-    $("#idDocSol").val(idDocSol);
-    $("#idFile").val(idDoc!= "null"?idDoc:0);
-});
-
-function modalOpen(acepta) {
-    $("#modal-uploadFile").modal('show');
-    let aceptaType = aceptFiles(acepta);
-    $("#archivo").attr('accept',aceptaType);
-}
-
-//Update PDF Curso
-$("#frm-upload-file").on("submit", function(e){
-    e.preventDefault();
-    let fileSelect = document.getElementsByName("fileupload");
-    console.log(fileSelect);
-        var f = $(this);
-        console.log(f)
-        var formData = new FormData(document.getElementById("frm-upload-file"));
-        formData.append("dato", "valor");
-        //formData.append(f.attr("name"), $(this)[0].files[0]);
-        $.ajax({
-            url: "../app/webhook/alumno.upload-file.php",
-            type: "post",
-            dataType: "html",
-            data: formData,
-            contentType: false,
-            processData: false
-        }).done(function(res){
-            console.log(res);
-            let response = JSON.parse(res);
-            console.log(response);
-            let titulo;
-            if (response.type == 1){
-                titulo= "ARCHIVO ENVIADO";
-                consultaInfoInscripcionAlumno();
-            }
-            else if (response.type == 0){
-                titulo= "NO SELECCIONÓ UN ARCHIVO";
-            }
-            else{
-                titulo= "ERROR GENERAL";
-            }
-            alerta(titulo,response.mensaje,response.action);
-            $("#frm-upload-file").trigger('reset');
-            $("#modal-uploadFile").modal('hide');
-        });
-
-
-
-});
-

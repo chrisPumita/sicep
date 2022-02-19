@@ -1,12 +1,10 @@
-// lo que sejecuta primero
-var SOLICITUDES = null;
+var ID_FICHA;
 $(document).ready(function () {
-    consultaDocsPorRevisar();
+    consultaDocsAlumnoPorRevisar();
 });
-
-function consultaDocsPorRevisar() {
+function consultaDocsAlumnoPorRevisar() {
     //llamado a ffuncion asincrona
-    consultaAsyncDocsInscRevisa(0).then(function (result) {
+    consultaAsyncDocsInscRevisaAlum(0).then(function (result) {
         SOLICITUDES = result;
         buildHTMLAcrrodion();
     })
@@ -26,21 +24,16 @@ function buildHTMLAcrrodion() {
                 let descuento = SOL.DESCUENTO === null ? 'No Aplica': '$'+calculaDescuento(SOL.costo_real,SOL.DESCUENTO)+' (-'+SOL.DESCUENTO+'%)';
                 let estadoSolicitud = SOL.autorizacion_inscripcion ==="1" ? '<i class="fas fa-check-circle text-success"></i> APROBADA':'<i class="fas fa-exclamation-circle text-warning"></i> POR REVISAR  ';
                 let estadoPago = SOL.pago_confirmado ==="1" ? '<i class="fas fa-hand-holding-usd text-success"></i> PAGADO':'<i class="fas fa-hand-holding-usd text-warning"></i> PAGO PENDIENTE ';
-                let btnAcredita = SOL.estatusInscripcion ==="0" ? '<a href="#" class="btn btn-success"><i class="fas fa-check-square"></i>Acreditar</a>':'';
-                template += `
+              template += `
             <div class="list-group-item list-group-item-action" idInsc="${SOL.id_inscripcion}" id="heading${cont}" data-bs-toggle="collapse" 
             data-bs-target="#collapse${cont}" aria-expanded="true"  aria-controls="collapseOne" role="button" onclick="showDocs('${cont}',this);">
                 <div class="d-flex w-100 justify-content-between">
                     <div class="d-flex px-2 py-1 mb-0">
-                        <div class="px-3 d-flex align-items-center">
-                            <i class="fas fa-folder-open"></i>
-                        </div>
                         <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-xs">${SOL.nombre_completo}</h6>
-                            <p class="text-xs text-secondary mb-0">${SOL.nombre_curso} [${SOL.grupo}]</p>
+                            <h6 class="mb-0 text-xs">${SOL.nombre_curso} [${SOL.grupo}]</h6>
                         </div>
                     </div>
-                    <small><span class="badge bg-danger" id="contadorBadgeCol-${cont}">${SOL.n_revisa}</span></small>
+                    <small><i class="fas fa-folder-open"></i></small>
                 </div>
             </div>
             <div id="collapse${cont}" class="collapse pt-1" aria-labelledby="heading${cont}" data-parent="#cardAccordion">
@@ -52,14 +45,6 @@ function buildHTMLAcrrodion() {
                                     <a class="list-group-item list-group-item-action " id="list-home-list" data-bs-toggle="list" href="#list-1-${cont}"  role="tab"><i class="far fa-id-card"></i> Ficha De Inscripcion</a>
                                     <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="#list-2-${cont}" role="tab"><i class="fas fa-folder-open"></i> Documentos </a>
                                 </div>
-                                <div class="row py-1 m-2">
-                                    <p>
-                                        ${btnAcredita}
-                                        <a href="#" class="btn btn-primary" onclick="goDetailsAlumno('${SOL.id_alumno}');"><i class="fas fa-user"></i></a>
-                                        <a href="#" class="btn btn-secondary" onclick="goFichaInsc('${SOL.id_inscripcion}');"><i class="far fa-id-card"></i></a>
-                                        <a href="#" class="btn btn-danger" onclick="cancelarInscripcion(1)"><i class="fas fa-ban"></i></a>
-                                    </p>
-                                </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-8 mt-1">
                                 <div class="tab-content text-justify" id="nav-tabContent">
@@ -68,7 +53,7 @@ function buildHTMLAcrrodion() {
                                             <div class="card mb-3">
                                                 <div class="py-2">
                                                     <div class="row py-1 m-2">
-                                                        <h5 class="text-secondary">Ficha de Inscipción: No${SOL.id_inscripcion}</h5>
+                                                        <h5 class="text-secondary">Ficha de Inscipción: No <span role="button" onclick="goFichaInsc('${SOL.id_inscripcion}');">${SOL.id_inscripcion}</span></h5>
                                                         <div class="row py-2">
                                                             <div class="col-sm-3">
                                                                 <h6 class="mb-0">${getTipoCurso(SOL.tipo_curso)}:</h6>
@@ -156,71 +141,32 @@ function buildHTMLAcrrodion() {
     }
     else{
         template += `<div class="alert alert-success" role="alert">
-                      <h4 class="alert-heading">Excelente trabajo!</h4>
-                      <p>No tenemos documentos por revisar. Se han revisado todos los documentos o los alumnos no han 
-                      enviado la documentación aun.</p>
+                      <h4 class="alert-heading">No hay archivos</h4>
+                      <p>No has enviado solicitudes aún. Una vez envies una solicitud, aparecera aqui la documentación que debes enviar.</p>
                       <hr>
-                      <p class="mb-0">Si desea ver la documentación pendiente por cada Solicitud de Inscripcion de <a href="./lista-grupos">clic aqui</a> y elija un grupo.</p>
+                      <p class="mb-0">Si aun no te has inscrito a algun curso/tarres ve a tu <a href="./home">inicio</a> para ver los grupos abietos a inscripción</p>
                     </div>`;
     }
     $("#containerFichas").html(template);
     $("#contadorDocs").html(sumaDocs);
 }
 
-$(document).on("click", ".deleteDepto", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id");
-    var route= "./webhook/delete-depto.php";
-
-});
-
-function cancelarInscripcion(idFicha) {
-    sweetConfirm('Cancelar Inscripcion', '¿Estas seguro de que deseas CANCELAR esta inscripción?', function (confirmed) {
-        if (confirmed) {
-            /*
-                        eliminaPreferencia(id,route).then(function () {
-                consultaDeptos();
-            });
-            * */
-
-        }
-    });
-}
-
 function showDocs(contador, collapse) {
     let ElementDOM = $(collapse)[0];
     let idAcordion = $(ElementDOM).attr("id");
     let idInsc = $(ElementDOM).attr("idInsc");
-
-     if (!$('#'+idAcordion).hasClass("collapsed")){
-         consultaAsyncDocsRevisa(idInsc,1).then(function (response) {
-             console.log(response);
-            let templateDocs = buildTBLDocsSolicitados(response);
-             let container = $("#containerDocs-"+contador);
-             container.html(templateDocs);
-         })
-     }
+    ID_FICHA = idInsc;
+    if (!$('#'+idAcordion).hasClass("collapsed")){
+        consultaAsyncDocsRevisaAlum(idInsc,1).then(function (response) {
+            console.log(response);
+            let templateDocs = buildTBLDocsSolicitadosAlumno(response);
+            let container = $("#containerDocs-"+contador);
+            container.html(templateDocs);
+        })
+    }
 }
-
 
 function goFichaInsc(idInscripcion) {
- let url = 'ficha-inscripcion';
- redirect_by_post(url, {  id: idInscripcion }, false);
+    let url = 'ficha-inscripcion';
+    redirect_by_post(url, {  id: idInscripcion }, false);
 }
-
-function goDetailsAlumno(idAlumno){
-    let url = 'detalles-alumno';
-    redirect_by_post(url, {  id: idAlumno }, false);
-}
-
-/*
-ARCHIVO > estado
-0. enviado para verificar (default)
-1. verificado y aprobado
-2. verificado y rechazado
-3. incorrecto
-4. falso
-5. caducado
-6. eliminado
-* */

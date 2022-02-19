@@ -1,6 +1,6 @@
 // lo que sejecuta primero
 $(document).ready(function () {
-    consultaDeptos();
+    consultaDeptosPref();
     consultaProcedencias();
     consultaUnis();
     consultaAulas(0,0);
@@ -11,9 +11,10 @@ $(document).ready(function () {
 //####################### D E P T O S ###############################
 //######################################################################
 
-async function consultaDeptos() {
-    const JSONData = await consultaDeptosAjax();
-    buildHTMLTableDepto(JSONData);
+function consultaDeptosPref() {
+    consultaDeptos().then(function(result) {
+        buildHTMLTableDepto(result);
+    })
 }
 
 function buildHTMLTableDepto(obj_result) {
@@ -64,7 +65,8 @@ $("#frm-depto").on("submit", function(e){
     //Llamado de la funcion Async y resolviendo la promesa
     enviaForm(params,ruta).then(function () {
         $("#modal_depto").modal('hide');
-        consultaDeptos();
+        consultaDeptosPref();
+        cargaListaDepDeptosProfesores();
     });
     e.preventDefault();
 });
@@ -399,7 +401,6 @@ $(document).on("click", ".deleteDocumento", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement;
     let id = $(ElementDOM).attr("id");
-    console.log(id);
     var route= "./webhook/delete-documento.php";
     sweetConfirm('ELIMINAR DOCUMENTO', '¿Estas seguro de que deseas eliminar esta el documento?', function (confirmed) {
         if (confirmed) {

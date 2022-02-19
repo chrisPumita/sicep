@@ -1,5 +1,6 @@
 $(document).ready(function () {
     cargaListaDeplegableCursosActivos();
+    cargaListaDepDeptosProfesores();
     loadContaores();
     setInterval(loadContaores,1000);
 });
@@ -8,6 +9,13 @@ function cargaListaDeplegableCursosActivos() {
         let listaHtml = buildListaDesplCursos(JSONData);
         $("#modal-lista-cursos").html(listaHtml);
     });
+}
+
+function cargaListaDepDeptosProfesores() {
+    consultaDeptos().then(function(result) {
+        let listaHtml = buildHTMLListDespDeptos(result);
+        $("#depto").html(listaHtml);
+    })
 }
 
 function loadAsignacion() {

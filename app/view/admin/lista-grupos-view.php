@@ -126,7 +126,7 @@
                 </div>
                 <div class="p-5 mb-4 bg-light rounded-3">
                     <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Grupos Activos</h1>
+                        <h5 class="display-5 fw-bold">Grupos Activos</h5>
                         <p class="col-md-12 fs-4">Los grupos presentados con<span class="badge bg-danger "><i class="fas fa-eye-slash"></i></span> indican
                         que estan listos para ser publicados pero no estan visibles al publico. Los cursos mostrados con<span class="badge  position-relative">
                                 <span class="blob yellow" style="position: absolute; top: 0px; left: 10px; right: 0; bottom: 0;"></span></span>

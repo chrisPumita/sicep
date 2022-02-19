@@ -119,7 +119,7 @@
                                                 <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
                                                 <p class="card-text text-muted">Aqui puedes cambiar tu contraseña actual.</p>
                                                 <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
-                                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
+                                                <button type="button" class="btn btn-primary btn-sm" onclick="openModalPw();">Cambiar</button>
                                                 </a>
                                             </div>
                                         </div>

@@ -90,8 +90,7 @@ class DOCS_SOLICITADOS_CURSO extends DOCUMENTO implements I_DOCS_SOLICITADOS
     //ejecuta la insctruccion y me regresa true si se efectuo de forma correcta
     function queryEliminaDocumentoSolicitado()
     {
-        $query="UPDATE `docs_solicitados_curso` SET `id_doc_sol` = ".$this->getIdDocSol()."*-1 
-        WHERE `docs_solicitados_curso`.`id_doc_sol` = ".$this->getIdDocSol();
+        $query="DELETE FROM seltic.docs_solicitados_curso WHERE id_doc_sol  = ".$this->getIdDocSol();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();

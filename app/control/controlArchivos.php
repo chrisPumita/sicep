@@ -55,6 +55,7 @@ function removePdfCurso($idCurso){
     $path = NULL;
     return updateLinkTemario($idCurso,$path);
 }
+
 function updateFotoPerfil($id,$nombreImg,$imgFile,$typeAccess){
     //toda la logica del profesor
     $folder = md5($id.$typeAccess);
@@ -126,8 +127,6 @@ function procesaDocInscAlumno($archivo1,$nombreFILE1,$idFile,$folio,$idDocSol,$i
     }
 }
 
-
-
 function modificaArchivoAlumno($idAlumno,$idInsc, $fileType, $nombrePDF, $archivo1,$RutaFileAnterior)
 {
     //Tipo es el tipo de archivo que se va a guardar, tipo temario, etc
@@ -155,4 +154,21 @@ function modificaArchivoAlumno($idAlumno,$idInsc, $fileType, $nombrePDF, $archiv
     catch (Exception $e){
         return null;
     }
+}
+
+function cancelarEnvioFileAlumno($idAsig,$idFile,$idDocSol,$idAlumno){
+    //Revisar que el documento sea el correcto para poderlo eliminar
+    include_once "../model/ARCHIVO.php";
+    $FILE = new ARCHIVO();
+    $FILE->setIdArchivo($idFile);
+    $FILE->setIdInscripcionFk($idAsig);
+    $archivo = $FILE->queryValidaDocEntregadoMatch($idAlumno,$idDocSol);
+    if($archivo){
+        $ruta = $archivo[0]['path'];
+        if ($FILE->queryBorrarArchivo()){
+            return unlink("../".$ruta);
+        }
+        else return false;
+    }
+   return false;
 }

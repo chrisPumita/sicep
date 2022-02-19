@@ -257,6 +257,7 @@ function buildHTMLListDoscPend(lista) {
     if (lista.length > 0) {
         let listaAgrupada = agrupar(lista);
     let contador = 0;
+    console.log(lista);
     template+= `<div class="accordion accordion-flush" id="accordionFlushExample">`;
         listaAgrupada.forEach(curso=>{
             contador++;
@@ -302,7 +303,7 @@ function buildHTMLListDoscPend(lista) {
                                     template+= `
                                     <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " onclick="viewFicchaInscripcion(${doc.id_inscripcion});" role="button">
                                         <span>${doc.nombre_doc}</span>
-                                        <span class="badge bg-${colorBadge} badge-pill badge-round ml-1 small">${icon}</span>
+                                        <span><i class="fas fa-file-pdf"></i></span>
                                     </li>`;
                                 })
 
