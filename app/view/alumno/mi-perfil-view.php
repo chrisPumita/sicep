@@ -40,8 +40,7 @@
                                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateFotoPerfil"><i class="fas fa-edit"></i> Editar</button>
                                                             <span class="font-weight-bold" id="nombreAlumnoImg">${NAME}</span><span class="text-black-50" id="correoAlumnoImg">${EMAIL}</span><span> </span>
                                                         </div>
-                                                    </div>
-                                                    <form id="frm-update-perfil-alumno">
+                                                        <form id="frm-update-perfil-alumno">
                                                     <div class="col-md-9 border-right">
                                                         <div class="p-3 py-5">
                                                             <div class="form-group row">
@@ -105,6 +104,7 @@
                                                 </div>
                                             </div>
                                             </form>
+                                                    </div>
                                         </div>
                                     </div>
                                 </div>
