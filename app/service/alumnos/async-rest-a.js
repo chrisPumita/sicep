@@ -267,7 +267,6 @@ async function consultaPefilAlumnoAjax() {
 async function consultaPefilAlumno() {
     return await consultaPefilAlumnoAjax();
 }
-
 async function consultaProcedenciasAjax(route) {
     return $.ajax({
         url: route + "webhook/lista-dependencias.php",
@@ -280,6 +279,26 @@ async function consultaProcedenciasAjax(route) {
         }
     });
 }
+
+/*********************CONULTA UNIVERSIDADES **************************** */
+async function consultaUnisAlumno() {
+    return await consultaUnisAlumnoAjax("../app/");
+ }
+async function consultaUnisAlumnoAjax(route) {
+    return $.ajax(
+        {
+            url:route+"webhook/lista-universidades.php",
+            dataType: "json",
+            success: function(data){
+                //console.log(data);
+            },
+            error: function() {
+                alert("Error occured")
+            }
+        }
+    );
+}
+
 
 /****************
  *  FUNCION ASINCRONA DE CANCELACION DE DOCUMENTO

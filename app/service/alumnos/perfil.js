@@ -6,6 +6,9 @@ $(document).ready(function() {
 window.onload = function() {
     consultaProcedencias();
     consultaEdos();
+    consultaUnisAlumno().then(function(resultado) {
+        buildSelectUniversidades(resultado);
+    })
 };
 
 //Procedencias
@@ -13,7 +16,6 @@ async function consultaProcedencias() {
     const JSONData = await consultaProcedenciasAjax("../app/");
     buildSelectProcedencias(JSONData);
 }
-
 function buildSelectProcedencias(procedencias) {
     console.log(procedencias);
     let template = "";
@@ -24,7 +26,18 @@ function buildSelectProcedencias(procedencias) {
     );
     $("#procedencia").html(template);
 }
-
+ 
+ function buildSelectUniversidades(universidades){
+    console.log(universidades);
+     let template = "";
+     universidades.forEach(
+         (universidad) => {
+             template += `<option value="${universidad.id_universidad}">${universidad.nombre}</option>`;
+         }
+     );
+     $("#universidad").html(template);
+ }
+ 
 //Estados
 async function consultaEdos() {
     const JSONData = await g_consultaEdosRep("../app/");
@@ -41,6 +54,12 @@ function buildSelectEdos(estados) {
     );
     $("#estado_alumno_perfil").html(template);
 }
+$("#estado_alumno_perfil").change(function ()
+{
+    //obj que tienes cambios
+    let estado_sel = $("#estado_alumno_perfil").val();
+    conusltaMuncipios(estado_sel,0);
+});
 
 //Municipios
 

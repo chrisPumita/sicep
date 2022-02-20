@@ -40,70 +40,76 @@
                                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateFotoPerfil"><i class="fas fa-edit"></i> Editar</button>
                                                             <span class="font-weight-bold" id="nombreAlumnoImg">${NAME}</span><span class="text-black-50" id="correoAlumnoImg">${EMAIL}</span><span> </span>
                                                         </div>
-                                                        <form id="frm-update-perfil-alumno">
-                                                    <div class="col-md-9 border-right">
-                                                        <div class="p-3 py-5">
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="nombre_alumno_perfil" name="nombre_alumno_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                                    </div>
+                                                    <div class="col-md-9 border-rigth">
+                                                    <form id="frm-update-perfil-alumno">
+                                                        <div class="col-md-9 border-right">
+                                                            <div class="p-3 py-5">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                        <input type="text" id="nombre_alumno_perfil" name="nombre_alumno_perfil" class="form-control" placeholder="Nombre(s)" aria-label="Nombres" required="">
+                                                                    </div>
+                                                                    <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                        <input type="text" id="app_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
+                                                                    </div>
+                                                                    <div class="col-sm-4 mb-3 mb-sm-0">
+                                                                        <input type="text" id="apm_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="app_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Primer Apellido" aria-label="Primer Apellido">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <input type="text" id="telefono_alumno_perfil" name="telefono_alumno_perfil" class="form-control" placeholder="Teléfono" aria-label="Telefono">
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <input type="text" id="correo_alumno_perfil" name="correo_alumno_perfil" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-4 mb-3 mb-sm-0">
-                                                                    <input type="text" id="apm_alumno_perfil" name="app_alumno_perfil" class="form-control" placeholder="Segundo Apellido" aria-label="Segundo Apellido">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <select class="form-control" id="sexo_alumno_perfil" name="sexo_alumno_perfil">
+                                                                            <option value="0">Masculino</option>
+                                                                            <option value="1">Femenino</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <input type="text"  id="matricula_alumno_perfil" name="matricula_alumno_perfil" class="form-control" placeholder="Matricula" aria-label="Matricula" disabled>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="telefono_alumno_perfil" name="telefono_alumno_perfil" class="form-control" placeholder="Teléfono" aria-label="Telefono">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <select class="form-control" id="estado_alumno_perfil" name="estado_alumno_perfil"></select>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <select class="form-control" id="localidad_alumno_perfil" name="localidad_alumno_perfil"></select>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text" id="correo_alumno_perfil" name="correo_alumno_perfil" class="form-control" placeholder="Correo Electrónico" aria-label="Correo">
+                                                                
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <select class="form-control" name="procedencia" id="procedencia"></select>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <select class="form-control" name="universidad" id="universidad">
+                                                                        </select>
+                                                                    </div>
+                                                                    
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="sexo_alumno_perfil" name="sexo_alumno_perfil">
-                                                                        <option value="0">Hombre</option>
-                                                                        <option value="1">Mujer</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="estado_alumno_perfil" name="estado_alumno_perfil"></select>
-                                                                </div>
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <select class="form-control" id="localidad_alumno_perfil" name="localidad_alumno_perfil"></select>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <select class="form-control" name="procedencia" id="procedencia"></select>
-                                                                </div>
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <input type="text"  id="matricula_alumno_perfil" name="matricula_alumno_perfil" class="form-control" placeholder="Matricula" aria-label="Matricula" disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                                                    <input type="text" id="carrera_alumno_perfil" name="carrera_alumno_perfil" class="form-control" placeholder="Carrera" aria-label="Carrera">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                        <input type="text" id="carrera_alumno_perfil" name="carrera_alumno_perfil" class="form-control" placeholder="Carrera" aria-label="Carrera">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12 text-end">
-                                                        <button type="submit" class="btn btn-primary ">Guardar Cambios</button>
-                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 text-end">
+                                                            <button type="submit" class="btn btn-primary ">Guardar Cambios</button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            </form>
+                                                </form>
                                                     </div>
                                         </div>
                                     </div>
@@ -119,7 +125,7 @@
                                                 <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
                                                 <p class="card-text text-muted">Aqui puedes cambiar tu contraseña actual.</p>
                                                 <a href="#" data-toggle="modal" data-target="#nuevoProfesor">
-                                                <button type="button" class="btn btn-primary btn-sm" onclick="openModalPw();">Cambiar</button>
+                                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
                                                 </a>
                                             </div>
                                         </div>
