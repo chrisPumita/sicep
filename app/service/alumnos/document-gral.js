@@ -1,6 +1,5 @@
 function buildTBLDocsSolicitadosAlumno(DOCS) {
     let template ="";
-    console.log(DOCS);
     if (DOCS.length > 0){
         template = `<div class="table-responsive">
                         <table class="table table-hover table-lg">
@@ -14,12 +13,14 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                             </thead>`;
         DOCS.forEach(
             (doc)=>{
+                console.log(doc);
                 //Validando el arrrchivo a spara presentarlo
                 let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
                 let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
                 let styleTr ='';
                 switch (estadoFile) {
                     case 0:
+                        //Archivo enviado por el alumno a revision
                         botonesPDF =
                             `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
                               <button type="button" class="btn btn-primary" 
@@ -35,6 +36,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                         badgeRevisa = "<br><span class='badge bg-info'>ENVIADO</span>";
                         break;
                     case 1:
+                        //Archivo validado
                         botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
                               <button type="button" class="btn btn-primary" 
                               onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
@@ -45,6 +47,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                         break;
 
                     case -1:
+                        //Archivo pendiente para subir
                         botonesPDF = "";
                         botonesAcion = `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                       <button type="button" class="btn btn-primary btnUpload" onclick="modalOpen('${doc.formato_admitido}');"><i class="fas fa-upload"></i></button>
@@ -53,9 +56,17 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                         break;
 
                     default:
-                        botonesPDF = "";
-                        botonesAcion = "";
-                        fechaInfo = "El archivo fue rechazado debe subirse nuevamente";
+                        botonesPDF =
+                            `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                              <button type="button" class="btn btn-primary" 
+                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
+                              <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
+                            </div>`;
+                        botonesAcion = `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                      <button type="button" class="btn btn-primary btnUpload" onclick="modalOpen('${doc.formato_admitido}');"><i class="fas fa-upload"></i></button>
+                                    </div>`;
+                        let moreInfo = estadoActualArchivoViewAlumno(doc.estatusFile);
+                        fechaInfo = "El archivo fue rechazado debe subirse nuevamente<br><blockquote>"+moreInfo+".</blockquote>";
                         break;
                 }
 
@@ -173,7 +184,6 @@ $("#frm-upload-file").on("submit", function(e){
     e.preventDefault();
     let fileSelect = document.getElementsByName("fileupload");
     var f = $(this);
-    console.log(f)
     var formData = new FormData(document.getElementById("frm-upload-file"));
     formData.append("dato", "valor");
     //formData.append(f.attr("name"), $(this)[0].files[0]);
@@ -196,7 +206,6 @@ $("#frm-upload-file").on("submit", function(e){
                 //documentacion load
                 consultaDocsAlumnoPorRevisar();
             }
-
         }
         else if (response.type == 0){
             titulo= "NO SELECCIONÓ UN ARCHIVO";

@@ -581,3 +581,22 @@ async function consultaDetailsAcredCursoAjax(id_Curso){
         }
     });
 }
+
+/*documentacion alumno asignacion de revisio*/
+
+async function revisionDocumentoRecibidoAjax(idFile,value,pw){
+    return $.ajax({
+        url: "./webhook/update-revisa-archivo.php",
+        type: 'POST',
+        dataType: "json",
+        data: { idFile:idFile,
+                value:value,pw:pw},
+        error: function(e) {
+            alert("Error occured" +e.toString())
+        }
+    });
+}
+
+async function revisionDocumentoRecibido(idFile,value,pw) {
+    return await revisionDocumentoRecibidoAjax(idFile,value,pw);
+}

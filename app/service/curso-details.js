@@ -76,7 +76,6 @@ function buildHTMLValues(curso){
     $("#lblCostoFinalCallout").html('$ '+curso.costo_sugerido);
     $("#editaTipoCurso").val(curso.tipo_curso);
     $("#editarSesiones").val(curso.no_sesiones);
-    console.log(curso);
     detallesAcreditacion(curso.id_curso,acreditado,aprobado);
     let botonOpenGrupo = acreditado && aprobado ? `<button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(${curso.id_curso})"><i class="fas fa-users"></i> Abrir grupo</button>`:"";
     $("#btnAbrirCurso").html(botonOpenGrupo);
@@ -98,7 +97,6 @@ function cambiaEstado(estatus,mensaje,isAcredit){
                     isAcredit : isAcredit
                 },
                 success: function(data){
-                    console.log(data);
                     let id = ID_CURSO;
                     cargaCursoDetails(1,id);
                 },
@@ -159,7 +157,7 @@ function buildCardStatusAcreditacion(obj_result,acreditado,activo) {
 }
 
 function detallesAcreditacion(id_Curso,acreditado,activo) {
-    consultaDetailsAcredCurso(id_Curso).then(function (result) {
+    consultaDetailsAcredCursoAjax(id_Curso).then(function (result) {
         buildCardStatusAcreditacion(result,acreditado,activo);
     })
 }
@@ -400,7 +398,7 @@ function removeBanner() {
     sweetConfirm('Remover Banner', '¿Estas seguro de que deseas eliminar el Banner de este Curso?', function (confirmed) {
         if (confirmed) {
             eliminaPreferencia(id,route).then(function () {
-                cargaCursoDetails(-1,id);
+                cargaCursoDetails(1,id);
             });
         }
     });

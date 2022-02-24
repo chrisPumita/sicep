@@ -11,6 +11,24 @@ $titulo = "Inicio - Alumno"; ?>
 <html lang="en">
 <head>
     <?php include_once "includes/head.php"; ?>
+    <style>
+        blockquote {
+            background: #f9f9f9;
+            border-left: 10px solid var(--primary);
+            quotes: "\201C""\201D""\2018""\2019";
+        }
+        blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+        blockquote p {
+            display: inline;
+        }
+    </style>
     <!--css-->
 </head>
 <body>

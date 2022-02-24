@@ -154,7 +154,10 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 
     function queryUpdateArchivo()
     {
-        $query="";
+        $query="UPDATE `archivo` SET `path` = '".$this->getPath()."',
+                     `fecha_creacion` = CURRENT_TIMESTAMP, `notas` = CONCAT(notas,'".$this->getNotas()."'), 
+                     `estado_revision` = '0', `estado` = '0' 
+                    WHERE `archivo`.`id_archivo` = ".$this->getIdArchivo();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -227,8 +230,12 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
     }
 
     //funcion REESCRIBIR
-    function queryUpdateEstadoArchivo($id,$estatus){
-        $query="UPDATE `archivo` SET `estado_revision`='$estatus' WHERE `id_archivo`='$id'";
+    function queryUpdateEstadoArchivo(){
+        $query="UPDATE seltic.archivo t
+                SET t.notas = CONCAT(t.notas,'".$this->getNotas()."'),
+                    t.estado_revision = ".$this->getEstadoRevision().",
+                    t.estado          = ".$this->getEstadoArchivo()."
+                WHERE t.id_archivo = ".$this->getIdArchivo();
         $this->connect();
         $datos = $this-> executeInstruction($query);
         $this->close();
@@ -269,6 +276,24 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
         return $datos;
     }
 
+    function queryValidaConfirmAdminPw(){
+        $query = "SELECT a.id_archivo, ds.obligatorio
+                FROM archivo a INNER JOIN docs_solicitados_curso ds
+                      ON ds.id_doc_sol = a.id_doc_sol_fk
+                          AND a.id_archivo = ".$this->getIdArchivo();
+        $this->connect();
+        $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
+
+    function queryGetRutaFileUpdateAlumno(){
+        $query = "select id_archivo, path from archivo where id_archivo = ".$this->getIdArchivo();
+        $this->connect();
+        $datos = $this-> getData($query);
+        $this->close();
+        return $datos;
+    }
 
 
     //funcion OK

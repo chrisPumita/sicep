@@ -5,8 +5,6 @@ $idDocSol= $_POST['idDocSol'];
 $nombreFILE1 = $_FILES['archivo']['name']; //Obteniendo el nombre1
 $archivo1 = $_FILES['archivo']['tmp_name']; //OBteniendo el file1
 
-
-
 if (isset($idFile) && isset($folio) && isset($idDocSol) && $_FILES['archivo']['name'] ) {
     include_once "../control/controlArchivos.php";
     session_start();
@@ -26,7 +24,7 @@ if (isset($idFile) && isset($folio) && isset($idDocSol) && $_FILES['archivo']['n
 else{
     $type = 0;
     $action = "info";
-    $mensaje = "Porfavor seleccione un archivo valido y vuelva a internarlo nuevamente."."Subido un archivo ";
+    $mensaje = "Porfavor seleccione un archivo valido y vuelva a internarlo nuevamente. ";
 }
 $resultados = array(
     "mensaje" => $mensaje,

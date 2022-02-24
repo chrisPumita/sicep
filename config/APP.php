@@ -1,6 +1,8 @@
 <?php
 #Cong del servidor, donde esta alojada la pagina web
-const SERVERURL = "http://localhost/sicep/";
+const PROJECT_NAME = 'proyectoenlinea';
+//const PROJECT_NAME = 'sicep';
+define("SERVER", $_SERVER['SERVER_NAME'] ."/".PROJECT_NAME."/");
 const COMPANY = "SICEP Sistema dee Inscripciones de Cursos";
 const MONEDA = "$";
 #configura la zona horaria del sistema

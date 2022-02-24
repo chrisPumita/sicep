@@ -266,7 +266,7 @@ function getColorEstatusFile(estatus) {
 }
 
 /*
-ARCHIVO > estado
+MARCAR COMO > estado
 0. enviado para verificar (default)
 1. verificado y aprobado
 2. verificado y rechazado
@@ -278,19 +278,19 @@ ARCHIVO > estado
 function getTipoAccion(name) {
     switch (name) {
         case "6":
-            return `ELIMINAR ARCHIVO`;
+            return `ELIMINAR`;
         case "5":
-            return `ARCHIVO NO ACTUALIZADO`;
+            return `MARCAR COMO NO ACTUALIZADO`;
         case "4":
-            return `ARCHIVO FALSO/ALTERADO`;
+            return `MARCAR COMO FALSO/ALTERADO`;
         case "3":
-            return `ARCHIVO INCORRECTO`;
+            return `MARCAR COMO INCORRECTO`;
         case "2":
-            return `ARCHIVO NO ACEPTADO`;
+            return `RECHAZAR`;
         case "1":
-            return `ARCHIVO ACEPTADO`;
+            return `APROBAR`;
         default:
-            return `ARCHIVO EN VALIDACION`;
+            return `MARCAR COMO EN VALIDACION`;
     }
 }
 
@@ -369,4 +369,23 @@ function aceptFiles(tipo) {
             break;
     }
     return acept;
+}
+
+function estadoActualArchivoViewAlumno(estatus){
+    switch (estatus) {
+        case "6":
+            return `Tu ARCHIVO no es el que se solicitó.`;
+        case "5":
+            return `Se requiere un documento no mayor a 3 meses de antigüedad`;
+        case "4":
+            return `El documento es falso o no apropiado`;
+        case "3":
+            return `El archivo no corresponde al solicitado`;
+        case "2":
+            return `Tu documento fue rechazado`;
+        case "1":
+            return `Este archivo ya se encuentra en tu expediente`;
+        default:
+            return `Error de Archivo`;
+    }
 }

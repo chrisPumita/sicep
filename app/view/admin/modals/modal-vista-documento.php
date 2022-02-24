@@ -17,7 +17,8 @@
             <div class="modal-body" id="fileView">
                 <!--JS-->
             </div>
-            <input type="text" id="idDocument">
+            <input type="hidden" id="idDocument" class="d-none">
+            <input type="checkbox" id="chkPw" class="d-none">
             <div class="modal-footer">
                     <button type="button" action="6" class="actionFile btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</button>
                     <button type="button" action="5" class="actionFile btn btn-info "><i class="fas fa-calendar-times"></i> Caducado</button>

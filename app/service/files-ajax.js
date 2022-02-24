@@ -15,7 +15,6 @@ $("#frm-banner-curso").on("submit", function(e){
         processData: false
     })
         .done(function(res){
-            console.log(res);
             $("#frm-banner-curso").trigger('reset');
             $("#updateBannerCurso").modal('hide');
             document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";

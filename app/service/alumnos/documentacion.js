@@ -158,7 +158,6 @@ function showDocs(contador, collapse) {
     ID_FICHA = idInsc;
     if (!$('#'+idAcordion).hasClass("collapsed")){
         consultaAsyncDocsRevisaAlum(idInsc,1).then(function (response) {
-            console.log(response);
             let templateDocs = buildTBLDocsSolicitadosAlumno(response);
             let container = $("#containerDocs-"+contador);
             container.html(templateDocs);

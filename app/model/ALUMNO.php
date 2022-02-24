@@ -17,12 +17,44 @@ class ALUMNO extends PERSONA implements I_ALUMNO
     private $fecha_registro;
     private $perfil_image;
     private $estatus_alumno;
-
+    private $update_doc_at;
+    private $path_doc_valida;
+    //Asociacion
+    private $cuenta_SERVICIO_SOCIAL;
     /*******************************************************************************
      * Inician Getters and Setters
      *******************************************************************************/
-    //Asociacion
-    private $cuenta_SERVICIO_SOCIAL;
+    /**
+     * @return mixed
+     */
+    public function getPathDocValida()
+    {
+        return $this->path_doc_valida;
+    }
+
+    /**
+     * @param mixed $path_doc_valida
+     */
+    public function setPathDocValida($path_doc_valida): void
+    {
+        $this->path_doc_valida = $path_doc_valida;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateDocAt()
+    {
+        return $this->update_doc_at;
+    }
+
+    /**
+     * @param mixed $update_doc_at
+     */
+    public function setUpdateDocAt($update_doc_at): void
+    {
+        $this->update_doc_at = $update_doc_at;
+    }
 
     /**
      * @return mixed

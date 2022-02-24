@@ -38,3 +38,38 @@ function deleteDocumentoSolicitado($idDocSol){
     $DS->setIdDocSol($idDocSol);
     return $DS->queryEliminaDocumentoSolicitado();
 }
+
+/*****************************************************
+ * DOCUMENTACION REVISADA ENVIADA POR EL ALUMNO ******
+ *****************************************************/
+/*
+0. enviado para verificar (default)
+1. verificado y aprobado
+2. verificado y rechazado
+3. incorrecto
+4. falso
+5. caducado
+6. eliminado
+*/
+function procesaArchivoRecibido($idFile, $value, $pw){
+    include_once "../model/ARCHIVO.php";
+    $file = new ARCHIVO();
+    $file->setIdArchivo($idFile);
+    $file->setEstadoArchivo($value);
+    $file->setEstadoRevision(1);
+    $file->setNotas("CODE: ".$value."- Se reviso el documento.<br>");
+    $obj = $file->queryValidaConfirmAdminPw();
+    if ($obj){
+        if ($obj[0]['obligatorio']==1){
+            include_once "../control/controlAdmin.php";
+            return  validacionAdminAccount($pw,NVL_REG_ADMIN)
+                ? $file->queryUpdateEstadoArchivo() : false;
+        }
+        else{
+            return  $file->queryUpdateEstadoArchivo();
+        }
+    }
+    else{
+        return false;
+    }
+}

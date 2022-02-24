@@ -1,2 +1,3 @@
 <?php
-include_once "profesor-add.php";
+include "../../config/APP.php";
+echo SERVER;

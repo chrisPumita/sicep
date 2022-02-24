@@ -18,12 +18,13 @@ function buildTBLDocsSolicitados(DOCS) {
                 let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
                 let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
                 let styleTr ='';
+                let isConfirm = doc.obligatorio === "1" ? true:false;
                 switch (estadoFile) {
                     case 0:
                         botonesPDF =
                             `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
                               <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#modalViewFile" 
-                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}');"><i class="fas fa-eye"></i></button>
+                              onclick="viewFileModal('${doc.path}','${doc.nombre_doc}','${doc.id_archivo}',${isConfirm});"><i class="fas fa-eye"></i></button>
                               <a href="${doc.path}" download="" target="_blank"  type="button" class="btn btn-info"><i class="fas fa-download"></i></a>
                             </div>`;
 
@@ -34,7 +35,8 @@ function buildTBLDocsSolicitados(DOCS) {
 
                         fechaInfo = "Revisar Documento. <br> Subido el " + doc.fecha_creacion;
                         // styleTr = 'style="background-color: lightgray;"';
-                        badgeRevisa = "<br><span class='badge bg-warning'>REVISAR</span>";
+                        let revisaAdmin =isConfirm ? '<i class="fas fa-user-tie"></i>':'';
+                        badgeRevisa = "<br><span class='badge bg-warning'>REVISAR "+revisaAdmin+"</span>";
                         break;
                     case 1:
                         botonesPDF =`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -61,9 +63,8 @@ function buildTBLDocsSolicitados(DOCS) {
                         fechaInfo = "El archivo fue rechazado y regresado al alumno.";
                         break;
                 }
-
                 template += `
-                            <tr  idDoc="${doc.id_archivo}" ${styleTr}>
+                            <tr confirm="${isConfirm}"  idDoc="${doc.id_archivo}" ${styleTr}>
                                 <td class="text-sm-start">
                                     <div class="d-flex align-items-center">
                                         <div>
@@ -119,51 +120,104 @@ function buildTBLDocsSolicitados(DOCS) {
 }
 
 //funciones de acceso
-function viewFileModal(path,name, id) {
+function viewFileModal(path,name, id,isConfirm) {
     let body = `<embed src="${path}" frameborder="0" width="100%" style="height: 70vh;">`;
+    let titulo = name + (isConfirm ? " -- (REQUIERE CONFIRMACION POR CONTRASEÑA)":"");
     $('#fileView').html(body);
-    $('#viewFileName').html(name);
+    $('#viewFileName').html(titulo);
     $('#idDocument').val(id);
+    $("#chkPw").attr('checked', isConfirm);
 }
 
 $(document).on("click", ".actionFile", function ()
 {
     let ElementDOM = $(this)[0];
-    console.log(ElementDOM);
     let actionToDo = $(ElementDOM).attr("action");
     let MjeAction = getTipoAccion(actionToDo);
-    sweetConfirm(MjeAction, '¿Estas seguro de que deseas marcar el archivo como: '+MjeAction, function (confirmed) {
-        if (confirmed) {
-            //sendAcionFile
-            $("#modalViewFile").modal('hide');
-        }
-    });
+    let idArchivo = $("#idDocument").val();
+    let confirm = $("#chkPw").attr('checked')? true:false;
+    actionDocument(idArchivo,actionToDo,MjeAction,confirm)
 });
 
 $(document).on("click", ".btnConfirmFile", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
-    console.log(ElementDOM);
     let idSelected = $(ElementDOM).attr("idDoc");
-    console.log(idSelected);
-    sweetConfirm("Acreditar Documento", '¿Estas seguro de que deseas ACREDITAR este documento?', function (confirmed) {
-        if (confirmed) {
-            //sendAcionFile
-            alert("CONFIRMADO");
-        }
-    });
+    let confirm = $(ElementDOM).attr("confirm") ==="true"?true:false;
+    actionDocument(idSelected,1,"ACREDITAR",confirm);
 });
 
 $(document).on("click", ".btnCancelFile", function ()
 {
     let ElementDOM = $(this)[0].parentElement.parentElement.parentElement;
-    console.log(ElementDOM);
     let idSelected = $(ElementDOM).attr("idDoc");
-    console.log(idSelected);
-    sweetConfirm("RECHAZAR DOCUMENTO", '¿Estas seguro de que deseas RECHAZAR este documento? ', function (confirmed) {
+    let confirm = $(ElementDOM).attr("confirm") ==="true"?true:false;
+    actionDocument(idSelected,-1,"RECHAZAR",confirm);
+});
+
+function actionDocument(idFile,option,action,confirma) {
+    let titulo = action;
+    let mjeQuestion  = "¿Estas seguro de que deseas "+action+" este documento?";
+    sweetConfirm(titulo ,mjeQuestion, async function (confirmed) {
         if (confirmed) {
             //sendAcionFile
-            alert("RECHAZADO");
+            let pwAdmin = null;
+            if (confirma)
+            {
+                callbackPwAdmin().then(function (pw) {
+                    pwAdmin = pw.value;
+                    if(pw.isConfirmed && (pw.value != null || pw.value.length()>0)){
+                        revisaDocumento(idFile, option,pwAdmin);
+                    }
+                })
+            }else{
+                revisaDocumento(idFile, option,pwAdmin);
+            }
+            $("#modalViewFile").modal('hide');
+        };
+    });
+}
+
+async function callbackPwAdmin() {
+    return { value: password } = await Swal.fire({
+        title: 'AUNTENTICAR CUENTA',
+        icon: 'info',
+        input: 'password',
+        inputLabel: "Se requiere la contraseña de administrador para procesar este archivo",
+        inputPlaceholder: 'Contraseña de administrador',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar',
+        inputAttributes: {
+            maxlength: 100,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        }
+    }).then((password)=>{
+        return password ? password :null;
+    });
+}
+
+
+function revisaDocumento(idFile,value,pw){
+    //consulto nuevamente el archivo para verificar que sea necesario acreitar identidad.
+    revisionDocumentoRecibido(idFile,value,pw).then(function (resultado){
+        switch (resultado.mjeType) {
+            case 0:
+                alerta(resultado.Mensaje, "ERROR", "warning");
+                break;
+            case 1:
+               alertaEmergente("Se ha marcado el documento, ya se notificó al alumno");
+               //Consultar documentacion
+                consultaDocsPorRevisar();
+                break;
+            case 99:
+                alerta(resultado.Mensaje, "La contraseña es incorrecta o tal vez NO tiene los permisos necesarios para procesar este tipo de archivo.", "error")
+                break;
+            default:
+                alerta(resultado.Mensaje,"Se genero un error no identificado","error");
+                break;
         }
     });
-});
+}
+
+

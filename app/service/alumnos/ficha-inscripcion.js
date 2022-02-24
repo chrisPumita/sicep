@@ -125,9 +125,6 @@ async function consultaAsyncFichaInscAlumnoAJAX(idInscipcion,filtro){
             idInscipcion:idInscipcion,
             filtro:filtro
         },
-        success: function (response) {
-               console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer los documentos por revisar");
         }

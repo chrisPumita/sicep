@@ -99,32 +99,31 @@ function procesaDocInscAlumno($archivo1,$nombreFILE1,$idFile,$folio,$idDocSol,$i
     $FILE = new ARCHIVO();
     $FILE->setIdDocSol($idDocSol);
     $FILE->setIdInscripcionFk($folio);
-    if ($idFile<=0){
         //vamos a inseryar nuevo documento, verificamos que sea uno solicitado y coincida con la isncripcion y alumno
-        $resultObje = $FILE->queryValidaDocSolMatch($idAlumno);
-        if ($resultObje){
-            $fileType = $resultObje[0]['nombre_doc'];
-            //Archivo correctro, procedemos a almacenar
-            $docFisico = modificaArchivoAlumno($idAlumno,$folio,$fileType, $nombreFILE1, $archivo1,"");
-            if ($docFisico!= null){
-                //Iniciamos el almacenamiento del documento en La DB //completando los datos al file
-                $FILE->setNombreDoc($docFisico['nombre']);
-                $FILE->setPath($docFisico['path']);
-                $FILE->setNotas('Alumno: Se envia documento para su revición y acreditación');
-                return $FILE->queryInsertArchivoSolicituAlumno();
-            }
-            else{
-                return false;
-            }
+    $resultObje = $FILE->queryValidaDocSolMatch($idAlumno);
+    if ($resultObje){
+        $fileType = $resultObje[0]['nombre_doc'];
+        $rutaAnterior= "";
+        if ($idFile>0){
+            $FILE->setIdArchivo($idFile);
+            $obj = $FILE->queryGetRutaFileUpdateAlumno();
+            //vamor a sobre escribir el archivo
+            $rutaAnterior = $obj[0]['path'];
+        }
+        //Archivo correctro, procedemos a almacenar
+        $docFisico = modificaArchivoAlumno($idAlumno,$folio,$fileType, $nombreFILE1, $archivo1,$rutaAnterior);
+        if ($docFisico!= null){
+            //Iniciamos el almacenamiento del documento en La DB //completando los datos al file
+            $FILE->setNombreDoc($docFisico['nombre']);
+            $FILE->setPath($docFisico['path']);
+            $FILE->setNotas('Alumno: Se envia documento para su revición y acreditación');
+            return $idFile>0 ? $FILE->queryUpdateArchivo() : $FILE->queryInsertArchivoSolicituAlumno();
         }
         else{
             return false;
         }
     }
-    else{
-        //se va a editar el archivo solamente
-        return false;
-    }
+    else  return false;
 }
 
 function modificaArchivoAlumno($idAlumno,$idInsc, $fileType, $nombrePDF, $archivo1,$RutaFileAnterior)
@@ -152,6 +151,7 @@ function modificaArchivoAlumno($idAlumno,$idInsc, $fileType, $nombrePDF, $archiv
         );
     }
     catch (Exception $e){
+        echo $e;
         return null;
     }
 }

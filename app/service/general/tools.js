@@ -1,7 +1,3 @@
-// Esta funcion redirecciona por post la pagina que se mande llamar
-$(document).ready(function() {
-    console.log("----- REDIRECCIONAMIENTO ON----")
-});
 function redirect_by_post(purl, pparameters, in_new_tab) {
     pparameters = (typeof pparameters == 'undefined') ? {} : pparameters;
     in_new_tab = (typeof in_new_tab == 'undefined') ? true : in_new_tab;
