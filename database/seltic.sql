@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-02-2022 a las 20:02:26
+-- Tiempo de generación: 24-02-2022 a las 06:05:14
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -56,12 +56,7 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`id_profesor_admin_fk`, `cargo`, `permisos`, `clave_confirmacion`, `estatus`) VALUES
-(1, 'Jefe', 3, '4a7d1ed414474e4033ac29ccb8653d9b', 1),
-(2, 'Coordinador', 2, '4a7d1ed414474e4033ac29ccb8653d9b', 1),
-(3, 'Analista', 3, '4a7d1ed414474e4033ac29ccb8653d9b', 1),
-(5, 'JEFE', 1, '2ad10c6497495ab7a6603cce14796862', 1),
-(8, 'Jefe de ZOna', 3, 'e709b95eaeea5c5479af6ba4b7ce1805', 1),
-(14, 'Patrona', 3, '8bc507c35703e588c264273e060dce60', 1);
+(1, 'Jefe', 3, '4a7d1ed414474e4033ac29ccb8653d9b', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +128,7 @@ INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona
 (92, 575, 2, 20211228193223, '123156', '', 1, 'Quimica', 'manuel@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-28 19:32:23', '../resources/default-avatar.png', NULL, NULL, 0),
 (93, 276, 3, 20211228193851, '135156416', 'IPN', 1, 'Informatica', 'camila@hotmail.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 19:38:51', '../resources/default-avatar.png', NULL, NULL, 0),
 (94, 1889, 4, 20211228130159, '41561615', 'IPN', 5, 'Super heroe', 'peeter@spiderman.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 13:01:59', '../resources/default-avatar.png', NULL, NULL, 0),
-(95, 76, 2, 20220103224547, '456156165', '', 1, 'Animal', 'cuyo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-01-03 22:45:47', '../resources/default-avatar.png', NULL, NULL, 0),
+(95, 76, 2, 20220103224547, '456156165', '', 1, 'Animal', 'cuyo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-01-03 22:45:47', '../resources/avatars/a3d68b461bd9d3533ee1dd3ce4628ed4/pimg-20220221201607.jpg', NULL, NULL, 0),
 (96, 193, 4, 20220112190508, '156156', '', 3, 'Veterinaria', 'gio@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2022-01-12 19:05:08', '../resources/default-avatar.png', NULL, NULL, 0),
 (97, 688, 2, 20220113212601, '1515616', '', 1, 'Perro', 'capi@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-01-13 21:26:02', '../resources/default-avatar.png', NULL, NULL, 0);
 
@@ -150,17 +145,10 @@ CREATE TABLE `archivo` (
   `name_archivo` text NOT NULL,
   `path` text NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `notas` varchar(100) NOT NULL,
+  `notas` text NOT NULL,
   `estado_revision` tinyint(1) NOT NULL DEFAULT '0',
   `estado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `archivo`
---
-
-INSERT INTO `archivo` (`id_archivo`, `id_doc_sol_fk`, `id_inscripcion_fk`, `name_archivo`, `path`, `fecha_creacion`, `notas`, `estado_revision`, `estado`) VALUES
-(28, 20, 22021641928036, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/c371e962d1295c66403778cc62ba9070/ACTA-20220217122946.pdf', '2022-02-17 18:29:46', 'Alumno: Se envia documento para su revición y acreditación', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -189,16 +177,6 @@ CREATE TABLE `asignacion_grupo` (
   `visible_publico` tinyint(1) NOT NULL DEFAULT '0',
   `estatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `asignacion_grupo`
---
-
-INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, `semestre`, `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, `costo_real`, `notas`, `modalidad`, `visible_publico`, `estatus`) VALUES
-(765432475, 44, 12, 2022, '2021-2', 1, '2022-02-13 02:00:17', '2022-02-15', '2022-06-14', '2022-02-01', '2022-02-15', '2022-06-14', '2022-06-29', 30, '3050.00', 'Enviar correo a correo@aulasvirtuales.com', 0, 1, 1),
-(765432476, 75, 11, 2022, '2021-2', 1, '2022-02-13 02:19:27', '2022-02-15', '2022-06-25', '2022-02-01', '2022-02-15', '2022-06-25', '2022-07-10', 30, '700.00', '', 2, 1, 1),
-(765432477, 72, 12, 2022, '2021-2', 1, '2022-02-14 19:13:33', '2022-02-28', '2022-06-27', '2022-02-14', '2022-02-28', '2022-06-27', '2022-07-12', 30, '1300.00', '', 0, 1, 1),
-(765432478, 65, 12, 2022, '2021-2', 1, '2022-02-14 19:13:54', '2022-02-28', '2022-06-27', '2022-02-14', '2022-02-28', '2022-06-27', '2022-07-12', 30, '2100.00', '', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -326,23 +304,13 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `id_profesor_admin_acredita`, `id_profesor_autor`, `codigo`, `route`, `nombre_curso`, `dirigido_a`, `objetivo`, `descripcion`, `no_sesiones`, `antecedentes`, `aprobado`, `costo_sugerido`, `link_temario_pdf`, `fecha_creacion`, `fecha_acreditacion`, `banner_img`, `tipo_curso`) VALUES
-(1, 1, 2, '001', '', 'Induccion al computo II', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/1/banner-20211228021254.jpg', 2),
-(2, NULL, 5, '002', '', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, '../resources/banners/2/banner-20220121023241.png', 0),
-(3, NULL, 2, '003', '', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', '../resources/temario/3/temario-20220112035610.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/3/banner-20211228020712.png', 0),
-(4, 3, 1, '004', '', 'Diccionarios de datos', 'Publico en general actualizado', 'Dar a conocer las nuevas metodologias dentro de la programacion actualizado', 'Aqui va la descripcion del curso actualizado', 55, 'Conocimientos basicos en programacion actualizado', 1, '1500.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', '2021-12-22 12:20:20', '../resources/banners/4/banner-20211228020410.png', 1),
-(10, 1, 7, '002', '', 'Macros en Excel Avanzados', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 1, '2850.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, '../resources/banners/10/banner-20220121023353.png', 1),
-(11, 1, 10, '001', '', 'Reparacion de Computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/11/banner-20211228021532.jpg', 2),
-(12, 1, 1, '003', '', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 1, '3050.00', '../resources/temario/12/temario-20220129042951.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/12/banner-20220221191306.jpg', 1),
-(15, 3, 8, '004', '', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '2700.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, '../resources/banners/15/banner-20211228021345.jpg', 1),
-(19, 1, 7, '001', '', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/19/banner-20211228021125.jpg', 2),
-(20, 1, 11, '001', '', 'Word', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/20/banner-20211221234318.jpg', 2),
-(21, NULL, 1, '002', '', 'Excel Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, 'https://edu.tauformar.com/wp-content/uploads/2021/04/EXCEL.png', 3),
-(22, 1, 8, '001', '', 'Power Point Avanzado', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', 'https://www.bdmedia.mx/cursos/curso_marketing_digital/documentos/temario.pdf', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/22/banner-20211217032305.jpg', 2),
-(23, NULL, 3, '003', '', 'C++ Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/23/banner-20211228021024.webp', 4),
-(99, NULL, 9, '002', '', 'Java Basico', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', 'https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf', '2021-05-18 22:55:43', NULL, '../resources/banners/99/banner-20211228021447.jpg', 1),
-(100, 3, 4, '004', '', 'Diseño Web', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '1300.00', 'http://www.gesfomediaformacion.com/temarios/TEMARIO%20FACEBOOK.pdf', '2021-05-19 20:58:23', NULL, '../resources/banners/100/banner-20211222000250.jpg', 1),
-(101, NULL, 9, '003', '', 'Phyton Basico', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', 'https://proteco.mx/temarios/javabasico.pdf', '2021-05-19 13:57:09', NULL, 'https://www.cursosaspelenlinea.com.mx/wp-content/uploads/2018/08/aspel-nube.png', 1),
-(2112301484, NULL, 1, '3660', '', 'Curso prueba', 'Presentar a los estudiavdslemas.', 'Presentar a los estudiantes las características de la creatividad mediante actividades lúdicas que les permitan visualizar la utilidad que tienen las herramientas matemáticas en el aprendizaje y la resolución de problemas.', 'vfdbvfdbf', 1, 'Prvsdvermitadvsdvsdvsque tienen las herramientas matemáticas en el aprendizaje y la resolución de problemas.', 0, '300.00', '../resources/temario/2112301484/temario-20211230201423.pdf', '2021-12-30 20:14:22', NULL, '../resources/banners/ban-fesc.jpg', 4);
+(1, 1, 1, '001', '', 'Induccion al computo II', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', '', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/ban-fesc.jpg', 2),
+(2, NULL, 1, '002', '', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', '', '2021-05-18 22:55:43', NULL, '../resources/banners/ban-fesc.jpg', 0),
+(3, NULL, 1, '003', '', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', '', '2021-05-19 13:57:09', NULL, '../resources/banners/ban-fesc.jpg', 0),
+(4, 1, 1, '004', '', 'Diccionarios de datos', 'Publico en general actualizado', 'Dar a conocer las nuevas metodologias dentro de la programacion actualizado', 'Aqui va la descripcion del curso actualizado', 55, 'Conocimientos basicos en programacion actualizado', 1, '1500.00', '', '2021-05-19 20:58:23', '2021-12-22 12:20:20', '../resources/banners/ban-fesc.jpg', 1),
+(12, 1, 1, '003', '', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 1, '3050.00', '', '2021-05-19 13:57:09', NULL, '../resources/banners/ban-fesc.jpg', 1),
+(15, 1, 1, '004', '', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '2700.00', '', '2021-05-19 20:58:23', NULL, '../resources/banners/ban-fesc.jpg', 1),
+(19, 1, 1, '001', '', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', '', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/ban-fesc.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -396,8 +364,6 @@ INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso
 (2, 1, 3, 0),
 (5, 1, 1, 0),
 (6, 2, 2, 0),
-(7, 1, 10, 0),
-(8, 1, 11, 0),
 (12, 1, 15, 1),
 (13, 2, 15, 1),
 (14, 3, 15, 1),
@@ -405,13 +371,10 @@ INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso
 (16, 5, 15, 1),
 (17, 6, 15, 1),
 (18, 2, 1, 0),
-(19, 3, 1, 0),
+(19, 3, 1, 1),
 (20, 4, 1, 0),
 (22, 3, 4, 1),
-(32, 3, 22, 1),
-(33, 2, 22, 1),
 (34, 3, 19, 1),
-(35, 3, 20, 1),
 (36, 3, 12, 1),
 (37, 2, 12, 0),
 (39, 5, 12, 0);
@@ -551,12 +514,6 @@ INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) VALUES
 (41, 1, '1003', 1),
 (43, 12, '1000', 1),
 (44, 12, '1001', 1),
-(45, 11, '650', 1),
-(46, 11, '651', 1),
-(47, 11, '652', 1),
-(48, 100, '1000', 1),
-(49, 21, '1000', 1),
-(50, 10, '1000', 1),
 (55, 1, '1004', 1),
 (56, 1, '1005', 1),
 (57, 1, '1006', 1),
@@ -565,15 +522,9 @@ INSERT INTO `grupo` (`id_grupo`, `id_curso_fk`, `grupo`, `estatus`) VALUES
 (60, 19, '1505', 1),
 (61, 2, '1604', 1),
 (62, 15, '1016', 1),
-(63, 99, '6051', 1),
 (64, 1, '1008', 1),
 (65, 1, '1009', 1),
-(66, 20, '666', 1),
-(67, 20, '667', 1),
-(68, 20, '668', 1),
-(70, 22, '2711', 1),
 (71, 19, '1506', 1),
-(72, 100, '1001', 1),
 (75, 4, '673', 1);
 
 -- --------------------------------------------------------
@@ -668,17 +619,6 @@ CREATE TABLE `inscripcion` (
   `notas` text NOT NULL,
   `estatus` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `inscripcion`
---
-
-INSERT INTO `inscripcion` (`id_inscripcion`, `id_alumno_fk`, `id_asignacion_fk`, `pago_confirmado`, `autorizacion_inscripcion`, `validacion_constancia`, `fecha_solicitud`, `fecha_conclusion`, `notas`, `estatus`) VALUES
-(22021609639033, 1, 765432478, 0, 0, 0, '2022-02-16 16:56:38', NULL, '', 1),
-(22021639169357, 95, 765432476, 0, 0, 0, '2022-02-16 23:31:33', NULL, '', 1),
-(22021641928036, 95, 765432478, 0, 0, 0, '2022-02-16 16:56:34', NULL, '', 1),
-(22021669763517, 1, 765432477, 0, 0, 0, '2022-02-16 16:56:02', NULL, '', 1),
-(22021684089212, 95, 765432477, 0, 0, 0, '2022-02-16 16:56:00', NULL, '', 1);
 
 -- --------------------------------------------------------
 
@@ -3245,7 +3185,7 @@ INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `telefono`, `sexo`,
 (37, 'Sergio', 'Mendez', 'Martinez', '5508453040', 0, 1),
 (38, 'Martin', 'Chavez', 'Garcia', '5538807314', 0, 1),
 (39, 'Veronica', 'Rivera', 'Hernandez', '5552067667', 1, 1),
-(20210517145526, 'Ana María', 'Gonzalez', 'Hernández', '5151121212', 0, 1),
+(20210517145526, 'Christian', 'RCGS', 'DEVELOPER', '5151121212', 0, 1),
 (20210517185211, 'Lucia', 'Perez', 'Jimenez', '5587481564', 1, 1),
 (20210528160010, 'Christian', 'Pioquinto', 'Hernandez', '5565241529', 0, 1),
 (20210603052605, 'Cristina', 'Garduño', 'Romero', '556415615', 0, 1),
@@ -3296,20 +3236,7 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_trabajador`, `prefijo`, `email`, `pw`, `key_hash`, `fecha_registro`, `firma_digital`, `firma_digital_img`, `img_perfil`, `estatus`) VALUES
-(1, 20210517145526, 7, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/avatars/6512bd43d9caa6e02c990b0a82652dca/pimg-20220208191331.jpg', 1),
-(2, 2, 6, '314206372', 'Dra', 'pao@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'tgyhtyrgbwqw', '2021-05-19 13:58:22', 'ffgrvguhujuip', 'tuuvniusjkkjqa', '../resources/default-avatar.png', 1),
-(3, 20210528160010, 1, '25252525', 'Lic', 'christian@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'bgdfbd', '2021-05-31 00:00:00', 'vdfdbfdbdfb', 'bfdbfdbdf', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', 0),
-(4, 20210603052605, 1, '45415615', 'Lic', 'algo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(5, 20210603052638, 2, '1515615', 'Lic', 'xsnjcd@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(6, 20210603052822, 3, '16156156', 'Lic', 'carmen@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(7, 20210604141732, 1, '56165156', 'Lic', 'alvaro@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '0000-00-00 00:00:00', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(8, 20210604142033, 2, '1651561', 'Lic', 'luis@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 14:20:33', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(9, 20210604142356, 3, '561561651', 'Lic', 'maria@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:23:58', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(10, 20210604143217, 5, '45615656156', 'Lic', 'abril@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-06-04 07:32:17', '00000000000', '0000000000000', '../resources/avatars/38b3eff8baf56627478ec76a704e9b52/pimg-20220207200321.png', 0),
-(11, 20210710050742, 2, '1561561', 'Mto', 'cdso@gailc.com', '4a7d1ed414474e4033ac29ccb8653d9b', '00000000000', '2021-07-09 22:07:42', '00000000000', '0000000000000', '../resources/default-avatar.png', 1),
-(12, 20211215032318, 4, '15615615', 'Lic', 'algo@gmailcom', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-15 03:23:18', 'NULL', 'NULL', '../resources/default-avatar.png', 1),
-(13, 20211228031934, 7, '41565461123', 'Lic', 'correosolis@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2021-12-28 03:19:34', 'NULL', 'NULL', 'https://avatars.githubusercontent.com/u/21067489?v=4', 1),
-(14, 20220113211257, 3, '4564586456', 'Lic', 'jenni@gmailcom', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2022-01-13 21:12:57', 'NULL', 'NULL', '../resources/default-avatar.png', 1);
+(1, 20210517145526, 7, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/default-avatar.png', 1);
 
 -- --------------------------------------------------------
 
@@ -3674,7 +3601,7 @@ ALTER TABLE `alumno`
 -- AUTO_INCREMENT de la tabla `archivo`
 --
 ALTER TABLE `archivo`
-  MODIFY `id_archivo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_archivo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `asignacion_grupo`

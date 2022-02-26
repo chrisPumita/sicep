@@ -1,0 +1,143 @@
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: #f2f7ff;
+    color: #607080;
+    font-family: Nunito;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+.m-0 {
+    margin: 0!important;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--bs-gutter-x)*-.5);
+    margin-right: calc(var(--bs-gutter-x)*-.5);
+    margin-top: calc(var(--bs-gutter-y)*-1);
+}
+
+.p-0 {
+    padding: 0!important;
+}
+
+.bg-light {
+    background: #ffffff !important;
+}
+.bg-light {
+    background-color: #f8f9fa!important;
+}
+.text-black-50 {
+    color: rgba(0,0,0,.5)!important;
+}
+.text-center {
+    text-align: center!important;
+}
+.py-3 {
+    padding-bottom: 1rem!important;
+    padding-top: 1rem!important;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--bs-gutter-x,.75rem);
+    padding-right: var(--bs-gutter-x,.75rem);
+    width: 100%;
+}
+.d-flex {
+    display: flex!important;
+}
+.col-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+
+.p-0 {
+    padding: 0!important;
+}
+.m-0 {
+    margin: 0!important;
+}
+.col-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+}
+
+.bg-light {
+    background: #ffffff !important;
+}
+.bg-light {
+    background-color: #f8f9fa!important;
+}
+.text-black-50 {
+    color: rgba(0,0,0,.5)!important;
+}
+.text-center {
+    text-align: center!important;
+}
+.py-3 {
+    padding-bottom: 1rem!important;
+    padding-top: 1rem!important;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #25396f;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+.h4, h4 {
+    font-size: 1.5rem;
+}
+.h6, h6 {
+    font-size: 1rem;
+}
+.h5, h5 {
+    font-size: 1.25rem;
+}
+
+.fs-6 {
+    font-size: 1rem!important;
+}
+.col-4 {
+    flex: 0 0 auto;
+    width: 33%;
+}
+
+.fs-6 {
+    font-size: 1rem!important;
+}
+.border-3 {
+    border-width: 3px!important;
+}
+.border {
+    border: 1px solid #dee2e6!important;
+}
+.col-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+}
+.p-0 {
+    padding: 0!important;
+}
+.m-0 {
+    margin: 0!important;
+}
+.col-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+}
+
+.bg-light{
+    background: #ffffff !important;
+}
+.contenido{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
