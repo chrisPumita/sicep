@@ -7,8 +7,6 @@ _ SICEP es un proyecto enfocado a la isncripcion de cursos ONLINE que ofrece nue
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 * [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - Vistas lindas y bellas
 
 
