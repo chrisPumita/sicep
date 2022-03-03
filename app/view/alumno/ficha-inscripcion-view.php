@@ -58,21 +58,17 @@ $titulo = "Inicio - Alumno"; ?>
             <!-- inicia seccion detalles alumno -->
             <section class="section">
                 <div class="row">
-                    <div class="col-sm-10 d-flex align-items-center">
+                    <div class="col-sm-7 d-flex align-items-center">
                         <h4  id="tiitleCurso"></h4>
                     </div>
-                    <div class="col-sm-2 align-items-center" id="btnPrinter">
-                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3"> <i class="fas fa-print"></i> Imprimir</button>
+                    <div class="col-sm-5 d-flex justify-content-center  py-3 px-3" id="btnPrinter">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6" >
                         <div class="card">
-                            <div class="card-body py-4 px-2" id="cardPago">
-
-                            </div>
+                            <div class="card-body py-4 px-2" id="cardPago"></div>
                         </div>
-
                         <div class="card">
                             <div class="card-body py-4 px-5">
                                 <div class="d-flex align-items-center">
@@ -81,9 +77,9 @@ $titulo = "Inicio - Alumno"; ?>
                                         <img id="avatarImage" src="../resources/default-avatar.png" alt="Face 1">
                                     </div>
                                     <div class="ms-3 name">
-                                        <h4 class="font-bold" id="fichaName">Coyin Canallin Cuyo</h4>
-                                        <h5 class="text-muted mb-0" id="fichaCarrera">Animal</h5>
-                                        <h6 class="text-muted mb-0" id="fichaProcedencia">Comunidad FESC</h6>
+                                        <h4 class="font-bold" id="fichaName"></h4>
+                                        <h5 class="text-muted mb-0" id="fichaCarrera"></h5>
+                                        <h6 class="text-muted mb-0" id="fichaProcedencia"></h6>
                                     </div>
                                 </div>
                             </div>

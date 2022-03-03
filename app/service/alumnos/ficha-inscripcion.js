@@ -108,6 +108,9 @@ function buildHTMLFicha(FICHA) {
     $("#fichaTotal").html(totalPago);
     $("#cardPagoTotal").html(totalPago);
     $("#fichaNotas").html(DATOS.notasInscripcion.length>0?DATOS.notasInscripcion.length:'Sin nota alguna');
+    let templateBotones = `<button class="btn btn-primary w-100 mr-3 mt-3 mb-3 mx-3 btnActionFicha"> <i class="fas fa-print"></i> Ficha de Inscripción</button>
+<button class="btn btn-primary w-100 mr-3 mt-3 mb-3"> <i class="fas fa-print"></i> Ficha Pago</button>`;
+    $("#btnPrinter").html(templateBotones);
 }
 
 /*Async regresa lista del documentos pendient3s por revisar*/
@@ -130,3 +133,24 @@ async function consultaAsyncFichaInscAlumnoAJAX(idInscipcion,filtro){
         }
     });
 }
+
+
+//printerFicha
+
+function fichaInsc() {
+    let id = ID_FICHA;
+    var url = './ficha_inscripcion/index.php';
+    redirect_by_post(url, {  id: id }, true);
+}
+
+//btnActionFicha
+
+$(document).on("click", ".btnActionFicha", function ()
+{
+    fichaInsc();
+});
+
+$(document).on("click", ".btnActionFicha", function ()
+{
+    fichaInsc();
+});
