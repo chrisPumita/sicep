@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST['idFile']) && isset($_POST['value'])) {
     $pw = isset($_POST['pw'])?$_POST['pw']:null;
 

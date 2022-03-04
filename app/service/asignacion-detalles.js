@@ -1,5 +1,4 @@
 let ID_ASIG = $("#idAsignacion").val();
-
 $(document).ready(function() {
     consultaListaProfesores();
     loadGeneraciones();

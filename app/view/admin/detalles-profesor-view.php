@@ -5,7 +5,7 @@
     }
     else{
         $id = $_POST['id'];
-        echo '<script> window.ID_PROF = '.$id.'; </script>';
+        echo '<script> let ID_PROF = '.$id.'; </script>';
     }
     $titulo = "Detalles del Profesor";
 

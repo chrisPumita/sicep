@@ -4,7 +4,7 @@ if (!isset($_POST['id'])){
 }
 else{
     $id = $_POST['id'];
-    echo '<script> window.ID_CURSO = '.$id.'; </script>';
+    echo '<script> let ID_CURSO = '.$id.'; </script>';
 }
 $titulo = "Detalles del curso"
 

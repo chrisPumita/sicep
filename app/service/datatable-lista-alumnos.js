@@ -65,11 +65,9 @@ function cargaDatosAlumnosDataTable(typeFiltro) {
                 { data: null,
                     render: function ( data, type, row ) {
                         let btnAcction = row.id_alumno >= 0 ?
-                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Suspender Cuenta">
-                                <a href="#" class="btn btn-outline-warning btnViewPerfile"><i class="fas fa-user-clock"></i></a>`:
-                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Habilitar Cuenta">
-                                <a href="#" class="btn btn-success btnChangeStatus"><i class="fas fa-user-check"></i></a></span>`;
-                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfil"><i class="fas fa-id-card-alt"></i></a></span>
+                            `<a href="#" class="btn btn-outline-warning btnSuspenderAccount" data-bs-toggle="tooltip" title="Suspender Cuenta"><i class="fas fa-user-clock"></i></a>`:
+                            `<a href="#" class="btn btn-success btnSuspenderAccount"  data-bs-toggle="tooltip" title="Habilitar Cuenta"><i class="fas fa-user-check"></i></a>`;
+                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfile"><i class="fas fa-id-card-alt"></i></a>
                                         ${btnAcction}</div>`;
                         return template;
                     }
@@ -175,10 +173,15 @@ function cargaDatosAlumnosPendientesDataTable(typeFiltro) {
                 { data: null,
                     render: function ( data, type, row ) {
                         let template = `<div class="d-flex">
-                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Ver documento para acreditar">
-                                            <a href="#" class="btn btn-outline-success btnViewPerfile"><i class="fas fa-clipboard-check"></i></a></span>
-                                            <span tabindex="0" data-bs-toggle="tooltip" title="Eliminar Cuenta No verificada">
-                                            <a href="#" class="btn btn-danger btnBanCount"><i class="fas fa-ban"></i></a></span>
+                                            <button class="btn btn-outline-success btnViewDoc" data-bs-toggle="tooltip" title="Ver documento para acreditar">
+                                            <i class="fas fa-file"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success btnViewPerfile" data-bs-toggle="tooltip" title="Ver Perfil Cuenta">
+                                            <i class="fas fa-clipboard-check"></i>
+                                            </button>
+                                            <a href="#" class="btn btn-danger btnBanCount" data-bs-toggle="tooltip" title="Eliminar Cuenta No verificada">
+                                            <i class="fas fa-ban"></i>
+                                            </a>
                                         </div>`;
                         return template;
                     }
@@ -240,3 +243,38 @@ $('.sexo-dropdown').on('change', function(e){
     $('.status-dropdown').val(status);
     dataTable.column(3).search(status).draw();
 });
+
+
+//LISTENER PARA ACCION DEL BOTON
+$(document).on("click", ".btnViewPerfile", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_profesor");
+    var url = './detalles-alumno';
+    redirect_by_post(url, {  id: id }, false);
+});
+
+$(document).on("click", ".btnBanCount", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_profesor");
+    console.log(id);
+    alert("BAN "+id);
+});
+
+$(document).on("click", ".btnViewDoc", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_profesor");
+    console.log(id);
+    alert("MODAL VISTA DOCUMENTO ACREDITA "+id);
+});
+
+$(document).on("click", ".btnSuspenderAccount", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_profesor");
+    console.log(id);
+    alert("suspender cuenta "+id);
+});
+

@@ -3,7 +3,7 @@
     if (!isset($_POST['id']))
         header("Location: ./lista-alumnos");
 
-    echo '<script> window.ID_INSC = '.$id.'; </script>';
+    echo '<script> let ID_INSC = '.$id.'; </script>';
 ?>
 <!DOCTYPE html>
 <html lang="en">

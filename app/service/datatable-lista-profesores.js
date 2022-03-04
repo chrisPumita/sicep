@@ -71,11 +71,12 @@ function cargaDatosProfesoresDataTable() {
                 { data: null,
                     render: function ( data, type, row ) {
                         let btnAcction = row.estatus_profesor != 1 ?
-                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Habilitar Cuenta">
-                                <a href="#" class="btn btn-success btnChangeStatus"><i class="fas fa-user-check"></i></a></span>` :
-                            `<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Inhabilitar Cuenta">
-                                <a href="#" class="btn btn-outline-warning btnChangeStatus"><i class="fas fa-user-clock"></i></a>`;
-                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfil"><i class="fas fa-id-card-alt"></i></a></span>
+                            `<button type="button" class="btn btn-success btnChangeStatus" data-bs-toggle="tooltip" title="Habilitar Cuenta">
+                                    <i class="fas fa-user-check"></i>` :
+                            `<button type="button" class="btn btn-outline-warning btnChangeStatus">
+                                <i class="fas fa-user-clock"></i>
+                            </button>`;
+                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfil"><i class="fas fa-id-card-alt"></i></a>
                                         ${btnAcction}</div>`;
                         return template;
                     }
@@ -121,3 +122,12 @@ $(document).on("click", ".btnViewPerfil", function ()
     var url = './detalles-profesor';
     redirect_by_post(url, {  id: id }, false);
 });
+
+$(document).on("click", ".btnChangeStatus", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_profesor");
+    console.log(id);
+    alert(id);
+});
+

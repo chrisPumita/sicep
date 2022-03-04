@@ -4,7 +4,7 @@ if (!isset($_POST['id'])){
 }
 else{
     $id = $_POST['id'];
-    echo '<script> window.ID_ASIG = '.$id.'; </script>';
+    echo '<script> let ID_ASIG = '.$id.'; </script>';
 }
 $titulo = "Inscripción";
 ?>
