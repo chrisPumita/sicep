@@ -217,3 +217,42 @@ table{
 .tg .tg-5o4h{background-color:#196398;border-color:#196398;color:#ffffff;text-align:center;vertical-align:top}
 
 .tg .tg-baqh{text-align:center;vertical-align:top; border-width:0px;}
+
+
+/*FICHA DE PAGO*/
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:5px 10px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:5px 10px;word-break:normal;}
+.tg .tg-8x4y{border-color:#196398;color:#196398;font-family:"Lucida Console", Monaco, monospace !important;font-size:13px;
+    font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-pr1q{border-color:#196398;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-5ufm{border-color:#196398;text-align:left;vertical-align:top}
+.tg .tg-f1u9{background-color:#ffffff;border-color:#196398;color:#333333;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-6dcg{background-color:#196398;border-color:#196398;color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-zj0t{background-color:#196398;border-color:#196398;color:#ffffff;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-mvkq{background-color:#ffffff;border-color:#196398;color:#cb0000;font-family:"Lucida Console", Monaco, monospace !important;
+    font-size:28px;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-gns2{background-color:#196398;color:#ffffff;text-align:center;vertical-align:top}
+
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:12px;
+    overflow:hidden;padding:5px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:12px;
+    font-weight:normal;overflow:hidden;padding:5px 5px;word-break:normal;}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle; padding: 120px 210px 120px 210px}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-tia3{background-color:#196398;border-color:inherit;color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-nbj5{background-color:#FFF;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-5ims{background-color:#ffffff;border-color:inherit;font-family:"Lucida Console", Monaco, monospace !important;
+    font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-fd96{background-color:#FFF;border-color:inherit;font-family:"Lucida Console", Monaco, monospace !important;font-weight:bold;
+    text-align:center;vertical-align:top}
+.tg .tg-c6of{background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
+.tg .tg-1hr0{background-color:#ffffff;border-color:inherit;text-align:right;vertical-align:top}

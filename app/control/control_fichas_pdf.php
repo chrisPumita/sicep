@@ -1,17 +1,17 @@
 <?php
 
-function getBodyFicha(){
+function getBodyFicha($noFicha){
     return '<body class="bg-light">
 <header>
     <div class="container-fluid m-0">
         <div class="row d-flex">
             <div class="col-12 m-0 p-0">
-                <img src="./img/logo.png" width="100%" height="100px" alt="">
+                <img src="../ficha_inscripcion/img/logo.png" width="100%" height="100px" alt="">
             </div>
         </div>
         <div class="row">
             <div class="col-12 m-0 p-0">
-                <img src="./img/name_tab.png" width="100%" alt="">
+                <img src="../ficha_inscripcion/img/name_tab.png" width="100%" alt="">
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@ function getBodyFicha(){
             <td class="tg-n50k">NOMBRE:</td>
             <td class="tg-n50k">ARMANDO FERNANDO</td>
             <td class="tg-lh7k"></td>
-            <td class="tg-387i">156156156156</td>
+            <td class="tg-387i">' .$noFicha.'</td>
         </tr>
         <tr>
             <td class="tg-n50k">PRIMER APELLIDO:</td>
@@ -183,8 +183,125 @@ function getBodyFicha(){
 </body>';
 }
 
-function getBodyFichaPago(){
-
+function getBodyFichaPago($noFicha){
+    return '<body class="bg-light">
+<header>
+    <div class="container-fluid m-0">
+        <div class="row d-flex">
+            <div class="col-12 m-0 p-0">
+                <img src="../ficha_inscripcion/img/logo.png" width="100%" height="100px" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 m-0 p-0">
+                <img src="../ficha_inscripcion/img/name_tab.png" width="100%" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-fluid text-center py-3 text-black-50 bg-light">
+    <h4>FICHA DE PAGO DE INSCRIPCIÓN</h4>
+    <h6><strong>86132000 Concepto: Servicios de Educación y Capacitación en Administración</strong></h6>
+    <h5>CENTRO DE CÓMPUTO No. UR: 5130</h5>
+</div>
+<div class="container">
+    <table class="tg" style="undefined;table-layout: fixed; width: 883px">
+    <colgroup>
+    <col style="width: 191px">
+    <col style="width: 341px">
+    <col style="width: 351px">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="tg-6dcg" colspan="2">DATOS DEL ALUMNO</th>
+        <th class="tg-zj0t"><span style="font-weight:bold">REFERENCIA</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-5ufm">MATRICULA / NO CTA.:</td>
+        <td class="tg-5ufm">156156165</td>
+        <td class="tg-8x4y">'.$noFicha.'</td>
+      </tr>
+      <tr>
+        <td class="tg-5ufm">ALUMNO:</td>
+        <td class="tg-5ufm">JUAN PEREZ ZSANCHEZ</td>
+        <td class="tg-6dcg">MONTO A PAGAR</td>
+      </tr>
+      <tr>
+        <td class="tg-5ufm">FECHA DE IMPRESIÓN</td>
+        <td class="tg-5ufm">22/0572021 12:53</td>
+        <td class="tg-mvkq">$1500.00 MXN</td>
+      </tr>
+      <tr>
+        <td class="tg-6dcg" colspan="2">DETALLES DEL PAGO</td>
+        <td class="tg-pr1q">(MIL QUINIENTOS PESOS MN 100/00)</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax" colspan="2" rowspan="2">PAGO CURSO INICIACION AL COMPUTO 1 GRUPO 3033, GENERACION 2022, SEMESTRE 3203 PAGO CURSO INICIACION AL COMPUTO 1 GRUPO 3033, GENERACION 2022, SEMESTRE 3203</td>
+        <td class="tg-gns2">CONCEPTO</td>
+      </tr>
+      <tr>
+        <td class="tg-f1u9">PAGO 15125616</td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+<div class="container bg-light d-flex py-3">
+    <table class="tg" style="undefined;table-layout: fixed; width: 988px">
+    <colgroup>
+    <col style="width: 100px">
+    <col style="width: 20px">
+    <col style="width: 20px">
+    </colgroup>
+    <thead>
+      <tr>
+        <td class="tg-9wq8" rowspan="8">PEGA AQUI EL COMPROBANTE</td>
+        <td class="tg-tia3">BANCO</td>
+        <td class="tg-tia3">NO DE CUENTA</td>
+      </tr>
+      <tr>
+        <td class="tg-5ims">BBBA</td>
+        <td class="tg-c3ow">1651561</td>
+      </tr>
+      <tr>
+        <td class="tg-fd96">BBBA</td>
+        <td class="tg-c3ow">1651561</td>
+      </tr>
+      <tr>
+        <td class="tg-fd96">BBBA</td>
+        <td class="tg-c3ow">1651561</td>
+      </tr>
+      <tr>
+        <td class="tg-fd96">BBBA</td>
+        <td class="tg-c3ow">1651561</td>
+      </tr>
+      <tr>
+        <td class="tg-c6of"><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br></td>
+        <td class="tg-0pky"></td>
+      </tr>
+      <tr>
+        <td class="tg-dvpl">REFERENCIA:</td>
+        <td class="tg-c3ow">21561561561561561561</td>
+      </tr>
+      <tr>
+        <td class="tg-1hr0">MONTO A PAGAR:</td>
+        <td class="tg-nbj5">$1500 mxn</td>
+      </tr>
+    </thead>
+    </table>
+</div>
+<div class="container contenido">
+    <div class="row">
+        <div class="col p-3">
+            <p class="fst-italic small text-muted lh-1">Para tu comodidad, ponemos a tu disposición, los numeros de cuenta y referencias para
+            que puedas hacer tu pago en cualquiera de los siguientes establecimientos:</p>
+        </div>
+    </div>
+</div>
+</body>';
 }
 ?>
 

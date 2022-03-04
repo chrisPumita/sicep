@@ -18,7 +18,6 @@ function consultaInfoInscripcionAlumno() {
             else{
                 cardInscripcionAcredita = buildCardEnviada(result.VALIDACION);
             }
-
             $("#cardPago").html(cardInscripcionAcredita);
         }
         else{
@@ -50,14 +49,14 @@ function buildCardInscripcionCancelacion(DATOS){
 
 function buildCardEnviada(DATOS){
     let template = `<div class="d-flex">
-                                    <div class="m-auto">
-                                        <img src="../assets/images/icons/mail2.svg" width="80" alt="svg ok">
-                                    </div>
-                                    <div class="col-8 m-auto">
-                                        <h5>Enviada</h5>
-                                        <h6>Tu solicitud ha sido enviada, pero aun no se ha revisado.</h6>
-                                    </div>
-                                </div>`;
+                        <div class="m-auto">
+                            <img src="../assets/images/icons/mail2.svg" width="80" alt="svg ok">
+                        </div>
+                        <div class="col-8 m-auto">
+                            <h5>Enviada</h5>
+                            <h6>Tu solicitud ha sido enviada, pero aun no se ha revisado.</h6>
+                        </div>
+                    </div>`;
     return template;
 }
 
@@ -109,7 +108,7 @@ function buildHTMLFicha(FICHA) {
     $("#cardPagoTotal").html(totalPago);
     $("#fichaNotas").html(DATOS.notasInscripcion.length>0?DATOS.notasInscripcion.length:'Sin nota alguna');
     let templateBotones = `<button class="btn btn-primary w-100 mr-3 mt-3 mb-3 mx-3 btnActionFicha"> <i class="fas fa-print"></i> Ficha de Inscripción</button>
-<button class="btn btn-primary w-100 mr-3 mt-3 mb-3"> <i class="fas fa-print"></i> Ficha Pago</button>`;
+<button class="btn btn-primary w-100 mr-3 mt-3 mb-3 btnActionFichaPago"> <i class="fas fa-print"></i> Ficha Pago</button>`;
     $("#btnPrinter").html(templateBotones);
 }
 
@@ -143,6 +142,11 @@ function fichaInsc() {
     redirect_by_post(url, {  id: id }, true);
 }
 
+function fichaPagoInsc() {
+    let id = ID_FICHA;
+    var url = './ficha_pago/index.php';
+    redirect_by_post(url, {  id: id }, true);
+}
 //btnActionFicha
 
 $(document).on("click", ".btnActionFicha", function ()
@@ -150,7 +154,7 @@ $(document).on("click", ".btnActionFicha", function ()
     fichaInsc();
 });
 
-$(document).on("click", ".btnActionFicha", function ()
+$(document).on("click", ".btnActionFichaPago", function ()
 {
-    fichaInsc();
+    fichaPagoInsc();
 });

@@ -1,6 +1,5 @@
 <?php
 //include "ficha_inscripcion.php";
-
 session_start();
 if (!isset($_SESSION['usuario'])) {
     header('Location: ../');
@@ -11,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
         include_once '../control/control_fichas_pdf.php';
         $mpdfConfig = array(
             'mode' => 'utf-8',
-            'format' => 'letter',    // format - A4, for example, default ''
+            'format' => 'LETTER',    // format - A4, for example, default ''
             'default_font_size' => 0,     // font size - default 0
             'default_font' => '',    // default font family
             'margin_left' => 0,        // 15 margin_left
@@ -24,7 +23,7 @@ if (!isset($_SESSION['usuario'])) {
             'orientation' => 'P'    // L - landscape, P - portrait
         );
         $mpdf = new \Mpdf\Mpdf($mpdfConfig);
-        $plantilla = getBodyFicha($noFicha);
+        $plantilla = getBodyFichaPago($noFicha);
         $css = file_get_contents('../../assets/css/ficha_style.css');
         $mpdf->writeHtml($css, \Mpdf\HTMLParserMode::HEADER_CSS);
         $mpdf->writeHtml($plantilla, \Mpdf\HTMLParserMode::HTML_BODY);

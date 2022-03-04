@@ -406,3 +406,11 @@ body {
         width: 100% !important;
     }
 }
+
+.avatar.avatar-md .avatar-content,
+.avatar.avatar-md img {
+    width: auto !important;
+}
+.avatar.avatar-xl .avatar-content, .avatar.avatar-xl img {
+    width: auto !important;
+}
