@@ -231,7 +231,7 @@ class ARCHIVO extends DOCS_SOLICITADOS_CURSO implements I_ARCHIVO
 
     //funcion REESCRIBIR
     function queryUpdateEstadoArchivo(){
-        $query="UPDATE seltic.archivo t
+        $query="UPDATE archivo t
                 SET t.notas = CONCAT(t.notas,'".$this->getNotas()."'),
                     t.estado_revision = ".$this->getEstadoRevision().",
                     t.estado          = ".$this->getEstadoArchivo()."

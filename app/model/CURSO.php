@@ -528,7 +528,7 @@ class CURSO extends CONEXION_M implements I_CURSO
     }
 
     function queryUpdateBanner(){
-        $query = "UPDATE seltic.curso t
+        $query = "UPDATE curso t
                     SET t.banner_img = '".$this->getBannerImg()."'
                     WHERE t.id_curso = ".$this->getIdCurso();
         $this->connect();

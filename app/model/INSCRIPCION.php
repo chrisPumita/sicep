@@ -423,7 +423,7 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
         $valConfir = $confirmacion ? '1':'-1';
         $estatus = $confirmacion ? '1':'0';
         $conclusion = $confirmacion ? 't.fecha_conclusion = NULL, ': " t.fecha_conclusion = CURRENT_TIMESTAMP,";
-        $sql = "UPDATE seltic.inscripcion t
+        $sql = "UPDATE inscripcion t
                 SET t.pago_confirmado          = ".$valConfir.",
                     t.autorizacion_inscripcion = ".$valConfir.", ".$conclusion."
                     t.notas = t.notas + '".$this->getNotas()."',
