@@ -364,7 +364,7 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
           AND asig.id_asignacion = insc.id_asignacion_fk
           AND gpo.id_grupo = asig.id_grupo_fk
           AND gpo.id_curso_fk = c.id_curso ".$FiltroAlumno." ".$filtro." ".$FiltroInsc." ORDER BY insc.fecha_solicitud DESC";
-
+            echo $sql;
         $this->connect();
         $result = $this->getData($sql);
         $this->close();
