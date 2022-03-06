@@ -12,9 +12,6 @@ async function consultaAsyncOfertaAsigAJAX() {
         url: "../app/webhook/alumno.lista-asig-oferta.php",
         type: 'POST',
         dataType: "json",
-        success: function(response) {
-            //  console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer las asignaciones historicas");
         }
@@ -31,9 +28,6 @@ async function buscaInscripcionAjax(idAsig) {
         type: 'POST',
         data:{idAsig:idAsig},
         dataType: "json",
-        success: function(response) {
-            //  console.log(response);
-        },
         error: function() {
             alert("Error interno");
         }
@@ -46,9 +40,6 @@ async function consultaAsyncAJAXDetailsAsigInscribe(idAsig) {
         type: 'POST',
         data: { idAsig: idAsig },
         dataType: "json",
-        success: function(response) {
-            //  console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer los detalles de la asignacion");
         }
@@ -67,9 +58,6 @@ async function consultaDescuentosAsigInscribeAjax(id) {
             type: "POST",
             data: { id: id },
             dataType: "json",
-            success: function(res) {
-                //  console.log(res);
-            },
             error: function() {
                 internalErrorAlert("Error 500 interno de Servidor");
             }
@@ -93,9 +81,6 @@ async function consultaAsyncDocsInscRevisaAluAJAX(idFiltro) {
         data: {
             idFiltro: idFiltro
         },
-        success: function(response) {
-            //   console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer la infoirmacion solicitada por revisar");
         }
@@ -117,9 +102,6 @@ async function consultaAsyncDocsRevisaAluAJAX(idInscipcion, filtro) {
             idInscipcion: idInscipcion,
             filtro: filtro
         },
-        success: function(response) {
-            //   console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer los documentos por revisar");
         }
@@ -135,9 +117,6 @@ async function consultaTemarioAjax(idCurso) {
             type: "POST",
             data: { idCurso: idCurso },
             dataType: "json",
-            success: function(res) {
-                //   console.log(res);
-            },
             error: function() {
                 internalErrorAlert("Error 500 interno de Servidor");
             }
@@ -157,9 +136,6 @@ async function consultaHorariosAjax(id) {
             type: "POST",
             data: { id: id },
             dataType: "json",
-            success: function(res) {
-                //   console.log(res);
-            },
             error: function() {
                 internalErrorAlert("Error 500 interno de Servidor");
             }
@@ -178,9 +154,6 @@ async function consultaDocumentacionAjax(idCUrso) {
             type: "POST",
             data: { idCurso: idCUrso },
             dataType: "json",
-            success: function(res) {
-                //    console.log(res);
-            },
             error: function() {
                 internalErrorAlert("Error 500 interno de Servidor en ConsultaInfo");
             }
@@ -201,12 +174,8 @@ async function cancelarSolicitudAlumnoAjax(idSolicitud) {
         },
         type: "POST",
         dataType: "json",
-        success: function(data) {
-            //console.log(data);
-        },
         error: function(e) {
             alert("Error occured")
-                //console.log(e);
         }
     });
 }
@@ -239,11 +208,7 @@ async function sendBackEndAlumnoAjax(params, route) {
         data: params,
         dataType: "json",
         cache: false,
-        success: function(res) {
-            console.log(res);
-        },
         error: function(e) {
-            console.log(e);
             alert("Error 500 interno Ajax");
         }
     });
@@ -254,12 +219,8 @@ async function consultaPefilAlumnoAjax() {
         type: 'POST',
         dataType: "json",
         data: {},
-        success: function(data) {
-            console.log(data);
-        },
         error: function(e) {
             alert("Error occured")
-            console.log(e);
         }
     });
 }
@@ -271,9 +232,6 @@ async function consultaProcedenciasAjax(route) {
     return $.ajax({
         url: route + "webhook/lista-dependencias.php",
         dataType: "json",
-        success: function(data) {
-            // console.log(data);
-        },
         error: function() {
             alert("Error occured")
         }
@@ -289,9 +247,6 @@ async function consultaUnisAlumnoAjax(route) {
         {
             url:route+"webhook/lista-universidades.php",
             dataType: "json",
-            success: function(data){
-                //console.log(data);
-            },
             error: function() {
                 alert("Error occured")
             }
@@ -311,9 +266,6 @@ async function actionDocumentFileAjax(idFile,idDocSol,idAsig){
                 idFile:idFile,
                 idDocSol:idDocSol},
         dataType: "json",
-        success: function (response) {
-              console.log(response);
-        },
         error: function() {
             alerta("Error al tratar de inscribirte");
         }

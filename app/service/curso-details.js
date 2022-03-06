@@ -102,7 +102,6 @@ function cambiaEstado(estatus,mensaje,isAcredit){
                 },
                 error: function(e) {
                     alert("Error occured")
-                    console.log(e);
                 }
             });
         }

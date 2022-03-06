@@ -1,4 +1,4 @@
-<!--AGREGA PROFESOR INVITACION CUENTA -->
+<!--MODAL DOCUMENTACION ALUMNO-->
 <div class="modal fade text-left" id="viewDocsInscripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

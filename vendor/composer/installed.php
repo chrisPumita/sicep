@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '25d6e4b3750d2784284e332b4844c34b97231c66',
+        'reference' => '67ad1891d8cb94b7aaf2c3db03ec12b3e97366e6',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '25d6e4b3750d2784284e332b4844c34b97231c66',
+            'reference' => '67ad1891d8cb94b7aaf2c3db03ec12b3e97366e6',
             'dev_requirement' => false,
         ),
         'ezyang/htmlpurifier' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
             'reference' => '12ab42bd6e742c70c0a52f7b82477fcd44e64b75',
+            'dev_requirement' => false,
+        ),
+        'luecano/numero-a-letras' => array(
+            'pretty_version' => 'v3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../luecano/numero-a-letras',
+            'aliases' => array(),
+            'reference' => 'bab51e3e81545e38d6a11efccb3e6d568765ba7c',
             'dev_requirement' => false,
         ),
         'maennchen/zipstream-php' => array(

@@ -147,9 +147,7 @@ $('#frm-login').submit(function (e) {
             contentType: false,
             processData: false,
             success: function(response){
-                console.log(response);
                 let obj_mje = JSON.parse(response);
-                console.log(obj_mje);
                 if (obj_mje.mjeType == "0") {
                     titulo= "El "+ obj_mje.tipoCuenta+ " NO EXISTE";
                     texto= obj_mje.Mensaje;

@@ -1,12 +1,9 @@
 
 $(document).ready(function() {
-    console.log("HELLO");
-
     cargaCursosWeb(0,1).then(function (result) {
         buildCursosCaroucelHtml(result);
     });
     consultaAsyncHistorialAsign(3,1).then(function (datos) {
-        console.log(datos);
         let lista = datos.filter(x=>parseInt(x.visible_publico)==1);
         lista = lista.filter(x=>parseInt(x.statusAsignacion)<99);
         buildHTMLCardsDashboard(lista);
@@ -193,9 +190,6 @@ async function consultaAsyncHistorialAsignAJAX(filtro,idFiltro){
             filtro: filtro,
             idFiltro:idFiltro
         },
-        success: function (response) {
-            //   console.log(response);
-        },
         error: function() {
             alert("Error al tratar de traer las asignaciones historicas");
         }
@@ -210,9 +204,6 @@ async function cargaCursosWebAjax(filtro, valueID) {
         data: {
             filtro: filtro,
             valueID : valueID
-        },
-        success: function(data){
-            //  console.log(data);
         },
         error: function() {
             alert("Error occured")

@@ -5,7 +5,6 @@ $(document).ready(function () {
 function consultaInfoInscripcion() {
     //llamado a ffuncion asincrona
     consultaAsyncFichaInsc(ID_INSC,0).then(function (result) {
-        console.log(result);
         buildHTMLFicha(result);
         if (result.C_SS != null) {
             let cardHTML = buildCardSerSoc(result.C_SS);
@@ -28,7 +27,6 @@ function consultaInfoInscripcion() {
 }
 
 function buildCardInscripcionCancelacion(DATOS){
-    console.log(DATOS);
     let template = `<div class="card">
                             <div class="card-body py-3 px-2">
                                 <div class="d-flex">
@@ -49,7 +47,6 @@ function buildCardInscripcionCancelacion(DATOS){
 }
 
 function buildCardInscripcion(DATOS){
-    console.log(DATOS);
     return `
         <div class="card">
             <div class="card-body py-3 px-4">
@@ -70,8 +67,6 @@ function buildCardInscripcion(DATOS){
             </div>
         </div>`;
 }
-
-
 
 function buildHTMLFicha(FICHA) {
     let DATOS = FICHA.DATOS;
@@ -145,24 +140,12 @@ function buildCardSerSoc(SS) {
                                 </div>
                             </div>`;
 }
-/*
-"url":"./webhook/lista-solicitudes-inscripcion.php",
-                "type": "POST",
-                "data": {"idInsc": 0}
-* */
-
-/*
-<i class="fas fa-check-circle text-primary avatar-status" data-bs-toggle="tooltip" data-bs-placement="top" title="Cuanta Verificada"></i>
-* */
-
-//btnValidatePago
 
 //LISTENER PARA ACCION DEL BOTON
 $(document).on("click", ".btnValidatePago", function ()
 {
     let valorAccion = $("#status-pago").val();
     let id = ID_INSC;
-    console.log(valorAccion);
     let action, mje;
     if (valorAccion === "1"){
         mje = "Acreditar el pago del curso";
@@ -181,7 +164,6 @@ $(document).on("click", ".btnValidatePago", function ()
         if (confirmed) {
             //sendAcionFile
             confirmaCuentaAdmin("1",valorAccion,id).then(function (result) {
-                console.log(result);
                 if (result == -1){
                     titulo= "Contraseña invalida";
                     texto= "Porfavor llena los datos que se solicitan";
@@ -220,3 +202,15 @@ function viewDetailsPago() {
     alert("VER DETALLES");
 }
 
+$(document).on("click", ".btnActionFicha", function ()
+{
+    fichaInsc();
+});
+
+//printerFicha
+
+function fichaInsc() {
+    let id = ID_INSC;
+    var url = './ficha_inscripcion/index.php';
+    redirect_by_post(url, {  id: id }, true);
+}

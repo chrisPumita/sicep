@@ -89,7 +89,7 @@
                         <h3>Detalles de la Inscripción</h3>
                     </div>
                     <div class="col-sm-2 align-items-center">
-                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3">
+                        <button class="btn btn-primary w-100 mr-3 mt-3 mb-3 btnActionFicha">
                             <i class="fas fa-print"></i> Imprimir</button>
                     </div>
                 </div>

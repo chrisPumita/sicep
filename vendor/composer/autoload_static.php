@@ -39,6 +39,10 @@ class ComposerStaticInitccc4b6313f147cd56753bfe8e2e563ac
             'Mpdf\\' => 5,
             'Matrix\\' => 7,
         ),
+        'L' => 
+        array (
+            'Luecano\\NumeroALetras\\' => 22,
+        ),
         'D' => 
         array (
             'DeepCopy\\' => 9,
@@ -72,8 +76,8 @@ class ComposerStaticInitccc4b6313f147cd56753bfe8e2e563ac
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -94,6 +98,10 @@ class ComposerStaticInitccc4b6313f147cd56753bfe8e2e563ac
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Luecano\\NumeroALetras\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/luecano/numero-a-letras/src',
         ),
         'DeepCopy\\' => 
         array (

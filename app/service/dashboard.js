@@ -193,7 +193,6 @@ function buildHTMLCardsDashboard(lista) {
 }
 
 function loadUltimosPagos(DATA) {
-    console.log(DATA);
     let template = ``;
     if (DATA.length > 0) {
         DATA.forEach(
@@ -229,7 +228,6 @@ function loadUltimosPagos(DATA) {
 function cargaCursosActivos() {
     //llamado a funcion asincrona de cursos
     cargaCursos(0,1).then(function (JSONData) {
-        console.log(JSONData);
         let listaHtml = buildCaroucelDashboardCursos(JSONData);
         $("#caroucel-courses-dashboard").html(listaHtml);
     });

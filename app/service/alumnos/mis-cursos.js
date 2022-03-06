@@ -4,7 +4,6 @@ $(document).ready(function() {
 
 function cargaMisSolicitudes() {
     consultaAsyncOfertaAsignAlu().then(function (datos) {
-        console.log(datos);
         buildHTMLMisCursos(datos.misCursos);
         buildHTMLEnviadas(datos.enviados);
         buildHTMLSolicitudesCanceladas(datos.cancelados);

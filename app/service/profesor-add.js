@@ -15,7 +15,6 @@ $("#frm-add-profesor").on("submit", function(e){
         .done(function(res){
         $("#frm-add-profesor").trigger('reset');
         //Se recarga el DataTable para mostrar el nuevo registro
-        console.log(res);
         var table = $('#tblProfesores').DataTable( {
             ajax: "data.json"
             } );

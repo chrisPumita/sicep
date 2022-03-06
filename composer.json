@@ -1,6 +1,7 @@
 {
     "require": {
         "mpdf/mpdf": "^8.0",
-        "phpoffice/phpspreadsheet": "^1.19"
+        "phpoffice/phpspreadsheet": "^1.19",
+        "luecano/numero-a-letras": "3.0"
     }
 }

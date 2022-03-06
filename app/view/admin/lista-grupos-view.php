@@ -93,9 +93,6 @@
             color: black;
             font-size: 15px;
         }
-        .hidden {
-            overflow: hidden;
-        }
     </style>
 </head>
 
@@ -159,6 +156,9 @@
 
         <footer class="text-center text-white ">
             <?php include "modals/generalModals.php"?>
+            <?php include "modals/modal-vista-listas.php"?>
+            <?php include "modals/modal-documentos-alumno.php"?>
+            <?php include "modals/modal-vista-documento.php"?>
             <?php include "includes/footer.php" ?>
         </footer>
     </div>
@@ -169,6 +169,9 @@
 <script src="./service/general/tipos.js"></script>
 <script src="./service/grupos-actuales.js"></script>
 <script src="./service/general/tools.js"></script>
+<script src="./service/documentacion-gral.js"></script>
+<script src="./service/listasInscripcion.js"></script>
+<script src="./service/acounts-security.js"></script>
 </body>
 
 </html>

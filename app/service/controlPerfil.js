@@ -15,7 +15,6 @@ async function consultaDeptosPerfil() {
 
 //Constructor de datos HTML del profesor
 function buildHTMLDatosPeril(profesor){
-    console.log(profesor);
     $("#avatarImagePerfil").attr("src",profesor.img_perfil);
     $("#prefijoProfesor").val(profesor.prefijo);
     $("#nombre_profesor_perfil").val(profesor.nombre);
@@ -33,7 +32,6 @@ function buildHTMLDatosPeril(profesor){
 }
 
 function buildSelectDeptosPerfil(departamentos){
-    console.log(departamentos);
     let template = "";
     departamentos.forEach(
         (departamento)=>

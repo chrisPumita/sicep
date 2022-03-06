@@ -195,7 +195,6 @@ function showDocs(contador, collapse) {
 
      if (!$('#'+idAcordion).hasClass("collapsed")){
          consultaAsyncDocsRevisa(idInsc,1).then(function (response) {
-             console.log(response);
             let templateDocs = buildTBLDocsSolicitados(response);
              let container = $("#containerDocs-"+contador);
              container.html(templateDocs);

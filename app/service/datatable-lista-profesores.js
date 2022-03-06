@@ -127,7 +127,6 @@ $(document).on("click", ".btnChangeStatus", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
     let id = $(elementClienteSelect).attr("id_profesor");
-    console.log(id);
     alert(id);
 });
 

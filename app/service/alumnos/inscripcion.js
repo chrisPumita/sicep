@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 function buscaInscrpcion(idAsig){
     buscaInscripcion(idAsig).then(function (response) {
-        console.log(response);
         if (!response.option){
             alerta("SOLICITUD REALIZADA",response.messageText,"success");
             inscripcionSuccess();
@@ -111,9 +110,6 @@ async function inscribeCursoAjax(){
         type: 'POST',
         data: {idAsig:ID_ASIG},
         dataType: "json",
-        success: function (response) {
-            //  console.log(response);
-        },
         error: function() {
             alerta("Error al tratar de inscribirte");
         }

@@ -92,7 +92,6 @@ $("#frm-add-grupo-curso").on("submit", function(e){
     }).done(function(response){
         $("#frm-add-grupo-curso").trigger('reset');
         consultaGrupos($("#idCursoGrupo").val());
-        console.log(response);
     });
     $("#modalCreaGrupoCurso").modal('hide');
 });

@@ -71,7 +71,6 @@ function viewPDFModal(link,curso) {
 
 function consultaHorarioGpoListModal(idGpo,modalidad) {
     consultaHorarioOferta(idGpo).then(function (e) {
-        console.log(e);
         buildHTMLHorarioContainers(e,modalidad)
     });
 }

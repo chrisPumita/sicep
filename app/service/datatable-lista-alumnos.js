@@ -258,7 +258,6 @@ $(document).on("click", ".btnBanCount", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
     let id = $(elementClienteSelect).attr("id_profesor");
-    console.log(id);
     alert("BAN "+id);
 });
 
@@ -266,7 +265,6 @@ $(document).on("click", ".btnViewDoc", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
     let id = $(elementClienteSelect).attr("id_profesor");
-    console.log(id);
     alert("MODAL VISTA DOCUMENTO ACREDITA "+id);
 });
 
@@ -274,7 +272,6 @@ $(document).on("click", ".btnSuspenderAccount", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
     let id = $(elementClienteSelect).attr("id_profesor");
-    console.log(id);
     alert("suspender cuenta "+id);
 });
 

@@ -183,7 +183,6 @@ $(document).on("click", ".btnValidateNewAdmin", function ()
             sweetConfirm('Nuevo Administrador', '¿Estas seguro de que desea agregar a '+selected+ ' como ADMINISTRADOR?', function (confirmed) {
                 if (confirmed) {
                     confirmaAddCuentaAdmin(id,nivel,cargo).then(function (result) {
-                        console.log(result);
                         if (result == -1){
                             titulo= "Contraseña invalida";
                             texto= "Porfavor llena los datos que se solicitan";

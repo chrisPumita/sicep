@@ -1,6 +1,5 @@
 //Llamamdo de la pagina
 $(document).ready(function() {
-    console.log("FUNCIONANDO");
     cargaAsignacionesActuales();
 });
 
@@ -28,7 +27,7 @@ function buildHTMLCards(lista) {
                     </span>
                     <div class="banner" style="background-image: url(${doc.banner_img}); ">
                     </div>
-                    <span class="badge bg-info ">${doc.inscritos}/${doc.cupo} Disponibles</span>
+                    <span class="badge bg-info ">${doc.inscritos}/${doc.cupo} Inscritos</span>
                     <h5 class="name text-center pt-lg-3">${doc.nombre_curso}</h5>
                     <h6 class="name text-center text-secondary">Grupo ${doc.grupo}</h6>
                     <div class="recent-message d-flex px-3">
@@ -92,7 +91,7 @@ function buildHTMLCards(lista) {
                         <button class="btn btn-primary mr-3 me-1 mb-1" onclick="openAsig(${doc.id_asignacion});">
                                 <i class="fas fa-plus"></i> Mas info
                         </button>
-                        <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#addNewProfesor">
+                        <button class="btn btn-primary mr-3 me-1 mb-1" data-bs-toggle="modal" data-bs-target="#viewListasInscripcion" onClick="viewListas(${doc.id_asignacion})">
                                 <i class="fas fa-clipboard-check"></i>Solicitudes ${btnSolic}
                         </button>
                     </div>
@@ -116,4 +115,8 @@ function openAsig(id) {
     let url = "./detalles-asignacion";
     let data = {  id:id };
     redirect_by_post(url, data, false);
+}
+
+function viewListas(id) {
+    loadSolicitudes(id);
 }

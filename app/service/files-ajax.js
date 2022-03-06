@@ -12,11 +12,7 @@ $("#frm-banner-curso").on("submit", function(e){
         data: formData,
         cache: false,
         contentType: false,
-        processData: false,
-        success: function (result) {
-            console.log(result)
-        },
-        error: function(req, err){ console.log('my message' + err+ req); }
+        processData: false
     })
     .done(function(res){
         $("#frm-banner-curso").trigger('reset');

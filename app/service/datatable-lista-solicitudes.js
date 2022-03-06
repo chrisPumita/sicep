@@ -179,7 +179,6 @@ $(document).on("click", ".btnVieDocs", function ()
     let elementClienteSelect = $(this)[0].parentElement.parentElement;
     let id = $(elementClienteSelect).attr("folio");
     consultaAsyncDocsRevisa(id,1).then(function (response) {
-        console.log(response);
         let templateDocs = buildTBLDocsSolicitados(response);
        $("#containerDocs").html(templateDocs);
     })

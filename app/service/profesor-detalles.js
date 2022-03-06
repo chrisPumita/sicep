@@ -5,7 +5,6 @@ window.onload = function(){
 
 $(document).ready(function() {
     let idProfesor = ID_PROF;
-    console.log('ID PROFESOR: '+ID_PROF);
     cargaDatosProfesor(idProfesor);
     cargaDataTableAsignaciones();
 
@@ -20,7 +19,6 @@ function cargaDatosProfesor(idProfesor) {
 }
 function cargaCursoPropuestos() {
     cargaCursos(2,ID_PROF).then(function (JSONData) {
-        console.log(JSONData);
         let template = "";
         if (JSONData.length>0){
             template = `
@@ -134,7 +132,6 @@ function printHTMLDetails(PROF_DATA) {
 }
 
 function buildCardAdmin(ADMIN) {
-    console.log(ADMIN);
     let template = `<div class="card">
                         <div class="card-header img_bg_cards" style="background-image: url(../assets/images/icons/group3.svg);">
                             <div class="col-12" >

@@ -208,7 +208,13 @@ function revisaDocumento(idFile,value,pw){
             case 1:
                alertaEmergente("Se ha marcado el documento, ya se notificó al alumno");
                //Consultar documentacion
-                consultaDocsPorRevisar();
+                try {
+                    consultaDocsPorRevisar();
+                }catch (e) {
+                    $("#viewDocsInscripcion").modal('hide');
+                    $("#modalViewFile").modal('hide');
+                }
+                
                 break;
             case 99:
                 alerta(resultado.Mensaje, "La contraseña es incorrecta o tal vez NO tiene los permisos necesarios para procesar este tipo de archivo.", "error")

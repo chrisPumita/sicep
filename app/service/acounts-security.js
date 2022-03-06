@@ -66,9 +66,6 @@ async function excuteAsyncInstructionAJAX(data,url){
         type: 'POST',
         dataType: "json",
         data: data,
-        success: function (response) {
-            console.log(response);
-        },
         error: function() {
             alert("Error al conectar con el backen para autorizar");
         }

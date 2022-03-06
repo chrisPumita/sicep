@@ -137,14 +137,12 @@ function cargaCursosDataTable() {
     $('.status-dropdown').on('change', function(e){
         var status = $(this).val();
         $('.status-dropdown').val(status);
-        console.log(status);
         dataTable.column(6).search(status).draw();
     });
 
     $('.profesor-dropdown').on('change', function(e){
         var status = $(this).val();
         $('.profesor-dropdown').val(status);
-        console.log(status);
         dataTable.column(2).search(status).draw();
     });
 }

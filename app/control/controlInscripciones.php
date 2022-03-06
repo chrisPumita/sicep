@@ -171,18 +171,18 @@
         return $FICHA->queryRegistraInscripcion();
     }
 
-    function confirmaMatchSolicitudAlumno($idAlumno, $idInsc)
+    function confirmaMatchSolicitudAlumno($idAlumno, $idInsc,$filtro)
     {
         include_once "../model/INSCRIPCION.php";
         $FICHA = new INSCRIPCION();
         $FICHA->setIdAlumnoFk($idAlumno);
         $FICHA->setIdInscripcion($idInsc);
-        return $FICHA->queryFichasInscripcionAlumnos(0);
+        return $FICHA->queryFichasInscripcionAlumnos($filtro);
     }
 
     function cancelarSolicitudAlumno($idAlumno, $idInsc)
     {
-        if (confirmaMatchSolicitudAlumno($idAlumno, $idInsc)) {
+        if (confirmaMatchSolicitudAlumno($idAlumno, $idInsc,0)) {
             #se cancela la inscripcion
             $notas = "Solicitud Cancelada por el alumno el día " . date('Y-m-d H:i:s') . "<br>";
             $confirmacionPago = false;

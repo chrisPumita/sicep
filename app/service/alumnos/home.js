@@ -257,7 +257,6 @@ function buildHTMLListDoscPend(lista) {
     if (lista.length > 0) {
         let listaAgrupada = agrupar(lista);
     let contador = 0;
-    console.log(lista);
     template+= `<div class="accordion accordion-flush" id="accordionFlushExample">`;
         listaAgrupada.forEach(curso=>{
             contador++;

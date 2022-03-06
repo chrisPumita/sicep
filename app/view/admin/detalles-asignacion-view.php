@@ -362,6 +362,8 @@ $titulo = "Detalles de la Asignación" ?>
 <script src="./service/asignacion-gral.js"></script>
 <script src="./service/asignacion-detalles.js"></script>
 <script src="./service/documentacion-gral.js"></script>
+<script src="./service/listasInscripcion.js"></script>
+<script src="./service/acounts-security.js"></script>
 
 </body>
 

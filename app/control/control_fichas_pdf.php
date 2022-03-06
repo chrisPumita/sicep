@@ -1,6 +1,16 @@
 <?php
+use Luecano\NumeroALetras\NumeroALetras;
+function getBodyFicha($ficha){
+    if($ficha['DESCUENTO'] == NULL){
+        $descuento = 'NO APLICA';
+        $totalPago = $ficha['costo_real'];
+    }
+    else{
 
-function getBodyFicha($noFicha){
+        $valorDesc =($ficha['costo_real']*$ficha['DESCUENTO'])/100;
+        $descuento = '-$'.$valorDesc.' MX ('.$ficha['DESCUENTO'].'%)';
+        $totalPago = $ficha['costo_real'] - $valorDesc;
+    }
     return '<body class="bg-light">
 <header>
     <div class="container-fluid m-0">
@@ -39,37 +49,37 @@ function getBodyFicha($noFicha){
         <tbody>
         <tr>
             <td class="tg-n50k">NOMBRE:</td>
-            <td class="tg-n50k">ARMANDO FERNANDO</td>
+            <td class="tg-n50k">' .$ficha['nombre'].'</td>
             <td class="tg-lh7k"></td>
-            <td class="tg-387i">' .$noFicha.'</td>
+            <td class="tg-387i">' .$ficha['id_inscripcion'].'</td>
         </tr>
         <tr>
             <td class="tg-n50k">PRIMER APELLIDO:</td>
-            <td class="tg-n50k">HERNANDEZ</td>
+            <td class="tg-n50k">' .$ficha['app'].'</td>
             <td class="tg-lh7k"></td>
             <td class="tg-lh7k"></td>
         </tr>
         <tr>
             <td class="tg-n50k">SEGUNDO APELLIDO:</td>
-            <td class="tg-n50k">CASTAÑEDA</td>
+            <td class="tg-n50k">' .$ficha['apm'].'</td>
             <td class="tg-lh7k"></td>
-            <td class="tg-2qwn">FECHA</td>
+            <td class="tg-2qwn">FECHA </td>
         </tr>
         <tr>
             <td class="tg-n50k">MATRICULA/NO CTA.</td>
-            <td class="tg-n50k">156156156156</td>
+            <td class="tg-n50k">' .$ficha['matricula'].'</td>
             <td class="tg-lh7k"></td>
-            <td class="tg-387i">25 DE ENERO DE 2022</td>
+            <td class="tg-387i">'.date('Y-m-d H:i:s').'</td>
         </tr>
         <tr>
             <td class="tg-n50k">CORREO:</td>
-            <td class="tg-n50k">CORREOALUMNOS@GMAILCOM</td>
+            <td class="tg-n50k">' .$ficha['email'].'</td>
             <td class="tg-lh7k"></td>
             <td class="tg-lh7k"></td>
         </tr>
         <tr>
             <td class="tg-n50k">TELEFONO:</td>
-            <td class="tg-n50k">54561651561561</td>
+            <td class="tg-n50k">' .$ficha['telefono'].'</td>
             <td class="tg-lh7k"></td>
             <td class="tg-lh7k"></td>
         </tr>
@@ -86,15 +96,15 @@ function getBodyFicha($noFicha){
     <tbody>
       <tr>
         <td class="tg-zcwr">CARRERA:</td>
-        <td class="tg-zcwr">informatica</td>
+        <td class="tg-zcwr">' .$ficha['carrera_especialidad'].'</td>
       </tr>
       <tr>
         <td class="tg-zcwr">UNIVERSIDAD:</td>
-        <td class="tg-zcwr">UNIVERSIDAD NACIONAL AUTONOMA DE MÉXICO (UNAM)</td>
+        <td class="tg-zcwr">' .$ficha['nombreUni'].' (' .$ficha['siglas'].')</td>
       </tr>
       <tr>
         <td class="tg-zcwr">PROCEDENCIA:</td>
-        <td class="tg-zcwr">COMUNIDAD UNAM</td>
+        <td class="tg-zcwr">' .$ficha['tipo_procedencia'].'</td>
       </tr>
     </tbody>
     </table>
@@ -112,48 +122,48 @@ function getBodyFicha($noFicha){
     </colgroup>
     <thead>
       <tr>
-        <th class="tg-idar" colspan="4">Información del curso:</th>
+        <th class="tg-idar" colspan="4">Información del '.getTipoCurso($ficha['tipo_curso']).'</th>
         <th class="tg-zv4m"></th>
-        <th class="tg-idar" colspan="2">Información de costo:</th>
+        <th class="tg-idar" colspan="2">Información de costo</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="tg-qldt">Curso</td>
-        <td class="tg-5ufm" colspan="3">004 Diccionarios de datos</td>
+        <td class="tg-qldt">'.getTipoCurso($ficha['tipo_curso']).':</td>
+        <td class="tg-5ufm" colspan="3">'.$ficha['codigo'].' '.$ficha['nombre_curso'].'   (Modalidad '.getModalidadCurso($ficha['modalidad']).')</td>
         <td class="tg-zv4m"></td>
-        <td class="tg-qldt">Costo de curso</td>
-        <td class="tg-5ufm">$ 1500.00 MXN</td>
+        <td class="tg-qldt">Costo de curso:</td>
+        <td class="tg-5ufm">$ '.$ficha['costo_real'].' MXN</td>
       </tr>
       <tr>
-        <td class="tg-qldt">Grupo</td>
-        <td class="tg-5ufm">673</td>
-        <td class="tg-qldt">Semestre</td>
-        <td class="tg-5ufm">2021-2</td>
+        <td class="tg-qldt">Grupo:</td>
+        <td class="tg-5ufm">'.$ficha['grupo'].'</td>
+        <td class="tg-qldt">Semestre:</td>
+        <td class="tg-5ufm">'.$ficha['semestre'].'</td>
         <td class="tg-zv4m"></td>
-        <td class="tg-qldt">Descuento aplicado</td>
-        <td class="tg-5ufm">No Aplica</td>
+        <td class="tg-qldt">Descuento:</td>
+        <td class="tg-5ufm">'.$descuento.'</td>
       </tr>
       <tr>
-        <td class="tg-qldt">Generacion</td>
-        <td class="tg-5ufm">2022</td>
-        <td class="tg-qldt">Sede</td>
-        <td class="tg-5ufm">CAMPO 4</td>
+        <td class="tg-qldt">Generación:</td>
+        <td class="tg-5ufm">'.$ficha['semestre'].'</td>
+        <td class="tg-qldt">Sede:</td>
+        <td class="tg-5ufm">'.getCampusCede($ficha['campus_cede']).'</td>
         <td class="tg-zv4m"></td>
-        <td class="tg-qldt">Total de pago</td>
-        <td class="tg-5ufm">$ 1500.00 MXN</td>
+        <td class="tg-qldt">Total de pago:</td>
+        <td class="tg-5ufm">$ '.$totalPago.' MXN</td>
       </tr>
       <tr>
-        <td class="tg-qldt">Profesor</td>
-        <td class="tg-5ufm" colspan="3">Lic. Christian RCGS DEVELOPER</td>
+        <td class="tg-qldt">Profesor:</td>
+        <td class="tg-5ufm" colspan="3">'.$ficha['profesor'].'</td>
         <td class="tg-zv4m"></td>
         <td class="tg-5o4h" colspan="2">NOTAS</td>
       </tr>
       <tr>
-        <td class="tg-qldt">Inscripción</td>
-        <td class="tg-5ufm" colspan="3">Enviada el lun, 28 de febrero de 2022, 17:36 Hrs.</td>
+        <td class="tg-qldt">Inscripción:</td>
+        <td class="tg-5ufm" colspan="3">Creada el '.date("d/m/Y H:i:s", strtotime($ficha['fecha_solicitud'])).'</td>
         <td class="tg-zv4m"></td>
-        <td class="tg-5ufm" colspan="2"></td>
+        <td class="tg-5ufm" colspan="2">'.$ficha['notas'].'</td>
       </tr>
     </tbody>
     </table>
@@ -175,7 +185,9 @@ function getBodyFicha($noFicha){
 </colgroup>
 <thead>
   <tr>
-    <td class="tg-baqh">FIRMA DEL ALUMNO<br><br><br><br><br>_________________________________________</td>
+    <td class="tg-baqh">FIRMA DEL ALUMNO<br><br><br><br><br>
+            _________________________________________
+            <br>'.$ficha['nombre_completo'].'</td>
   </tr>
 </thead>
 </table>
@@ -183,7 +195,26 @@ function getBodyFicha($noFicha){
 </body>';
 }
 
-function getBodyFichaPago($noFicha){
+function getBodyFichaPago($ficha){
+    $formatter = new NumeroALetras();
+    $formatter->conector = ' PESOS ';
+    $sexo = $ficha['sexo'] == 1? "ALUMNA":'ALUMNO';
+
+    if($ficha['DESCUENTO'] == NULL){
+        $descuento = 'NO APLICA';
+        $totalPago = $ficha['costo_real'];
+        $descPago = "";
+    }
+    else{
+
+        $valorDesc =($ficha['costo_real']*$ficha['DESCUENTO'])/100;
+        $descuento = '-$'.$valorDesc.' MX ('.$ficha['DESCUENTO'].'%)';
+        $totalPago = $ficha['costo_real'] - $valorDesc;
+        $descPago = "Costo del Curso $".$ficha['costo_real'].', aplicando un '.$ficha['DESCUENTO'].'% de descuento';
+    }
+
+    $costoFinal =  $formatter->toInvoice($totalPago, 2, "MXN");
+
     return '<body class="bg-light">
 <header>
     <div class="container-fluid m-0">
@@ -220,25 +251,26 @@ function getBodyFichaPago($noFicha){
     <tbody>
       <tr>
         <td class="tg-5ufm">MATRICULA / NO CTA.:</td>
-        <td class="tg-5ufm">156156165</td>
-        <td class="tg-8x4y">'.$noFicha.'</td>
+        <td class="tg-5ufm">'.$ficha['matricula'].'</td>
+        <td class="tg-8x4y">'.$ficha['id_inscripcion'].'</td>
       </tr>
       <tr>
-        <td class="tg-5ufm">ALUMNO:</td>
-        <td class="tg-5ufm">JUAN PEREZ ZSANCHEZ</td>
+        <td class="tg-5ufm">'.$sexo.':</td>
+        <td class="tg-5ufm">'.$ficha['nombre_completo'].'</td>
         <td class="tg-6dcg">MONTO A PAGAR</td>
       </tr>
       <tr>
         <td class="tg-5ufm">FECHA DE IMPRESIÓN</td>
-        <td class="tg-5ufm">22/0572021 12:53</td>
-        <td class="tg-mvkq">$1500.00 MXN</td>
+        <td class="tg-5ufm">'.date('Y-m-d H:i:s').'</td>
+        <td class="tg-mvkq">$'.$totalPago.' MXN</td>
       </tr>
       <tr>
         <td class="tg-6dcg" colspan="2">DETALLES DEL PAGO</td>
-        <td class="tg-pr1q">(MIL QUINIENTOS PESOS MN 100/00)</td>
+        <td class="tg-pr1q">('.$costoFinal.')</td>
       </tr>
       <tr>
-        <td class="tg-0lax" colspan="2" rowspan="2">PAGO CURSO INICIACION AL COMPUTO 1 GRUPO 3033, GENERACION 2022, SEMESTRE 3203 PAGO CURSO INICIACION AL COMPUTO 1 GRUPO 3033, GENERACION 2022, SEMESTRE 3203</td>
+        <td class="tg-0lax" colspan="2" rowspan="2">Pago para '.getTipoCurso($ficha['tipo_curso']).' <strong>'.$ficha['nombre_curso'].'</strong> 
+        GRUPO '.$ficha['grupo'].', GENERACION '.$ficha['generacion'].', SEMESTRE '.$ficha['semestre'].'<br>'.$descPago.'</td>
         <td class="tg-gns2">CONCEPTO</td>
       </tr>
       <tr>
@@ -284,11 +316,11 @@ function getBodyFichaPago($noFicha){
       </tr>
       <tr>
         <td class="tg-dvpl">REFERENCIA:</td>
-        <td class="tg-c3ow">21561561561561561561</td>
+        <td class="tg-c3ow">'.$ficha['id_inscripcion'].'</td>
       </tr>
       <tr>
         <td class="tg-1hr0">MONTO A PAGAR:</td>
-        <td class="tg-nbj5">$1500 mxn</td>
+        <td class="tg-nbj5">$'.$totalPago.' MXN</td>
       </tr>
     </thead>
     </table>
@@ -303,5 +335,55 @@ function getBodyFichaPago($noFicha){
 </div>
 </body>';
 }
-?>
 
+
+function getTipoCurso($estado){
+    //Funcionalidades del tipo_curso
+    switch($estado){
+        case "0":
+            return "Otro";
+            break;
+        case "1":
+            return "Curso";
+            break;
+        case "2":
+            return "Diplomado";
+            break;
+        case "3":
+            return "Seminario";
+            break;
+        case "4":
+            return "Taller";
+            break;
+        default:
+            return "Error";
+            break;
+    }
+}
+
+function getModalidadCurso($tipo){
+    //Funcionalidades del tipo_curso
+    switch($tipo){
+        case "0":
+            return "Presencial";
+            break;
+        case "1":
+            return "En Linea";
+            break;
+        case "2":
+            return "Hídrida";
+            break;
+        default:
+            return "No definido";
+            break;
+    }
+}
+
+function getCampusCede($campus) {
+    if ($campus=="0")
+        return "CAMPO 1";
+    else if ($campus=="1")
+        return "CAMPO 4";
+    else
+        return "OTRO";
+}

@@ -13,7 +13,6 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                             </thead>`;
         DOCS.forEach(
             (doc)=>{
-                console.log(doc);
                 //Validando el arrrchivo a spara presentarlo
                 let botonesPDF, botonesAcion, fechaInfo,badgeRevisa ='';
                 let estadoFile = getTipoEstado(doc.estatusFile,doc.estadoRevisado);
@@ -66,7 +65,7 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
                                       <button type="button" class="btn btn-primary btnUpload" onclick="modalOpen('${doc.formato_admitido}');"><i class="fas fa-upload"></i></button>
                                     </div>`;
                         let moreInfo = estadoActualArchivoViewAlumno(doc.estatusFile);
-                        fechaInfo = "El archivo fue rechazado debe subirse nuevamente<br><blockquote>"+moreInfo+".</blockquote>";
+                        fechaInfo = "El archivo fue rechazado, debe subirse nuevamente<br><blockquote>"+moreInfo+".</blockquote>";
                         break;
                 }
 

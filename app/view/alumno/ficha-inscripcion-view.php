@@ -155,7 +155,7 @@ $titulo = "Inicio - Alumno"; ?>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" id="bannerCurso" src="../resources/banners/2147483647/banner-20220104210055.jpg" alt="Card image cap">
+                                <img class="card-img-top img-fluid" id="bannerCurso" src="../resources/banners/ban-fesc.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <div class="row py-2">
                                         <h5 class="text-secondary">Información del curso:</h5>
