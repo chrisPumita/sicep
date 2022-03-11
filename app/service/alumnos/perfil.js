@@ -17,7 +17,6 @@ async function consultaProcedencias() {
     buildSelectProcedencias(JSONData);
 }
 function buildSelectProcedencias(procedencias) {
-    console.log(procedencias);
     let template = "";
     procedencias.forEach(
         (procedencia) => {
@@ -28,13 +27,13 @@ function buildSelectProcedencias(procedencias) {
 }
  
  function buildSelectUniversidades(universidades){
-    console.log(universidades);
      let template = "";
      universidades.forEach(
          (universidad) => {
              template += `<option value="${universidad.id_universidad}">${universidad.nombre}</option>`;
          }
      );
+     template += `<option value="0">OTRA</option>`;
      $("#universidad").html(template);
  }
  
@@ -45,7 +44,6 @@ async function consultaEdos() {
 }
 
 function buildSelectEdos(estados) {
-    console.log(estados);
     let template = "";
     estados.forEach(
         (estado) => {
@@ -54,6 +52,7 @@ function buildSelectEdos(estados) {
     );
     $("#estado_alumno_perfil").html(template);
 }
+
 $("#estado_alumno_perfil").change(function ()
 {
     //obj que tienes cambios
@@ -89,9 +88,69 @@ function buildHTMLDatosPeril(alumno) {
     $("#matricula_alumno_perfil").val(alumno.matricula);
     $("#carrera_alumno_perfil").val(alumno.carrera_especialidad);
     //Pintamos HTML debajo de imagen de perfil
+    $("#universidad").val(alumno.id_universidad);
+    if(alumno.id_universidad==="0"){
+        $("#nombreUni").val(alumno.nombre_uni);
+        $("#nombreUni").removeClass("d-none");
+    }
+    else{
+        $("#nombreUni").val("");
+        $("#nombreUni").addClass("d-none");
+    }
+
+    validaDocumentoAcredita(alumno);
+
     $("#nombreAlumnoImg").html(alumno.nombre_completo);
     $("#correoAlumnoImg").html(alumno.email);
+
     conusltaMuncipios(alumno.id_estado_fk, alumno.id_municipio);
+}
+
+$( "#universidad" ).change(function() {
+    let idVal= $("#universidad").val();
+    if(idVal==="0")
+    {
+        $("#nombreUni").removeClass("d-none");
+        $("#nombreUni").focus();
+    }
+    else{
+        $("#nombreUni").addClass("d-none");
+        $("#nombreUni").val("");
+    }
+});
+
+function validaDocumentoAcredita(alumno) {
+
+
+    if (alumno.path_doc_valida == null){
+        let alert = ``;
+        if(alumno.update_doc_at == null){
+            alert = `<div class="alert alert-success alert-dismissible" role="alert">
+                        <h4 class="alert-heading">SUBIR ARCHIVO</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <P>Es necesario subir un comrobante que verifique tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                        <hr>
+                        <p>Este archivo se renueva cada año, asi que tedrás que comprobar tu situacion escolar despues.</p>
+                      </div>`
+        }
+        else{
+            alert = `<div class="alert alert-info alert-dismissible" role="alert">
+                        <h4 class="alert-heading">RENOVAR ARCHIVO</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <P>Es necesario que renueves tu situacion con un archivo, vuelve a subir un documento que acredite tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                      </div>`
+        }
+    }
+    else{
+        //Date update code pendiente
+        alert = `<div class="alert alert-info alert-dismissible" role="alert">
+                        <P>Tu documento fue enviado el ${getLegibleFechaHora(alumno.update_doc_at)}, No necesitas realizar otro movimiento.</P>
+                         </div>`
+        $("#inputFile").html("");
+    }
+    $("#alertInfoDoc").html(alert);
 }
 
 function conusltaMuncipios(idEdo, idMunSelect) {
@@ -149,6 +208,8 @@ $("#frm-update-perfil-alumno").on("submit", function(e) {
             telefono_alumno: $("#telefono_alumno_perfil").val(),
             email_alumno: $("#correo_alumno_perfil").val(),
             idMunicipio: $("#localidad_alumno_perfil").val(),
+            universidad: $("#universidad").val(),
+            nombreUni: $("#nombreUni").val(),
             idProcedencia: $("#procedencia").val(),
             carreraEspecialidad: $("#carrera_alumno_perfil").val()
         };

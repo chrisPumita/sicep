@@ -1,7 +1,7 @@
 <!-- Modal ADD NUEVA FOTO -->
 <div class="modal fade text-left" id="updateFotoPerfil" tabindex="-1" role="dialog" aria-labelledby="selectCourse"
      aria-hidden="true">
-    <div class="modal-md  modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    <div class="modal-md  modal-dialog"
          role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">

@@ -168,7 +168,7 @@
         $FICHA->setIdInscripcion(gen_no_inscripcion());
         $FICHA->setIdAlumnoFk($idAlumno);
         $FICHA->setIdAsignacionFk($idAsig);
-        return $FICHA->queryRegistraInscripcion();
+        return $FICHA->queryRegistraInscripcion() ? $FICHA->getIdInscripcion() : NULL;
     }
 
     function confirmaMatchSolicitudAlumno($idAlumno, $idInsc,$filtro)

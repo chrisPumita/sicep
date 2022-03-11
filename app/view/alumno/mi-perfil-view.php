@@ -104,6 +104,12 @@
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12 mb-3 mb-sm-0">
+                                                                                <label for="nombreUni">Nombre de la Universidad:</label>
+                                                                                <input type="text" id="nombreUni" name="nombreUni" class="form-control d-none" placeholder="Nombre de la Universidad" aria-label="Carrera">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12 mb-3 mb-sm-0">
                                                                                 <label for="carrera_alumno_perfil">Carrera / Especialidad:</label>
                                                                                 <input type="text" id="carrera_alumno_perfil" name="carrera_alumno_perfil" class="form-control" placeholder="Carrera" aria-label="Carrera">
                                                                             </div>
@@ -145,32 +151,23 @@
                                                 <div class="card-body p-3 pb-2">
                                                     <h4 class="card-title">Subir Documento para Verificación</h4>
                                                     <label for="pdfFile" class="form-label">En este apartado puedes subir tu documento para verificar tu situación académica.</label>
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <form id="inputPDF">
-                                                                <div class="mb-3">
+                                                    <div class="row" id="inputFile">
+                                                        <form id="form-update-doc" class="d-flex">
+                                                            <div class="form-group col-12 col-sm-12 d-flex">
+                                                                <div class="col-12 col-sm-9 mx-3">
                                                                     <div class="input-group mb-3">
                                                                         <input type="file" class="form-control" id="pdfFile" name="pdfFile" accept=".pdf">
-                                                                        <button class="btn btn-secondary" type="submit" id="btnSubir">Subir</button>
                                                                     </div>
                                                                 </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-sm-1">
-                                                            <span id="filePDF" class="me-1 mb-1"></span>
-                                                            <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                                                        </div>
+                                                                <div class="col-12 col-sm-3">
+                                                                    <button class="btn btn-secondary" type="submit" id="btnSubir">Subir</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="alert alert-success alert-dismissible" role="alert">
-                                                                <h4 class="alert-heading">SUBIR ARCHIVO</h4>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                                <P>Es necesario subir un comrobante que verifique tu situación escolar actual.</P>
-                                                                <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
-                                                                <!-- <hr>
-                                                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
-                                                            </div>
+                                                        <div class="col-12" id="alertInfoDoc">
+
                                                         </div>
                                                     </div>
                                                 </div>

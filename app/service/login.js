@@ -94,24 +94,28 @@ function buildHTMLTblUnis(UNIS) {
             template += `<option value="${obj.id_universidad}">${obj.siglas} (${obj.nombre})</option>`;
         }
     );
-    template += `<option value="OTRO">Otro</option>`;
+    template += `<option value="0">OTRA</option>`;
     $("#universidades").html(template);
 }
 
 $("#estados").change(function ()
 {
-    //obj que tienes cambios
     let estado_sel = $("#estados").val();
     consultaMunicipios(estado_sel);
 });
 
 //LFHL pensando en como obtener el valor cuando se ahga el ONCHANGE pero con el nombre de la Universidad
 $( "#universidades" ).change(function() {
-    let cambio= $("#universidades").text();
-    alert(cambio);
+    let idVal= $("#universidades").val();
+    if(idVal==="0")
+    {
+        $("#nombreUni").removeClass("d-none");
+        $("#nombreUni").focus();
+    }
+    else{
+        $("#nombreUni").addClass("d-none");
+    }
   });
-
-
 
 //-------------------Star Sessions
 $('#frm-login').submit(function (e) {

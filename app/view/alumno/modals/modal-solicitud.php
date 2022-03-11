@@ -27,23 +27,8 @@
                         correo electrónico o también podrás consultarlo en este sitio, en el apartado "Mis cursos".
                     </div>
                 </div>
-                <div class="row">
-                    <hr>
-                    <div class="col-sm-4 text-center">
-                        <button type="button" class="btn btn-outline-primary">
-                            <i class="fas fa-download"></i> Ficha de inscripción
-                        </button>
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <button type="button" class="btn btn-outline-primary">
-                            <i class="fas fa-download"></i> Ficha de pago
-                        </button>
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <a href="./mis-cursos" class="btn btn-outline-primary" type="button" class="btn btn-outline-primary">
-                            <i class="fas fa-layer-group"></i> Mis Cursos
-                        </a>
-                    </div>
+                <div class="row" id="successBottons">
+
                 </div>
                 <!-- fin de seccion de detalles -->
             </div>

@@ -15,7 +15,10 @@ if(isset($_POST['nombre_alumno']) && isset($_POST['app_alumno']) && isset($_POST
         "idMunicipio"=> $_POST['idMunicipio'],
         "idProcedencia"=> $_POST['idProcedencia'],
         "carreraEsp"=> mainModel::limpiar_cadena($_POST['carreraEspecialidad']),
-        "email"=> mainModel::limpiar_cadena($_POST['email_alumno'])
+        "email"=> mainModel::limpiar_cadena($_POST['email_alumno']),
+        "universidad"=>mainModel::limpiar_cadena($_POST['universidad']),
+        "nombreUni"=>mainModel::limpiar_cadena($_POST['nombreUni']),
+        "idUni"
     ];
     include_once "../control/controlAlum.php";
     if(updateAlumno($params)){

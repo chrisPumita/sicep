@@ -291,8 +291,8 @@ class ALUMNO extends PERSONA implements I_ALUMNO
         $filtro = $edoFiltro >= 0 ? " AND  al.`estatus` = ".$edoFiltro : "";
         $filtroIdAlumno = $idAlumno > 0 ? " AND al.`id_alumno` = ".$idAlumno : "";
         $query = "SELECT al.`id_alumno`, al.`id_municipio`, mun.`id_estado_fk`, mun.`municipio`,
-       al.`matricula`, al.`id_persona`, al.`carrera_especialidad`, al.perfil_image, al.nombre_uni,
-       al.`email`, al.`estatus` AS estatus_alumno, per.`id_persona`,  al.fecha_registro,
+       al.`matricula`, al.`id_persona`, al.`carrera_especialidad`, al.perfil_image, al.nombre_uni, al.id_universidad,
+       al.`email`, al.`estatus` AS estatus_alumno, per.`id_persona`,  al.fecha_registro, al.path_doc_valida, al.update_doc_at,
        per.`nombre`, per.`app`, per.`apm`, per.`telefono`,
        concat(per.`app`,' ', per.`apm`,' ', per.`nombre`) AS nombre_completo,
        per.`estatus` AS estatus_persona, per.`sexo`,tipproc.`id_tipo_procedencia`,
@@ -444,9 +444,15 @@ class ALUMNO extends PERSONA implements I_ALUMNO
 
     function queryUpdateAlumno()
     {
-        $query = "UPDATE `alumno` SET `id_municipio` = '".$this->getIdMunicipio()."', `id_tipo_procedencia_fk` = '".$this->getIdProcedencia()."', 
-        `carrera_especialidad` = '".$this->getCarreraEspecialidad()."', `email` = '".$this->getEmail()."' 
-        WHERE `alumno`.`id_alumno` = ".$this->getIdAlumno();
+        $query = "UPDATE alumno t
+                        SET t.id_municipio           = ".$this->getIdMunicipio().",
+                            t.id_universidad         = ".$this->getIdUniversidad().",
+                            t.nombre_uni             = '".$this->getNombreUni()."',
+                            t.id_tipo_procedencia_fk = ".$this->getIdProcedencia().",
+                            t.carrera_especialidad   = '".$this->getCarreraEspecialidad()."',
+                            t.email                  = '".$this->getEmail()."'
+                        WHERE t.id_alumno = ".$this->getIdAlumno();
+
         $this->connect();
         $datos = $this->executeInstruction($query);
         $this->close();

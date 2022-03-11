@@ -24,10 +24,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-12 col-sm-12 col-md-6  mb-3 mb-sm-0">
                             <input type="tel" class="form-control form-control-user" name="telAlumno" id="telAlumno" required="" placeholder="Teléfono">
                         </div>
-                        <div class="col-sm-6 d-flex mb-3">
+                        <div class="col-12 col-sm-12 col-md-6 d-flex mb-3">
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-2 col-3">
                                     <label class="col-form-label">Sexo:</label>
@@ -99,7 +99,7 @@
                         <div class="col-sm-4 mb-3 mb-sm-0">
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-user d-block" name="nombreUni" id="nombreUni" placeholder="">
+                            <input type="text" class="form-control form-control-user d-block d-none" name="nombreUni" id="nombreUni" placeholder="Nombre de tu Universidad">
                         </div>
                     </div>
                     <div class="form-group row">

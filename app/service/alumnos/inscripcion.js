@@ -23,7 +23,6 @@ function consultaDetallesInscripcion(idAsig) {
     consultaAsyncDetailsAsigInscribe(idAsig).then(function (result) {
         loadDataAsignacion(result.datos,result.descuento);
     })
-
 }
 
 function loadPrecioDes(desc,costo) {
@@ -91,6 +90,8 @@ $(document).on("click", ".bntInpcion", function ()
         if (confirmed) {
             let result = await inscribeCursoAjax();
             if (result.messageType == 1){
+                console.log(result);
+                buildHTMLBotonesDowload(result.id);
                 alertaEmergente(result.messageText);
                 $('#solicitud').modal("show");
                 inscripcionSuccess();
@@ -114,4 +115,36 @@ async function inscribeCursoAjax(){
             alerta("Error al tratar de inscribirte");
         }
     });
+}
+
+
+function buildHTMLBotonesDowload(id) {
+    alert()
+    let template = `<hr>
+                    <div class="col-sm-4 text-center">
+                        <button type="button" class="btn btn-outline-primary" onclick="fichaInsc(${id});">
+                            <i class="fas fa-download"></i> Ficha de inscripción
+                        </button>
+                    </div>
+                    <div class="col-sm-4 text-center" onclick="">
+                        <button type="button" class="btn btn-outline-primary" onclick="fichaPagoInsc(${id});">
+                            <i class="fas fa-download"></i> Ficha de pago
+                        </button>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <a href="./mis-cursos" class="btn btn-outline-primary" type="button" class="btn btn-outline-primary">
+                            <i class="fas fa-layer-group"></i> Mis Cursos
+                        </a>
+                    </div>`;
+    $("#successBottons").html(template);
+}
+
+function fichaInsc(ID) {
+    var url = './ficha_inscripcion/index.php';
+    redirect_by_post(url, {  id: ID }, true);
+}
+
+function fichaPagoInsc(ID) {
+    var url = './ficha_pago/index.php';
+    redirect_by_post(url, {  id: ID }, true);
 }

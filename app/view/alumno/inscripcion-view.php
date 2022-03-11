@@ -109,21 +109,6 @@ $titulo = "Inscripción";
                                                     <div class="col-sm-9 text-primary" id="lblNotas"></div>
                                                 </div>
                                                 <hr>
-
-                                                <!-- <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Procedencia:</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-primary">Comunidad FESC </div>
-                                                </div> -->
-                                                <!-- <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <h6 class="mb-0">Estatus de la Inscripción</h6>
-                                                    </div>
-                                                    <div class="col-sm-4 text-primary"><i class="fas fa-check-circle text-success"></i> APROBADA</div>
-                                                    <div class="col-sm-4 text-primary"><i class="fas fa-hand-holding-usd text-success"></i> PAGADO</div>
-                                                </div>
-                                                <hr> -->
                                             </div>
                                         </div>
                                     </div>

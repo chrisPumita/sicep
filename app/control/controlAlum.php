@@ -76,6 +76,8 @@ function updateAlumno($params)
         $ALUMNO->setIdProcedencia($params['idProcedencia']);
         $ALUMNO->setCarreraEspecialidad($params['carreraEsp']);
         $ALUMNO->setEmail($params['email']);
+        $ALUMNO->setIdUniversidad($params['universidad']);
+        $ALUMNO->setNombreUni($params['nombreUni']);
         $alumno = $ALUMNO->queryUpdateAlumno();
         if($alumno ){
             //Actualizamos valores en el $_SESSION
