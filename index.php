@@ -121,9 +121,9 @@
         <ul class="navbar-nav navbar-nav-hover ms-auto">
             <div class="navbar-nav ">
                 <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary bold" aria-current="page" href="#">INICIO</a>
-                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#">NOSTROS</a>
-                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#">CURSOS</a>
-                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#" tabindex="-1" aria-disabled="true">CONTACTO</a>
+                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#nosotros">NOSTROS</a>
+                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#cursos">CURSOS</a>
+                <a class="nav-link mx-2 ms-lg-6 ps-2 d-flex justify-content-between cursor-pointer align-items-center text-primary" href="#contacto" tabindex="-1" aria-disabled="true">CONTACTO</a>
             </div>
         </ul>
             <span class="navbar-text">
@@ -143,9 +143,9 @@
               <div class="row">
                   <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
                       <h1 class="text-white mb-4">Inscríbete a los cursos de la <strong>FES Cuautitlán</strong></h1>
-                      <p class="caps text-secondary opacity-8 lead pe-5 me-5">Gran diversidad de cursos, recibe una constancia con valor curricular</p>
+                      <p class="caps text-secondary opacity-8 lead pe-5 me-5">Cursos del Departamento de Cómputo e Informática</p>
                       <div class="buttons">
-                          <a href="#">
+                          <a href="#cursos">
                               <button type="button" class="btn btn-primary mt-4">Nuestros Cursos</button>
                           </a>
                           <a href="login.php">
@@ -159,7 +159,7 @@
       </div>
   </div>
   <!-- -------- END HEADER 7 w/ text and video ------- -->
-  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6" id="nosotros">
     <!-- Section with four info areas left & one card right with image and waves -->
     <section class="py-7">
       <div class="container">
@@ -258,7 +258,7 @@
               </div>
           </div>
       </section>
-    <section class="pb-5 position-relative bg-gradient-dark mx-n3">
+    <section class="pb-5 position-relative bg-gradient-dark mx-n3" id="cursos">
       <div class="container">
         <div class="row">
           <div class="col-md-8 text-start mb-0 mt-5">
@@ -340,7 +340,7 @@
                                       <h2 class="mb-4">Recibe una Constancia de validez oficial</h2>
                                       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                       <p>¿Terminaste tu curso? <strong>Tramita tu certificado</strong> ahora es digital.</p>
-                                      <p><a href="#" class="btn btn-primary">Tramita tu certificado</a></p>
+                                      <p><a href="#" class="btn btn-primary">validar Certificado</a></p>
                                   </div>
                               </div>
                           </div>
@@ -361,7 +361,7 @@
             <div class="row">
               <div class="col-8">
                 <div class="input-group input-group-outline">
-                    <a href="#" class="btn btn-primary">Iniciar Sesión</a>
+                    <a href="./login.php" class="btn btn-primary">Iniciar Sesión</a>
                 </div>
               </div>
             </div>
@@ -373,6 +373,13 @@
           </div>
         </div>
       </div>
+    </section>
+    <section class="my-5 pt-5">
+        <div class="container">
+          <div class="row">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60092.53386501379!2d-99.18709864397943!3d19.72184514227045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21fe02541babb%3A0x13d9c1b986e25ecc!2sFacultad%20de%20Estudios%20Superiores%20Cuautitl%C3%A1n!5e0!3m2!1ses!2sus!4v1647114425852!5m2!1ses!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
     </section>
     <!-- -------- TERMINAN SECCIONES  ------- -->
   </div>
@@ -413,8 +420,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pe-1" href="#" target="_blank">
-                  <i class="fab fa-twitter text-lg opacity-8"></i>
+                <a class="nav-link pe-1" href="https://www.instagram.com/dci_fesc/" target="_blank">
+                  <i class="fab fa-instagram text-lg opacity-8"></i>
                 </a>
               </li>
               <li class="nav-item">
@@ -459,9 +466,9 @@
         <div class="col-12">
           <div class="text-center">
             <p class="text-dark my-4 text-sm font-weight-normal">
-              All rights reserved. Copyright © <script>
+               Copyright © <script>
                 document.write(new Date().getFullYear())
-              </script> Copyright © 2021 SICEP - Derechos Reservados | Creado con por <a href="https://reckreastudios.com" target="_blank">Servicio Social</a>.
+              </script> SICEP - Derechos Reservados | Creado con por <a href="https://reckreastudios.com" target="_blank">Servicio Social</a>.
             </p>
           </div>
         </div>
