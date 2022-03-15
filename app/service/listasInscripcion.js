@@ -119,6 +119,7 @@ function buildTBLSolicPendientes(LISTA) {
     let template = ``;
     if (LISTA.length>0){
         template = `
+        <div class="table-responsive">
             <table class="table table-hover table-striped" id="tblSolInscripcion">
                 <thead>
                 <tr>
@@ -196,7 +197,7 @@ function buildTBLSolicPendientes(LISTA) {
         );
         template += `
             </tbody>
-        </table>`;
+        </table> </div>`;
     }
     else{
         template = `<div class="alert alert-success d-flex align-items-center" role="alert">

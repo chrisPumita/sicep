@@ -679,7 +679,7 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
             $filtro = "";
         }
         $query = "SELECT per.nombre, per.app, per.apm, prof.prefijo, prof.img_perfil, prof.estatus AS estatus_profesor,
-       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor,
+       CONCAT(per.nombre,' ', per.app,' ',per.apm) AS nombre_completo, prof.id_profesor, prof.no_trabajador,
        gpo.grupo, gpo.id_grupo, c.id_curso, c.codigo, c.nombre_curso, c.no_sesiones, c.tipo_curso, c.banner_img, c.link_temario_pdf,
        c.descripcion, c.dirigido_a, c.objetivo, c.antecedentes,
        ag.id_asignacion, ag.generacion, c.costo_sugerido, ag.estatus AS estado_asig, ag.visible_publico,
