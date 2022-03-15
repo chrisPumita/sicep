@@ -143,13 +143,13 @@
               <div class="row">
                   <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
                       <h1 class="text-white mb-4">Inscríbete a los cursos de la <strong>FES Cuautitlán</strong></h1>
-                      <p class="caps text-secondary opacity-8 lead pe-5 me-5">Cursos del Departamento de Cómputo e Informática</p>
+                      <p class="caps text-secondary opacity-8 lead pe-5 me-5">El departamento de Cómputo e Informática te brinda una variedad de cursos para ampliar tus conocimientos y crecer profesionalmente.</p>
                       <div class="buttons">
                           <a href="#cursos">
                               <button type="button" class="btn btn-primary mt-4">Nuestros Cursos</button>
                           </a>
                           <a href="login.php">
-                              <button type="button" class="btn btn-secondary text-light mt-4">Registrate</button>
+                              <button type="button" class="btn btn-secondary text-light mt-4">Regístrate</button>
                           </a>
                       </div>
                   </div>
@@ -170,18 +170,14 @@
                 <div class="info">
                   <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
                   <h5>Multidisciplinarios</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam aspernatur cum
-                      eligendi est fuga id inventore, ipsa iste libero mollitia odit officiis quas sequi
-                      tempore velit veritatis voluptate!</p>
+                  <p>Encontrarás una amplia variedad de cursos ofrecidos por la universidad, los cuales abarcan diversas temáticas y disciplinas.</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info">
                   <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
-                  <h5>Validéz Oficial</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam aspernatur cum
-                        eligendi est fuga id inventore, ipsa iste libero mollitia odit officiis quas sequi
-                        tempore velit veritatis voluptate!</p>
+                  <h5>Validez Oficial</h5>
+                    <p>Todos los cursos ofrecidos en esta plataforma cuentan con validez oficial avalados por la UNAM, además de contar con valor curricular. </p>
                 </div>
               </div>
             </div>
@@ -189,19 +185,15 @@
               <div class="col-md-6">
                 <div class="info">
                   <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
-                  <h5>Variedad</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam aspernatur cum
-                        eligendi est fuga id inventore, ipsa iste libero mollitia odit officiis quas sequi
-                        tempore velit veritatis voluptate!</p>
+                  <h5>Certificados</h5>
+                  <p>Cada vez que finalices un curso, obtendrás una constancia que avalará tus conocimientos.</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info">
                   <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
                   <h5>A Distancia o Presencial</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam aspernatur cum
-                        eligendi est fuga id inventore, ipsa iste libero mollitia odit officiis quas sequi
-                        tempore velit veritatis voluptate!</p>
+                    <p>Toma los cursos dentro de las instalaciones de la Facultad, o en línea a través de diversas plataforma de videoconferencia con profesores especializados.</p>
                 </div>
               </div>
             </div>
@@ -218,8 +210,7 @@
                   <a href="#;">Cursos Virtuales y Presenciales</a>
                 </h5>
                 <p class="mb-0">
-                  Website visitors today demand a frictionless user expericence — especially when using search. Because
-                    of the hight standards.
+                  Realiza tu registro, ve nuestra oferta educativa e inscríbete a uno de los diversos cursos que tenemos para ti.
                 </p>
                   <p class="mb-0">
                       <a href="#" class="btn btn-primary py-3 mt-4">Regístrate</a>
@@ -240,7 +231,7 @@
                       <p class="text-white opacity-8 mb-0 text-primary">Selecciona un grupo y manda tu solicitud. Envia la documentación solicitada y
                           listo. Descrubre los descuentos que tenemos. Los cursos indicados con <span class="badge bg-dark position-relative">
                       <span class="blob green positionBadge"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSCRIPCIONES
-                      </span> estan disponibles para inscribirse. NO PIERDAS TU LUGAR.</p>
+                      </span> están disponibles para inscribirse. NO PIERDAS TU LUGAR.</p>
                   </div>
               </div>
           </div>
@@ -263,7 +254,7 @@
         <div class="row">
           <div class="col-md-8 text-start mb-0 mt-5">
             <h3 class="text-white z-index-1 position-relative">CONOCE TODOS LOS CURSOS</h3>
-            <p class="text-white opacity-8 mb-0">Cada semestre se abren grupos para diferentes cursos. Revisa la oferta que tenemos para ti.</p>
+            <p class="text-white opacity-8 mb-0">Cada semestre se abren grupos para diferentes cursos. Echa un vistazo a la oferta educativa que tenemos para ti.</p>
           </div>
         </div>
       </div>
@@ -294,12 +285,12 @@
           <div class="col-md-3">
             <h1 class="text-gradient text-primary"><span id="state2" countTo="25000">0</span>+</h1>
             <h5>ALUMNOS</h5>
-            <p>Más de 25000 Alumnos se han inscrito a algun curso</p>
+            <p>Más de 25000 Alumnos se han inscrito a algún curso</p>
           </div>
           <div class="col-md-3">
             <h1 class="text-gradient text-primary"><span id="state3" countTo="15">0</span>+</h1>
             <h5>CURSOS</h5>
-            <p>Tenemos mas de 25 Cursos Diferentes ajustados a tu horario</p>
+            <p>Ofrecemos más de 25 cursos que se ajustan a todos los intereses.</p>
           </div>
         </div>
       </div>
@@ -336,10 +327,10 @@
                           <div class="col-md-6 pl-md-5 py-5">
                               <div class="row justify-content-start pb-3">
                                   <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                                      <span class="subheading">Constancia de Validez Oficial</span>
+                                      <span class="subheading">Constancia con validez oficial</span>
                                       <h2 class="mb-4">Recibe una Constancia de validez oficial</h2>
-                                      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                      <p>¿Terminaste tu curso? <strong>Tramita tu certificado</strong> ahora es digital.</p>
+                                      <p>Una vez finalizado el curso, tu profesor comenzará la evaluación de tu desempeño. Al obtener una calificación aprobatoria, la universidad liberá tu cosntancia de validación con valor curricular y requisito para trámites de titulación.</p>
+                                      <p>¿Terminaste tu curso? <strong>Tramita tu certificado</strong>, ahora es digital.</p>
                                       <p><a href="#" class="btn btn-primary">validar Certificado</a></p>
                                   </div>
                               </div>
@@ -356,7 +347,7 @@
           <div class="col-md-6 m-auto">
             <h4>Ya tienes una cuenta en SICEP</h4>
             <p class="mb-4">
-              Inicia Sesión para poder registrarte a los cursos que tenemos para ti. Es muy facil.
+              Inicia Sesión para poder inscribirte a los cursos que tenemos para ti. Es muy fácil.
             </p>
             <div class="row">
               <div class="col-8">
@@ -415,7 +406,7 @@
           <div>
             <ul class="d-flex flex-row ms-n3 nav">
               <li class="nav-item">
-                <a class="nav-link pe-1" href="#" target="_blank">
+                <a class="nav-link pe-1" href="https://www.facebook.com/coordinacionLicInformatica" target="_blank">
                   <i class="fab fa-facebook text-lg opacity-8"></i>
                 </a>
               </li>
@@ -425,7 +416,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pe-1" href="#" target="_blank">
+                <a class="nav-link pe-1" href="https://www.youtube.com/c/Coordinaci%C3%B3ndeInform%C3%A1ticaFESC" target="_blank">
                   <i class="fab fa-youtube text-lg opacity-8"></i>
                 </a>
               </li>
@@ -435,12 +426,10 @@
         <div class="col-md-2 col-sm-6 col-6 mb-4">
             <h6 class="text-sm">Enlaces</h6>
               <ul class="flex-column ms-n3 nav">
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Nostros</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Legales</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Profesores</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Aviso de Privacidad</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Tramite de Certificado</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Llamanos</a></li>
+                  <li class="nav-item"><a class="nav-link" href="http://informatica.cuautitlan.unam.mx/" class="py-2 d-block">Coordinación de Informática</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://sites.google.com/cuautitlan.unam.mx/cursos-dci/inicio?authuser=0" class="py-2 d-block">Centro de cómputo</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.cuautitlan.unam.mx/#gsc.tab=0" class="py-2 d-block">Nuestra Facultad</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.unam.mx/" class="py-2 d-block">Nuestra universidad</a></li>
               </ul>
         </div>
         <div class="col-md-3 col-sm-6 col-6 mb-4">
@@ -459,8 +448,9 @@
                 Sebastián Xhala, Cuautitlán Izcalli Edo. México C.P. 54714</p>
             <ul class="flex-column ms-n3 nav">
 
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	55 5623 1940</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	coordinacion.li.fesc@hotmail.com</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block"> <strong>Jefatura del Centro de Tecnologías en Cómputo y Comunicación</strong></a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	Ing. León Mauricio Muñoz Miranda </a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	cursos.fesc@cuautitlan.unam.mx</a></li>
             </ul>
         </div>
         <div class="col-12">
