@@ -58,7 +58,7 @@ function rechazar() {
                 data: {id: idCurso},
                 success: function(data){
                     alerta("SE RECHAZO EL CURSO",data.Mensaje,'info')
-                    setTimeout( function() { window.location.href = "lista-cursos"; }, 3000 );
+                    setTimeout( function() { window.location.href = "lista-cursos"; }, 2500 );
                 },
                 error: function(e) {
                     alert("Error occured")
