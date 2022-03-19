@@ -1,5 +1,4 @@
 <?php
-
 include_once "../control/controlCursos.php";
 if (isset($_POST['filtro']) && isset($_POST['value'])){
     $filtro = $_POST['filtro'];

@@ -53,10 +53,10 @@
                     </div>
                     <div class="card-body">
                         <div class="row py-3">
-                            <div class="col-10">
+                            <div class="col-7">
                                 <div class="col"><h4><i class="fas fa-filter"></i> Filtrar:</h4></div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-5">
                                 <div class="btn-group submitter-group float-right">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">ESTATUS: </div>
@@ -65,57 +65,24 @@
                                         <option value="">TODOS</option>
                                         <option value="APROBADO">APROBADOS</option>
                                         <option value="PENDIENTE">PENDIENTE</option>
+                                        <option value="SIN ENVIAR">SIN ENVIAR</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <!--Table prototype to use | tablas con  paginador-->
-                        <table class="table table-hover table-striped" id="" class="display" style="width:100%">
+                        <table class="table table-hover table-striped" id="tblCursos" class="display" style="width:100%">
                             <thead>
-                                <tr>
-                                    <th>CLAVE</th>
-                                    <th>NOMBRE</th>
-                                    <th>TIPO</th>
-                                    <th>TEMARIO</th>
-                                    <th>APROBACIÓN</th>
-                                    <th>ACCIONES</th>
-                                </tr>
+                            <tr>
+                                <th>CLAVE</th>
+                                <th>NOMBRE</th>
+                                <th>TIPO</th>
+                                <th>TEMARIO</th>
+                                <th>APROBACIÓN</th>
+                                <th>ACCIONES</th>
+                            </tr>
                             </thead>
-                            <tbody>
-                                <tr id_curso="1">
-                                    <td>002</td>
-                                    <td>Excel Avanzado</td>
-                                    <td>
-                                        <p class="mb-0 text-xs">Diplomado</p>
-                                    </td>
-                                    <td>
-                                        <a href="https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i>Descargar</a>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-warning">PENDIENTE</span>
-                                    </td>
-                                    <td>
-                                        <a href="./editar-detalles-propuesta" class="btn btn-primary" ><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ver-detalles-prop"><i class="far fa-eye"></i></a>
-                                    </td>
-                                </tr>
-                                <tr id_curso="2">
-                                    <td>003</td>
-                                    <td>Excel Básico para contadores</td>
-                                    <td>
-                                        <p class="mb-0 text-xs">Curso</p>
-                                    </td>
-                                    <td>
-                                        <a href="https://www.gob.mx/cms/uploads/attachment/file/312952/Temario-Jefatura_de_Sistemas..xlsx.pdf " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i>Descargar</a>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-success">APROBADO</span>
-                                    </td>
-                                    <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ver-detalles-prop"><i class="far fa-eye"></i></a></td>
-                                </tr>
-                            </tbody>
                         </table>
-
 
                     </div>
                 </div>
@@ -136,7 +103,8 @@
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <!--CARGAR SERVICIOS GENERALES-->
 <script src="./service/general/tipos.js"></script>
-<script src="./service/datatable-lista-cursos.js"></script>
+<script src="./service/profesor/datatable-mis-cursos-propuestos.js"></script>
+<script src="./service/profesor/async-rest-p.js"></script>
 <script src="./service/general/tools.js"></script>
 </body>
 

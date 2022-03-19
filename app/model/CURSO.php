@@ -351,7 +351,7 @@ class CURSO extends CONEXION_M implements I_CURSO
                 break;
             //Traer todos los cursos
             default:
-                $filtro = "";
+                $filtro = " AND c.aprobado >= 0 ";
                 break;
         }
         $query="SELECT c.id_profesor_admin_acredita, c.id_curso, c.codigo, c.nombre_curso, 
@@ -441,7 +441,7 @@ class CURSO extends CONEXION_M implements I_CURSO
                     '".$this->getNombreCurso()."', '".$this->getDirigidoA()."', '"
                     .$this->getObjetivo()."', '".$this->getDescripcion()."', '"
                     .$this->getNoSesiones()."', '".$this->getAntecedentes()."', 
-                    '0', '".$this->getCostoSugerido()."', '".$this->getLinkTemarioPdf()."', 
+                    '-1', '".$this->getCostoSugerido()."', '".$this->getLinkTemarioPdf()."', 
                     '".date('Y-m-d H:i:s')."', NULL, '".$this->getBannerImg()."', '"
                     .$this->getTipoCurso()."')";
         $this->connect();
@@ -549,6 +549,16 @@ class CURSO extends CONEXION_M implements I_CURSO
         //Cuando se acredita, se genera el profesor acredita, sino, significa que solo se desactiva
         $filtro= $this->getIdProfesorAdminAcredita() > 0 ? "`id_profesor_admin_acredita` = '".$this->getIdProfesorAdminAcredita()."'," : "";
         $query = "UPDATE `curso` SET ".$filtro." `aprobado` = '".$this->getAprobado()."' WHERE `curso`.`id_curso` =".$this->getIdCurso();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    public function querySendPropuesta(){
+        $query = "UPDATE curso t
+                    SET t.aprobado = ".$this->getAprobado()."
+                    WHERE t.id_curso = ".$this->getIdCurso();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

@@ -20,7 +20,7 @@ $("#msform").on("submit", function(e){
         let mje=JSON.parse(res);
         let template = `
             <div class="col-sm-12 d-flex justify-content-center">
-                <a href="./lista-cursos">
+                <a href="./lista-propuestas">
                 <button type="button" class="btn btn-primary me-1 mb-1">
                     <i class="fas fa-coffee"></i> Ver Mis cursos
                 </button>
@@ -65,7 +65,7 @@ function buildListGHTMLDocs(obj_result) {
 
 
 function detailsCurso(idCurso) {
-    var url = './detalles-curso';
+    var url = './editar-detalles-propuesta';
     redirect_by_post(url, {
         id: idCurso
     }, false);

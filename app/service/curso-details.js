@@ -1,13 +1,9 @@
 
 $(document).ready(function() {
-    let id = ID_CURSO;
-    if(!cargaCursoDetails(1,id))
-        alert('NO DATA');
-    consultaGrupos(id);
+    consultaGrupos(ID_CURSO);
     cargaAulasListDespl();
-    cargaTemario(id);
-    cargaTblDocumentacion(id);
-    consultaTblDescuentos(id);
+    cargaTblDocumentacion(ID_CURSO);
+    consultaTblDescuentos(ID_CURSO);
     cargaListaDocsModal();
 });
 
@@ -21,65 +17,6 @@ function cargaListaDocsModal() {
     });
 }
 
-//* DETALLES GENERALES DEL CURSO*/
-async function cargaCursoDetails(filtro, idUnique) {
-    const JSONData = await consultaCursosAjax(filtro,idUnique);
-    buildHTMLValues(JSONData[0]);
-}
-
-function buildHTMLValues(curso){
-    $("#idCursoGrupo").val(curso.id_curso);
-    $("#idCursoPDF").val(curso.id_curso);
-    $("#nombreCursoTitulo").html(`${curso.codigo} - ${curso.nombre_curso}`);
-    $("#detallesCurso").html(`${curso.descripcion}`);
-    $("#nombreAutor").html(`${curso.nombre} ${curso.app} ${curso.apm}`);
-
-    $("#fechaCreacion").html(`${curso.fecha_creacion}`);
-    $("#dirigido_a").html(`${curso.dirigido_a}`);
-    $("#codigoInfo").html(`${curso.codigo}`);
-    $("#sesionesInfo").html(`${curso.no_sesiones}`);
-    $("#nombreCursoHistorial").html(`${curso.nombre_curso}`);
-
-    $("#modalidad").html(getTipoCurso(curso.tipo_curso));
-    $("#objetivo").html(curso.objetivo);
-    $("#antecedentes").html(curso.antecedentes);
-    let img = `<div class="img d-block w-100" style="background-image: url(${curso.banner_img}); height: 300px; "></div>`;
-    $("#imgContainer").html(img);
-    // PDF TEMARIO
-    let containerPDF;
-    if (curso.link_temario_pdf===""){
-        containerPDF =`<div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
-                          <strong>NO HAY TEMARIO PDF</strong> Cargue un archivo PDF con el temario del curso.
-                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`;
-    }
-    else{
-        containerPDF =`<a href="${curso.link_temario_pdf}" download="" target="_blank"  class="btn btn-primary me-1 mb-1"><i class="fas fa-download"></i></a>
-                <button class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modalPdftemario"><i class="fas fa-eye"></i></button>
-                <a href="#" class="btn btn-outline-danger me-1 mb-1" onclick="removeTemario()"><i class="fas fa-times"></i></a></div>`;
-        let tmpPdf = `<embed src="${curso.link_temario_pdf}" type="application/pdf" width="100%" height="600px" />`;
-        $("#filePdfView").html(tmpPdf);
-    }
-    $("#containerPDF").html(containerPDF);
-    //consulto los detalles de la acredsitacion del curso
-    let acreditado = curso.id_profesor_admin_acredita != null ? true:false;
-    let aprobado = curso.aprobado === "1" ? true:false;
-    // cargar los datos al form
-    $("#editarNombreCurso").val(curso.nombre_curso);
-    $("#editarDescripcion").val(curso.descripcion);
-    $("#editarObjetivo").val(curso.objetivo);
-    $("#idCurso").val(curso.id_curso);
-    $("#editarDirigido").val(curso.dirigido_a);
-    $("#editarAntecedentes").val(curso.antecedentes);
-    $("#editarCosto").val(curso.costo_sugerido);
-    $("#costoSugerido").html('$ '+curso.costo_sugerido);
-    $("#lblCostoFinalCallout").html('$ '+curso.costo_sugerido);
-    $("#editaTipoCurso").val(curso.tipo_curso);
-    $("#editarSesiones").val(curso.no_sesiones);
-    detallesAcreditacion(curso.id_curso,acreditado,aprobado);
-    let botonOpenGrupo = acreditado && aprobado ? `<button class="btn btn-primary w-100 mr-3 mt-3 mb-3" onclick="openGroup(${curso.id_curso})"><i class="fas fa-users"></i> Abrir grupo</button>`:"";
-    $("#btnAbrirCurso").html(botonOpenGrupo);
-}
 //Update Acreditar/ Remover Acreditacion Curso
 function cambiaEstado(estatus,mensaje,isAcredit){
     let idCurso= ID_CURSO;
@@ -99,6 +36,29 @@ function cambiaEstado(estatus,mensaje,isAcredit){
                 success: function(data){
                     let id = ID_CURSO;
                     cargaCursoDetails(1,id);
+                },
+                error: function(e) {
+                    alert("Error occured")
+                }
+            });
+        }
+    });
+}
+
+function rechazar() {
+    let idCurso= ID_CURSO;
+    let mjeText= "¿Estas seguro de que deseas RECHAZAR este curso?. El autor podra modificarlo nuevamente.";
+    sweetConfirm('Rechazar', mjeText, function (confirmed) {
+        if (confirmed) {
+            //Realizamos el envio de datos del estatus, y del id del curso
+            $.ajax({
+                url: "./webhook/rechazar-propuesta.php",
+                type: 'POST',
+                dataType: "json",
+                data: {id: idCurso},
+                success: function(data){
+                    alerta("SE RECHAZO EL CURSO",data.Mensaje,'info')
+                    setTimeout( function() { window.location.href = "lista-cursos"; }, 3000 );
                 },
                 error: function(e) {
                     alert("Error occured")
@@ -143,11 +103,13 @@ function buildCardStatusAcreditacion(obj_result,acreditado,activo) {
                 <input type="hidden" value="0" id="valAcredCurso">
                     <h5>Sin acreditar</h5>
                     <h6><strong>Este curso aun no se ha acreditado.</strong></h6>
-                    <h6>Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos</h6>
+                    <h6>Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos. Si no los cumple, de click en 
+                    rechazar y el Autor podrá modificarlo.</h6>
                 </div>
             </div>
             <div class="card-body d-flex text-align-right">
-                <button type="button" class="btn btn-success btn-block"onclick="cambiaEstado(1,'Acreditar',false)">Acreditar</button>
+                <button type="button" class="btn btn-success btn-block me-1 mb-1"onclick="cambiaEstado(1,'Acreditar',false)">Acreditar</button>
+                <button type="button" class="btn btn-danger btn-block me-1 mb-1"onclick="rechazar()">Rechazar</button>
             </div>`;
 
         $("#sectionDescuentos").html("");
@@ -159,55 +121,6 @@ function detallesAcreditacion(id_Curso,acreditado,activo) {
     consultaDetailsAcredCursoAjax(id_Curso).then(function (result) {
         buildCardStatusAcreditacion(result,acreditado,activo);
     })
-}
-
-function cargaTemario(idCurso) {
-    consultaTemario(idCurso).then(function (e) {
-        buildTBLHtmlTemario(e);
-    });
-}
-
-function buildTBLHtmlTemario(TEMAS) {
-    let template;
-    if (TEMAS.length > 0) {
-        template= `
-                <table class="table table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>INDICE</th>
-                        <th>TEMA</th>
-                        <th>DESCRIPCIÓN</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                    </thead>
-                <tbody>`;
-        TEMAS.forEach(
-            (tema)=>
-            {
-                template+= `
-                        <tr id_tema="${tema.id_tema}">
-                            <td>${tema.indice}</td>
-                            <td>${tema.nombre}</td>
-                            <td>${tema.resumen}</td>
-                            <td>
-                                <button class="btn btn-outline-primary" onclick="editaTema(${tema.id_tema},${tema.indice},'${tema.nombre}','${tema.resumen}')"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger deleteTema"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>`;
-            }
-        );
-        template+= `
-                </tbody>
-              </table>`;
-    }
-    else{
-        template= `
-                <div class="alert alert-light alert-dismissible show fade">
-                   No tenemos temas registrados. Agregue un tema.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
-    }
-    $("#tblTemario").html(template);
 }
 
 function cargaTblDocumentacion(id) {
@@ -343,132 +256,6 @@ function buildHTMLDespEdificios(AULAS) {
 
 }
 
-//Update FROM details curso
-$("#frm-update-curso").on("submit", function(e){
-    let route = "./webhook/update-detalles-curso.php";
-    var params = {
-        idCurso : $("#idCurso").val(),
-        editarNombreCurso : $("#editarNombreCurso").val(),
-        editarDescripcion : $("#editarDescripcion").val(),
-        editarObjetivo : $("#editarObjetivo").val(),
-        editarDirigido : $("#editarDirigido").val(),
-        editarAntecedentes : $("#editarAntecedentes").val(),
-        editarModalidad : $("#editaTipoCurso").val(),
-        editarSesiones : $("#editarSesiones").val(),
-        editarCosto : $("#editarCosto").val()
-    };
-    //Funcion async
-    enviaForm(params,route).then(function () {
-        $("#updateDatosCursos").modal('hide');
-        let id= ID_CURSO;
-        cargaCursoDetails(1, id);
-        
-    });
-    e.preventDefault();
-});
-
-
-
-//Update PDF Curso
-$("#inputPDF").on("submit", function(e){
-    var f = $(this);
-    var formData = new FormData(document.getElementById("inputPDF"));
-    formData.append("dato", "valor");
-    //formData.append(f.attr("name"), $(this)[0].files[0]);
-    $.ajax({
-        url: "./webhook/update-pdf-curso.php",
-        type: "post",
-        dataType: "html",
-        data: formData,
-        contentType: false,
-        processData: false
-    }).done(function(res){
-        $("#inputPDF").trigger('reset');
-        let id= ID_CURSO;
-        cargaCursoDetails(1,id);
-    });
-    e.preventDefault();
-});
-
-//Update Remove PDF curso
-function removeBanner() {
-    let id = $("#idCurso").val();
-    var route= "./webhook/remove-banner-curso.php";
-    sweetConfirm('Remover Banner', '¿Estas seguro de que deseas eliminar el Banner de este Curso?', function (confirmed) {
-        if (confirmed) {
-            eliminaPreferencia(id,route).then(function () {
-                cargaCursoDetails(1,id);
-            });
-        }
-    });
-}
-
-//Update remove PDF
-function removeTemario() {
-    let id = $("#idCurso").val();
-    var route= "./webhook/remove-pdf-curso.php";
-    sweetConfirm('Remover Temario', '¿Estas seguro de que deseas eliminar el temario de este Curso?', function (confirmed) {
-        if (confirmed) {
-            eliminaPreferencia(id,route).then(function () {
-                cargaCursoDetails(1,id);
-            });
-        }
-    });
-}
-
-
-//CRUD TEMARIO 
-//Linea 187 LIMPIA Y EDITA MODAL
-function editaTema(idTema,indice,nombreTema,descripcion){
-    $("#addNewTema").modal('show');
-    $("#id_tema").val(idTema);
-    $("#indice").val(indice);
-    $("#nombre_tema").val(nombreTema);
-    $("#descripcion-tema").val(descripcion);
-}
-
-function limpiaModalTema(){
-    $("#addNewTema").modal('show');
-    $("#id_tema").val(0);
-    $("#indice").val("");
-    $("#nombre_tema").val("");
-    $("#descripcion-tema").val("");
-}
-//Envio datos CRUD temario
-$("#frm-temario").on("submit", function(e){
-    let route= "./webhook/crud-temario.php";
-    var params={
-        idCurso: $("#idCurso").val(),
-        idTema:$("#id_tema").val(),
-        indice : $("#indice").val(),
-        nombreTema:$("#nombre_tema").val() ,
-        descripcion :$("#descripcion-tema").val() 
-    };
-    enviaForm(params,route).then(function () {
-        $("#frm-temario").trigger('reset');
-        $("#addNewTema").modal('hide');
-        let id= ID_CURSO;
-        cargaTemario(id);
-        
-    });
-    e.preventDefault();
-});
-
-//Elimina tema
-$(document).on("click", ".deleteTema", function ()
-{
-    let ElementDOM = $(this)[0].parentElement.parentElement;
-    let id = $(ElementDOM).attr("id_tema");
-    var route= "./webhook/delete-tema.php";
-    sweetConfirm('Eliminar Tema', '¿Estas seguro de que deseas eliminar este Tema?', function (confirmed) {
-        if (confirmed) {
-            eliminaPreferencia(id,route).then(function () {
-                let id= ID_CURSO;
-                cargaTemario(id);
-            });
-        }
-    });
-});
 //CRUD DESCUENTOS
 function consultaTblDescuentos(idGpo) {
     consultaDescuentos(idGpo).then(function (e) {

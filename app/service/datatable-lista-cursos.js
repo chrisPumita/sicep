@@ -86,12 +86,15 @@ function cargaCursosDataTable() {
                 { data: null,
                     render: function ( data, type, row )
                     {
-                        return '<a href="' + row.link_temario_pdf + ' " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Descargar</a>';
+                        if (row.link_temario_pdf =="")
+                            return "SIN TEMARIO";
+                        else
+                            return '<a href="' + row.link_temario_pdf + ' " class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Descargar</a>';
                     }
                 },
                 { data: 'aprobado',
                     render: function ( data, type, row ){
-                        return (row.id_profesor_admin_acredita!=null? 'APROBADO ':"PENDIENTE ");
+                        return (row.id_profesor_admin_acredita!=null? 'APROBADOS':'<i class="fas fa-exclamation-circle text-warning"></i> PENDIENTE');
                     }
                 },
                 {

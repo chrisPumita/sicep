@@ -316,7 +316,7 @@
                                                                                     <div class="pl-lg-4">
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
-                                                                                                <img src="../assets/images/deposit-img/curso-excel.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
+                                                                                                <img src="../resources/banners/ban-fesc.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <h6 class="card-title"><strong>Imagen del Banner</strong></h6>
@@ -343,6 +343,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <cite class="text-warning"><strong>*Puede omitir estas dos opciones</strong></cite><br>
                                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
                                                                     <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                                 </fieldset>
@@ -369,9 +370,9 @@
                                                                             <hr class="my-4">
                                                                             <!-- Address -->
                                                                         </div>
-                                                                    </div>
+                                                                    </div> <cite class="text-warning"><strong>*Puede omitir elejir una opción</strong></cite><br>
                                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
+                                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Crear Curso</button>
                                                                 </fieldset>
                                                                 <fieldset>
                                                                     <div class="card" id="cardResult">

@@ -273,9 +273,7 @@ $titulo = "Detalles del curso"
                             <div class="card">
                                 <div class="card-body py-4 px-5">
                                     <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-xl">
-                                            <img src="../assets/images/start-sesion.png" alt="Face 1">
-                                        </div>
+                                        <div class="avatar avatar-xl" id="avatarAutor"> </div>
                                         <div class="ms-3 name">
                                             <h5 class="font-bold" id="nombreAutor"></h5>
                                             <h6 class="text-muted mb-0">AUTOR</h6>
@@ -527,6 +525,7 @@ $titulo = "Detalles del curso"
 <script src="./service/general/tools.js"></script>
 <script src="./service/asignacion-gral.js"></script>
 <script src="./service/curso-details.js"></script>
+<script src="./service/detalle-curso-gral.js"></script>
 <script src="./service/files-ajax.js"></script>
 <script src="./service/datatable-historial-asig-curso.js"></script>
 

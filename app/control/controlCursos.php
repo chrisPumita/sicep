@@ -61,10 +61,12 @@ function addCurso($params,$documentacion){
             modificaBannerCurso($clave,$params['bannerName'],$params['bannerFile']);
         }
         //Crear procedimiento para los documentos, si Documentos esta definido
-        if(count($documentacion)>0){
-            //Mandar al control Documentos
-            include_once "controlDocumentos.php";
-            addListaDocumentosSolicitados($CURSO->getIdCurso(),$documentacion);
+        if (isset($documentacion)){
+            if(count($documentacion)>0){
+                //Mandar al control Documentos
+                include_once "controlDocumentos.php";
+                addListaDocumentosSolicitados($CURSO->getIdCurso(),$documentacion);
+            }
         }
         return $clave;
     }
@@ -277,4 +279,12 @@ function controlDeleteDocSol($idDocSol){
     //Se manda a su respectivo control
     include_once "controlDocumentos.php";
     return deleteDocumentoSolicitado($idDocSol);
+}
+
+function enviarPropuestaRevisa($id,$valor){
+    include_once "../model/CURSO.php";
+    $CURSO = new CURSO();
+    $CURSO->setIdCurso($id);
+    $CURSO->setAprobado($valor);
+    return $CURSO->querySendPropuesta();
 }

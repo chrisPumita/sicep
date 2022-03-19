@@ -44,6 +44,7 @@ if (!isset($_SESSION['usuario'])) {
                 $sheet->getStyle('E7')->getFont()->setBold(true)->setSize(12);
                 $sheet->getStyle('G7')->getFont()->setBold(true)->setSize(12);
                 $sheet->getStyle('I7')->getFont()->setBold(true)->setSize(12);
+                $sheet->getStyle('A10:H10')->getFont()->setBold(true)->setSize(14);
 
                 $documento->getActiveSheet()->mergeCells('D5:E5')->setTopLeftCell(true);
                 $documento->getActiveSheet()->mergeCells('D4:I4')->setTopLeftCell(true);
@@ -73,15 +74,17 @@ if (!isset($_SESSION['usuario'])) {
                 $sheet->setCellValue("H7", "MODALIDAD:");
                 $sheet->setCellValue("I7",getModalidad($ASIG['modalidad']) );
 
-                $row = 10;
+                $row = 11;
 
                 //TUTILOS DEL EXCEL
-                $sheet->setCellValueByColumnAndRow(1, $row, "NO");
-                $sheet->setCellValueByColumnAndRow(2, $row, "NO CUENTA");
-                $sheet->setCellValueByColumnAndRow(3, $row, "PRIMER APELLIDO");
-                $sheet->setCellValueByColumnAndRow(4, $row, "SEGUNDO APELLIDO");
-                $sheet->setCellValueByColumnAndRow(7, $row, "TELEFONO");
-                $sheet->setCellValueByColumnAndRow(8, $row, "CARRERA");
+                $sheet->setCellValue("A10", "NO");
+                $sheet->setCellValue("B10","NO CUENTA");
+                $sheet->setCellValue("C10","PRIMER APELLIDO");
+                $sheet->setCellValue("D10", "SEGUNDO APELLIDO");
+                $sheet->setCellValue("E10", "NOMBRE(S)");
+                $sheet->setCellValue("F10","CORREO");
+                $sheet->setCellValue("G10","TELEFONO");
+                $sheet->setCellValue("H10","CARRERA/ESPECIALIDAD");
                 $contadorArray = 0;
                 for ($i = $row; $i < count($listaOficial)+$row; $i++){
                     $sheet->setCellValueByColumnAndRow(1,$i, ($contadorArray+1));
