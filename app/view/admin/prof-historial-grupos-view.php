@@ -22,7 +22,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="./home-teach">Inicio</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Hisdtorial de grupos</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Historial de grupos</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -79,37 +79,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-hover table-striped display nowrap" class="display" style="width:100%">
+                                <table class="table table-hover table-striped display nowrap" id="tblHistAsigCurso" class="display" style="width:100%">
                                     <thead>
-                                        <tr>
-                                            <th>GRUPO</th>
-                                            <th>CURSO</th>
-                                            <th>TIPO</th>
-                                            <th>GENERACION</th>
-                                            <th>SEMESTRE</th>
-                                            <th>INICIO</th>
-                                            <th>TERMINO</th>
-                                            <th>ESTADO</th>
-                                            <th>ALUMNOS</th>
-                                            <th>ACCIONES</th>
-                                        </tr>
+                                    <tr>
+                                        <th>CURSO</th>
+                                        <th>PERIODO</th>
+                                        <th>DETALLES</th>
+                                        <th>TIPO</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
                                     </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>672</td>
-                                            <td>Diccionarios de datos</td>
-                                            <td>Curso: Presencial</td>
-                                            <td>2021</td>
-                                            <td>2020-2</td>
-                                            <td>2021-12-24</td>
-                                            <td>2021-12-24</td>
-                                            <td><span class="badge bg-warning">FINALIZADO</span></td>
-                                            <td><span class="badge bg-success">0/30</span></td>
-                                            <td><a href="./detalles-asignacion" class="btn btn-primary me-1 mb-1"><i class="far fa-eye"></i>&nbsp;</a></td>
-                                        </tr>
-                                    </tbody>
-
                                 </table>
                             </div>
                         </div>
@@ -127,7 +107,8 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
         <!--CARGAR SERVICIOS GENERALES-->
         <script src="./service/general/tipos.js"></script>
-        <script src="./service/datatable-historial_asig.js"></script>
+        <script src="./service/history-asig-gral.js"></script>
+        <script src="./service/profesor/datatable-historial-my-asig.js"></script>
         <script src="./service/general/tools.js"></script>
     </body>
 </html>

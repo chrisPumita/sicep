@@ -5,6 +5,13 @@ if (isset($_POST['idCurso']) && isset($_POST['filtro']) && isset($_POST['idFiltr
     $idCurso = $_POST['idCurso'];
     $filtro = $_POST['filtro'];
     $idFiltro = $_POST['idFiltro'];
+
+    //Solo caso prfoesor no admin
+    if($filtro==2){
+        session_start();
+        $idFiltro = $_SESSION['idProfesor'];
+    }
+
     $data = consultaAsignacionesHistoricasCurso($idCurso,$filtro,$idFiltro);
     echo json_encode([
         'data' => $data,

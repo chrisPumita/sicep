@@ -58,7 +58,7 @@ function cargaDataTableAsignaciones(idCurso) {
                         if (porc<= 60) spanStyle = "success";
                         else if (porc >60 && porc <=80) spanStyle = "warning";
                         else spanStyle = "danger";
-                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span> '+'<span class="badge bg-danger" id="badgePendientes"><i class="far fa-eye"></i> '+row.solicitudesPendientes+'</span>';
+                        let template = getEstatusAsignacion(row.statusAsignacion)+'<br><span class="badge bg-'+spanStyle+'">'+row.inscritos + '/' + row.cupo+'</span> '+'<span class="badge bg-danger" id="badgePendientesTable"><i class="far fa-eye"></i> '+row.solicitudesPendientes+'</span>';
 
                         return template;
                     }
@@ -66,7 +66,8 @@ function cargaDataTableAsignaciones(idCurso) {
                 {
                     data: 'ACTIONS',
                     render: function ( data, type, row ){
-                        let template = '<a href="#" class="btn btn-primary viewAsignacion  me-1 mb-1" onclick="openAsig('+row.id_asignacion+');"><i class="far fa-eye"></i>&nbsp;</a><button class="btn btn-info me-1 mb-1"><i class="fas fa-list"></i></button>';
+                        let template = '<a href="#" class="btn btn-primary viewAsignacion  me-1 mb-1" onclick="openAsig('+row.id_asignacion+');"><i class="far fa-eye"></i>&nbsp;</a>' +
+                            '<button class="btn btn-info me-1 mb-1"  data-bs-toggle="modal" data-bs-target="#viewListasInscripcion" onclick="viewListas('+row.id_asignacion+')" ><i class="fas fa-list"></i></button>';
                         return template;
                     }
                 }
@@ -133,28 +134,6 @@ function openAsig(id) {
     redirect_by_post(url, data, false);
 }
 
-function cargaListasSemGen() {
-    consultaAsyncGenSemDist().then(function (e) {
-        let template1 = `<option value="">TODOS</option>`;
-        let template2=`<option value="">TODOS</option>`;
-        let gens = e.generaciones;
-        let sems = e.semestres;
-        gens.forEach(
-            (gen)=> {
-                template1 += `<option value="${gen.generacion}">${gen.generacion}</option> `;
-            }
-        );
-        $("#listGeneraciones").html(template1);
-
-        sems.forEach(
-            (sem)=> {
-                template2 += `<option value="${sem.semestre}">${sem.semestre}</option> `;
-            }
-        );
-        $("#listSemestres").html(template2);
-    })
-}
-
 function consultaListaProfesores() {
     consultaAsyncListaProfesores(99).then(function(profesores){
         let template=`<option value="">TODOS</option>`;
@@ -167,12 +146,6 @@ function consultaListaProfesores() {
     })
 }
 
-function cargaListasCursos() {
-    cargaCursos(99,0).then(function (JSONData) {
-        let template=`<option value="">TODOS</option>`;
-        JSONData.forEach(curso => {
-            template+=`<option value="${curso.nombre_curso}">${curso.nombre_curso}</option> `;
-        });
-        $("#listaCursos").html(template);
-    });
+function viewListas(id) {
+    loadSolicitudes(id);
 }

@@ -359,7 +359,7 @@ bd-callout+.bd-callout {
     bottom: 0;
     content: '';
     opacity: .7;
-    background: #000000;
+    background: #00000a94;
     z-index: -1;
 }
 .table-avatar{
