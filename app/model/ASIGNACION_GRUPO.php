@@ -670,6 +670,9 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
                                 (SELECT i.id_asignacion_fk FROM inscripcion i WHERE i.id_alumno_fk = ".$idFiltro.")
                             HAVING statusAsignacion < 99";
                     break;
+                case "5":
+                    $filtro = " AND  prof.id_profesor = ".$idFiltro." AND ag.estatus = 1 ";
+                    break;
                 default:
                     $filtro = "";
                     break;

@@ -15,7 +15,6 @@
                 </button>
             </div>
             <div class="modal-body" id="filePdfView">
-                <embed src="https://demre.cl/publicaciones/pdf/Temario-Ciencias-26-04-21.pdf" frameborder="0" width="100%" height="400px">
             </div>
             <div class="modal-footer">
                 <button type="button"

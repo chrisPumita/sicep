@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <!-- fin de seccion de detalles -->
-                <div class="row py-1 m-2">
+                <div class="row py-1 m-2" id="docSolContainer">
                     <h5 class="text-secondary"><i class="fas fa-bookmark"></i> Documentación Solicitada</h5>
                     <div class="card-body table-responsive" id="tblDocSol"></div>
                 </div>

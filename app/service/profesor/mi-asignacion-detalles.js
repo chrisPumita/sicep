@@ -66,11 +66,11 @@ function buildTBLListaOficial(LISTA) {
             </button>`;
     }
     else{
-        template = `<div class="alert alert-warning d-flex align-items-center" role="alert">
+        template = `<div class="alert alert-info d-flex align-items-center" role="alert">
                       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                       <div>
-                        Este grupo no tiene Inscripciones Confirmadas aun. Porfavor vaya a las solicitudes y revise la informacion.
-                        Una vez aprobado la solicitud, esta aparecerá en este apartado.
+                        Este grupo no tiene Inscripciones aun. Cada solicitud es revisada por los administradores, se van a ir revisando las solicitudes
+                        , una vez confirmadas apareceran aqui los datos de sus alumnos inscritos.
                       </div>
                     </div>`;
     }

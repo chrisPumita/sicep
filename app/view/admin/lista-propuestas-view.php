@@ -103,9 +103,10 @@
 <!-- Agregar solo cuando exista una tabla para mostrar-->
 <!--CARGAR SERVICIOS GENERALES-->
 <script src="./service/general/tipos.js"></script>
+<script src="./service/general/tools.js"></script>
 <script src="./service/profesor/datatable-mis-cursos-propuestos.js"></script>
 <script src="./service/profesor/async-rest-p.js"></script>
-<script src="./service/general/tools.js"></script>
+<script src="./service/modal-detalles-asig.js"></script>
 </body>
 
 </html>
