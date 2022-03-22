@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-6 d-flex justify-content-end">
                 <p class="text-light">Creado con <i class="fas fa-heart text-secondary"></i> por <a
-                            href="https://reckreastudios.com/" target="_blank" class="text-light-grey"> ReCkrea-Studios</a></p>
+                            href="./about" class="text-light-grey"> Servicio Social</a></p>
             </div>
         </div>
     </div>

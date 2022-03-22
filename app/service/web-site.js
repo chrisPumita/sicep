@@ -14,6 +14,10 @@ function buildCursosCaroucelHtml(CURSOS) {
     let template ="";
     CURSOS.forEach(
         (curso)=>{
+            console.log(curso);
+            let temarioPdf = curso.link_temario_pdf === ""? '': `<a onclick="viewPDFModal('app/${curso.link_temario_pdf}','${curso.nombre_curso}')" class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Refresh">
+                                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Temario
+                                </a>`;
             template+= `
                 <div class="card swiper-slide pt-4">
                     <div class="card card-profile mt-4 w-100" data-animation="true">
@@ -26,12 +30,10 @@ function buildCursosCaroucelHtml(CURSOS) {
                         </div>
                         <div class="card-body text-center">
                             <div class="d-flex mt-n6 mx-auto">
-                                <a class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Refresh">
-                                    <i class="fas fa-file-pdf"></i> Temario
-                                </a>
-                                <button class="btn btn-link text-secondary me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit">
+                                ${temarioPdf}
+                                <a href="login.php" class="btn btn-link text-secondary me-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom">
                                     <i class="fas fa-list"></i> Mas detalles...
-                                </button>
+                                </a>
                             </div>
                             <h6 class="font-weight-normal mt-1">${getTipoCurso(curso.tipo_curso)}</h6>
                             <h5 class=""> <a href="" class="linkPage">${curso.nombre_curso}</a> </h5>
@@ -209,4 +211,43 @@ async function cargaCursosWebAjax(filtro, valueID) {
             alert("Error occured")
         }
     });
+}
+
+
+//funcion actualiza agrega documento solicitado
+$("#frm-valida-certificado").on("submit", function(e){
+    let code = $("#codigo").val();
+    if (code===""){
+        alerta("NUMERO INVALIDO",'Debe escribir un numero válido','error');
+    }
+    else{
+        Swal.fire({
+            title: '<strong>Buscando <u>'+code+'</u>...</strong>',
+            icon: 'info',
+            html:
+                '<b>Lo sentimos</b>, tu Certificado no es Valido <h3><a href="login.php">Inicia Sesión</a> </h3> para ver mas detalles',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<a class="text-light" href="login.php">Inicia Sesión</a>',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+                'Cancelar',
+            cancelButtonAriaLabel: 'Thumbs down'
+        })
+    }
+
+    e.preventDefault();
+});
+
+function loadDetails(id) {
+    $("#modalDetalleCurso").modal('show');
+}
+
+function viewPDFModal(link,curso) {
+    $("#modalDetalleCurso").modal('show');
+    let template = `<iframe src="${link}" style="width:100%; height:100%;" frameborder="0"></iframe>`;
+    $("#filePdfView").html(template);
+    $("#modalTittle").html("Temario de "+curso);
 }

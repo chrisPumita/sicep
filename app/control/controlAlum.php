@@ -4,6 +4,7 @@ function crearCuentaAlumno($params){
     //verificar si existe una cuenta
     include_once "../model/ALUMNO.php";
     $al = new ALUMNO();
+
     $clave = date("YmdHis");
     $al->setIdPersona($clave);
     $al->setNombre($params['nombre']);
@@ -26,13 +27,17 @@ function crearCuentaAlumno($params){
     // porque no se ha validado cuenta de alumno
     $al->setEstatusAlumno("0");
 
-    $result = $al->queryInsertPersona();
-    if ($result){
-        $res= $al->queryInsertAlumno();
-        return $res;
+    if(count($al->queryBuscaMatriculaCorreo())>0){
+        return false;
     }
     else{
-        return false;
+        $result = $al->queryInsertPersona();
+        if ($result){
+            return $al->queryInsertAlumno();
+        }
+        else{
+            return false;
+        }
     }
 }
 

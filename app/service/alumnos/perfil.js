@@ -63,7 +63,6 @@ $("#estado_alumno_perfil").change(function ()
 //Municipios
 
 function buildSelectMunicipios(municipios, idMun) {
-    console.log(municipios);
     let template = "";
     municipios.forEach(
         (municipio) => {
@@ -75,7 +74,6 @@ function buildSelectMunicipios(municipios, idMun) {
 }
 //Perfil datos
 function buildHTMLDatosPeril(alumno) {
-    console.log(alumno);
     $("#avatarImagePerfilAlumno").attr("src", alumno.perfil_image);
     $("#nombre_alumno_perfil").val(alumno.nombre);
     $("#app_alumno_perfil").val(alumno.app);
@@ -98,12 +96,12 @@ function buildHTMLDatosPeril(alumno) {
         $("#nombreUni").addClass("d-none");
     }
 
-    validaDocumentoAcredita(alumno);
-
     $("#nombreAlumnoImg").html(alumno.nombre_completo);
-    $("#correoAlumnoImg").html(alumno.email);
 
+    $("#correoAlumnoImg").html(alumno.email);
     conusltaMuncipios(alumno.id_estado_fk, alumno.id_municipio);
+
+    validaDocumentoAcredita(alumno);
 }
 
 $( "#universidad" ).change(function() {
@@ -120,11 +118,10 @@ $( "#universidad" ).change(function() {
 });
 
 function validaDocumentoAcredita(alumno) {
-
-
-    if (alumno.path_doc_valida == null){
-        let alert = ``;
-        if(alumno.update_doc_at == null){
+    let alert = ``;
+    if (alumno.path_doc_valida === null || alumno.path_doc_valida === '')
+    {
+        if(alumno.update_doc_at === null){
             alert = `<div class="alert alert-success alert-dismissible" role="alert">
                         <h4 class="alert-heading">SUBIR ARCHIVO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -144,11 +141,23 @@ function validaDocumentoAcredita(alumno) {
         }
     }
     else{
-        //Date update code pendiente
-        alert = `<div class="alert alert-info alert-dismissible" role="alert">
+        if (alumno.dias>365){
+            alert = `<div class="alert alert-info alert-dismissible" role="alert">
+                        <h4 class="alert-heading">RENOVAR ARCHIVO</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <P>Es necesario que renueves tu situacion con un archivo, vuelve a subir un documento que acredite tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.
+                        Enviste tu archivo el ${getLegibleFechaHora(alumno.update_doc_at)}</p>
+                      </div>`;
+        }
+        else{
+            //Date update code pendiente
+            alert = `<div class="alert alert-info alert-dismissible" role="alert">
                         <P>Tu documento fue enviado el ${getLegibleFechaHora(alumno.update_doc_at)}, No necesitas realizar otro movimiento.</P>
                          </div>`
-        $("#inputFile").html("");
+            $("#inputFile").html("");
+        }
+
     }
     $("#alertInfoDoc").html(alert);
 }

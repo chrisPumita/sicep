@@ -46,6 +46,7 @@
     <!--swiper-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <!-- CSS Files -->
+    <script src="./app/service/general/swal-alerts.js"></script>
   <link id="pagestyle" href="./assets/css/material-kit.css?v=3.0.0" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/styles.css">
 
@@ -213,7 +214,7 @@
                   Realiza tu registro, ve nuestra oferta educativa e inscríbete a uno de los diversos cursos que tenemos para ti.
                 </p>
                   <p class="mb-0">
-                      <a href="#" class="btn btn-primary py-3 mt-4">Regístrate</a>
+                      <a href="login.php" class="btn btn-primary py-3 mt-4">Regístrate</a>
                   </p>
               </div>
             </div>
@@ -328,10 +329,20 @@
                               <div class="row justify-content-start pb-3">
                                   <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
                                       <span class="subheading">Constancia con validez oficial</span>
-                                      <h2 class="mb-4">Recibe una Constancia de validez oficial</h2>
-                                      <p>Una vez finalizado el curso, tu profesor comenzará la evaluación de tu desempeño. Al obtener una calificación aprobatoria, la universidad liberá tu cosntancia de validación con valor curricular y requisito para trámites de titulación.</p>
-                                      <p>¿Terminaste tu curso? <strong>Tramita tu certificado</strong>, ahora es digital.</p>
-                                      <p><a href="#" class="btn btn-primary">validar Certificado</a></p>
+                                      <h2 class="mb-4">Validación de Constancia</h2>
+                                      <p>Una vez finalizado el curso, tu profesor comenzará la evaluación de tu desempeño.
+                                          Al obtener una calificación aprobatoria, la universidad liberá tu cosntancia de validación con valor curricular y requisito para trámites de titulación.</p>
+                                      <p>Escribe el <strong>Código de la constancia</strong> y da clic en <strong>Validar Certificado</strong>.</p>
+                                  </div>
+                                  <div class="col-12">
+                                      <form id="frm-valida-certificado">
+                                          <div class="mb-3">
+                                              <input type="number" class="form-control" id="codigo" placeholder="XXXXXXXXXXXXXX">
+                                          </div>
+                                          <div class="mb-3">
+                                              <button type="submit" class="btn btn-primary" >validar Certificado</button>
+                                          </div>
+                                      </form>
                                   </div>
                               </div>
                           </div>
@@ -426,19 +437,23 @@
         <div class="col-md-2 col-sm-6 col-6 mb-4">
             <h6 class="text-sm">Enlaces</h6>
               <ul class="flex-column ms-n3 nav">
-                  <li class="nav-item"><a class="nav-link" href="http://informatica.cuautitlan.unam.mx/" class="py-2 d-block">Coordinación de Informática</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://sites.google.com/cuautitlan.unam.mx/cursos-dci/inicio?authuser=0" class="py-2 d-block">Centro de cómputo</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://www.cuautitlan.unam.mx/#gsc.tab=0" class="py-2 d-block">Nuestra Facultad</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://www.unam.mx/" class="py-2 d-block">Nuestra universidad</a></li>
+                  <li class="nav-item"><a class="nav-link" href="http://informatica.cuautitlan.unam.mx/" class="py-2 d-block" target="_blank">Coordinación de Informática</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://sites.google.com/cuautitlan.unam.mx/cursos-dci/inicio?authuser=0" class="py-2 d-block" target="_blank">Centro de cómputo</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.cuautitlan.unam.mx/#gsc.tab=0" class="py-2 d-block" target="_blank">Nuestra Facultad</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.unam.mx/" class="py-2 d-block" target="_blank">Nuestra Universidad</a></li>
               </ul>
-        </div>
-        <div class="col-md-3 col-sm-6 col-6 mb-4">
-            <h6 class="text-sm">Cursos recientes</h6>
+            <h6 class="text-sm">Legales</h6>
             <ul class="flex-column ms-n3 nav">
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciacion al coomputo I</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciacion al coomputo I</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Excel Avanzado</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">SUA Para Principiantes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block" data-bs-toggle="modal" data-bs-target="#modal-legals">Aviso de Privacidad</a></li>
+            </ul>
+        </div>
+          <div class="col-md-3 col-sm-6 col-6 mb-4">
+            <h6 class="text-sm">Mas populares</h6>
+            <ul class="flex-column ms-n3 nav">
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al coomputo I</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al coomputo II</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al Cómputo I para CQB</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Hojas de Cálculo Excel Básico</a></li>
             </ul>
         </div>
         <div class="col-md-3 col-sm-12 col-12 mb-4">
@@ -446,9 +461,8 @@
             <p class="mb-4 text-dark my-4 text-sm font-weight-light">
                 Edificio del centro de cómputo, planta baja Km 2.5 Carretera Cuautitlán-Teoloyucan Col. San
                 Sebastián Xhala, Cuautitlán Izcalli Edo. México C.P. 54714</p>
+            <h6 class="text-sm">Jefatura del Centro de Tecnologías en Cómputo y Comunicación</h6>
             <ul class="flex-column ms-n3 nav">
-
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block"> <strong>Jefatura del Centro de Tecnologías en Cómputo y Comunicación</strong></a></li>
                 <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	Ing. León Mauricio Muñoz Miranda </a></li>
                 <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	cursos.fesc@cuautitlan.unam.mx</a></li>
             </ul>
@@ -458,13 +472,18 @@
             <p class="text-dark my-4 text-sm font-weight-normal">
                Copyright © <script>
                 document.write(new Date().getFullYear())
-              </script> SICEP - Derechos Reservados | Creado con por <a href="https://reckreastudios.com" target="_blank">Servicio Social</a>.
+              </script> SICEP - Derechos Reservados | Creado por Servicio Social</a>.
             </p>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+
+  <?php include_once"./modals/modal-valida-certificado.php" ?>
+  <?php include_once"./modals/modal-detalles-curso.php" ?>
+
   <!-- <?php include "../alumno/modals/detalles-curso.php"?> -->
   <!--   Core JS Files   -->
   <script src="./assets/vendors/jquery/jquery.min.js"></script>
@@ -590,6 +609,7 @@
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script src="assets/vendors/sweetalert2/sweetalert2.all.min.js"></script>
   <!-- Initialize Swiper -->
   <!-- Initialize Swiper -->
   <script>

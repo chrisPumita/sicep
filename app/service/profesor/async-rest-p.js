@@ -80,3 +80,23 @@ async function enviarPropuestaAjax(id){
 
     );
 }
+
+
+/*Async function return list json Solicitudes pendientes y Solic Acreditadas*/
+async function contadoresDashboardProf() {
+    return await contadoresDashboardProfAJAX();
+}
+
+//Funcion asincrona que regresa la lista de profesores activos
+async function contadoresDashboardProfAJAX(){
+    return $.ajax({
+        url: "./webhook/contadoresDashBoardProfesor.php",
+        type: 'POST',
+        dataType: "json",
+        success: function (response) {
+        },
+        error: function() {
+            alert("Error occured")
+        }
+    });
+}

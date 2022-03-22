@@ -18,17 +18,21 @@ $("#frm-add-alumno").on("submit", function(e){
     $.ajax({
         url: "./app/webhook/add-alumno.php",
         type: "post",
-        dataType: "html",
+        dataType: "json",
         data: formData,
         cache: false,
         contentType: false,
-        processData: false
-    })
-        .done(function(res){
-            alerta("Tu registro fue exitoso","Porfavor, ingresa con los datos que proporcionaste","success");
-            $("#frm-add-alumno").trigger('reset');
-            $("#inlineForm").modal('hide');
-        });
+        processData: false,
+        success: function (result) {
+            if(result.mjeType!=1){
+                alerta("Este correo o Matricula (o No Cuenta) ya estan registrados.","Porfavor, revisa la información, si olvidaste la contraseña, puedes recuperarla dando clic en OLVIDE MI CONTRASEÑA","error");
+            }else{
+                alerta("Tu registro fue exitoso","Porfavor, ingresa con los datos que proporcionaste","success");
+                $("#frm-add-alumno").trigger('reset');
+                $("#inlineForm").modal('hide');
+            }
+        }
+    });
     e.preventDefault();
 });
 /*Recupera PW*/

@@ -1,29 +1,41 @@
 window.onload = function(){
-    cargaEstadisticas();
+    cargaEstadisticasProfesor();
     cargaGruposActuales();
 }
 
-function cargaEstadisticas() {
-    contadoresDashboard().then(function (result) {
+function cargaEstadisticasProfesor() {
+    contadoresDashboardProf().then(function (result) {
         buildPanelEstadistica(result);
+        console.log(result)
     })
 }
 
 function buildPanelEstadistica(datos) {
-    $("#panelCursosCount").html(datos.countCursos);
-    $("#panelAlumnosCount").html(datos.countAlumnos);
-    $("#panelSolCount").html(datos.countSolic);
-    $("#panelConstanciasCount").html(datos.countConstancias);
-    loadEstadisticaHM(datos.conteoHM);
+    let cursosTipos = datos.countCursos;
+    let enviadosC = 0;
+    let borradoresC = 0;
+    cursosTipos.forEach(
+        (c)=>{
+            if (c.tipo==="1" || c.tipo==="0") enviadosC = enviadosC + parseInt(c.cant) ;
+            else borradoresC = parseInt(c.cant);
+        });
+
+    let borradortext = borradoresC >0 ? '<span class="font-semibold text-muted fs-6" id="borradorCount"><em> '+borradoresC+' borrador(es)</em></span>':""
+    $("#countCursosProp").html(enviadosC + " "+borradortext);
+
+    $("#countAlumnos").html(datos.countAlumnos);
+    $("#countGrupos").html(datos.countGrupos);
+
+    loadEstadisticaHM(datos.conteoMisAlumnosHM);
 }
 
 function loadEstadisticaHM(DATA) {
-    let H = DATA.find(x=>x.sexo === "0");
-    let M = DATA.find(x=>x.sexo === "1");
+    let H = DATA.HOMBRES;
+    let M = DATA.MUJERES;
     let optionsVisitorsProfile  =
         {
-        series: [parseFloat(H.PORCENTAJE), parseFloat(M.PORCENTAJE)],
-        labels: ['Hombres ('+H.suma+')', 'Mujeres ('+M.suma+')'],
+        series: [parseFloat(H), parseFloat(M)],
+        labels: ['Hombres ('+H+')', 'Mujeres ('+M+')'],
         formatter: function (val) {
             return val + " %"
         },
@@ -50,7 +62,6 @@ function loadEstadisticaHM(DATA) {
 
 async function cargaGruposActuales() {
     consultaAsyncHistorialAsign(5,99).then(function (datos) {
-        console.log(datos);
         buildHTMLCardsDashboard(datos);
     })
 }

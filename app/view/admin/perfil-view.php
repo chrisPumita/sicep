@@ -141,7 +141,7 @@
             <section>
                 <div class="col-12 col-lg-12">
                     <div class="row">
-                        <div class="col-xl-3">
+                        <div class="col-12 col-lg-6 col-md-6 col-xl-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
@@ -153,7 +153,7 @@
                             </div>
                         </div>
                         <?php if( $_SESSION['admin']) {?>
-                        <div class="col-xl-3">
+                        <div class="col-12 col-lg-6 col-md-6 col-xl-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cambiar Clave de Confirmación</h5>
@@ -165,7 +165,9 @@
                             </div>
                         </div>
                         <?php }?>
-                        <div class="col-xl-3">
+
+                        <!--
+                                                <div class="col-xl-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Generar Llave Confidencial</h5>
@@ -187,6 +189,8 @@
                                 </div>
                             </div>
                         </div>
+                        -->
+
                     </div>
                 </div>
             </section>

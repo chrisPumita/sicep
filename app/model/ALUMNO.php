@@ -298,7 +298,8 @@ class ALUMNO extends PERSONA implements I_ALUMNO
        per.`estatus` AS estatus_persona, per.`sexo`,tipproc.`id_tipo_procedencia`,
        tipproc.`tipo_procedencia` AS nameproc, uni.nombre AS uni_name, uni.siglas,
        edosRep.estado AS edoRepName, edosRep.abrev AS abrevEdo,
-       ss.id_alumno_fk, ss.estatus AS statusSS, (case when ss.id_alumno_fk is null then 0 else 1 end) as flagServSoc
+       ss.id_alumno_fk, ss.estatus AS statusSS, (case when ss.id_alumno_fk is null then 0 else 1 end) as flagServSoc,
+       TIMESTAMPDIFF(DAY, update_doc_at, now()) AS dias
         FROM  universidades uni, `persona` per , `tipo_procedencia` tipproc , 
              `municipios` mun, estados edosRep, alumno al
              left join servicio_social ss on ss.id_alumno_fk = al.id_alumno
@@ -324,7 +325,14 @@ class ALUMNO extends PERSONA implements I_ALUMNO
         return $datos;
     }
 
-
+    function queryBuscaMatriculaCorreo(){
+        $query = "select email from alumno where matricula LIKE '".$this->getMatricula()."'
+                    OR email LIKE '".$this->getEmail()."'";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
     function queryInsertAlumno()
     {

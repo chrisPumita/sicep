@@ -2,6 +2,25 @@
 include_once "CONEXION_M.php";
 class ESTADISTICAS extends CONEXION_M
 {
+
+    private $idProfesor;
+
+    /**
+     * @return mixed
+     */
+    public function getIdProfesor()
+    {
+        return $this->idProfesor;
+    }
+
+    /**
+     * @param mixed $idProfesor
+     */
+    public function setIdProfesor($idProfesor): void
+    {
+        $this->idProfesor = $idProfesor;
+    }
+
     function queryEstadisticasAnioSolicitudes(){
         $sql = "SELECT count(*) as cantidad,
                     MONTHNAME(t.fecha_solicitud) as mes, YEAR(t.fecha_solicitud) as anio
@@ -80,6 +99,55 @@ class ESTADISTICAS extends CONEXION_M
         AND per.id_persona = prof.id_persona_fk
         AND fecha_validacion BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
         ORDER BY fecha_validacion DESC ".$limite;
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
+    function consultaMisCursos(){
+        $sql = 'select distinct(aprobado) as tipo, count(id_curso) as cant
+                    from curso where id_profesor_autor = '.$this->getIdProfesor().'
+                    group by tipo';
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
+    function consultaCantAlumnos(){
+        $sql = 'select COUNT(I.id_inscripcion) AS cantAlumnos from asignacion_grupo AG INNER JOIN inscripcion I
+                ON AG.id_asignacion = I.id_asignacion_fk INNER JOIN alumno A
+                ON A.id_alumno = I.id_alumno_fk LEFT JOIN validacion_inscripcion VI
+                ON VI.id_inscripcion_fk = I.id_inscripcion
+                WHERE AG.id_profesor_fk = '.$this->getIdProfesor().' AND VI.id_inscripcion_fk IS NOT NULL
+                AND (NOW() <= fecha_fin OR NOW() <= fecha_fin_actas)';
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
+    function consultaCantAsig(){
+        $sql = 'SELECT COUNT(id_asignacion) AS NOASIG FROM asignacion_grupo AG
+                WHERE AG.id_profesor_fk = '.$this->getIdProfesor().'
+                AND estatus >0
+                 AND (NOW() <= fecha_fin OR NOW() <= fecha_fin_actas)';
+        $this->connect();
+        $result = $this->getData($sql);
+        $this->close();
+        return $result;
+    }
+
+    function consultaCountMisAlumnosHM(){
+        $sql = 'SELECT per.sexo, COUNT(*) AS suma
+                FROM persona per inner JOIN alumno al on al.id_persona = per.id_persona
+                 INNER JOIN inscripcion inc ON inc.id_alumno_fk = al.id_alumno
+                 INNER JOIN asignacion_grupo ag ON inc.id_asignacion_fk = ag.id_asignacion
+                WHERE ag.id_profesor_fk = '.$this->getIdProfesor().'
+                  AND ag.estatus >0 and inc.autorizacion_inscripcion > 0
+                  AND (NOW() <= ag.fecha_fin OR NOW() <= ag.fecha_fin_actas)
+                GROUP BY per.sexo';
         $this->connect();
         $result = $this->getData($sql);
         $this->close();

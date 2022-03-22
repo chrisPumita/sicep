@@ -36,3 +36,26 @@ function getDataDashboard(){
     );
     return $resultados;
 }
+
+#E S T A D I S T I C A S     D A S H B O A R D  P R O F E S O R
+function getDataDashboardProfesor($idProfesor){
+    include_once "../model/ESTADISTICAS.php";
+    $ES = new  ESTADISTICAS();
+    $ES->setIdProfesor($idProfesor);
+
+    $HMLConteo = $ES->consultaCountMisAlumnosHM();
+    $H = isset($HMLConteo[0]) ? $HMLConteo[0]['suma'] : 0;
+    $M = isset($HMLConteo[1]) ? $HMLConteo[1]['suma'] : 0;
+
+    $misCursos = $ES->consultaMisCursos();
+    $misAlumnos = $ES->consultaCantAlumnos()[0]['cantAlumnos'];
+    $misGrupos = $ES->consultaCantAsig()[0]['NOASIG'];
+
+    $resultados = array(
+        "countCursos" => $misCursos,
+        "countAlumnos" => $misAlumnos,
+        "countGrupos" => $misGrupos,
+        "conteoMisAlumnosHM" => array("HOMBRES"=>$H,"MUJERES"=>$M)
+    );
+    return $resultados;
+}

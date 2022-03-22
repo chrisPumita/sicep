@@ -34,40 +34,40 @@
                     <section class="row">
                         <div class="col-12 col-lg-9">
                             <div class="row">
-                                <div class="col-6 col-lg-4 col-md-6">
+                                <div class="col-12 col-lg-4 col-md-12">
                                     <div class="card">
                                         <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/grado4.svg);">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <h6 class="text-muted font-semibold">CURSOS</h6>
-                                                    <h3 class="font-extrabold mb-0 text-primary" id="countCursosProp">16</h3>
+                                                    <h3 class="font-extrabold mb-0 text-primary" id="countCursosProp"></h3>
                                                     <h6 class="font-semibold text-success">Cursos propuestos</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-lg-4 col-md-6">
+                                <div class="col-12 col-lg-4 col-md-12">
                                     <div class="card">
                                         <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/comunidad4.svg);">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <h6 class="text-muted font-semibold">MIS ALUMNOS</h6>
-                                                    <h3 class="font-extrabold mb-0 text-primary" id="countAlumnos">18</h3>
-                                                    <h6 class="font-semibold text-success">Inscritos</h6>
+                                                    <h3 class="font-extrabold mb-0 text-primary" id="countAlumnos"></h3>
+                                                    <h6 class="font-semibold text-success">Suma de alumnos en listas</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-lg-4 col-md-6">
+                                <div class="col-12 col-lg-4 col-md-12">
                                     <div class="card">
                                         <div class="card-body px-3 py-4-5 img_bg_cards" style="background-image: url(../assets/images/icons/inscripciones4.svg);">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <h6 class="text-muted font-semibold">GRUPOS</h6>
-                                                    <h3 class="font-extrabold mb-0 text-primary" id="countGrupos">5</h3>
-                                                    <h6 class="font-semibold text-success">Activos</h6>
+                                                    <h3 class="font-extrabold mb-0 text-primary" id="countGrupos"></h3>
+                                                    <h6 class="font-semibold text-success">Grupos Activos</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +112,7 @@
                             <!-- INICIO GRAFICA CIRCULAR -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Alumnos registrados</h4>
+                                    <h4>Alumnos Inscritos en Grupos actualmente</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="chart-visitors-profile"></div>
@@ -181,6 +181,7 @@
         <?php include "includes/services-js.php"?>
         <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
         <script src="./service/profesor/dashboard.js"></script>
+        <script src="./service/profesor/async-rest-p.js"></script>
         <script src="./service/general/tipos.js"></script>
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

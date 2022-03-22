@@ -58,7 +58,7 @@
                             <input type="password" class="form-control form-control-user" name="contrasena" id="contrasena" required="" placeholder="Password">
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" name="contrasenaconfirmar" id="contrasenaconfirmar" required="" placeholder="Repeat Password">
+                            <input type="password" class="form-control form-control-user" name="contrasenaconfirmar" id="contrasenaconfirmar" required="" placeholder="Repetir Password">
                         </div>
                     </div>
                     <hr>
