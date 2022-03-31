@@ -54,7 +54,7 @@ function buildCardEnviada(DATOS){
                         </div>
                         <div class="col-8 m-auto">
                             <h5>Enviada</h5>
-                            <h6>Tu solicitud ha sido enviada, pero aun no se ha revisado.</h6>
+                            <h6>Tu solicitud ha sido enviada, pero aún no se ha revisado.</h6>
                         </div>
                     </div>`;
     return template;
@@ -67,7 +67,7 @@ function buildCardInscripcion(DATOS){
                 </div>
                 <div class="col-8 m-auto">
                     <h5>Inscripción <strong>acreditada</strong></h5>
-                    <h6>Se acredito el  ${getLegibleFechaHora(DATOS.fecha_validacion)}</h6>
+                    <h6>Se acreditó el  ${getLegibleFechaHora(DATOS.fecha_validacion)}</h6>
                 </div>
             </div>`;
 }

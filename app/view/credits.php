@@ -90,13 +90,13 @@
                         <h4>Acerca de</h4>
                     </div>
                     <div class="card-body">
-                        <h6>© SICEP- Centro de Computo</h6>
+                        <h6>© SICEP- Centro de Cómputo</h6>
                         <div class="row">
                             <p>
                                 SICEP es un sitio creado por estudiantes para estudiantes, con el propósito de
-                                facilitar el proceso de inscripción a los cursos impartidos por el Centro de Computo,
+                                facilitar el proceso de inscripción a los cursos impartidos por el Centro de Cómputo,
                                 atendiendo así la demanda y mostrando de una forma más sencilla y fácil todos los grupos,
-                                temas y cursos que se ofertan. Así como de vincular el procedo de informacion y archivos requeridos
+                                temas y cursos que se ofertan. Así como de vincular el proceso de información y archivos requeridos
                                 haciendo más fácil la inscripción y la revisión de documentos.
                             </p>
                         </div>

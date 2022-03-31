@@ -46,7 +46,7 @@ function buildTBLHtmlDescuentosAsigInscribe(DESCUENTOS,costoAplicado) {
     }
     else{
         template = `<div class="alert alert-primary" role="alert">
-                          No encontramos ningun descuento
+                          No encontramos descuentos
                         </div>`;
         lista ="Aplicable a todo público";
     }
@@ -102,7 +102,7 @@ function buildHtmlHVContainer(HVirtual) {
                             <th>DIA</th>
                             <th>INICIO</th>
                             <th>TERMINO</th>
-                            <th>DURACION</th>
+                            <th>DURACIÓN</th>
                             <th>PLATAFORMA</th>
                             <th>SALA</th>
                         </tr>
@@ -130,8 +130,8 @@ function buildHtmlHVContainer(HVirtual) {
                             <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
                         <div>
                         <h4 class="alert-heading">Sin registro</h4>
-                        <p>Aun no hemos registrado los horarios. Porfavor de estar pendiente al sitio para poder ver el 
-                        horario establecido.</p>
+                        <p>Aún no hemos registrado los horarios. Favor de estar pendiente al sitio para poder ver el 
+                        horario que sea establecido.</p>
                           </div>
                         </div>`;
     }
@@ -176,7 +176,7 @@ function buildHtmlHPContainer(HPresencial) {
                             <svg class=" flex-shrink-0 me-2" width="50px" height="50" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
                         <div>
                         <h4 class="alert-heading">Sin registro</h4>
-                        <p>Aun no hemos registrado los horarios. Porfavor de estar pendiente al sitio para poder ver el horario establecido.</p>
+                        <p>Aún no hemos registrado los horarios. Favor de estar pendiente al sitio para poder ver el horario que sea establecido.</p>
                           </div>
                         </div>`;
     }
@@ -263,7 +263,7 @@ function buildTBLHtmlDocsSol(DOSC) {
                 let acre = doc.tipo == "1" ?`<i class="fas fa-user-shield"></i> ADMIN`:`CUALQUIERA`;
                 let confirmaInsc = doc.obligatorio == "1" ?  `<ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center"  data-bs-toggle="tooltip" data-bs-placement="top" 
-                        title="Al confirmar la entrega de este documento, automaticamente se confirmará la inscripcion del alumno, y este quedará asentado el la lista oficial. ">
+                        title="Al confirmar la entrega de este documento, automaticamente se confirmará la inscripción del alumno, y este quedará asentado el la lista oficial. ">
                             <span> CONFIRMA</span>
                             <span class="badge bg-success badge-pill badge-round ml-1"><i class="fas fa-flag"></i></span>
                         </li>
@@ -282,8 +282,8 @@ function buildTBLHtmlDocsSol(DOSC) {
     else{
         template= `
                 <div class="alert alert-light alert-dismissible show fade">
-                   No hay documentos requeridos. De requerirse algun documento, este aparecerá en este apartado.
-                   Porfavor revisa tu solicitud o ficha de inscripción periodicamente. Puede que se te solicite algun documento posteriormente.
+                   No hay documentos requeridos. De requerirse algún documento, aparecerá en este apartado.
+                   Porfavor revisa tu solicitud o ficha de inscripción periódicamente, puede que se te solicite algún documento posteriormente.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>`;
     }

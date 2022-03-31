@@ -27,7 +27,7 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4>Documentación de cursos</h4>
+                                                <h4>DOCUMENTACIÓN DE CURSOS</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="list-group" id="containerFichas"></div>

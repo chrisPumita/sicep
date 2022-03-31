@@ -125,18 +125,18 @@ function validaDocumentoAcredita(alumno) {
             alert = `<div class="alert alert-success alert-dismissible" role="alert">
                         <h4 class="alert-heading">SUBIR ARCHIVO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <P>Es necesario subir un comrobante que verifique tu situación escolar actual.</P>
-                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                        <P>Es necesario subir un comprobante que verifique tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación académica, ya no podrás cambiar información como la matricula, procedencia o carrera.</p>
                         <hr>
-                        <p>Este archivo se renueva cada año, asi que tedrás que comprobar tu situacion escolar despues.</p>
+                        <p>Este archivo se renueva cada año, así que tedrás que comprobar tu situación escolar después.</p>
                       </div>`
         }
         else{
             alert = `<div class="alert alert-info alert-dismissible" role="alert">
                         <h4 class="alert-heading">RENOVAR ARCHIVO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <P>Es necesario que renueves tu situacion con un archivo, vuelve a subir un documento que acredite tu situación escolar actual.</P>
-                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.</p>
+                        <P>Es necesario que renueves tu situación con un archivo que la compruebe. Vuelve a subir un documento que acredite tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación académica, ya no podrás cambiar información como la matricula, procedencia o carrera.</p>
                       </div>`
         }
     }
@@ -145,15 +145,15 @@ function validaDocumentoAcredita(alumno) {
             alert = `<div class="alert alert-info alert-dismissible" role="alert">
                         <h4 class="alert-heading">RENOVAR ARCHIVO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <P>Es necesario que renueves tu situacion con un archivo, vuelve a subir un documento que acredite tu situación escolar actual.</P>
-                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar tu información como la matricula, procedencia y carrera.
+                        <P>Es necesario que renueves tu situacion con un archivo que la compruebe. Vuelve a subir un documento que acredite tu situación escolar actual.</P>
+                        <p>Una vez verificado tu documento de situación academica ya no podrás cambiar información como la matricula, procedencia o carrera.
                         Enviste tu archivo el ${getLegibleFechaHora(alumno.update_doc_at)}</p>
                       </div>`;
         }
         else{
             //Date update code pendiente
             alert = `<div class="alert alert-info alert-dismissible" role="alert">
-                        <P>Tu documento fue enviado el ${getLegibleFechaHora(alumno.update_doc_at)}, No necesitas realizar otro movimiento.</P>
+                        <P>Tu documento fue enviado el ${getLegibleFechaHora(alumno.update_doc_at)}. No necesitas realizar otro movimiento.</P>
                          </div>`
             $("#inputFile").html("");
         }
@@ -253,7 +253,7 @@ $("#frm-update-pwd-alumno").on("submit", function(e) {
             pwdNewConf: $("#pwdNewC").val()
         };
         if (params.pwdNew != params.pwdNewConf) {
-            alerta("No se pudo realizar la operacion", "Las nuevas contraseñas no coinciden", "error");
+            alerta("No se pudo realizar la operación", "Las nuevas contraseñas no coinciden", "error");
         } else {
             //Llamado de la funcion Async y resolviendo la promesa
             enviaFormAlumno(params, ruta).then(function(result) {
@@ -263,7 +263,7 @@ $("#frm-update-pwd-alumno").on("submit", function(e) {
             });
         }
     } else {
-        alerta("No se pudo realizar la operacion", "Los campos estan vacios", "warning");
+        alerta("No se pudo realizar la operación", "Los campos están vacios", "warning");
     }
     e.preventDefault();
 });

@@ -99,15 +99,14 @@ function buildHTMLMisCursos(lista) {
             }
         );
         $("#containerCardsAsig").html(template);
-        let mensajeAdvertencia = `<span class="badge bg-danger">!</span> Considere que su inscripcion puede ser <strong>rechazada</strong>`;
+        let mensajeAdvertencia = `<span class="badge bg-danger">!</span> Considere que su inscripción puede ser <strong>rechazada</strong>`;
         $("#alertOferta").html(mensajeAdvertencia);
     }else{
         template+= `<div class="alert alert-success w-100" role="alert">
                       <h4 class="alert-heading">No hay Inscripciones Acreditadas.</h4>
-                      <p>Lo sentimos, aun no tienes algun curso. Si ya enviaste solicitud, espera a que sea acreditado por los administradores.
-                      Ten en cuenta que parte importante de algunos cursos es la documentacion, asi que asegurate de que haber enviado tus documentos.</p>
+                      <p>Lo sentimos, aun no tienes inscripciones acreditadas. Si ya enviaste solicitud, espera a que sea acreditado por los administradores. Ten en cuenta que parte importante de algunos cursos es la documentación, así que asegúrate de haber enviado tus documentos correctamente.</p>
                       <hr>
-                      <p class="mb-0">Si tienes alguna duda de los cursos, porfavor comunicare directamente al centro de computo.</p>
+                      <p class="mb-0">Si tienes alguna duda de los cursos, por favor comunícate directamente al centro de cómputo.</p>
                     </div>`;
         $("#containerCardsAsig").html(template);
     }
@@ -203,8 +202,7 @@ function buildHTMLEnviadas(lista) {
         );
     }else{
         template+= `<div class="alert alert-success alert-dismissible fade show w-100" role="alert">
-                      <strong>Sin solicitudes </strong> No hay solicitudes pendientes por aprobar. Si deseas inscribirte a algun curso,
-                      revisa <a href="./home"> tu inicio</a> los grupos abiertos.
+                      <strong>Sin solicitudes. </strong> No hay solicitudes pendientes por aprobar, pero si deseas inscribirte a algún curso, revisa <a href="./home"> tu inicio</a> en donde se te mostrarán los grupos abiertos.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
     }
@@ -237,7 +235,7 @@ function buildHTMLSolicitudesCanceladas(lista) {
     }
     else{
         template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
-                      <strong>Sin solicitudes</strong> Ninguna Solicitud ha sido cancelada.
+                      <strong>Sin solicitudes. </strong> Ninguna solicitud ha sido cancelada.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
     }
@@ -245,7 +243,7 @@ function buildHTMLSolicitudesCanceladas(lista) {
 }
 
 function cancelarSolicitud(idSolicitud) {
-    sweetConfirm('Cancelar Solicitud', '¿Estas seguro de que cancelar la solicitud? Ya NO podrás enviar solicitud de nuevo.', async function (confirmed) {
+    sweetConfirm('Cancelar Solicitud', '¿Estás seguro de cancelar la solicitud? Ya NO podrás enviar otra solicitud posteriormente.', async function (confirmed) {
         if (confirmed) {
             cancelarSolicitudAlumno(idSolicitud).then(function (result) {
                 if (result.messageType == 1){
@@ -254,7 +252,7 @@ function cancelarSolicitud(idSolicitud) {
                 }
 
                 else if (result.messageType == 0){
-                    alerta("Peticion no procesada",result.messageText, "error");
+                    alerta("Petición no procesada",result.messageText, "error");
 
                 }
                 else { alerta("Error Interno",result.messageText, "error"); }

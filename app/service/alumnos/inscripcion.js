@@ -12,7 +12,7 @@ function buscaInscrpcion(idAsig){
         else{
             alerta("ANTES DE INICIAR","Revisa el horario y temario del " +
                 "curso/taller. Considera que tu inscripción requiere documentación que, " +
-                "de no enviar es posible que tu solicitud se cancele. Envia tu comprobante de " +
+                "de no ser enviada es posible que tu solicitud se cancele. Envía tu comprobante de " +
                 "pago según sea el caso.","info");
         }
     });
@@ -64,7 +64,7 @@ function loadDataAsignacion(asig,descuento){
 
 function inscripcionSuccess() {
     $('#btnsend').remove();
-    $('#alertConfimInscripcion').html("Tu solicitud se envio de forma correcta. Espera la acreditación de tu solicitud.");
+    $('#alertConfimInscripcion').html("Tu solicitud se envío de forma correcta. Espera la acreditación de tu solicitud.");
     let boton = `<a href="./mis-cursos"><button class="btn btn-primary mr-3 me-1  btn-sm"><i class="fas fa-chalkboard-teacher"></i> Mis Cursos </button></a>`;
     let template = `<h4 class="card-title">Estado actual</h4>
                                     <div class="d-flex">
@@ -72,7 +72,7 @@ function inscripcionSuccess() {
                                             <img src="../assets/images/icons/checked1.svg" alt="Face 1">
                                         </div>
                                         <div class="ms-3 name">
-                                            <h6 class="text-muted mb-0" >Solicitud enviada Porfavor revisa tu el estado de tu solicitud de inscripción en <a href="./mis-cursos">"Mis Cursos"</a>.</h6>
+                                            <h6 class="text-muted mb-0" >Solicitud enviada. Porfavor revisa el estado de tu solicitud de inscripción en <a href="./mis-cursos">"Mis Cursos"</a>.</h6>
                                         </div>
                                     </div>
 `;
@@ -86,7 +86,7 @@ function inscripcionSuccess() {
 $(document).on("click", ".bntInpcion", function ()
 {
     //data-bs-toggle="modal" data-bs-target="#solicitud"
-    sweetConfirm('Confirma tu inscripción', '¿Estas seguro de que inscribirte a este curso?', async function (confirmed) {
+    sweetConfirm('Confirma tu inscripción', '¿Estás seguro de inscribirte a este curso?', async function (confirmed) {
         if (confirmed) {
             let result = await inscribeCursoAjax();
             if (result.messageType == 1){
@@ -97,10 +97,10 @@ $(document).on("click", ".bntInpcion", function ()
                 inscripcionSuccess();
             }
             else if (result.messageType == 0){
-                alerta("Inscripcion no completada",result.messageText, "error");
+                alerta("Inscripción no completada",result.messageText, "error");
 
             }
-            else { alerta("Inscripcion no completada",result.messageText, "error"); }
+            else { alerta("Inscripción no completada",result.messageText, "error"); }
         }
     });
 });

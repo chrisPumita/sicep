@@ -56,7 +56,7 @@ function buildHTMLSolicitudesEnviadas(lista,cancelados) {
     }
     else{
         template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
-                      <strong>Sin solicitudes</strong> No hay solicitudes pendientes.
+                      <strong>Sin solicitudes. </strong>No hay solicitudes pendientes a ser revisadas.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
     }
@@ -119,11 +119,9 @@ function buildHTMLMisCursosTable(lista) {
     else {
         template +=`<div class="alert alert-success" role="alert">
                       <h4 class="alert-heading">No tienes ningún curso</h4>
-                      <p>No hemos encontrado algun curso. Si ya mandaste tu solicitud, y enviado toda la documentacion requerida,
-                      es posible que aun este en proceso de <strong>acreditación</strong> por lo que debes ser paciente y esperar.
-                      Recuerda que es necesiario enviar todos los documentos requeridos y realizar el pago correspondiente de ser necesario.</p>
+                      <p>No hemos encontrado cursos solicitados. Si ya mandaste tu solicitud, y enviado toda la documentación requerida, es posible que aún este en proceso de <strong>acreditación</strong>, por lo que, debes ser paciente y esperar. Recuerda que es necesario enviar todos los documentos solicitados y realizar el pago correspondiente de ser necesario. </p>
                       <hr>
-                      <p class="mb-0">Si deseas revisar la documentación que se te solicita, <a href="./documentacion">da clic aqui.</a></p>
+                      <p class="mb-0">Si deseas revisar la documentación que se te solicita, <a href="./documentacion">da clic aquí.</a></p>
                     </div>`;
     }
 
@@ -241,11 +239,10 @@ function buildHTMLCards(lista) {
         $("#alertOferta").html(mensajeAdvertencia);
     }else{
         template+= `<div class="alert alert-success" role="alert">
-                      <h4 class="alert-heading">Aun no tenemos grupos disponibles</h4>
-                      <p>Lo sentimos, aun no tenemos grupos habilitados para su inscripción. Pero no te preocupes, pronto abriremos
-                      nuevos grupos.</p>
+                      <h4 class="alert-heading">Aún no tenemos grupos disponibles</h4>
+                      <p>Lo sentimos, por el momento no tenemos grupos habilitados para su inscripción. Pero no te preocupes, pronto abriremos grupos nuevos.</p>
                       <hr>
-                      <p class="mb-0">Si tienes alguna duda de los cursos, porfavor comunicare directamente al centro de computo.</p>
+                      <p class="mb-0">Si tienes alguna duda al respecto, por favor comunícate directamente con el Centro de cómputo.</p>
                     </div>`;
         $("#swiperCardsContainer").addClass("d-none");
         $("#alertOferta").html(template);
@@ -315,7 +312,7 @@ function buildHTMLListDoscPend(lista) {
     }
     else{
         template+= `<div class="alert alert-info alert-dismissible fade show" role="alert">
-                      <strong>Buenas noticias!</strong> No hay documentos pendientes por enviar
+                      ¡Buenas noticias! No tienes documentos pendientes por enviar.
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
     }

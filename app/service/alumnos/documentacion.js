@@ -63,18 +63,18 @@ function buildHTMLAcrrodion() {
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-7 col-sm-3">
-                                                                <h6 class="mb-0">Semestre</h6>
+                                                                <h6 class="mb-0">Semestre:</h6>
                                                             </div>
                                                             <div class="col-5 col-sm-3 text-secondary">${SOL.semestre}</div>
                                                             <div class="col-7 col-sm-3">
-                                                                <h6 class="mb-0">Generación</h6>
+                                                                <h6 class="mb-0">Generación:</h6>
                                                             </div>
                                                             <div class="col-5 col-sm-3 text-secondary">${SOL.generacion}</div>
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <h6 class="mb-0">Modalidad</h6>
+                                                                <h6 class="mb-0">Modalidad:</h6>
                                                             </div>
                                                             <div class="col-sm-9 text-secondary">${getModalidadCurso(SOL.modalidad)}</div>
                                                         </div>
@@ -114,7 +114,7 @@ function buildHTMLAcrrodion() {
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <h6 class="mb-0">Estatus de la Inscripción</h6>
+                                                                <h6 class="mb-0">Estatus de la Inscripción:</h6>
                                                             </div>
                                                             <div class="col-sm-4 text-secondary">${estadoSolicitud}</div>
                                                             <div class="col-sm-4 text-secondary">${estadoPago}</div>
@@ -127,7 +127,7 @@ function buildHTMLAcrrodion() {
                                     </div>
                                     <div class="tab-pane active" id="list-2-${cont}" role="tabpanel"  aria-labelledby="list-profile-list">
                                         <div class="table-responsive" id="containerDocs-${cont}">
-                                            <h1>DOCUMENTACION</h1>
+                                            <h1>DOCUMENTACIÓN</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -141,10 +141,10 @@ function buildHTMLAcrrodion() {
     }
     else{
         template += `<div class="alert alert-success" role="alert">
-                      <h4 class="alert-heading">No hay archivos</h4>
-                      <p>No has enviado solicitudes aún. Una vez envies una solicitud, aparecera aqui la documentación que debes enviar.</p>
+                      <h4 class="alert-heading">No hay archivos.</h4>
+                      <p>No has enviado solicitudes aún. Una vez realices la solicitud a algún grupo, aparecerá aquí la documentación que debes enviar.</p>
                       <hr>
-                      <p class="mb-0">Si aun no te has inscrito a algun curso/tarres ve a tu <a href="./home">inicio</a> para ver los grupos abietos a inscripción</p>
+                      <p class="mb-0">Si aún no te has inscrito a un curso o taller, ve a tu <a href="./home">inicio</a> para ver los grupos abiertos para inscripción</p>
                     </div>`;
     }
     $("#containerFichas").html(template);

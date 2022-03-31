@@ -115,11 +115,11 @@ function buildTBLDocsSolicitadosAlumno(DOCS) {
     else{
         template += `<div class="alert alert-success" role="alert">
                       <h4 class="alert-heading">Sin documentación</h4>
-                      <p>Este curso no necesita documentación: Porfavor de esperar a que la inscripción sea aprobada por 
+                      <p>Este curso no necesita documentación. Espera a que la inscripción sea aprobada por 
                       el departamento correspondiente.  
                       </p>
                       <hr>
-                      <p class="mb-0">Si tu solicitud aun no se ha acreditado. Porfavor envia un correo al Centro de Computo para agilizar
+                      <p class="mb-0">Si tu solicitud aún no se ha acreditado, porfavor envía un correo al Centro de Computo para agilizar
                       tu proceso de inscripoción y revisar tu situación.</p>
                     </div>`;
     }
@@ -146,8 +146,8 @@ $(document).on("click", ".btnCancelFile", function ()
     let name = $(elementDOM).attr("docSol");
     let idFile = $(elementDOM).attr("iddoc");
     let idFicha = $(elementDOM).attr("id_insc");
-    sweetConfirm('Cancelar envio del documento: '+ name, '¿Estas seguro de que quitar este documento?' +
-        ' el documento se borrará y deberas subirlo nuevamente', async function (confirmed) {
+    sweetConfirm('Cancelar envio del documento: '+ name, '¿Estás seguro de quitar este documento?' +
+        ' el documento se borrará y deberás subirlo nuevamente', async function (confirmed) {
         if (confirmed) {
             actionDocumentFile(idFile,idDocSol,idFicha).then(function (result) {
                 if (result.messageType == 1){
