@@ -35,7 +35,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            Aquí se ouede consultar el histórico de grupos donde se ha dado de alta como profesor asignado.
+                                            Aquí se puede consultar el histórico de grupos donde se ha dado de alta como profesor asignado.
                                         </div>
                                     </div>
                                 </div>
