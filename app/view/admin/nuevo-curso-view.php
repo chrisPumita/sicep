@@ -176,9 +176,9 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    El curso será sujero a revision, para poder ser parovado debe cumplir con todos los
-                                    requerimentos que se piden para los cursos, tenga en cuenta que podra realizar cambios
-                                    mientras el curso no haya sido aprobado. Puede revisar sus cursos creados en la seccion Personal>Mis Cursos
+                                    El curso será sujero a revisión, para poder ser aprovado debe cumplir con todos los
+                                    requerimentos que se piden para los cursos; tenga en cuenta que podrá realizar cambios
+                                    mientras el curso no haya sido aprobado. Puede revisar sus cursos creados en la sección Personal > Mis Cursos
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <a href="#">
@@ -357,7 +357,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="card-body">
-                                                                            <h6 class="heading-small text-muted mb-4"> Seleccione la documentacion necesaria para cursar este curso</h6>
+                                                                            <h6 class="heading-small text-muted mb-4"> Seleccione la documentación necesaria para cursar este curso</h6>
                                                                             <div class="pl-lg-4">
                                                                                 <div class="row">
                                                                                     <div class="col-lg-12">

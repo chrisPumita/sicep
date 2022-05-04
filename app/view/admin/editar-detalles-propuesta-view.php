@@ -67,7 +67,7 @@ $titulo = "Detalles del curso"
                                     </div>
                                     <div class="ms-3 name">
                                         <h4 class="font-bold">Editando Curso</h4>
-                                        <h6 class="text-muted mb-0">Si este curso ya está listo, puede enviarlo para su revisión y aprobación.</h6>
+                                        <h6 class="text-muted mb-0">Sí este curso ya está listo, puede enviarlo para su revisión y aprobación.</h6>
                                     </div>
                                 </div>
                                 <div class="col-sm-4 m-auto">

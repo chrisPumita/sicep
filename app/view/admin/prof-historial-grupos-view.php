@@ -35,9 +35,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                            perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                            necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                            Aquí se ouede consultar el histórico de grupos donde se ha dado de alta como profesor asignado.
                                         </div>
                                     </div>
                                 </div>

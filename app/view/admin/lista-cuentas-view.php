@@ -40,8 +40,8 @@
                             <div class="row">
                                 <div class="col-sm-10">
                                     Las cuentas adminstrativas le permiten llevar el control de la plataforma. Cada acceso es
-                                    independiente y personal. Si desea asignar una cuenta nueva a un profesor. Porfavor seleccionelo
-                                    y el siguiente paso es asignar el nivel.
+                                    independiente y personal. Si desea asignar una cuenta nueva a un profesor, porfavor seleccionelo
+                                    y asigne un nivel de permisos.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                         <!-- Button trigger for primary themes modal -->

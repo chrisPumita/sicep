@@ -61,9 +61,7 @@ $titulo = "Detalles del curso"
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                    En esta sección se pueden ver los detalles del curso, los cuáles podrá modificarlos según sus necesidades, además de poder agregar temas al temario respectivo, asi como crear o editar sus grupos.
                                 </div>
                                 <div class="col-sm-2 align-items-center" id="btnAbrirCurso" > </div>
                             </div>
@@ -147,7 +145,7 @@ $titulo = "Detalles del curso"
                                             </div>
                                             <div class="m-auto">
                                                 <h5>Sin acreditar</h5>
-                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos
+                                                Si este curso cumple con los requerimentos, puede aprobar este curso y comenzar a asignar grupos.
                                             </div>
                                             <div class="card-body d-flex text-align-right pb-0">
                                                 <a href="#" class="btn btn-success btn-block ">Acreditar</a>
@@ -377,7 +375,7 @@ $titulo = "Detalles del curso"
                                 <h5 class="text-secondary"><i class="fas fa-tags"></i> Público y Descuentos Aplicados:</h5>
                             </div>
                             <div class="col-sm-12">
-                                <p class="text-primary">De acuerdo al costo sugerido <span class="badge bg-success" id="lblCostoFinalCallout"></span>, estos serian los precios con descuento para cada
+                                <p class="text-primary">De acuerdo al costo sugerido <span class="badge bg-success" id="lblCostoFinalCallout"></span>, estos serían los precios con descuento para cada
                                 Grupo de estudiantes que deseen cursar este curso. Considere que el precio puede cambiarse al
                                 momento de abrir un grupo</p>
                             </div>
@@ -476,7 +474,7 @@ $titulo = "Detalles del curso"
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Historico de Grupos creados de <span id="nombreCursoHistorial"></span>
+                        Histórico de Grupos creados de <span id="nombreCursoHistorial"></span>
                     </div>
                     <div class="card-body table-responsive">
                         <!--Table prototype to use | tablas con  paginador-->

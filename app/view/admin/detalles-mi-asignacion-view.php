@@ -49,7 +49,7 @@ $titulo = "Detalles de la Asignación" ?>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    A continuación, se muestra la información del grupo. Puede descargar la lista oficial de su grupo
+                                    A continuación, se muestra la información del grupo. Puede descargar la lista oficial de su grupo en esta parte.
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@ $titulo = "Detalles de la Asignación" ?>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h6 class="mb-0">Serestre</h6>
+                                            <h6 class="mb-0">Semestre</h6>
                                         </div>
                                         <div class="col-sm-7 text-secondary" id="lblSemestre">  </div>
                                     </div>
@@ -161,7 +161,7 @@ $titulo = "Detalles de la Asignación" ?>
                             <div class="card-body py-2">
                                 <!-- fechas importantes-->
                                 <div class="row py-1 m-2">
-                                    <h5 class="text-secondary">Fechas importantes:</h5>
+                                    <h5 class="text-secondary">Fechas importantes</h5>
                                     <div class="row py-2">
                                         <div class="col-sm-4">
                                             <h6 class="mb-0">Inscripciones</h6>
@@ -198,7 +198,7 @@ $titulo = "Detalles de la Asignación" ?>
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Listas Oficial de Alumnos</h4>
+                                <h4 class="card-title">Listas Oficiales de Alumnos</h4>
                             </div>
                             <div class="card-content">
                                 <div class="card-body pt-0">

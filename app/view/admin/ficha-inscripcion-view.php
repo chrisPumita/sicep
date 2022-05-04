@@ -73,7 +73,7 @@
                                             <select class="form-control px-2" id="status-pago">
                                                 <option     value="1" selected="selected">Acreditar Pago</option>
                                                 <option     value="2" >Acreditar Sin Pago</option>
-                                                <option     value="0" >Cancelar Inscripcion</option>
+                                                <option     value="0" >Cancelar Inscripción</option>
                                             </select>
                                             <a href="#" class="btn btn-success btn-block mx-3 btnValidatePago">
                                                 <i class="fas fa-check"></i> Aplicar</a>
@@ -197,7 +197,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Generacion</h6>
+                                            <h6 class="mb-0">Generación</h6>
                                         </div>
                                         <div class="col-sm-2 text-primary text-bold" id="fichaGen">{gen}</div>
                                         <div class="col-sm-3">
@@ -221,7 +221,7 @@
                                     </div>
 
                                     <div class="row py-3 mt-2">
-                                        <h5 class="text-secondary">Información de costo:</h5>
+                                        <h5 class="text-secondary">Información de costo</h5>
                                     </div>
 
                                     <div class="row">
@@ -309,7 +309,7 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-sm-3">
-                                                        <h6 class="mb-0">Contacto:</h6>
+                                                        <h6 class="mb-0">Contacto</h6>
                                                     </div>
                                                     <div class="col-sm-7 text-secondary"><a href="mailto:lucia@hotmail.com" class="text-secondary"><i class="fas fa-paper-plane"></i> lucia@hotmail.com</a>
                                                         <br> <i class="fas fa-mobile-alt"></i> 5587481564</div>
@@ -317,18 +317,18 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-sm-3">
-                                                        <h6 class="mb-0">Solicitud:</h6>
+                                                        <h6 class="mb-0">Solicitud</h6>
                                                     </div>
                                                     <div class="col-sm-9 text-secondary">mié, 16 de diciembre de 2020 11:09 a.&nbsp;m.</div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-7 col-sm-3">
-                                                        <h6 class="mb-0">Costo:</h6>
+                                                        <h6 class="mb-0">Costo</h6>
                                                     </div>
                                                     <div class="col-5 col-sm-3 text-secondary">$1500.00</div>
                                                     <div class="col-7 col-sm-3">
-                                                        <h6 class="mb-0">Descuento:</h6>
+                                                        <h6 class="mb-0">Descuento</h6>
                                                     </div>
                                                     <div class="col-5 col-sm-3 text-secondary">No Aplica</div>
                                                 </div>

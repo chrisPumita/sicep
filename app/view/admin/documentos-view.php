@@ -36,9 +36,9 @@
                             <div class="row">
                                 <div class="col-sm-10">
                                     Por favor revise todos los documentos pendientes de las solicitudes.
-                                    Recuerden que no es necesario que la solicitud este ACREDITADA, solo se
+                                    Recuerden que no es necesario que la solicitud este ACREDITADA, sólo se
                                     muestran las solicitudes que tengan documentación pendiente para revisar.
-                                    Si desea ver todas las solicitudes, por favor de clic en Ver Solicitudes.
+                                    Sí desea ver todas las solicitudes, por favor de clic en Ver Solicitudes.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <a href="./solicitudes-inscripcion">

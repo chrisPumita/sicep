@@ -22,7 +22,7 @@ if(!isset($id)) header("Location: ./lista-cursos");
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Crear nueva asignacion de grupo</h3>
+                        <h3>Crear nueva asignación de grupo</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -75,7 +75,7 @@ if(!isset($id)) header("Location: ./lista-cursos");
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Porfavor, complete la siguiente información, una vez creada la Asignacion, esta quedara disponible
+                        Porfavor, complete la siguiente información, una vez creada la Asignación, esta quedará disponible
                         para inscripciones de los alumnos.
                     </div>
                     <hr>
@@ -205,8 +205,8 @@ if(!isset($id)) header("Location: ./lista-cursos");
                                     <h6 class="heading-small text-muted mb-4">Crear y publicar</h6>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <strong><i class="fas fa-eye"></i> Publicar Ahora:</strong> Si decide publicar el grupo ahora, este aparecerá en
-                                        la pagina principal y quedará disponible para que los alumnos se inscriban. Si creó nuevo grupo, los descuentos no estan habilitados y
-                                        queda predeeterminado todo el público. <a href="./help"><i class="fas fa-question-circle"></i></a>
+                                        la página principal y quedará disponible para que los alumnos se inscriban. Si creó un nuevo grupo, los descuentos no están habilitados y
+                                        queda predeeterminado para todo el público. <a href="./help"><i class="fas fa-question-circle"></i></a>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     <div class="form-check">

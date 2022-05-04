@@ -20,7 +20,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Revisa cuentas de alumnos</h3>
+                        <h3>Revise cuentas de alumnos</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="./">Inicio</a></li>

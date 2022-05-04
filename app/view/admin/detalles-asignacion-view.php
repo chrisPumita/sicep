@@ -211,7 +211,7 @@ $titulo = "Detalles de la Asignación" ?>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h6 class="mb-0">Serestre</h6>
+                                            <h6 class="mb-0">Semeestre</h6>
                                         </div>
                                         <div class="col-sm-7 text-secondary" id="lblSemestre">  </div>
                                     </div>
@@ -249,7 +249,7 @@ $titulo = "Detalles de la Asignación" ?>
                             <div class="card-body py-2">
                                 <!-- fechas importantes-->
                                 <div class="row py-1 m-2">
-                                    <h5 class="text-secondary">Fechas importantes:</h5>
+                                    <h5 class="text-secondary">Fechas importantes</h5>
                                     <div class="row py-2">
                                         <div class="col-sm-4">
                                             <h6 class="mb-0">Inscripciones</h6>
@@ -291,7 +291,7 @@ $titulo = "Detalles de la Asignación" ?>
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    El costo final para este curso es de <span class="badge bg-success" id="lblCostoFinalCallout"></span> a continuación
+                                                    El costo final para este curso es de <span class="badge bg-success" id="lblCostoFinalCallout"></span>, a continuación
                                                     se muestran los costos aplicados para cada uno de los estudiantes a quien va dirigido:
                                                 </div>
                                             </div>

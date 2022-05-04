@@ -37,9 +37,9 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Estos son los grupos abiertos actualmente, si desea ver grupos anteriores, porfavor de clic
-                                    al boton de "Ver Histórico". Si desea ver mas informacion del grupo abierto, asi como descargar
-                                    la lista de alumnos, de clic en "Mas Detalles".
+                                    Estos son los grupos abiertos actualmente. Si desea ver grupos anteriores, porfavor de clic
+                                    al boton de "Ver Histórico". Para ver mas información del grupo abierto, así como descargar
+                                    la lista de alumnos, de clic en "Más Detalles".
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <a href="./prof-historial-grupos">

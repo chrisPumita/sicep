@@ -36,9 +36,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eos eveniet
-                                    perspiciatis sequi voluptatem. Alias aliquid, assumenda beatae hic maxime
-                                    necessitatibus non possimus tempora. Accusamus aperiam at corporis harum provident.
+                                    En esta sección se muestra el histórico de todos los grupos abiertos.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <a href="./lista-cursos">
@@ -55,7 +53,7 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Historico de Grupos creados
+                        Histórico de Grupos creados
                     </div>
                     <div class="card-body">
                         <div class="row py-3">
@@ -116,9 +114,9 @@
                                 <th>PROFESOR</th>
                                 <th>CURSO</th>
                                 <th>INICIO</th>
-                                <th>TERMINO</th>
+                                <th>TÉRMINO</th>
                                 <th>GRUPO</th>
-                                <th>GENERACION</th>
+                                <th>GENERACIÓN</th>
                                 <th>SEMESTRE</th>
                                 <th>TIPO</th>
                                 <th>ESTADO</th>

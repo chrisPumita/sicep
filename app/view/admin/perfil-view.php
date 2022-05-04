@@ -53,9 +53,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor ipsa,
-                                    laudantium mollitia numquam odit porro quia quisquam recusandae sunt! Atque commodi
-                                    dignissimos facilis ipsum maiores nisi soluta unde vel?
+                                    Aquí se muestran todos los detalles de su perfil, los cuales puede actualizar dando click en el botón correspondiente. En este apartado también podrá cambiar su contraseña, así como su clave de confirmación.
                                 </div>
                             </div>
                         </div>
@@ -65,7 +63,7 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Editar informacion personal
+                        Editar información personal
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -145,7 +143,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Cambiar Contraseña</h5>
-                                    <p class="card-text text-muted">En este apartado puede cambiar su contraseña actual de su cuenta.</p>
+                                    <p class="card-text text-muted">En este apartado puede cambiar la contraseña actual de su cuenta.</p>
                                     <a href="#">
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#CambiarPsw">Cambiar</button>
                                     </a>

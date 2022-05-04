@@ -40,7 +40,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                 Este acceso es sólo para cuentas de administrador con alto acceso, por lo que si desea 
-                                que alguien más pueda realizar cambios, es necesario que configure la cuenta en nivel alto.
+                                que alguien más pueda realizar cambios, es necesario que configure la cuenta respectiva en nivel alto.
                                 </div>
                             </div>
                         </div>

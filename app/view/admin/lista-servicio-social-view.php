@@ -38,7 +38,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error suscipit in magnam eum possimus voluptas corrupti porro repellendus, explicabo ad, quibusdam blanditiis a earum sunt necessitatibus! Ipsum voluptatem corrupti recusandae.
+                                    Aquí se muestran las cuentas de alumnos que tienen permisos de servicio social y cuentan con permisos especiales, así como el estado de su Servicio Social.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                         <!-- Button trigger for primary themes modal

@@ -112,7 +112,7 @@
                             <!-- INICIO GRAFICA CIRCULAR -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Alumnos Inscritos en Grupos actualmente</h4>
+                                    <h4>Alumnos Inscritos en grupos actualmente</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="chart-visitors-profile"></div>
@@ -131,7 +131,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title font-weight-bold">Cursos</h5>
-                                            <p class="card-text text-muted">En este apartado se pueden consultar las propuestas de cursos hechas y su estado.</p>
+                                            <p class="card-text text-muted">En este apartado se pueden consultar las propuestas de cursos hechos y su estado.</p>
                                             <a href="./lista-propuestas">
                                             <button type="button" class="btn btn-primary btn-sm">Ver Propuestas</button>
                                             </a>
@@ -145,7 +145,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title font-weight-bold">Actas</h5>
-                                            <p class="card-text text-muted">Acceso rápido para el apartado de actas en dondé se podrán ver los detalles y estado.</p>
+                                            <p class="card-text text-muted">Acceso rápido para el apartado de actas en donde se podrán ver los detalles y estado.</p>
                                             <a href="#">
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#onConstruction">Ir</button>
                                             </a>

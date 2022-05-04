@@ -36,9 +36,9 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Aqui se muestran solo las cuentas verificadas y activadas. Por lo que si el
-                                    alumno no aparece, significa que no ha confirmado el correo. Puede confirmalo de forma manual.
-                                    Una vez el alumno este verificado via correo electronico, puede activar procedencia
+                                    Aqui se muestran sólo las cuentas verificadas y activadas, por lo que si el
+                                    alumno no aparece, significa que no ha confirmado su correo. Puede verificarlo de forma manual.
+                                    Una vez el alumno este verificado via correo electrónico ya es posible verificar su procedencia
                                     con algun comprobante oficial.
                                 </div>
                                 <div class="col-sm-2 align-items-center">

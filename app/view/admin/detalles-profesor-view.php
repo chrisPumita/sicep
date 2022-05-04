@@ -92,8 +92,8 @@
                                 <div class="col-sm-10">
                                     Verifique la información del profesor, ya que ésta se utilizará para generar las
                                     CONSTANCIAS y enlace con los alumnos inscritos en los grupos que se asignen. Las cuentas
-                                    INACTRIVAS no dan acceso al sistema. Si este profesor perdio su contraseña, puede recuperarla
-                                    desde el la opción Recuperar.
+                                    INACTRIVAS no dan acceso al sistema. Si este profesor perdío su contraseña, puede recuperarla
+                                    desde la opción Recuperar.
                                 </div>
                                 <div class="col-sm-2 align-items-center" id="contBtnActve"></div>
                             </div>
@@ -148,7 +148,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <h6 class="mb-0">Telefono</h6>
+                                        <h6 class="mb-0">Teléfono</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary" id="telPerfil"></div>
                                 </div>
@@ -203,7 +203,7 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        Historico de Grupos creados de <span id="nombreCursoHistorial"></span>
+                        Histórico de Grupos creados de <span id="nombreCursoHistorial"></span>
                     </div>
                     <div class="card-body table-responsive">
                         <!--Table prototype to use | tablas con  paginador-->

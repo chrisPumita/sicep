@@ -37,7 +37,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10 mb-1">
-                                    Verifique la información del alumno, ya que ésta se utilizará para generar las CONSTANCIAS. Las cuentas INACTRIVAS no dan acceso al sistema. Si este profesor perdio su contraseña, puede recuperarla desde el la opción Recuperar.
+                                    Verifique la información del alumno, ya que ésta se utilizará para generar las CONSTANCIAS. Para las cuentas INACTIVAS no se les permitirá acceso al sistema.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <button class="btn btn-success w-100 mr-3 mt-3 mb-3">
@@ -100,7 +100,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Telefono</h6>
+                                        <h6 class="mb-0">Teléfono</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         (55)3051 1515
@@ -138,7 +138,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title font-weight-bold">Crear Cuenta de Servicio Social</h5>
-                                <p class="card-text text-muted m-0">Al registrar esta cuenta como de Servicio Social, el alumno formará parte del servicio social dentro del sistema.</p>
+                                <p class="card-text text-muted m-0">Al registrar esta cuenta como de Servicio Social, cambiará su rol dentro del sistema y se le habilitarán los permisos respectivos.</p>
                                 <button class="btn btn-primary w-100 mt-2 text-align-right" data-bs-toggle="modal" data-bs-target="#nuevoServicio" type="button">
                                     Crear</button>                               
                             </div>

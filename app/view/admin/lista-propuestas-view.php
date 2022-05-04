@@ -37,7 +37,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    Aqui puede encontrar todos los cursos que han sido propuestos. Una vez aprobado el curso no se podrá editar el curso.
+                                    Aquí puede encontrar todos los cursos que han sido propuestos. Una vez aprobado el curso no se podrá editar.
                                 </div>
                             </div>
                         </div>

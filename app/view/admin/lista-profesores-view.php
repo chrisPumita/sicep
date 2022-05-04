@@ -36,7 +36,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Aqui se encuenran todos los profesores registrados en el sistema. En este apartado
+                                    Aqui se encuentran todos los profesores registrados en el sistema. En este apartado
                                     puede crear cuentas de profesores y/o autorizar las cuentas generadas a partir del formulario.
                                     Revise la información y asegurese de verificar bien los datos de las solicitudes.
                                 </div>

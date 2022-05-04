@@ -50,9 +50,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    Bienvenido al apartado administrativo de SISEP, aquí podrá encontrar toda la
-                                    información referente a las inscripciones a los cursos y crear/modificar/eliminar
-                                    etc. Cualquier parte del sistema, así como crear y publicar grupos para la
+                                    Bienvenido al apartado administrativo de SICEP, en dondé podrá encontrar toda la
+                                    información referente a las inscripciones a los cursos, así como crear y publicar grupos para la
                                     inscripción de los alumnos.
                                 </div>
                                 <div class="col-sm-2 align-items-center">
@@ -208,7 +207,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Alumnos</h5>
-                                    <p class="card-text text-muted">Verifique las cuentas del alumnos registrados y valide la procedencia del alumno.</p>
+                                    <p class="card-text text-muted">Verifique las cuentas de los alumnos registrados y valide su procedencia.</p>
                                     <a href="./cuentas-alumnos">
                                         <button type="button" class="btn btn-primary btn-sm">Revisar cuentas</button>
                                     </a>
@@ -222,7 +221,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Buscar Alumno</h5>
-                                    <p class="card-text text-muted">Escriba el No de cuenta/Matricula.</p>
+                                    <p class="card-text text-muted">Escriba el No. de cuenta/Matricula.</p>
                                     <form class="form-inline position-relative my-2 d-flex">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Escriba No Cta / Matricula" aria-label="Search">
                                         <button class="btn btn-search position-relative posicion-btn" type="submit"><img src="../assets/images/icons/buscar1.svg" width="24px"></button>
@@ -249,7 +248,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Pagos Recientes</h4>
                                         <p>
-                                            Ultimos pagos registrados en el sistema
+                                            Últimos pagos registrados en el sistema
                                         </p>
                                         <div class="list-group" id="listaUltimosPagos">
                                         </div>
