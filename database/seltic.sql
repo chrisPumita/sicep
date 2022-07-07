@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2022 a las 06:05:14
+-- Tiempo de generación: 08-07-2022 a las 00:29:41
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -90,7 +90,6 @@ INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona
 (-3, 15, 3, 20210528160010, '548754215487', 'IPN', 1, 'Informatica', 'chris@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-28 16:00:10', 'https://avatars.githubusercontent.com/u/57198260?v=4', NULL, NULL, 1),
 (1, 15, 2, 20210517145526, '312260633', 'UNAM', 1, 'Informatica', 'alumno@correo.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-05-17 14:55:26', 'https://avatars.githubusercontent.com/u/95256543?v=4', NULL, NULL, 1),
 (2, 15, 2, 20210517185211, '12364HMCN', 'UNAM', 2, 'Derecho', 'lucia@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-05-17 18:52:11', 'https://avatars.githubusercontent.com/u/57198260?v=4', NULL, NULL, 1),
-(4, 15, 3, 4, '8462215', 'UVM', 2, 'Economia', 'juan@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-01 18:49:53', '../resources/default-avatar.png', NULL, NULL, 0),
 (5, 15, 2, 2, '9874631', 'UNAM', 4, 'Matematicas aplicadas a la computacion', 'paola@hotmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2021-06-02 18:49:53', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', NULL, NULL, 0),
 (6, 283, 2, 20210609044700, '2521515', 'TEC', 1, 'Informatica', 'juan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-06-09 04:47:00', 'https://avatars.githubusercontent.com/u/95256543?v=4', NULL, NULL, 1),
 (7, 721, 3, 20210706223646, '3125252525', 'IPN', 1, 'Informatica', 'fernando@gmail.com', '6ebe76c9fb411be97b3b0d48b791a7c9', '2021-07-06 22:36:46', 'https://avatars.githubusercontent.com/u/57198260?v=4', NULL, NULL, 1),
@@ -99,7 +98,7 @@ INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona
 (63, 15, 3, 12, '313757886', 'IPN', 1, 'Derecho', 'juan@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:42', '../resources/default-avatar.png', NULL, NULL, 1),
 (64, 15, 3, 13, '314684992', 'IPN', 1, 'Derecho', 'luis@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:42', 'https://avatars.githubusercontent.com/u/95256543?v=4', NULL, NULL, 1),
 (65, 15, 2, 14, '312265878', 'UNAM', 2, 'Derecho', 'francisco@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', '../resources/default-avatar.png', NULL, NULL, 1),
-(66, 15, 3, 15, '315920738', 'IPN', 1, 'Matematicas', 'jesus@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', 'https://avatars.githubusercontent.com/u/57198260?v=4', NULL, NULL, 1),
+(66, 15, 4, 15, '315920738', 'IPN', 1, 'Matematicas', 'jesus@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', 'https://avatars.githubusercontent.com/u/57198260?v=4', NULL, NULL, 1),
 (67, 15, 3, 16, '314731852', 'IPN', 1, 'Economia', 'ana@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', 'https://avatars.githubusercontent.com/u/19921111?s=400&u=d2a07b2f07f36f033000c6100eccbf3d13b9c9aa&v=4', NULL, NULL, 1),
 (68, 15, 3, 17, '316469221', 'IPN', 1, 'Fisica', 'rosa@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', 'https://avatars.githubusercontent.com/u/43283439?v=4', NULL, NULL, 1),
 (69, 15, 2, 18, '316558268', 'UNAM', 2, 'Informatica', 'jorge@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-22 12:27:43', '../resources/default-avatar.png', NULL, NULL, 1),
@@ -127,10 +126,12 @@ INSERT INTO `alumno` (`id_alumno`, `id_municipio`, `id_universidad`, `id_persona
 (91, 23, 4, 10, '12345678', 'OTRA', 3, 'Materia Oscura', 'ejemplo@prueba@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-24 14:09:47', '../resources/default-avatar.png', NULL, NULL, 0),
 (92, 575, 2, 20211228193223, '123156', '', 1, 'Quimica', 'manuel@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2021-12-28 19:32:23', '../resources/default-avatar.png', NULL, NULL, 0),
 (93, 276, 3, 20211228193851, '135156416', 'IPN', 1, 'Informatica', 'camila@hotmail.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 19:38:51', '../resources/default-avatar.png', NULL, NULL, 0),
-(94, 1889, 4, 20211228130159, '41561615', 'IPN', 5, 'Super heroe', 'peeter@spiderman.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 13:01:59', '../resources/default-avatar.png', NULL, NULL, 0),
-(95, 76, 2, 20220103224547, '456156165', '', 1, 'Animal', 'cuyo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-01-03 22:45:47', '../resources/avatars/a3d68b461bd9d3533ee1dd3ce4628ed4/pimg-20220221201607.jpg', NULL, NULL, 0),
+(94, 1889, 4, 20211228130159, '41561615', 'IPN', -5, 'Super heroe', 'peeter@spiderman.com', '202cb962ac59075b964b07152d234b70', '2021-12-28 13:01:59', '../resources/default-avatar.png', NULL, NULL, 0),
+(95, 787, 2, 20220103224547, '456156165', '', 1, 'Informatica', 'cuyo@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-01-03 22:45:47', '../resources/avatars/a3d68b461bd9d3533ee1dd3ce4628ed4/pimg-20220305221508.jpg', '', NULL, 0),
 (96, 193, 4, 20220112190508, '156156', '', 3, 'Veterinaria', 'gio@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2022-01-12 19:05:08', '../resources/default-avatar.png', NULL, NULL, 0),
-(97, 688, 2, 20220113212601, '1515616', '', 1, 'Perro', 'capi@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-01-13 21:26:02', '../resources/default-avatar.png', NULL, NULL, 0);
+(97, 688, 2, 20220113212601, '1515616', '', 1, 'Perro', 'capi@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-01-13 21:26:02', '../resources/default-avatar.png', NULL, NULL, 0),
+(98, 280, 2, 20220308114915, '55555555', '', 1, 'Ing. en Alimentos', 'juan@algo.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-03-08 11:49:15', '../resources/avatars/d79aac075930c83c2f1e369a511148fe/pimg-20220308202724.svg', NULL, NULL, 0),
+(107, 1, 3, 20220321225740, '548754215487f', '', 1, 'Veterinaria', 'cvfnvjdf@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', '2022-03-21 22:57:40', '../resources/default-avatar.png', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -149,6 +150,18 @@ CREATE TABLE `archivo` (
   `estado_revision` tinyint(1) NOT NULL DEFAULT '0',
   `estado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `archivo`
+--
+
+INSERT INTO `archivo` (`id_archivo`, `id_doc_sol_fk`, `id_inscripcion_fk`, `name_archivo`, `path`, `fecha_creacion`, `notas`, `estado_revision`, `estado`) VALUES
+(1, 22, 22022832148361, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/6316e53b5d38e5e7e0e080e2f745dced/FICHA-DE-PAGO-20220228173733.pdf', '2022-02-28 23:37:33', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>CODE: -1- Se reviso el documento.<br>', 1, -1),
+(2, 37, 22022815418754, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/b0ee9929b13450097e07c491a457a26e/CREDENCIAL-20220305193144.pdf', '2022-03-06 01:31:44', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 4- Se reviso el documento.<br>Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>CODE: -1- Se reviso el documento.<br>Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>', 1, 1),
+(3, 39, 22022815418754, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/b0ee9929b13450097e07c491a457a26e/CERTIFICADO-1-NVL-20220319165006.pdf', '2022-03-19 22:50:06', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>CODE: 1- Se reviso el documento.<br>CODE: -1- Se reviso el documento.<br>Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>', 1, 1),
+(4, 36, 22022815418754, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/b0ee9929b13450097e07c491a457a26e/FICHA-DE-PAGO-20220305192735.pdf', '2022-03-06 01:27:35', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 2- Se reviso el documento.<br>', 1, 2),
+(5, 40, 22022815418754, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/b0ee9929b13450097e07c491a457a26e/ACTA-20220319165054.pdf', '2022-03-19 22:50:54', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 2- Se reviso el documento.<br>', 1, 2),
+(6, 19, 22032182856302, '', './archive/812b4ba287f5ee0bc9d43bbf5bbe87fb/eacc940ec136a773c8e60bf18dd55bfc/FICHA-DE-PAGO-20220516140428.pdf', '2022-05-16 19:04:28', 'Alumno: Se envia documento para su revición y acreditaciónCODE: 1- Se reviso el documento.<br>', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -178,6 +191,16 @@ CREATE TABLE `asignacion_grupo` (
   `estatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `asignacion_grupo`
+--
+
+INSERT INTO `asignacion_grupo` (`id_asignacion`, `id_grupo_fk`, `id_profesor_fk`, `generacion`, `semestre`, `campus_cede`, `fecha_creacion`, `fecha_inicio`, `fecha_fin`, `fecha_inicio_inscripcion`, `fecha_lim_inscripcion`, `fecha_inicio_actas`, `fecha_fin_actas`, `cupo`, `costo_real`, `notas`, `modalidad`, `visible_publico`, `estatus`) VALUES
+(1, 43, 1, 2022, '2021-2', 1, '2022-02-28 23:33:18', '2022-03-14', '2022-07-13', '2022-02-28', '2022-03-14', '2022-07-13', '2022-07-28', 30, '3050.00', '', 0, 1, 1),
+(2, 75, 2, 2022, '2021-2', 1, '2022-02-28 23:34:15', '2022-03-14', '2022-07-13', '2022-02-28', '2022-03-14', '2022-07-13', '2022-07-28', 30, '1500.00', '', 0, 1, 1),
+(3, 65, 2, 2022, '2021-2', 1, '2022-03-06 01:42:42', '2022-03-19', '2022-07-18', '2022-03-05', '2022-03-19', '2022-07-18', '2022-08-02', 30, '2100.00', '', 0, 1, 1),
+(4, 62, 2, 2022, '2021-2', 1, '2022-03-21 21:21:10', '2022-04-04', '2022-08-03', '2022-03-21', '2022-04-04', '2022-08-03', '2022-08-18', 30, '2700.00', 'example', 0, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +212,13 @@ CREATE TABLE `asignacion_procedencia` (
   `id_curso_fk` int(10) NOT NULL,
   `porcentaje_desc` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `asignacion_procedencia`
+--
+
+INSERT INTO `asignacion_procedencia` (`id_tipo_procedencia_fk`, `id_curso_fk`, `porcentaje_desc`) VALUES
+(1, 12, '70.00');
 
 -- --------------------------------------------------------
 
@@ -225,9 +255,11 @@ INSERT INTO `aulas` (`id_aula`, `edificio`, `aula`, `campus`, `cupo`, `estado`) 
 
 CREATE TABLE `config` (
   `id` int(11) NOT NULL,
-  `img_constancia_profesor` text NOT NULL,
-  `img_constancia_alumno` text NOT NULL,
-  `version_sistema` varchar(10) NOT NULL,
+  `detalle` varchar(30) NOT NULL COMMENT 'Informacion del elemento condigurable',
+  `valor` text NOT NULL COMMENT 'Valor del elemento',
+  `tipo` varchar(50) NOT NULL COMMENT 'Tipo definido del Elemento',
+  `system_view` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Posibilidad a ser editado por el Admin',
+  `system_edit` tinyint(2) NOT NULL DEFAULT '0' COMMENT 'Define si el valor es editable',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -235,8 +267,12 @@ CREATE TABLE `config` (
 -- Volcado de datos para la tabla `config`
 --
 
-INSERT INTO `config` (`id`, `img_constancia_profesor`, `img_constancia_alumno`, `version_sistema`, `last_update`) VALUES
-(1, 'link', 'link', '2.0', '2021-12-21 22:46:47');
+INSERT INTO `config` (`id`, `detalle`, `valor`, `tipo`, `system_view`, `system_edit`, `last_update`) VALUES
+(1, 'VERSION', '2.1.3.18', 'SYSTEM_INFO', 1, 0, '2022-03-19 03:24:15'),
+(2, 'BG_CERTIFICADO_ALUMNO', 'PATH', 'BG_CERTIFICADO', 1, 0, '2022-03-19 03:24:15'),
+(3, 'BG_CERTIFICADO_PROFESOR', 'PATH', 'BG_CERTIFICADO', 1, 0, '2022-03-19 03:24:15'),
+(4, 'CUENTA BANCO_1', '123132123123', 'CTA_BANK', 1, 1, '2022-03-19 03:27:36'),
+(5, 'CUENTA BANCO_2', '156156156', 'CTA_BANK', 1, 1, '2022-03-19 03:27:36');
 
 -- --------------------------------------------------------
 
@@ -305,12 +341,13 @@ CREATE TABLE `curso` (
 
 INSERT INTO `curso` (`id_curso`, `id_profesor_admin_acredita`, `id_profesor_autor`, `codigo`, `route`, `nombre_curso`, `dirigido_a`, `objetivo`, `descripcion`, `no_sesiones`, `antecedentes`, `aprobado`, `costo_sugerido`, `link_temario_pdf`, `fecha_creacion`, `fecha_acreditacion`, `banner_img`, `tipo_curso`) VALUES
 (1, 1, 1, '001', '', 'Induccion al computo II', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', '', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/ban-fesc.jpg', 2),
-(2, NULL, 1, '002', '', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', 0, '2850.00', '', '2021-05-18 22:55:43', NULL, '../resources/banners/ban-fesc.jpg', 0),
-(3, NULL, 1, '003', '', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 0, '3050.00', '', '2021-05-19 13:57:09', NULL, '../resources/banners/ban-fesc.jpg', 0),
-(4, 1, 1, '004', '', 'Diccionarios de datos', 'Publico en general actualizado', 'Dar a conocer las nuevas metodologias dentro de la programacion actualizado', 'Aqui va la descripcion del curso actualizado', 55, 'Conocimientos basicos en programacion actualizado', 1, '1500.00', '', '2021-05-19 20:58:23', '2021-12-22 12:20:20', '../resources/banners/ban-fesc.jpg', 1),
-(12, 1, 1, '003', '', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 1, '3050.00', '', '2021-05-19 13:57:09', NULL, '../resources/banners/ban-fesc.jpg', 1),
-(15, 1, 1, '004', '', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '2700.00', '', '2021-05-19 20:58:23', NULL, '../resources/banners/ban-fesc.jpg', 1),
-(19, 1, 1, '001', '', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', '', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/ban-fesc.jpg', 2);
+(2, NULL, 1, '002', '', 'Excel Avanzado', 'Publico en general', 'Incursionar a las nuevas generaciones en las macros en excel', 'En este curso en alumno aprenderá a etc, etc, etc', 17, 'Conocimientos basicos en excel', -1, '2850.00', '', '2021-05-18 22:55:43', NULL, '../resources/banners/ban-fesc.jpg', 0),
+(3, NULL, 1, '003', '', 'Aspel NOI Basico I', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 15, 'Conocimiento de Excel', -1, '1200.00', '../resources/temario/3/temario-20220319005242.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/3/banner-20220319002000.png', 0),
+(4, 1, 2, '004', '', 'Diccionarios de datos', 'Publico en general actualizado', 'Dar a conocer las nuevas metodologias dentro de la programacion actualizado', 'Aqui va la descripcion del curso actualizado', 55, 'Conocimientos basicos en programacion actualizado', 1, '1500.00', '', '2021-05-19 20:58:23', '2021-12-22 12:20:20', '../resources/banners/ban-fesc.jpg', 1),
+(12, 1, 2, '003', '', 'Aspel COI', 'Alumnos de la carrera de administración', 'Al término del curso el participante obtendrá los conocimientos y habilidades que le permitan dominar el sistema, esto es, instalarlo y configurarlo para adaptarlo a las necesidades especificas de la empresa, así como lograr un uso eficaz de las diversas herramientas que el sistema proporciona. De esta forma, se inicia la operación con el sistema con las bases que aseguran la correcta operación y uso del mismo.', 'CURSO ASPEL NOI 9.0 EN LINEA INCLUYE NIVEL BASICO, INTERMEDIO Y AVANZADO. TIEMPO DE ACCESO 3 MESES LAS 24 HORAS DEL DÍA.', 50, 'Conocimiento de Excel', 1, '3050.00', '../resources/temario/12/temario-20220321225345.pdf', '2021-05-19 13:57:09', NULL, '../resources/banners/12/banner-20220516214853.png', 3),
+(15, 1, 2, '004', '', 'Inteligencia Artificial', 'Publico en general', 'Dar a conocer las nuevas metodologias dentro de la programacion', 'Aqui va la descripcion del curso', 13, 'Conocimientos basicos en programacion', 1, '2700.00', '../resources/temario/15/temario-20220321225723.pdf', '2021-05-19 20:58:23', NULL, '../resources/banners/15/banner-20220321231757.jpg', 1),
+(19, 1, 2, '001', '', 'Induccion al computo', 'Publico en general', 'Objetivo', 'Descripcion', 9, 'Ningun antecedente', 1, '2100.00', '', '2021-05-18 13:04:26', '2021-05-19 20:03:52', '../resources/banners/ban-fesc.jpg', 2),
+(220318729, NULL, 2, '10', '', 'csd', 'csd', 'csd', 'csd', 1, 'csd', -1, '0.00', '', '2022-03-18 20:00:42', NULL, '../resources/banners/ban-fesc.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -377,7 +414,9 @@ INSERT INTO `docs_solicitados_curso` (`id_doc_sol`, `id_documento_fk`, `id_curso
 (34, 3, 19, 1),
 (36, 3, 12, 1),
 (37, 2, 12, 0),
-(39, 5, 12, 0);
+(39, 5, 12, 0),
+(40, 4, 12, 0),
+(41, 5, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -619,6 +658,16 @@ CREATE TABLE `inscripcion` (
   `notas` text NOT NULL,
   `estatus` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`id_inscripcion`, `id_alumno_fk`, `id_asignacion_fk`, `pago_confirmado`, `autorizacion_inscripcion`, `validacion_constancia`, `fecha_solicitud`, `fecha_conclusion`, `notas`, `estatus`) VALUES
+(22022815418754, 95, 1, 1, 1, 0, '2022-02-28 23:39:05', NULL, '0', 1),
+(22022832148361, 95, 2, 1, 1, 0, '2022-02-28 23:36:36', NULL, '0', 1),
+(22030847064465, 98, 1, 1, 1, 0, '2022-03-08 19:23:45', NULL, '0', 1),
+(22032182856302, 95, 3, 1, 1, 0, '2022-03-22 01:10:05', NULL, '0', 1);
 
 -- --------------------------------------------------------
 
@@ -3203,11 +3252,32 @@ INSERT INTO `persona` (`id_persona`, `nombre`, `app`, `apm`, `telefono`, `sexo`,
 (20211228130159, 'Peter', 'Parker', 'Sanchez', '1531561325', 0, 1),
 (20211228193223, 'Manuel', 'Martinez', 'Hernandez', '5500000000', 0, 1),
 (20211228193851, 'Camila', 'Segura', 'Segura', '4561512', 1, 1),
-(20220103224547, 'Cuyo', 'Coyin', 'Canallin', '45641564165', 0, 1),
+(20220103224547, 'Alberto', 'Hernandez', 'Fernandez', '45641564165', 1, 1),
 (20220112190508, 'Giovana', 'Hernandez', 'Urtado', '5512315656', 1, 1),
 (20220113211257, 'Jennifer ', 'Morales', 'Rosas', '5512457845', 1, 1),
 (20220113212601, 'Capitan', 'De La Fuente', 'Sierra', '456456456', 0, 1),
-(20220221113648, '', '', '', '', 0, 1);
+(20220221113648, '', '', '', '', 0, 1),
+(20220308114915, 'Juan', 'Abasolo', 'Lopez', '5512457845', 0, 1),
+(20220316113349, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 1, 1),
+(20220316114943, 'Mario', 'Gerrero', 'Sanchez', '5512457845', 0, 1),
+(20220316120740, 'Christian', 'Garduño', 'Hernandez', '+525565241529', 1, 1),
+(20220316121234, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 1, 1),
+(20220316121240, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 1, 1),
+(20220316121325, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 1, 1),
+(20220316121540, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 0, 1),
+(20220316121621, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 0, 1),
+(20220316121624, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 0, 1),
+(20220316121729, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 0, 1),
+(20220316121847, 'Christian', '', 'Pioquinto', '+525565241529', 0, 1),
+(20220316122031, 'Christian', '', 'Pioquinto', '+525565241529', 0, 1),
+(20220316122250, 'Christian', 'Garduño', 'Pioquinto', '+525565241529', 0, 1),
+(20220321224050, 'fbvdb', 'bdfb', 'bdfb', 'bdfb', 0, 1),
+(20220321224444, 'Giovana', 'Hernandez', 'Urtado', '5512315656', 1, 1),
+(20220321225653, 'Giovana', 'Hernandez', 'bdfb', '5512315656', 1, 1),
+(20220321225659, 'Giovana', 'Hernandez', 'bdfb', '5512315656', 1, 1),
+(20220321225710, 'Giovana', 'Hernandez', 'bdfb', '5512315656', 1, 1),
+(20220321225731, 'Giovana', 'Hernandez', 'Urtado', '5512315656', 1, 1),
+(20220321225740, 'Giovana', 'Hernandez', 'Urtado', '5512315656', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3236,7 +3306,8 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_trabajador`, `prefijo`, `email`, `pw`, `key_hash`, `fecha_registro`, `firma_digital`, `firma_digital_img`, `img_perfil`, `estatus`) VALUES
-(1, 20210517145526, 7, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/default-avatar.png', 1);
+(1, 20210517145526, 7, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/avatars/6512bd43d9caa6e02c990b0a82652dca/pimg-20220319003721.jpg', 1),
+(2, 20220316114943, 5, '4564565414565641', 'Dr', 'prof@correo.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2022-03-16 11:49:43', 'NULL', 'NULL', '../resources/avatars/3c59dc048e8850243be8079a5c74d079/pimg-20220322001843.png', 1);
 
 -- --------------------------------------------------------
 
@@ -3292,7 +3363,11 @@ INSERT INTO `temas` (`id_tema`, `id_curso_fk`, `indice`, `nombre`, `resumen`) VA
 (9, 1, '3.0', 'css avanzado', 'Aprenderas estilos  avanzados css'),
 (10, 12, '1.0', 'Introduccion', 'Se introduce a la informacion'),
 (12, 4, '1.1', 'Introduccionm', 'En este tema el alumno...'),
-(13, 4, '1.2', 'Introduccion', 'Detalles del tema aqui');
+(13, 4, '1.2', 'Introduccion', 'Detalles del tema aqui'),
+(14, 12, '1.2', 'tEMA 2', 'dETALLES DEL TEMA'),
+(18, 3, '1.2', 'Descripcion 2', 'Descropp tema 2'),
+(22, 3, '1.1', 'tema 1', 'Detalles aqui'),
+(23, 2, '1.1', 'Introduccion', 'Introducción al sistema principal');
 
 -- --------------------------------------------------------
 
@@ -3318,11 +3393,11 @@ INSERT INTO `tipo_procedencia` (`id_tipo_procedencia`, `tipo_procedencia`) VALUE
 (-10, 'COMUNIDAD EXTRAÑA'),
 (-9, 'Trabajadores UNAM'),
 (-8, 'COMUNIDAD empleados'),
+(-5, 'Externos de fuera'),
 (1, 'Comunidad FESC'),
 (2, 'Comunidad UNAM'),
 (3, 'Ex-Alumno FESC'),
 (4, 'Ex-Alumno UNAM'),
-(5, 'Externos de fuera'),
 (6, 'Personal UNAM'),
 (7, 'Comunidad Nueva'),
 (8, 'TROYANOS');
@@ -3368,6 +3443,16 @@ CREATE TABLE `validacion_inscripcion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `validacion_inscripcion`
+--
+
+INSERT INTO `validacion_inscripcion` (`id_inscripcion_fk`, `id_profesor_admin_fk`, `fecha_validacion`, `fecha_pago`, `monto_pago_realizado`, `descripcion`, `notas`) VALUES
+(22022815418754, 1, '2022-03-06 01:51:52', '2022-03-05 19:51:52', '915.00', 'ACREDITADO', 'Pago aprobado el día 2022-03-05 19:51:52<br>Monto registrado: $915'),
+(22022832148361, 1, '2022-02-28 23:38:25', '2022-02-28 17:38:25', '0.00', 'ACREDITADO', 'Pago 100% descuento acreditado el día 2022-02-28 17:38:25<br>'),
+(22030847064465, 1, '2022-03-15 01:24:22', '2022-03-14 19:24:22', '0.00', 'ACREDITADO', 'Pago 100% descuento acreditado el día 2022-03-14 19:24:22<br>'),
+(22032182856302, 1, '2022-05-16 19:06:36', '2022-05-16 14:06:36', '2100.00', 'ACREDITADO', 'Pago aprobado el día 2022-05-16 14:06:36<br>Monto registrado: $2100.00');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -3390,6 +3475,8 @@ ALTER TABLE `administrador`
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`id_alumno`),
+  ADD UNIQUE KEY `matricula` (`matricula`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `id_municipio` (`id_municipio`),
   ADD KEY `id_universidad` (`id_universidad`),
   ADD KEY `id_persona` (`id_persona`),
@@ -3544,6 +3631,8 @@ ALTER TABLE `persona`
 --
 ALTER TABLE `profesor`
   ADD PRIMARY KEY (`id_profesor`),
+  ADD UNIQUE KEY `no_trabajador` (`no_trabajador`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `id_persona_fk` (`id_persona_fk`),
   ADD KEY `id_depto_fk` (`id_depto_fk`);
 
@@ -3589,31 +3678,37 @@ ALTER TABLE `validacion_inscripcion`
 -- AUTO_INCREMENT de la tabla `acta`
 --
 ALTER TABLE `acta`
-  MODIFY `folio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `folio` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id_alumno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `archivo`
 --
 ALTER TABLE `archivo`
-  MODIFY `id_archivo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_archivo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `asignacion_grupo`
 --
 ALTER TABLE `asignacion_grupo`
-  MODIFY `id_asignacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=765432479;
+  MODIFY `id_asignacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `aulas`
 --
 ALTER TABLE `aulas`
   MODIFY `id_aula` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `config`
+--
+ALTER TABLE `config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `constancia_alumno`
@@ -3637,7 +3732,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `docs_solicitados_curso`
 --
 ALTER TABLE `docs_solicitados_curso`
-  MODIFY `id_doc_sol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_doc_sol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `documento`
@@ -3655,7 +3750,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id_grupo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `horario_clase_presencial`
@@ -3679,13 +3774,13 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_profesor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `temas`
 --
 ALTER TABLE `temas`
-  MODIFY `id_tema` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_tema` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_procedencia`

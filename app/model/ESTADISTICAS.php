@@ -66,7 +66,8 @@ class ESTADISTICAS extends CONEXION_M
     //CRIS
     function queryConteoHM(){
         $query = "SELECT per.sexo, COUNT(*) AS suma,
-                   (count(per.sexo)/(select count(*) from alumno))*100 as PORCENTAJE FROM alumno al, persona per
+                   (count(per.sexo)/(select count(*) from alumno))*100 as PORCENTAJE 
+                    FROM alumno al, persona per
                      WHERE per.id_persona = al.id_persona GROUP BY per.sexo";
         $this->connect();
         $result = $this->getData($query);
