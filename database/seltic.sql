@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2022 a las 00:29:41
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.12
+-- Tiempo de generación: 19-08-2022 a las 13:00:07
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,21 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `seltic`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `acta`
---
-
-CREATE TABLE `acta` (
-  `folio` int(10) NOT NULL,
-  `id_asignacion_fk` int(10) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sello_digital` text NOT NULL,
-  `acreditacion` tinyint(2) NOT NULL,
-  `estatus` tinyint(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -77,7 +61,7 @@ CREATE TABLE `alumno` (
   `pw` varchar(100) NOT NULL,
   `fecha_registro` datetime NOT NULL,
   `perfil_image` text NOT NULL,
-  `path_doc_valida` text,
+  `path_doc_valida` text DEFAULT NULL,
   `update_doc_at` datetime DEFAULT NULL,
   `estatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -145,10 +129,10 @@ CREATE TABLE `archivo` (
   `id_inscripcion_fk` bigint(20) NOT NULL,
   `name_archivo` text NOT NULL,
   `path` text NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `notas` text NOT NULL,
-  `estado_revision` tinyint(1) NOT NULL DEFAULT '0',
-  `estado` tinyint(1) NOT NULL DEFAULT '0'
+  `estado_revision` tinyint(1) NOT NULL DEFAULT 0,
+  `estado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -176,7 +160,7 @@ CREATE TABLE `asignacion_grupo` (
   `generacion` int(5) NOT NULL,
   `semestre` varchar(10) NOT NULL,
   `campus_cede` tinyint(2) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `fecha_inicio_inscripcion` date NOT NULL,
@@ -187,7 +171,7 @@ CREATE TABLE `asignacion_grupo` (
   `costo_real` decimal(10,2) NOT NULL,
   `notas` text NOT NULL,
   `modalidad` tinyint(3) NOT NULL,
-  `visible_publico` tinyint(1) NOT NULL DEFAULT '0',
+  `visible_publico` tinyint(1) NOT NULL DEFAULT 0,
   `estatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -258,9 +242,9 @@ CREATE TABLE `config` (
   `detalle` varchar(30) NOT NULL COMMENT 'Informacion del elemento condigurable',
   `valor` text NOT NULL COMMENT 'Valor del elemento',
   `tipo` varchar(50) NOT NULL COMMENT 'Tipo definido del Elemento',
-  `system_view` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Posibilidad a ser editado por el Admin',
-  `system_edit` tinyint(2) NOT NULL DEFAULT '0' COMMENT 'Define si el valor es editable',
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `system_view` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'Posibilidad a ser editado por el Admin',
+  `system_edit` tinyint(2) NOT NULL DEFAULT 0 COMMENT 'Define si el valor es editable',
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -281,32 +265,23 @@ INSERT INTO `config` (`id`, `detalle`, `valor`, `tipo`, `system_view`, `system_e
 --
 
 CREATE TABLE `constancia_alumno` (
-  `id_constancia_alumno` int(5) NOT NULL,
+  `id_constancia_alumno` bigint(20) NOT NULL,
   `id_profesor_admin_firma_fk` int(10) NOT NULL,
-  `id_inscripcion_acta_fk` bigint(20) NOT NULL,
+  `id_inscripcion_fk` bigint(20) NOT NULL,
   `sello_digital` text NOT NULL,
   `verificada` tinyint(1) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `qr_verificador` text NOT NULL,
-  `estatus` tinyint(1) NOT NULL
+  `estatus` tinyint(1) NOT NULL,
+  `calificacion` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `constancia_profesor`
+-- Volcado de datos para la tabla `constancia_alumno`
 --
 
-CREATE TABLE `constancia_profesor` (
-  `id_constancia` int(5) NOT NULL,
-  `id_admin_firma_fk` int(10) NOT NULL,
-  `folio_acta_fk` int(10) NOT NULL,
-  `sello_digital` text NOT NULL,
-  `verificada` tinyint(1) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `qr_verificador` text NOT NULL,
-  `estatus` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `constancia_alumno` (`id_constancia_alumno`, `id_profesor_admin_firma_fk`, `id_inscripcion_fk`, `sello_digital`, `verificada`, `fecha_creacion`, `qr_verificador`, `estatus`, `calificacion`) VALUES
+(111111111, 1, 22022815418754, 'csdcsdcsdcds', 1, '2022-07-27 01:37:54', 'cccccccccccccccccccccccc', 1, '10');
 
 -- --------------------------------------------------------
 
@@ -650,13 +625,13 @@ CREATE TABLE `inscripcion` (
   `id_inscripcion` bigint(20) NOT NULL,
   `id_alumno_fk` int(10) NOT NULL,
   `id_asignacion_fk` int(10) NOT NULL,
-  `pago_confirmado` tinyint(1) NOT NULL DEFAULT '0',
-  `autorizacion_inscripcion` tinyint(1) NOT NULL DEFAULT '0',
-  `validacion_constancia` tinyint(1) NOT NULL DEFAULT '0',
-  `fecha_solicitud` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `pago_confirmado` tinyint(1) NOT NULL DEFAULT 0,
+  `autorizacion_inscripcion` tinyint(1) NOT NULL DEFAULT 0,
+  `validacion_constancia` tinyint(1) NOT NULL DEFAULT 0,
+  `fecha_solicitud` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_conclusion` timestamp NULL DEFAULT NULL,
   `notas` text NOT NULL,
-  `estatus` tinyint(1) NOT NULL DEFAULT '1'
+  `estatus` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -667,32 +642,8 @@ INSERT INTO `inscripcion` (`id_inscripcion`, `id_alumno_fk`, `id_asignacion_fk`,
 (22022815418754, 95, 1, 1, 1, 0, '2022-02-28 23:39:05', NULL, '0', 1),
 (22022832148361, 95, 2, 1, 1, 0, '2022-02-28 23:36:36', NULL, '0', 1),
 (22030847064465, 98, 1, 1, 1, 0, '2022-03-08 19:23:45', NULL, '0', 1),
-(22032182856302, 95, 3, 1, 1, 0, '2022-03-22 01:10:05', NULL, '0', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inscripcion_acta`
---
-
-CREATE TABLE `inscripcion_acta` (
-  `id_inscripcion_acta` bigint(20) NOT NULL,
-  `folio_acta_fk` int(10) NOT NULL,
-  `fecha_incorpora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `calificacion` int(3) NOT NULL DEFAULT '0',
-  `estatus` tinyint(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `keywords`
---
-
-CREATE TABLE `keywords` (
-  `id_curso_fk` int(10) NOT NULL,
-  `keyword` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(22032182856302, 95, 3, 1, 1, 0, '2022-03-22 01:10:05', NULL, '0', 1),
+(22072688137380, 95, 4, 1, 1, 0, '2022-07-27 01:24:11', NULL, '0', 1);
 
 -- --------------------------------------------------------
 
@@ -3306,7 +3257,7 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_trabajador`, `prefijo`, `email`, `pw`, `key_hash`, `fecha_registro`, `firma_digital`, `firma_digital_img`, `img_perfil`, `estatus`) VALUES
-(1, 20210517145526, 7, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/avatars/6512bd43d9caa6e02c990b0a82652dca/pimg-20220319003721.jpg', 1),
+(1, 20210517145526, 5, '312260633', 'Lic', 'c@mail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'weerfewrrwe', '2021-05-18 13:58:22', 'ewrewweer', 'thhbyerereewdf', '../resources/avatars/6512bd43d9caa6e02c990b0a82652dca/pimg-20220319003721.jpg', 1),
 (2, 20220316114943, 5, '4564565414565641', 'Dr', 'prof@correo.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'b59c67bf196a4758191e42f76670ceba', '2022-03-16 11:49:43', 'NULL', 'NULL', '../resources/avatars/3c59dc048e8850243be8079a5c74d079/pimg-20220322001843.png', 1);
 
 -- --------------------------------------------------------
@@ -3318,7 +3269,7 @@ INSERT INTO `profesor` (`id_profesor`, `id_persona_fk`, `id_depto_fk`, `no_traba
 CREATE TABLE `servicio_social` (
   `id_alumno_fk` int(10) NOT NULL,
   `clave_acceso` text NOT NULL,
-  `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_alta` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_inicio_serv` date DEFAULT NULL,
   `fecha_termino_serv` date DEFAULT NULL,
   `notas` text NOT NULL,
@@ -3435,7 +3386,7 @@ INSERT INTO `universidades` (`id_universidad`, `nombre`, `siglas`) VALUES
 CREATE TABLE `validacion_inscripcion` (
   `id_inscripcion_fk` bigint(20) NOT NULL,
   `id_profesor_admin_fk` int(10) NOT NULL,
-  `fecha_validacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_validacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_pago` datetime NOT NULL,
   `monto_pago_realizado` decimal(10,2) NOT NULL,
   `descripcion` text NOT NULL,
@@ -3450,18 +3401,12 @@ INSERT INTO `validacion_inscripcion` (`id_inscripcion_fk`, `id_profesor_admin_fk
 (22022815418754, 1, '2022-03-06 01:51:52', '2022-03-05 19:51:52', '915.00', 'ACREDITADO', 'Pago aprobado el día 2022-03-05 19:51:52<br>Monto registrado: $915'),
 (22022832148361, 1, '2022-02-28 23:38:25', '2022-02-28 17:38:25', '0.00', 'ACREDITADO', 'Pago 100% descuento acreditado el día 2022-02-28 17:38:25<br>'),
 (22030847064465, 1, '2022-03-15 01:24:22', '2022-03-14 19:24:22', '0.00', 'ACREDITADO', 'Pago 100% descuento acreditado el día 2022-03-14 19:24:22<br>'),
-(22032182856302, 1, '2022-05-16 19:06:36', '2022-05-16 14:06:36', '2100.00', 'ACREDITADO', 'Pago aprobado el día 2022-05-16 14:06:36<br>Monto registrado: $2100.00');
+(22032182856302, 1, '2022-05-16 19:06:36', '2022-05-16 14:06:36', '2100.00', 'ACREDITADO', 'Pago aprobado el día 2022-05-16 14:06:36<br>Monto registrado: $2100.00'),
+(22072688137380, 1, '2022-07-27 01:24:54', '2022-07-26 20:24:54', '2700.00', 'ACREDITADO', 'Pago aprobado el día 2022-07-26 20:24:54<br>Monto registrado: $2700.00');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `acta`
---
-ALTER TABLE `acta`
-  ADD PRIMARY KEY (`folio`),
-  ADD KEY `id_asignacion_fk` (`id_asignacion_fk`);
 
 --
 -- Indices de la tabla `administrador`
@@ -3524,15 +3469,7 @@ ALTER TABLE `config`
 ALTER TABLE `constancia_alumno`
   ADD PRIMARY KEY (`id_constancia_alumno`),
   ADD KEY `id_profesor_admin_firma_fk` (`id_profesor_admin_firma_fk`),
-  ADD KEY `id_inscripcion_acta_fk` (`id_inscripcion_acta_fk`);
-
---
--- Indices de la tabla `constancia_profesor`
---
-ALTER TABLE `constancia_profesor`
-  ADD PRIMARY KEY (`id_constancia`),
-  ADD KEY `id_admin_firma_fk` (`id_admin_firma_fk`),
-  ADD KEY `folio_acta_fk` (`folio_acta_fk`);
+  ADD KEY `id_inscripcion_fk` (`id_inscripcion_fk`);
 
 --
 -- Indices de la tabla `curso`
@@ -3599,21 +3536,6 @@ ALTER TABLE `inscripcion`
   ADD KEY `id_asignacion_fk` (`id_asignacion_fk`);
 
 --
--- Indices de la tabla `inscripcion_acta`
---
-ALTER TABLE `inscripcion_acta`
-  ADD PRIMARY KEY (`id_inscripcion_acta`,`folio_acta_fk`),
-  ADD KEY `id_inscripcion_acta` (`id_inscripcion_acta`),
-  ADD KEY `folio_acta_fk` (`folio_acta_fk`);
-
---
--- Indices de la tabla `keywords`
---
-ALTER TABLE `keywords`
-  ADD PRIMARY KEY (`id_curso_fk`),
-  ADD KEY `id_key` (`id_curso_fk`);
-
---
 -- Indices de la tabla `municipios`
 --
 ALTER TABLE `municipios`
@@ -3675,12 +3597,6 @@ ALTER TABLE `validacion_inscripcion`
 --
 
 --
--- AUTO_INCREMENT de la tabla `acta`
---
-ALTER TABLE `acta`
-  MODIFY `folio` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
@@ -3709,18 +3625,6 @@ ALTER TABLE `aulas`
 --
 ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `constancia_alumno`
---
-ALTER TABLE `constancia_alumno`
-  MODIFY `id_constancia_alumno` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `constancia_profesor`
---
-ALTER TABLE `constancia_profesor`
-  MODIFY `id_constancia` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
@@ -3799,12 +3703,6 @@ ALTER TABLE `universidades`
 --
 
 --
--- Filtros para la tabla `acta`
---
-ALTER TABLE `acta`
-  ADD CONSTRAINT `acta_ibfk_1` FOREIGN KEY (`id_asignacion_fk`) REFERENCES `asignacion_grupo` (`id_asignacion`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `administrador`
 --
 ALTER TABLE `administrador`
@@ -3831,7 +3729,7 @@ ALTER TABLE `archivo`
 --
 ALTER TABLE `asignacion_grupo`
   ADD CONSTRAINT `asignacion_grupo_ibfk_2` FOREIGN KEY (`id_profesor_fk`) REFERENCES `profesor` (`id_profesor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `asignacion_grupo_ibfk_3` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id_grupo`);
+  ADD CONSTRAINT `asignacion_grupo_ibfk_3` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `asignacion_procedencia`
@@ -3844,15 +3742,8 @@ ALTER TABLE `asignacion_procedencia`
 -- Filtros para la tabla `constancia_alumno`
 --
 ALTER TABLE `constancia_alumno`
-  ADD CONSTRAINT `constancia_alumno_ibfk_1` FOREIGN KEY (`id_inscripcion_acta_fk`) REFERENCES `inscripcion_acta` (`id_inscripcion_acta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `constancia_alumno_ibfk_1` FOREIGN KEY (`id_inscripcion_fk`) REFERENCES `inscripcion` (`id_inscripcion`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `constancia_alumno_ibfk_2` FOREIGN KEY (`id_profesor_admin_firma_fk`) REFERENCES `administrador` (`id_profesor_admin_fk`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `constancia_profesor`
---
-ALTER TABLE `constancia_profesor`
-  ADD CONSTRAINT `constancia_profesor_ibfk_1` FOREIGN KEY (`folio_acta_fk`) REFERENCES `acta` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `constancia_profesor_ibfk_2` FOREIGN KEY (`id_admin_firma_fk`) REFERENCES `administrador` (`id_profesor_admin_fk`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `curso`
@@ -3893,19 +3784,6 @@ ALTER TABLE `horario_clase_virtual`
 ALTER TABLE `inscripcion`
   ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`id_alumno_fk`) REFERENCES `alumno` (`id_alumno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `inscripcion_ibfk_2` FOREIGN KEY (`id_asignacion_fk`) REFERENCES `asignacion_grupo` (`id_asignacion`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `inscripcion_acta`
---
-ALTER TABLE `inscripcion_acta`
-  ADD CONSTRAINT `inscripcion_acta_ibfk_2` FOREIGN KEY (`folio_acta_fk`) REFERENCES `acta` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `inscripcion_acta_ibfk_3` FOREIGN KEY (`id_inscripcion_acta`) REFERENCES `inscripcion` (`id_inscripcion`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `keywords`
---
-ALTER TABLE `keywords`
-  ADD CONSTRAINT `keywords_ibfk_1` FOREIGN KEY (`id_curso_fk`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `municipios`

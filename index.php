@@ -398,16 +398,6 @@
                           <img src="./assets/images/icon.png" height="30" alt="main_logo">
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a class="px-2" href="http://informatica.cuautitlan.unam.mx/" target="_blank">
-                          <img src="./assets/images/logo_coordinacion.png" height="30" alt="main_logo">
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="px-2" href="https://www.cuautitlan.unam.mx/#gsc.tab=0" target="_blank">
-                          <img src="./assets/images/alas.png" height="30" alt="main_logo">
-                      </a>
-                  </li>
               </ul>
 
 
@@ -434,11 +424,9 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-2 col-sm-6 col-6 mb-4">
+        <div class="col-md-4 col-sm-6 col-6 mb-4">
             <h6 class="text-sm">Enlaces</h6>
               <ul class="flex-column ms-n3 nav">
-                  <li class="nav-item"><a class="nav-link" href="http://informatica.cuautitlan.unam.mx/" class="py-2 d-block" target="_blank">Coordinación de Informática</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://sites.google.com/cuautitlan.unam.mx/cursos-dci/inicio?authuser=0" class="py-2 d-block" target="_blank">Centro de cómputo</a></li>
                   <li class="nav-item"><a class="nav-link" href="https://www.cuautitlan.unam.mx/#gsc.tab=0" class="py-2 d-block" target="_blank">Nuestra Facultad</a></li>
                   <li class="nav-item"><a class="nav-link" href="https://www.unam.mx/" class="py-2 d-block" target="_blank">Nuestra Universidad</a></li>
               </ul>
@@ -447,24 +435,16 @@
                 <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block" data-bs-toggle="modal" data-bs-target="#modal-legals">Aviso de Privacidad</a></li>
             </ul>
         </div>
-          <div class="col-md-3 col-sm-6 col-6 mb-4">
-            <h6 class="text-sm">Mas populares</h6>
-            <ul class="flex-column ms-n3 nav">
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al coomputo I</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al coomputo II</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Iniciación al Cómputo I para CQB</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Hojas de Cálculo Excel Básico</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3 col-sm-12 col-12 mb-4">
+
+        <div class="col-md-4 col-sm-12 col-12 mb-4">
             <h6 class="text-sm">Contacto</h6>
             <p class="mb-4 text-dark my-4 text-sm font-weight-light">
-                Edificio del centro de cómputo, planta baja Km 2.5 Carretera Cuautitlán-Teoloyucan Col. San
-                Sebastián Xhala, Cuautitlán Izcalli Edo. México C.P. 54714</p>
+                Cubículo 12, Edif. A-8 planta baja, Campo Cuatro Km 2.5 carretera Cuautitlán–Teoloyucan, Col. San Sebastián Xhala Cuautitlán Izcalli, Estado de México. CP. 54714
+            </p>
             <h6 class="text-sm">Jefatura del Centro de Tecnologías en Cómputo y Comunicación</h6>
             <ul class="flex-column ms-n3 nav">
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	Ing. León Mauricio Muñoz Miranda </a></li>
-                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	cursos.fesc@cuautitlan.unam.mx</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">Dr. Jorge Altamira Ibarra</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" class="py-2 d-block">	altamira@unam.mx</a></li>
             </ul>
         </div>
         <div class="col-12">

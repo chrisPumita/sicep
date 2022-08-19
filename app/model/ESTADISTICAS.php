@@ -55,7 +55,7 @@ class ESTADISTICAS extends CONEXION_M
     }
 
     function queryCuentaConstancias(){
-        $sql = "select id_constancia_alumno from constancia_alumno 
+        $sql = "select id_constancia_alumno  from constancia_alumno 
                 where estatus = 1 AND verificada = 1 ";
         $this->connect();
         $result = $this->numRows($sql);
@@ -78,9 +78,8 @@ class ESTADISTICAS extends CONEXION_M
     function  numericDashbiard(){
         $sql="SELECT 
        (SELECT COUNT(*) FROM curso WHERE curso.id_profesor_admin_acredita IS NOT NULL AND curso.aprobado = 1) as cursos,
-        (SELECT COUNT(*) FROM inscripcion, inscripcion_acta WHERE inscripcion.validacion_constancia = 0
-          AND inscripcion.id_inscripcion IN (SELECT inscripcion_acta.id_inscripcion_acta FROM inscripcion_acta)
-          AND inscripcion_acta.id_inscripcion_acta NOT IN (SELECT constancia_alumno.id_inscripcion_acta_fk FROM constancia_alumno)) as constancias,
+        (SELECT COUNT(*) FROM inscripcion WHERE inscripcion.pago_confirmado = 1
+                                            AND inscripcion.id_inscripcion IN (SELECT `id_inscripcion_fk` FROM `constancia_alumno`)) as constancias,
        (SELECT COUNT(*) FROM alumno, persona WHERE persona.estatus=1 and persona.id_persona=alumno.id_persona) as alumnos";
         $this->connect();
         $result = $this->getData($sql);

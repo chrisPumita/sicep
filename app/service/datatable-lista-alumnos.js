@@ -63,13 +63,9 @@ function cargaDatosAlumnosDataTable(typeFiltro) {
                     }
                 },
                 { data: null,
-                    render: function ( data, type, row ) {
-                        let btnAcction = row.id_alumno >= 0 ?
-                            `<a href="#" class="btn btn-outline-warning btnSuspenderAccount" data-bs-toggle="tooltip" title="Suspender Cuenta"><i class="fas fa-user-clock"></i></a>`:
-                            `<a href="#" class="btn btn-success btnSuspenderAccount"  data-bs-toggle="tooltip" title="Habilitar Cuenta"><i class="fas fa-user-check"></i></a>`;
-                        let template = `<div class="d-flex"><a href="#" class="btn btn-primary btnViewPerfile"><i class="fas fa-id-card-alt"></i></a>
-                                        ${btnAcction}</div>`;
-                        return template;
+                    render: function ( data, type, row ){
+                        let status = "";
+                        return status;
                     }
                 }
             ],

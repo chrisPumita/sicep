@@ -19,11 +19,6 @@ function getBodyFicha($ficha){
                 <img src="../ficha_inscripcion/img/logo.png" width="100%" height="100px" alt="">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 m-0 p-0">
-                <img src="../ficha_inscripcion/img/name_tab.png" width="100%" alt="">
-            </div>
-        </div>
     </div>
 </header>
 <div class="container-fluid text-center py-3 text-black-50 bg-light">
@@ -221,11 +216,6 @@ function getBodyFichaPago($ficha){
         <div class="row d-flex">
             <div class="col-12 m-0 p-0">
                 <img src="../ficha_inscripcion/img/logo.png" width="100%" height="100px" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 m-0 p-0">
-                <img src="../ficha_inscripcion/img/name_tab.png" width="100%" alt="">
             </div>
         </div>
     </div>

@@ -17,3 +17,11 @@ const SGDB = "mysql:host=".SERVER.";dbname=".DB;
 const METHOD = "AES-256-CBC";
 const SECRET_KEY = '$SICEP@2022';
 const SECRET_IV = '037970';
+
+#USER MAILING
+const HOST = 'host.com';
+const NAME_MAIL = "SICEP BOOT";
+const USERNAME_MAIL = 'mail@host.com';
+const PW_MAIL = 'secret';
+const PORT_MAIL = 465;
+//const PORT_MAIL = 587;

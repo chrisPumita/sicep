@@ -75,14 +75,6 @@
                                             <img src="../assets/images/icons/doc1.svg" class="card-img-top img-config" alt="">
                                             <h6>Documentos</h6>
                                         </a>
-                                        <a href="#" class="list-group-item text-center">
-                                            <img src="../assets/images/icons/constancia1.svg" class="card-img-top img-config" alt="">
-                                            <h6>Constancias Profesores</h6>
-                                        </a>
-                                        <a href="#" class="list-group-item text-center">
-                                            <img src="../assets/images/icons/constancia1.svg" class="card-img-top img-config" alt="">
-                                            <h6>Constancias Alumnos</h6>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
