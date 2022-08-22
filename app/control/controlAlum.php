@@ -127,7 +127,16 @@ function eliminarAlumno($id_alumno)
 {
     include_once "../model/ALUMNO.php";
     $obj_alumn = new ALUMNO();
-    echo $obj_alumn->eliminaAlumno($id_alumno) ? "Se elimino profesor" : "No se pudo eliminar al alumno";
+    $obj_alumn->setIdAlumno($id_alumno);
+    return $obj_alumn->queryDeleteAlumno();
+}
+
+function activarAlumno($id_alumno)
+{
+    include_once "../model/ALUMNO.php";
+    $obj_alumn = new ALUMNO();
+    $obj_alumn->setIdAlumno($id_alumno);
+    return $obj_alumn->queryUpdateEstatusAlumno();
 }
 
 /***********  A C T U A L I Z A R  F O T O  P E R F I L     LFHL*************/

@@ -442,12 +442,23 @@ class ALUMNO extends PERSONA implements I_ALUMNO
 
     function queryUpdateEstatusAlumno()
     {
-        $filtro = $this->getIdAlumno() > 0 ? " WHERE `alumno`.`id_alumno`=" . $this->getIdAlumno() : "";
-        $query = "UPDATE `alumno` SET `alumno`.`estatus` = '".$this->getEstatusAlumno()."' ".$filtro;
+        $query = "UPDATE `alumno` SET 
+                    `update_doc_at` = '".date('Y-m-d H:i:s')."', 
+                    `estatus` = '1' 
+                    WHERE `alumno`.`id_alumno` = ".$this->getIdAlumno();
         $this->connect();
         $response = $this->executeInstruction($query);
         $this->close();
         return $response;
+    }
+
+    function queryDeleteAlumno()
+    {
+        $query = "DELETE FROM `alumno` WHERE `alumno`.`id_alumno` =".$this->getIdAlumno();
+        $this->connect();
+        $datos = $this->executeInstruction($query);
+        $this->close();
+        return $datos;
     }
 
     function queryUpdateAlumno()
@@ -479,14 +490,6 @@ class ALUMNO extends PERSONA implements I_ALUMNO
 
     }
 
-    function queryDeleteAlumno()
-    {
-        $query = "DELETE FROM `alumno` WHERE `alumno`.`id_alumno` =".$this->getIdAlumno();
-        $this->connect();
-        $datos = $this->executeInstruction($query);
-        $this->close();
-        return $datos;
-    }
 
     function queryAcountAlumno(){
             $query = "select  per.`id_persona`, per.`nombre`, per.`app`, per.`apm`, per.`telefono`,

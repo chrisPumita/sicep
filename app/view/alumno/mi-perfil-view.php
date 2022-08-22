@@ -145,7 +145,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-8">
+                                    <!--
+                                                                        <div class="col-xl-8">
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body p-3 pb-2">
@@ -174,6 +175,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    -->
+
                                 </div>
                             </div>
                         </section>

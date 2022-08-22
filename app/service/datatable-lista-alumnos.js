@@ -169,10 +169,7 @@ function cargaDatosAlumnosPendientesDataTable(typeFiltro) {
                 { data: null,
                     render: function ( data, type, row ) {
                         let template = `<div class="d-flex">
-                                            <button class="btn btn-outline-success btnViewDoc" data-bs-toggle="tooltip" title="Ver documento para acreditar">
-                                            <i class="fas fa-file"></i>
-                                            </button>
-                                            <button class="btn btn-outline-success btnViewPerfile" data-bs-toggle="tooltip" title="Ver Perfil Cuenta">
+                                            <button class="btn btn-outline-success btnViewDoc" data-bs-toggle="tooltip" title="Acreditar">
                                             <i class="fas fa-clipboard-check"></i>
                                             </button>
                                             <a href="#" class="btn btn-danger btnBanCount" data-bs-toggle="tooltip" title="Eliminar Cuenta No verificada">
@@ -245,29 +242,42 @@ $('.sexo-dropdown').on('change', function(e){
 $(document).on("click", ".btnViewPerfile", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_profesor");
+    let id = $(elementClienteSelect).attr("id_alumno");
     var url = './detalles-alumno';
     redirect_by_post(url, {  id: id }, false);
-});
-
-$(document).on("click", ".btnBanCount", function ()
-{
-    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_profesor");
-    alert("BAN "+id);
-});
-
-$(document).on("click", ".btnViewDoc", function ()
-{
-    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_profesor");
-    alert("MODAL VISTA DOCUMENTO ACREDITA "+id);
 });
 
 $(document).on("click", ".btnSuspenderAccount", function ()
 {
     let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
-    let id = $(elementClienteSelect).attr("id_profesor");
+    let id = $(elementClienteSelect).attr("id_alumno");
     alert("suspender cuenta "+id);
 });
 
+
+$(document).on("click", ".btnBanCount", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_alumno");
+    let ruta = "./webhook/cuentaAlumnoAction.php";
+    enviaForm({id:id,action:"delete"},ruta).then(function () {
+        reloadDatatble();
+    });
+});
+
+$(document).on("click", ".btnViewDoc", function ()
+{
+    let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement;
+    let id = $(elementClienteSelect).attr("id_alumno");
+    let ruta = "./webhook/cuentaAlumnoAction.php";
+    enviaForm({id:id,action:"accept"},ruta).then(function () {
+        reloadDatatble();
+    });
+});
+
+function reloadDatatble() {
+    var table = $('#tblAlumnos').DataTable( {
+        ajax: "data.json"
+    } );
+    table.ajax.reload( null, false );
+}
