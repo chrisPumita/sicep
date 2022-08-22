@@ -43,9 +43,6 @@
                             <a href="./lista-grupos-profesor">Actuales</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
-                        </li>
-                        <li class="submenu-item ">
                             <a href="./prof-historial-grupos">Historial</a>
                         </li>
                     </ul>
@@ -76,9 +73,6 @@
                         </li>
                         <li class="submenu-item ">
                             <a href="./lista-grupos">Ver actuales</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#onConstruction">Actas</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="./historial-grupos">Ver Historial</a>

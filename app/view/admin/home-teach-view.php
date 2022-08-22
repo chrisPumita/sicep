@@ -144,11 +144,9 @@
                                 <div class="col-xl-4">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title font-weight-bold">Actas</h5>
-                                            <p class="card-text text-muted">Acceso rápido para el apartado de actas en donde se podrán ver los detalles y estado.</p>
-                                            <a href="#">
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#onConstruction">Ir</button>
-                                            </a>
+                                            <h5 class="card-title font-weight-bold">Manual</h5>
+                                            <p class="card-text text-muted">Si tiene dudas con el sistema, revise el manual de ayuda</p>
+                                            <a href="../manuales/MANUAL%20SICEP%20PROFESOR%20-%20Ver%2012%20Agosto.pdf" target="_blank" type="button" class="btn btn-primary btn-sm">Ver Manual</a>
                                         </div>
                                     </div>
                                 </div>

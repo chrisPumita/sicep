@@ -220,12 +220,9 @@
                         <div class="col-xl-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Buscar Alumno</h5>
-                                    <p class="card-text text-muted">Escriba el No. de cuenta/Matricula.</p>
-                                    <form class="form-inline position-relative my-2 d-flex">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Escriba No Cta / Matricula" aria-label="Search">
-                                        <button class="btn btn-search position-relative posicion-btn" type="submit"><img src="../assets/images/icons/buscar1.svg" width="24px"></button>
-                                    </form>
+                                    <h5 class="card-title font-weight-bold">Manual</h5>
+                                    <p class="card-text text-muted">Si tiene dudas con el sistema, revise el manual de ayuda</p>
+                                    <a href="../manuales/MANUAL%20SICEP%20ADMIN%20-%20ver%2012%20de%20agosto.pdf" target="_blank" type="button" class="btn btn-primary btn-sm">Ver Manual</a>
                                 </div>
                             </div>
                         </div>
