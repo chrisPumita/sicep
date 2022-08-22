@@ -210,6 +210,24 @@ function getBodyFichaPago($ficha){
 
     $costoFinal =  $formatter->toInvoice($totalPago, 2, "MXN");
 
+    $accounts = '';
+    $places_pay = '';
+
+
+    include("../../config/BANK_KEYS.php");
+    foreach ($ACCOUNTS_BANK as $ACCOUNT){
+        $accounts .= '<tr>
+        <td class="tg-fd96">'.$ACCOUNT[0].'</td>
+        <td class="tg-c3ow">'.$ACCOUNT[1].'</td>
+      </tr>';
+    }
+
+
+    foreach($PAY_PLACES as $PLACE){
+        $places_pay .= $PLACE[0].', ';
+    }
+
+
     return '<body class="bg-light">
 <header>
     <div class="container-fluid m-0">
@@ -282,22 +300,7 @@ function getBodyFichaPago($ficha){
         <td class="tg-tia3">BANCO</td>
         <td class="tg-tia3">NO DE CUENTA</td>
       </tr>
-      <tr>
-        <td class="tg-5ims">BBBA</td>
-        <td class="tg-c3ow">1651561</td>
-      </tr>
-      <tr>
-        <td class="tg-fd96">BBBA</td>
-        <td class="tg-c3ow">1651561</td>
-      </tr>
-      <tr>
-        <td class="tg-fd96">BBBA</td>
-        <td class="tg-c3ow">1651561</td>
-      </tr>
-      <tr>
-        <td class="tg-fd96">BBBA</td>
-        <td class="tg-c3ow">1651561</td>
-      </tr>
+      '.$accounts.'
       <tr>
         <td class="tg-c6of"><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -319,7 +322,7 @@ function getBodyFichaPago($ficha){
     <div class="row">
         <div class="col p-3">
             <p class="fst-italic small text-muted lh-1">Para tu comodidad, ponemos a tu disposición, los numeros de cuenta y referencias para
-            que puedas hacer tu pago en cualquiera de los siguientes establecimientos:</p>
+            que puedas hacer tu pago en cualquiera de los siguientes establecimientos: <strong>'.$places_pay.'</strong></p>
         </div>
     </div>
 </div>

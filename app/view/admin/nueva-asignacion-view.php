@@ -158,6 +158,7 @@ if(!isset($id)) header("Location: ./lista-cursos");
                                             <input type="date" id="finInsc" name="finInsc" max="3000-12-31" min="1000-01-01" value="<?php echo date("Y-m-d");?>" class="form-control fecha">
                                         </div>
                                     </div>
+                                    <hr class="w-50 d-flex m-auto my-3">
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
                                             <label class="label" for="InicioCurso">Inicio de Clases:</label>
@@ -176,6 +177,7 @@ if(!isset($id)) header("Location: ./lista-cursos");
                                             </div>
                                         </div>
                                     </div>
+                                    <hr class="w-50 d-flex m-auto my-3">
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
                                             <label class="label" for="inicioCal">Calificaciones del</label>

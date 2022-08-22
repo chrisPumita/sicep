@@ -315,7 +315,8 @@
               </div>
           </div>
       </section>
-      <section>
+      <!--
+            <section>
           <div class="container">
               <div class="row d-flex">
                   <div class="col-md-12 about-intro">
@@ -351,6 +352,8 @@
               </div>
           </div>
       </section>
+      -->
+
     <!-- -------- START PRE-FOOTER 1 w/ SUBSCRIBE BUTTON AND IMAGE ------- -->
     <section class="my-5 pt-5">
       <div class="container">
@@ -361,9 +364,10 @@
               Inicia Sesión para poder inscribirte a los cursos que tenemos para ti. Es muy fácil.
             </p>
             <div class="row">
-              <div class="col-8">
+              <div class="col-6">
                 <div class="input-group input-group-outline">
                     <a href="./login.php" class="btn btn-primary">Iniciar Sesión</a>
+                    <a href="./manuales/MANUAL%20SICEP%20ALUMNO%20-%20Ver%2012%20Agosto.pdf" class="btn btn-outline-secondary" target="_blank">VER MANUAL</a>
                 </div>
               </div>
             </div>

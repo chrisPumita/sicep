@@ -224,9 +224,9 @@ function estadoAsig(estatus) {
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TERMINADO
                     </span>`;
         case "-1":
-            return `<span class="badge bg-danger">
-                        <div class="blob red d-none d-sm-flex">
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CANCELADO
+            return `<span class="badge bg-info">
+                        <div class="blob blue d-none d-sm-flex">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARCHIVADO
                     </span>`;
         case "99":
             return `<span class="badge bg-success">

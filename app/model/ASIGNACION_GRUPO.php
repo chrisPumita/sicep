@@ -728,5 +728,25 @@ class ASIGNACION_GRUPO extends CONEXION_M implements I_ASIG_GRUPO
         $this->close();
         return $result;
     }
+
+    function queryArchivaAsignacion(){
+        $DateAndTime = date('m-d-Y h:i:s a', time());
+        $query="UPDATE `asignacion_grupo` SET `notas` = 'Se cancelo el grupo el dia ".$DateAndTime." ', `estatus` = '-1' 
+                WHERE `asignacion_grupo`.`id_asignacion` = ". $this->getIdAsignacion();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryEliminaAsignacion(){
+        $query="DELETE FROM `asignacion_grupo` 
+            WHERE `asignacion_grupo`.`id_asignacion` = ". $this->getIdAsignacion();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
 }
 

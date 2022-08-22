@@ -90,7 +90,7 @@ $(document).on("click", ".bntInpcion", function ()
         if (confirmed) {
             let result = await inscribeCursoAjax();
             if (result.messageType == 1){
-                console.log(result);
+                //console.log(result);
                 buildHTMLBotonesDowload(result.id);
                 alertaEmergente(result.messageText);
                 $('#solicitud').modal("show");
@@ -119,7 +119,6 @@ async function inscribeCursoAjax(){
 
 
 function buildHTMLBotonesDowload(id) {
-    alert()
     let template = `<hr>
                     <div class="col-sm-4 text-center">
                         <button type="button" class="btn btn-outline-primary" onclick="fichaInsc(${id});">

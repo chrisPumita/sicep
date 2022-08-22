@@ -45,7 +45,7 @@ $titulo = "Inscripción";
                                             </div>
                                             <div class="ms-3 name">
                                                 <h4 class="font-bold" id="lblProfesorName"></h4>
-                                                <h6 class="text-muted mb-0">PROFESOR</h6>
+                                                <h6 class="text-muted mb-0">ALUMNO</h6>
                                             </div>
                                         </div>
                                     </div>

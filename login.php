@@ -51,7 +51,9 @@
                         ¿No tienes una cuenta? <a href="./register.php" data-bs-toggle="modal"
                                                   data-bs-target="#inlineForm">Regístrate</a>
                     </p>
+                    <!--
                     <p><a  href="./forgot-password.php">Olvidé mi contraseña</a> .</p>
+                    -->
                 </div>
             </div>
         </div>

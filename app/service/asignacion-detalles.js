@@ -41,6 +41,10 @@ function loadDataAsignacion(asig){
 
         let estatusAsig = estadoAsig(asig.estado_asig);
         $("#statusFlag").html(estatusAsig);
+        if (asig.estado_asig === "-1"){
+            $("#statusArchive").remove();
+        }
+
         $("#lblGrupo").html(asig.grupo);
         $("#lblGeneracion").html(asig.generacion);
         $("#lblModalidad").html(getModalidadCurso(asig.modalidad));
@@ -187,4 +191,29 @@ function openCurso(id) {
     let url = "./detalles-curso#sectionDescuentos";
     let data = {  id:id };
     redirect_by_post(url, data, false);
+}
+
+
+function archivarCurso() {
+    var id = ID_ASIG;
+    let route= "./webhook/archive_asig.php";
+    sweetConfirm("Archivar", '¿Estas seguro de que deseas archivar esta inscripcion?', function (confirmed) {
+        if (confirmed) {
+            enviaForm({id:id},route).then(function () {
+                consultaInfoAsignacion(ID_ASIG,1);
+            });
+        }
+    });
+}
+
+function cancelarCurso() {
+    var id = ID_ASIG;
+    let route= "./webhook/delete_asig.php";
+    sweetConfirm("Cancelar Grupo", '¿Esta seguro de que deseas archivar esta asignacion de grupo?', function (confirmed) {
+        if (confirmed) {
+            enviaForm({id:id},route).then(function (result) {
+                setTimeout( function() { window.location.href = "./lista-grupos"; }, 2000 );
+            });
+        }
+    });
 }

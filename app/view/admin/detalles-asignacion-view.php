@@ -65,17 +65,14 @@ $titulo = "Detalles de la Asignación" ?>
                                 </div>
                                 <div class="col-sm-2 align-items-center">
                                     <!-- Example single danger button -->
-                                    <div class="btn-group w-100 mr-3 mt-3 mb-3">
+                                    <div class="btn-group w-100 mr-3 mt-3 mb-3" id="statusArchive">
                                         <button type="button" class="btn btn-primary dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Concluir</a></li>
-                                            <li><a class="dropdown-item" href="#">Generar Constancias</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="archivarCurso();">Archivar</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#">Termino Forzado</a></li>
-                                            <li><a class="dropdown-item" href="#">Archivar</a></li>
-                                            <li><a class="dropdown-item" href="#">Cancelar Grupo</a></li>
+                                            <li><a class="dropdown-item text-danger" href="#"  onclick="cancelarCurso();">Cancelar Grupo</a></li>
                                         </ul>
                                     </div>
                                 </div>

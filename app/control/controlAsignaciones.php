@@ -86,6 +86,20 @@ function updateFechasAsignacion($params){
     return $ASIG->queryUpdateFechasAsignacion();
 }
 
+function archivarAsignacion($id){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $ASIG = new ASIGNACION_GRUPO();
+    $ASIG->setIdAsignacion($id);
+    return $ASIG->queryArchivaAsignacion();
+}
+
+function eliminarAsignacion($id){
+    include_once "../model/ASIGNACION_GRUPO.php";
+    $ASIG = new ASIGNACION_GRUPO();
+    $ASIG->setIdAsignacion($id);
+    return $ASIG->queryEliminaAsignacion();
+}
+
 function getListaFilstrosAsig(){
     include_once "../model/ASIGNACION_GRUPO.php";
     $GEN = new ASIGNACION_GRUPO();
