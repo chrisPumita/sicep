@@ -11,6 +11,7 @@ function getBodyFicha($ficha){
         $descuento = '-$'.$valorDesc.' MX ('.$ficha['DESCUENTO'].'%)';
         $totalPago = $ficha['costo_real'] - $valorDesc;
     }
+    include("../../config/BANK_KEYS.php");
     return '<body class="bg-light">
 <header>
     <div class="container-fluid m-0">
@@ -23,8 +24,8 @@ function getBodyFicha($ficha){
 </header>
 <div class="container-fluid text-center py-3 text-black-50 bg-light">
     <h4>FICHA DE INSCRIPCIÓN</h4>
-    <h6><strong>86132000 Concepto: Servicios de Educación y Capacitación en Administración</strong></h6>
-    <h5>CENTRO DE CÓMPUTO No. UR: 5130</h5>
+    <h6><strong>'.$DEPENDENCIA.'</strong></h6>
+    <h5>'.$DEPARTAMENTO.'</h5>
 </div>
 <div class="container">
     <table class="tg" style="undefined;table-layout: fixed; width: 100%">
@@ -240,8 +241,8 @@ function getBodyFichaPago($ficha){
 </header>
 <div class="container-fluid text-center py-3 text-black-50 bg-light">
     <h4>FICHA DE PAGO DE INSCRIPCIÓN</h4>
-    <h6><strong>86132000 Concepto: Servicios de Educación y Capacitación en Administración</strong></h6>
-    <h5>CENTRO DE CÓMPUTO No. UR: 5130</h5>
+    <h6><strong>'.$DEPENDENCIA.'</strong></h6>
+    <h5>'.$DEPARTAMENTO.'</h5>
 </div>
 <div class="container">
     <table class="tg" style="undefined;table-layout: fixed; width: 883px">

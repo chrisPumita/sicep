@@ -12,7 +12,6 @@
 //todos 0
 //para registrar un pago, necesito un nivel de acceso 3 (alto)
 
-require "../../config/ACCESS_NIVELS.php";
 
 function validacionAdminAccount($password,$requereNivel){
     //vamos a procesar la opcion que esta entrando
@@ -28,7 +27,7 @@ function verificaAdministrador($idProf, $clave, $nivel_permiso){
     $admin_tmp->setIdProfesor($idProf);
     $result = $admin_tmp->queryBuscaCuentaAdmin();
     //si result esta definida, es decir trae datos, entonces es true es decir != NULL
-    return (isset($result) && count($result)>0 && count($result)<2) ?
+    return (isset($result) && count($result)>0) ?
         (md5($clave)==$result[0]["clave_confirmacion"] && $nivel_permiso == $result[0]["permisos"]): false;
 }
 /*******************************************************************************
@@ -72,7 +71,7 @@ function actualizaDatosAdmin($idAdmin,$cargo,$permisosA){
 }
 
 function addNewAdmin($id,$cargo,$nivel,$pw){
-    if (validacionAdminAccount($pw,NVL_REG_ADMIN)){
+    if (validacionAdminAccount($pw,3)){
         include_once "../model/ADMIN.php";
         $ADMIN = new ADMIN();
         $ADMIN->setIdProfesor($id);

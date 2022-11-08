@@ -62,7 +62,7 @@ function procesaArchivoRecibido($idFile, $value, $pw){
     if ($obj){
         if ($obj[0]['obligatorio']==1){
             include_once "../control/controlAdmin.php";
-            return  validacionAdminAccount($pw,NVL_REG_ADMIN)
+            return  validacionAdminAccount($pw,3)
                 ? $file->queryUpdateEstadoArchivo() : false;
         }
         else{

@@ -1,17 +1,16 @@
 <?php
-
     function procesaInscripcionValidacion($password,$idFichaInsc,$val){
         include_once "controlAdmin.php";
-        if (validacionAdminAccount($password,NVL_REG_PGO)){
+        if (validacionAdminAccount($password,3)){
             switch ($val){
-                case '0':
+                case 0:
                     #se cancela la inscripcion
                     $notas = "Solicitud Cancelada el día ".date('Y-m-d H:i:s')."<br>";
                     $confirmacionPago= false;
                     $info = "CANCELADO";
                     $subtotal = 0;
                     break;
-                case "1":
+                case 1:
                     //Se paga el curso
                     $confirmacionPago= true;
                     $info = "ACREDITADO";
@@ -26,7 +25,7 @@
                     }
                     $notas = "Pago aprobado el día ".date('Y-m-d H:i:s')."<br>Monto registrado: $".$subtotal;
                     break;
-                case "2":
+                case 2:
                     $info = "ACREDITADO";
                     $confirmacionPago= true;
                     $notas = "Pago 100% descuento acreditado el día ".date('Y-m-d H:i:s')."<br>";
@@ -34,6 +33,7 @@
                     #se completa curso con beca 100%
                     break;
                 default:
+                    $confirmacionPago= false;
                     return false; #error no encontrado
             }
 
@@ -42,12 +42,13 @@
             $I = new INSCRIPCION();
             $I->setIdInscripcion($idFichaInsc);
             $I->setNotas($notas);
-            if($I->confirmaPagoRealizado($confirmacionPago)&&$confirmacionPago){
+            if($I->confirmaPagoRealizado($confirmacionPago)){
                 $idAdmin = $_SESSION['idProfesor'];
                 return $I->creaValidacionInscripcion($idAdmin,$subtotal,$info);
             }
-            return true;
+            return false;
         }
+        return false;
     }
 
     function revisaInscipcionPrevia($idAsig,$idAlumno)

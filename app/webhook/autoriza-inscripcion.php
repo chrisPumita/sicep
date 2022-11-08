@@ -12,7 +12,7 @@ if (isset($val)&&isset($password)) {
     else{
         $action = false;
         $validation =false;
-        $mensaje = "VALIDACION FALLIDA, LA CONTRASEÑA ES INCORRECTA";
+        $mensaje = "VALIDACION FALLIDA, LA CONTRASEÑA ES INCORRECTA O PERMISOS NO DISPONIBLES";
     }
 }
 else{

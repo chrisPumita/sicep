@@ -421,13 +421,14 @@ FROM `persona` per INNER JOIN `profesor` prof WHERE  prof.`id_persona_fk`=per.`i
     {
         $valConfir = $confirmacion ? '1':'-1';
         $estatus = $confirmacion ? '1':'0';
-        $conclusion = $confirmacion ? 't.fecha_conclusion = NULL, ': " t.fecha_conclusion = CURRENT_TIMESTAMP,";
-        $sql = "UPDATE inscripcion t
-                SET t.pago_confirmado          = ".$valConfir.",
-                    t.autorizacion_inscripcion = ".$valConfir.", ".$conclusion."
-                    t.notas = t.notas + '".$this->getNotas()."',
-                    t.estatus                  = ".$estatus."
-                WHERE t.id_inscripcion = ". $this->getIdInscripcion();
+        $conclusion = $confirmacion ? '': " `fecha_conclusion` = CURRENT_TIMESTAMP,";
+        $sql = "UPDATE `inscripcion` SET 
+                         `pago_confirmado` = '".$valConfir."', 
+                         `autorizacion_inscripcion` = '".$valConfir."', 
+                         ".$conclusion."
+                         `notas` = '".$this->getNotas()."', 
+                         `estatus` = '".$estatus."' 
+                WHERE `inscripcion`.`id_inscripcion` = ". $this->getIdInscripcion();
         $this->connect();
         $result = $this->executeInstruction($sql);
         $this->close();

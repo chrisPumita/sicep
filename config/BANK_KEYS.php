@@ -16,3 +16,5 @@ $PAY_PLACES = array(
     ["BANAMEX"],
 );
 
+$DEPENDENCIA = "86132000 Concepto: Servicios de Educación y Capacitación en Administración";
+$DEPARTAMENTO = "DEPARTAMENTO DE MATEMÁTICAS No. UR: 0000";
